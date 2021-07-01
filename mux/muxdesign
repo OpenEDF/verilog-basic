@@ -1,0 +1,59 @@
+#! /usr/bin/vvp
+:ivl_version "10.3 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x561a067c7c70 .scope module, "testbench" "testbench" 2 2;
+ .timescale -9 -12;
+v0x561a067d9980_0 .var "mux_a", 0 0;
+v0x561a067d9a40_0 .var "mux_b", 0 0;
+v0x561a067d9b10_0 .var "mux_s", 0 0;
+v0x561a067d9c10_0 .net "mux_y", 0 0, L_0x561a067d9fa0;  1 drivers
+S_0x561a067c7df0 .scope module, "testuut" "multiplexer2_1" 2 9, 3 1 0, S_0x561a067c7c70;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /INPUT 1 "s"
+    .port_info 3 /OUTPUT 1 "y"
+L_0x561a067d9ce0 .functor NOT 1, v0x561a067d9b10_0, C4<0>, C4<0>, C4<0>;
+L_0x561a067d9dd0 .functor AND 1, L_0x561a067d9ce0, v0x561a067d9980_0, C4<1>, C4<1>;
+L_0x561a067d9ee0 .functor AND 1, v0x561a067d9b10_0, v0x561a067d9a40_0, C4<1>, C4<1>;
+L_0x561a067d9fa0 .functor OR 1, L_0x561a067d9dd0, L_0x561a067d9ee0, C4<0>, C4<0>;
+v0x561a067920a0_0 .net *"_s0", 0 0, L_0x561a067d9ce0;  1 drivers
+v0x561a067d9410_0 .net *"_s2", 0 0, L_0x561a067d9dd0;  1 drivers
+v0x561a067d94f0_0 .net *"_s4", 0 0, L_0x561a067d9ee0;  1 drivers
+v0x561a067d95b0_0 .net "a", 0 0, v0x561a067d9980_0;  1 drivers
+v0x561a067d9670_0 .net "b", 0 0, v0x561a067d9a40_0;  1 drivers
+v0x561a067d9780_0 .net "s", 0 0, v0x561a067d9b10_0;  1 drivers
+v0x561a067d9840_0 .net "y", 0 0, L_0x561a067d9fa0;  alias, 1 drivers
+    .scope S_0x561a067c7c70;
+T_0 ;
+    %vpi_call 2 16 "$dumpfile", "test.vcd" {0 0 0};
+    %vpi_call 2 17 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x561a067c7c70 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x561a067d9980_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x561a067d9a40_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x561a067d9b10_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x561a067d9b10_0, 0, 1;
+    %vpi_call 2 22 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x561a067c7c70;
+T_1 ;
+    %vpi_call 2 26 "$monitor", "a = %d, b = %d, s = %d, y = %d \012", v0x561a067d9980_0, v0x561a067d9a40_0, v0x561a067d9b10_0, v0x561a067d9c10_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.v";
+    "multiplexer2_1.v";
