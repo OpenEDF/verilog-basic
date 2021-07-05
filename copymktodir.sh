@@ -13,13 +13,15 @@ if [ ! -e ./$TARFILE ]; then
 	mkdir ./$TARFILE
 fi
 
-#script it up!
+#copy the file
 echo "Copying iVerilog Makfile"
 if [ -r $mkfile ]; then
 	cp $mkfile ./$TARFILE
 	chmod u+w ./$TARFILE/Makefile
 	echo "Makefile copied"
 	cd ./$TARFILE
+	$SHELL	#exit to current directory
 else
 	echo "You don't have the Makefile at $mkfile"
 fi
+############## END ##############
