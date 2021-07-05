@@ -7,7 +7,8 @@ module comp4bit (
 );
 
 /* gt: greater than, eq: eqality, lt: less than */
-reg [4:0] G, E, L;
+reg [4:0] G, L;
+reg [4:0] E;
 integer i;
 
 always @ (*) begin
@@ -29,7 +30,7 @@ always @ (*) begin
 
 	begin
 		Gout = (x & ~y) | (x & Gin) | (~y & Gin);
-		Eout = (~x & ~y) & (~Gin & ~Lin | x) & (y & ~Gin & ~Lin);
+		Eout = (~x & ~y & ~Gin & ~Lin) | (x & y & ~Gin & ~Lin);
 		Lout = (~x & y) | (~x & Lin) | (y & Lin);
 	end
 	endtask
