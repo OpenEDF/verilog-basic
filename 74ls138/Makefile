@@ -14,7 +14,7 @@
 # CHANGE THESE THREE LINES FOR YOUR DESIGN
 #
 #TOOL INPUT
-SRC = comp4bit.v
+SRC = decode_74ls138.v
 TESTBENCH = testbench.v
 COUTPUT = compiler.out
 TBOUTPUT = test.vcd
@@ -61,3 +61,4 @@ help:
 	@echo " make simulate - compiles your design+TB & simulates your design"
 	@echo " make display  - compiles, simulates and displays waveforms"
 
+###############################################################################
