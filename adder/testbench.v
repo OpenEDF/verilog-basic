@@ -1,7 +1,7 @@
 `timescale 1ns/1ps
 
 /* testbench */
-module stimulus;		// no any input and output
+module testbench ();		// no any input and output
 
 /* set the variable */
 reg add_a;
@@ -16,13 +16,14 @@ halfadder uut(.a(add_a), .b(add_b), .c(cout), .s(sum));
 initial begin
 	/* support gtkwave */
 	$dumpfile("test.vcd");
-	$dumpvars(0, stimulus);
+	$dumpvars(0, testbench);
 		
     add_a = 0; add_b = 0;
     #10 add_a = 0; add_b = 0;
 	#10 add_a = 0; add_b = 1;
 	#10 add_a = 1; add_b = 0;
 	#10 add_a = 1; add_b = 1;
+	#20
 	$finish;
 end
 
