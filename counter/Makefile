@@ -50,8 +50,8 @@ display: $(TBOUTPUT)
 #CLEAN THE FILE
 .PHONY : clean
 clean:
-	@echo "Clean $(COUTPUT) $(TBOUTPUT)"
-	@rm -rf $(COUTPUT) $(TBOUTPUT)
+	@echo "Clean $(COUTPUT) $(TBOUTPUT) a.out"
+	@rm -rf $(COUTPUT) $(TBOUTPUT) a.out
 
 #DISPLAY THE HELP
 .PHONY : help
