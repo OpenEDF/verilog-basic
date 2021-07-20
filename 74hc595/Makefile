@@ -14,7 +14,7 @@
 # CHANGE THESE THREE LINES FOR YOUR DESIGN
 #
 #TOOL INPUT
-SRC = comp4bit.v
+SRC = 74hc595.v
 TESTBENCH = testbench.v
 COUTPUT = compiler.out
 TBOUTPUT = test.vcd
