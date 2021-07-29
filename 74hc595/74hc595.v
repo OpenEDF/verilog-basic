@@ -29,10 +29,11 @@
 * */
 
 /* Verilog impletment code */
+/* Reference: https://github.com/jjcarrier/FPGA_2_ShiftReg  */
 
 module shiftreg74hc595 (
 	input SRCLK,
-	input SER,
+	input SER,		
 	input RCLK,
 	input SRCLR_n,
 	input reg OE_n,
