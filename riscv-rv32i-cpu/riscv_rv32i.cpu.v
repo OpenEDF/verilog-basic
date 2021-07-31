@@ -55,3 +55,5 @@ wire  [4:0] shamt  = inst[24:20];  // S-type rs2
 wire  		sign   = inst[31];	   // UJ-TYPE imm
 wire  [11:0] imm   = inst[31:20];
 
+// branch offset         31:13			 12       11        10:5         4:1    0
+wire [31:0] broffset = {{19{sign}}, inst[31], inst[7], inst[30:25], inst[11:8], 1'b0}; // beq, bne, blt, blut, bgeu
