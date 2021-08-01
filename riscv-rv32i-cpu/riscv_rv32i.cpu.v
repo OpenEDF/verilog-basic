@@ -56,4 +56,9 @@ wire  		sign   = inst[31];	   // UJ-TYPE imm
 wire  [11:0] imm   = inst[31:20];
 
 // branch offset         31:13			 12       11        10:5         4:1    0
-wire [31:0] broffset = {{19{sign}}, inst[31], inst[7], inst[30:25], inst[11:8], 1'b0}; // beq, bne, blt, blut, bgeu
+wire [31:0] broffset  = {{19{sign}}, inst[31], inst[7], inst[30:25], inst[11:8], 1'b0}; // beq, bne, blt, blut, bgeu
+wire [31:0] simm      = {{20{sign}}, inst[31:20]};		//lw addi slti sltui xori ori andi jalr
+wire [31:0] stimm     = {{20{sign}}, inst[31:25], inst[11:7]};   //sw
+wire [32:0] uimm      = {{inst[31:12], 12'0}};
+wire [31:0] jaloffset = {{11{sign}}, inst[31], inst[19:12], inst[20], inst[30:21], 1'b0};	//jal
+
