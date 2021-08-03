@@ -62,3 +62,5 @@ wire [31:0] stimm     = {{20{sign}}, inst[31:25], inst[11:7]};   //sw
 wire [32:0] uimm      = {{inst[31:12], 12'0}};
 wire [31:0] jaloffset = {{11{sign}}, inst[31], inst[19:12], inst[20], inst[30:21], 1'b0};	//jal
 
+// instruction decode
+wire i_auipc = (opcode == 7'b0010111);
