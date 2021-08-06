@@ -64,3 +64,6 @@ wire [31:0] jaloffset = {{11{sign}}, inst[31], inst[19:12], inst[20], inst[30:21
 
 // instruction decode
 wire i_auipc = (opcode == 7'b0010111);
+wire i_lui   = (opcode == 7'b0110111);
+wire i_jal   = (opcode == 7'b1101111);
+
