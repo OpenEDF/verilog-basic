@@ -68,3 +68,44 @@ wire i_lui   = (opcode == 7'b0110111);
 wire i_jal   = (opcode == 7'b1101111);
 wire i_jalr  = (opcode == 7'b1100111) & (func3 == 3'b000);
 wire i_beq   = (opcode == 7'b1100011) & (func3 == 3'b000);
+wire i_bne   = (opcode == 7'b1100011) & (func3 == 3'b001);
+wire i_blt   = (opcode == 7'b1100011) & (func3 == 3'b100);
+wire i_bge   = (opcode == 7'b1100011) & (func3 == 3'b101);
+wire i_blut  = (opcode == 7'b1100011) & (func3 == 3'b110);
+wire i_bgeu  = (opcode == 7'b1100011) & (func3 == 3'b111);
+wire i_lb    = (opcode == 7'b0000011) & (func3 == 3'b000);
+wire i_lh    = (opcode == 7'b0000011) & (func3 == 3'b001);
+wire i_lw    = (opcode == 7'b0000011) & (func3 == 3'b010);
+wire i_lbu   = (opcode == 7'b0000011) & (func3 == 3'b100);
+wire i_lhu   = (opcode == 7'b0000011) & (func3 == 3'b101);
+wire i_sb    = (opcode == 7'b0100011) & (func3 == 3'b000);
+wire i_sh    = (opcode == 7'b0100011) & (func3 == 3'b001);
+wire i_sw    = (opcode == 7'b0100011) & (func3 == 3'b010);
+wire i_addi  = (opcode == 7'b0010011) & (func3 == 3'b011);
+wire i_slti  = (opcode == 7'b0010011) & (func3 == 3'b010);
+wire i_sltiu = (opcode == 7'b0010011) & (func3 == 3'b100);
+wire i_xori  = (opcode == 7'b0010011) & (func3 == 3'b110);
+wire i_andi  = (opcode == 7'b0010011) & (func3 == 3'b111);
+wire i_csrrw = (opcode == 7'b1110011) & (func3 == 3'b001);	// not an rv32i instruction
+wire i_slli  = (opcode == 7'b0010011) & (func3 == 3'b001) & (fun7 == 7'b0000000);
+wire i_srli  = (opcode == 7'b0010011) & (func3 == 3'b101) & (fun7 == 7'b0000000);
+wire i_srai  = (opcode == 7'b0010011) & (func3 == 3'b101) & (fun7 == 7'b0100000);
+wire i_add   = (opcode == 7'b0110011) & (func3 == 3'b101) & (fun7 == 7'b0000000);
+wire i_sub   = (opcode == 7'b0110011) & (func3 == 3'b101) & (fun7 == 7'b0100000);
+wire i_sll   = (opcode == 7'b0110011) & (func3 == 3'b001) & (fun7 == 7'b0000000);
+wire i_slt   = (opcode == 7'b0110011) & (func3 == 3'b010) & (fun7 == 7'b0000000);
+wire i_sltiu = (opcode == 7'b0110011) & (func3 == 3'b011) & (fun7 == 7'b0000000);
+wire i_xor   = (opcode == 7'b0110011) & (func3 == 3'b100) & (fun7 == 7'b0000000);
+wire i_srl   = (opcode == 7'b0110011) & (func3 == 3'b101) & (fun7 == 7'b0000000);
+wire i_sra   = (opcode == 7'b0110011) & (func3 == 3'b101) & (fun7 == 7'b0100000);
+wire i_or    = (opcode == 7'b0110011) & (func3 == 3'b110) & (fun7 == 7'b0000000);
+wire i_and   = (opcode == 7'b0110011) & (func3 == 3'b111) & (fun7 == 7'b0000000);
+
+// pc
+reg [31:0] pc;
+always @ (posedge clk or negedge clrn) begin
+	if (!clrn) pc <= 0;
+	else pc <= next_pc;	
+end
+
+
