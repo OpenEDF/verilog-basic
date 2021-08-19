@@ -108,4 +108,76 @@ always @ (posedge clk or negedge clrn) begin
 	else pc <= next_pc;	
 end
 
+// data written to register file
+wire i_load = i_lw | i_lb | ibu | i_lh | i_lhu | i_csrrw;
+wire [31:0] data_2_rf = i_load ? mem_out : alu_out;
 
+// register file
+reg [31:0] regfile [1:31]               // x1 - x31, should be [1:31]
+wire [31:0] a = (rs == 0) ? 0 : register[rs]    // read port
+wire [31:0] b = (rt == 0) ? 0 : register[rt]    // read port
+always @ (posedge clk) begin
+    if (wreg && (rd != 0)) begin
+        regfile[rd] <= data_3_rf;
+    end
+end
+
+// vram space
+wire vr_space = alu_out[31] & alu_out[30] ~alu_out[29];         // c000_0000 - dffff_ffff
+
+// output signals
+assign write = wmem & {4{~vr_space}};       // data memory write
+assign read  = rmem & ~vr_space;            // data memory read
+assign wvram = wmem & {4{vr_space}};        // video ram write
+assign rvram = rmem & vr_space;             // video ram read
+
+// control signals, will be combinational circuit
+always @(*) begin       // 38 instructions
+    alu_out = 0;        // alu output
+    mem_out = 0;        // mem output
+    m_addr  = 0;        // memory address
+    wreg    = 0;        // write regfile
+    wmem    = 4'b0000;  // write memory (sw)
+    rmem    = 0;        // read memory (lw)
+    io_rdn  = 1;
+    io_wrn  = 1;
+    d_t_mem = b;
+    next_pc = pc_plus_4;
+
+    case (1'b1)
+        i_add: begin					// add
+            alu_out = a + b;
+            wreg    = 1; end
+		i_sub: begin 					// sub
+			alu_out = a - b;
+			wreg 	= 1; end
+		i_and: begin 					// and
+			alu_out = a & b;
+			wreg 	= 1; end
+		i_or: begin 					// or
+			alu_out = a | b;
+			wreg 	= 1; end
+		i_xor: begin 					// xor
+			alu_out = a ^ b;
+			wreg 	= 1; end
+		i_sll: begin 					// sll
+			alu_out = a << b[4:0];
+			wreg 	= 1; end
+		i_srl: begin 					// srl
+			alu_out = a >> b[4:0];
+			wreg 	= 1; end
+		i_sra: begin 					// sra
+			alu_out = $(signed(a)) >>> b[4:0];
+			wreg 	= 1; end
+		i_slli: begin 					// slli
+			alu_out = a << shamt;
+			wreg 	= 1; end
+		i_srli: begin 					// srli
+			alu_out = a >> shamt;
+			wreg 	= 1; end
+        default: ;
+    endcase
+end
+
+// end
+endmodule
