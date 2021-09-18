@@ -1,0 +1,20 @@
+# comment contents
+# syntax rules: set_io <port name> <package io>
+# For the iCE40 UltraPlus (iCE40UP5K-QFN) Breakout Board 
+# clock pin
+
+# reset pin
+
+# spi pin
+
+# i2c pin
+#
+# example:
+# set_io LED1 99
+# set_io LED2 98
+# set_io LED3 97
+# set_io LED4 96
+# set_io LED5 95
+# set_io clk  21
+# set_io --warn-no-port RX 9
+# set_io --warn-no-port TX 8
