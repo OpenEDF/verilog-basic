@@ -29,3 +29,12 @@ transcript*
 sc_dpiheader.h
 vsim.dbg
 
+# FOSS 
+*.asc
+*.bin
+*.blif
+*.swp
+*.json
+host
+*.o
+*.oo
