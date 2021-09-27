@@ -1,0 +1,9 @@
+Command Line: /home/macro/synopsys/verdi_2018/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas
+uname(Linux macro-ubuntu 5.11.0-36-generic #40~20.04.1-Ubuntu SMP Sat Sep 18 02:14:19 UTC 2021 x86_64)
+type= DS_SCOPE element= 1 field= 1
+VERILOG tb_counter
+VERILOG u1
+-----
+second field= DebussyLib
+third field= counter
+au time 1245.407182 15.981823 10.960850 delta 1139019776 1139019776 total 1512542208 1512542208
