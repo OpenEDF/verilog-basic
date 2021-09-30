@@ -6,6 +6,7 @@ int main(int argc, char **argv)
 {
     /* Remember model */
     Verilated::commandArgs(argc, argv);
+    Verilated::traceEverOn(true);
 
     /* Create an instance of our module */
     Valu *tb = new Valu;

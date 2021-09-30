@@ -8,7 +8,7 @@
 #include "verilated.h"
 
 /* define */
-#define ADD_TEST_COUNTER 10000
+#define ADD_TEST_COUNTER 10
 #define SUB_TEST_COUNTER 10
 
 #endif /* _CONFIG_H_ */
