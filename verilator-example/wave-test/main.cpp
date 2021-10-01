@@ -14,6 +14,11 @@ int main(int argc, char **argv)
 
     /* Create an instance of our module */
     Vtop *tb = new Vtop;
+ 
+ /*TODO:
+  * const std::unique_ptr<Vtop> top{new Vtop{contextp.get(), "TOP"}};
+  * because vcd not generated */
+
     int fun;
     int ina, inb, success_count;
 
