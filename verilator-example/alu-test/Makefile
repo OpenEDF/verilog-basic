@@ -54,14 +54,22 @@ all:$(VERILOG_SOURCES)
 	@echo
 
 check:$(VERILOG_SOURCES)
+	@echo
+	@echo "-- LINT --- ----------------"
 	$(VXX) --lint-only $(VERILOG_SOURCES)
 
 build:
+	@echo
+	@echo "-- BUILD -------------------"
 	make -j -C $(TEMP_FLODER) -f $(TARGET).mk $(TARGET)
 
 run:
+	@echo
+	@echo "-- RUN ---------------------"	
 	$(TEMP_FLODER)/$(TARGET)
 
 .PHONY:clean
 clean:
+	@echo
+	@echo "-- CLEAN -------------------"	
 	rm -rf obj_dir
