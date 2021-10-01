@@ -11,5 +11,5 @@
 /* define */
 #define ADD_TEST_COUNTER 10
 #define SUB_TEST_COUNTER 10
-#define TESTBENCH_TIMES  500
+#define TESTBENCH_TIMES  40 
 #endif /* _CONFIG_H_ */

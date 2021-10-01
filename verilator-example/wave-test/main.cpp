@@ -18,7 +18,8 @@ int main(int argc, char **argv)
  /*TODO:
   * const std::unique_ptr<Vtop> top{new Vtop{contextp.get(), "TOP"}};
   * because vcd not generated */
-
+ // Done: replace delete tb; delete contextp; to  tb->final(); 
+    
     int fun;
     int ina, inb, success_count;
 
@@ -57,7 +58,8 @@ int main(int argc, char **argv)
     printf("[OK] Test Pass!\n");
 
     /* Final model cleanup */
-    tb->final();
+    delete tb;
+    delete contextp;
     
     /* Return good completion status */
     return 0;
