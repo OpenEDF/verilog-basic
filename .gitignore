@@ -38,3 +38,6 @@ vsim.dbg
 host
 *.o
 *.oo
+
+# verilator
+obj_dir
