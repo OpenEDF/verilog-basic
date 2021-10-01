@@ -80,4 +80,4 @@ display:
 clean:
 	@echo
 	@echo "-- CLEAN -------------------"	
-	rm -rf obj_dir
+	rm -rf obj_dir logs
