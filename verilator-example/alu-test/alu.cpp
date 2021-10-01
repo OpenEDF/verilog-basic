@@ -1,7 +1,7 @@
 #include "alu.h"
 #include "config.h"
 
-void cycle(Valu *tb, uint32_t in1, uint32_t in2, uint8_t alu_op)
+void cycle(Vtop *tb, uint32_t in1, uint32_t in2, uint8_t alu_op)
 {
     /* verify the alu model */
     uint32_t expected_out = 0;
@@ -10,17 +10,17 @@ void cycle(Valu *tb, uint32_t in1, uint32_t in2, uint8_t alu_op)
     uint32_t neg;
 
     /* moudle parameters initalization */
-    tb->in1 = in1;
-    tb->in2 = in2;
-    tb->control = alu_op;
+    tb->t_in1 = in1;
+    tb->t_in2 = in2;
+    tb->t_control = alu_op;
 
     /* must be invoke, called eval thread */
     tb->eval();
     
     /* get parameter from aul model */
-    out  = tb->out;
-    zero = tb->zero;
-    neg  = tb->neg;
+    out  = tb->t_out;
+    zero = tb->t_zero;
+    neg  = tb->t_neg;
 
     /* verify */
     switch (alu_op)

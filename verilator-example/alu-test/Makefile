@@ -1,8 +1,11 @@
 # verilator makefile
 
-VERILOG_SOURCES=alu.v
-
+VERILOG_SOURCES=top.v alu.v
+VCD_SOURCE=vlt_dump.vcd
+# tools
 VXX=verilator
+WAVEVIWE=gtkwave
+
 # Input files for Verilator
 VERILATOR_INPUT = $(VERILOG_SOURCES) main.cpp alu.cpp
 
@@ -26,7 +29,7 @@ VERILATOR_FLAGS += -Wall
 #VERILATOR_FLAGS += --gdbbt
 
 TEMP_FLODER=obj_dir
-TARGET=Valu
+TARGET=Vtop
 
 all:$(VERILOG_SOURCES)
 	@echo
@@ -67,6 +70,11 @@ run:
 	@echo
 	@echo "-- RUN ---------------------"	
 	$(TEMP_FLODER)/$(TARGET)
+
+display:
+	@echo
+	@echo "-- DISPLAY -----------------"
+	$(WAVEVIWE) $(VCD_SOURCE) &
 
 .PHONY:clean
 clean:
