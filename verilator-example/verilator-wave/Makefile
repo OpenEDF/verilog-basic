@@ -1,10 +1,15 @@
 # verilator makefile
 
-VERILOG_SOURCES=top.v counter.v
-VCD_SOURCE=testbench.vcd
+VERILOG_SOURCES =top.v counter.v
+VCD_SOURCE = testbench.vcd
+GTKWAVE_TCL = gtkwave.tcl
+
 # tools
-VXX=verilator
-WAVEVIWE=gtkwave
+VXX = verilator
+GTKWAVE = gtkwave
+
+# use script configure gtkwave
+GTKWAVE_FLAG += -S
 
 # Input files for Verilator
 VERILATOR_INPUT = $(VERILOG_SOURCES) main.cpp
@@ -76,13 +81,13 @@ run:
 	@echo "-- RUN ---------------------"	
 	$(TEMP_FLODER)/$(TARGET) +trace
 
-display:
+display:$(GTKWAVE_TCL)
 	@echo
 	@echo "-- DISPLAY -----------------"
-	$(WAVEVIWE) $(VCD_SOURCE) &
+	$(GTKWAVE) $(GTKWAVE_FLAG) $(GTKWAVE_TCL) $(VCD_SOURCE) &
 
 .PHONY:clean
 clean:
 	@echo
 	@echo "-- CLEAN -------------------"	
-	rm -rf obj_dir *.vcd
+	rm -rf obj_dir *.vcd *.vcd.pdf
