@@ -3,6 +3,7 @@
 
 # Wave file
 *.vcd
+*.vcd.pdf
 
 # modelsim
 # ignore ModelSim generated files and directories (temp files and so on)
