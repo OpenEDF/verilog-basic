@@ -11,7 +11,7 @@ set bitfile_path  ./flowled.runs/impl_1/flowled.bit
 set flashmcs_path $cfgmem_path/borad_flash.mcs
 
 # Open and connect device
-disconnect_hw_server localhost:3121
+#disconnect_hw_server localhost:3121
 open_hw_manager
 connect_hw_server -allow_non_jtag
 open_hw_target
