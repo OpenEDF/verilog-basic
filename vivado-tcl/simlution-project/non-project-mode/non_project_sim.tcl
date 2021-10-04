@@ -15,7 +15,7 @@ cd $outputDir
 exec xvlog ../sources/flowled.v
 exec xvlog ../sources/flowled_tb.v
 exec xelab -debug typical flowled_tb
-exec xsim --tclbatch ../flowled_tb.tcl -gui flowled_tb
+exec xsim --tclbatch ../add_wave.tcl -gui flowled_tb
 
 # Close the simulation windows
 # close_sim -force
