@@ -15,9 +15,23 @@ file mkdir $outputDir
 # Set bit file path
 set bit_output_path $outputDir/flowled.bit
 
+# Design sources file
+set source_path ./sources
+set design_verilog_file [list]
+
+# add the verilog source file
+lappend design_verilog_file flowled.v
+
+# add the xdc file
+set design_xdc_file flowled_xdc.xdc
+
 # Setup design sources and constraints
-read_verilog  ./sources/flowled.v 
-read_xdc ./sources/flowled_xdc.xdc
+for { set index 0} { $index < [llength $design_verilog_file]} {incr index} {
+    set vfile [lindex $design_verilog_file $index]
+    puts "verilog file: $index : $vfile"
+    read_verilog  $source_path/$vfile
+}
+read_xdc $source_path/$design_xdc_file
 
 # Run synthesis, report utilization and timing estimates, write checkpoint design
 synth_design -top flowled -part $xilinx_fpga_chip
