@@ -76,4 +76,6 @@ refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
 # Close the connect
 close_hw_manager
 
+# quit the tcl
+quit
 ###-----------------------------------------------------------------

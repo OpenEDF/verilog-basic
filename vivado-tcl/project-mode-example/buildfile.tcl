@@ -54,4 +54,6 @@ endgroup
 delete_hw_cfgmem [ get_property PROGRAM.HW_CFGMEM [get_hw_devices xc7a35t_0 ]]
 close_hw_target
 
+# quit the tcl
+quit
 ###-----------------------------------------------------------------
