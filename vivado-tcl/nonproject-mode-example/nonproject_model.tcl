@@ -70,4 +70,7 @@ refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
 # Close the device
 close_hw_manager
 
+# Close the project
+close_project
+
 ###-----------------------------------------------------------------
