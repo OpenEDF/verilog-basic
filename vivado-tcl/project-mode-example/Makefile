@@ -1,4 +1,7 @@
 ### ----------------------------------------------------------------------------
+### Author: Macro
+### Brief: buidl and flash the FPGA used vivado
+
 VIVADO=vivado
 BUILD_TCL_SCRIPT = project_mode_tcl.tcl
 CFGMEM_TCL_SCRIPT = buildfile.tcl
