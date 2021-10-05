@@ -3,8 +3,8 @@
 ### Brief: buidl and flash the FPGA used vivado
 
 VIVADO=vivado
-BUILD_TCL_SCRIPT = nonproject_model.tcl
-CFGMEM_TCL_SCRIPT = buildfile.tcl
+BUILD_TCL_SCRIPT = nonproject_model_build.tcl
+CFGMEM_TCL_SCRIPT = cfg_program_flash.tcl
 
 # vavido build
 all:
