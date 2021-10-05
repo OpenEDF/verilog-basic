@@ -42,3 +42,6 @@ host
 
 # verilator
 obj_dir
+
+# vivado
+.Xil
