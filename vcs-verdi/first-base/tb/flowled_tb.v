@@ -11,6 +11,10 @@ reg sys_rst_n;
 /* define led */
 wire [7:0] led;
 
+initial begin
+    $display("Simluation Start!\n");
+end      
+
 /* initalization signal */
 initial begin
     sys_clk          = 1'b0;
@@ -26,5 +30,12 @@ flow_led u0_flow_led (
     .sys_rst_n(sys_rst_n),
     .led_out(led)
 );
+
+/* dump dvp file */
+//initial begin
+  //  $cvdpluson;
+//end
+
+initial #10000 $stop;
 
 endmodule
