@@ -6,16 +6,23 @@
 ## Run: 
 ##
 ### ------------------------------------------------------------------------------------------
+# Project output target
 export OUTPUT = flowled
+
+# module file list
 MODULE_FLIES = module.list
+
+# testbench file list
 TB_FILES = tb.list
+
+# output log file
 COM_LOG_FILE = complier_log
 SIM_LOG_FILE = simlution_log
 
-WAREFORM = $(OUTPUT).fsdb
-LOAD_WARE = -ssf $(WAREFORM)
+# fsdb dump file for verdi
+WAVEFORM = $(OUTPUT).fsdb
 
-# Compile command
+# Compile command and flags
 VCS_FLAGS = -f $(MODULE_FLIES)           \
             -f $(TB_FILES)               \
             -full64                      \
@@ -38,12 +45,15 @@ SIM_FLAGS = -ucli -i ./script/dum_fsdb_vcs.tcl    \
             +fsdb+autoflush                       \
             -l $(SIM_LOG_FILE).log
 
-# Debug command
+# Debug command and flags
 DEBUG_FLAGS = -f $(MODULE_FLIES)                  \
               -f $(TB_FILES)                      \
               -top flow_led_tb                    \
-              $(LOAD_WARE)                        \
+              -ssf $(WAVEFORM)                    \
               -nologo
+
+# Coverage command and flags
+COV_FLAGS = ""
 
 ### ------------------------------------------------------------------------------------------
 # All run
@@ -74,9 +84,14 @@ clean:
 # display the help information
 help:
 	@echo
-	@echo ======================= Help ====================== 
-	@echo "command:     descript:"
+	@echo --------------------------------- Help  ---------------------------------
+	@echo "command    : descript"
 	@echo "make clean : clean the temp file."
-	@echo "make help  : print the all command."
-	@echo ======================= Help ====================== 
+	@echo "make all   : execute the compile simluation and open verdi debug."
+	@echo "make com   : only execute compile the verilog module."
+	@echo "make sim   : only execute simulation the model."
+	@echo "make cov   : only execute coverage."
+	@echo "make debug : start the verdi and execute debug the waveform."
+	@echo "make help  : print the all command and use method."
+	@echo --------------------------------- Help  ---------------------------------
 ### ------------------------------------------------------------------------------------------
