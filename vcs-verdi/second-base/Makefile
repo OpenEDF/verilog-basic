@@ -6,18 +6,14 @@
 ## Run: 
 ##
 ### ------------------------------------------------------------------------------------------
-OUTPUT = flowled
+export OUTPUT = flowled
 MODULE_FLIES = module.list
 TB_FILES = tb.list
 COM_LOG_FILE = complier_log
 SIM_LOG_FILE = simlution_log
 
-VPD_OPTION = -debug_pp
-VPD_OPTION += +vcs+vcdpluson
-TIMEING_OPTION = +notimingcheck
-
-# vpd file name
-#TODO: VPD_FILE = +vpdfile+$(OUTPUT).vpd
+WAREFORM = $(OUTPUT).fsdb
+LOAD_WARE = -ssf $(WAREFORM)
 
 # Compile command
 VCS_FLAG = -f $(MODULE_FLIES)			\
@@ -25,14 +21,15 @@ VCS_FLAG = -f $(MODULE_FLIES)			\
 		   -full64 						\
 		   +v2k							\
 		   -override_timescale=1ns/10ps	\
+		   -debug_pp 					\
 		   -fsdb 						\
 		   -cpp g++-4.8 				\
 		   -cc  gcc-4.8 			    \
 		   -LDFLAGS 				    \
 		   -Wl,--no-as-needed 		    \
-		   +define+FSDB 			    \
-		   $(VPD_OPTION)  			    \
-		   $(TIMEING_OPTION)		    \
+		   -rdynamic 				    \
+		   -P $(VERDI_HOME)/share/PLI/VCS/LINUX64/novas.tab \
+		   $(VERDI_HOME)/share/PLI/VCS/LINUX64/pli.a        \
 		   -Mupdate 	 			    \
 		   -o $(OUTPUT)					\
 		   -l $(COM_LOG_FILE).log
@@ -48,16 +45,22 @@ com:
 
 # VCS -R FLAG will start simv sutomatic
 sim:
-	./$(OUTPUT) -l $(SIM_LOG_FILE).log
-
+	./$(OUTPUT) 						  	  \
+		-ucli -i ./script/dum_fsdb_vcs.tcl 	  \
+		+fsdb+autoflush					      \
+		-l $(SIM_LOG_FILE).log
 cov:
 
-#debug:
-	#dve -vpd vcdplus.vpd & 
-	
+debug:
+	verdi -f $(MODULE_FLIES) -f $(TB_FILES)	  \
+		-top flow_led_tb 					  \
+		$(LOAD_WARE)						  \
+		-nologo
+				
 .PHONY: clean
 clean:
-	rm -rf csrc *simv *.daidir *.log *.key $(OUTPUT) *.vpd DVEfiles	
+	rm -rf csrc *simv *.daidir *.log *.key $(OUTPUT) *.vpd DVEfiles *.fsdb \
+		verdiLog novas.*
 
 # display the help information
 help:
