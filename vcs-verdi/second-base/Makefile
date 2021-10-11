@@ -17,10 +17,10 @@ DEBUG_GUI = verdi
 # UVM test
 
 # module file list
-MODULE_FLIES = module.list
+MODULE_FLIES = ./script/module.list
 
 # testbench file list
-TB_FILES = tb.list
+TB_FILES = ./script/tb.list
 
 # output log file
 COM_LOG_FILE = complier_log
