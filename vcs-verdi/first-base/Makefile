@@ -28,8 +28,7 @@ VCS_FLAG = -f $(MODULE_FLIES)			\
 		   -fsdb 						\
 		   -cpp g++-4.8 				\
 		   -cc  gcc-4.8 			    \
-		   -LDFLAGS 				    \
-		   -Wl,--no-as-needed 		    \
+		   -LDFLAGS -Wl,--no-as-needed  \
 		   +define+FSDB 			    \
 		   $(VPD_OPTION)  			    \
 		   $(TIMEING_OPTION)		    \
