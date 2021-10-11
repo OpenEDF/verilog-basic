@@ -59,6 +59,9 @@ COV_FLAGS = ""
 # All run
 all: com sim debug
 
+# only com and sim
+com_sim: com sim
+
 # compiler verilog module file
 com:
 	vcs $(VCS_FLAGS)
