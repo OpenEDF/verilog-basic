@@ -74,7 +74,7 @@ LINT_FLAGS = --lint-only        \
 
 ### ------------------------------------------------------------------------------------------
 # All run
-all: com sim vdebug
+all: lint com sim vdebug
 
 # only com and sim
 com_sim: com sim
