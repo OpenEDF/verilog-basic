@@ -9,6 +9,13 @@
 # Project output target
 export OUTPUT = flowled
 
+# Set the debug GUI (verdi or dve)
+DEBUG_GUI = verdi
+
+# Set the FPGA Platform
+
+# UVM test
+
 # module file list
 MODULE_FLIES = module.list
 
@@ -55,12 +62,27 @@ DEBUG_FLAGS = -f $(MODULE_FLIES)                  \
 # Coverage command and flags
 COV_FLAGS = ""
 
+# Lint Flags
+LINT_FLAGS = --lint-only        \
+             -Wall              \
+             -f $(MODULE_FLIES) \
+             -f $(TB_FILES)
+
+# FPGA implement options
+
+# Download to FPGA Flash options
+
 ### ------------------------------------------------------------------------------------------
 # All run
-all: com sim debug
+all: com sim vdebug
 
 # only com and sim
 com_sim: com sim
+
+# lint the verilog design code
+# verilator --lint-only -Wall [source_files.v]...
+lint:
+	verilator $(LINT_FLAGS)
 
 # compiler verilog module file
 com:
@@ -74,8 +96,17 @@ sim:
 cov:
 
 # debug the model via verdi
-debug:
+vdebug:
 	verdi $(DEBUG_FLAGS)
+
+# impletment in FPGA
+fpga:
+
+# download to FPGA Flash
+flash:
+
+# compiler the C code to debug Soc
+cdebug:
 
 # clean the compiler-time file
 .PHONY: clean
@@ -88,13 +119,17 @@ clean:
 help:
 	@echo
 	@echo --------------------------------- Help  ---------------------------------
-	@echo "command    : descript"
-	@echo "make clean : clean the temp file."
-	@echo "make all   : execute the compile simluation and open verdi debug."
-	@echo "make com   : only execute compile the verilog module."
-	@echo "make sim   : only execute simulation the model."
-	@echo "make cov   : only execute coverage."
-	@echo "make debug : start the verdi and execute debug the waveform."
-	@echo "make help  : print the all command and use method."
+	@echo "command     : descript"
+	@echo "make clean  : clean the temp file."
+	@echo "make lint   : lint the verilog format and pre-check."
+	@echo "make all    : execute the compile simluation and open verdi debug."
+	@echo "make com    : only execute compile the verilog module."
+	@echo "make sim    : only execute simulation the model."
+	@echo "make cov    : only execute coverage."
+	@echo "make vdebug : start the verdi and execute debug the waveform."
+	@echo "make fpga   : synthesize and implement the model to FPGA SRAM."
+	@echo "make flash  : download the .bin file to FPGA Flash."
+	@echo "make cdebug : compile and load C program to debug and test Soc model."
+	@echo "make help   : print the all command and use method."
 	@echo --------------------------------- Help  ---------------------------------
 ### ------------------------------------------------------------------------------------------
