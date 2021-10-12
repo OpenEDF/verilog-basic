@@ -31,6 +31,7 @@ WAVEFORM = $(OUTPUT).fsdb
 
 # Coverage command and flags
 COV_FLAGS = -cm line+cond+fsm+tgl+branch+assert
+#TODO: CHECK NAME AND OUTPUT
 COV_NAME = -cm_name $(OUTPUT)
 COV_DIR = -cm_dir ./$(OUTPUT).vdb
 
