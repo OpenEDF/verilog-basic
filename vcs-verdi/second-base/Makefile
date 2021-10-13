@@ -77,8 +77,7 @@ DEBUG_FLAGS = -f $(MODULE_FLIES)                  \
 # Lint Flags
 LINT_FLAGS = --lint-only        \
              -Wall              \
-             -f $(MODULE_FLIES) \
-             -f $(TB_FILES)
+             -f $(MODULE_FLIES)
 
 # FPGA implement options
 
