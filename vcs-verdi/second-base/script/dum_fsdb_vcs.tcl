@@ -1,4 +1,4 @@
 global env
 fsdbDumpfile "$env(OUTPUT).fsdb"
-fsdbDumpvars 0 "flow_led_tb"
+fsdbDumpvars 0 "flowled_tb"
 run

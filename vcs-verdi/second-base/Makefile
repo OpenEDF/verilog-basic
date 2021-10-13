@@ -70,7 +70,7 @@ SIM_FLAGS = -ucli -i ./script/dum_fsdb_vcs.tcl    \
 # Debug command and flags
 DEBUG_FLAGS = -f $(MODULE_FLIES)                  \
               -f $(TB_FILES)                      \
-              -top flow_led_tb                    \
+              -top flowled_tb                    \
               -ssf $(WAVEFORM)                    \
               -nologo
 
@@ -86,7 +86,7 @@ LINT_FLAGS = --lint-only        \
 
 ### ------------------------------------------------------------------------------------------
 # All run
-all: lint com sim vdebug
+all: com sim vdebug
 
 # only com and sim
 com_sim: com sim
