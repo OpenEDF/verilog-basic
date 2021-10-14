@@ -17,10 +17,10 @@ DEBUG_GUI = verdi
 # UVM test
 
 # module file list
-MODULE_FLIES = module.list
+MODULE_FLIES = ./script/module.list
 
 # testbench file list
-TB_FILES = tb.list
+TB_FILES = ./script/tb.list
 
 # output log file
 COM_LOG_FILE = complier_log
@@ -28,6 +28,16 @@ SIM_LOG_FILE = simlution_log
 
 # fsdb dump file for verdi
 WAVEFORM = $(OUTPUT).fsdb
+
+# Coverage command and flags
+COV_FLAGS = -cm line+cond+fsm+tgl+branch+assert
+#TODO: CHECK NAME AND OUTPUT
+COV_NAME = -cm_name $(OUTPUT)
+COV_DIR = -cm_dir ./$(OUTPUT).vdb
+
+# Dve and Verdi Coverage command
+DVE_COV_CMD = dve -covdir $(OUTPUT).vdb &
+VERDI_COV_CMD = verdi -cov -covdir $(OUTPUT).vdb &
 
 # Compile command and flags
 VCS_FLAGS = -f $(MODULE_FLIES)           \
@@ -43,6 +53,8 @@ VCS_FLAGS = -f $(MODULE_FLIES)           \
             -rdynamic                    \
             -P $(VERDI_HOME)/share/PLI/VCS/LINUX64/novas.tab                         \
             $(VERDI_HOME)/share/PLI/VCS/LINUX64/pli.a -load libnovas.so:FSDBDumpCmd  \
+            $(COV_FLAGS)                 \
+            $(COV_DIR)                   \
             -Mupdate                     \
             -o $(OUTPUT)                 \
             -l $(COM_LOG_FILE).log
@@ -50,6 +62,7 @@ VCS_FLAGS = -f $(MODULE_FLIES)           \
 # Simulation command
 SIM_FLAGS = -ucli -i ./script/dum_fsdb_vcs.tcl    \
             +fsdb+autoflush                       \
+			$(COV_FLAGS)                          \
             -l $(SIM_LOG_FILE).log
 
 # Debug command and flags
@@ -58,9 +71,6 @@ DEBUG_FLAGS = -f $(MODULE_FLIES)                  \
               -top flow_led_tb                    \
               -ssf $(WAVEFORM)                    \
               -nologo
-
-# Coverage command and flags
-COV_FLAGS = ""
 
 # Lint Flags
 LINT_FLAGS = --lint-only        \
@@ -74,7 +84,7 @@ LINT_FLAGS = --lint-only        \
 
 ### ------------------------------------------------------------------------------------------
 # All run
-all: com sim vdebug
+all: lint com sim vdebug
 
 # only com and sim
 com_sim: com sim
@@ -94,6 +104,7 @@ sim:
 
 # coverage the verilog module
 cov:
+	$(DVE_COV_CMD)
 
 # debug the model via verdi
 vdebug:
@@ -104,6 +115,10 @@ fpga:
 
 # download to FPGA Flash
 flash:
+
+# show coverage by html
+html:
+	urg -dir $(OUTPUT).vdb &
 
 # compiler the C code to debug Soc
 cdebug:
@@ -130,6 +145,7 @@ help:
 	@echo "make fpga   : synthesize and implement the model to FPGA SRAM."
 	@echo "make flash  : download the .bin file to FPGA Flash."
 	@echo "make cdebug : compile and load C program to debug and test Soc model."
+	@echo "make html   : view coverage report by html file."
 	@echo "make help   : print the all command and use method."
 	@echo --------------------------------- Help  ---------------------------------
 ### ------------------------------------------------------------------------------------------
