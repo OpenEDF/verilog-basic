@@ -123,6 +123,13 @@ html:
 # compiler the C code to debug Soc
 cdebug:
 
+# spyglass the verilog code and design
+spygl:
+
+# design compiler the design
+synth:
+
+
 # clean the compiler-time file
 .PHONY: clean
 clean:
