@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module flow_led_tb();
+module flowled_tb();
 
 parameter T =20;
 
@@ -25,7 +25,7 @@ end
 /* generater clock */
 always #(T/2) sys_clk = ~sys_clk;
 
-flow_led u0_flow_led (
+flowled u0_flow_led (
     .sys_clk(sys_clk),
     .sys_rst_n(sys_rst_n),
     .led_out(led)

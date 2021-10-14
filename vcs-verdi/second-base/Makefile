@@ -25,6 +25,7 @@ TB_FILES = ./script/tb.list
 # output log file
 COM_LOG_FILE = complier_log
 SIM_LOG_FILE = simlution_log
+COV_LOG_FILE = coverage_log
 
 # fsdb dump file for verdi
 WAVEFORM = $(OUTPUT).fsdb
@@ -32,12 +33,12 @@ WAVEFORM = $(OUTPUT).fsdb
 # Coverage command and flags
 COV_FLAGS = -cm line+cond+fsm+tgl+branch+assert
 #TODO: CHECK NAME AND OUTPUT
-COV_NAME = -cm_name $(OUTPUT)
+COV_NAME = -cm_name $(OUTPUT).cov
 COV_DIR = -cm_dir ./$(OUTPUT).vdb
 
 # Dve and Verdi Coverage command
-DVE_COV_CMD = dve -covdir $(OUTPUT).vdb &
-VERDI_COV_CMD = verdi -cov -covdir $(OUTPUT).vdb &
+DVE_COV_CMD = dve -full64 -covdir $(OUTPUT).vdb &
+#NO SUPPORT: VERDI_COV_CMD = verdi -cov -covdir $(OUTPUT).vdb &
 
 # Compile command and flags
 VCS_FLAGS = -f $(MODULE_FLIES)           \
@@ -45,12 +46,12 @@ VCS_FLAGS = -f $(MODULE_FLIES)           \
             -full64                      \
             +v2k                         \
             -override_timescale=1ns/10ps \
-            -debug_pp                    \
-            -fsdb                        \
+            -debug_access                \
+            -debug_acc+dmptf             \
+            -debug_region+cell+encrypt   \
             -cpp g++-4.8                 \
             -cc  gcc-4.8 			     \
             -LDFLAGS -Wl,--no-as-needed  \
-            -rdynamic                    \
             -P $(VERDI_HOME)/share/PLI/VCS/LINUX64/novas.tab                         \
             $(VERDI_HOME)/share/PLI/VCS/LINUX64/pli.a -load libnovas.so:FSDBDumpCmd  \
             $(COV_FLAGS)                 \
@@ -63,20 +64,20 @@ VCS_FLAGS = -f $(MODULE_FLIES)           \
 SIM_FLAGS = -ucli -i ./script/dum_fsdb_vcs.tcl    \
             +fsdb+autoflush                       \
 			$(COV_FLAGS)                          \
+			-cm_log $(COV_LOG_FILE).log			  \
             -l $(SIM_LOG_FILE).log
 
 # Debug command and flags
 DEBUG_FLAGS = -f $(MODULE_FLIES)                  \
               -f $(TB_FILES)                      \
-              -top flow_led_tb                    \
+              -top flowled_tb                    \
               -ssf $(WAVEFORM)                    \
               -nologo
 
 # Lint Flags
 LINT_FLAGS = --lint-only        \
              -Wall              \
-             -f $(MODULE_FLIES) \
-             -f $(TB_FILES)
+             -f $(MODULE_FLIES)
 
 # FPGA implement options
 
@@ -84,7 +85,7 @@ LINT_FLAGS = --lint-only        \
 
 ### ------------------------------------------------------------------------------------------
 # All run
-all: lint com sim vdebug
+all: com sim vdebug
 
 # only com and sim
 com_sim: com sim
@@ -118,7 +119,7 @@ flash:
 
 # show coverage by html
 html:
-	urg -dir $(OUTPUT).vdb &
+	urg -dir $(OUTPUT).vdb -dbname merge &
 
 # compiler the C code to debug Soc
 cdebug:
@@ -127,7 +128,7 @@ cdebug:
 .PHONY: clean
 clean:
 	rm -rf csrc *simv *.daidir *.log *.key $(OUTPUT) *.vpd DVEfiles *.fsdb \
-	verdiLog novas.*
+	verdiLog novas.* *.vdb urgReport vdCovLog
 
 ### ------------------------------------------------------------------------------------------
 # display the help information

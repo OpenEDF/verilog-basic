@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 
-module flow_led #(
+module flowled #(
     parameter CNT_MAX = 24'd2
 )(
     input wire sys_clk,             /* system clock 50MHz */
