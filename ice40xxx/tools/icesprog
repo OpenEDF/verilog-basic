@@ -1,0 +1,11 @@
+#!/bin/bash
+
+CURRENT_DIR=$(cd $(dirname $0); pwd)
+
+PLATFORM=$(uname -m)
+
+if [ "${PLATFORM}" == "x86_64" ]; then
+   sudo ${CURRENT_DIR}/icesprog.x64.linux $@
+else
+    echo no tool to program.
+fi
