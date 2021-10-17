@@ -7,10 +7,10 @@ set_io LED_B 39
 set_io SW[0] 18
 set_io SW[1] 19
 set_io SW[2] 20
-#set_io SW[3] 21
+set_io SW[3] 21
 
 set_io clk   35
-
+set_io rst   45
 #set_io RX    4
 #set_io TX    6
 
@@ -39,15 +39,15 @@ set_io clk   35
 #set_io P2_12    45
 #
 # PMOD 3
-#set_io P3_1     34 
-#set_io P3_2     31
-#set_io P3_3     27
-#set_io P3_4     25
-#set_io P3_9     23
-#set_io P3_10    26
-#set_io P3_11    28
-#set_io P3_12    32
-#
+set_io led_array[0]    32 
+set_io led_array[1]    28
+set_io led_array[2]    26
+set_io led_array[3]    23
+set_io led_array[4]    34
+set_io led_array[5]    31
+set_io led_array[6]    27
+set_io led_array[7]    25
+
 # PMOD 4
 #set_io P4_1     21
 #set_io P4_2     20
