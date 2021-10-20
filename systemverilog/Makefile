@@ -6,17 +6,17 @@
 
 #--------------------------------------------------------------------------
 # test case file
-TEST_FILE = fork_join.v
+TEST_FILE = fork_join.sv
 
 # clean old file --> compiler --> simluation
 all: clean com sim
 
 # compiler
-com:
+com:$(TEST_FILE)
 	vcs -sverilog $(TEST_FILE)
 
 # simluation
-sim:
+sim:$(simv)
 	./simv
 
 # clean
