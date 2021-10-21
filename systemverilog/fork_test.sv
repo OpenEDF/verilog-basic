@@ -14,7 +14,7 @@ end
 // Taigger the event 
 task waitForTrigger (event eventx);
     $display("[%t] Waiting for EventA to triggered", $time);
-    wait (eventx.Triggered);
+    wait (eventx.triggered);
     $display("[%t] Event A has triggered", $time);
 endtask
 
