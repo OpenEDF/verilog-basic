@@ -5,7 +5,7 @@ module fork_join_none;
 
 initial begin
     $display("[%0t ns]: starte fork..join none example", $time);
-    #10 $display("[%0t]: sequential after #10", $time);
+    #10 $display("[%0t ns]: sequential after #10", $time);
 
     fork
         $display("[%0t ns]: parallel start", $time);
@@ -18,7 +18,19 @@ initial begin
     join_none
 
     $display("[%0t ns]: after join", $time);
-    #80 $display("[%0t]: finish after #80", $time);
+    #80 $display("[%0t ns]: finish after #80", $time);
 end        
 
 endmodule
+
+/*
+[0 ns]: starte fork..join none example
+[10 ns]: sequential after #10
+[10 ns]: after join
+[10 ns]: parallel start
+[20 ns]: parallel after #10
+[40 ns]: sequential after #30
+[50 ns]: sequential after #10
+[60 ns]: parallel after #50
+[90 ns]: finish after #80
+*/

@@ -9,7 +9,7 @@
 TEST_FILE = fork_join.sv
 
 # clean old file --> compiler --> simluation
-all: com sim clean
+all: com sim
 
 # compiler
 com:$(TEST_FILE)
