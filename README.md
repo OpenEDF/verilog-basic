@@ -9,5 +9,5 @@ $ iverilog -o outputfile readtestxxx.v testbench.v
 $ vvp outputfile
 $ gtkwave test.cvd &
 ```
-## compiler and sim
+## compiler and simv
 [![asciicast](https://asciinema.org/a/8AvIYNfUfi9sQypDmhYCkdzZo.svg)](https://asciinema.org/a/8AvIYNfUfi9sQypDmhYCkdzZo)
