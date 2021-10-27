@@ -23,3 +23,16 @@ initial begin
 end        
 
 endmodule
+
+/*
+[0 ns]: starte fork..join example
+[10 ns]: sequential after #10
+[10 ns]: parallel start
+[20 ns]: parallel after #10
+[40 ns]: sequential after #30
+[50 ns]: sequential after #10
+[60 ns]: parallel after #50
+[60 ns]: after join
+[140 ns]: finish after #80
+
+*/
