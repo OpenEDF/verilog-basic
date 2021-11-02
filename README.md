@@ -10,4 +10,7 @@ $ vvp outputfile
 $ gtkwave test.cvd &
 ```
 ## compiler and simv
+```shell
+$ asciinema ecp
+```
 [![asciicast](https://asciinema.org/a/8AvIYNfUfi9sQypDmhYCkdzZo.svg)](https://asciinema.org/a/8AvIYNfUfi9sQypDmhYCkdzZo)
