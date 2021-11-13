@@ -1,0 +1,14 @@
+mybus[15:0] = 16'heeee; e:1110 ; mybus[10:8] = 3'b011
+MyBus[0:15] = 16'h3333; 3:0011 ; MyBys[0 :2] = 3'b001
+
+MyBus = mybus <=> MyBus[0:15] = mybus[15:0]  MSB is always on left
+
+My32bits = `bz; <=> My32bits = 32'bz...z
+My32bits = `bx; <=> My32bits = 32'bx...x
+My32bits = `b0; <=> My32bits = 32'b0...0
+My32bits = `b1; <=> My32bits = 32'b0...01
+
+My32bits = 1`bz; <=> My32bits = 32'b0...0z
+My32bits = 1`bx; <=> My32bits = 32'b0...0x
+My32bits = 1`b0; <=> My32bits = 32'b0...00
+My32bits = 1`b1; <=> My32bits = 32'b0...01
