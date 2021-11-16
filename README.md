@@ -9,7 +9,7 @@ $ iverilog -o outputfile readtestxxx.v testbench.v
 $ vvp outputfile
 $ gtkwave test.cvd &
 ```
-## compiler and simv
+## compiler and sim
 ```shell
 $ asciinema ecp
 $ exit [wait save and upload to cloud]
