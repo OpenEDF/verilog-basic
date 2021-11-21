@@ -18,6 +18,6 @@ dcto:
 # clean the outfile
 .PHONY: clean
 clean:
-	rm -rf *.log *.svf
+	rm -rf *.log *.svf alib-52
 
 #-----------------------------------------------------------------------------
