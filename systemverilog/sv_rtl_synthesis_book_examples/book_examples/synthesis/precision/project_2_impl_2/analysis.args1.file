@@ -1,0 +1,16 @@
+8:-out_dir
+80:B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_2//rtlc.out
+10:-pipe_flow
+4:-svf
+97:B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_2//hdlAnalyze_sysverilogfile
+2:-v
+80:C:/MentorGraphics/PS2015.1.6_32-bit/Mgc_home/pkgs/rtlc_psr/rtlc/lib/altera_lpm.v
+2:-v
+79:C:/MentorGraphics/PS2015.1.6_32-bit/Mgc_home/pkgs/rtlc_psr/rtlc/lib/altera_mf.v
+2:-v
+83:C:/MentorGraphics/PS2015.1.6_32-bit/Mgc_home/pkgs/rtlc_psr/rtlc/lib/altera_lnsim.sv
+25:-comment_transoff_regions
+13:-lib_map_file
+80:B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_2//.jaguarc
+106:+incdir+B:/OneDrive/sandbox/book_examples/chapter-08+B:/OneDrive/sandbox/book_examples/synthesis/precision
+17:+define+synthesis

@@ -1,0 +1,15 @@
+/tools/synopsys/synplify/bin/m_xilinx  -prodtype synplify_pro -encrypt  -pro  -rundir  /mnt/sandbox/book_examples/chapter-05/synplify  -part XC7VX485TFFG1157-1   -enable_prepacking -use_vivado -overilog "proj_1.vm" -maxfan 10000  -m1  -pipe  -verification_mode 0   -fixgatedclocks 1 -fixgeneratedclocks 1 -auto_constrain_io   -summaryfile /mnt/sandbox/book_examples/chapter-05/synplify/synlog/report/proj_1_premap.xml -RWCheckOnRam 1   -reporting_ctd 1  -preserve_slash_names  -oedif  /mnt/sandbox/book_examples/chapter-05/synplify/proj_1.edf  -conchk_prepass  /mnt/sandbox/book_examples/chapter-05/synplify/proj_1_cck_prepass.rpt  -freq 100.000  /mnt/sandbox/book_examples/chapter-05/synplify/synwork/proj_1_comp.srs  -flow prepass  -gcc_prepass  -osrd  /mnt/sandbox/book_examples/chapter-05/synplify/synwork/proj_1_prem.srd  -qsap  /mnt/sandbox/book_examples/chapter-05/synplify/proj_1.sap  -devicelib  /tools/synopsys/synplify/lib/xilinx/unisim_m10i.v  -devicelib  /tools/synopsys/synplify/lib/xilinx/unisim.v  -ologparam  /mnt/sandbox/book_examples/chapter-05/synplify/syntmp/proj_1.plg  -noforwanno -osyn  /mnt/sandbox/book_examples/chapter-05/synplify/synwork/proj_1_prem.srd  -prjdir  /mnt/sandbox/book_examples/chapter-05  -prjname  proj_1  -log  /mnt/sandbox/book_examples/chapter-05/synplify/synlog/proj_1_premap.srr 
+rc:1 success:1
+/mnt/sandbox/book_examples/chapter-05/synplify/proj_1.edf|o|0|0
+/mnt/sandbox/book_examples/chapter-05/synplify/proj_1_cck_prepass.rpt|o|0|0
+/mnt/sandbox/book_examples/chapter-05/synplify/synwork/proj_1_comp.srs|i|1378543224|1801
+/mnt/sandbox/book_examples/chapter-05/synplify/synwork/proj_1_prem.srd|o|1378543226|1971
+/mnt/sandbox/book_examples/chapter-05/synplify/proj_1.sap|o|1378543226|329
+/tools/synopsys/synplify/lib/xilinx/unisim_m10i.v|i|1369887158|920617
+/tools/synopsys/synplify/lib/xilinx/unisim.v|i|1369887157|1182683
+/mnt/sandbox/book_examples/chapter-05/synplify/syntmp/proj_1.plg|o|1378543225|0
+/mnt/sandbox/book_examples/chapter-05/synplify/synwork/proj_1_prem.srd|o|1378543226|1971
+/mnt/sandbox/book_examples/chapter-05/synplify/synlog/proj_1_premap.srr|o|1378543226|2916
+/tools/synopsys/synplify/bin/m_xilinx|i|1375487855|345
+/tools/synopsys/synplify/linux/m_xilinx|i|1376057925|24015152
+/tools/synopsys/synplify/linux_a_64/m_xilinx|i|1376057933|26918216

@@ -1,0 +1,75 @@
+//  Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//  
+//  Start time Thu Feb 06 10:16:10 2014
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               10      180       5.56%
+Global Buffers                    0       4         0.00%
+LUTs                              0       1536      0.00%
+CLB Slices                        0       768       0.00%
+Dffs or Latches                   0       1536      0.00%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+******************************************************
+
+Library: work    Cell: exmp12_snip1    View: INTERFACE
+
+******************************************************
+
+  Cell    Library  References     Total Area
+
+ GND     xcv     1 x
+ OBUF    xcv     8 x
+
+ Number of ports :                      10
+ Number of nets :                        9
+ Number of instances :                   9
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                      19
+ Number of accumulated instances :       9
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.exmp12_snip1.INTERFACE
+
++-------------+-----------+----------+----------+----------+
+| Port        | Direction |   INFF   |  OUTFF   |  TRIFF   |
++-------------+-----------+----------+----------+----------+
+| clk         | Input     |          |          |          |
++-------------+-----------+----------+----------+----------+
+| rstn        | Input     |          |          |          |
++-------------+-----------+----------+----------+----------+
+| count(7)    | Output    |          |          |          |
++-------------+-----------+----------+----------+----------+
+| count(6)    | Output    |          |          |          |
++-------------+-----------+----------+----------+----------+
+| count(5)    | Output    |          |          |          |
++-------------+-----------+----------+----------+----------+
+| count(4)    | Output    |          |          |          |
++-------------+-----------+----------+----------+----------+
+| count(3)    | Output    |          |          |          |
++-------------+-----------+----------+----------+----------+
+| count(2)    | Output    |          |          |          |
++-------------+-----------+----------+----------+----------+
+| count(1)    | Output    |          |          |          |
++-------------+-----------+----------+----------+----------+
+| count(0)    | Output    |          |          |          |
++-------------+-----------+----------+----------+----------+
+Total registers mapped: 0

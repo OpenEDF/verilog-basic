@@ -1,0 +1,487 @@
+26 July 2004
+
+Known errata in the first edition of the book "SystemVerilog for Design"
+by Stuart Sutherland, Simon Davidmann, and Peter Flake.  Copyright 2003,
+Kluwer Academic Publishers, Norwell, MA, USA, www.wkap.il.
+ISBN: 0-4020-7530-8.
+
+-----------------------------------------------------------------------
+Chapter 2, section 2.3, page 13
+Spelling error: "affect" should be "effect"
+  Change:
+    To create the affect of a global declaration...
+  To:
+    To create the effect of a global declaration...
+-----------------------------------------------------------------------
+Chapter 2, section 2.5.2, page 26
+A period in the middle of a sentence should be a comma.
+  Change:
+    ...pure Verilog code. with no...
+  To:
+    ...pure Verilog code, with no...
+-----------------------------------------------------------------------
+Chapter 2, section 2.8.1, page 36
+Misworded sentence: "can be" should be "that is"
+  Change:
+    A variable can be explicitly declared as static... will be...
+  To:
+    A variable that is explicitly declared as static...will be...
+-----------------------------------------------------------------------
+Chapter 3, section 3.21, page 51
+The first description in table 3-1 is poorly worded.
+  Change:
+    creates a single name of the state
+  To:
+    creates a single name, called state
+-----------------------------------------------------------------------
+Chapter 4, section 4.1, page 66-67
+The example assignment to "opcode" is not a good example.  "opcode"
+is declared as 8 bits wide, and the value assigned is 16 bits wide.
+  Change:
+    Instruction_Word.opcode = 16’hF01E;
+  To:
+    Instruction_Word.opcode = 8’h1E;
+-----------------------------------------------------------------------
+Chapter 4, section 4.3.2:
+The declarations for "high_byte" and "word" are syntactically correct,
+but do not illustrate useful code.  The declarations show variable
+initialization, which does not update the variables whenever the
+left-hand side of the assignment changes.  A more useful example would
+be to use continuous assignments instead of initialization.
+  Change:
+    byte high_byte = data[3];        // 8-bit slice
+    logic [15:0] word = data[1:0];   // 2 slices
+  To:
+    byte high_byte;
+    assign high_byte = data[3];      // 8-bit slice
+    logic [15:0] word;
+    assign word = data[1:0];         // 2 slices
+-----------------------------------------------------------------------
+Chapter 4, section 4.3.7:
+The declaration of data_t is incorrect.
+  Change:
+    typedef int [3:0][7:0] data_t; // unpacked type
+  To:
+    typedef int data_t [3:0][7:0]; // unpacked type
+-----------------------------------------------------------------------
+Chapter 4, section 4.4:
+The book states for array queuery functions, "The dimension argument
+is optional".  This is only true if the array was declared using typedef,
+and the typedef name is used as the first argument to the queuery
+function.  If the actual array name is used as the first argument, then
+the dimension (the second argument) is required.
+-----------------------------------------------------------------------
+Chapter 5, section 5.3.3, page 120
+Spelling error: "parenthesis" should be "parentheses".
+  Change:
+    The parenthesis are not required...
+  To:
+    The parentheses are not required...
+-----------------------------------------------------------------------
+Chapter 6, section 6.1.4:
+The inside operator syntax requires that the set of values to be
+matched must be enclosed in {} braces.
+  Change:
+    if ( 13 inside d_array)
+  To:
+    if ( 13 inside {d_array} )
+-----------------------------------------------------------------------
+Chapter 8, section 8.9
+In example 8-10, the three instances of the adder module do not have a
+connection for the final "carry" output of the adder.  This is
+syntactically correct, but causes a warning message for too few port
+connections.  It does not affect this example, as the the carry output
+is not being used.
+-----------------------------------------------------------------------
+Chapter 9, section 9.1.1, page 230
+Spelling error: "that" should be "than".
+  Change:
+    ...much more that an inconvenience...
+  To:
+    ...much more than an inconvenience...
+-----------------------------------------------------------------------
+Chapter 9, section 9.1.1, page 231
+Spelling error: "wide-spread" should be "wide spread", and "affect"
+should be "effect".
+  Change:
+    This wide-spread affect of a change...
+  To:
+    This wide spread effect of a change...
+-----------------------------------------------------------------------
+Chapter 9, section 9.1.2, page 231
+Typo: "has as" should be "has".
+  Change:
+    ...then has as a single port...
+  To:
+    ...then has a single port...
+-----------------------------------------------------------------------
+Chapter 9, section 9.1.2, page 231
+Typo: "the these" should be "these".
+  Change:
+    ...declarations for the these signals...
+  To:
+    ...declarations for these signals...
+-----------------------------------------------------------------------
+Chapter 9, section 9.2
+In example 9-4, the top level module does not fully connect all the
+ports of the instance of the dual_port_ram module.  This should be a
+syntax error, because the .* implicit port connection rules require
+that any unconnected ports be explicitly named.  In order to fully
+connect the ram, the following alias needs to be added to the top
+module:
+  Change:
+    wire [ 7:0] instruction, next_instruction;
+  To:
+    wire [ 7:0] instruction, next_instruction;
+    alias data_b = next_instruction;
+-----------------------------------------------------------------------
+Chapter 9, section 7.2
+In example 9-9,  the interface definition for math_bus has clock and
+resetN inputs.  These inputs are not connected at the two instances
+of the math_bus interface in the top module.  The first 3 lines of
+the top module need to be changed.
+  Change:
+    module top;
+      math_bus bus_a;   // 1st instance of the math_bus interface
+      math_bus bus_b;   // 2nd instance of the math_bus interface
+  To:
+    module top (input wire clock, resetN, test_mode);
+      math_bus bus_a (clock, resetN); // 1st instance of the math_bus interface
+      math_bus bus_b (clock, resetN); // 2nd instance of the math_bus interface
+-----------------------------------------------------------------------
+Chapter 9, section 9.7.4
+In example 9.10, the syntax of the check function declaration is
+incorrect in two places.
+  In the interface slave modport, change:
+    import check (input bit parity,
+                  input [63:0] logic data) );
+  To:
+    import function check (input bit parity,
+                           input logic [63:0] data) );
+
+  In the CPU module, change:
+    function check (input bit parity, input [63:0] logic data);
+  To:
+    function check (input bit parity, input logic [63:0] data);
+-----------------------------------------------------------------------
+Chapter 9, section 9.7.4
+In example 9.11, the syntax of the check function declaration is
+incorrect in three places.
+  In the interface extern prototype, change:
+    input [63:0] logic data) );
+  To:
+    input logic [63:0] data) );
+
+  In the interface slave modport, change:
+    input [63:0] logic data) );
+  To:
+    input logic [63:0] data) );
+
+  In the CPU module, change:
+    function check (input bit parity, input [63:0] logic data);
+  To:
+    function check (input bit parity, input logic [63:0] data);
+-----------------------------------------------------------------------
+Chapter 9, section 9.7.4
+In example 9.12, the modport declarations are incorrect.  The syntax
+for modports only allows port direction to be specified.  The example
+in the book showed both a port direction and data type on the modports.
+Data types are declared in the interface body.  These declarations are
+correct in the book example.  In addition, the top module does not
+connect the clock input to the two instances of the interface.
+  In the interface definition, change:
+    modport int_io (import Read (output DTYPE  a, b),
+                    input  bit    clock,
+                    output DTYPE  result);
+    modport fp_io  (import Read (output DTYPE  a, b),
+                    input  bit  clock,
+                    output int  result);
+  To:
+    modport int_io (import Read,
+                    input  clock,
+                    output result);
+    modport fp_io  (import Read,
+                    input  clock,
+                    output result);
+  In the top module, change:
+    module top;
+      math_bus                 bus_a;  // interface uses int data
+      math_bus (#.DTYPE(real)) bus_b;  // interface uses real data
+  To:
+    module top (input wire clock, resetN, test_mode);
+      math_bus                 bus_a (clock);  // interface uses int data
+      math_bus #(.DTYPE(real)) bus_b (clock);  // interface uses real data
+-----------------------------------------------------------------------
+Chapter 9, section 9.6.2
+In example 9-8, the top level module does not fully connect all the
+ports of the instances of the slave and test_generator modules.  This
+is not a syntax error, as Verilog allows for unconnected ports.  The
+intent, however, is for the instances of slave and test_generator to
+be fully connected (using .*).  Also, .* does not fully connect all
+ports of the instance of the dual_port_ram module.  This should be a
+syntax error, because the .* implicit port connection rules require
+that any unconnected ports be explicitly named.  In order to fully
+connect the ram, the following alias needs to be added to the top
+module:
+  Change:
+    wire [ 7:0] instruction, next_instruction;
+  To:
+    wire [ 7:0] instruction, next_instruction;
+    alias data_b = next_instruction;
+  Change:
+    slave slave1 (.bus(bus.slave));
+  To:
+    slave slave1 (.bus(bus.slave), .* );
+  Change:
+    test_generator test_gen(.bus(bus));
+  To:
+    test_generator test_gen(.bus(bus), .* );
+-----------------------------------------------------------------------
+Chapter 10, example 10-1
+The instance of the "UtopiaMethod" interface requires parentheses
+after the instance name (early drafts of the SystemVerilog standard
+permitted leaving off the parenthesis on an instance of a module
+with no ports).
+  Change:
+    UtopiaMethod Method;  // interface with testing methods
+  To:
+    UtopiaMethod Method ();  // interface with testing methods
+-----------------------------------------------------------------------
+Chapter 10, example 10-2
+The instance of the "CPUMethod" interface requires parentheses after
+the instance name (early drafts of the SystemVerilog standard permitted
+leaving off the parenthesis on an instance of a module with no ports).
+  Change:
+    CPUMethod Method;  // interface with testing methods
+  To:
+    CPUMethod Method ();  // interface with testing methods
+-----------------------------------------------------------------------
+Chapter 10, example 10-4
+In the sensitivity list for the named block "FSM", "clock" should be
+"clk".
+  Change:
+    always_ff @(posedge clock, posedge reset) begin: FSM
+  To:
+    always_ff @(posedge clk, posedge reset) begin: FSM
+-----------------------------------------------------------------------
+Chapter 10, example 10-3
+In the port list for module squat, there is an extra comma at the end
+of the port list.
+  Change:
+    input wire rst, clk,
+  To:
+    input wire rst, clk
+-----------------------------------------------------------------------
+Chapter 10, example 10-3
+In the named block "FSM", a debug print statement was incorrectly
+split to two print statements to fit the page size; the arguments were
+not correctly split to the
+two
+statements.
+  Change:
+    $write("Bad HEC: ATMcell.uni.HEC(0x%x) != ");
+    $display("ATMcell.Mem[0:3](0x%x)",
+      ATMcell.uni.HEC, hec(ATMcell.Mem[0:3]));
+  To:
+    $write("Bad HEC: ATMcell.uni.HEC(0x%x) != ",
+       ATMcell.uni.HEC);
+    $display("ATMcell.Mem[0:3](0x%x)",
+       hec(ATMcell.Mem[0:3]));
+-----------------------------------------------------------------------
+Chapter 10, example 10-8
+The instances of the Utopia interface and the CPU module require
+parentheses after the instance name (early drafts of the SystemVerilog
+standard permitted leaving off the parenthesis on an instance of an
+interface or module with no ports).
+  Change:
+    Utopia Rx[0:NumRx-1];
+  To:
+    Utopia Rx[0:NumRx-1] ();
+  Change:
+    Utopia Tx[0:NumTx-1];
+  To:
+    Utopia Tx[0:NumTx-1] ();
+  Change:
+    CPU mif;
+  To:
+    CPU mif ();
+-----------------------------------------------------------------------
+Chapter 11, example 11-1
+The first for-loop has parentheses around the step-assignment.
+Verilog syntax does not allow parentheses this (early drafts of the
+SystemVerilog standard permitted this).
+  Change:
+    for (A = 0; A < 21'h100000; (A = A + 21'h40000)) begin
+  To:
+    for (A = 0; A < 21'h100000; A = A + 21'h40000) begin
+-----------------------------------------------------------------------
+Chapter 11, example_11-2
+The extern task prototypes are not syntactically correct.  The
+prototype syntax requires that each task argument have a name, as well
+as a direction and data data type (the direction and data type are
+optional).  SystemVerilog 3.0 permitted the name to be left off, but
+SystemVerilog 3.1a requires the name.
+  Change:
+    extern forkjoin task ReadMem (input  logic [19:0],
+                                  output logic [15:0],
+                                         bit);
+
+    extern forkjoin task WriteMem (input  logic [19:0],
+                                   input  logic [15:0],
+                                   output bit);
+  To:
+    extern forkjoin task ReadMem  (input  logic [19:0] Address,
+                                   output logic [15:0] Data,
+                                          bit          Error);
+
+    extern forkjoin task WriteMem (input  logic [19:0] Address,
+                                   input  logic [15:0] Data,
+                                   output bit          Error);
+-----------------------------------------------------------------------
+Chapter 11, example_11-3
+The extern task prototypes are not syntactically correct.  The
+prototype syntax requires that each task argument have a name, as well
+as a direction and data data type (the direction and data type are
+optional).  SystemVerilog 3.0 permitted the name to be left off, but
+SystemVerilog 3.1a requires the name.
+  Change:
+    extern forkjoin task ReadMem (input  logic [19:0],
+                                  output logic [15:0],
+                                         bit);
+
+    extern forkjoin task WriteMem (input  logic [19:0],
+                                   input  logic [15:0],
+                                   output bit);
+  To:
+    extern forkjoin task ReadMem  (input  logic [19:0] Address,
+                                   output logic [15:0] Data,
+                                          bit          Error);
+
+    extern forkjoin task WriteMem (input  logic [19:0] Address,
+                                   input  logic [15:0] Data,
+                                   output bit          Error);
+-----------------------------------------------------------------------
+Chapter 11, example 11-3
+There should not be a semicolon at the end of the Verilog-2001 style
+parameter list (this was an errata in the 1364-2001 standard, where
+some places in the LRM showed having a semicolon, and other places did
+not.  The IEEE 1364 working group has since determined that the
+semicolon is incorrect).
+  Change:
+    interface Semaphore #(parameter int unsigned initial_keys = 1;);
+  To:
+    interface Semaphore #(parameter int unsigned initial_keys = 1);
+-----------------------------------------------------------------------
+Chapter 11, example 11-3
+The instance of the Semaphore interface requires parentheses after the
+instance name (early drafts of the SystemVerilog standard permitted
+leaving off the parenthesis on an instance of a module or interface
+with no ports).
+  Change:
+    Semaphore s;  // built-in type would use semaphore s = new;
+  To:
+    Semaphore s ();  // built-in type would use semaphore s = new;
+-----------------------------------------------------------------------
+Chapter 11, example 11-3
+The module named "TesterArb" should be named "Tester".
+  Change:
+    module TesterArb (interface Bus);
+  To:
+    module Tester (interface Bus);
+-----------------------------------------------------------------------
+Chapter 11, example_11-5
+The extern task prototypes are not syntactically correct.  The
+prototype syntax requires that each task argument have a name, as well
+as a direction and data data type (the direction and data type are
+optional).  SystemVerilog 3.0 permitted the name to be left off, but
+SystemVerilog 3.1a requires the name.
+  Change:
+    extern task Request (input int);
+    extern task Relinquish (input int);
+    extern forkjoin task ReadMem (input  logic [19:0],
+                                  output logic [15:0],
+                                         bit);
+
+    extern forkjoin task WriteMem (input  logic [19:0],
+                                   input  logic [15:0],
+                                   output bit);
+  To:
+    extern task Request (input int n);
+    extern task Relinquish (input int n);
+    extern forkjoin task ReadMem  (input  logic [19:0] Address,
+                                   output logic [15:0] Data,
+                                          bit          Error);
+
+    extern forkjoin task WriteMem (input  logic [19:0] Address,
+                                   input  logic [15:0] Data,
+                                   output bit          Error);
+-----------------------------------------------------------------------
+Chapter 11, example_11-6
+There are three small errors in the MultibusArbiter code:
+ - The "MASTERS" parameter declaration is missing
+ - The arbiter should not be modifying the "busy" flag
+ - Some debug code was left in
+  Change the entire MultibusArbiter module
+  To:
+    module MultibusArbiter #(parameter MASTERS = 1)(interface Bus);
+      logic [1:MASTERS] bprn = 1; assign Bus.BPRN = bprn;
+      int last = 0;
+      int i;
+
+      always @(negedge Bus.BCLK)
+        if (Bus.CBRQ == 0) begin // request
+          i = last+1;
+          forever begin
+            if (i > MASTERS) i = 1;
+            if (Bus.BREQ[i] == 0) break;
+            assert (i != last); else $fatal(0, "no bus master");
+            i++;
+            if (i > MASTERS) i = 1;
+          end
+          last = i;
+          #50 bprn [i] = 0; //$display("bprn[%b] = %b", i, bprn);
+        end
+        else if (Bus.BUSY == 0) begin // relinquish
+          #50 bprn [last] = 1;
+        end
+    endmodule : MultibusArbiter
+-----------------------------------------------------------------------
+Chapter 11, example_11-7
+The declaration of the "busy" variable is missing.
+  Change:
+    logic        cbrq = 1;   assign CBRQ = cbrq;
+  To:
+    logic        cbrq = 1;   assign CBRQ = cbrq;
+    logic        busy = 1;   assign BUSY = busy;
+-----------------------------------------------------------------------
+Chapter 11, example_11-7
+There are three small errors in the MultibusArbiter code:
+ - The "MASTERS" parameter declaration is missing
+ - The arbiter should not be modifying the "busy" flag
+ - Some debug code was left in
+  Change the entire MultibusArbiter module
+  To:
+    module MultibusArbiter #(parameter MASTERS = 1)(interface Bus);
+      logic [1:MASTERS] bprn = 1; assign Bus.BPRN = bprn;
+      int last = 0;
+      int i;
+
+      always @(negedge Bus.BCLK)
+        if (Bus.CBRQ == 0) begin // request
+          i = last+1;
+          forever begin
+            if (i > MASTERS) i = 1;
+            if (Bus.BREQ[i] == 0) break;
+            assert (i != last); else $fatal(0, "no bus master");
+            i++;
+            if (i > MASTERS) i = 1;
+          end
+          last = i;
+          #50 bprn [i] = 0; //$display("bprn[%b] = %b", i, bprn);
+        end
+        else if (Bus.BUSY == 0) begin // relinquish
+          #50 bprn [last] = 1;
+        end
+    endmodule : MultibusArbiter
+-----------------------------------------------------------------------
+

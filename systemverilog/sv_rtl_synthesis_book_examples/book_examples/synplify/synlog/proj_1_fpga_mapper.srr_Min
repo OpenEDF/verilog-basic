@@ -1,0 +1,227 @@
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sat Sep  7 01:57:43 2013
+#
+
+
+Top view:               status_reg
+Requested Frequency:    100.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: 3.808
+
+                   Requested     Estimated     Requested     Estimated               Clock        Clock              
+Starting Clock     Frequency     Frequency     Period        Period        Slack     Type         Group              
+---------------------------------------------------------------------------------------------------------------------
+status_reg|clk     100.0 MHz     226.9 MHz     10.000        4.407         5.593     inferred     Inferred_clkgroup_0
+System             1.0 MHz       1.0 MHz       1000.000      996.192       3.808     system       system_clkgroup    
+=====================================================================================================================
+
+
+
+Clock Relationships
+*******************
+
+Clocks                          |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+----------------------------------------------------------------------------------------------------------------------
+Starting        Ending          |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+----------------------------------------------------------------------------------------------------------------------
+System          status_reg|clk  |  0.000       3.808  |  No paths    -      |  No paths    -      |  No paths    -    
+status_reg|clk  System          |  0.000       5.593  |  No paths    -      |  No paths    -      |  No paths    -    
+======================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+
+
+Input Ports: 
+
+Port          Starting            User           Arrival     Required          
+Name          Reference           Constraint     Time        Time         Slack
+              Clock                                                            
+-------------------------------------------------------------------------------
+carry         System (rising)     NA             0.000       -3.808       3.808
+clk           NA                  NA             NA          NA           NA   
+int_en        System (rising)     NA             0.000       -3.808       3.808
+neg           System (rising)     NA             0.000       -3.808       3.808
+parity[0]     System (rising)     NA             0.000       -3.808       3.808
+parity[1]     System (rising)     NA             0.000       -3.808       3.808
+rstN          NA                  NA             NA          NA           NA   
+zero          System (rising)     NA             0.000       -3.808       3.808
+===============================================================================
+
+
+Output Ports: 
+
+Port          Starting                    User           Arrival     Required          
+Name          Reference                   Constraint     Time        Time         Slack
+              Clock                                                                    
+---------------------------------------------------------------------------------------
+status[0]     status_reg|clk (rising)     NA             5.593       0.000        5.593
+status[1]     status_reg|clk (rising)     NA             5.593       0.000        5.593
+status[2]     status_reg|clk (rising)     NA             5.593       0.000        5.593
+status[3]     status_reg|clk (rising)     NA             5.593       0.000        5.593
+status[4]     status_reg|clk (rising)     NA             5.593       0.000        5.593
+status[5]     NA                          NA             NA          NA           NA   
+status[6]     NA                          NA             NA          NA           NA   
+status[7]     status_reg|clk (rising)     NA             5.593       0.000        5.593
+=======================================================================================
+
+
+
+====================================
+Detailed Report for Clock: status_reg|clk
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                Starting                                             Arrival          
+Instance        Reference          Type      Pin     Net             Time        Slack
+                Clock                                                                 
+--------------------------------------------------------------------------------------
+status_1[2]     status_reg|clk     dfc1b     q       status_1[2]     2.916       5.593
+status_1[3]     status_reg|clk     dfc1b     q       status_1[3]     2.916       5.593
+status_1[4]     status_reg|clk     dfc1b     q       status_1[4]     2.916       5.593
+status_1[5]     status_reg|clk     dfc1b     q       status_1[5]     2.916       5.593
+status_1[6]     status_reg|clk     dfc1b     q       status_1[6]     2.916       5.593
+status_1[7]     status_reg|clk     dfc1b     q       status_1[7]     2.916       5.593
+======================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                Starting                                                Required          
+Instance        Reference          Type     Pin           Net           Time         Slack
+                Clock                                                                     
+------------------------------------------------------------------------------------------
+status[7:0]     status_reg|clk     Port     status[0]     status[0]     0.000        5.593
+status[7:0]     status_reg|clk     Port     status[1]     status[1]     0.000        5.593
+status[7:0]     status_reg|clk     Port     status[2]     status[2]     0.000        5.593
+status[7:0]     status_reg|clk     Port     status[3]     status[3]     0.000        5.593
+status[7:0]     status_reg|clk     Port     status[4]     status[4]     0.000        5.593
+status[7:0]     status_reg|clk     Port     status[7]     status[7]     0.000        5.593
+==========================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+    Propagation time:                        5.593
+    + Clock delay at starting point:         0.000 (ideal)
+    - Requested Period:                      0.000
+    - Clock delay at ending point:           0.000 (ideal)
+    = Slack (non-critical) :                 5.593
+
+    Number of logic level(s):                1
+    Starting point:                          status_1[2] / q
+    Ending point:                            status[7:0] / status[0]
+    The start point is clocked by            status_reg|clk [rising] on pin clk
+    The end   point is clocked by            System [rising]
+
+Instance / Net                Pin           Pin               Arrival     No. of    
+Name               Type       Name          Dir     Delay     Time        Fan Out(s)
+------------------------------------------------------------------------------------
+status_1[2]        dfc1b      q             Out     2.916     2.916       -         
+status_1[2]        Net        -             -       -         -           1         
+status_pad[0]      outbuf     d             In      0.000     2.916       -         
+status_pad[0]      outbuf     pad           Out     2.678     5.593       -         
+status[0]          Net        -             -       -         -           1         
+status[7:0]        Port       status[0]     Out     0.000     5.593       -         
+====================================================================================
+
+
+
+
+====================================
+Detailed Report for Clock: System
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                Starting                                           Arrival          
+Instance        Reference     Type     Pin           Net           Time        Slack
+                Clock                                                               
+------------------------------------------------------------------------------------
+carry           System        Port     carry         carry         0.000       3.808
+int_en          System        Port     int_en        int_en        0.000       3.808
+neg             System        Port     neg           neg           0.000       3.808
+parity[1:0]     System        Port     parity[0]     parity[0]     0.000       3.808
+parity[1:0]     System        Port     parity[1]     parity[1]     0.000       3.808
+zero            System        Port     zero          zero          0.000       3.808
+====================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                Starting                                        Required          
+Instance        Reference     Type      Pin     Net             Time         Slack
+                Clock                                                             
+----------------------------------------------------------------------------------
+status_1[2]     System        dfc1b     d       parity_c[0]     0.297        3.808
+status_1[3]     System        dfc1b     d       parity_c[1]     0.297        3.808
+status_1[4]     System        dfc1b     d       neg_c           0.297        3.808
+status_1[5]     System        dfc1b     d       carry_c         0.297        3.808
+status_1[6]     System        dfc1b     d       zero_c          0.297        3.808
+status_1[7]     System        dfc1b     d       int_en_c        0.297        3.808
+==================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+    Propagation time:                        4.106
+    + Clock delay at starting point:         0.000 (ideal)
+    - Requested Period:                      0.000
+    - Hold time:                             0.297
+    - Clock delay at ending point:           0.000 (ideal)
+    = Slack (critical) :                     3.808
+
+    Number of logic level(s):                1
+    Starting point:                          carry / carry
+    Ending point:                            status_1[5] / d
+    The start point is clocked by            System [rising]
+    The end   point is clocked by            status_reg|clk [rising] on pin clk
+
+Instance / Net               Pin       Pin               Arrival     No. of    
+Name               Type      Name      Dir     Delay     Time        Fan Out(s)
+-------------------------------------------------------------------------------
+carry              Port      carry     In      0.000     0.000       -         
+carry              Net       -         -       -         -           1         
+carry_pad          inbuf     pad       In      0.000     0.000       -         
+carry_pad          inbuf     y         Out     4.106     4.106       -         
+carry_c            Net       -         -       -         -           1         
+status_1[5]        dfc1b     d         In      0.000     4.106       -         
+===============================================================================
+
+
+
+##### END OF TIMING REPORT #####]
+

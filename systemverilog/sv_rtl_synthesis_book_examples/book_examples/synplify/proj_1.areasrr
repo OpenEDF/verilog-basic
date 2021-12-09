@@ -1,0 +1,12 @@
+----------------------------------------------------------------------
+Report for cell status_reg.verilog
+                                          Cell usage:
+                               cell       count     area    count*area
+                             clkbuf         1       0.0        0.0
+                              dfc1b         6       0.0        0.0
+                                gnd         1       0.0        0.0
+                              inbuf         7       0.0        0.0
+                             outbuf         8       0.0        0.0
+                                vcc         1       0.0        0.0
+                            
+                         TOTAL             24                  0.0

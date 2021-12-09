@@ -1,0 +1,51 @@
+technology independent
+--------------------------
+
+Answer regarding using abstract multiply operator vs. algorithmic multiply:
+
+Code it using multiply. Get it working, synthesise it. Then, if it not small enough or lean enough, optimise it. Don't optimise first. You'll spend more time than you needed to. – Paul S Aug 9 at 15:28
+
+--------------------------
+From: http://stackoverflow.com/questions/18006071/any-benefits-from-implementing-csa-versus-just-using-multiplication-symbol-when
+--------------------------
+Generally, I tend to trust the compiler tools I use and don't fret so much about the results as long as they meet my timing and area budgets.
+
+That said, with multipliers that need to run at fast speeds I find I get better results (in DC, at least) if I create a Verilog module containing the multiply (*) and a retiming register or two, and push down into this module to synthesise it before popping up to toplevel synthesis. It seems as if the compiler gets 'distracted' by other timing paths if you try to do everything at once, so making it focus on a multiplier that you know is going to be tricky seems to help.
+share|improve this answer
+
+answered Aug 2 at 0:43
+Marty
+3,64411222
+
+
+I have register retiming enabled, however, you said to add a retiming register or two? Do you just mean add some registers in your datapath that the synthesis tool can try pushing around to allow it to see if it can get better results by optimizing the delays of each stage? – starbox Aug 2 at 0:50
+
+@starbox: Normally, you use register retiming to move registers through a pipelined design, so you preserve functionality at the I/O boundaries. If you want to pipeline a multiplier, add one or more registers at the module output (or input), and balance_registers to get DC to move the registers to minimise the cycle time. Lots of details in 'Design Compiler Reference Manual: Register Retiming'. – EML Aug 2 at 7:57
+
+@EML, Thank you – starbox Aug 2 at 21:57
+
+--------------
+Xlinx app note:
+
+FPGA Flow
+The FPGA flow is timing-driven and can be controlled using constraints, such as PERIOD and
+OFFSET. During low level optimization, XST infers specific components, such as the following:
+Carry logic (MUXCY, XORCY, MULT_AND)
+RAM (block or distributed)
+Shift Register LUTs (SRL16, SRL32)
+Clock Buffers (IBUFG, BUFG, BUFGP, BUFR)
+Multiplexers (MUXF5, MUXF6, MUXF7, MUXF8)
+Arithmetic Functions (DSP48, MULT18x18)
+
+-----------------
+
+Vivado Synthesis supports the following real types.
+real: like double in C
+shortreal: like float in C
+realtime: identical to real
+However, only constant real type data is supported in Vivado Synthesis.
+
+------------------
+
+
+

@@ -1,0 +1,42 @@
+QuestaSim qverilog 10.2c Compiler 2013.07 Jul 18 2013
+qverilog -f 5-6_run.f 
+-- Compiling package definitions_pkg
+-- Compiling module parity_checker
+-- Importing package definitions_pkg
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
++ C:/questa_sim_10.2c/win32/vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt top 
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# //  Questa Sim
+# //  Version 10.2c Unknown Platform Jul 18 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.definitions_pkg(fast)
+# Loading work.top(fast)
+# Loading work.test(fast)
+# Loading work.parity_checker(fast)
+# run -all 
+# At   30ns: data=11100111  parity_bit=0:  Good data_in. EXPECT: error = 0, ACTUAL: 0  OK
+# At   50ns: data=10011100  parity_bit=0:  Good data_in. EXPECT: error = 0, ACTUAL: 0  OK
+# At   70ns: data=11101000  parity_bit=1:  Bad data_in.  EXPECT: error = 1, ACTUAL: 1  OK
+# At   90ns: data=00010110  parity_bit=0:  Bad data_in.  EXPECT: error = 1, ACTUAL: 1  OK
+# At  110ns: data=00000000  parity_bit=1:  Bad data_in.  EXPECT: error = 1, ACTUAL: 1  OK
+# At  130ns: data=11111000  parity_bit=1:  Good data_in. EXPECT: error = 0, ACTUAL: 0  OK
+# At  150ns: data=00010001  parity_bit=0:  Good data_in. EXPECT: error = 0, ACTUAL: 0  OK
+# At  170ns: data=11111100  parity_bit=1:  Bad data_in.  EXPECT: error = 1, ACTUAL: 1  OK
+# At  190ns: data=11011110  parity_bit=0:  Good data_in. EXPECT: error = 0, ACTUAL: 0  OK
+# At  210ns: data=10010000  parity_bit=1:  Bad data_in.  EXPECT: error = 1, ACTUAL: 1  OK
+# ** Note: $finish    : 5-6_testbench.sv(33)
+#    Time: 220 ns  Iteration: 1  Instance: /top/test

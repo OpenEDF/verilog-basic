@@ -1,0 +1,28 @@
+//
+// Verilog description for cell ff_synchronous_reset, 
+// 09/18/16 00:59:55
+//
+// Precision RTL Synthesis, 32-bit 2015.1.6//
+
+
+module ff_synchronous_reset ( q, d, clock, reset ) ;
+
+    output [0:0]q ;
+    input [0:0]d ;
+    input clock ;
+    input reset ;
+
+    wire [17:0] xmplr_dummy ;
+
+
+
+
+    stratix_lcell reg_q_0_ (.regout (q[0]), .dataa (d[0]), .clk (clock), .sclr (
+                  reset)) ;
+                  defparam reg_q_0_.operation_mode = "normal";
+                  defparam reg_q_0_.synch_mode = "on";
+                  defparam reg_q_0_.register_cascade_mode = "off";
+                  defparam reg_q_0_.sum_lutc_input = "datac";
+                  defparam reg_q_0_.lut_mask = "aaaa";
+endmodule
+

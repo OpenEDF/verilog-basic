@@ -1,0 +1,36 @@
+Start time: 03:37:55 on Mar 28,2017
+qverilog -f example_05-01_run.f 
+-- Compiling module status_reg
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
+# vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt 
+# ** Note: (vsim-3812) Design is being optimized...
+# //  Questa Sim-64
+# //  Version 10.6 win64 Dec 13 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# run -all
+# At   10ns: status = 01100000:   OK
+# At   30ns: status = 11110100:   OK
+# At   50ns: status = 01100111:   OK
+# At   70ns: status = 01110001:   OK
+# At   80ns: status = 01100000:   OK
+# ** Note: $finish    : example_05-01_testbench.sv(44)
+#    Time: 90 ns  Iteration: 1  Instance: /top/test
+# End time: 03:37:57 on Mar 28,2017, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0

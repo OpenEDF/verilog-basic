@@ -1,0 +1,41 @@
+Start time: 16:43:22 on Mar 27,2017
+qverilog -f example_01-04-5-6_run.f 
+-- Compiling module rtl_adder_subtractor
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
+# vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# //  Questa Sim-64
+# //  Version 10.6 win64 Dec 13 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# run -all
+# At 10: 	 a=16  b=9  mode=0  sum=25
+# At 30: 	 a=11  b=7  mode=1  sum=4
+# At 50: 	 a=18  b=10  mode=1  sum=8
+# At 70: 	 a=12  b=3  mode=1  sum=9
+# At 90: 	 a=20  b=8  mode=0  sum=28
+# At 110: 	 a=12  b=5  mode=1  sum=7
+# At 130: 	 a=18  b=0  mode=1  sum=18
+# At 150: 	 a=10  b=9  mode=0  sum=19
+# At 170: 	 a=11  b=3  mode=0  sum=14
+# At 190: 	 a=18  b=8  mode=0  sum=26
+# ** Note: $finish    : example_01-05_testbench_example.sv(29)
+#    Time: 200 ns  Iteration: 1  Instance: /top/test
+# End time: 16:43:24 on Mar 27,2017, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0

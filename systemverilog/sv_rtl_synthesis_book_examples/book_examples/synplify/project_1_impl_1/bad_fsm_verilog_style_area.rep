@@ -1,0 +1,66 @@
+//  Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//  
+//  Start time Thu Feb 06 02:26:41 2014
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               5       180       2.78%
+Global Buffers                    0       4         0.00%
+LUTs                              0       1536      0.00%
+CLB Slices                        0       768       0.00%
+Dffs or Latches                   0       1536      0.00%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+***************************************************************
+
+Library: work    Cell: bad_fsm_verilog_style    View: INTERFACE
+
+***************************************************************
+
+  Cell    Library  References     Total Area
+
+ GND     xcv     1 x
+ OBUF    xcv     3 x
+ VCC     xcv     1 x
+
+ Number of ports :                       5
+ Number of nets :                        5
+ Number of instances :                   5
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                       0
+ Number of accumulated instances :       5
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.bad_fsm_verilog_style.INTERFACE
+
++---------------+-----------+----------+----------+----------+
+| Port          | Direction |   INFF   |  OUTFF   |  TRIFF   |
++---------------+-----------+----------+----------+----------+
+| clock         | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| resetN        | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| control(2)    | Output    |          |          |          |
++---------------+-----------+----------+----------+----------+
+| control(1)    | Output    |          |          |          |
++---------------+-----------+----------+----------+----------+
+| control(0)    | Output    |          |          |          |
++---------------+-----------+----------+----------+----------+
+Total registers mapped: 0

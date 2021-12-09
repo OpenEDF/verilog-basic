@@ -1,0 +1,3 @@
+@E: CS231 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":20:0:20:15|Unknown macro begin_keywords
+@E: CS231 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":40:0:40:13|Unknown macro end_keywords
+

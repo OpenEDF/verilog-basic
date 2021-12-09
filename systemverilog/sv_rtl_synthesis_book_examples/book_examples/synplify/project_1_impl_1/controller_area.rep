@@ -1,0 +1,107 @@
+//  Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//  
+//  Start time Mon Jan 06 23:42:26 2014
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               20      180      11.11%
+Global Buffers                    1       4        25.00%
+LUTs                              16      1536      1.04%
+CLB Slices                        8       768       1.04%
+Dffs or Latches                   3       1536      0.20%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+****************************************************
+
+Library: work    Cell: controller    View: INTERFACE
+
+****************************************************
+
+  Cell    Library  References     Total Area
+
+ BUFGP    xcv     1 x
+ FDC      xcv     3 x      1      3 Dffs or Latches
+ GND      xcv     1 x
+ IBUF     xcv     8 x
+ LUT1     xcv     1 x      1      1 LUTs
+ LUT2     xcv     3 x      1      3 LUTs
+ LUT3     xcv     1 x      1      1 LUTs
+ LUT4     xcv    11 x      1     11 LUTs
+ MUXF5    xcv     5 x      1      5 MUXF5
+ OBUF     xcv    11 x
+ VCC      xcv     1 x
+
+ Number of ports :                      20
+ Number of nets :                       55
+ Number of instances :                  46
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of Dffs or Latches :             3
+ Number of LUTs :                       16
+ Number of MUXF5 :                       5
+ Number of gates :                      15
+ Number of accumulated instances :      46
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.controller.INTERFACE
+
++-------------------+-----------+----------+----------+----------+
+| Port              | Direction |   INFF   |  OUTFF   |  TRIFF   |
++-------------------+-----------+----------+----------+----------+
+| load_s            | Output    |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| load_b            | Output    |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| load_f            | Output    |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| load_pc           | Output    |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| inc_pc            | Output    |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| set_br            | Output    |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| rslt_oeN          | Output    |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| dout_oeN          | Output    |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| dmem_rdN          | Output    |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| dmem_wrN          | Output    |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| halt              | Output    |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| instruction(3)    | Input     |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| instruction(2)    | Input     |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| instruction(1)    | Input     |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| instruction(0)    | Input     |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| exception         | Input     |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| zero_flag         | Input     |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| branching         | Input     |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| clk               | Input     |          |          |          |
++-------------------+-----------+----------+----------+----------+
+| rstN              | Input     |          |          |          |
++-------------------+-----------+----------+----------+----------+
+Total registers mapped: 0

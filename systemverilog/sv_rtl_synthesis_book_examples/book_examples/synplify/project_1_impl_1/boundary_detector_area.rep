@@ -1,0 +1,92 @@
+//  Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//  
+//  Start time Mon Sep 23 19:53:43 2013
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               17      180       9.44%
+Global Buffers                    0       4         0.00%
+LUTs                              5       1536      0.33%
+CLB Slices                        3       768       0.39%
+Dffs or Latches                   0       1536      0.00%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+***********************************************************
+
+Library: work    Cell: boundary_detector    View: INTERFACE
+
+***********************************************************
+
+  Cell    Library  References     Total Area
+
+ IBUF    xcv    14 x
+ LUT2    xcv     1 x      1      1 LUTs
+ LUT4    xcv     4 x      1      4 LUTs
+ OBUF    xcv     1 x
+
+ Number of ports :                      17
+ Number of nets :                       34
+ Number of instances :                  20
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of LUTs :                        5
+ Number of gates :                       5
+ Number of accumulated instances :      20
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.boundary_detector.INTERFACE
+
++------------------+-----------+----------+----------+----------+
+| Port             | Direction |   INFF   |  OUTFF   |  TRIFF   |
++------------------+-----------+----------+----------+----------+
+| address(15)      | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(14)      | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(13)      | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(12)      | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(11)      | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(10)      | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(9)       | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(8)       | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(7)       | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(6)       | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(5)       | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(4)       | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(3)       | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(2)       | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(1)       | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| address(0)       | Input     |          |          |          |
++------------------+-----------+----------+----------+----------+
+| boundary_flag    | Output    |          |          |          |
++------------------+-----------+----------+----------+----------+
+Total registers mapped: 0

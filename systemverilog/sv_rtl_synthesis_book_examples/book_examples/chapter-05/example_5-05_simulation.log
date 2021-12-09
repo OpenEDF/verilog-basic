@@ -1,0 +1,40 @@
+QuestaSim qverilog 10.2c Compiler 2013.07 Jul 18 2013
+qverilog -f 5-5_run.f 
+-- Compiling package definitions_pkg
+-- Compiling module and_xor
+-- Importing package definitions_pkg
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
++ C:/questa_sim_10.2c/win32/vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt top 
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# //  Questa Sim
+# //  Version 10.2c Unknown Platform Jul 18 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.definitions_pkg(fast)
+# Loading work.top(fast)
+# run -all 
+# At   10ns: a=10000110  b=00101000  mode=AND_OP:  EXPECT: result = 00000000, ACTUAL: 00000000  OK
+# At   30ns: a=10001100  b=11000100  mode=AND_OP:  EXPECT: result = 10000100, ACTUAL: 10000100  OK
+# At   50ns: a=01110011  b=01011101  mode=XOR_OP:  EXPECT: result = 00101110, ACTUAL: 00101110  OK
+# At   70ns: a=00111100  b=10110111  mode=XOR_OP:  EXPECT: result = 10001011, ACTUAL: 10001011  OK
+# At   90ns: a=11000000  b=00101000  mode=AND_OP:  EXPECT: result = 00000000, ACTUAL: 00000000  OK
+# At  110ns: a=11110010  b=11101001  mode=XOR_OP:  EXPECT: result = 00011011, ACTUAL: 00011011  OK
+# At  130ns: a=00000111  b=10010100  mode=XOR_OP:  EXPECT: result = 10010011, ACTUAL: 10010011  OK
+# At  150ns: a=01011101  b=10000101  mode=AND_OP:  EXPECT: result = 00000101, ACTUAL: 00000101  OK
+# At  170ns: a=01111001  b=11011010  mode=XOR_OP:  EXPECT: result = 10100011, ACTUAL: 10100011  OK
+# At  190ns: a=10001001  b=11110110  mode=AND_OP:  EXPECT: result = 10000000, ACTUAL: 10000000  OK
+# ** Note: $finish    : 5-5_testbench.sv(32)
+#    Time: 200 ns  Iteration: 1  Instance: /top/test

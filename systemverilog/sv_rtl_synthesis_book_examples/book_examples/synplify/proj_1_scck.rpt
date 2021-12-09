@@ -1,0 +1,29 @@
+# Synospys Constraint Checker(syntax only), version map201303sp1_1rc, Build 007R, built Aug  9 2013
+# Copyright (C) 1994-2013, Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use or distribution of the software is strictly prohibited.
+
+# Written on Sat Sep  7 01:40:25 2013
+
+
+##### DESIGN INFO #######################################################
+
+Top View:                "status_reg"
+Constraint File(s):      (none)
+
+#Run constraint checker to find more issues with constraints.
+#########################################################################
+
+
+
+No issues found in constraint syntax.
+
+
+
+Clock Summary
+**************
+
+Start              Requested     Requested     Clock        Clock              
+Clock              Frequency     Period        Type         Group              
+-------------------------------------------------------------------------------
+System             1.0 MHz       1000.000      system       system_clkgroup    
+status_reg|clk     100.0 MHz     10.000        inferred     Inferred_clkgroup_0
+===============================================================================

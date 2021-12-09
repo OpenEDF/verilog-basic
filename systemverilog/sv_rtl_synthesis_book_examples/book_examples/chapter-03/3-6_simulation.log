@@ -1,0 +1,56 @@
+QuestaSim qverilog 10.2a Compiler 2013.03 Mar 15 2013
+qverilog -f 3-6_run.f 
+-- Compiling module add_type
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	test
+	top
++ C:\questa_sim_10.2a\win32/vsim -lib work test top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt test top 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# 
+# //  Questa Sim
+# //  Version 10.2a win32 Mar 15 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.test(fast)
+# Loading work.top(fast)
+# Loading work.add_type(fast)
+# Loading work.add_type(fast__1)
+# Loading work.add_type(fast__2)
+# Loading work.add_type(fast__3)
+# run -all 
+#  
+# port i1.a type after parameter override is reg[0:0]
+# port i1.b type after parameter override is reg[0:0]
+# port i1.sum type after parameter override is reg[0:0]
+#  
+# port i2.a type after parameter override is bit signed[31:0]
+# port i2.b type after parameter override is bit signed[31:0]
+# port i2.sum type after parameter override is bit signed[31:0]
+#  
+# port i3.a type after parameter override is real
+# port i3.b type after parameter override is real
+# port i3.sum type after parameter override is real
+#  
+# port i4.a type after parameter override is reg signed[23:0]
+# port i4.b type after parameter override is reg signed[23:0]
+# port i4.sum type after parameter override is reg signed[23:0]
+#  
+# 
+# 
+# *** No simulation results expected ***
+# *** Only testing that the dut compiles and elaborates ***
+# 
+# 
+# ** Note: $finish    : 3-6_testbench.sv(38)
+#    Time: 5 ns  Iteration: 0  Instance: /test

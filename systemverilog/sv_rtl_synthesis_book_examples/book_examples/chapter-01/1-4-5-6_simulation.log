@@ -1,0 +1,37 @@
+QuestaSim qverilog 10.2a Compiler 2013.03 Mar 15 2013
+qverilog -f 1-4_run.f 
+-- Compiling module rtl_adder_subtracter
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
++ C:\questa_sim_10.2a\win32/vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt top 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# 
+# //  Questa Sim
+# //  Version 10.2a win32 Mar 15 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# run -all 
+# At 10: 	 a=19  b=9  mode=0  sum=28
+# At 30: 	 a=11  b=7  mode=1  sum=4
+# At 50: 	 a=13  b=8  mode=1  sum=5
+# At 70: 	 a=15  b=3  mode=1  sum=12
+# At 90: 	 a=14  b=8  mode=0  sum=22
+# At 110: 	 a=12  b=2  mode=1  sum=10
+# At 130: 	 a=16  b=3  mode=1  sum=13
+# At 150: 	 a=20  b=9  mode=0  sum=29
+# At 170: 	 a=18  b=2  mode=0  sum=20
+# At 190: 	 a=20  b=7  mode=0  sum=27
+# ** Note: $finish    : 1-5_testbench_example.sv(31)
+#    Time: 200 ns  Iteration: 1  Instance: /top/test

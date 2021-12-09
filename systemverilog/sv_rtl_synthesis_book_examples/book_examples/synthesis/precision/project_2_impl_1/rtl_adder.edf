@@ -1,0 +1,98 @@
+(edif rtl_adder 
+ (edifVersion 2 0 0)
+ (edifLevel 0)
+ (keywordMap (keywordLevel 0))
+ (status 
+  (written 
+   (timestamp 2016 08 04 09 51 10)
+   (program "Precision RTL Synthesis " (version "64-bit 2016.1.0.15"))
+   (author "Mentor Graphics Corporation")))
+ (external xcv 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell OBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell IBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell LUT3 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I0 (direction INPUT))
+     (port I1 (direction INPUT))
+     (port I2 (direction INPUT))
+     (port O (direction OUTPUT))))))
+ (library work 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell rtl_adder (cellType GENERIC)
+   (view INTERFACE  (viewType NETLIST)
+    (interface 
+     (port a (direction INPUT))
+     (port b (direction INPUT))
+     (port ci (direction INPUT))
+     (port sum (direction OUTPUT))
+     (port co (direction OUTPUT)))
+    (property AREA (string "2.000000"))
+    (property DESIGN_IS_RTL (string "NO"))
+    (property PART (string "v50bg256-6"))
+    (contents 
+     (instance co_obuf (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance sum_obuf (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance ci_ibuf (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance b_ibuf (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance a_ibuf (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance ix21384z1464 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "96")))
+     (instance ix40455z1546 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "E8")))
+     (net a 
+      (joined 
+       (portRef a )
+       (portRef I (instanceRef a_ibuf ))))
+     (net b 
+      (joined 
+       (portRef b )
+       (portRef I (instanceRef b_ibuf ))))
+     (net ci 
+      (joined 
+       (portRef ci )
+       (portRef I (instanceRef ci_ibuf ))))
+     (net a_int 
+      (joined 
+       (portRef O (instanceRef a_ibuf ))
+       (portRef I0 (instanceRef ix40455z1546 ))
+       (portRef I1 (instanceRef ix21384z1464 ))))
+     (net b_int 
+      (joined 
+       (portRef O (instanceRef b_ibuf ))
+       (portRef I1 (instanceRef ix40455z1546 ))
+       (portRef I2 (instanceRef ix21384z1464 ))))
+     (net ci_int 
+      (joined 
+       (portRef O (instanceRef ci_ibuf ))
+       (portRef I2 (instanceRef ix40455z1546 ))
+       (portRef I0 (instanceRef ix21384z1464 ))))
+     (net co 
+      (joined 
+       (portRef co )
+       (portRef O (instanceRef co_obuf ))))
+     (net sum 
+      (joined 
+       (portRef sum )
+       (portRef O (instanceRef sum_obuf ))))
+     (net sum_dup_0 
+      (joined 
+       (portRef O (instanceRef ix21384z1464 ))
+       (portRef I (instanceRef sum_obuf ))))
+     (net co_dup_0 
+      (joined 
+       (portRef O (instanceRef ix40455z1546 ))
+       (portRef I (instanceRef co_obuf ))))))))
+ (design rtl_adder (cellRef rtl_adder (libraryRef work ))
+  (property PART (string "v50bg256-6"))))

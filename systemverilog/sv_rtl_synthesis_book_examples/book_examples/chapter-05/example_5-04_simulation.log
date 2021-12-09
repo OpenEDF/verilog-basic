@@ -1,0 +1,32 @@
+QuestaSim qverilog 10.2c Compiler 2013.07 Jul 18 2013
+qverilog -f 5-4_run.f 
+-- Compiling module tri_state_adder
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
++ C:/questa_sim_10.2c/win32/vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt top 
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# //  Questa Sim
+# //  Version 10.2c Unknown Platform Jul 18 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# run -all 
+# a=0000  b=0000  enable=0  out=zzzz: expect out=zzzz
+# a=0001  b=0010  enable=0  out=zzzz: expect out=zzzz
+# a=0001  b=0010  enable=1  out=0011: expect out=0011
+# a=0101  b=0010  enable=1  out=0111: expect out=0111
+# a=0101  b=0010  enable=0  out=zzzz: expect out=zzzz
+# ** Note: $finish    : 5-4_testbench.sv(34)
+#    Time: 11 ns  Iteration: 0  Instance: /top/test

@@ -1,0 +1,10 @@
+8:-out_dir
+80:B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1//rtlc.out
+10:-pipe_flow
+4:-svf
+97:B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1//hdlAnalyze_sysverilogfile
+25:-comment_transoff_regions
+13:-lib_map_file
+80:B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1//.jaguarc
+106:+incdir+B:/OneDrive/sandbox/book_examples/chapter-05+B:/OneDrive/sandbox/book_examples/synthesis/precision
+17:+define+synthesis

@@ -1,0 +1,33 @@
+#Build: Synplify Pro H-2013.03-SP1-1 , Build 407R, May 29 2013
+#install: /tools/synopsys/synplify
+#OS: Linux 
+#Hostname: shdl-1
+
+#Implementation: synplify
+
+$ Start of Compile
+#Sat Sep  7 01:36:29 2013
+
+Synopsys Verilog Compiler, version comp201303rcp1, Build 233R, built Aug  1 2013
+@N|Running in 32-bit mode
+Copyright (C) 1994-2013 Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use or distribution of the software is strictly prohibited.
+
+@N:: Running Verilog Compiler in System Verilog mode
+@N:: Running Verilog Compiler in Multiple File Compilation Unit mode
+@I::"/tools/synopsys/synplify/lib/xilinx/unisim_m10i.v"
+@I::"/tools/synopsys/synplify/lib/xilinx/unisim.v"
+@I::"/tools/synopsys/synplify/lib/vlog/umr_capim.v"
+@I::"/tools/synopsys/synplify/lib/vlog/scemi_objects.v"
+@I::"/tools/synopsys/synplify/lib/vlog/scemi_pipes.svh"
+@I::"/tools/synopsys/synplify/lib/vlog/hypermods.v"
+@I::"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv"
+@E: CS231 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":20:0:20:15|Unknown macro begin_keywords
+@W: CG677 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":31:2:31:9|Ignoring timeunit for synthesis
+@W: CG677 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":31:16:31:28|Ignoring timeprecision for synthesis
+@E: CS231 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":40:0:40:13|Unknown macro end_keywords
+2 syntax errors
+@END
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Sep  7 01:36:29 2013
+
+###########################################################]

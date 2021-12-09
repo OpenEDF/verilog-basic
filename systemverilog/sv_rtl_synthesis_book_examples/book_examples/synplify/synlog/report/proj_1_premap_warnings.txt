@@ -1,0 +1,1 @@
+@W: MT529 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":33:2:33:10|Found inferred clock status_reg|clk which controls 6 sequential elements including status_1[7:2]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 

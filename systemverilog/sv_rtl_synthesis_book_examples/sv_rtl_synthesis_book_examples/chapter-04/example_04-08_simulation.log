@@ -1,0 +1,76 @@
+Start time: 09:57:44 on Apr 04,2017
+qverilog -f example_04-08_run.f 
+-- Compiling package definitions_pkg
+-- Compiling module instruction_register
+-- Importing package definitions_pkg
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
+# vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# //  Questa Sim-64
+# //  Version 10.6 win64 Dec 13 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.definitions_pkg(fast)
+# Loading work.top(fast)
+# run -all
+# 
+# Reseting the instruction register...
+# 
+# Writing values to register stack...
+# Writing to register location 0: 
+#   opcode = 0 (ADD)
+#   op_type = 1 (SIGNED)
+#   op_a.s_data = 3
+#   op_b.s_data = -5
+# 
+# Writing to register location 1: 
+#   opcode = 1 (SUB)
+#   op_type = 0 (UNSIGNED)
+#   op_a.s_data = 4
+#   op_b.s_data = 10
+# 
+# Writing to register location 2: 
+#   opcode = 2 (MULT)
+#   op_type = 1 (SIGNED)
+#   op_a.s_data = 5
+#   op_b.s_data = -7
+# 
+# 
+# Reading back the same register locations written...
+# Read from register location 0: 
+#   iw.opcode = 0 (ADD)
+#   iw.op_type = 1 (SIGNED)
+#   iw.op_a.s_data = 3
+#   iw.op_b.s_data = -5
+# 
+# Read from register location 1: 
+#   iw.opcode = 1 (SUB)
+#   iw.op_type = 0 (UNSIGNED)
+#   iw.op_a.s_data = 4
+#   iw.op_b.s_data = 10
+# 
+# Read from register location 2: 
+#   iw.opcode = 2 (MULT)
+#   iw.op_type = 1 (SIGNED)
+#   iw.op_a.s_data = 5
+#   iw.op_b.s_data = -7
+# 
+# ** Note: $finish    : example_04-08_testbench.sv(82)
+#    Time: 86 ns  Iteration: 1  Instance: /top/test
+# End time: 09:57:46 on Apr 04,2017, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0

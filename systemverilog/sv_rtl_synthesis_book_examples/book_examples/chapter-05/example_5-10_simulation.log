@@ -1,0 +1,37 @@
+QuestaSim qverilog 10.2c Compiler 2013.07 Jul 18 2013
+qverilog -f 5-10_run.f 
+-- Compiling module boundary_detector
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
++ C:/questa_sim_10.2c/win32/vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt top 
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# //  Questa Sim
+# //  Version 10.2c Unknown Platform Jul 18 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# run -all 
+# At   10ns: address=0:  EXPECT: boundary_flag = 1, ACTUAL: 1  OK
+# At   20ns: address=16383:  EXPECT: boundary_flag = 0, ACTUAL: 0  OK
+# At   30ns: address=16384:  EXPECT: boundary_flag = 1, ACTUAL: 1  OK
+# At   40ns: address=16385:  EXPECT: boundary_flag = 0, ACTUAL: 0  OK
+# At   50ns: address=16382:  EXPECT: boundary_flag = 0, ACTUAL: 0  OK
+# At   60ns: address=16383:  EXPECT: boundary_flag = 0, ACTUAL: 0  OK
+# At   70ns: address=16384:  EXPECT: boundary_flag = 1, ACTUAL: 1  OK
+# At   80ns: address=16381:  EXPECT: boundary_flag = 0, ACTUAL: 0  OK
+# At   90ns: address=16382:  EXPECT: boundary_flag = 0, ACTUAL: 0  OK
+# At  100ns: address=16383:  EXPECT: boundary_flag = 0, ACTUAL: 0  OK
+# ** Note: $finish    : 5-10_testbench.sv(46)
+#    Time: 105 ns  Iteration: 0  Instance: /top/test

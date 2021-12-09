@@ -1,0 +1,65 @@
+//Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//
+//Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//           Portions copyright 1991-2008 Compuware Corporation
+//                     UNPUBLISHED, LICENSED SOFTWARE.
+//          CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//        PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//
+//Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//
+
+                                =======================                         
+                                Precision 2013a.9                         
+                                =======================                         
+
+
+
+                                FSM EXTRACTION ANALYSIS                         
+                                =======================                         
+
+
+~~~~~~~~~~~~~~~~~~~~
+Module : controller
+~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 4
+Primary State Variable          : state[3:0]
+Other State Variable(s)         : 1) next_state[3:0]
+Async set/reset state(s)        : 0001 
+Re-encoding Scheme              : BINARY 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                              RESET	                               0001	                            00
+FSM:	    1	                             DECODE	                               0010	                            01
+FSM:	    2	                               LOAD	                               0100	                            10
+FSM:	    3	                              STORE	                               1000	                            11
+
+
+
+
+
+
+~~~~~~~~~~~~~~
+Module : uart
+~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 3
+Primary State Variable          : state[2:0]
+Other State Variable(s)         : 1) next_state[2:0]
+Async set/reset state(s)        : 001 
+Re-encoding Scheme              : BINARY 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                               WAIT	                                001	                            00
+FSM:	    1	                               LOAD	                                010	                            01
+FSM:	    2	                              READY	                                100	                            10
+
+
+

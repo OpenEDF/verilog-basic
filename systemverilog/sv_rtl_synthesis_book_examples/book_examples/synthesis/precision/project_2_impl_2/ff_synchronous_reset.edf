@@ -1,0 +1,75 @@
+(edif ff_synchronous_reset 
+ (edifVersion 2 0 0)
+ (edifLevel 0)
+ (keywordMap (keywordLevel 0))
+ (status 
+  (written 
+   (timestamp 2016 09 18 08 00 32)
+   (program "Precision RTL Synthesis" (version "32-bit 2015.1.6"))
+   (author "Mentor Graphics Corporation")))
+ (external flex10 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell DFF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port D (direction INPUT))
+     (port CLK (direction INPUT))
+     (port CLRN (direction INPUT))
+     (port PRN (direction INPUT))
+     (port Q (direction OUTPUT)))))
+  (cell VCC (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port Y (direction OUTPUT)))))
+  (cell LUT (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port IN1 (direction INPUT))
+     (port IN2 (direction INPUT))
+     (port IN3 (direction INPUT))
+     (port IN4 (direction INPUT))
+     (port A_OUT (direction OUTPUT))))))
+ (library work 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell ff_synchronous_reset (cellType GENERIC)
+   (view INTERFACE  (viewType NETLIST)
+    (interface 
+     (port (array (rename q "q(0:0)") 1 )(direction OUTPUT))
+     (port (array (rename d "d(0:0)") 1 )(direction INPUT))
+     (port clock (direction INPUT))
+     (port reset (direction INPUT)))
+    (property DESIGN_IS_RTL (string "NO"))
+    (contents 
+     (instance reg_q_0 (viewRef NETLIST  (cellRef DFF (libraryRef flex10 ))))
+     (instance ps_vcc (viewRef NETLIST  (cellRef VCC (libraryRef flex10 ))))
+     (instance ix51271z1316 (viewRef NETLIST  (cellRef LUT (libraryRef flex10 )))
+      (property lut_function (string "((IN1 IN2'))"))
+      (property area_report (string "0")))
+     (net q_0 
+      (joined 
+       (portRef (member q 0))
+       (portRef Q (instanceRef reg_q_0 ))))
+     (net d_0 
+      (joined 
+       (portRef (member d 0))
+       (portRef IN1 (instanceRef ix51271z1316 ))))
+     (net clock 
+      (joined 
+       (portRef clock )
+       (portRef CLK (instanceRef reg_q_0 ))))
+     (net reset 
+      (joined 
+       (portRef reset )
+       (portRef IN2 (instanceRef ix51271z1316 ))))
+     (net nx51271z2 
+      (joined 
+       (portRef Y (instanceRef ps_vcc ))
+       (portRef CLRN (instanceRef reg_q_0 ))
+       (portRef PRN (instanceRef reg_q_0 ))))
+     (net nx51271z1 
+      (joined 
+       (portRef A_OUT (instanceRef ix51271z1316 ))
+       (portRef D (instanceRef reg_q_0 ))))))))
+ (design ff_synchronous_reset (cellRef ff_synchronous_reset (libraryRef work ))))

@@ -1,0 +1,330 @@
+<html><body><samp><pre>
+<!@TC:1378544261>
+#Build: Synplify Pro H-2013.03-SP1-1 , Build 407R, May 29 2013
+#install: /tools/synopsys/synplify
+#OS: Linux 
+#Hostname: shdl-1
+
+#Implementation: synplify
+
+<a name=compilerReport24>$ Start of Compile</a>
+#Sat Sep  7 01:57:41 2013
+
+Synopsys Verilog Compiler, version comp201303rcp1, Build 233R, built Aug  1 2013
+@N: : <!@TM:1378544262> | Running in 32-bit mode 
+Copyright (C) 1994-2013 Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use or distribution of the software is strictly prohibited.
+
+@N: : <!@TM:1378544262> | : Running Verilog Compiler in System Verilog mode 
+@N: : <!@TM:1378544262> | : Running Verilog Compiler in Multiple File Compilation Unit mode 
+@I::"/tools/synopsys/synplify/lib/actel/a3200dx.v"
+@I::"/tools/synopsys/synplify/lib/vlog/umr_capim.v"
+@I::"/tools/synopsys/synplify/lib/vlog/scemi_objects.v"
+@I::"/tools/synopsys/synplify/lib/vlog/scemi_pipes.svh"
+@I::"/tools/synopsys/synplify/lib/vlog/hypermods.v"
+@I::"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv"
+<font color=#A52A2A>@W:<a href="@W:CG677:@XP_HELP">CG677</a> : <a href="/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv:31:2:31:10:@W:CG677:@XP_MSG">5-1_concatenate_op-1.sv(31)</a><!@TM:1378544262> | Ignoring timeunit for synthesis</font>
+<font color=#A52A2A>@W:<a href="@W:CG677:@XP_HELP">CG677</a> : <a href="/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv:31:16:31:29:@W:CG677:@XP_MSG">5-1_concatenate_op-1.sv(31)</a><!@TM:1378544262> | Ignoring timeprecision for synthesis</font>
+Verilog syntax check successful!
+Options changed - recompiling
+Selecting top level module status_reg
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv:21:7:21:17:@N:CG364:@XP_MSG">5-1_concatenate_op-1.sv(21)</a><!@TM:1378544262> | Synthesizing module status_reg
+
+<font color=#A52A2A>@W:<a href="@W:CL208:@XP_HELP">CL208</a> : <a href="/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv:33:2:33:11:@W:CL208:@XP_MSG">5-1_concatenate_op-1.sv(33)</a><!@TM:1378544262> | All reachable assignments to bit 5 of status[7:0] assign 1, register removed by optimization.</font>
+<font color=#A52A2A>@W:<a href="@W:CL208:@XP_HELP">CL208</a> : <a href="/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv:33:2:33:11:@W:CL208:@XP_MSG">5-1_concatenate_op-1.sv(33)</a><!@TM:1378544262> | All reachable assignments to bit 6 of status[7:0] assign 1, register removed by optimization.</font>
+@END
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 38MB peak: 39MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Sep  7 01:57:42 2013
+
+###########################################################]
+Map & Optimize Report
+
+<a name=mapperReport25>Synopsys Microsemi Technology Mapper, Version map201303sp1_1rc, Build 003R, Built Aug  2 2013 16:59:41</a>
+Copyright (C) 1994-2013, Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use or distribution of the software is strictly prohibited.
+Product Version H-2013.03-SP1-1 
+<font color=#A52A2A>@W:<a href="@W:FF137:@XP_HELP">FF137</a> : <!@TM:1378544263> | Setting fanout limit to 16 </font> 
+@N:<a href="@N:MF249:@XP_HELP">MF249</a> : <!@TM:1378544263> | Running in 32-bit mode. 
+List of partitions to map:
+   view:work.status_reg(verilog)
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 62MB peak: 63MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 62MB peak: 63MB)
+
+
+Added 0 Buffers
+Added 0 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 0 Combinational Cells via replication
+---------------------------------------
+Synthesized design as a chip
+<a name=resourceUsage26>Resource Usage Report of status_reg </a>
+
+Target Part: a3265dx-1
+Combinational Cells:    0 of 475 (0%)
+Sequential Cells:    6 of 510 (1%)
+Total Cells:         6 of 985 (1%)
+DSP Blocks:          0
+Clock Buffers:       1
+IO Cells:            16
+
+Details:
+   dfc1b:          6	seq:1
+
+   clkbuf:         1	clock buffer
+   inbuf:          7	
+   outbuf:         8	
+
+   false:          1	
+   true:           1	
+<font color=#A52A2A>@W:<a href="@W:MT420:@XP_HELP">MT420</a> : <!@TM:1378544263> | Found inferred clock status_reg|clk with period 10.00ns. Please declare a user-defined clock on object "p:clk"</font> 
+
+
+
+<a name=timingReport27>##### START OF TIMING REPORT #####[</a>
+# Timing Report written on Sat Sep  7 01:57:43 2013
+#
+
+
+Top view:               status_reg
+Requested Frequency:    100.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    
+@N:<a href="@N:MT320:@XP_HELP">MT320</a> : <!@TM:1378544263> | Timing report estimates place and route data. Please look at the place and route timing report for final timing. 
+
+
+<a name=performanceSummary28>Performance Summary </a>
+*******************
+
+
+Worst slack in design: 2.010
+
+                   Requested     Estimated     Requested     Estimated               Clock        Clock              
+Starting Clock     Frequency     Frequency     Period        Period        Slack     Type         Group              
+---------------------------------------------------------------------------------------------------------------------
+status_reg|clk     100.0 MHz     125.2 MHz     10.000        7.990         2.010     inferred     Inferred_clkgroup_0
+System             1.0 MHz       1.0 MHz       1000.000      996.290       3.710     system       system_clkgroup    
+=====================================================================================================================
+
+
+
+
+
+<a name=clockRelationships29>Clock Relationships</a>
+*******************
+
+Clocks                          |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+----------------------------------------------------------------------------------------------------------------------
+Starting        Ending          |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+----------------------------------------------------------------------------------------------------------------------
+System          status_reg|clk  |  10.000      3.710  |  No paths    -      |  No paths    -      |  No paths    -    
+status_reg|clk  System          |  10.000      2.010  |  No paths    -      |  No paths    -      |  No paths    -    
+======================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+<a name=interfaceInfo30>Interface Information </a>
+*********************
+
+
+
+<a name=inputPorts31>Input Ports: </a>
+
+Port          Starting            User           Arrival     Required          
+Name          Reference           Constraint     Time        Time         Slack
+              Clock                                                            
+-------------------------------------------------------------------------------
+carry         System (rising)     NA             0.000       3.710        3.710
+clk           NA                  NA             NA          NA           NA   
+int_en        System (rising)     NA             0.000       3.710        3.710
+neg           System (rising)     NA             0.000       3.710        3.710
+parity[0]     System (rising)     NA             0.000       3.710        3.710
+parity[1]     System (rising)     NA             0.000       3.710        3.710
+rstN          NA                  NA             NA          NA           NA   
+zero          System (rising)     NA             0.000       3.710        3.710
+===============================================================================
+
+
+<a name=outputPorts32>Output Ports: </a>
+
+Port          Starting                    User           Arrival     Required          
+Name          Reference                   Constraint     Time        Time         Slack
+              Clock                                                                    
+---------------------------------------------------------------------------------------
+status[0]     status_reg|clk (rising)     NA             7.990       10.000       2.010
+status[1]     status_reg|clk (rising)     NA             7.990       10.000       2.010
+status[2]     status_reg|clk (rising)     NA             7.990       10.000       2.010
+status[3]     status_reg|clk (rising)     NA             7.990       10.000       2.010
+status[4]     status_reg|clk (rising)     NA             7.990       10.000       2.010
+status[5]     NA                          NA             NA          NA           NA   
+status[6]     NA                          NA             NA          NA           NA   
+status[7]     status_reg|clk (rising)     NA             7.990       10.000       2.010
+=======================================================================================
+
+
+
+====================================
+<a name=clockReport33>Detailed Report for Clock: status_reg|clk</a>
+====================================
+
+
+
+<a name=startingSlack34>Starting Points with Worst Slack</a>
+********************************
+
+                Starting                                             Arrival          
+Instance        Reference          Type      Pin     Net             Time        Slack
+                Clock                                                                 
+--------------------------------------------------------------------------------------
+status_1[2]     status_reg|clk     dfc1b     q       status_1[2]     4.165       2.010
+status_1[3]     status_reg|clk     dfc1b     q       status_1[3]     4.165       2.010
+status_1[4]     status_reg|clk     dfc1b     q       status_1[4]     4.165       2.010
+status_1[5]     status_reg|clk     dfc1b     q       status_1[5]     4.165       2.010
+status_1[6]     status_reg|clk     dfc1b     q       status_1[6]     4.165       2.010
+status_1[7]     status_reg|clk     dfc1b     q       status_1[7]     4.165       2.010
+======================================================================================
+
+
+<a name=endingSlack35>Ending Points with Worst Slack</a>
+******************************
+
+                Starting                                                Required          
+Instance        Reference          Type     Pin           Net           Time         Slack
+                Clock                                                                     
+------------------------------------------------------------------------------------------
+status[7:0]     status_reg|clk     Port     status[0]     status[0]     10.000       2.010
+status[7:0]     status_reg|clk     Port     status[1]     status[1]     10.000       2.010
+status[7:0]     status_reg|clk     Port     status[2]     status[2]     10.000       2.010
+status[7:0]     status_reg|clk     Port     status[3]     status[3]     10.000       2.010
+status[7:0]     status_reg|clk     Port     status[4]     status[4]     10.000       2.010
+status[7:0]     status_reg|clk     Port     status[7]     status[7]     10.000       2.010
+==========================================================================================
+
+
+
+<a name=worstPaths36>Worst Path Information</a>
+<a href="/mnt/sandbox/book_examples/chapter-05/synplify/proj_1.srr:srsf/mnt/sandbox/book_examples/chapter-05/synplify/proj_1.srs:fp:11475:11985:@XP_NAMES_GATE">View Worst Path in Analyst</a>
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      10.000
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         10.000
+
+    - Propagation time:                      7.990
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     2.010
+
+    Number of logic level(s):                1
+    Starting point:                          status_1[2] / q
+    Ending point:                            status[7:0] / status[0]
+    The start point is clocked by            status_reg|clk [rising] on pin clk
+    The end   point is clocked by            System [rising]
+
+Instance / Net                Pin           Pin               Arrival     No. of    
+Name               Type       Name          Dir     Delay     Time        Fan Out(s)
+------------------------------------------------------------------------------------
+status_1[2]        dfc1b      q             Out     4.165     4.165       -         
+status_1[2]        Net        -             -       -         -           1         
+status_pad[0]      outbuf     d             In      0.000     4.165       -         
+status_pad[0]      outbuf     pad           Out     3.825     7.990       -         
+status[0]          Net        -             -       -         -           1         
+status[7:0]        Port       status[0]     Out     0.000     7.990       -         
+====================================================================================
+
+
+
+
+====================================
+<a name=clockReport37>Detailed Report for Clock: System</a>
+====================================
+
+
+
+<a name=startingSlack38>Starting Points with Worst Slack</a>
+********************************
+
+                Starting                                           Arrival          
+Instance        Reference     Type     Pin           Net           Time        Slack
+                Clock                                                               
+------------------------------------------------------------------------------------
+carry           System        Port     carry         carry         0.000       3.710
+int_en          System        Port     int_en        int_en        0.000       3.710
+neg             System        Port     neg           neg           0.000       3.710
+parity[1:0]     System        Port     parity[0]     parity[0]     0.000       3.710
+parity[1:0]     System        Port     parity[1]     parity[1]     0.000       3.710
+zero            System        Port     zero          zero          0.000       3.710
+====================================================================================
+
+
+<a name=endingSlack39>Ending Points with Worst Slack</a>
+******************************
+
+                Starting                                        Required          
+Instance        Reference     Type      Pin     Net             Time         Slack
+                Clock                                                             
+----------------------------------------------------------------------------------
+status_1[2]     System        dfc1b     d       parity_c[0]     9.575        3.710
+status_1[3]     System        dfc1b     d       parity_c[1]     9.575        3.710
+status_1[4]     System        dfc1b     d       neg_c           9.575        3.710
+status_1[5]     System        dfc1b     d       carry_c         9.575        3.710
+status_1[6]     System        dfc1b     d       zero_c          9.575        3.710
+status_1[7]     System        dfc1b     d       int_en_c        9.575        3.710
+==================================================================================
+
+
+
+<a name=worstPaths40>Worst Path Information</a>
+<a href="/mnt/sandbox/book_examples/chapter-05/synplify/proj_1.srr:srsf/mnt/sandbox/book_examples/chapter-05/synplify/proj_1.srs:fp:15179:15659:@XP_NAMES_GATE">View Worst Path in Analyst</a>
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      10.000
+    - Setup time:                            0.425
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         9.575
+
+    - Propagation time:                      5.865
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (non-critical) :                 3.710
+
+    Number of logic level(s):                1
+    Starting point:                          carry / carry
+    Ending point:                            status_1[5] / d
+    The start point is clocked by            System [rising]
+    The end   point is clocked by            status_reg|clk [rising] on pin clk
+
+Instance / Net               Pin       Pin               Arrival     No. of    
+Name               Type      Name      Dir     Delay     Time        Fan Out(s)
+-------------------------------------------------------------------------------
+carry              Port      carry     In      0.000     0.000       -         
+carry              Net       -         -       -         -           1         
+carry_pad          inbuf     pad       In      0.000     0.000       -         
+carry_pad          inbuf     y         Out     5.865     5.865       -         
+carry_c            Net       -         -       -         -           1         
+status_1[5]        dfc1b     d         In      0.000     5.865       -         
+===============================================================================
+
+
+
+##### END OF TIMING REPORT #####]
+
+H-2013.03-SP1-1 
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 28MB peak: 63MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Sep  7 01:57:43 2013
+
+###########################################################]
+
+</pre></samp></body></html>

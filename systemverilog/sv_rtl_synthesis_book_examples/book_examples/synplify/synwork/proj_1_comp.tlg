@@ -1,0 +1,5 @@
+Selecting top level module status_reg
+@N: CG364 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":21:7:21:16|Synthesizing module status_reg
+
+@W: CL208 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":33:2:33:10|All reachable assignments to bit 5 of status[7:0] assign 1, register removed by optimization.
+@W: CL208 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":33:2:33:10|All reachable assignments to bit 6 of status[7:0] assign 1, register removed by optimization.

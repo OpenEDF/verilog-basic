@@ -1,0 +1,36 @@
+
+
+End Points:
+
+   Index   Instance      Pin         Type   Start Clock        End Clock          Clock Delay   Req Per    Slack
+   -----   --------      ---         ----   -----------        ---------          -----------   -------    -----
+       1   status[7:0]   status[0]   port   status_reg|clk:r   System                   0.000    10.000    5.895
+       2   status[7:0]   status[1]   port   status_reg|clk:r   System                   0.000    10.000    5.895
+       3   status[7:0]   status[2]   port   status_reg|clk:r   System                   0.000    10.000    5.895
+       4   status[7:0]   status[3]   port   status_reg|clk:r   System                   0.000    10.000    5.895
+       5   status[7:0]   status[4]   port   status_reg|clk:r   System                   0.000    10.000    5.895
+       6   status[7:0]   status[7]   port   status_reg|clk:r   System                   0.000    10.000    5.895
+       7   status_1[2]   D           reg    System             status_reg|clk:r         1.629    10.000   10.323
+       8   status_1[3]   D           reg    System             status_reg|clk:r         1.629    10.000   10.323
+       9   status_1[4]   D           reg    System             status_reg|clk:r         1.629    10.000   10.323
+      10   status_1[5]   D           reg    System             status_reg|clk:r         1.629    10.000   10.323
+      11   status_1[6]   D           reg    System             status_reg|clk:r         1.629    10.000   10.323
+      12   status_1[7]   D           reg    System             status_reg|clk:r         1.629    10.000   10.323
+
+
+Start Points:
+
+   Index   Instance      Pin         Type   Start Clock        Clock Delay    Slack
+   -----   --------      ---         ----   -----------        -----------    -----
+       1   status_1[2]   Q           reg    status_reg|clk:r         1.629    5.895
+       2   status_1[3]   Q           reg    status_reg|clk:r         1.629    5.895
+       3   status_1[4]   Q           reg    status_reg|clk:r         1.629    5.895
+       4   status_1[5]   Q           reg    status_reg|clk:r         1.629    5.895
+       5   status_1[6]   Q           reg    status_reg|clk:r         1.629    5.895
+       6   status_1[7]   Q           reg    status_reg|clk:r         1.629    5.895
+       7   parity[1:0]   parity[0]   port   System                   0.000   10.323
+       8   parity[1:0]   parity[1]   port   System                   0.000   10.323
+       9   neg           neg         port   System                   0.000   10.323
+      10   carry         carry       port   System                   0.000   10.323
+      11   zero          zero        port   System                   0.000   10.323
+      12   int_en        int_en      port   System                   0.000   10.323

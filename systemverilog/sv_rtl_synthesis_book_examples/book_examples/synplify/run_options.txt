@@ -1,0 +1,57 @@
+#--  Synopsys, Inc.
+#--  Version H-2013.03-SP1-1 
+#--  Project file /mnt/sandbox/book_examples/chapter-05/synplify/run_options.txt
+
+#project files
+add_file -verilog -vlog_std sysv "./5-1_concatenate_op-1.sv"
+add_file -image "/mnt/sandbox/book_examples/chapter-05/synplify/schematic.png"
+
+
+#implementation: "synplify"
+impl -add synplify -type fpga
+
+#
+#implementation attributes
+
+set_option -vlog_std sysv
+set_option -project_relative_includes 1
+
+#device options
+set_option -technology 3200DX
+set_option -part A3265DX
+set_option -package ""
+set_option -speed_grade -1
+set_option -part_companion ""
+
+#compilation/mapping options
+set_option -use_fsm_explorer 0
+
+# mapper_options
+set_option -frequency 100.000000
+set_option -auto_constrain_io 1
+set_option -write_verilog 0
+set_option -write_vhdl 0
+set_option -srs_instrumentation 1
+
+# actel_options
+set_option -RWCheckOnRam 0
+
+# Microsemi 3200DX
+set_option -maxfan 16
+set_option -disable_io_insertion 0
+set_option -preserve_registers 0
+
+# sequential_optimization_options
+set_option -symbolic_fsm_compiler 1
+
+# Compiler Options
+set_option -compiler_compatible 0
+set_option -resource_sharing 1
+set_option -multi_file_compilation_unit 1
+
+#automatic place and route (vendor) options
+set_option -write_apr_constraint 0
+
+#set result format/file last
+project -result_file "./synplify/proj_1.edn"
+impl -active "synplify"

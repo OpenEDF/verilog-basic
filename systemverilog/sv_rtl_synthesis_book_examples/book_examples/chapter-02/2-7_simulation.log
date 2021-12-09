@@ -1,0 +1,36 @@
+QuestaSim qverilog 10.2a Compiler 2013.03 Mar 15 2013
+qverilog -f 2-7_run.f 
+-- Compiling module processor
+-- Compiling module controller
+-- Compiling module mux8
+-- Compiling module alu
+-- Compiling module status_reg
+-- Compiling module reg8
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
++ C:\questa_sim_10.2a\win32/vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt top 
+# //  Questa Sim
+# //  Version 10.2a win32 Mar 15 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# run -all 
+# 
+# 
+# *** No results expected ***
+# *** Only testing that the dut compiles and elaborates ***
+# 
+# 
+# ** Note: $finish    : 2-7_testbench.sv(26)
+#    Time: 5 ns  Iteration: 0  Instance: /top/test

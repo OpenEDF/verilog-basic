@@ -1,0 +1,67 @@
+QuestaSim qverilog 10.2c Compiler 2013.07 Jul 18 2013
+qverilog snippet-09_inside_op.sv 
+-- Compiling module inside_1
+-- Compiling module inside_2
+-- Compiling module inside_3
+-- Compiling module inside_4
+-- Compiling module inside_5
+-- Compiling module inside_6
+
+Top level modules:
+	inside_1
+	inside_2
+	inside_3
+	inside_4
+	inside_5
+	inside_6
++ C:/questa_sim_10.2c/win32/vsim -lib work inside_1 inside_2 inside_3 inside_4 inside_5 inside_6 -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt inside_1 inside_2 inside_3 inside_4 inside_5 inside_6 
+# //  Questa Sim
+# //  Version 10.2c Unknown Platform Jul 18 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.inside_1(fast)
+# Loading work.inside_2(fast)
+# Loading work.inside_3(fast)
+# Loading work.inside_4(fast)
+# Loading work.inside_5(fast)
+# Loading work.inside_6(fast)
+# run -all 
+#  
+# inside_1: address is inside a set of literal values
+#   address = 5:    EXPECT boundary=0, ACTUAL 0 - OK
+#   address = 1024: EXPECT boundary=1, ACTUAL 1 - OK
+#  
+#  
+# inside_2: data is inside a range of literal values
+#   data = 5:    EXPECT small_value=1, ACTUAL 1 - OK
+#   data = 1024: EXPECT small_value=0, ACTUAL 0 - OK
+#  
+#  
+# inside_3: data is inside a range of literal values
+#   data = 8'b00101011: EXPECT pattern_flag=1, ACTUAL 1 - OK
+#   data = 8'b00111010: EXPECT pattern_flag=0, ACTUAL 0 - OK
+#  
+#  
+# inside_4: data is inside a range of literal values
+#   data = 5:  EXPECT data_matches=1, ACTUAL 1 - OK
+#   data = 10: EXPECT data_matches=0, ACTUAL 0 - OK
+#  
+#  
+# inside_5: data is inside a range of literal values
+#   data = 5:  EXPECT prime_val=1, ACTUAL 1 - OK
+#   data = 10: EXPECT prime_val=0, ACTUAL 0 - OK
+#  
+#  
+# inside_6: data is inside a range of literal values
+#   data = 5:  EXPECT prime_val=1, ACTUAL 1 - OK
+#   data = 10: EXPECT prime_val=0, ACTUAL 0 - OK
+#  
+#  quit -f 

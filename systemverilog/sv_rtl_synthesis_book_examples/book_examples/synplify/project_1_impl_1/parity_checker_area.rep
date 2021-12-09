@@ -1,0 +1,86 @@
+//  Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//  
+//  Start time Tue Sep 17 15:25:19 2013
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               12      180       6.67%
+Global Buffers                    1       4        25.00%
+LUTs                              4       1536      0.26%
+CLB Slices                        2       768       0.26%
+Dffs or Latches                   1       1536      0.07%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+********************************************************
+
+Library: work    Cell: parity_checker    View: INTERFACE
+
+********************************************************
+
+  Cell    Library  References     Total Area
+
+ BUFGP    xcv     1 x
+ FDC      xcv     1 x      1      1 Dffs or Latches
+ IBUF     xcv    10 x
+ LUT1     xcv     1 x      1      1 LUTs
+ LUT3     xcv     1 x      1      1 LUTs
+ LUT4     xcv     2 x      1      2 LUTs
+ OBUF     xcv     1 x
+
+ Number of ports :                      12
+ Number of nets :                       28
+ Number of instances :                  17
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of Dffs or Latches :             1
+ Number of LUTs :                        4
+ Number of gates :                       3
+ Number of accumulated instances :      17
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.parity_checker.INTERFACE
+
++---------------+-----------+----------+----------+----------+
+| Port          | Direction |   INFF   |  OUTFF   |  TRIFF   |
++---------------+-----------+----------+----------+----------+
+| data_in(8)    | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| data_in(7)    | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| data_in(6)    | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| data_in(5)    | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| data_in(4)    | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| data_in(3)    | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| data_in(2)    | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| data_in(1)    | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| data_in(0)    | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| clk           | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| rstN          | Input     |          |          |          |
++---------------+-----------+----------+----------+----------+
+| error         | Output    |          |          |          |
++---------------+-----------+----------+----------+----------+
+Total registers mapped: 0

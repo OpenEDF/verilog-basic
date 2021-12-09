@@ -1,0 +1,40 @@
+QuestaSim qverilog 10.2c Compiler 2013.07 Jul 18 2013
+qverilog snippet-11_streaming_ops.sv -novopt 
+-- Compiling module stream_1
+-- Compiling module stream_2
+-- Compiling module stream_3
+
+Top level modules:
+	stream_1
+	stream_2
+	stream_3
++ C:/questa_sim_10.2c/win32/vsim -lib work stream_1 stream_2 stream_3 -c -do "run -all; quit -f" -appendlog -l qverilog.log -novopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -novopt stream_1 stream_2 stream_3 
+# //  Questa Sim
+# //  Version 10.2c Unknown Platform Jul 18 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.stream_1
+# Loading work.stream_2
+# Loading work.stream_3
+# run -all 
+#  
+# stream_1: Pack bits of a vector in reverse order
+#  a=11000101  b=10100011:  EXPECTED 10100011 - OK
+#  
+#  
+# stream_2: Pack bytes of a vector in reverse order
+#  in=aabbccdd  out=ddccbbaa:  EXPECTED ddccbbaa - OK
+#  
+#  
+# stream_3: Unpack a vector a load into an array
+#  in=aabbccdd  a[0]=aa  a[3]=dd:  EXPECTED aa  dd - OK
+#  
+#  quit -f 

@@ -1,0 +1,46 @@
+Start time: 13:00:55 on Apr 28,2017
+qverilog -f example_05-06_run.f 
+-- Compiling package definitions_pkg
+-- Compiling module parity_checker
+-- Importing package definitions_pkg
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
+# vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt 
+# ** Note: (vsim-3812) Design is being optimized...
+# //  Questa Sim-64
+# //  Version 10.6 win64 Dec 13 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.definitions_pkg(fast)
+# Loading work.top(fast)
+# Loading work.test(fast)
+# Loading work.parity_checker(fast)
+# run -all
+# At   30ns: data=0111  parity_bit=0:  Bad data_in.  EXPECT: error = 1, ACTUAL: 1  OK
+# At   50ns: data=1100  parity_bit=0:  Good data_in. EXPECT: error = 0, ACTUAL: 0  OK
+# At   70ns: data=1000  parity_bit=1:  Good data_in. EXPECT: error = 0, ACTUAL: 0  OK
+# At   90ns: data=0110  parity_bit=0:  Good data_in. EXPECT: error = 0, ACTUAL: 0  OK
+# At  110ns: data=0000  parity_bit=1:  Bad data_in.  EXPECT: error = 1, ACTUAL: 1  OK
+# At  130ns: data=1000  parity_bit=1:  Good data_in. EXPECT: error = 0, ACTUAL: 0  OK
+# At  150ns: data=0001  parity_bit=0:  Bad data_in.  EXPECT: error = 1, ACTUAL: 1  OK
+# At  170ns: data=1100  parity_bit=1:  Bad data_in.  EXPECT: error = 1, ACTUAL: 1  OK
+# At  190ns: data=1110  parity_bit=0:  Bad data_in.  EXPECT: error = 1, ACTUAL: 1  OK
+# At  210ns: data=0000  parity_bit=1:  Bad data_in.  EXPECT: error = 1, ACTUAL: 1  OK
+# ** Note: $finish    : example_05-06_testbench.sv(33)
+#    Time: 220 ns  Iteration: 1  Instance: /top/test
+# End time: 13:00:57 on Apr 28,2017, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0

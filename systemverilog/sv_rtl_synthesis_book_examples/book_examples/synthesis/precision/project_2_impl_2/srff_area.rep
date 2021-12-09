@@ -1,0 +1,68 @@
+//  Precision RTL Synthesis 32-bit 2015.1.6 (Production Release) Wed Jun 10 09:13:13 PDT 2015
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2015, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on  Stuart@SHDL-2  6.02.9200 x86
+//  
+//  Start time Thu Aug 18 21:38:05 2016
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               5       -            -
+Global Buffers                    0       4         0.00%
+LUTs                              2       1536      0.13%
+CLB Slices                        1       768       0.13%
+Dffs or Latches                   1       1536      0.07%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+**********************************************
+
+Library: work    Cell: srff    View: INTERFACE
+
+**********************************************
+
+  Cell    Library  References     Total Area
+
+ FDCP    xcv     1 x      1      1 Dffs or Latches
+ LUT1    xcv     1 x      1      1 LUTs
+ LUT2    xcv     1 x      1      1 LUTs
+
+ Number of ports :                       5
+ Number of nets :                        7
+ Number of instances :                   3
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of Dffs or Latches :             1
+ Number of LUTs :                        2
+ Number of gates :                       1
+ Number of accumulated instances :       3
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.srff.INTERFACE
+
++---------+-----------+----------+----------+----------+
+| Port    | Direction |   INFF   |  OUTFF   |  TRIFF   |
++---------+-----------+----------+----------+----------+
+| clk     | Input     |          |          |          |
++---------+-----------+----------+----------+----------+
+| rstN    | Input     |          |          |          |
++---------+-----------+----------+----------+----------+
+| preN    | Input     |          |          |          |
++---------+-----------+----------+----------+----------+
+| d(0)    | Input     |          |          |          |
++---------+-----------+----------+----------+----------+
+| q(0)    | Output    |          |          |          |
++---------+-----------+----------+----------+----------+
+Total registers mapped: 0

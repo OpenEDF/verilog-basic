@@ -1,0 +1,167 @@
+QuestaSim qverilog 10.2a Compiler 2013.03 Mar 15 2013
+qverilog 4-x_struct_snippets.sv 
+-- Compiling module struct_test_1
+-- Compiling module struct_test_2
+-- Compiling module struct_test_3
+-- Compiling module struct_test_4
+-- Compiling module struct_test_5
+-- Compiling module struct_test_6
+-- Compiling module struct_test_7
+-- Compiling module struct_test_8
+-- Compiling module struct_test_9
+-- Compiling package definitions
+-- Compiling module alu
+-- Importing package definitions
+-- Compiling module processor
+
+Top level modules:
+	struct_test_1
+	struct_test_2
+	struct_test_3
+	struct_test_4
+	struct_test_5
+	struct_test_6
+	struct_test_7
+	struct_test_8
+	struct_test_9
+	alu
+	processor
++ C:\questa_sim_10.2a\win32/vsim -lib work struct_test_1 struct_test_2 struct_test_3 struct_test_4 struct_test_5 struct_test_6 struct_test_7 struct_test_8 struct_test_9 alu processor -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt struct_test_1 struct_test_2 struct_test_3 struct_test_4 struct_test_5 struct_test_6 struct_test_7 struct_test_8 struct_test_9 alu processor 
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# ** Warning: 4-x_struct_snippets.sv(453): (vopt-2250) Function "calculate_result" has no return value assignment.
+# 
+# //  Questa Sim
+# //  Version 10.2a win32 Mar 15 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.struct_test_1(fast)
+# Loading work.struct_test_2(fast)
+# Loading work.struct_test_3(fast)
+# Loading work.struct_test_4(fast)
+# Loading work.struct_test_5(fast)
+# Loading work.struct_test_6(fast)
+# Loading work.struct_test_7(fast)
+# Loading work.struct_test_8(fast)
+# Loading work.struct_test_9(fast)
+# Loading work.definitions(fast)
+# Loading work.alu(fast)
+# Loading work.processor(fast)
+# run -all 
+#  
+# struct_test_1: Before first posedge clock:
+#    instruction_word.a = 0
+#    instruction_word.b = 0
+#    instruction_word.opcode = 
+#    instruction_word.address = xxxxxx
+#    instruction_word.error = 0
+#  
+# struct_test_1: After first posedge clock:
+#    instruction_word.a = 0
+#    instruction_word.b = 0
+#    instruction_word.opcode = 
+#    instruction_word.address = 00001e
+#    instruction_word.error = 0
+#  
+# struct_test_2: Before first posedge clock:
+#    instruction_word.a = x
+#    instruction_word.b = x
+#    instruction_word.opcode = 
+#    instruction_word.address = xxxxxx
+#  
+# struct_test_2: After first posedge clock:
+#    instruction_word.a = 3
+#    instruction_word.b = 5
+#    instruction_word.opcode = ADD
+#    instruction_word.address = 0000c4
+#  
+# struct_test_3: Before first posedge clock:
+#    instruction_word.a = x
+#    instruction_word.b = x
+#    instruction_word.opcode = 
+#    instruction_word.address = xxxxxx
+#  
+# struct_test_3: After first posedge clock:
+#    instruction_word.a = 100
+#    instruction_word.b = 7
+#    instruction_word.opcode = SUB
+#    instruction_word.address = 000000
+#  
+# struct_test_4: Before first posedge clock:
+#    instruction_word.a = x
+#    instruction_word.b = x
+#    instruction_word.opcode = 0
+#    instruction_word.address = xxxxxx
+#  
+# struct_test_4: After first posedge clock:
+#    instruction_word.a = 0
+#    instruction_word.b = 0
+#    instruction_word.opcode = 0
+#    instruction_word.address = 000000
+#  
+# struct_test_5: Before first posedge clock:
+#    instruction_word.a = x
+#    instruction_word.b = x
+#    instruction_word.opcode = 0
+#    instruction_word.address = xxxxxx
+#  
+# struct_test_5: After first posedge clock:
+#    instruction_word.a = 0
+#    instruction_word.b = 0
+#    instruction_word.opcode = 0
+#    instruction_word.address = ffffff
+#  
+# struct_test_6: Before first posedge clock:
+#    instruction_word.a = x
+#    instruction_word.b = x
+#    instruction_word.opcode = 
+#    instruction_word.address = xxxxxx
+#  
+# struct_test_6: After reset:
+#    instruction_word.a = 0
+#    instruction_word.b = 0
+#    instruction_word.opcode = NOP
+#    instruction_word.address = 000000
+#  
+# struct_test_7: Before first posedge clock:
+#    iw_var.a = x
+#    iw_var.b = x
+#    iw_var.opcode = 
+#    iw_var.address = xxxxxx
+#  
+# struct_test_7: After reset:
+#    iw_var.a = 0
+#    iw_var.b = 0
+#    iw_var.opcode = NOP
+#    iw_var.address = 000000
+#  
+# struct_test_8: Before first posedge clock:
+#    data_word.valid = x
+#    data_word.tag = xx
+#    data_word.data = x
+#  
+# struct_test_8: After first clock:
+#    data_word.valid = x
+#    data_word.tag = f0
+#    data_word.data = x
+#  
+# struct_test_9: After resetting structures:
+#    lt = 0
+#    gt = 0
+#  
+# struct_test_9: After loading structures:
+#    lt = 0
+#    gt = 1
+#  
+# alu: No results printed -- just verifying that example compiles.
+#  
+# processor: No results printed -- just verifying that example compiles.
+#  quit -f 

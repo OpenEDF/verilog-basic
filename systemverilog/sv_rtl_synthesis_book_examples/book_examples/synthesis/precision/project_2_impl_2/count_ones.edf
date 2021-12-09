@@ -1,0 +1,460 @@
+(edif count_ones 
+ (edifVersion 2 0 0)
+ (edifLevel 0)
+ (keywordMap (keywordLevel 0))
+ (status 
+  (written 
+   (timestamp 2016 08 08 20 05 12)
+   (program "Precision RTL Synthesis" (version "32-bit 2015.1.6"))
+   (author "Mentor Graphics Corporation")))
+ (external xcv 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell XORCY (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port LI (direction INPUT))
+     (port CI (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell MUXCY_L (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port S (direction INPUT))
+     (port DI (direction INPUT))
+     (port CI (direction INPUT))
+     (port LO (direction OUTPUT)))))
+  (cell OBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell IBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell GND (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port G (direction OUTPUT)))))
+  (cell LUT3 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I0 (direction INPUT))
+     (port I1 (direction INPUT))
+     (port I2 (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell LUT4 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I0 (direction INPUT))
+     (port I1 (direction INPUT))
+     (port I2 (direction INPUT))
+     (port I3 (direction INPUT))
+     (port O (direction OUTPUT))))))
+ (library work 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell count_ones (cellType GENERIC)
+   (view INTERFACE  (viewType NETLIST)
+    (interface 
+     (port (array (rename data_bus "data_bus(15:0)") 16 )(direction INPUT))
+     (port (array (rename count "count(4:0)") 5 )(direction OUTPUT)))
+    (property AREA (string "21.000000"))
+    (property DESIGN_IS_RTL (string "NO"))
+    (property PART (string "v50bg256-6"))
+    (contents 
+     (instance modgen_add_6_xorcy_0 (viewRef NETLIST  (cellRef XORCY (libraryRef xcv ))))
+     (instance modgen_add_6_muxcy_0 (viewRef NETLIST  (cellRef MUXCY_L (libraryRef xcv ))))
+     (instance modgen_add_6_xorcy_1 (viewRef NETLIST  (cellRef XORCY (libraryRef xcv ))))
+     (instance modgen_add_6_muxcy_1 (viewRef NETLIST  (cellRef MUXCY_L (libraryRef xcv ))))
+     (instance modgen_add_6_xorcy_2 (viewRef NETLIST  (cellRef XORCY (libraryRef xcv ))))
+     (instance modgen_add_6_muxcy_2 (viewRef NETLIST  (cellRef MUXCY_L (libraryRef xcv ))))
+     (instance modgen_add_6_xorcy_3 (viewRef NETLIST  (cellRef XORCY (libraryRef xcv ))))
+     (instance modgen_add_6_muxcy_3 (viewRef NETLIST  (cellRef MUXCY_L (libraryRef xcv ))))
+     (instance modgen_add_6_xorcy_4 (viewRef NETLIST  (cellRef XORCY (libraryRef xcv ))))
+     (instance (rename count_obuf_0_ "count_obuf(0)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename count_obuf_1_ "count_obuf(1)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename count_obuf_2_ "count_obuf(2)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename count_obuf_3_ "count_obuf(3)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename count_obuf_4_ "count_obuf(4)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_0_ "data_bus_ibuf(0)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_1_ "data_bus_ibuf(1)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_2_ "data_bus_ibuf(2)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_3_ "data_bus_ibuf(3)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_4_ "data_bus_ibuf(4)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_5_ "data_bus_ibuf(5)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_6_ "data_bus_ibuf(6)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_7_ "data_bus_ibuf(7)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_8_ "data_bus_ibuf(8)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_9_ "data_bus_ibuf(9)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_10_ "data_bus_ibuf(10)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_11_ "data_bus_ibuf(11)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_12_ "data_bus_ibuf(12)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_13_ "data_bus_ibuf(13)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_14_ "data_bus_ibuf(14)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_bus_ibuf_15_ "data_bus_ibuf(15)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance GND (viewRef NETLIST  (cellRef GND (libraryRef xcv ))))
+     (instance ix59299z1547 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "E8")))
+     (instance ix59299z1467 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "96")))
+     (instance ix59298z1547 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "E8")))
+     (instance ix59299z1468 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "96")))
+     (instance ix59298z1549 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "E8")))
+     (instance ix59298z1470 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "96")))
+     (instance ix59298z1550 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "E8")))
+     (instance ix59298z1471 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "96")))
+     (instance ix59298z1548 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "E8")))
+     (instance ix59298z1472 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "96")))
+     (instance ix59299z1469 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "96")))
+     (instance ix59301z1465 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "96")))
+     (instance ix59298z1555 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "E8")))
+     (instance ix59299z1548 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "E8")))
+     (instance ix59299z1470 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "96")))
+     (instance ix59299z15253 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "366C")))
+     (instance ix59300z1464 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "96")))
+     (instance ix59301z28344 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "6996")))
+     (instance ix59299z7434 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "17E8")))
+     (instance ix59298z1551 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "E8")))
+     (instance ix59298z52642 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "C880")))
+     (net (rename data_bus_15_ "data_bus(15)") 
+      (joined 
+       (portRef (member data_bus 0))
+       (portRef I (instanceRef data_bus_ibuf_15_ ))))
+     (net (rename data_bus_14_ "data_bus(14)") 
+      (joined 
+       (portRef (member data_bus 1))
+       (portRef I (instanceRef data_bus_ibuf_14_ ))))
+     (net (rename data_bus_13_ "data_bus(13)") 
+      (joined 
+       (portRef (member data_bus 2))
+       (portRef I (instanceRef data_bus_ibuf_13_ ))))
+     (net (rename data_bus_12_ "data_bus(12)") 
+      (joined 
+       (portRef (member data_bus 3))
+       (portRef I (instanceRef data_bus_ibuf_12_ ))))
+     (net (rename data_bus_11_ "data_bus(11)") 
+      (joined 
+       (portRef (member data_bus 4))
+       (portRef I (instanceRef data_bus_ibuf_11_ ))))
+     (net (rename data_bus_10_ "data_bus(10)") 
+      (joined 
+       (portRef (member data_bus 5))
+       (portRef I (instanceRef data_bus_ibuf_10_ ))))
+     (net (rename data_bus_9_ "data_bus(9)") 
+      (joined 
+       (portRef (member data_bus 6))
+       (portRef I (instanceRef data_bus_ibuf_9_ ))))
+     (net (rename data_bus_8_ "data_bus(8)") 
+      (joined 
+       (portRef (member data_bus 7))
+       (portRef I (instanceRef data_bus_ibuf_8_ ))))
+     (net (rename data_bus_7_ "data_bus(7)") 
+      (joined 
+       (portRef (member data_bus 8))
+       (portRef I (instanceRef data_bus_ibuf_7_ ))))
+     (net (rename data_bus_6_ "data_bus(6)") 
+      (joined 
+       (portRef (member data_bus 9))
+       (portRef I (instanceRef data_bus_ibuf_6_ ))))
+     (net (rename data_bus_5_ "data_bus(5)") 
+      (joined 
+       (portRef (member data_bus 10))
+       (portRef I (instanceRef data_bus_ibuf_5_ ))))
+     (net (rename data_bus_4_ "data_bus(4)") 
+      (joined 
+       (portRef (member data_bus 11))
+       (portRef I (instanceRef data_bus_ibuf_4_ ))))
+     (net (rename data_bus_3_ "data_bus(3)") 
+      (joined 
+       (portRef (member data_bus 12))
+       (portRef I (instanceRef data_bus_ibuf_3_ ))))
+     (net (rename data_bus_2_ "data_bus(2)") 
+      (joined 
+       (portRef (member data_bus 13))
+       (portRef I (instanceRef data_bus_ibuf_2_ ))))
+     (net (rename data_bus_1_ "data_bus(1)") 
+      (joined 
+       (portRef (member data_bus 14))
+       (portRef I (instanceRef data_bus_ibuf_1_ ))))
+     (net (rename data_bus_0_ "data_bus(0)") 
+      (joined 
+       (portRef (member data_bus 15))
+       (portRef I (instanceRef data_bus_ibuf_0_ ))))
+     (net (rename count_dup_0_4_ "count_dup_0(4)") 
+      (joined 
+       (portRef O (instanceRef modgen_add_6_xorcy_4 ))
+       (portRef I (instanceRef count_obuf_4_ ))))
+     (net (rename count_dup_0_3_ "count_dup_0(3)") 
+      (joined 
+       (portRef O (instanceRef modgen_add_6_xorcy_3 ))
+       (portRef I (instanceRef count_obuf_3_ ))))
+     (net (rename count_dup_0_2_ "count_dup_0(2)") 
+      (joined 
+       (portRef O (instanceRef modgen_add_6_xorcy_2 ))
+       (portRef I (instanceRef count_obuf_2_ ))))
+     (net (rename count_dup_0_1_ "count_dup_0(1)") 
+      (joined 
+       (portRef O (instanceRef modgen_add_6_xorcy_1 ))
+       (portRef I (instanceRef count_obuf_1_ ))))
+     (net (rename count_dup_0_0_ "count_dup_0(0)") 
+      (joined 
+       (portRef O (instanceRef modgen_add_6_xorcy_0 ))
+       (portRef I (instanceRef count_obuf_0_ ))))
+     (net nx59300z2 
+      (joined 
+       (portRef LO (instanceRef modgen_add_6_muxcy_0 ))
+       (portRef CI (instanceRef modgen_add_6_xorcy_1 ))
+       (portRef CI (instanceRef modgen_add_6_muxcy_1 ))))
+     (net nx59299z5 
+      (joined 
+       (portRef LO (instanceRef modgen_add_6_muxcy_1 ))
+       (portRef CI (instanceRef modgen_add_6_xorcy_2 ))
+       (portRef CI (instanceRef modgen_add_6_muxcy_2 ))))
+     (net nx59298z4 
+      (joined 
+       (portRef LO (instanceRef modgen_add_6_muxcy_2 ))
+       (portRef CI (instanceRef modgen_add_6_xorcy_3 ))
+       (portRef CI (instanceRef modgen_add_6_muxcy_3 ))))
+     (net nx53922z1 
+      (joined 
+       (portRef LO (instanceRef modgen_add_6_muxcy_3 ))
+       (portRef CI (instanceRef modgen_add_6_xorcy_4 ))))
+     (net (rename data_bus_int_15_ "data_bus_int(15)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_15_ ))
+       (portRef I1 (instanceRef ix59301z1465 ))
+       (portRef I0 (instanceRef ix59298z1555 ))))
+     (net (rename data_bus_int_14_ "data_bus_int(14)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_14_ ))
+       (portRef I1 (instanceRef ix59299z1467 ))
+       (portRef I0 (instanceRef ix59299z1547 ))))
+     (net (rename data_bus_int_13_ "data_bus_int(13)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_13_ ))
+       (portRef I1 (instanceRef ix59299z1547 ))
+       (portRef I2 (instanceRef ix59299z1467 ))))
+     (net (rename data_bus_int_12_ "data_bus_int(12)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_12_ ))
+       (portRef I0 (instanceRef ix59298z1549 ))
+       (portRef I0 (instanceRef ix59298z1470 ))))
+     (net (rename data_bus_int_11_ "data_bus_int(11)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_11_ ))
+       (portRef I1 (instanceRef ix59298z1549 ))
+       (portRef I1 (instanceRef ix59298z1470 ))))
+     (net (rename data_bus_int_10_ "data_bus_int(10)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_10_ ))
+       (portRef I1 (instanceRef ix59298z1555 ))
+       (portRef I0 (instanceRef ix59301z1465 ))))
+     (net (rename data_bus_int_9_ "data_bus_int(9)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_9_ ))
+       (portRef I0 (instanceRef ix59298z1550 ))
+       (portRef I1 (instanceRef ix59298z1471 ))))
+     (net (rename data_bus_int_8_ "data_bus_int(8)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_8_ ))
+       (portRef I0 (instanceRef ix59298z1547 ))
+       (portRef I1 (instanceRef ix59299z1468 ))))
+     (net (rename data_bus_int_7_ "data_bus_int(7)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_7_ ))
+       (portRef I1 (instanceRef ix59298z1547 ))
+       (portRef I2 (instanceRef ix59299z1468 ))))
+     (net (rename data_bus_int_6_ "data_bus_int(6)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_6_ ))
+       (portRef I2 (instanceRef ix59299z1547 ))
+       (portRef I0 (instanceRef ix59299z1467 ))))
+     (net (rename data_bus_int_5_ "data_bus_int(5)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_5_ ))
+       (portRef I2 (instanceRef ix59298z1470 ))
+       (portRef I2 (instanceRef ix59298z1549 ))))
+     (net (rename data_bus_int_4_ "data_bus_int(4)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_4_ ))
+       (portRef I1 (instanceRef ix59298z1550 ))
+       (portRef I0 (instanceRef ix59298z1471 ))))
+     (net (rename data_bus_int_3_ "data_bus_int(3)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_3_ ))
+       (portRef I2 (instanceRef ix59298z1550 ))
+       (portRef I2 (instanceRef ix59298z1471 ))))
+     (net (rename data_bus_int_2_ "data_bus_int(2)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_2_ ))
+       (portRef I0 (instanceRef ix59299z1468 ))
+       (portRef I2 (instanceRef ix59298z1547 ))))
+     (net (rename data_bus_int_1_ "data_bus_int(1)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_1_ ))
+       (portRef I2 (instanceRef ix59301z1465 ))
+       (portRef I2 (instanceRef ix59298z1555 ))))
+     (net (rename data_bus_int_0_ "data_bus_int(0)") 
+      (joined 
+       (portRef O (instanceRef data_bus_ibuf_0_ ))
+       (portRef I2 (instanceRef ix59298z1551 ))
+       (portRef I0 (instanceRef ix59299z1469 ))))
+     (net (rename count_0_ "count(0)") 
+      (joined 
+       (portRef (member count 4))
+       (portRef O (instanceRef count_obuf_0_ ))))
+     (net (rename count_1_ "count(1)") 
+      (joined 
+       (portRef (member count 3))
+       (portRef O (instanceRef count_obuf_1_ ))))
+     (net (rename count_2_ "count(2)") 
+      (joined 
+       (portRef (member count 2))
+       (portRef O (instanceRef count_obuf_2_ ))))
+     (net (rename count_3_ "count(3)") 
+      (joined 
+       (portRef (member count 1))
+       (portRef O (instanceRef count_obuf_3_ ))))
+     (net (rename count_4_ "count(4)") 
+      (joined 
+       (portRef (member count 0))
+       (portRef O (instanceRef count_obuf_4_ ))))
+     (net GND 
+      (joined 
+       (portRef G (instanceRef GND ))
+       (portRef CI (instanceRef modgen_add_6_xorcy_0 ))
+       (portRef CI (instanceRef modgen_add_6_muxcy_0 ))
+       (portRef LI (instanceRef modgen_add_6_xorcy_4 ))
+       (portRef DI (instanceRef modgen_add_6_muxcy_1 ))
+       (portRef DI (instanceRef modgen_add_6_muxcy_3 ))))
+     (net (rename count_0n16s6_1_ "count_0n16s6(1)") 
+      (joined 
+       (portRef O (instanceRef ix59299z1547 ))
+       (portRef I0 (instanceRef ix59299z7434 ))
+       (portRef I1 (instanceRef ix59300z1464 ))))
+     (net (rename count_0n16s6_0_ "count_0n16s6(0)") 
+      (joined 
+       (portRef O (instanceRef ix59299z1467 ))
+       (portRef I0 (instanceRef ix59299z1548 ))
+       (portRef I2 (instanceRef ix59301z28344 ))))
+     (net (rename count_0n16s7_1_ "count_0n16s7(1)") 
+      (joined 
+       (portRef O (instanceRef ix59298z1547 ))
+       (portRef I0 (instanceRef ix59299z15253 ))
+       (portRef I0 (instanceRef ix59298z52642 ))
+       (portRef I1 (instanceRef ix59299z1470 ))))
+     (net (rename count_0n16s7_0_ "count_0n16s7(0)") 
+      (joined 
+       (portRef O (instanceRef ix59299z1468 ))
+       (portRef I1 (instanceRef ix59299z1548 ))
+       (portRef I3 (instanceRef ix59301z28344 ))))
+     (net (rename count_0n16s9_1_ "count_0n16s9(1)") 
+      (joined 
+       (portRef O (instanceRef ix59298z1549 ))
+       (portRef I1 (instanceRef ix59298z1472 ))
+       (portRef I0 (instanceRef ix59298z1548 ))))
+     (net (rename count_0n16s9_0_ "count_0n16s9(0)") 
+      (joined 
+       (portRef O (instanceRef ix59298z1470 ))
+       (portRef I1 (instanceRef ix59299z1469 ))
+       (portRef I0 (instanceRef ix59298z1551 ))))
+     (net (rename count_0n16s10_1_ "count_0n16s10(1)") 
+      (joined 
+       (portRef O (instanceRef ix59298z1550 ))
+       (portRef I1 (instanceRef ix59298z1548 ))
+       (portRef I2 (instanceRef ix59298z1472 ))))
+     (net (rename count_0n16s10_0_ "count_0n16s10(0)") 
+      (joined 
+       (portRef O (instanceRef ix59298z1471 ))
+       (portRef I2 (instanceRef ix59299z1469 ))
+       (portRef I1 (instanceRef ix59298z1551 ))))
+     (net (rename count_0n16s8_2_ "count_0n16s8(2)") 
+      (joined 
+       (portRef O (instanceRef ix59298z1548 ))
+       (portRef I1 (instanceRef ix59299z15253 ))
+       (portRef I1 (instanceRef ix59298z52642 ))))
+     (net (rename count_0n16s8_1_ "count_0n16s8(1)") 
+      (joined 
+       (portRef O (instanceRef ix59298z1472 ))
+       (portRef I0 (instanceRef ix59299z1470 ))
+       (portRef I2 (instanceRef ix59299z15253 ))
+       (portRef I2 (instanceRef ix59298z52642 ))))
+     (net (rename count_0n16s8_0_ "count_0n16s8(0)") 
+      (joined 
+       (portRef O (instanceRef ix59299z1469 ))
+       (portRef I2 (instanceRef ix59299z1548 ))
+       (portRef I1 (instanceRef ix59301z28344 ))))
+     (net nx59301z2 
+      (joined 
+       (portRef O (instanceRef ix59301z1465 ))
+       (portRef DI (instanceRef modgen_add_6_muxcy_0 ))
+       (portRef I0 (instanceRef ix59301z28344 ))))
+     (net nx59298z3 
+      (joined 
+       (portRef O (instanceRef ix59298z1555 ))
+       (portRef I3 (instanceRef ix59299z15253 ))
+       (portRef I3 (instanceRef ix59298z52642 ))
+       (portRef I2 (instanceRef ix59299z1470 ))))
+     (net nx59299z2 
+      (joined 
+       (portRef O (instanceRef ix59299z1548 ))
+       (portRef I1 (instanceRef ix59299z7434 ))
+       (portRef I2 (instanceRef ix59300z1464 ))))
+     (net nx59299z3 
+      (joined 
+       (portRef O (instanceRef ix59299z1470 ))
+       (portRef I2 (instanceRef ix59299z7434 ))
+       (portRef I0 (instanceRef ix59300z1464 ))))
+     (net nx59299z4 
+      (joined 
+       (portRef O (instanceRef ix59299z15253 ))
+       (portRef DI (instanceRef modgen_add_6_muxcy_2 ))
+       (portRef I3 (instanceRef ix59299z7434 ))))
+     (net nx59300z1 
+      (joined 
+       (portRef O (instanceRef ix59300z1464 ))
+       (portRef LI (instanceRef modgen_add_6_xorcy_1 ))
+       (portRef S (instanceRef modgen_add_6_muxcy_1 ))))
+     (net nx59301z1 
+      (joined 
+       (portRef O (instanceRef ix59301z28344 ))
+       (portRef LI (instanceRef modgen_add_6_xorcy_0 ))
+       (portRef S (instanceRef modgen_add_6_muxcy_0 ))))
+     (net nx59299z1 
+      (joined 
+       (portRef O (instanceRef ix59299z7434 ))
+       (portRef LI (instanceRef modgen_add_6_xorcy_2 ))
+       (portRef S (instanceRef modgen_add_6_muxcy_2 ))))
+     (net nx59298z2 
+      (joined 
+       (portRef O (instanceRef ix59298z1551 ))
+       (portRef I2 (instanceRef ix59298z1548 ))
+       (portRef I0 (instanceRef ix59298z1472 ))))
+     (net nx59298z1 
+      (joined 
+       (portRef O (instanceRef ix59298z52642 ))
+       (portRef LI (instanceRef modgen_add_6_xorcy_3 ))
+       (portRef S (instanceRef modgen_add_6_muxcy_3 ))))))))
+ (design count_ones (cellRef count_ones (libraryRef work ))
+  (property PART (string "v50bg256-6"))))

@@ -1,0 +1,49 @@
+Synopsys Xilinx Technology Pre-mapping, Version map201303sp1_1rc, Build 007R, Built Aug  9 2013 07:16:32
+Copyright (C) 1994-2013, Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use or distribution of the software is strictly prohibited.
+Product Version H-2013.03-SP1-1 
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+@L: /mnt/sandbox/book_examples/chapter-05/synplify/proj_1_scck.rpt 
+Printing clock  summary report in "/mnt/sandbox/book_examples/chapter-05/synplify/proj_1_scck.rpt" file 
+@N: MF249 |Running in 32-bit mode.
+@N: MF666 |Clock conversion enabled 
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 58MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 58MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 56MB peak: 58MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 57MB peak: 59MB)
+
+Reading Xilinx I/O pad type table from file </tools/synopsys/synplify/lib/xilinx/x_io_tbl.txt> 
+Reading Xilinx Rocket I/O parameter type table from file </tools/synopsys/synplify/lib/xilinx/gttype.txt> 
+syn_allowed_resources : blockrams=2060  set on top level netlist status_reg
+
+
+Clock Summary
+**************
+
+Start              Requested     Requested     Clock        Clock              
+Clock              Frequency     Period        Type         Group              
+-------------------------------------------------------------------------------
+System             1.0 MHz       1000.000      system       system_clkgroup    
+status_reg|clk     100.0 MHz     10.000        inferred     Inferred_clkgroup_0
+===============================================================================
+
+@W: MT529 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":33:2:33:10|Found inferred clock status_reg|clk which controls 6 sequential elements including status_1[7:2]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
+
+@N: MF203 |Set autoconstraint_io 
+Finished Pre Mapping Phase.@N: BN225 |Writing default property annotation file /mnt/sandbox/book_examples/chapter-05/synplify/proj_1.sap.
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 79MB peak: 151MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Sep  7 01:40:26 2013
+
+###########################################################]

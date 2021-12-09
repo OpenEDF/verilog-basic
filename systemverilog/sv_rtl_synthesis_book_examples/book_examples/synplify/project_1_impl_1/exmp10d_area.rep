@@ -1,0 +1,71 @@
+//  Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//  
+//  Start time Thu Feb 06 10:16:10 2014
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               6       180       3.33%
+Global Buffers                    0       4         0.00%
+LUTs                              1       1536      0.07%
+CLB Slices                        2       768       0.26%
+Dffs or Latches                   3       1536      0.20%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+*************************************************
+
+Library: work    Cell: exmp10d    View: INTERFACE
+
+*************************************************
+
+  Cell    Library  References     Total Area
+
+ IBUF    xcv     3 x
+ LD      xcv     3 x      1      3 Dffs or Latches
+ LUT3    xcv     1 x      1      1 LUTs
+ OBUF    xcv     3 x
+
+ Number of ports :                       6
+ Number of nets :                       13
+ Number of instances :                  10
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of Dffs or Latches :             3
+ Number of LUTs :                        1
+ Number of gates :                       1
+ Number of accumulated instances :      10
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.exmp10d.INTERFACE
+
++-----------------+-----------+----------+----------+----------+
+| Port            | Direction |   INFF   |  OUTFF   |  TRIFF   |
++-----------------+-----------+----------+----------+----------+
+| nextstate(2)    | Output    |          |          |          |
++-----------------+-----------+----------+----------+----------+
+| nextstate(1)    | Output    |          |          |          |
++-----------------+-----------+----------+----------+----------+
+| nextstate(0)    | Output    |          |          |          |
++-----------------+-----------+----------+----------+----------+
+| state(2)        | Input     |          |          |          |
++-----------------+-----------+----------+----------+----------+
+| state(1)        | Input     |          |          |          |
++-----------------+-----------+----------+----------+----------+
+| state(0)        | Input     |          |          |          |
++-----------------+-----------+----------+----------+----------+
+Total registers mapped: 0

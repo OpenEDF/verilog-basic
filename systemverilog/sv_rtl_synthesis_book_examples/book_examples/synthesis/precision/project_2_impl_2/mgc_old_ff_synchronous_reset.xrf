@@ -1,0 +1,5 @@
+vendor_name = exemplar
+source_file = 1, B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-08/8-04_ff_synchronous_reset.sv
+design_name = ff_synchronous_reset
+instance =      comp,             reg_q(0),             reg_q(0), ff_synchronous_reset,         1, 21:-1:21:
+instance =       net,                 q(0),                 q(0), ff_synchronous_reset,         1, 21:-1:21:

@@ -1,0 +1,86 @@
+//  Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//  
+//  Start time Tue Sep 17 15:25:19 2013
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               13      180       7.22%
+Global Buffers                    0       4         0.00%
+LUTs                              9       1536      0.59%
+CLB Slices                        5       768       0.65%
+Dffs or Latches                   0       1536      0.00%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+*********************************************************
+
+Library: work    Cell: tri_state_adder    View: INTERFACE
+
+*********************************************************
+
+  Cell    Library  References     Total Area
+
+ IBUF     xcv     9 x
+ LUT1     xcv     1 x      1      1 LUTs
+ LUT2     xcv     2 x      1      2 LUTs
+ LUT3     xcv     2 x      1      2 LUTs
+ LUT4     xcv     4 x      1      4 LUTs
+ OBUFT    xcv     4 x
+
+ Number of ports :                      13
+ Number of nets :                       31
+ Number of instances :                  22
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of LUTs :                        9
+ Number of gates :                       8
+ Number of accumulated instances :      22
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.tri_state_adder.INTERFACE
+
++-----------+-----------+----------+----------+----------+
+| Port      | Direction |   INFF   |  OUTFF   |  TRIFF   |
++-----------+-----------+----------+----------+----------+
+| enable    | Input     |          |          |          |
++-----------+-----------+----------+----------+----------+
+| a(3)      | Input     |          |          |          |
++-----------+-----------+----------+----------+----------+
+| a(2)      | Input     |          |          |          |
++-----------+-----------+----------+----------+----------+
+| a(1)      | Input     |          |          |          |
++-----------+-----------+----------+----------+----------+
+| a(0)      | Input     |          |          |          |
++-----------+-----------+----------+----------+----------+
+| b(3)      | Input     |          |          |          |
++-----------+-----------+----------+----------+----------+
+| b(2)      | Input     |          |          |          |
++-----------+-----------+----------+----------+----------+
+| b(1)      | Input     |          |          |          |
++-----------+-----------+----------+----------+----------+
+| b(0)      | Input     |          |          |          |
++-----------+-----------+----------+----------+----------+
+| out(3)    | Output    |          |          |          |
++-----------+-----------+----------+----------+----------+
+| out(2)    | Output    |          |          |          |
++-----------+-----------+----------+----------+----------+
+| out(1)    | Output    |          |          |          |
++-----------+-----------+----------+----------+----------+
+| out(0)    | Output    |          |          |          |
++-----------+-----------+----------+----------+----------+
+Total registers mapped: 0

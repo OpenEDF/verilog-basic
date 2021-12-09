@@ -1,0 +1,96 @@
+//  Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//  
+//  Start time Thu Feb 06 10:16:10 2014
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               18      180      10.00%
+Global Buffers                    1       4        25.00%
+LUTs                              8       1536      0.52%
+CLB Slices                        4       768       0.52%
+Dffs or Latches                   8       1536      0.52%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+*************************************************
+
+Library: work    Cell: exmp11b    View: INTERFACE
+
+*************************************************
+
+  Cell    Library  References     Total Area
+
+ BUFGP    xcv     1 x
+ FD       xcv     8 x      1      8 Dffs or Latches
+ IBUF     xcv     9 x
+ LUT3     xcv     8 x      1      8 LUTs
+ OBUF     xcv     8 x
+
+ Number of ports :                      18
+ Number of nets :                       44
+ Number of instances :                  34
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of Dffs or Latches :             8
+ Number of LUTs :                        8
+ Number of gates :                       8
+ Number of accumulated instances :      34
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.exmp11b.INTERFACE
+
++----------------+-----------+----------+----------+----------+
+| Port           | Direction |   INFF   |  OUTFF   |  TRIFF   |
++----------------+-----------+----------+----------+----------+
+| data_in(7)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(6)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(5)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(4)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(3)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(2)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(1)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(0)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| clock          | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| swap_bits      | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(7)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(6)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(5)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(4)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(3)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(2)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(1)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(0)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+Total registers mapped: 0

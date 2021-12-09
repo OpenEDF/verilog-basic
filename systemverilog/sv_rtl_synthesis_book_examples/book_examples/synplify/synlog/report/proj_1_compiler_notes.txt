@@ -1,0 +1,5 @@
+@N|Running in 32-bit mode
+@N:: Running Verilog Compiler in System Verilog mode
+@N:: Running Verilog Compiler in Multiple File Compilation Unit mode
+@N: CG364 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":21:7:21:16|Synthesizing module status_reg
+

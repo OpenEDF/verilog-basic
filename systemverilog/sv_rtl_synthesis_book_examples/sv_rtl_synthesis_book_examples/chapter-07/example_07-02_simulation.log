@@ -1,0 +1,52 @@
+Start time: 05:45:28 on May 03,2017
+qverilog -f example_07-02_run.f 
+-- Compiling package definitions_pkg
+-- Compiling module algorithmic_multiplier
+-- Importing package definitions_pkg
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
+# vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# //  Questa Sim-64
+# //  Version 10.6 win64 Dec 13 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.definitions_pkg(fast)
+# Loading work.top(fast)
+# run -all
+#  
+# At    5ns: a=2, b=0:  EXPECT: result = 0, ACTUAL: 0 OK
+# At   10ns: a=2, b=1:  EXPECT: result = 2, ACTUAL: 2 OK
+# At   15ns: a=2, b=2:  EXPECT: result = 4, ACTUAL: 4 OK
+# At   20ns: a=2, b=3:  EXPECT: result = 6, ACTUAL: 6 OK
+# At   25ns: a=2, b=4:  EXPECT: result = 8, ACTUAL: 8 OK
+# At   30ns: a=2, b=5:  EXPECT: result = 10, ACTUAL: 10 OK
+# At   35ns: a=2, b=6:  EXPECT: result = 12, ACTUAL: 12 OK
+# At   40ns: a=2, b=7:  EXPECT: result = 14, ACTUAL: 14 OK
+# At   45ns: a=2, b=8:  EXPECT: result = 16, ACTUAL: 16 OK
+# At   50ns: a=2, b=9:  EXPECT: result = 18, ACTUAL: 18 OK
+# At   55ns: a=2, b=10:  EXPECT: result = 20, ACTUAL: 20 OK
+# At   60ns: a=2, b=11:  EXPECT: result = 22, ACTUAL: 22 OK
+# At   65ns: a=2, b=12:  EXPECT: result = 24, ACTUAL: 24 OK
+# At   70ns: a=2, b=13:  EXPECT: result = 26, ACTUAL: 26 OK
+# At   75ns: a=2, b=14:  EXPECT: result = 28, ACTUAL: 28 OK
+# At   80ns: a=2, b=15:  EXPECT: result = 30, ACTUAL: 30 OK
+#  
+# ** Note: $finish    : example_07-02_testbench.sv(29)
+#    Time: 85 ns  Iteration: 0  Instance: /top/test
+# End time: 05:45:30 on May 03,2017, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0

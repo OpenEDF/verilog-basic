@@ -1,0 +1,88 @@
+//  Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//  
+//  Start time Tue Sep 17 04:24:27 2013
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               14      180       7.78%
+Global Buffers                    1       4        25.00%
+LUTs                              4       1536      0.26%
+CLB Slices                        2       768       0.26%
+Dffs or Latches                   4       1536      0.26%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+********************************************************
+
+Library: work    Cell: muxed_register    View: INTERFACE
+
+********************************************************
+
+  Cell    Library  References     Total Area
+
+ BUFGP    xcv     1 x
+ FD       xcv     4 x      1      4 Dffs or Latches
+ IBUF     xcv     9 x
+ LUT3     xcv     4 x      1      4 LUTs
+ OBUF     xcv     4 x
+
+ Number of ports :                      14
+ Number of nets :                       32
+ Number of instances :                  22
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of Dffs or Latches :             4
+ Number of LUTs :                        4
+ Number of gates :                       4
+ Number of accumulated instances :      22
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.muxed_register.INTERFACE
+
++----------------+-----------+----------+----------+----------+
+| Port           | Direction |   INFF   |  OUTFF   |  TRIFF   |
++----------------+-----------+----------+----------+----------+
+| clk            | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_select    | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| d1(3)          | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| d1(2)          | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| d1(1)          | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| d1(0)          | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| d2(3)          | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| d2(2)          | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| d2(1)          | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| d2(0)          | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| q_out(3)       | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| q_out(2)       | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| q_out(1)       | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| q_out(0)       | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+Total registers mapped: 0

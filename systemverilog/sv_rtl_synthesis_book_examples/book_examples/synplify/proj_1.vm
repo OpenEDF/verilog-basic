@@ -1,0 +1,193 @@
+//
+// Written by Synplify
+// Product Version "H-2013.03-SP1-1 "
+// Program "Synplify Pro", Mapper "map201303sp1_1rc, Build 007R"
+// Sat Sep  7 01:40:30 2013
+//
+// Source file index table:
+// Object locations will have the form <file>:<line>
+// file 0 "noname"
+// file 1 "\/tools/synopsys/synplify/lib/xilinx/unisim_m10i.v "
+// file 2 "\/tools/synopsys/synplify/lib/xilinx/unisim.v "
+// file 3 "\/tools/synopsys/synplify/lib/vlog/umr_capim.v "
+// file 4 "\/tools/synopsys/synplify/lib/vlog/scemi_objects.v "
+// file 5 "\/tools/synopsys/synplify/lib/vlog/scemi_pipes.svh "
+// file 6 "\/tools/synopsys/synplify/lib/vlog/hypermods.v "
+// file 7 "\/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv "
+// file 8 "\/mnt/sandbox/book_examples/chapter-05/synplify/syntmp/unisim.v "
+
+`timescale 100 ps/100 ps
+module status_reg (
+  clk,
+  rstN,
+  int_en,
+  zero,
+  carry,
+  neg,
+  parity,
+  status
+)
+;
+input clk ;
+input rstN ;
+input int_en ;
+input zero ;
+input carry ;
+input neg ;
+input [1:0] parity ;
+output [7:0] status ;
+wire clk ;
+wire rstN ;
+wire int_en ;
+wire zero ;
+wire carry ;
+wire neg ;
+wire [7:2] status_1;
+wire [1:0] parity_c;
+wire VCC ;
+wire GND_x ;
+wire clk_c ;
+wire rstN_c ;
+wire int_en_c ;
+wire zero_c ;
+wire carry_c ;
+wire neg_c ;
+wire rstN_c_i ;
+wire clk_ibuf_iso ;
+wire GND ;
+  VCC VCC_cZ (
+	.P(VCC)
+);
+  BUFG clk_ibuf (
+	.I(clk_ibuf_iso),
+	.O(clk_c)
+);
+  IBUFG clk_ibuf_iso_cZ (
+	.O(clk_ibuf_iso),
+	.I(clk)
+);
+// @7:33
+  INV rstN_ibuf_RNIC0EA (
+	.I(rstN_c),
+	.O(rstN_c_i)
+);
+// @7:33
+  FDC \status_1_Z[2]  (
+	.Q(status_1[2]),
+	.D(parity_c[0]),
+	.C(clk_c),
+	.CLR(rstN_c_i)
+);
+// @7:33
+  FDC \status_1_Z[3]  (
+	.Q(status_1[3]),
+	.D(parity_c[1]),
+	.C(clk_c),
+	.CLR(rstN_c_i)
+);
+// @7:33
+  FDC \status_1_Z[4]  (
+	.Q(status_1[4]),
+	.D(neg_c),
+	.C(clk_c),
+	.CLR(rstN_c_i)
+);
+// @7:33
+  FDC \status_1_Z[5]  (
+	.Q(status_1[5]),
+	.D(carry_c),
+	.C(clk_c),
+	.CLR(rstN_c_i)
+);
+// @7:33
+  FDC \status_1_Z[6]  (
+	.Q(status_1[6]),
+	.D(zero_c),
+	.C(clk_c),
+	.CLR(rstN_c_i)
+);
+// @7:33
+  FDC \status_1_Z[7]  (
+	.Q(status_1[7]),
+	.D(int_en_c),
+	.C(clk_c),
+	.CLR(rstN_c_i)
+);
+// @7:29
+  OBUF \status_obuf[7]  (
+	.O(status[7]),
+	.I(status_1[7])
+);
+// @7:29
+  OBUF \status_obuf[6]  (
+	.O(status[6]),
+	.I(VCC)
+);
+// @7:29
+  OBUF \status_obuf[5]  (
+	.O(status[5]),
+	.I(VCC)
+);
+// @7:29
+  OBUF \status_obuf[4]  (
+	.O(status[4]),
+	.I(status_1[6])
+);
+// @7:29
+  OBUF \status_obuf[3]  (
+	.O(status[3]),
+	.I(status_1[5])
+);
+// @7:29
+  OBUF \status_obuf[2]  (
+	.O(status[2]),
+	.I(status_1[4])
+);
+// @7:29
+  OBUF \status_obuf[1]  (
+	.O(status[1]),
+	.I(status_1[3])
+);
+// @7:29
+  OBUF \status_obuf[0]  (
+	.O(status[0]),
+	.I(status_1[2])
+);
+// @7:28
+  IBUF \parity_ibuf[1]  (
+	.O(parity_c[1]),
+	.I(parity[1])
+);
+// @7:28
+  IBUF \parity_ibuf[0]  (
+	.O(parity_c[0]),
+	.I(parity[0])
+);
+// @7:27
+  IBUF neg_ibuf (
+	.O(neg_c),
+	.I(neg)
+);
+// @7:26
+  IBUF carry_ibuf (
+	.O(carry_c),
+	.I(carry)
+);
+// @7:25
+  IBUF zero_ibuf (
+	.O(zero_c),
+	.I(zero)
+);
+// @7:24
+  IBUF int_en_ibuf (
+	.O(int_en_c),
+	.I(int_en)
+);
+// @7:23
+  IBUF rstN_ibuf (
+	.O(rstN_c),
+	.I(rstN)
+);
+  assign GND = 1'b0;
+endmodule /* status_reg */
+

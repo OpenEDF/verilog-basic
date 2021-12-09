@@ -1,0 +1,43 @@
+QuestaSim qverilog 10.2a Compiler 2013.03 Mar 15 2013
+qverilog snippet-5_comparison_ops.sv 
+-- Compiling module comparison_1
+-- Compiling module comparison_2
+-- Compiling module comparison_3
+
+Top level modules:
+	comparison_1
+	comparison_2
+	comparison_3
++ C:\questa_sim_10.2a\win32/vsim -lib work comparison_1 comparison_2 comparison_3 -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt comparison_1 comparison_2 comparison_3 
+# //  Questa Sim
+# //  Version 10.2a win32 Mar 15 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.comparison_1(fast)
+# Loading work.comparison_2(fast)
+# Loading work.comparison_3(fast)
+# run -all 
+#  
+# comparison_1: Greater-than op with pessimism
+#   4'b1001 > 4'b000z: EXPECT x, ACTUAL x
+#  
+#  
+# comparison_2: unsigned, signed and mixed signing compares
+#    3 >  5:  EXPECT 0, ACTUAL 0
+#   -3 > -5:  EXPECT 0, ACTUAL 1
+#   -3 >  5:  EXPECT 1, ACTUAL 1 (a GOTCHA)
+#  
+#  
+# comparison_3: Compare absolutes
+#   abs_f(-3) > abs_f(5):  EXPECT 0, ACTUAL 0
+#   abs_f(5)  > abs_f(-3): EXPECT 1, ACTUAL 1
+#  
+#  quit -f 

@@ -1,0 +1,82 @@
+QuestaSim qverilog 10.2c Compiler 2013.07 Jul 18 2013
+qverilog snippet-10_shift_ops.sv 
+-- Compiling module shift_1
+-- Compiling module shift_2
+-- Compiling module shift_3
+-- Compiling module shift_4
+-- Compiling module shift_5
+-- Compiling module rotate_6
+-- Compiling module rotate_7
+-- Compiling module rotate_8
+
+Top level modules:
+	shift_1
+	shift_2
+	shift_3
+	shift_4
+	shift_5
+	rotate_6
+	rotate_7
+	rotate_8
++ C:/questa_sim_10.2c/win32/vsim -lib work shift_1 shift_2 shift_3 shift_4 shift_5 rotate_6 rotate_7 rotate_8 -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt shift_1 shift_2 shift_3 shift_4 shift_5 rotate_6 rotate_7 rotate_8 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# 
+# //  Questa Sim
+# //  Version 10.2c Unknown Platform Jul 18 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.shift_1(fast)
+# Loading work.shift_2(fast)
+# Loading work.shift_3(fast)
+# Loading work.shift_4(fast)
+# Loading work.shift_5(fast)
+# Loading work.rotate_6(fast)
+# Loading work.rotate_7(fast)
+# Loading work.rotate_8(fast)
+# run -all 
+#  
+# shift_1: Left shift, unsigned value
+#   8'b11000101 << 2:  EXPECT 8'b00010100, ACTUAL 00010100 - OK
+#   8'b11000101 <<< 2: EXPECT 8'b00010100, ACTUAL 00010100 - OK
+#  
+#  
+# shift_2: Right shift, unsigned value
+#   8'b11000101 >> 2:  EXPECT 8'b00110001, ACTUAL 00110001 - OK
+#   8'b11000101 >>> 2: EXPECT 8'b00110001, ACTUAL 00110001 - OK
+#  
+#  
+# shift_3: Right shift, signed value
+#   8'sb11000101 >> 2:  EXPECT 8'sb00110001, ACTUAL 00110001 - OK
+#   8'sb11000101 >>> 2: EXPECT 8'sb11110001, ACTUAL 11110001 - OK
+#  
+#  
+# shift_4: Shift using concatenate op
+#  in=11000101  out1=01100010:  EXPECTED 01100010 - OK
+#  in=11000101  out2=01100010:  EXPECTED 01110001 - OK
+#  
+#  
+# shift_5: Shift using concatenate op with parameterized vector size
+#  in=11000101  out1=01100010:  EXPECTED 01100010 - OK
+#  in=11000101  out2=01100010:  EXPECTED 01110001 - OK
+#  
+#  
+# rotate_6: Rotate right N times
+#  in=11000101  rfactor=2  out=01110001: EXPECTED 01110001 - OK
+#  
+#  
+# rotate_7: Rotate right N times
+#  in=11000101  rfactor=2  out=01110001: EXPECTED 01110001 - OK
+#  
+#  
+# rotate_8: Rotate right N times
+#  in=11000101  rfactor=2  out=01110001: EXPECTED 01110001 - OK
+#  
+#  quit -f 

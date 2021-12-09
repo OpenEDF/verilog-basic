@@ -1,0 +1,193 @@
+(edif high_address_check 
+ (edifVersion 2 0 0)
+ (edifLevel 0)
+ (keywordMap (keywordLevel 0))
+ (status 
+  (written 
+   (timestamp 2013 09 20 20 09 13)
+   (program "Precision RTL Synthesis" (version "2013a.9"))
+   (author "Mentor Graphics Corporation")))
+ (external xcv 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell OBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell IBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell FDC (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port D (direction INPUT))
+     (port C (direction INPUT))
+     (port CLR (direction INPUT))
+     (port Q (direction OUTPUT)))))
+  (cell LUT1 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I0 (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell LUT4 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I0 (direction INPUT))
+     (port I1 (direction INPUT))
+     (port I2 (direction INPUT))
+     (port I3 (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell LUT2 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I0 (direction INPUT))
+     (port I1 (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell BUFGP (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT))))))
+ (library work 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell high_address_check (cellType GENERIC)
+   (view INTERFACE  (viewType NETLIST)
+    (interface 
+     (port clk (direction INPUT))
+     (port rstN (direction INPUT))
+     (port (array (rename address "address(31:0)") 32 )(direction INPUT))
+     (port high_addr (direction OUTPUT)))
+    (property AREA (string "3.000000"))
+    (property DESIGN_IS_RTL (string "NO"))
+    (property PART (string "v50bg256-6"))
+    (contents 
+     (instance high_addr_obuf (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename address_ibuf_24_ "address_ibuf(24)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename address_ibuf_25_ "address_ibuf(25)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename address_ibuf_26_ "address_ibuf(26)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename address_ibuf_27_ "address_ibuf(27)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename address_ibuf_28_ "address_ibuf(28)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename address_ibuf_29_ "address_ibuf(29)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename address_ibuf_30_ "address_ibuf(30)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename address_ibuf_31_ "address_ibuf(31)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance rstN_ibuf (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance reg_high_addr (viewRef NETLIST  (cellRef FDC (libraryRef xcv ))))
+     (instance ix52633z1318 (viewRef NETLIST  (cellRef LUT1 (libraryRef xcv )))
+      (property INIT (string "1")))
+     (instance ix52633z5410 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "1000")))
+     (instance ix52633z34082 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "7FFF")))
+     (instance ix52633z1323 (viewRef NETLIST  (cellRef LUT2 (libraryRef xcv )))
+      (property INIT (string "7")))
+     (instance clk_ibuf (viewRef NETLIST  (cellRef BUFGP (libraryRef xcv ))))
+     (net clk 
+      (joined 
+       (portRef clk )
+       (portRef I (instanceRef clk_ibuf ))))
+     (net rstN 
+      (joined 
+       (portRef rstN )
+       (portRef I (instanceRef rstN_ibuf ))))
+     (net (rename address_31_ "address(31)") 
+      (joined 
+       (portRef (member address 0))
+       (portRef I (instanceRef address_ibuf_31_ ))))
+     (net (rename address_30_ "address(30)") 
+      (joined 
+       (portRef (member address 1))
+       (portRef I (instanceRef address_ibuf_30_ ))))
+     (net (rename address_29_ "address(29)") 
+      (joined 
+       (portRef (member address 2))
+       (portRef I (instanceRef address_ibuf_29_ ))))
+     (net (rename address_28_ "address(28)") 
+      (joined 
+       (portRef (member address 3))
+       (portRef I (instanceRef address_ibuf_28_ ))))
+     (net (rename address_27_ "address(27)") 
+      (joined 
+       (portRef (member address 4))
+       (portRef I (instanceRef address_ibuf_27_ ))))
+     (net (rename address_26_ "address(26)") 
+      (joined 
+       (portRef (member address 5))
+       (portRef I (instanceRef address_ibuf_26_ ))))
+     (net (rename address_25_ "address(25)") 
+      (joined 
+       (portRef (member address 6))
+       (portRef I (instanceRef address_ibuf_25_ ))))
+     (net (rename address_24_ "address(24)") 
+      (joined 
+       (portRef (member address 7))
+       (portRef I (instanceRef address_ibuf_24_ ))))
+     (net high_addr_dup_0 
+      (joined 
+       (portRef Q (instanceRef reg_high_addr ))
+       (portRef I (instanceRef high_addr_obuf ))))
+     (net clk_int 
+      (joined 
+       (portRef O (instanceRef clk_ibuf ))
+       (portRef C (instanceRef reg_high_addr ))))
+     (net rstN_int 
+      (joined 
+       (portRef O (instanceRef rstN_ibuf ))
+       (portRef I0 (instanceRef ix52633z1318 ))))
+     (net (rename address_int_31_ "address_int(31)") 
+      (joined 
+       (portRef O (instanceRef address_ibuf_31_ ))
+       (portRef I0 (instanceRef ix52633z34082 ))))
+     (net (rename address_int_30_ "address_int(30)") 
+      (joined 
+       (portRef O (instanceRef address_ibuf_30_ ))
+       (portRef I1 (instanceRef ix52633z34082 ))))
+     (net (rename address_int_29_ "address_int(29)") 
+      (joined 
+       (portRef O (instanceRef address_ibuf_29_ ))
+       (portRef I2 (instanceRef ix52633z34082 ))))
+     (net (rename address_int_28_ "address_int(28)") 
+      (joined 
+       (portRef O (instanceRef address_ibuf_28_ ))
+       (portRef I3 (instanceRef ix52633z34082 ))))
+     (net (rename address_int_27_ "address_int(27)") 
+      (joined 
+       (portRef O (instanceRef address_ibuf_27_ ))
+       (portRef I0 (instanceRef ix52633z1323 ))))
+     (net (rename address_int_26_ "address_int(26)") 
+      (joined 
+       (portRef O (instanceRef address_ibuf_26_ ))
+       (portRef I1 (instanceRef ix52633z1323 ))))
+     (net (rename address_int_25_ "address_int(25)") 
+      (joined 
+       (portRef O (instanceRef address_ibuf_25_ ))
+       (portRef I2 (instanceRef ix52633z5410 ))))
+     (net (rename address_int_24_ "address_int(24)") 
+      (joined 
+       (portRef O (instanceRef address_ibuf_24_ ))
+       (portRef I3 (instanceRef ix52633z5410 ))))
+     (net high_addr 
+      (joined 
+       (portRef high_addr )
+       (portRef O (instanceRef high_addr_obuf ))))
+     (net not_rstN 
+      (joined 
+       (portRef O (instanceRef ix52633z1318 ))
+       (portRef CLR (instanceRef reg_high_addr ))))
+     (net high_addr_2n1s1 
+      (joined 
+       (portRef O (instanceRef ix52633z5410 ))
+       (portRef D (instanceRef reg_high_addr ))))
+     (net nx52633z1 
+      (joined 
+       (portRef O (instanceRef ix52633z34082 ))
+       (portRef I0 (instanceRef ix52633z5410 ))))
+     (net nx52633z2 
+      (joined 
+       (portRef O (instanceRef ix52633z1323 ))
+       (portRef I1 (instanceRef ix52633z5410 ))))))))
+ (design high_address_check (cellRef high_address_check (libraryRef work ))
+  (property PART (string "v50bg256-6"))))

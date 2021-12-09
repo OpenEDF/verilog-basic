@@ -1,0 +1,173 @@
+# Info: [9566]: Logging project transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log
+# Info: [9566]: Logging suppressed messages transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log.suppressed
+# Info: [9550]: Activated implementation project_2_impl_1 in project B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2.psp.
+new_project -name project_2 -folder B:/OneDrive/sandbox/book_examples/synthesis/precision -createimpl_name project_2_impl_1
+# COMMAND: add_input_file {../../chapter-05/5-15_streaming_op.sv}
+add_input_file {../../chapter-05/5-15_streaming_op.sv}
+# COMMAND: setup_design -manufacturer Xilinx -family VIRTEX -part v50bg256 -speed -6
+# Info: [15298]: Setting up the design to use synthesis library "xcv.syn"
+# Info: [575]: The global max fanout is currently set to 10000 for Xilinx - VIRTEX.
+# Info: [15324]: Setting Part to: "v50bg256".
+# Info: [15325]: Setting Process to: "6".
+# Info: [7512]: The place and route tool for current technology is ISE.
+setup_design -manufacturer Xilinx -family VIRTEX -part v50bg256 -speed -6
+# COMMAND: setup_design -max_fanout=10000
+# Info: [575]: The global max fanout is currently set to 10000 for Xilinx - VIRTEX.
+setup_design -max_fanout=10000
+# COMMAND: compile
+# Info: [3022]: Reading file: C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/psr/techlibs/xcv.syn.
+# Info: [634]: Loading library initialization file C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/psr/userware/xilinx_rename.tcl
+# Info: XILINX
+# Info: [40000]: hdl-analyze, Release RTLC-Precision 2016a.7
+# Info: [42003]: Starting analysis of files in library "work"
+# Info: [41002]: Analyzing input file "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-05/5-15_streaming_op.sv" ...
+# Info: [659]: Top module of the design is set to: reverse_bits.
+# Info: [657]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1.
+# Info: [40000]: RTLC-Driver, Release RTLC-Precision 2016a.7
+# Info: [40000]: Last compiled on Jun  1 2016 19:35:13
+# Info: [44512]: Initializing...
+# Info: [44504]: Partitioning design ....
+# Info: [40000]: RTLCompiler, Release RTLC-Precision 2016a.7
+# Info: [40000]: Last compiled on Jun  1 2016 19:50:39
+# Info: [44512]: Initializing...
+# Info: [44522]: Root Module reverse_bits: Pre-processing...
+# Info: [44523]: Root Module reverse_bits: Compiling...
+# Info: [44842]: Compilation successfully completed.
+# Info: [44856]: Total lines of RTL compiled: 9.
+# Info: [44835]: Total CPU time for compilation: 0.2 secs.
+# Info: [44513]: Overall running time for compilation: 1.0 secs.
+# Info: [657]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1.
+# Info: [15330]: Doing rtl optimizations.
+# Info: [660]: Finished compiling design.
+compile
+# COMMAND: synthesize
+# Info: [657]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1.
+# Info: [15002]: Optimizing design view:.work.reverse_bits.INTERFACE
+# Info: [3027]: Writing file: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/reverse_bits.edf.
+# Info: [3027]: Writing file: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/reverse_bits.ucf.
+# Info: [660]: Finished synthesizing design.
+# Info: [11019]: Total CPU time for synthesis: 0.1 s secs.
+# Info: [11020]: Overall running time for synthesis: 0.1 s secs.
+synthesize
+# COMMAND: remove_input_file {B:/OneDrive/sandbox/book_examples/chapter-05/5-15_streaming_op.sv}
+remove_input_file {B:/OneDrive/sandbox/book_examples/chapter-05/5-15_streaming_op.sv}
+# COMMAND: add_input_file {../../chapter-05/5-02_concatenate_op-2.sv}
+add_input_file {../../chapter-05/5-02_concatenate_op-2.sv}
+# COMMAND: compile
+# Info: [634]: Loading library initialization file C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/psr/userware/xilinx_rename.tcl
+# Info: XILINX
+# Info: [40000]: hdl-analyze, Release RTLC-Precision 2016a.7
+# Info: [42003]: Starting analysis of files in library "work"
+# Info: [41002]: Analyzing input file "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-05/5-02_concatenate_op-2.sv" ...
+# Info: [659]: Top module of the design is set to: rtl_adder.
+# Info: [657]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1.
+# Info: [40000]: RTLC-Driver, Release RTLC-Precision 2016a.7
+# Info: [40000]: Last compiled on Jun  1 2016 19:35:13
+# Info: [44512]: Initializing...
+# Info: [44504]: Partitioning design ....
+# Info: [40000]: RTLCompiler, Release RTLC-Precision 2016a.7
+# Info: [40000]: Last compiled on Jun  1 2016 19:50:39
+# Info: [44512]: Initializing...
+# Info: [44522]: Root Module rtl_adder: Pre-processing...
+# Info: [44523]: Root Module rtl_adder: Compiling...
+# Info: [44846]: Rebalanced Expression Tree...
+# Info: [44842]: Compilation successfully completed.
+# Info: [44856]: Total lines of RTL compiled: 8.
+# Info: [44835]: Total CPU time for compilation: 0.2 secs.
+# Info: [44513]: Overall running time for compilation: 1.0 secs.
+# Info: [657]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1.
+# Info: [15330]: Doing rtl optimizations.
+# Info: [660]: Finished compiling design.
+compile
+# COMMAND: synthesize
+# Info: [657]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1.
+# Info: [15002]: Optimizing design view:.work.rtl_adder.INTERFACE
+# Info: [3027]: Writing file: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/rtl_adder.edf.
+# Info: [3027]: Writing file: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/rtl_adder.ucf.
+# Info: [660]: Finished synthesizing design.
+# Info: [11019]: Total CPU time for synthesis: 0.1 s secs.
+# Info: [11020]: Overall running time for synthesis: 0.1 s secs.
+synthesize
+# COMMAND: setup_design -transformations=false
+setup_design -transformations=false
+# COMMAND: setup_design -edif=false -verilog=true
+setup_design -edif=false -verilog=true
+# COMMAND: compile
+# Info: [634]: Loading library initialization file C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/psr/userware/xilinx_rename.tcl
+# Info: XILINX
+# Info: [40000]: hdl-analyze, Release RTLC-Precision 2016a.7
+# Info: [42003]: Starting analysis of files in library "work"
+# Info: [41002]: Analyzing input file "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-05/5-02_concatenate_op-2.sv" ...
+# Info: [659]: Top module of the design is set to: rtl_adder.
+# Info: [657]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1.
+# Info: [40000]: RTLC-Driver, Release RTLC-Precision 2016a.7
+# Info: [40000]: Last compiled on Jun  1 2016 19:35:13
+# Info: [44512]: Initializing...
+# Info: [44504]: Partitioning design ....
+# Info: [40000]: RTLCompiler, Release RTLC-Precision 2016a.7
+# Info: [40000]: Last compiled on Jun  1 2016 19:50:39
+# Info: [44512]: Initializing...
+# Info: [44522]: Root Module rtl_adder: Pre-processing...
+# Info: [44523]: Root Module rtl_adder: Compiling...
+# Info: [44846]: Rebalanced Expression Tree...
+# Info: [44842]: Compilation successfully completed.
+# Info: [44856]: Total lines of RTL compiled: 8.
+# Info: [44835]: Total CPU time for compilation: 0.2 secs.
+# Info: [44513]: Overall running time for compilation: 1.0 secs.
+# Info: [657]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1.
+# Info: [15330]: Doing rtl optimizations.
+# Info: [660]: Finished compiling design.
+compile
+# COMMAND: synthesize
+# Info: [657]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1.
+# Info: [15002]: Optimizing design view:.work.rtl_adder.INTERFACE
+# Info: [3027]: Writing file: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/rtl_adder.v.
+# Info: [660]: Finished synthesizing design.
+# Info: [11019]: Total CPU time for synthesis: 0.0 s secs.
+# Info: [11020]: Overall running time for synthesis: 0.1 s secs.
+synthesize
+# COMMAND: save_project
+# Info: [9562]: Saved implementation project_2_impl_1 in project B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2.psp.
+save_project
+# COMMAND: close_project -discard
+# Info: [9565]: Appending project transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log
+# Info: [9565]: Appending suppressed messages transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log.suppressed
+# Info: [15298]: Setting up the design to use synthesis library "xcv.syn"
+# Info: [575]: The global max fanout is currently set to 10000 for Xilinx - VIRTEX.
+# Info: [9565]: Appending project transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log
+# Info: [9565]: Appending suppressed messages transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log.suppressed
+# Info: [15298]: Setting up the design to use synthesis library "xcv.syn"
+# Info: [575]: The global max fanout is currently set to 10000 for Xilinx - VIRTEX.
+# Info: [9565]: Appending project transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log
+# Info: [9565]: Appending suppressed messages transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log.suppressed
+# Info: [15298]: Setting up the design to use synthesis library "xcv.syn"
+# Info: [575]: The global max fanout is currently set to 10000 for Xilinx - VIRTEX.
+# Info: [9565]: Appending project transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log
+# Info: [9565]: Appending suppressed messages transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log.suppressed
+# Info: [15298]: Setting up the design to use synthesis library "xcv.syn"
+# Info: [574]: The global max fanout is currently set to 10000 for Xilinx - VIRTEX.
+# Info: [9565]: Appending project transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log
+# Info: [9565]: Appending suppressed messages transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log.suppressed
+# Info: [15298]: Setting up the design to use synthesis library "xcv.syn"
+# Info: [574]: The global max fanout is currently set to 10000 for Xilinx - VIRTEX.
+# Info: [9565]: Appending project transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log
+# Info: [9565]: Appending suppressed messages transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log.suppressed
+# Info: [15298]: Setting up the design to use synthesis library "xcv.syn"
+# Info: [574]: The global max fanout is currently set to 10000 for Xilinx - VIRTEX.
+# Info: [9565]: Appending project transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log
+# Info: [9565]: Appending suppressed messages transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log.suppressed
+# Info: [15298]: Setting up the design to use synthesis library "xcv.syn"
+# Info: [574]: The global max fanout is currently set to 10000 for Xilinx - VIRTEX.
+# Info: [9565]: Appending project transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log
+# Info: [9565]: Appending suppressed messages transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/precision.log.suppressed
+# Info: [15298]: Setting up the design to use synthesis library "xcv.syn"
+# Info: [574]: The global max fanout is currently set to 10000 for Xilinx - VIRTEX.
+# Info: [15324]: Setting Part to: "v50bg256".
+# Info: [15325]: Setting Process to: "6".
+# Info: [7512]: The place and route tool for current technology is ISE.
+# Warning: [569]: Setting 'optimize_power_effort' is not allowed in RTL product mode. Ignoring.
+# Info: [3022]: Reading file: C:/MentorGraphics/PS2015.1.6_32-bit/Mgc_home/pkgs/psr/techlibs/xcv.syn.
+# Info: [633]: Loading library initialization file C:/MentorGraphics/PS2015.1.6_32-bit/Mgc_home/pkgs/psr/userware/xilinx_rename.tcl
+# Info: XILINX
+# Error: [3015]: Reading 64-bit XDB into 32-bit Precision unsupported: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/rtl_adder_rtl.ixdb.
+# Error: [9581]: Unable to read file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_1/rtl_adder_rtl.ixdb.

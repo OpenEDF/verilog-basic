@@ -1,0 +1,9 @@
+Selecting top level module BUFG
+@N: CG706 :"/mnt/sandbox/book_examples/chapter-05/synplify/syntmp/unisim.v":651:7:651:10|Selected top-level module BUFG is a black box, ignoring black box ...
+@N: CG364 :"/mnt/sandbox/book_examples/chapter-05/synplify/syntmp/unisim.v":651:7:651:10|Synthesizing module BUFG
+
+@W: CG146 :"/mnt/sandbox/book_examples/chapter-05/synplify/syntmp/unisim.v":651:7:651:10|Creating black box for empty module BUFG
+
+@N: CG706 :"/mnt/sandbox/book_examples/chapter-05/synplify/syntmp/unisim.v":651:7:651:10|Selected top-level module BUFG is a black box, ignoring black box ...
+@W: CL157 :"/mnt/sandbox/book_examples/chapter-05/synplify/syntmp/unisim.v":654:7:654:7|*Output O has undriven bits -- simulation mismatch possible.
+@W: CL159 :"/mnt/sandbox/book_examples/chapter-05/synplify/syntmp/unisim.v":653:6:653:6|Input I is unused

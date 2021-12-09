@@ -1,0 +1,88 @@
+//  Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//  
+//  Start time Sun Sep 29 06:34:01 2013
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               16      180       8.89%
+Global Buffers                    0       4         0.00%
+LUTs                              0       1536      0.00%
+CLB Slices                        0       768       0.00%
+Dffs or Latches                   0       1536      0.00%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+*******************************************************
+
+Library: work    Cell: divide_by_two    View: INTERFACE
+
+*******************************************************
+
+  Cell    Library  References     Total Area
+
+ GND     xcv     1 x
+ IBUF    xcv     7 x
+ OBUF    xcv     8 x
+
+ Number of ports :                      16
+ Number of nets :                       23
+ Number of instances :                  16
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of gates :                       0
+ Number of accumulated instances :      16
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.divide_by_two.INTERFACE
+
++----------------+-----------+----------+----------+----------+
+| Port           | Direction |   INFF   |  OUTFF   |  TRIFF   |
++----------------+-----------+----------+----------+----------+
+| data_in(7)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(6)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(5)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(4)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(3)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(2)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(1)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_in(0)     | Input     |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(7)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(6)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(5)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(4)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(3)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(2)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(1)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+| data_out(0)    | Output    |          |          |          |
++----------------+-----------+----------+----------+----------+
+Total registers mapped: 0

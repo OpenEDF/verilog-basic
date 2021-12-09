@@ -1,0 +1,5 @@
+@W: CG677 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":31:2:31:9|Ignoring timeunit for synthesis
+@W: CG677 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":31:16:31:28|Ignoring timeprecision for synthesis
+@W: CL208 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":33:2:33:10|All reachable assignments to bit 5 of status[7:0] assign 1, register removed by optimization.
+@W: CL208 :"/mnt/sandbox/book_examples/chapter-05/5-1_concatenate_op-1.sv":33:2:33:10|All reachable assignments to bit 6 of status[7:0] assign 1, register removed by optimization.
+

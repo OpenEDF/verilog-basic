@@ -1,0 +1,67 @@
+//  Precision RTL Synthesis  64-bit 2016.1.0.15 (Production Release) Wed Jun  8 09:35:56 PDT 2016
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2016, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on  Stuart@SHDL-2  6.02.9200 
+//  
+//  Start time Thu Aug 04 02:40:09 2016
+
+***************************************************************
+Device Utilization for v50bg256
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               5       180       2.78%
+Global Buffers                    0       4         0.00%
+LUTs                              2       1536      0.13%
+CLB Slices                        1       768       0.13%
+Dffs or Latches                   0       1536      0.00%
+Block RAMs                        0       8         0.00%
+---------------------------------------------------------------
+
+***************************************************
+
+Library: work    Cell: rtl_adder    View: INTERFACE
+
+***************************************************
+
+  Cell    Library  References     Total Area
+
+ IBUF    xcv     3 x
+ LUT3    xcv     2 x      1      2 LUTs
+ OBUF    xcv     2 x
+
+ Number of ports :                            5
+ Number of nets :                            10
+ Number of instances :                        7
+ Number of references to this view :          0
+
+Total accumulated area : 
+ Number of LUTs :                             2
+ Number of gates :                            2
+ Number of accumulated instances :            7
+
+
+*****************************
+ IO Register Mapping Report
+*****************************
+Design: work.rtl_adder.INTERFACE
+
++--------+-----------+----------+----------+----------+
+| Port   | Direction |   INFF   |  OUTFF   |  TRIFF   |
++--------+-----------+----------+----------+----------+
+| a      | Input     |          |          |          |
++--------+-----------+----------+----------+----------+
+| b      | Input     |          |          |          |
++--------+-----------+----------+----------+----------+
+| ci     | Input     |          |          |          |
++--------+-----------+----------+----------+----------+
+| sum    | Output    |          |          |          |
++--------+-----------+----------+----------+----------+
+| co     | Output    |          |          |          |
++--------+-----------+----------+----------+----------+
+Total registers mapped: 0

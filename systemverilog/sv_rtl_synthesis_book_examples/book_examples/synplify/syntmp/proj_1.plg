@@ -1,0 +1,29 @@
+@P: status_reg Part : a3265dx-1 
+@P: status_reg Combinational Cells : 0 of 475 (0%) 
+@P: status_reg Sequential Cells : 6 of 510 (1%) 
+@P: status_reg Total Cells : 6 of 985 (1%) 
+@P: status_reg DSP Blocks : 0 
+@P: status_reg IO Cells : 16 
+@P:  Worst Slack : 2.010
+@P:  status_reg|clk - Estimated Frequency : 125.2 MHz
+@P:  status_reg|clk - Requested Frequency : 100.0 MHz
+@P:  status_reg|clk - Estimated Period : 7.990
+@P:  status_reg|clk - Requested Period : 10.000
+@P:  status_reg|clk - Slack : 2.010
+@P:  System - Estimated Frequency : 1.0 MHz
+@P:  System - Requested Frequency : 1.0 MHz
+@P:  System - Estimated Period : 996.290
+@P:  System - Requested Period : 1000.000
+@P:  System - Slack : 3.710
+@P:  Worst Slack(min analysis) : 3.808
+@P:  status_reg|clk - Estimated Frequency(min analysis) : 226.9 MHz
+@P:  status_reg|clk - Requested Frequency(min analysis) : 100.0 MHz
+@P:  status_reg|clk - Estimated Period(min analysis) : 4.407
+@P:  status_reg|clk - Requested Period(min analysis) : 10.000
+@P:  status_reg|clk - Slack(min analysis) : 5.593
+@P:  System - Estimated Frequency(min analysis) : 1.0 MHz
+@P:  System - Requested Frequency(min analysis) : 1.0 MHz
+@P:  System - Estimated Period(min analysis) : 996.192
+@P:  System - Requested Period(min analysis) : 1000.000
+@P:  System - Slack(min analysis) : 3.808
+@P:  Total Area : 0.0

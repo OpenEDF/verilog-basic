@@ -1,0 +1,272 @@
+(edif status_flag 
+ (edifVersion 2 0 0)
+ (edifLevel 0)
+ (keywordMap (keywordLevel 0))
+ (status 
+  (written 
+   (timestamp 2013 09 19 06 00 35)
+   (program "Precision RTL Synthesis" (version "2013a.9"))
+   (author "Mentor Graphics Corporation")))
+ (external xcv 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell OBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell IBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell FDC (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port D (direction INPUT))
+     (port C (direction INPUT))
+     (port CLR (direction INPUT))
+     (port Q (direction OUTPUT)))))
+  (cell LUT1 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I0 (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell LUT4 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I0 (direction INPUT))
+     (port I1 (direction INPUT))
+     (port I2 (direction INPUT))
+     (port I3 (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell BUFGP (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT))))))
+ (library work 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell status_flag (cellType GENERIC)
+   (view INTERFACE  (viewType NETLIST)
+    (interface 
+     (port clk (direction INPUT))
+     (port rstN (direction INPUT))
+     (port (array (rename d1 "d1(7:0)") 8 )(direction INPUT))
+     (port (array (rename d2 "d2(7:0)") 8 )(direction INPUT))
+     (port equivalent (direction OUTPUT)))
+    (property AREA (string "5.000000"))
+    (property DESIGN_IS_RTL (string "NO"))
+    (property PART (string "v50bg256-6"))
+    (contents 
+     (instance equivalent_obuf (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename d2_ibuf_0_ "d2_ibuf(0)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d2_ibuf_1_ "d2_ibuf(1)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d2_ibuf_2_ "d2_ibuf(2)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d2_ibuf_3_ "d2_ibuf(3)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d2_ibuf_4_ "d2_ibuf(4)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d2_ibuf_5_ "d2_ibuf(5)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d2_ibuf_6_ "d2_ibuf(6)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d2_ibuf_7_ "d2_ibuf(7)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d1_ibuf_0_ "d1_ibuf(0)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d1_ibuf_1_ "d1_ibuf(1)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d1_ibuf_2_ "d1_ibuf(2)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d1_ibuf_3_ "d1_ibuf(3)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d1_ibuf_4_ "d1_ibuf(4)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d1_ibuf_5_ "d1_ibuf(5)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d1_ibuf_6_ "d1_ibuf(6)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename d1_ibuf_7_ "d1_ibuf(7)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance rstN_ibuf (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance reg_equivalent (viewRef NETLIST  (cellRef FDC (libraryRef xcv ))))
+     (instance ix51679z1320 (viewRef NETLIST  (cellRef LUT1 (libraryRef xcv )))
+      (property INIT (string "1")))
+     (instance ix51679z62467 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "EEE1")))
+     (instance ix51679z1313 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "FFFE")))
+     (instance ix51679z1314 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "FFFE")))
+     (instance ix51679z1315 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "FFFE")))
+     (instance ix51679z1316 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "FFFE")))
+     (instance clk_ibuf (viewRef NETLIST  (cellRef BUFGP (libraryRef xcv ))))
+     (net equivalent_dup_0 
+      (joined 
+       (portRef Q (instanceRef reg_equivalent ))
+       (portRef I (instanceRef equivalent_obuf ))))
+     (net clk 
+      (joined 
+       (portRef clk )
+       (portRef I (instanceRef clk_ibuf ))))
+     (net rstN 
+      (joined 
+       (portRef rstN )
+       (portRef I (instanceRef rstN_ibuf ))))
+     (net (rename d1_7_ "d1(7)") 
+      (joined 
+       (portRef (member d1 0))
+       (portRef I (instanceRef d1_ibuf_7_ ))))
+     (net (rename d1_6_ "d1(6)") 
+      (joined 
+       (portRef (member d1 1))
+       (portRef I (instanceRef d1_ibuf_6_ ))))
+     (net (rename d1_5_ "d1(5)") 
+      (joined 
+       (portRef (member d1 2))
+       (portRef I (instanceRef d1_ibuf_5_ ))))
+     (net (rename d1_4_ "d1(4)") 
+      (joined 
+       (portRef (member d1 3))
+       (portRef I (instanceRef d1_ibuf_4_ ))))
+     (net (rename d1_3_ "d1(3)") 
+      (joined 
+       (portRef (member d1 4))
+       (portRef I (instanceRef d1_ibuf_3_ ))))
+     (net (rename d1_2_ "d1(2)") 
+      (joined 
+       (portRef (member d1 5))
+       (portRef I (instanceRef d1_ibuf_2_ ))))
+     (net (rename d1_1_ "d1(1)") 
+      (joined 
+       (portRef (member d1 6))
+       (portRef I (instanceRef d1_ibuf_1_ ))))
+     (net (rename d1_0_ "d1(0)") 
+      (joined 
+       (portRef (member d1 7))
+       (portRef I (instanceRef d1_ibuf_0_ ))))
+     (net (rename d2_7_ "d2(7)") 
+      (joined 
+       (portRef (member d2 0))
+       (portRef I (instanceRef d2_ibuf_7_ ))))
+     (net (rename d2_6_ "d2(6)") 
+      (joined 
+       (portRef (member d2 1))
+       (portRef I (instanceRef d2_ibuf_6_ ))))
+     (net (rename d2_5_ "d2(5)") 
+      (joined 
+       (portRef (member d2 2))
+       (portRef I (instanceRef d2_ibuf_5_ ))))
+     (net (rename d2_4_ "d2(4)") 
+      (joined 
+       (portRef (member d2 3))
+       (portRef I (instanceRef d2_ibuf_4_ ))))
+     (net (rename d2_3_ "d2(3)") 
+      (joined 
+       (portRef (member d2 4))
+       (portRef I (instanceRef d2_ibuf_3_ ))))
+     (net (rename d2_2_ "d2(2)") 
+      (joined 
+       (portRef (member d2 5))
+       (portRef I (instanceRef d2_ibuf_2_ ))))
+     (net (rename d2_1_ "d2(1)") 
+      (joined 
+       (portRef (member d2 6))
+       (portRef I (instanceRef d2_ibuf_1_ ))))
+     (net (rename d2_0_ "d2(0)") 
+      (joined 
+       (portRef (member d2 7))
+       (portRef I (instanceRef d2_ibuf_0_ ))))
+     (net clk_int 
+      (joined 
+       (portRef O (instanceRef clk_ibuf ))
+       (portRef C (instanceRef reg_equivalent ))))
+     (net rstN_int 
+      (joined 
+       (portRef O (instanceRef rstN_ibuf ))
+       (portRef I0 (instanceRef ix51679z1320 ))))
+     (net (rename d1_int_7_ "d1_int(7)") 
+      (joined 
+       (portRef O (instanceRef d1_ibuf_7_ ))
+       (portRef I0 (instanceRef ix51679z1313 ))))
+     (net (rename d1_int_6_ "d1_int(6)") 
+      (joined 
+       (portRef O (instanceRef d1_ibuf_6_ ))
+       (portRef I1 (instanceRef ix51679z1313 ))))
+     (net (rename d1_int_5_ "d1_int(5)") 
+      (joined 
+       (portRef O (instanceRef d1_ibuf_5_ ))
+       (portRef I2 (instanceRef ix51679z1313 ))))
+     (net (rename d1_int_4_ "d1_int(4)") 
+      (joined 
+       (portRef O (instanceRef d1_ibuf_4_ ))
+       (portRef I3 (instanceRef ix51679z1313 ))))
+     (net (rename d1_int_3_ "d1_int(3)") 
+      (joined 
+       (portRef O (instanceRef d1_ibuf_3_ ))
+       (portRef I0 (instanceRef ix51679z1314 ))))
+     (net (rename d1_int_2_ "d1_int(2)") 
+      (joined 
+       (portRef O (instanceRef d1_ibuf_2_ ))
+       (portRef I1 (instanceRef ix51679z1314 ))))
+     (net (rename d1_int_1_ "d1_int(1)") 
+      (joined 
+       (portRef O (instanceRef d1_ibuf_1_ ))
+       (portRef I2 (instanceRef ix51679z1314 ))))
+     (net (rename d1_int_0_ "d1_int(0)") 
+      (joined 
+       (portRef O (instanceRef d1_ibuf_0_ ))
+       (portRef I3 (instanceRef ix51679z1314 ))))
+     (net (rename d2_int_7_ "d2_int(7)") 
+      (joined 
+       (portRef O (instanceRef d2_ibuf_7_ ))
+       (portRef I0 (instanceRef ix51679z1315 ))))
+     (net (rename d2_int_6_ "d2_int(6)") 
+      (joined 
+       (portRef O (instanceRef d2_ibuf_6_ ))
+       (portRef I1 (instanceRef ix51679z1315 ))))
+     (net (rename d2_int_5_ "d2_int(5)") 
+      (joined 
+       (portRef O (instanceRef d2_ibuf_5_ ))
+       (portRef I2 (instanceRef ix51679z1315 ))))
+     (net (rename d2_int_4_ "d2_int(4)") 
+      (joined 
+       (portRef O (instanceRef d2_ibuf_4_ ))
+       (portRef I3 (instanceRef ix51679z1315 ))))
+     (net (rename d2_int_3_ "d2_int(3)") 
+      (joined 
+       (portRef O (instanceRef d2_ibuf_3_ ))
+       (portRef I0 (instanceRef ix51679z1316 ))))
+     (net (rename d2_int_2_ "d2_int(2)") 
+      (joined 
+       (portRef O (instanceRef d2_ibuf_2_ ))
+       (portRef I1 (instanceRef ix51679z1316 ))))
+     (net (rename d2_int_1_ "d2_int(1)") 
+      (joined 
+       (portRef O (instanceRef d2_ibuf_1_ ))
+       (portRef I2 (instanceRef ix51679z1316 ))))
+     (net (rename d2_int_0_ "d2_int(0)") 
+      (joined 
+       (portRef O (instanceRef d2_ibuf_0_ ))
+       (portRef I3 (instanceRef ix51679z1316 ))))
+     (net equivalent 
+      (joined 
+       (portRef equivalent )
+       (portRef O (instanceRef equivalent_obuf ))))
+     (net not_rstN 
+      (joined 
+       (portRef O (instanceRef ix51679z1320 ))
+       (portRef CLR (instanceRef reg_equivalent ))))
+     (net equivalent_2n1s1 
+      (joined 
+       (portRef O (instanceRef ix51679z62467 ))
+       (portRef D (instanceRef reg_equivalent ))))
+     (net nx51679z1 
+      (joined 
+       (portRef O (instanceRef ix51679z1313 ))
+       (portRef I0 (instanceRef ix51679z62467 ))))
+     (net nx51679z2 
+      (joined 
+       (portRef O (instanceRef ix51679z1314 ))
+       (portRef I1 (instanceRef ix51679z62467 ))))
+     (net nx51679z3 
+      (joined 
+       (portRef O (instanceRef ix51679z1315 ))
+       (portRef I2 (instanceRef ix51679z62467 ))))
+     (net nx51679z4 
+      (joined 
+       (portRef O (instanceRef ix51679z1316 ))
+       (portRef I3 (instanceRef ix51679z62467 ))))))))
+ (design status_flag (cellRef status_flag (libraryRef work ))
+  (property PART (string "v50bg256-6"))))

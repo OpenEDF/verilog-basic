@@ -1,0 +1,4 @@
+@N: MF249 |Running in 32-bit mode.
+@N: MF666 |Clock conversion enabled 
+@N: MF203 |Set autoconstraint_io 
+@N: BN225 |Writing default property annotation file /mnt/sandbox/book_examples/chapter-05/synplify/proj_1.sap.

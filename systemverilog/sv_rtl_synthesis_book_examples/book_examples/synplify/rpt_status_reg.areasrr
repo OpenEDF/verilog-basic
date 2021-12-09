@@ -1,0 +1,76 @@
+#### START OF AREA REPORT #####[
+
+Part:			XC7VX485TFFG1157-1 (Xilinx)
+
+--------------------------------------------------------------------------
+########   Utilization report for  Top level view:   status_reg   ########
+==========================================================================
+
+SEQUENTIAL ELEMENTS
+*******************
+
+Name          Total elements     Utilization     Notes
+------------------------------------------------------
+REGISTERS     6                  100 %                
+LATCHES       0                  0 %                  
+======================================================
+Total SEQUENTIAL ELEMENTS in the block status_reg:	6 (24.00 % Utilization)
+
+
+COMBINATIONAL LOGIC
+*******************
+
+Name      Total elements     Utilization     Notes
+--------------------------------------------------
+LUTS      0                  0 %                  
+MUXCY     0                  0 %                  
+XORCY     0                  0 %                  
+DSP48     0                  0 %                  
+SRL16     0                  0 %                  
+==================================================
+Total COMBINATIONAL LOGIC in the block status_reg:	0 (0.00 % Utilization)
+
+
+MEMORY ELEMENTS
+***************
+
+Name          Total elements     Utilization     Notes
+------------------------------------------------------
+SYNC RAMS     0                  0 %                  
+======================================================
+Total MEMORY ELEMENTS in the block status_reg:	0 (0.00 % Utilization)
+
+
+
+
+
+Name     Total elements     Number of bits     Utilization     Notes
+--------------------------------------------------------------------
+                                                                    
+ROMS     0                  0                  0 %                  
+====================================================================
+Total  in the block status_reg:	0 (0.00 % Utilization)
+
+
+Distributed RAM
+***************
+
+Name                Total elements     Number of LUTs     Utilization     Notes
+-------------------------------------------------------------------------------
+DISTRIBUTED RAM     0                  0                  0 %                  
+===============================================================================
+Total Distributed RAM in the block status_reg:	0 (0.00 % Utilization)
+
+
+IO PADS
+*******
+
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+PADS     16                 100 %                
+=================================================
+Total IO PADS in the block status_reg:	16 (64.00 % Utilization)
+
+
+##### END OF AREA REPORT #####]
+

@@ -1,0 +1,409 @@
+(edif uart 
+ (edifVersion 2 0 0)
+ (edifLevel 0)
+ (keywordMap (keywordLevel 0))
+ (status 
+  (written 
+   (timestamp 2013 12 23 04 16 24)
+   (program "Precision RTL Synthesis" (version "2013a.9"))
+   (author "Mentor Graphics Corporation")))
+ (external pasic3 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell outpad (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port A (direction INPUT))
+     (port P (direction OUTPUT)))
+    (property same_tech_noopt (string "T"))))
+  (cell inpad (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port P (direction INPUT))
+     (port Q (direction OUTPUT)))))
+  (cell logic_0 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port a (direction OUTPUT)))))
+  (cell dffc (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port D (direction INPUT))
+     (port CLK (direction INPUT))
+     (port CLR (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.400000"))))
+  (cell and4i3 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port A (direction INPUT))
+     (port B (direction INPUT))
+     (port C (direction INPUT))
+     (port D (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.160000"))))
+  (cell mux2x2 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port A (direction INPUT))
+     (port B (direction INPUT))
+     (port S (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.280000"))))
+  (cell and2i2 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port A (direction INPUT))
+     (port B (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.160000"))))
+  (cell and3i3 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port A (direction INPUT))
+     (port B (direction INPUT))
+     (port C (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.160000"))))
+  (cell dff (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port D (direction INPUT))
+     (port CLK (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.400000"))))
+  (cell or3i1 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port A (direction INPUT))
+     (port B (direction INPUT))
+     (port C (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.280000"))))
+  (cell and2i1 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port A (direction INPUT))
+     (port B (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.160000"))))
+  (cell and2i0 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port A (direction INPUT))
+     (port B (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.160000"))))
+  (cell or2i2 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port A (direction INPUT))
+     (port B (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.280000"))))
+  (cell inv (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port A (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.160000"))))
+  (cell dffepc (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port D (direction INPUT))
+     (port EN (direction INPUT))
+     (port CLK (direction INPUT))
+     (port PRE (direction INPUT))
+     (port CLR (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property AREA (string "0.400000"))))
+  (cell ckpad (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port P (direction INPUT))
+     (port Q (direction OUTPUT)))
+    (property pad_type (string "clock"))
+    (property same_tech_noopt (string "T")))))
+ (library work 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell uart (cellType GENERIC)
+   (property package_type (string "PF100"))
+   (property device_type (string "QL3004E"))
+   (property SpeedGrade (string "4"))
+   (view INTERFACE  (viewType NETLIST)
+    (interface 
+     (port (rename data_7_ "data(7)") (direction OUTPUT))
+     (port (rename data_6_ "data(6)") (direction OUTPUT))
+     (port (rename data_5_ "data(5)") (direction OUTPUT))
+     (port (rename data_4_ "data(4)") (direction OUTPUT))
+     (port (rename data_3_ "data(3)") (direction OUTPUT))
+     (port (rename data_2_ "data(2)") (direction OUTPUT))
+     (port (rename data_1_ "data(1)") (direction OUTPUT))
+     (port (rename data_0_ "data(0)") (direction OUTPUT))
+     (port data_rdy (direction OUTPUT))
+     (port serial_in (direction INPUT))
+     (port clock (direction INPUT)
+      (property INFF (string "FALSE")))
+     (port reset (direction INPUT)))
+    (property DESIGN_IS_RTL (string "NO"))
+    (contents 
+     (instance (rename io_data_7_ "io_data(7)") (viewRef NETLIST  (cellRef outpad (libraryRef pasic3 ))))
+     (instance (rename io_data_6_ "io_data(6)") (viewRef NETLIST  (cellRef outpad (libraryRef pasic3 ))))
+     (instance (rename io_data_5_ "io_data(5)") (viewRef NETLIST  (cellRef outpad (libraryRef pasic3 ))))
+     (instance (rename io_data_4_ "io_data(4)") (viewRef NETLIST  (cellRef outpad (libraryRef pasic3 ))))
+     (instance (rename io_data_3_ "io_data(3)") (viewRef NETLIST  (cellRef outpad (libraryRef pasic3 ))))
+     (instance (rename io_data_2_ "io_data(2)") (viewRef NETLIST  (cellRef outpad (libraryRef pasic3 ))))
+     (instance (rename io_data_1_ "io_data(1)") (viewRef NETLIST  (cellRef outpad (libraryRef pasic3 ))))
+     (instance (rename io_data_0_ "io_data(0)") (viewRef NETLIST  (cellRef outpad (libraryRef pasic3 ))))
+     (instance io_data_rdy (viewRef NETLIST  (cellRef outpad (libraryRef pasic3 ))))
+     (instance io_serial_in (viewRef NETLIST  (cellRef inpad (libraryRef pasic3 ))))
+     (instance io_reset (viewRef NETLIST  (cellRef inpad (libraryRef pasic3 ))))
+     (instance ix13021z53416 (viewRef NETLIST  (cellRef logic_0 (libraryRef pasic3 ))))
+     (instance (rename reg_state_1_ "reg_state(1)") (viewRef NETLIST  (cellRef dffc (libraryRef pasic3 ))))
+     (instance ix28524z45174 (viewRef NETLIST  (cellRef and4i3 (libraryRef pasic3 ))))
+     (instance (rename reg_state_0_ "reg_state(0)") (viewRef NETLIST  (cellRef dffc (libraryRef pasic3 ))))
+     (instance ix29521z22247 (viewRef NETLIST  (cellRef mux2x2 (libraryRef pasic3 ))))
+     (instance ix29521z1578 (viewRef NETLIST  (cellRef and2i2 (libraryRef pasic3 ))))
+     (instance ix22965z56147 (viewRef NETLIST  (cellRef and3i3 (libraryRef pasic3 ))))
+     (instance (rename reg_bit_cnt_2_ "reg_bit_cnt(2)") (viewRef NETLIST  (cellRef dff (libraryRef pasic3 ))))
+     (instance ix22965z13631 (viewRef NETLIST  (cellRef or3i1 (libraryRef pasic3 ))))
+     (instance ix22965z1579 (viewRef NETLIST  (cellRef and2i1 (libraryRef pasic3 ))))
+     (instance ix22965z1584 (viewRef NETLIST  (cellRef and2i2 (libraryRef pasic3 ))))
+     (instance (rename reg_bit_cnt_1_ "reg_bit_cnt(1)") (viewRef NETLIST  (cellRef dff (libraryRef pasic3 ))))
+     (instance ix23962z13631 (viewRef NETLIST  (cellRef or3i1 (libraryRef pasic3 ))))
+     (instance ix23962z1580 (viewRef NETLIST  (cellRef and2i0 (libraryRef pasic3 ))))
+     (instance (rename reg_bit_cnt_0_ "reg_bit_cnt(0)") (viewRef NETLIST  (cellRef dff (libraryRef pasic3 ))))
+     (instance ix24959z24599 (viewRef NETLIST  (cellRef or2i2 (libraryRef pasic3 ))))
+     (instance ix28524z16351 (viewRef NETLIST  (cellRef inv (libraryRef pasic3 ))))
+     (instance (rename reg_data_0_ "reg_data(0)") (viewRef NETLIST  (cellRef dffepc (libraryRef pasic3 ))))
+     (instance (rename reg_data_1_ "reg_data(1)") (viewRef NETLIST  (cellRef dffepc (libraryRef pasic3 ))))
+     (instance (rename reg_data_2_ "reg_data(2)") (viewRef NETLIST  (cellRef dffepc (libraryRef pasic3 ))))
+     (instance (rename reg_data_3_ "reg_data(3)") (viewRef NETLIST  (cellRef dffepc (libraryRef pasic3 ))))
+     (instance (rename reg_data_4_ "reg_data(4)") (viewRef NETLIST  (cellRef dffepc (libraryRef pasic3 ))))
+     (instance (rename reg_data_5_ "reg_data(5)") (viewRef NETLIST  (cellRef dffepc (libraryRef pasic3 ))))
+     (instance (rename reg_data_6_ "reg_data(6)") (viewRef NETLIST  (cellRef dffepc (libraryRef pasic3 ))))
+     (instance (rename reg_data_7_ "reg_data(7)") (viewRef NETLIST  (cellRef dffepc (libraryRef pasic3 ))))
+     (instance io_clock (viewRef NETLIST  (cellRef ckpad (libraryRef pasic3 ))))
+     (net (rename int_data_7_ "int_data(7)") 
+      (joined 
+       (portRef Q (instanceRef reg_data_7_ ))
+       (portRef A (instanceRef io_data_7_ ))
+       (portRef D (instanceRef reg_data_6_ ))))
+     (net (rename int_data_6_ "int_data(6)") 
+      (joined 
+       (portRef Q (instanceRef reg_data_6_ ))
+       (portRef A (instanceRef io_data_6_ ))
+       (portRef D (instanceRef reg_data_5_ ))))
+     (net (rename int_data_5_ "int_data(5)") 
+      (joined 
+       (portRef Q (instanceRef reg_data_5_ ))
+       (portRef A (instanceRef io_data_5_ ))
+       (portRef D (instanceRef reg_data_4_ ))))
+     (net (rename int_data_4_ "int_data(4)") 
+      (joined 
+       (portRef Q (instanceRef reg_data_4_ ))
+       (portRef A (instanceRef io_data_4_ ))
+       (portRef D (instanceRef reg_data_3_ ))))
+     (net (rename int_data_3_ "int_data(3)") 
+      (joined 
+       (portRef Q (instanceRef reg_data_3_ ))
+       (portRef A (instanceRef io_data_3_ ))
+       (portRef D (instanceRef reg_data_2_ ))))
+     (net (rename int_data_2_ "int_data(2)") 
+      (joined 
+       (portRef Q (instanceRef reg_data_2_ ))
+       (portRef A (instanceRef io_data_2_ ))
+       (portRef D (instanceRef reg_data_1_ ))))
+     (net (rename int_data_1_ "int_data(1)") 
+      (joined 
+       (portRef Q (instanceRef reg_data_1_ ))
+       (portRef A (instanceRef io_data_1_ ))
+       (portRef D (instanceRef reg_data_0_ ))))
+     (net (rename int_data_0_ "int_data(0)") 
+      (joined 
+       (portRef Q (instanceRef reg_data_0_ ))
+       (portRef A (instanceRef io_data_0_ ))))
+     (net int_data_rdy 
+      (joined 
+       (portRef Q (instanceRef reg_state_1_ ))
+       (portRef A (instanceRef io_data_rdy ))
+       (portRef B (instanceRef ix29521z1578 ))))
+     (net int_serial_in 
+      (joined 
+       (portRef Q (instanceRef io_serial_in ))
+       (portRef A (instanceRef ix29521z1578 ))
+       (portRef D (instanceRef reg_data_7_ ))))
+     (net int_clock 
+      (joined 
+       (portRef Q (instanceRef io_clock ))
+       (portRef CLK (instanceRef reg_bit_cnt_0_ ))
+       (portRef CLK (instanceRef reg_bit_cnt_1_ ))
+       (portRef CLK (instanceRef reg_bit_cnt_2_ ))
+       (portRef CLK (instanceRef reg_state_0_ ))
+       (portRef CLK (instanceRef reg_state_1_ ))
+       (portRef CLK (instanceRef reg_data_7_ ))
+       (portRef CLK (instanceRef reg_data_6_ ))
+       (portRef CLK (instanceRef reg_data_5_ ))
+       (portRef CLK (instanceRef reg_data_4_ ))
+       (portRef CLK (instanceRef reg_data_3_ ))
+       (portRef CLK (instanceRef reg_data_2_ ))
+       (portRef CLK (instanceRef reg_data_1_ ))
+       (portRef CLK (instanceRef reg_data_0_ )))
+      (property NOBUFF (string "TRUE")))
+     (net int_reset 
+      (joined 
+       (portRef Q (instanceRef io_reset ))
+       (portRef A (instanceRef ix28524z16351 ))))
+     (net nx13021z1 
+      (joined 
+       (portRef a (instanceRef ix13021z53416 ))
+       (portRef PRE (instanceRef reg_data_7_ ))
+       (portRef PRE (instanceRef reg_data_6_ ))
+       (portRef PRE (instanceRef reg_data_5_ ))
+       (portRef PRE (instanceRef reg_data_4_ ))
+       (portRef PRE (instanceRef reg_data_3_ ))
+       (portRef PRE (instanceRef reg_data_2_ ))
+       (portRef PRE (instanceRef reg_data_1_ ))
+       (portRef PRE (instanceRef reg_data_0_ ))))
+     (net (rename state_0_ "state(0)") 
+      (joined 
+       (portRef Q (instanceRef reg_state_0_ ))
+       (portRef B (instanceRef ix24959z24599 ))
+       (portRef C (instanceRef ix23962z13631 ))
+       (portRef C (instanceRef ix22965z13631 ))
+       (portRef S (instanceRef ix29521z22247 ))
+       (portRef A (instanceRef ix28524z45174 ))
+       (portRef EN (instanceRef reg_data_7_ ))
+       (portRef EN (instanceRef reg_data_6_ ))
+       (portRef EN (instanceRef reg_data_5_ ))
+       (portRef EN (instanceRef reg_data_4_ ))
+       (portRef EN (instanceRef reg_data_3_ ))
+       (portRef EN (instanceRef reg_data_2_ ))
+       (portRef EN (instanceRef reg_data_1_ ))
+       (portRef EN (instanceRef reg_data_0_ ))))
+     (net (rename bit_cnt_2_ "bit_cnt(2)") 
+      (joined 
+       (portRef Q (instanceRef reg_bit_cnt_2_ ))
+       (portRef A (instanceRef ix22965z1579 ))
+       (portRef A (instanceRef ix22965z56147 ))
+       (portRef B (instanceRef ix28524z45174 ))))
+     (net nx22965z4 
+      (joined 
+       (portRef Q (instanceRef ix22965z56147 ))
+       (portRef B (instanceRef ix22965z13631 ))
+       (portRef B (instanceRef ix29521z22247 ))))
+     (net (rename bit_cnt_0_ "bit_cnt(0)") 
+      (joined 
+       (portRef Q (instanceRef reg_bit_cnt_0_ ))
+       (portRef A (instanceRef ix24959z24599 ))
+       (portRef A (instanceRef ix23962z1580 ))
+       (portRef B (instanceRef ix22965z1584 ))
+       (portRef C (instanceRef ix22965z56147 ))
+       (portRef D (instanceRef ix28524z45174 ))))
+     (net nx24959z1 
+      (joined 
+       (portRef Q (instanceRef ix24959z24599 ))
+       (portRef D (instanceRef reg_bit_cnt_0_ ))))
+     (net (rename bit_cnt_1_ "bit_cnt(1)") 
+      (joined 
+       (portRef Q (instanceRef reg_bit_cnt_1_ ))
+       (portRef B (instanceRef ix23962z1580 ))
+       (portRef A (instanceRef ix22965z1584 ))
+       (portRef B (instanceRef ix22965z56147 ))
+       (portRef C (instanceRef ix28524z45174 ))))
+     (net nx23962z2 
+      (joined 
+       (portRef Q (instanceRef ix23962z1580 ))
+       (portRef A (instanceRef ix23962z13631 ))))
+     (net nx23962z1 
+      (joined 
+       (portRef Q (instanceRef ix23962z13631 ))
+       (portRef D (instanceRef reg_bit_cnt_1_ ))))
+     (net nx22965z2 
+      (joined 
+       (portRef Q (instanceRef ix22965z1579 ))
+       (portRef A (instanceRef ix22965z13631 ))))
+     (net nx22965z1 
+      (joined 
+       (portRef Q (instanceRef ix22965z13631 ))
+       (portRef D (instanceRef reg_bit_cnt_2_ ))))
+     (net nx28524z1 
+      (joined 
+       (portRef Q (instanceRef ix28524z45174 ))
+       (portRef D (instanceRef reg_state_1_ ))))
+     (net NOT_p_reset 
+      (joined 
+       (portRef Q (instanceRef ix28524z16351 ))
+       (portRef CLR (instanceRef reg_state_0_ ))
+       (portRef CLR (instanceRef reg_state_1_ ))
+       (portRef CLR (instanceRef reg_data_7_ ))
+       (portRef CLR (instanceRef reg_data_6_ ))
+       (portRef CLR (instanceRef reg_data_5_ ))
+       (portRef CLR (instanceRef reg_data_4_ ))
+       (portRef CLR (instanceRef reg_data_3_ ))
+       (portRef CLR (instanceRef reg_data_2_ ))
+       (portRef CLR (instanceRef reg_data_1_ ))
+       (portRef CLR (instanceRef reg_data_0_ ))))
+     (net nx29521z2 
+      (joined 
+       (portRef Q (instanceRef ix29521z1578 ))
+       (portRef A (instanceRef ix29521z22247 ))))
+     (net nx29521z1 
+      (joined 
+       (portRef Q (instanceRef ix29521z22247 ))
+       (portRef D (instanceRef reg_state_0_ ))))
+     (net (rename data_7_ "data(7)") 
+      (joined 
+       (portRef data_7_ )
+       (portRef P (instanceRef io_data_7_ ))))
+     (net (rename data_6_ "data(6)") 
+      (joined 
+       (portRef data_6_ )
+       (portRef P (instanceRef io_data_6_ ))))
+     (net (rename data_5_ "data(5)") 
+      (joined 
+       (portRef data_5_ )
+       (portRef P (instanceRef io_data_5_ ))))
+     (net (rename data_4_ "data(4)") 
+      (joined 
+       (portRef data_4_ )
+       (portRef P (instanceRef io_data_4_ ))))
+     (net (rename data_3_ "data(3)") 
+      (joined 
+       (portRef data_3_ )
+       (portRef P (instanceRef io_data_3_ ))))
+     (net (rename data_2_ "data(2)") 
+      (joined 
+       (portRef data_2_ )
+       (portRef P (instanceRef io_data_2_ ))))
+     (net (rename data_1_ "data(1)") 
+      (joined 
+       (portRef data_1_ )
+       (portRef P (instanceRef io_data_1_ ))))
+     (net (rename data_0_ "data(0)") 
+      (joined 
+       (portRef data_0_ )
+       (portRef P (instanceRef io_data_0_ ))))
+     (net data_rdy 
+      (joined 
+       (portRef data_rdy )
+       (portRef P (instanceRef io_data_rdy ))))
+     (net serial_in 
+      (joined 
+       (portRef serial_in )
+       (portRef P (instanceRef io_serial_in ))))
+     (net clock 
+      (joined 
+       (portRef clock )
+       (portRef P (instanceRef io_clock ))))
+     (net reset 
+      (joined 
+       (portRef reset )
+       (portRef P (instanceRef io_reset ))))
+     (net nx22965z3 
+      (joined 
+       (portRef Q (instanceRef ix22965z1584 ))
+       (portRef B (instanceRef ix23962z13631 ))
+       (portRef B (instanceRef ix22965z1579 ))))))))
+ (design uart (cellRef uart (libraryRef work ))))

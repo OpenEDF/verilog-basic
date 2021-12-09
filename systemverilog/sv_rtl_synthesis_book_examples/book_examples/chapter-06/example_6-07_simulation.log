@@ -1,0 +1,33 @@
+Start time: 04:25:11 on Aug 23,2016
+qverilog -f 6-07_run.f 
+-- Compiling module find_lowest_bit
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
+# vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt 
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# //  Questa Sim-64
+# //  Version 10.5 win64 Feb 13 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# run -all
+# 
+# At   10ns: data=1100  EXPECT: low_bit=2, ACTUAL: 2  OK
+# ** Note: $finish    : 6-07_testbench.sv(26)
+#    Time: 20 ns  Iteration: 1  Instance: /top/test
+# End time: 04:25:12 on Aug 23,2016, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

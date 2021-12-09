@@ -1,0 +1,11 @@
+/tools/synopsys/synplify/bin/m_actel  -prodtype synplify_pro -encrypt  -pro  -rundir  /mnt/sandbox/book_examples/chapter-05/synplify  -part A3265DX  -grade -1   -maxfan 16   -RWCheckOnRam 0 -auto_constrain_io    -summaryfile /mnt/sandbox/book_examples/chapter-05/synplify/synlog/report/proj_1_fpga_mapper.xml -act2 -oedif  /mnt/sandbox/book_examples/chapter-05/synplify/proj_1.edn  -freq 100.000  /mnt/sandbox/book_examples/chapter-05/synplify/synwork/proj_1_comp.srs  -devicelib  /tools/synopsys/synplify/lib/actel/a3200dx.v  -ologparam  /mnt/sandbox/book_examples/chapter-05/synplify/syntmp/proj_1.plg  -noforwanno -osyn  /mnt/sandbox/book_examples/chapter-05/synplify/proj_1.srm  -prjdir  /mnt/sandbox/book_examples/chapter-05  -prjname  proj_1  -log  /mnt/sandbox/book_examples/chapter-05/synplify/synlog/proj_1_fpga_mapper.srr 
+rc:1 success:1
+/mnt/sandbox/book_examples/chapter-05/synplify/proj_1.edn|o|1378544263|10280
+/mnt/sandbox/book_examples/chapter-05/synplify/synwork/proj_1_comp.srs|i|1378544262|1711
+/tools/synopsys/synplify/lib/actel/a3200dx.v|i|1369886727|54645
+/mnt/sandbox/book_examples/chapter-05/synplify/syntmp/proj_1.plg|o|1378544263|1341
+/mnt/sandbox/book_examples/chapter-05/synplify/proj_1.srm|o|1378544263|7061
+/mnt/sandbox/book_examples/chapter-05/synplify/synlog/proj_1_fpga_mapper.srr|o|1378544263|13882
+/tools/synopsys/synplify/bin/m_actel|i|1375487855|345
+/tools/synopsys/synplify/linux/m_actel|i|1375488144|15368772
+/tools/synopsys/synplify/linux_a_64/m_actel|i|1375488171|17911344

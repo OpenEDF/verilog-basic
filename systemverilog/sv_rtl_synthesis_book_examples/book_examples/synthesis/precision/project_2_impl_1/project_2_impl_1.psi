@@ -1,0 +1,646 @@
+#
+#
+# Precision RTL Synthesis  64-bit 2016.1.0.15 (Production Release) Wed Jun  8 09:35:56 PDT 2016
+# 
+# Copyright (c) Mentor Graphics Corporation, 1996-2016, All Rights Reserved.
+#            Portions copyright 1991-2008 Compuware Corporation
+#                      UNPUBLISHED, LICENSED SOFTWARE.
+#           CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+#         PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# 
+# Running on  Stuart@SHDL-2  6.02.9200 
+# 
+#                                  NOTICE
+#
+# This source code belongs to Mentor Graphics Corporation.  It is considered
+# trade secret and is not to be divulged or used by parties who have not
+# received written authorization from the owner.
+#
+#
+# Date : Thu Aug 04 02:40:09 2016
+# Designer : Stuart
+#
+#<IMPLFILE format='0'>
+error "Error: This file can only be used with Precision version 2003c or later." "load_project failed" E_NEW_PROJECT
+#</IMPLFILE>
+#<OBJ name='impl' version='0'>
+#  <PROP key='productmode' type='ESVT_STRING' value='RTL' />
+#  <OBJ name='results' version='0'>
+#    <OBJ name='tech' version='0'>
+#      <PROP key='unset' type='ESVT_BOOL' value='false' />
+#      <PROP key='library' type='ESVT_STRING' value='xcv' />
+#      <PROP key='manufacturer' type='ESVT_STRING' value='Xilinx' />
+#      <PROP key='family' type='ESVT_STRING' value='VIRTEX' />
+#      <PROP key='part' type='ESVT_STRING' value='v50bg256' />
+#      <PROP key='speed' type='ESVT_STRING' value='6' />
+#      <PROP key='package' type='ESVT_STRING' value='' />
+#      <PROP key='wire_table' type='ESVT_STRING' value='' />
+#      <PROP key='cim' type='ESVT_STRING' value='' />
+#      <PROP key='btw' type='ESVT_STRING' value='' />
+#    </OBJ>
+#    <OBJ name='input' version='0'>
+#      <PROP key='inputdir' type='ESVT_STRING' value='B:/OneDrive/sandbox/book_examples/synthesis/precision' />
+#      <OBJ name='file' version='0'>
+#        <PROP key='format' type='ESVT_STRING' value='Synopsys Design Constraints' />
+#        <PROP key='work' type='ESVT_STRING' value='work' />
+#        <PROP key='encrypt_format' type='ESVT_BOOL' value='false' />
+#        <PROP key='compile_time' type='ESVT_INT' value='1470334468' />
+#        <PROP key='precision_constraint_file' type='ESVT_BOOL' value='true' />
+#        <PROP key='is_rtl' type='ESVT_BOOL' value='true' />
+#        <PROP key='path' type='ESVT_STRING' value='precision_rtl.sdc' />
+#      </OBJ>
+#      <OBJ name='file' version='0'>
+#        <PROP key='format' type='ESVT_STRING' value='Synopsys Design Constraints' />
+#        <PROP key='work' type='ESVT_STRING' value='work' />
+#        <PROP key='encrypt_format' type='ESVT_BOOL' value='false' />
+#        <PROP key='compile_time' type='ESVT_INT' value='1470334468' />
+#        <PROP key='precision_constraint_file' type='ESVT_BOOL' value='true' />
+#        <PROP key='is_rtl' type='ESVT_BOOL' value='false' />
+#        <PROP key='path' type='ESVT_STRING' value='precision_tech.sdc' />
+#      </OBJ>
+#      <OBJ name='file' version='0'>
+#        <PROP key='format' type='ESVT_STRING' value='SystemVerilog' />
+#        <PROP key='work' type='ESVT_STRING' value='work' />
+#        <PROP key='encrypt_format' type='ESVT_BOOL' value='false' />
+#        <PROP key='compile_time' type='ESVT_INT' value='1470334468' />
+#        <PROP key='path' type='ESVT_STRING' value='../../chapter-05/5-02_concatenate_op-2.sv' />
+#        <PROP key='is_top_file' type='ESVT_BOOL' value='true' />
+#        <PROP key='top_module' type='ESVT_STRING' value='rtl_adder' />
+#      </OBJ>
+#    </OBJ>
+#    <OBJ name='include' version='0'>
+#      <OBJ name='file' version='0'>
+#        <PROP key='compile_time' type='ESVT_INT' value='1470334468' />
+#        <PROP key='path' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//std_1164.vhd' />
+#      </OBJ>
+#      <OBJ name='file' version='0'>
+#        <PROP key='compile_time' type='ESVT_INT' value='1470334468' />
+#        <PROP key='path' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//syn_arit.vhd' />
+#      </OBJ>
+#      <OBJ name='file' version='0'>
+#        <PROP key='compile_time' type='ESVT_INT' value='1470334468' />
+#        <PROP key='path' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//syn_sign.vhd' />
+#      </OBJ>
+#    </OBJ>
+#    <OBJ name='dependency' version='0'>
+#      <OBJ name='pair' version='0'>
+#        <PROP key='from' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/psr/modgen/xcv.vhd' />
+#        <PROP key='to' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//syn_arit.vhd' />
+#      </OBJ>
+#      <OBJ name='pair' version='0'>
+#        <PROP key='from' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/psr/modgen/xcv.vhd' />
+#        <PROP key='to' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//syn_sign.vhd' />
+#      </OBJ>
+#      <OBJ name='pair' version='0'>
+#        <PROP key='from' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/psr/modgen/xcv.vhd' />
+#        <PROP key='to' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//std_1164.vhd' />
+#      </OBJ>
+#      <OBJ name='pair' version='0'>
+#        <PROP key='from' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//syn_arit.vhd' />
+#        <PROP key='to' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//std_1164.vhd' />
+#      </OBJ>
+#      <OBJ name='pair' version='0'>
+#        <PROP key='from' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//syn_sign.vhd' />
+#        <PROP key='to' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//syn_arit.vhd' />
+#      </OBJ>
+#      <OBJ name='pair' version='0'>
+#        <PROP key='from' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//syn_sign.vhd' />
+#        <PROP key='to' type='ESVT_STRING' value='C:/MentorGraphics/PS2016.1_64-bit/Mgc_home/pkgs/techdata/vhdl//std_1164.vhd' />
+#      </OBJ>
+#    </OBJ>
+#    <OBJ name='output' version='0'>
+#      <PROP key='base' type='ESVT_STRING' value='rtl_adder' />
+#      <PROP key='custombase' type='ESVT_BOOL' value='false' />
+#    </OBJ>
+#    <OBJ name='settings' version='0'>
+#      <PROP key='addio' type='ESVT_BOOL' value='true' />
+#      <PROP key='addio_unused' type='ESVT_BOOL' value='false' />
+#      <PROP key='vhdl' type='ESVT_BOOL' value='false' />
+#      <PROP key='verilog' type='ESVT_BOOL' value='true' />
+#      <PROP key='vqm' type='ESVT_BOOL' value='false' />
+#      <PROP key='edif' type='ESVT_BOOL' value='false' />
+#      <PROP key='vendor_constraint_file' type='ESVT_BOOL' value='true' />
+#      <PROP key='transformations' type='ESVT_BOOL' value='false' />
+#      <PROP key='black_box_flow' type='ESVT_BOOL' value='false' />
+#      <PROP key='bottom_up_flow' type='ESVT_BOOL' value='false' />
+#      <PROP key='white_box_flow' type='ESVT_BOOL' value='true' />
+#      <PROP key='retain_inouts' type='ESVT_BOOL' value='true' />
+#      <PROP key='clearbox' type='ESVT_BOOL' value='false' />
+#      <PROP key='edif_bus_extraction_style' type='ESVT_STRING' value='%s(%d:%d)' />
+#      <PROP key='retiming' type='ESVT_BOOL' value='false' />
+#      <PROP key='altera_dsp_retiming' type='ESVT_BOOL' value='false' />
+#      <PROP key='pa_io_pin_location' type='ESVT_BOOL' value='true' />
+#      <PROP key='preserve_user_encoding' type='ESVT_BOOL' value='false' />
+#      <PROP key='advanced_fsm_optimization' type='ESVT_BOOL' value='true' />
+#      <PROP key='safe_fsm_type' type='ESVT_STRING' value='none' />
+#      <PROP key='encoding' type='ESVT_STRING' value='auto' />
+#      <PROP key='compile_for_area' type='ESVT_BOOL' value='false' />
+#      <PROP key='compile_initial_values' type='ESVT_BOOL' value='false' />
+#      <PROP key='compile_for_timing' type='ESVT_BOOL' value='false' />
+#      <PROP key='resource_sharing' type='ESVT_BOOL' value='true' />
+#      <PROP key='array_bounds_check' type='ESVT_BOOL' value='false' />
+#      <PROP key='transform_tristates' type='ESVT_STRING' value='auto' />
+#      <PROP key='frequency' type='ESVT_STRING' value='' />
+#      <PROP key='radhardmethod' type='ESVT_STRING' value='none' />
+#      <PROP key='input_delay' type='ESVT_STRING' value='' />
+#      <PROP key='output_delay' type='ESVT_STRING' value='' />
+#      <PROP key='partition_size' type='ESVT_STRING' value='80000' />
+#      <PROP key='boundary_opt' type='ESVT_BOOL' value='true' />
+#      <PROP key='global_clock_limit' type='ESVT_STRING' value='' />
+#      <PROP key='search_path' type='ESVT_STRING' value='' />
+#      <PROP key='libext' type='ESVT_STRING' value='' />
+#      <PROP key='y' type='ESVT_STRING' value='' />
+#      <PROP key='mem_init_path' type='ESVT_STRING' value='' />
+#      <PROP key='altera_mangle_prefix' type='ESVT_STRING' value='_MGC' />
+#      <PROP key='frontend_2004' type='ESVT_BOOL' value='true' />
+#      <PROP key='enable_synthoff_regions' type='ESVT_BOOL' value='false' />
+#      <PROP key='overrides' type='ESVT_STRING' value='' />
+#      <PROP key='hdl' type='ESVT_STRING' value='{ verilog systemverilog vhdl_2002 }' />
+#      <PROP key='defines' type='ESVT_STRING' value='' />
+#      <PROP key='automap_work' type='ESVT_BOOL' value='false' />
+#      <PROP key='error_design_contention' type='ESVT_BOOL' value='false' />
+#      <PROP key='all_file_cunit_scope' type='ESVT_BOOL' value='false' />
+#      <PROP key='sv31acompat' type='ESVT_BOOL' value='false' />
+#      <PROP key='vcs_compat' type='ESVT_BOOL' value='false' />
+#      <PROP key='compile_udps' type='ESVT_BOOL' value='false' />
+#      <PROP key='relaxed_compile' type='ESVT_BOOL' value='false' />
+#      <PROP key='vendor_override_lib' type='ESVT_STRING' value='xilinx' />
+#      <PROP key='max_loop_count' type='ESVT_INT' value='5000' />
+#      <PROP key='ignore_ram_rw_collision' type='ESVT_BOOL' value='false' />
+#      <PROP key='infer_ram' type='ESVT_BOOL' value='true' />
+#      <PROP key='infer_rom' type='ESVT_BOOL' value='true' />
+#      <PROP key='altera_netlist_opt' type='ESVT_BOOL' value='false' />
+#      <PROP key='path_compression_run_compression' type='ESVT_BOOL' value='false' />
+#      <PROP key='path_compression_effort' type='ESVT_INT' value='0' />
+#      <PROP key='path_compression_improve_placement' type='ESVT_INT' value='-1' />
+#      <PROP key='sta_time_resolution' type='ESVT_INT' value='-12' />
+#      <PROP key='gated_clock' type='ESVT_INT' value='1' />
+#      <PROP key='auto_save_placement' type='ESVT_BOOL' value='true' />
+#      <PROP key='infer_gsr' type='ESVT_BOOL' value='true' />
+#      <PROP key='infer_muxed_arith_operators' type='ESVT_BOOL' value='true' />
+#      <PROP key='auto_resource_allocation_ram' type='ESVT_BOOL' value='false' />
+#      <PROP key='enable_incr_synth' type='ESVT_BOOL' value='false' />
+#      <PROP key='enable_incr_synth_gui' type='ESVT_BOOL' value='false' />
+#      <PROP key='enable_incr_pnr' type='ESVT_BOOL' value='false' />
+#      <PROP key='incr_synth_options' type='ESVT_STRING' value='{}' />
+#      <PROP key='incr_synth_partitions' type='ESVT_STRING' value='{}' />
+#      <PROP key='dsp_across_hier' type='ESVT_BOOL' value='true' />
+#      <PROP key='extensive_dsp_drc' type='ESVT_BOOL' value='true' />
+#      <PROP key='relax_dsp_drc' type='ESVT_BOOL' value='false' />
+#      <PROP key='flatten_small_rtl_modules' type='ESVT_BOOL' value='false' />
+#      <PROP key='timequest_sdc' type='ESVT_BOOL' value='true' />
+#      <PROP key='resource_budget' type='ESVT_STRING' value='' />
+#      <PROP key='attributes_annotations_file' type='ESVT_STRING' value='' />
+#      <PROP key='reencode_fsm_outputs' type='ESVT_BOOL' value='true' />
+#      <PROP key='dont_pass_synthesis_define' type='ESVT_BOOL' value='false' />
+#      <PROP key='max_fanout' type='ESVT_INT' value='10000' />
+#      <PROP key='pa_max_fanout' type='ESVT_INT' value='10000' />
+#      <PROP key='max_fanout_strategy' type='ESVT_STRING' value='AUTO' />
+#      <PROP key='block_ram_cutoff' type='ESVT_INT' value='0' />
+#      <PROP key='block_rom_cutoff' type='ESVT_INT' value='0' />
+#      <PROP key='control_set_optimize' type='ESVT_BOOL' value='true' />
+#      <PROP key='control_set_threshold' type='ESVT_INT' value='6' />
+#      <PROP key='modgen' type='ESVT_STRING' value='auto' />
+#      <PROP key='modgen_mode' type='ESVT_STRING' value='auto' />
+#      <PROP key='process_tristates' type='ESVT_BOOL' value='false' />
+#      <PROP key='optimize_power_effort' type='ESVT_STRING' value='off' />
+#      <PROP key='lut_combine' type='ESVT_INT' value='1' />
+#      <PROP key='lut_combine_threshold' type='ESVT_INT' value='-1' />
+#      <PROP key='xilinx_qor' type='ESVT_BOOL' value='false' />
+#      <PROP key='sdc_version' type='ESVT_DOUBLE' value='2' />
+#      <PROP key='processors' type='ESVT_STRING' value='4' />
+#      <PROP key='fv_flow' type='ESVT_STRING' value='none' />
+#      <PROP key='enable_force_distributed_ram' type='ESVT_BOOL' value='false' />
+#      <PROP key='enable_merge_equal_op_b4_modgen_resolve' type='ESVT_BOOL' value='true' />
+#      <PROP key='gate_level_opt' type='ESVT_BOOL' value='false' />
+#      <PROP key='assured_synthesis' type='ESVT_BOOL' value='false' />
+#      <PROP key='flatten_small_blocks' type='ESVT_BOOL' value='true' />
+#      <PROP key='power_on_init_retiming' type='ESVT_BOOL' value='false' />
+#      <PROP key='adv_seq_opt' type='ESVT_INT' value='2' />
+#      <PROP key='compatibility_mode' type='ESVT_STRING' value='none' />
+#      <PROP key='preserve_instantiated_cells' type='ESVT_INT' value='2' />
+#      <PROP key='retarget_lib' type='ESVT_INT' value='2' />
+#      <PROP key='full_case' type='ESVT_BOOL' value='false' />
+#      <PROP key='parallel_case' type='ESVT_BOOL' value='false' />
+#      <PROP key='write_verilog_escape_names' type='ESVT_BOOL' value='true' />
+#      <PROP key='use_dffenable' type='ESVT_BOOL' value='true' />
+#      <PROP key='ignore_utilization' type='ESVT_BOOL' value='false' />
+#      <PROP key='vivado' type='ESVT_BOOL' value='false' />
+#      <PROP key='quicklogic_map_fanin_limit' type='ESVT_INT' value='4' />
+#      <PROP key='dont_retime_dsp_flops' type='ESVT_BOOL' value='false' />
+#      <PROP key='prioritize_out_flop_over_pipeline' type='ESVT_BOOL' value='false' />
+#      <PROP key='new_dsp_retiming' type='ESVT_BOOL' value='false' />
+#      <PROP key='propagate_keep_hierarchy' type='ESVT_BOOL' value='true' />
+#      <PROP key='fast_synthesis' type='ESVT_BOOL' value='false' />
+#      <PROP key='operator_cutoff' type='ESVT_STRING' value='' />
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-max_fanout=10000' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable new_block_flow=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable run_block_flow=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable opt_auto_mode=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable dont_preoptimize_in_optimize=TRUE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-var touch_module=4306' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-var touch_module=0' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable dont_preoptimize_in_optimize=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_eqn_or=+' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_eqn_and=*' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_eqn_not=~' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_eqn_not_is_prefix=TRUE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_function_property=EQN' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_portbus_check=TRUE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edifout_write_noopted_contents=true' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edifout_prefix_hex=' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edifout_prefix_decimal=' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edifout_prefix_binary=' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable new_block_flow=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable run_block_flow=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable opt_auto_mode=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable dont_preoptimize_in_optimize=TRUE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-var touch_module=4306' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-var touch_module=0' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable dont_preoptimize_in_optimize=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_eqn_or=+' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_eqn_and=*' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_eqn_not=~' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_eqn_not_is_prefix=TRUE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_function_property=EQN' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edif_portbus_check=TRUE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edifout_write_noopted_contents=true' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edifout_prefix_hex=' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edifout_prefix_decimal=' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable edifout_prefix_binary=' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-transformations=false' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-edif=false -verilog=true' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable new_block_flow=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable run_block_flow=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable opt_auto_mode=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable dont_preoptimize_in_optimize=TRUE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-var touch_module=4306' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-var touch_module=0' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable dont_preoptimize_in_optimize=FALSE' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable verilog_write_pwr_gnd_cells=true' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable hdl_write_inv_as_cell=true' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable hdl_convert_case=false' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable verilog_write_skip_open=false' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable verilog_dummy_net_name=\$dummy' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable verilog_write_pwr_gnd_cells=true' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable hdl_write_inv_as_cell=true' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable hdl_convert_case=false' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable verilog_write_skip_open=false' />
+#      </OBJ>
+#      <OBJ name='user_settings' version='0'>
+#        <PROP key='setup_design_cmd' type='ESVT_STRING' value='-variable verilog_dummy_net_name=\$dummy' />
+#      </OBJ>
+#    </OBJ>
+#    <OBJ name='explore' version='1'>
+#      <PROP key='goal' type='ESVT_STRING' value='none' />
+#      <PROP key='total_runtime_limit' type='ESVT_STRING' value='none' />
+#      <PROP key='job_runtime_limit' type='ESVT_STRING' value='none' />
+#      <PROP key='rtlplus_licenses_to_use' type='ESVT_STRING' value='1' />
+#      <PROP key='run_pnr' type='ESVT_BOOL' value='true' />
+#      <PROP key='additional_servers' type='ESVT_STRING' value='' />
+#      <PROP key='prec_extra_options' type='ESVT_STRING' value='' />
+#      <PROP key='cpu_resources' type='ESVT_STRING' value='local' />
+#      <PROP key='grid' type='ESVT_STRING' value='sge' />
+#      <PROP key='setup_script' type='ESVT_STRING' value='' />
+#      <PROP key='submit_extra_args' type='ESVT_STRING' value='' />
+#      <PROP key='parallel_jobs' type='ESVT_INT' value='4' />
+#      <PROP key='parallel_jobs_grid' type='ESVT_STRING' value='unlimited' />
+#      <PROP key='file' type='ESVT_STRING' value='' />
+#      <PROP key='resource_sharing' type='ESVT_BOOL' value='true' />
+#      <PROP key='retiming' type='ESVT_BOOL' value='true' />
+#      <PROP key='physical_synthesis' type='ESVT_BOOL' value='true' />
+#    </OBJ>
+#    <OBJ name='place_and_route' version='0'>
+#      <PROP key='currentFlow' type='ESVT_STRING' value='ISE' />
+#      <PROP key='defaultVCF' type='ESVT_BOOL' value='true' />
+#      <OBJ name='flow' version='0'>
+#        <PROP key='flowname' type='ESVT_STRING' value='ISE 5.1' />
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='install_dir' />
+#          <PROP key='value' type='ESVT_STRING' value='$XILINX' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='no_exec' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='smartguide' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='smartguide_file' />
+#          <PROP key='value' type='ESVT_STRING' value='*.ncd &quot;&quot;' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='optimization_control' />
+#          <PROP key='value' type='ESVT_STRING' value='std' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='global_opt' />
+#          <PROP key='value' type='ESVT_STRING' value='off' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='disable_logic_replication' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='do_not_remove_unused_logic' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='ignore_keep_hierarchy' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='par_ol' />
+#          <PROP key='value' type='ESVT_STRING' value='high' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='ba_format' />
+#          <PROP key='value' type='ESVT_STRING' value='None' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='exe_mode' />
+#          <PROP key='value' type='ESVT_STRING' value='Auto' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='timing_paths_per_constraint' />
+#          <PROP key='value' type='ESVT_STRING' value='10' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='bits' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Generate Vendor Constraint File' />
+#          <PROP key='option' type='ESVT_STRING' value='enable_auto_offset_relaxation' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Generate Vendor Constraint File' />
+#          <PROP key='option' type='ESVT_STRING' value='use_ucf_timing_constraints' />
+#          <PROP key='value' type='ESVT_STRING' value='False' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Generate Vendor Constraint File' />
+#          <PROP key='option' type='ESVT_STRING' value='no_exec' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Advanced Options' />
+#          <PROP key='option' type='ESVT_STRING' value='use_pnr_script_cl' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Advanced Options' />
+#          <PROP key='option' type='ESVT_STRING' value='pnr_script_cl' />
+#          <PROP key='value' type='ESVT_STRING' value='user_pnr_script.tcl' />
+#        </OBJ>
+#      </OBJ>
+#      <OBJ name='flow' version='0'>
+#        <PROP key='flowname' type='ESVT_STRING' value='ISE' />
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='install_dir' />
+#          <PROP key='value' type='ESVT_STRING' value='$XILINX' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='no_exec' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='smartguide' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='smartguide_file' />
+#          <PROP key='value' type='ESVT_STRING' value='*.ncd &quot;&quot;' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='optimization_control' />
+#          <PROP key='value' type='ESVT_STRING' value='std' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='global_opt' />
+#          <PROP key='value' type='ESVT_STRING' value='off' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='disable_logic_replication' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='do_not_remove_unused_logic' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='ignore_keep_hierarchy' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='par_ol' />
+#          <PROP key='value' type='ESVT_STRING' value='high' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='ba_format' />
+#          <PROP key='value' type='ESVT_STRING' value='None' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='exe_mode' />
+#          <PROP key='value' type='ESVT_STRING' value='Auto' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='timing_paths_per_constraint' />
+#          <PROP key='value' type='ESVT_STRING' value='10' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Integrated Place and Route' />
+#          <PROP key='option' type='ESVT_STRING' value='bits' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Generate Vendor Constraint File' />
+#          <PROP key='option' type='ESVT_STRING' value='enable_auto_offset_relaxation' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Generate Vendor Constraint File' />
+#          <PROP key='option' type='ESVT_STRING' value='use_ucf_timing_constraints' />
+#          <PROP key='value' type='ESVT_STRING' value='False' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Generate Vendor Constraint File' />
+#          <PROP key='option' type='ESVT_STRING' value='no_exec' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Advanced Options' />
+#          <PROP key='option' type='ESVT_STRING' value='use_pnr_script_cl' />
+#          <PROP key='value' type='ESVT_STRING' value='0' />
+#        </OBJ>
+#        <OBJ name='command' version='0'>
+#          <PROP key='description' type='ESVT_STRING' value='Advanced Options' />
+#          <PROP key='option' type='ESVT_STRING' value='pnr_script_cl' />
+#          <PROP key='value' type='ESVT_STRING' value='user_pnr_script.tcl' />
+#        </OBJ>
+#      </OBJ>
+#    </OBJ>
+#    <OBJ name='state' version='0'>
+#      <PROP key='statename' type='ESVT_STRING' value='synthesized' />
+#      <PROP key='rtlconstrchanged' type='ESVT_BOOL' value='false' />
+#    </OBJ>
+#    <OBJ name='analysis' version='0'>
+#      <PROP key='clock_freqs' type='ESVT_BOOL' value='true' />
+#      <PROP key='num_critical_paths' type='ESVT_INT' value='1' />
+#      <PROP key='summary' type='ESVT_BOOL' value='true' />
+#      <PROP key='num_summary' type='ESVT_INT' value='10' />
+#      <PROP key='timing_violations' type='ESVT_BOOL' value='true' />
+#      <PROP key='net_fanout' type='ESVT_BOOL' value='true' />
+#      <PROP key='domain_crossings' type='ESVT_BOOL' value='false' />
+#      <PROP key='missing_constraints' type='ESVT_BOOL' value='false' />
+#    </OBJ>
+#    <OBJ name='actel_settings' version='0' />
+#    <OBJ name='macro' version='0' />
+#    <OBJ name='physicaldb' version='0' />
+#    <OBJ name='reload' version='0'>
+#      <PROP key='RTLDesign' type='ESVT_INT' value='1' />
+#      <PROP key='TechDesign' type='ESVT_INT' value='1' />
+#    </OBJ>
+#  </OBJ>
+#  <OBJ name='rules' version='0'>
+#    <PROP key='push' type='ESVT_BOOL' value='false' />
+#    <PROP key='pushinput' type='ESVT_BOOL' value='false' />
+#    <PROP key='pushstate' type='ESVT_BOOL' value='false' />
+#    <PROP key='pushsettings' type='ESVT_BOOL' value='false' />
+#  </OBJ>
+#</OBJ>

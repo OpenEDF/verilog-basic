@@ -1,0 +1,98 @@
+# Info: [9566]: Logging session transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/precision.log
+//  Precision RTL Synthesis 32-bit 2015.1.6 (Production Release) Wed Jun 10 09:13:13 PDT 2015
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2015, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on  Stuart@SHDL-2  6.02.9200 x86
+//  
+//  Start time Mon Oct 03 22:07:21 2016
+# -------------------------------------------------
+# Info: [9566]: Logging session transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/precision.log
+# COMMAND: open_project B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2.psp
+# Info: [9574]: Input directory: B:/OneDrive/sandbox/book_examples/synthesis/precision
+# Info: [9569]: Moving session transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/precision.log
+# Info: [9575]: The Results Directory has been set to: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_2/
+# Info: [9565]: Appending project transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_2/precision.log
+# Info: [9565]: Appending suppressed messages transcript to file B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_2/precision.log.suppressed
+# Info: [15298]: Setting up the design to use synthesis library "flex10.syn"
+# Info: [574]: The global max fanout is currently set to 1000 for Altera - FLEX 10K.
+# Info: [15324]: Setting Part to: "EPF10K10LC84".
+# Info: [15325]: Setting Process to: "3".
+# Warning: [569]: Setting 'optimize_power_effort' is not allowed in RTL product mode. Ignoring.
+# Info: [3022]: Reading file: C:/MentorGraphics/PS2015.1.6_32-bit/Mgc_home/pkgs/psr/techlibs/flex10.syn.
+# Info: [633]: Loading library initialization file C:/MentorGraphics/PS2015.1.6_32-bit/Mgc_home/pkgs/psr/userware/flex10_rename.tcl
+# Info: [9550]: Activated implementation project_2_impl_2 in project B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2.psp.
+open_project B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2.psp
+# COMMAND: remove_input_file {B:/OneDrive/sandbox/book_examples/chapter-08/snippet_8-07_unit-delay_ff.sv}
+remove_input_file {B:/OneDrive/sandbox/book_examples/chapter-08/snippet_8-07_unit-delay_ff.sv}
+# COMMAND: add_input_file {../../chapter-08/example_8-3_simple_spi.sv}
+add_input_file {../../chapter-08/example_8-3_simple_spi.sv}
+# COMMAND: compile
+# Info: [633]: Loading library initialization file C:/MentorGraphics/PS2015.1.6_32-bit/Mgc_home/pkgs/psr/userware/flex10_rename.tcl
+# Info: [40000]: hdl-analyze, Release RTLC-Precision 2015a.4
+# Info: [41002]: Analyzing input file "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-08/example_8-3_simple_spi.sv" ...
+# Info: [658]: Top module of the design is set to: simple_spi.
+# Info: [656]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_2.
+# Info: [40000]: RTLC-Driver, Release RTLC-Precision 2015a.4
+# Info: [40000]: Last compiled on Jun  4 2015 13:53:11
+# Info: [44512]: Initializing...
+# Info: [44504]: Partitioning design ....
+# Info: [40000]: RTLCompiler, Release RTLC-Precision 2015a.4
+# Info: [40000]: Last compiled on Jun  4 2015 14:17:16
+# Info: [44512]: Initializing...
+# Info: [44522]: Root Module simple_spi: Pre-processing...
+# Warning: [45766]: Disabling FSM Extraction for state variable state[2:0] in module simple_spi, because decoding logic needs to be created.
+# Info: [44523]: Root Module simple_spi: Compiling...
+# Info: [44838]: "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-08/example_8-3_simple_spi.sv", line 90: Macro Modgen_Counter "counter_dn_aset_clock_0_3" inferred for node "downcount".
+# Warning: [45568]: "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-08/example_8-3_simple_spi.sv", line 66: Latch inferred for net ready inside always_comb block
+# Warning: [45568]: "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-08/example_8-3_simple_spi.sv", line 66: Latch inferred for net cntr_rstN inside always_comb block
+# Warning: [45568]: "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-08/example_8-3_simple_spi.sv", line 46: Latch inferred for net next_state[2:0] inside always_comb block
+# Info: [44842]: Compilation successfully completed.
+# Info: [44841]: Counter Inferencing === Detected : 1, Inferred (Modgen/Selcounter/AddSub) : 1 (1 / 0 / 0), AcrossDH (Merged/Not-Merged) : (0 / 0), Not-Inferred (Acrossdh/Attempted) : (0 / 0), Local Vars : 0 ===
+# Info: [44856]: Total lines of RTL compiled: 79.
+# Info: [44835]: Total CPU time for compilation: 0.4 secs.
+# Info: [44513]: Overall running time for compilation: 2.0 secs.
+# Info: [656]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_2.
+# Info: [15330]: Doing rtl optimizations.
+# Info: [659]: Finished compiling design.
+compile
+# COMMAND: compile
+# Info: [633]: Loading library initialization file C:/MentorGraphics/PS2015.1.6_32-bit/Mgc_home/pkgs/psr/userware/flex10_rename.tcl
+# Info: [40000]: hdl-analyze, Release RTLC-Precision 2015a.4
+# Info: [41002]: Analyzing input file "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-08/example_8-3_simple_spi.sv" ...
+# Info: [658]: Top module of the design is set to: simple_spi.
+# Info: [656]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_2.
+# Info: [40000]: RTLC-Driver, Release RTLC-Precision 2015a.4
+# Info: [40000]: Last compiled on Jun  4 2015 13:53:11
+# Info: [44512]: Initializing...
+# Info: [44504]: Partitioning design ....
+# Info: [40000]: RTLCompiler, Release RTLC-Precision 2015a.4
+# Info: [40000]: Last compiled on Jun  4 2015 14:17:16
+# Info: [44512]: Initializing...
+# Info: [44522]: Root Module simple_spi: Pre-processing...
+# Warning: [45565]: "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-08/example_8-3_simple_spi.sv", line 46: Default Condition is not given for Unique case.
+# Warning: [45565]: "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-08/example_8-3_simple_spi.sv", line 66: Default Condition is not given for Unique case.
+# Warning: [45766]: Disabling FSM Extraction for state variable state[2:0] in module simple_spi, because decoding logic needs to be created.
+# Info: [44523]: Root Module simple_spi: Compiling...
+# Info: [44838]: "B:/OneDrive/sandbox/book_examples/synthesis/precision/../../chapter-08/example_8-3_simple_spi.sv", line 90: Macro Modgen_Counter "counter_dn_aset_clock_0_3" inferred for node "downcount".
+# Info: [44842]: Compilation successfully completed.
+# Info: [44841]: Counter Inferencing === Detected : 1, Inferred (Modgen/Selcounter/AddSub) : 1 (1 / 0 / 0), AcrossDH (Merged/Not-Merged) : (0 / 0), Not-Inferred (Acrossdh/Attempted) : (0 / 0), Local Vars : 0 ===
+# Info: [44856]: Total lines of RTL compiled: 79.
+# Info: [44835]: Total CPU time for compilation: 0.3 secs.
+# Info: [44513]: Overall running time for compilation: 0.0 secs.
+# Info: [656]: Current working directory: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2_impl_2.
+# Info: [15330]: Doing rtl optimizations.
+# Info: [659]: Finished compiling design.
+compile
+# COMMAND: save_project
+# Info: [9562]: Saved implementation project_2_impl_2 in project B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2.psp.
+save_project
+# COMMAND: close_project -discard
+# Info: [9530]: Closed project: B:/OneDrive/sandbox/book_examples/synthesis/precision/project_2.psp.
+close_project -discard
+# COMMAND: exit
+exit

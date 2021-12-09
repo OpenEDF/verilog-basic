@@ -1,0 +1,44 @@
+Start time: 03:42:28 on Mar 28,2017
+qverilog -f example_05-05_run.f 
+-- Compiling package definitions_pkg
+-- Compiling module and_xor
+-- Importing package definitions_pkg
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
+# vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# //  Questa Sim-64
+# //  Version 10.6 win64 Dec 13 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.definitions_pkg(fast)
+# Loading work.top(fast)
+# run -all
+# At   10ns: a=10000110  b=00101000  mode=AND_OP:  EXPECT: result = 00000000, ACTUAL: 00000000  OK
+# At   30ns: a=10001100  b=11000100  mode=XOR_OP:  EXPECT: result = 01001000, ACTUAL: 01001000  OK
+# At   50ns: a=01110011  b=01011101  mode=XOR_OP:  EXPECT: result = 00101110, ACTUAL: 00101110  OK
+# At   70ns: a=00111100  b=10110111  mode=AND_OP:  EXPECT: result = 00110100, ACTUAL: 00110100  OK
+# At   90ns: a=11000000  b=00101000  mode=AND_OP:  EXPECT: result = 00000000, ACTUAL: 00000000  OK
+# At  110ns: a=11110010  b=11101001  mode=AND_OP:  EXPECT: result = 11100000, ACTUAL: 11100000  OK
+# At  130ns: a=00000111  b=10010100  mode=AND_OP:  EXPECT: result = 00000100, ACTUAL: 00000100  OK
+# At  150ns: a=01011101  b=10000101  mode=XOR_OP:  EXPECT: result = 11011000, ACTUAL: 11011000  OK
+# At  170ns: a=01111001  b=11011010  mode=AND_OP:  EXPECT: result = 01011000, ACTUAL: 01011000  OK
+# At  190ns: a=10001001  b=11110110  mode=AND_OP:  EXPECT: result = 10000000, ACTUAL: 10000000  OK
+# ** Note: $finish    : example_05-05_testbench.sv(32)
+#    Time: 200 ns  Iteration: 1  Instance: /top/test
+# End time: 03:42:30 on Mar 28,2017, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0

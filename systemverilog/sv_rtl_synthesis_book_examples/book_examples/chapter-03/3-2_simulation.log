@@ -1,0 +1,6 @@
+QuestaSim qverilog 10.2a Compiler 2013.03 Mar 15 2013
+qverilog -f 3-2_run.f -novopt 
+** Error: 3-2_default_nettype.sv(14): Error in `default_nettype directive.  Expected wire, wand, wor, tri, tri0, tri1, trior, triand, trireg or none.
+-- Compiling module mixed_rtl_and_gate_adder
+-- Compiling module test
+-- Compiling module top

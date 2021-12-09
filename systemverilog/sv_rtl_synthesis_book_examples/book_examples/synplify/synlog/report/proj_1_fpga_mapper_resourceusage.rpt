@@ -1,0 +1,28 @@
+---------------------------------------
+Resource Usage Report for status_reg 
+
+Mapping to part: xc7vx485tffg1157-1
+Cell usage:
+FDC             6 uses
+VCC             1 use
+
+I/O ports: 16
+I/O primitives: 16
+IBUF           7 uses
+IBUFG          1 use
+OBUF           8 uses
+
+BUFG           1 use
+
+I/O Register bits:                  6
+Register bits not including I/Os:   0 (0%)
+
+Global Clock Buffers: 1 of 32 (3%)
+
+
+Mapping Summary:
+Total  LUTs: 0 (0%)
+
+
+ Number of unique control sets:              0
+

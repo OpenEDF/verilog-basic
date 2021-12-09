@@ -1,0 +1,26 @@
+QuestaSim qverilog 10.2c Compiler 2013.07 Jul 18 2013
+qverilog snippet-3_conditional_op.sv 
+-- Compiling module op_rules_1
+
+Top level modules:
+	op_rules_1
++ C:/questa_sim_10.2c/win32/vsim -lib work op_rules_1 -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt op_rules_1 
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# //  Questa Sim
+# //  Version 10.2c Unknown Platform Jul 18 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.op_rules_1(fast)
+# run -all 
+# y1 =   5 (expect 5)
+# y2 =   8 (expect 8)
+#  quit -f 

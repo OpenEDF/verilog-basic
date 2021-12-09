@@ -1,0 +1,148 @@
+(edif reverse_bits 
+ (edifVersion 2 0 0)
+ (edifLevel 0)
+ (keywordMap (keywordLevel 0))
+ (status 
+  (written 
+   (timestamp 2016 08 04 09 47 27)
+   (program "Precision RTL Synthesis " (version "64-bit 2016.1.0.15"))
+   (author "Mentor Graphics Corporation")))
+ (external xcv 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell OBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell IBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT))))))
+ (library work 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell reverse_bits (cellType GENERIC)
+   (view INTERFACE  (viewType NETLIST)
+    (interface 
+     (port (array (rename data_in "data_in(7:0)") 8 )(direction INPUT))
+     (port (array (rename data_out "data_out(7:0)") 8 )(direction OUTPUT)))
+    (property AREA (string "0.000000"))
+    (property DESIGN_IS_RTL (string "NO"))
+    (property PART (string "v50bg256-6"))
+    (contents 
+     (instance (rename data_out_obuf_0_ "data_out_obuf(0)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename data_out_obuf_1_ "data_out_obuf(1)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename data_out_obuf_2_ "data_out_obuf(2)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename data_out_obuf_3_ "data_out_obuf(3)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename data_out_obuf_4_ "data_out_obuf(4)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename data_out_obuf_5_ "data_out_obuf(5)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename data_out_obuf_6_ "data_out_obuf(6)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename data_out_obuf_7_ "data_out_obuf(7)") (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_0_ "data_in_ibuf(0)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_1_ "data_in_ibuf(1)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_2_ "data_in_ibuf(2)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_3_ "data_in_ibuf(3)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_4_ "data_in_ibuf(4)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_5_ "data_in_ibuf(5)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_6_ "data_in_ibuf(6)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_7_ "data_in_ibuf(7)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (net (rename data_in_7_ "data_in(7)") 
+      (joined 
+       (portRef (member data_in 0))
+       (portRef I (instanceRef data_in_ibuf_7_ ))))
+     (net (rename data_in_6_ "data_in(6)") 
+      (joined 
+       (portRef (member data_in 1))
+       (portRef I (instanceRef data_in_ibuf_6_ ))))
+     (net (rename data_in_5_ "data_in(5)") 
+      (joined 
+       (portRef (member data_in 2))
+       (portRef I (instanceRef data_in_ibuf_5_ ))))
+     (net (rename data_in_4_ "data_in(4)") 
+      (joined 
+       (portRef (member data_in 3))
+       (portRef I (instanceRef data_in_ibuf_4_ ))))
+     (net (rename data_in_3_ "data_in(3)") 
+      (joined 
+       (portRef (member data_in 4))
+       (portRef I (instanceRef data_in_ibuf_3_ ))))
+     (net (rename data_in_2_ "data_in(2)") 
+      (joined 
+       (portRef (member data_in 5))
+       (portRef I (instanceRef data_in_ibuf_2_ ))))
+     (net (rename data_in_1_ "data_in(1)") 
+      (joined 
+       (portRef (member data_in 6))
+       (portRef I (instanceRef data_in_ibuf_1_ ))))
+     (net (rename data_in_0_ "data_in(0)") 
+      (joined 
+       (portRef (member data_in 7))
+       (portRef I (instanceRef data_in_ibuf_0_ ))))
+     (net (rename data_in_int_7_ "data_in_int(7)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_7_ ))
+       (portRef I (instanceRef data_out_obuf_0_ ))))
+     (net (rename data_in_int_6_ "data_in_int(6)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_6_ ))
+       (portRef I (instanceRef data_out_obuf_1_ ))))
+     (net (rename data_in_int_5_ "data_in_int(5)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_5_ ))
+       (portRef I (instanceRef data_out_obuf_2_ ))))
+     (net (rename data_in_int_4_ "data_in_int(4)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_4_ ))
+       (portRef I (instanceRef data_out_obuf_3_ ))))
+     (net (rename data_in_int_3_ "data_in_int(3)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_3_ ))
+       (portRef I (instanceRef data_out_obuf_4_ ))))
+     (net (rename data_in_int_2_ "data_in_int(2)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_2_ ))
+       (portRef I (instanceRef data_out_obuf_5_ ))))
+     (net (rename data_in_int_1_ "data_in_int(1)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_1_ ))
+       (portRef I (instanceRef data_out_obuf_6_ ))))
+     (net (rename data_in_int_0_ "data_in_int(0)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_0_ ))
+       (portRef I (instanceRef data_out_obuf_7_ ))))
+     (net (rename data_out_0_ "data_out(0)") 
+      (joined 
+       (portRef (member data_out 7))
+       (portRef O (instanceRef data_out_obuf_0_ ))))
+     (net (rename data_out_1_ "data_out(1)") 
+      (joined 
+       (portRef (member data_out 6))
+       (portRef O (instanceRef data_out_obuf_1_ ))))
+     (net (rename data_out_2_ "data_out(2)") 
+      (joined 
+       (portRef (member data_out 5))
+       (portRef O (instanceRef data_out_obuf_2_ ))))
+     (net (rename data_out_3_ "data_out(3)") 
+      (joined 
+       (portRef (member data_out 4))
+       (portRef O (instanceRef data_out_obuf_3_ ))))
+     (net (rename data_out_4_ "data_out(4)") 
+      (joined 
+       (portRef (member data_out 3))
+       (portRef O (instanceRef data_out_obuf_4_ ))))
+     (net (rename data_out_5_ "data_out(5)") 
+      (joined 
+       (portRef (member data_out 2))
+       (portRef O (instanceRef data_out_obuf_5_ ))))
+     (net (rename data_out_6_ "data_out(6)") 
+      (joined 
+       (portRef (member data_out 1))
+       (portRef O (instanceRef data_out_obuf_6_ ))))
+     (net (rename data_out_7_ "data_out(7)") 
+      (joined 
+       (portRef (member data_out 0))
+       (portRef O (instanceRef data_out_obuf_7_ ))))))))
+ (design reverse_bits (cellRef reverse_bits (libraryRef work ))
+  (property PART (string "v50bg256-6"))))

@@ -1,0 +1,90 @@
+Start time: 00:27:41 on May 07,2017
+qverilog -f example_08-03_run.f 
+-- Compiling module simple_spi
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
+# vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# //  Questa Sim-64
+# //  Version 10.6 win64 Dec 13 2016
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# run -all
+# ** Warning: (vsim-8315) example_08-03_simple_spi.sv(46): No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 0  Instance: /top/dut
+# ** Warning: (vsim-8315) example_08-03_simple_spi.sv(66): No condition is true in the unique/priority if/case statement.
+#    Time: 0 ns  Iteration: 0  Instance: /top/dut
+# 
+# Test SPI rstN
+# ---------------------------------------------------------------------------
+#                        OUTPUTS           INPUTS             INTERNAL       
+#                      data     d_rdy  s_in clk rstN  state c_rst s_ena count
+#                  ==================  =============  =======================
+# ** Warning: (vsim-8315) example_08-03_simple_spi.sv(46): No condition is true in the unique/priority if/case statement.
+#    Time: 1 ns  Iteration: 1  Instance: /top/dut
+# At      5 ns:      00000000     0      1   0    0    000    0     0    xxx
+# At     15 ns:      00000000     0      1   0    0    000    0     0    111
+# At     25 ns:      00000000     0      1   0    0    000    0     0    111
+# At     35 ns:      00000000     0      1   0    1    000    0     0    111
+# Test Passed!
+# 
+# Test SPI WAITE state
+# ---------------------------------------------------------------------------
+#                        OUTPUTS           INPUTS             INTERNAL       
+#                      data     d_rdy  s_in clk rstN  state c_rst s_ena count
+#                  ==================  =============  =======================
+# At     45 ns:      00000000     0      1   0    1    001    0     0    111
+# At     55 ns:      00000000     0      1   0    1    001    0     0    111
+# At     65 ns:      00000000     0      1   0    1    001    0     0    111
+# At     75 ns:      00000000     0      1   0    1    001    0     0    111
+# Test Passed!
+# 
+# Test receiving 1 byte of 8'b11001010
+# ---------------------------------------------------------------------------
+#                        OUTPUTS           INPUTS             INTERNAL       
+#                      data     d_rdy  s_in clk rstN  state c_rst s_ena count
+#                  ==================  =============  =======================
+# At     85 ns:      00000000     0      0   0    1    001    0     0    111
+# At     95 ns:      00000000     0      0   0    1    010    1     1    111
+# At    105 ns:      00000000     0      1   0    1    010    1     1    110
+# At    115 ns:      10000000     0      0   0    1    010    1     1    101
+# At    125 ns:      01000000     0      1   0    1    010    1     1    100
+# At    135 ns:      10100000     0      0   0    1    010    1     1    011
+# At    145 ns:      01010000     0      0   0    1    010    1     1    010
+# At    155 ns:      00101000     0      1   0    1    010    1     1    001
+# At    165 ns:      10010100     0      1   0    1    010    1     1    000
+# At    175 ns:      11001010     1      1   0    1    100    0     0    111
+# Test Passed!
+# 
+# Test wait in WAITE state
+# ---------------------------------------------------------------------------
+#                        OUTPUTS           INPUTS             INTERNAL       
+#                      data     d_rdy  s_in clk rstN  state c_rst s_ena count
+#                  ==================  =============  =======================
+# At    185 ns:      11001010     0      1   0    1    001    0     0    111
+# At    195 ns:      11001010     0      1   0    1    001    0     0    111
+# At    205 ns:      11001010     0      1   0    1    001    0     0    111
+# Test Passed!
+# 
+# 
+# End of Tests!!!
+# 
+# ** Note: $finish    : example_08-03_testbench.sv(101)
+#    Time: 215 ns  Iteration: 1  Instance: /top/test
+# End time: 00:27:43 on May 07,2017, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 3

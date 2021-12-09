@@ -1,0 +1,72 @@
+# Info: [9566]: Logging session transcript to file C:/Program Files/Mentor Graphics/Precision_Synthesis 2013a.9/Mgc_home/shared/examples/precision.log
+//  Precision RTL Synthesis 2013a.9 (Production Release) Thu Aug  8 04:05:44 PDT 2013
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2013, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stuart@SHDL-1 Service Pack 1 6.01.7601 x86
+//  
+//  Start time Tue Feb 11 15:43:50 2014
+# -------------------------------------------------
+# Info: [9566]: Logging session transcript to file C:/Program Files/Mentor Graphics/Precision_Synthesis 2013a.9/Mgc_home/shared/examples/precision.log
+# COMMAND: open_project D:/sandbox/book_examples/synplify/project_1.psp
+# Info: [9574]: Input directory: D:/sandbox/book_examples/synplify
+# Info: [9569]: Moving session transcript to file D:/sandbox/book_examples/synplify/precision.log
+# Info: [9575]: The Results Directory has been set to: D:/sandbox/book_examples/synplify/project_1_impl_1/
+# Info: [9565]: Appending project transcript to file D:/sandbox/book_examples/synplify/project_1_impl_1/precision.log
+# Info: [9565]: Appending suppressed messages transcript to file D:/sandbox/book_examples/synplify/project_1_impl_1/precision.log.suppressed
+# Info: [15297]: Setting up the design to use synthesis library "xcv.syn"
+# Info: [573]: The global max fanout is currently set to 10000 for Xilinx - VIRTEX.
+# Info: [15323]: Setting Part to: "v50bg256".
+# Info: [15324]: Setting Process to: "6".
+# Info: [7512]: The place and route tool for current technology is ISE.
+# Warning: [568]: Setting 'optimize_power_effort' is not allowed in RTL product mode. Ignoring.
+# Info: [3022]: Reading file: C:/PROGRA~1/MENTOR~1/PRECIS~1.9/Mgc_home/pkgs/psr/techlibs/xcv.syn.
+# Info: [631]: Loading library initialization file C:/PROGRA~1/MENTOR~1/PRECIS~1.9/Mgc_home/pkgs/psr/userware/xilinx_rename.tcl
+# Info: XILINX
+# Info: [9550]: Activated implementation project_1_impl_1 in project D:/sandbox/book_examples/synplify/project_1.psp.
+open_project D:/sandbox/book_examples/synplify/project_1.psp
+# COMMAND: remove_input_file {D:/sandbox/dvcon_paper_examples/example16c.sv}
+remove_input_file {D:/sandbox/dvcon_paper_examples/example16c.sv}
+# COMMAND: add_input_file {example10c_alt.sv}
+add_input_file {example10c_alt.sv}
+# COMMAND: compile
+# Info: [631]: Loading library initialization file C:/PROGRA~1/MENTOR~1/PRECIS~1.9/Mgc_home/pkgs/psr/userware/xilinx_rename.tcl
+# Info: XILINX
+# Info: [40000]: hdl-analyze, Release RTLC-Precision 2013a.14
+# Info: [41002]: Analyzing input file "D:/sandbox/dvcon_paper_examples/example10c_alt.sv" ...
+# Info: [656]: Top module of the design is set to: range_comparator.
+# Info: [654]: Current working directory: D:/sandbox/book_examples/synplify/project_1_impl_1.
+# Info: [40000]: RTLC-Driver, Release RTLC-Precision 2013a.14
+# Info: [40000]: Last compiled on Aug  7 2013 11:53:26
+# Info: [44512]: Initializing...
+# Info: [44504]: Partitioning design ....
+# Info: [40000]: RTLCompiler, Release RTLC-Precision 2013a.14
+# Info: [40000]: Last compiled on Aug  7 2013 12:00:04
+# Info: [44512]: Initializing...
+# Info: [44522]: Root Module range_comparator: Pre-processing...
+# Info: [44523]: Root Module range_comparator: Compiling...
+# Info: [44842]: Compilation successfully completed.
+# Info: [44856]: Total lines of RTL compiled: 9.
+# Info: [44835]: Total CPU time for compilation: 0.5 secs.
+# Info: [44513]: Overall running time for compilation: 2.0 secs.
+# Info: [654]: Current working directory: D:/sandbox/book_examples/synplify/project_1_impl_1.
+# Info: [15329]: Doing rtl optimizations.
+# Info: [657]: Finished compiling design.
+compile
+# COMMAND: synthesize
+# Info: [654]: Current working directory: D:/sandbox/book_examples/synplify/project_1_impl_1.
+# Info: [15002]: Optimizing design view:.work.range_comparator.INTERFACE
+# Info: [3027]: Writing file: D:/sandbox/book_examples/synplify/project_1_impl_1/range_comparator.v.
+# Info: [657]: Finished synthesizing design.
+# Info: [11019]: Total CPU time for synthesis: 0.3 s secs.
+# Info: [11020]: Overall running time for synthesis: 0.2 s secs.
+synthesize
+# COMMAND: exit -force
+# Warning: [9526]: Discarded unsaved work in implementation project_1_impl_1.
+# Info: [9530]: Closed project: D:/sandbox/book_examples/synplify/project_1.psp.
+close_project -discard
+exit -force

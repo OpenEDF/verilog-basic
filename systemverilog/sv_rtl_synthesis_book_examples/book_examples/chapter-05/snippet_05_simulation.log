@@ -1,0 +1,87 @@
+QuestaSim qverilog 10.2a Compiler 2013.03 Mar 15 2013
+qverilog snippet-3_reduction_ops.sv 
+-- Compiling module reduction_1
+-- Compiling module reduction_2
+-- Compiling module reduction_3
+-- Compiling module reduction_4
+-- Compiling module reduction_5
+-- Compiling module reduction_6
+
+Top level modules:
+	reduction_1
+	reduction_2
+	reduction_3
+	reduction_4
+	reduction_5
+	reduction_6
++ C:\questa_sim_10.2a\win32/vsim -lib work reduction_1 reduction_2 reduction_3 reduction_4 reduction_5 reduction_6 -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt reduction_1 reduction_2 reduction_3 reduction_4 reduction_5 reduction_6 
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# //  Questa Sim
+# //  Version 10.2a win32 Mar 15 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.reduction_1(fast)
+# Loading work.reduction_2(fast)
+# Loading work.reduction_3(fast)
+# Loading work.reduction_4(fast)
+# Loading work.reduction_5(fast)
+# Loading work.reduction_6(fast)
+# run -all 
+#  
+# reduction_1: Reduction AND
+#   & 4'b0000: EXPECT 0, ACTUAL 0
+#   & 4'b1111: EXPECT 1, ACTUAL 1
+#   & 4'b1000: EXPECT 0, ACTUAL 0
+#   & 4'b000z: EXPECT 0, ACTUAL 0
+#   & 4'b100x: EXPECT 0, ACTUAL 0
+#  
+#  
+# reduction_2: Reduction NAND
+#   ~& 4'b0000: EXPECT 1, ACTUAL 1
+#   ~& 4'b1111: EXPECT 0, ACTUAL 0
+#   ~& 4'b1000: EXPECT 1, ACTUAL 1
+#   ~& 4'b000z: EXPECT 1, ACTUAL 1
+#   ~& 4'b100x: EXPECT 1, ACTUAL 1
+#  
+#  
+# reduction_3: Reduction OR
+#   | 4'b0000: EXPECT 0, ACTUAL 0
+#   | 4'b1111: EXPECT 1, ACTUAL 1
+#   | 4'b1000: EXPECT 1, ACTUAL 1
+#   | 4'b000z: EXPECT x, ACTUAL x
+#   | 4'b100x: EXPECT 1, ACTUAL 1
+#  
+#  
+# reduction_4: Reduction NOR
+#   ~| 4'b0000: EXPECT 1, ACTUAL 1
+#   ~| 4'b1111: EXPECT 0, ACTUAL 0
+#   ~| 4'b1000: EXPECT 0, ACTUAL 0
+#   ~| 4'b000z: EXPECT x, ACTUAL x
+#   ~| 4'b100x: EXPECT 0, ACTUAL 0
+#  
+#  
+# reduction_5: Reduction XOR
+#   ^ 4'b0000: EXPECT 0, ACTUAL 0
+#   ^ 4'b1111: EXPECT 0, ACTUAL 0
+#   ^ 4'b1000: EXPECT 1, ACTUAL 1
+#   ^ 4'b000z: EXPECT x, ACTUAL x
+#   ^ 4'b100x: EXPECT x, ACTUAL x
+#  
+#  
+# reduction_6: Reduction XNOR
+#   ~^ 4'b0000: EXPECT 1, ACTUAL 1
+#   ~^ 4'b1111: EXPECT 1, ACTUAL 1
+#   ~^ 4'b1000: EXPECT 0, ACTUAL 0
+#   ~^ 4'b000z: EXPECT x, ACTUAL x
+#   ~^ 4'b100x: EXPECT x, ACTUAL x
+#  
+#  quit -f 

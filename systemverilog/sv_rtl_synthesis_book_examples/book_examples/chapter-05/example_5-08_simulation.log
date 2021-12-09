@@ -1,0 +1,43 @@
+QuestaSim qverilog 10.2c Compiler 2013.07 Jul 18 2013
+qverilog -f 5-8_run.f 
+-- Compiling module comparator
+-- Compiling module test
+-- Compiling module top
+
+Top level modules:
+	top
++ C:/questa_sim_10.2c/win32/vsim -lib work top -c -do "run -all; quit -f" -appendlog -l qverilog.log -vopt
+# vsim -appendlog -do {run -all; quit -f} -l qverilog.log -lib work -c -vopt top 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# 
+# //  Questa Sim
+# //  Version 10.2c Unknown Platform Jul 18 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.top(fast)
+# run -all 
+# At   30ns: a=  3  b=  3:  EXPECT: {lt,eq,gt} = 010, ACTUAL: 010  OK
+# At   50ns: a=  3  b=  0:  EXPECT: {lt,eq,gt} = 001, ACTUAL: 001  OK
+# At   70ns: a=  5  b=  0:  EXPECT: {lt,eq,gt} = 001, ACTUAL: 001  OK
+# At   90ns: a=  3  b=  0:  EXPECT: {lt,eq,gt} = 001, ACTUAL: 001  OK
+# At  110ns: a=  5  b=  5:  EXPECT: {lt,eq,gt} = 010, ACTUAL: 010  OK
+# At  130ns: a=  0  b=  5:  EXPECT: {lt,eq,gt} = 100, ACTUAL: 100  OK
+# At  150ns: a=  3  b=  3:  EXPECT: {lt,eq,gt} = 010, ACTUAL: 010  OK
+# At  170ns: a=  3  b=  5:  EXPECT: {lt,eq,gt} = 100, ACTUAL: 100  OK
+# At  190ns: a=  5  b=  3:  EXPECT: {lt,eq,gt} = 001, ACTUAL: 001  OK
+# At  210ns: a=  5  b=  5:  EXPECT: {lt,eq,gt} = 010, ACTUAL: 010  OK
+# At  230ns: a=  0  b=  0:  EXPECT: {lt,eq,gt} = 010, ACTUAL: 010  OK
+# At  250ns: a=  0  b=  5:  EXPECT: {lt,eq,gt} = 100, ACTUAL: 100  OK
+# At  270ns: a=  3  b=  3:  EXPECT: {lt,eq,gt} = 010, ACTUAL: 010  OK
+# At  290ns: a=  5  b=  5:  EXPECT: {lt,eq,gt} = 010, ACTUAL: 010  OK
+# At  310ns: a=  0  b=  5:  EXPECT: {lt,eq,gt} = 100, ACTUAL: 100  OK
+# At  330ns: a=  0  b=  5:  EXPECT: {lt,eq,gt} = 100, ACTUAL: 100  OK
+# ** Note: $finish    : 5-8_testbench.sv(35)
+#    Time: 340 ns  Iteration: 1  Instance: /top/test

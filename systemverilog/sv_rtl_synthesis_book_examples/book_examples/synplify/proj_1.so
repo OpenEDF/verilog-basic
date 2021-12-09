@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SynplifyOutput>
+	<result>Success</result>
+	<design>status_reg</design>
+	<target_edif>/mnt/sandbox/book_examples/chapter-05/synplify/proj_1.edn</target_edif>
+</SynplifyOutput>

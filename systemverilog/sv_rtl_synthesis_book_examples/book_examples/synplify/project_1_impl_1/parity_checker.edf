@@ -1,0 +1,203 @@
+(edif parity_checker 
+ (edifVersion 2 0 0)
+ (edifLevel 0)
+ (keywordMap (keywordLevel 0))
+ (status 
+  (written 
+   (timestamp 2013 09 18 16 38 48)
+   (program "Precision RTL Synthesis" (version "2013a.9"))
+   (author "Mentor Graphics Corporation")))
+ (external xcv 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell OBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell IBUF (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell FDC (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port D (direction INPUT))
+     (port C (direction INPUT))
+     (port CLR (direction INPUT))
+     (port Q (direction OUTPUT)))))
+  (cell LUT1 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I0 (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell LUT3 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I0 (direction INPUT))
+     (port I1 (direction INPUT))
+     (port I2 (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell LUT4 (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I0 (direction INPUT))
+     (port I1 (direction INPUT))
+     (port I2 (direction INPUT))
+     (port I3 (direction INPUT))
+     (port O (direction OUTPUT)))))
+  (cell BUFGP (cellType GENERIC)
+   (view NETLIST  (viewType NETLIST)
+    (interface 
+     (port I (direction INPUT))
+     (port O (direction OUTPUT))))))
+ (library work 
+  (edifLevel 0)
+  (technology (numberDefinition ))
+  (cell parity_checker (cellType GENERIC)
+   (view INTERFACE  (viewType NETLIST)
+    (interface 
+     (port (array (rename data_in "data_in(8:0)") 9 )(direction INPUT))
+     (port clk (direction INPUT))
+     (port rstN (direction INPUT))
+     (port error (direction OUTPUT)))
+    (property AREA (string "3.000000"))
+    (property DESIGN_IS_RTL (string "NO"))
+    (property PART (string "v50bg256-6"))
+    (contents 
+     (instance error_obuf (viewRef NETLIST  (cellRef OBUF (libraryRef xcv ))))
+     (instance rstN_ibuf (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_0_ "data_in_ibuf(0)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_1_ "data_in_ibuf(1)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_2_ "data_in_ibuf(2)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_3_ "data_in_ibuf(3)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_4_ "data_in_ibuf(4)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_5_ "data_in_ibuf(5)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_6_ "data_in_ibuf(6)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_7_ "data_in_ibuf(7)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance (rename data_in_ibuf_8_ "data_in_ibuf(8)") (viewRef NETLIST  (cellRef IBUF (libraryRef xcv ))))
+     (instance reg_error (viewRef NETLIST  (cellRef FDC (libraryRef xcv ))))
+     (instance ix30565z1318 (viewRef NETLIST  (cellRef LUT1 (libraryRef xcv )))
+      (property INIT (string "1")))
+     (instance ix30565z1464 (viewRef NETLIST  (cellRef LUT3 (libraryRef xcv )))
+      (property INIT (string "96")))
+     (instance ix30565z28345 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "6996")))
+     (instance ix30565z28346 (viewRef NETLIST  (cellRef LUT4 (libraryRef xcv )))
+      (property INIT (string "6996")))
+     (instance clk_ibuf (viewRef NETLIST  (cellRef BUFGP (libraryRef xcv ))))
+     (net error_dup_0 
+      (joined 
+       (portRef Q (instanceRef reg_error ))
+       (portRef I (instanceRef error_obuf ))))
+     (net (rename data_in_8_ "data_in(8)") 
+      (joined 
+       (portRef (member data_in 0))
+       (portRef I (instanceRef data_in_ibuf_8_ ))))
+     (net (rename data_in_7_ "data_in(7)") 
+      (joined 
+       (portRef (member data_in 1))
+       (portRef I (instanceRef data_in_ibuf_7_ ))))
+     (net (rename data_in_6_ "data_in(6)") 
+      (joined 
+       (portRef (member data_in 2))
+       (portRef I (instanceRef data_in_ibuf_6_ ))))
+     (net (rename data_in_5_ "data_in(5)") 
+      (joined 
+       (portRef (member data_in 3))
+       (portRef I (instanceRef data_in_ibuf_5_ ))))
+     (net (rename data_in_4_ "data_in(4)") 
+      (joined 
+       (portRef (member data_in 4))
+       (portRef I (instanceRef data_in_ibuf_4_ ))))
+     (net (rename data_in_3_ "data_in(3)") 
+      (joined 
+       (portRef (member data_in 5))
+       (portRef I (instanceRef data_in_ibuf_3_ ))))
+     (net (rename data_in_2_ "data_in(2)") 
+      (joined 
+       (portRef (member data_in 6))
+       (portRef I (instanceRef data_in_ibuf_2_ ))))
+     (net (rename data_in_1_ "data_in(1)") 
+      (joined 
+       (portRef (member data_in 7))
+       (portRef I (instanceRef data_in_ibuf_1_ ))))
+     (net (rename data_in_0_ "data_in(0)") 
+      (joined 
+       (portRef (member data_in 8))
+       (portRef I (instanceRef data_in_ibuf_0_ ))))
+     (net clk 
+      (joined 
+       (portRef clk )
+       (portRef I (instanceRef clk_ibuf ))))
+     (net rstN 
+      (joined 
+       (portRef rstN )
+       (portRef I (instanceRef rstN_ibuf ))))
+     (net (rename data_in_int_8_ "data_in_int(8)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_8_ ))
+       (portRef I0 (instanceRef ix30565z28345 ))))
+     (net (rename data_in_int_7_ "data_in_int(7)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_7_ ))
+       (portRef I1 (instanceRef ix30565z28345 ))))
+     (net (rename data_in_int_6_ "data_in_int(6)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_6_ ))
+       (portRef I2 (instanceRef ix30565z28345 ))))
+     (net (rename data_in_int_5_ "data_in_int(5)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_5_ ))
+       (portRef I3 (instanceRef ix30565z28345 ))))
+     (net (rename data_in_int_4_ "data_in_int(4)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_4_ ))
+       (portRef I0 (instanceRef ix30565z28346 ))))
+     (net (rename data_in_int_3_ "data_in_int(3)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_3_ ))
+       (portRef I1 (instanceRef ix30565z28346 ))))
+     (net (rename data_in_int_2_ "data_in_int(2)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_2_ ))
+       (portRef I2 (instanceRef ix30565z28346 ))))
+     (net (rename data_in_int_1_ "data_in_int(1)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_1_ ))
+       (portRef I3 (instanceRef ix30565z28346 ))))
+     (net (rename data_in_int_0_ "data_in_int(0)") 
+      (joined 
+       (portRef O (instanceRef data_in_ibuf_0_ ))
+       (portRef I0 (instanceRef ix30565z1464 ))))
+     (net clk_int 
+      (joined 
+       (portRef O (instanceRef clk_ibuf ))
+       (portRef C (instanceRef reg_error ))))
+     (net rstN_int 
+      (joined 
+       (portRef O (instanceRef rstN_ibuf ))
+       (portRef I0 (instanceRef ix30565z1318 ))))
+     (net error 
+      (joined 
+       (portRef error )
+       (portRef O (instanceRef error_obuf ))))
+     (net not_rstN 
+      (joined 
+       (portRef O (instanceRef ix30565z1318 ))
+       (portRef CLR (instanceRef reg_error ))))
+     (net error_2n1s1 
+      (joined 
+       (portRef O (instanceRef ix30565z1464 ))
+       (portRef D (instanceRef reg_error ))))
+     (net nx30565z1 
+      (joined 
+       (portRef O (instanceRef ix30565z28345 ))
+       (portRef I1 (instanceRef ix30565z1464 ))))
+     (net nx30565z2 
+      (joined 
+       (portRef O (instanceRef ix30565z28346 ))
+       (portRef I2 (instanceRef ix30565z1464 ))))))))
+ (design parity_checker (cellRef parity_checker (libraryRef work ))
+  (property PART (string "v50bg256-6"))))
