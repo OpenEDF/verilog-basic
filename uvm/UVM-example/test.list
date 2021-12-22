@@ -2,8 +2,8 @@
 #agent.sv
 #driver.sv
 #env.sv
-interface.sv
-#memory.sv
+#interface.sv
+memory.sv
 #monitor.sv
 #scoreboard.sv
 #sequence.sv

@@ -28,7 +28,7 @@ module memory
     output [DATA_WIDTH-1:0] rdata
   ); 
   
-  reg [DATA_WIDTH-1:0] rdata;
+  reg [DATA_WIDTH-1:0] rdata_reg;
   
   //Memory
   reg [DATA_WIDTH-1:0] mem [2**ADDR_WIDTH];
@@ -43,6 +43,8 @@ module memory
 
   // Read data from memory
   always @(posedge clk)
-    if (rd_en) rdata <= mem[addr];
+    if (rd_en) rdata_reg <= mem[addr];
+
+  assign rdata = rdata_reg;
 
 endmodule

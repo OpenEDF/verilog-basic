@@ -30,4 +30,4 @@ class mem_seq_item extends uvm_sequence_item;
   //---------------------------------------
   constraint wr_rd_c { wr_en != rd_en; }; 
   
-endclass: mem_seq_item
+endclass

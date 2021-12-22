@@ -1,3 +1,4 @@
+`include "seq_item.sv"
 
 class mem_scoreboard extends uvm_scoreboard;
   
