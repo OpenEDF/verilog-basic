@@ -1,0 +1,14 @@
+# UVM test file
+#agent.sv
+#driver.sv
+#env.sv
+interface.sv
+#memory.sv
+#monitor.sv
+#scoreboard.sv
+#sequence.sv
+#sequencer.sv
+#seq_item.sv
+#test.sv
+top.sv
+#wr_rd_test.sv
