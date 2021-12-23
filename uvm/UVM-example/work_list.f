@@ -1,7 +1,7 @@
 # UVM project work file
 #
 # Package
-example.pkg
+example_pkg.sv
 
 # interface
 #
@@ -9,7 +9,7 @@ interface.sv
 
 # DTU
 #
-memory.v
+./mem_dtu/memory.v
 
 # testbench_top
 #
