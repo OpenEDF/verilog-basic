@@ -1,6 +1,3 @@
-`include "scoreboard.sv"
-`include "agent.sv"
-
 class mem_model_env extends uvm_env;
   
   //---------------------------------------

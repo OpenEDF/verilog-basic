@@ -1,4 +1,3 @@
-
 interface mem_if(input logic clk,reset);
   
   //---------------------------------------

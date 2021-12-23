@@ -1,13 +1,8 @@
 //including interfcae and testcase files
-
 import uvm_pkg::*;
-
-`include "interface.sv"
-`include "test.sv"
-`include "wr_rd_test.sv"
+import example_pkg::*;
 
 //---------------------------------------------------------------
-
 module tbench_top;
 
   //---------------------------------------

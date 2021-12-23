@@ -6,7 +6,7 @@
 
 #--------------------------------------------------------------------------
 # test case file
-TEST_FILE = test.list
+TEST_FILE = work_list.f
 UVM_VERBOSITY =	UVM_LOW
 
 # clean old file --> compiler --> simluation
