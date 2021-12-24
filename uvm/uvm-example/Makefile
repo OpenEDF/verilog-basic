@@ -10,7 +10,7 @@ TEST_FILE = work_list.f
 UVM_VERBOSITY =	UVM_LOW
 
 # clean old file --> compiler --> simluation
-all: clean com sim
+all: clean com base_sim wrrd_sim
 
 # compiler
 com:$(TEST_FILE)
@@ -20,8 +20,11 @@ com:$(TEST_FILE)
     +incdir+./tb_class -f $(TEST_FILE)
 
 # simluation
-sim:$(simv)
-	./simv +UVM_VERBOSITY=$(UVM_VERBOSITY) -l vcs.log
+base_sim:
+	./simv +UVM_TESTNAME=mem_model_base_test +UVM_VERBOSITY=$(UVM_VERBOSITY) -l vcs_base_sim.log
+
+wrrd_sim:
+	./simv +UVM_TESTNAME=mem_wr_rd_test +UVM_VERBOSITY=$(UVM_VERBOSITY) -l vcs_base_sim.log
 
 # clean
 .PHONY: clean
