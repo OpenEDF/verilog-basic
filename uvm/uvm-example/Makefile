@@ -29,6 +29,6 @@ wrrd_sim:
 # clean
 .PHONY: clean
 clean:
-	rm -rf csrc simv* *.key *~ core vc_hdrs.h ucli.key urg* *.log
+	rm -rf csrc simv* *.key *~ core vc_hdrs.h ucli.key urg* *.log dump.vcd
 
 #--------------------------------------------------------------------------
