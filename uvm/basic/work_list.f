@@ -14,4 +14,5 @@
 # testbench_top
 #
 #top.sv
-class_inst.sv
+#class_inst.sv
+test_program.sv
