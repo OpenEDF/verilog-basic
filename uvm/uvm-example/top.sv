@@ -1,4 +1,6 @@
 //including interfcae and testcase files
+`include "uvm_macros.svh"
+
 import uvm_pkg::*;
 import example_pkg::*;
 
