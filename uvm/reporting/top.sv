@@ -33,6 +33,5 @@ class test extends uvm_test;
 endclass
 
 initial
-        run_test();
-
+        run_test("test");
 endmodule
