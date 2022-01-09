@@ -1,7 +1,7 @@
 // rand and randc variable test
 class packet;
-    rand bit [3:0] data;
-    constraint c_data { data < 8'h64; };
+    randc bit [3:0] data;
+    constraint c_data { data < 8'h5; };
 endclass
 
 module tb;

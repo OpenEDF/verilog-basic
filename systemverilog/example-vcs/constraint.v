@@ -1,7 +1,7 @@
 // rand and randc variable test
 class packet;
-    rand bit [3:0] data;
-    constraint c_data { data < 8'h64; };
+    randc bit [31:0] data;
+    constraint c_data { data[1:0] == 2'b0; data < 32'h40004FFF; data > 32'h40004000; };
 endclass
 
 module tb;
@@ -10,7 +10,7 @@ initial begin
     packet pkt = new();
     for (int i = 0; i < 50; i++) begin
         pkt.randomize();
-        $display("itr = %0d data = 0x%0h", i, pkt.data);
+        $display("itr = %0d data = 0x%8h", i, pkt.data);
     end    
 end
 
