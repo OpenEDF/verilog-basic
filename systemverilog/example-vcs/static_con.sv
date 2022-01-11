@@ -9,6 +9,7 @@ module test;
         ABC abc1 = new();
         ABC abc2 = new();
 
+        //abc1.c2.constraint_mode(0);
         abc1.c1.constraint_mode(0);
 
         for (int i = 0; i < 10; i++) begin
