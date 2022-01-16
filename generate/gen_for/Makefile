@@ -15,7 +15,7 @@ all: clean com sim
 # compiler
 com:$(TEST_FILE)
 	vcs -full64 +v2k -cpp g++-4.8 -cc gcc-4.8      \
-	-LDFLAGS -Wl,--no-as-needed +timescale=1ns/1ps \
+	-LDFLAGS -Wl,--no-as-needed -timescale=1ns/1ps \
 	$(SRC_FILE) $(TEST_FILE)
 
 # lint
