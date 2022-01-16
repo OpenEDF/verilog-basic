@@ -47,3 +47,9 @@ obj_dir
 
 # temp
 *.swp
+
+#vcs
+csrc 
+simv* 
+*.key 
+*.vcd
