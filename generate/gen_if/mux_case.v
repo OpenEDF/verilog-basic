@@ -1,4 +1,4 @@
-// generate if
+// mux_case
 module mux_case(
     input a,
     input b,

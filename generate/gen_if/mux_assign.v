@@ -1,4 +1,4 @@
-// Generate if 
+// mux_assign 
 module mux_assign (
     input a,
     input b,
