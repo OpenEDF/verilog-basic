@@ -1,6 +1,6 @@
 class scoreboard;
     mailbox scb_mbx;
-    reg_item refq[156];
+    reg_item refq[256];
 
     task run();
         forever begin
