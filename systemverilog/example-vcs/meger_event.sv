@@ -15,11 +15,17 @@ module testbench;
             end
             
             #20 ->event_a;
-            #30 ->evnet_b;
+            #30 ->event_b;
 
             begin
-                #10 event_b = event_a;
+               #10 event_b = event_a;
             end
          join
     end
 endmodule
+
+/*
+[20] Thread 1: Wait for event_a is over
+           V C S   S i m u l a t i o n   R e p o r t
+
+*/
