@@ -1,5 +1,5 @@
 class env;
-    driver          a0;
+    driver          d0;
     monitor         m0;
     scoreboard      s0;
     mailbox         scb_mbx;
@@ -10,7 +10,8 @@ class env;
         d0      = new;
         m0      = new;
         s0      = new;
-        scb_mbx = new;
+        scb_mbx = new();
+        $display("T=%0t [Env] Env new...", $time);
     endfunction
 
     virtual task run();

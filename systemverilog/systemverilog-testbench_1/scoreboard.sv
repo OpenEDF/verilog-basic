@@ -2,7 +2,12 @@ class scoreboard;
     mailbox scb_mbx;
     reg_item refq[256];
 
+    function new();
+        $display("T=%0t [Scoreboard] Scoreboard new...", $time);
+    endfunction
+
     task run();
+        $display("T=%0t [Scoreboard] starting ...", $time);
         forever begin
             reg_item item;
             scb_mbx.get(item);
@@ -19,10 +24,10 @@ class scoreboard;
                 if (refq[item.addr] == null)
                     if (item.rdata != 'h1234)
                         $display("T=%0t [Scoreboard] ERROR! First time read, addr=0x%0h exp=1234 act=0x%0h",
-                                $tiem, item.addr, item.rdata);
+                                $time, item.addr, item.rdata);
                     else
                         $display("T=%0t [Scoreboard] PASS! First time read, addr=0x%0h exp=1234 act=0x%0h",
-                                $tiem, item.addr, item.rdata);
+                                $time, item.addr, item.rdata);
                 else
                     if (item.rdata != refq[item.addr].wdata)
                         $display("T=%0t [Scoreboard] ERROR! addr=0x%0h exp=0x%0h act=0x%0h",

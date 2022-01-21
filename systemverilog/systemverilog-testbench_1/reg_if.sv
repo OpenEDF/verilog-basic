@@ -5,5 +5,5 @@ interface reg_if (input bit clk);
     logic [15:0] rdata;
     logic        wr;
     logic        sel;
-    logic        reday;
+    logic        ready;
 endinterface

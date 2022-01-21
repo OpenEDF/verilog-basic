@@ -3,6 +3,10 @@ class driver;
     event drv_done;
     mailbox drv_mbx;
 
+    function new();
+        $display("T=%0t [Driver] Driver new...", $time);
+    endfunction
+
     task run();
         $display ("T=%0t [Driver] starting ...", $time);
         @(posedge vif.clk);
@@ -21,7 +25,7 @@ class driver;
                 @(posedge vif.clk);
             end 
         end
-        vif.sel <= 0; ->drv_done;
-    end
+        vif.sel <= 0;
+        ->drv_done;
     endtask
 endclass

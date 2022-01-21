@@ -2,6 +2,10 @@ class monitor;
     virtual reg_if vif;
     mailbox scb_mbx;
 
+    function new();
+        $display("T=%0t [Monitor] Monitor new...", $time);
+    endfunction
+
     task run(); 
         $display ("T=%0t [Monitor] starting ...", $time);
 

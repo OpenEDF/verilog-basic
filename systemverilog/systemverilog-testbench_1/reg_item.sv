@@ -5,7 +5,7 @@ class reg_item;
     rand bit        wr;
 
     function void print(string tag="");
-        $display("T = %0t [%s] addr = 0x%0h wr = 0x%d wdata = 0x%0h rdata = 0x%0h",
+        $display("T=%0t [%s] addr = 0x%0h wr = 0x%d wdata = 0x%0h rdata = 0x%0h",
                  $time, tag, addr, wr, wdata, rdata);
     endfunction
 

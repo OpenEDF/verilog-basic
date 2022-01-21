@@ -22,6 +22,7 @@ module tb;
         _if.rstn     <= 0;
         _if.sel      <= 0;
         #20 _if.rstn <= 1;
+        $display("T=%0t [OK] initilal done.", $time);
 
         t0 = new;
         t0.e0.vif = _if;

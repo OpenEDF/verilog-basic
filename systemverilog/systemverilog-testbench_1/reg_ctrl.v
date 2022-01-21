@@ -37,7 +37,20 @@ module reg_ctrl # (
             end
         end
     end
+    
+    always @(posedge clk) begin
+        if (!rstn) begin
+            ready <= 1;
+        end else begin
+            if (sel & ready_pe) begin
+                ready <= 1;
+            end
 
+            if (sel & ready & !wr) begin
+                ready <= 0;
+            end
+        end
+    end
     // Driver internal signal accordingly
     always @ (posedge clk) begin
         if (!rstn) ready_dly <= 1;

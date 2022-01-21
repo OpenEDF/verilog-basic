@@ -5,6 +5,7 @@ class test;
     function new();
         drv_mbx = new();
         e0 = new();
+        $display("T=%0t [Test] Test new...", $time);
     endfunction
 
     virtual task run();
