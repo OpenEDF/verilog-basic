@@ -16,8 +16,9 @@ class scoreboard;
             if (item.wr) begin
                 if (refq[item.addr] == null)
                     refq[item.addr] = new;
-                    refq[item.addr] = item;
-                    $display("T=%0t [Scoreboard] Store addr=0x%0h wr=0x%0h data=0x%0h",
+
+                refq[item.addr] = item;
+                $display("T=%0t [Scoreboard] Store addr=0x%0h wr=0x%0h data=0x%0h",
                             $time, item.addr, item.wr, item.wdata);
             end
             if (item.wr) begin
@@ -33,7 +34,7 @@ class scoreboard;
                         $display("T=%0t [Scoreboard] ERROR! addr=0x%0h exp=0x%0h act=0x%0h",
                                 $time, item.addr, refq[item.addr].wdata, item.rdata);
                     else
-                        $display("T=%0t [Scoreboard] ERROR! addr=0x%0h exp=0x%0h act=0x%0h",
+                        $display("T=%0t [Scoreboard] PASS! addr=0x%0h exp=0x%0h act=0x%0h",
                                 $time, item.addr, refq[item.addr].wdata, item.rdata);
             end
         end
