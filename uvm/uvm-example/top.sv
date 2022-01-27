@@ -62,4 +62,11 @@ module tbench_top;
     run_test();
   end
   
+  //---------------------------------------
+  //vcd
+  //---------------------------------------
+  initial begin
+    $dumpfile("uvm_test.vcd");
+    $dumpvars(0, tbench_top);
+  end
 endmodule
