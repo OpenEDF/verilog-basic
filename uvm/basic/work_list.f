@@ -15,4 +15,5 @@
 #
 #top.sv
 #class_inst.sv
-test_program.sv
+#test_program.sv
+uvm_compile.sv
