@@ -32,8 +32,8 @@ echo The vaild command is build/flash/clean.
   :clean
 	:: clean the file and floder
     echo %build%
-	rmdir /s /q output build .Xil %target%.hw %target%.ip_user_files %target%.runs %target%.cache
-	del %target%.xpr vivado.* vivado_* webtalk.* webtalk_*
+	rmdir /s /q output build .Xil %target%.hw %target%.ip_user_files %target%.runs %target%.cache xsim.dir
+	del %target%.xpr vivado.* vivado_* webtalk.* webtalk_* *.log *.pb
     goto :switch-case-end
 :switch-case-end
    echo Command execution complete.
