@@ -36,17 +36,17 @@ module shiftreg74hc595 (
 	input SER,		
 	input RCLK,
 	input SRCLR_n,
-	input reg OE_n,
-	output reg QA, QB, QC, QD, QE, QF, QH, QH1
+	input OE_n,
+	output reg QA, QB, QC, QD, QE, QF, QG, QH, QH_n
 );
 
 /* temp  register */
 reg [7:0] temp_reg;
 temp_reg = {QH1, QH, QF, QE, QD, QC, QB, QA};
 
-always @(posedge SRCLK or posedge RCLK or OE_n) begin 
+always @(posedge SRCLK or posedge RCLK or posedge OE_n) begin 
 	if (OE_n == 1)
-		temp_reg = 8'hxxxx_xxxx;
+		temp_reg <= 8'bxxxx_xxxx;
 	else begin
 		if (SER == 1) 
 		
