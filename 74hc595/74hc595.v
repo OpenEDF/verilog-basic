@@ -37,22 +37,35 @@ module shiftreg74hc595 (
 	input RCLK,
 	input SRCLR_n,
 	input OE_n,
-	output reg QA, QB, QC, QD, QE, QF, QG, QH, QH_n
+	output [7:0] QA_H,
+    output QH_ser
 );
 
-/* temp  register */
-reg [7:0] temp_reg;
-temp_reg = {QH1, QH, QF, QE, QD, QC, QB, QA};
+// data output register
+reg [7:0] shift_reg_dout;
+reg [7:0] store_reg_dout;
 
-always @(posedge SRCLK or posedge RCLK or posedge OE_n) begin 
-	if (OE_n == 1)
-		temp_reg <= 8'bxxxx_xxxx;
-	else begin
-		if (SER == 1) 
-		
-	end
+// shift register
+always @(posedge SRCLK or negedge SRCLR_n) begin
+    if (!SRCLR_n) begin
+		shift_reg_dout <= 8'b0000_0000;
+    end else begin
+        shift_reg_dout <= {shift_reg_dout[6:0], SER}; // left shift
+    end
 end
 
+// store register
+always @(posedge RCLK or negedge OE_n) begin
+    if (!OE_n) begin
+		store_reg_dout <= 8'bxxxx_xxxx;
+    end else begin
+        store_reg_dout <= shift_reg_dout;
+    end
+end
+
+// data output
+assign QA_H = store_reg_dout;
+assign QH_ser = shift_reg_dout[7];
 endmodule
 
 /* -- -- -- END -- -- -- */
