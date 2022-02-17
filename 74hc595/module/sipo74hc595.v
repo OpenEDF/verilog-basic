@@ -31,7 +31,7 @@
 /* Verilog impletment code */
 /* Reference: https://github.com/jjcarrier/FPGA_2_ShiftReg  */
 
-module shiftreg74hc595 (
+module sipo74hc595 (
 	input SRCLK,
 	input SER,		
 	input RCLK,
@@ -66,6 +66,7 @@ end
 // data output
 assign QA_H = store_reg_dout;
 assign QH_ser = shift_reg_dout[7];
+
 endmodule
 
 /* -- -- -- END -- -- -- */
