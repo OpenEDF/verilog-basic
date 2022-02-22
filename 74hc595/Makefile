@@ -8,6 +8,7 @@
 ### ------------------------------------------------------------------------------------------
 # Project output target
 export OUTPUT = 74hc595
+TOP_MODULE =top_tb
 
 # Set the debug GUI (verdi or dve)
 DEBUG_GUI = verdi
@@ -70,7 +71,7 @@ SIM_FLAGS = -ucli -i ./script/dum_fsdb_vcs.tcl    \
 # Debug command and flags
 DEBUG_FLAGS = -f $(MODULE_FLIES)                  \
               -f $(TB_FILES)                      \
-              -top flowled_tb                    \
+              -top $(TOP_MODULE)                  \
               -ssf $(WAVEFORM)                    \
               -nologo
 
