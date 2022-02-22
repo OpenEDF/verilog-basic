@@ -7,18 +7,19 @@ module sync_fifo (
     input      [7:0] data_in,
     output reg [7:0] data_out,
     output reg       empty,
-    output reg       full
+    output reg       full,
+    output reg [7:0] debug_ram
 );
 
 reg [3:0] wr_addr;
 reg [3:0] rd_addr;
 reg [4:0] count;
 
-parameter MAX_COUNT = 16;
+parameter MAX_COUNT = 15;
 parameter max_write_count = 5'b01111;
 
 // fifo memory
-reg [7:0] fifo [0:MAX_COUNT - 1];
+reg [7:0] fifo [0:MAX_COUNT];
 
 // read 
 always @(posedge clk or negedge rst_n) begin
@@ -86,6 +87,11 @@ always @(count) begin
         full = 1;
     else
         full = 0;
+end
+
+// debug ram 
+always @(posedge clk) begin
+    debug_ram <= fifo[0];    
 end
 
 endmodule
