@@ -14,6 +14,9 @@ TOP_MODULE = flowed_tb
 DEBUG_GUI = verdi
 
 # Set the FPGA Platform
+VIVADO=vivado
+BUILD_TCL_SCRIPT = ./fpga/nonproject_model_build.tcl
+CFGMEM_TCL_SCRIPT = ./fpga/cfg_program_flash.tcl
 
 # UVM test
 
@@ -81,8 +84,10 @@ LINT_FLAGS = --lint-only        \
              -f $(MODULE_FLIES)
 
 # FPGA implement options
+VIVADO_FLAGS = -mode tcl -source $(BUILD_TCL_SCRIPT)
 
 # Download to FPGA Flash options
+VIVADO_FLASH_FLAGS = -mode tcl -source $(CFGMEM_TCL_SCRIPT)
 
 ### ------------------------------------------------------------------------------------------
 # All run
@@ -112,11 +117,13 @@ cov:
 vdebug:
 	verdi $(DEBUG_FLAGS)
 
-# impletment in FPGA
+# impletment in FPGA vavido build
 fpga:
+	$(VIVADO) $(VIVADO_FLAGS)
 
 # download to FPGA Flash
 flash:
+	$(VIVADO) $(VIVADO_FLASH_FLAGS)
 
 # show coverage by html
 html:
@@ -126,10 +133,11 @@ html:
 cdebug:
 
 # clean the compiler-time file
-.PHONY: clean
+.PHONY: clean all com_sim lint com sim cov vdebug fpga flash html cdebug
 clean:
 	rm -rf csrc *simv *.daidir *.log *.key $(OUTPUT) *.vpd DVEfiles *.fsdb \
-	verdiLog novas.* *.vdb urgReport vdCovLog
+	verdiLog novas.* *.vdb urgReport vdCovLog output \
+	build usage_statistics_webtalk.* *.jou *.log
 
 ### ------------------------------------------------------------------------------------------
 # display the help information
