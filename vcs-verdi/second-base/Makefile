@@ -91,6 +91,20 @@ VIVADO_FLAGS = -mode tcl -source $(BUILD_TCL_SCRIPT)
 # Download to FPGA Flash options
 VIVADO_FLASH_FLAGS = -mode tcl -source $(CFGMEM_TCL_SCRIPT)
 
+# Lattice FPGA implement
+
+# Lattice FPGA program
+
+# Formality Flags
+
+# PeimrTime Flags
+
+# Spyglass Flags
+
+# Design Compiler Flags
+
+# Synthesis Flags
+
 ### ------------------------------------------------------------------------------------------
 # All run
 all: com sim vdebug
