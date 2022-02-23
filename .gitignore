@@ -52,3 +52,9 @@ csrc
 simv* 
 *.key 
 *.vcd
+
+#vcs + verdi
+*.log
+*.daidir
+*.fsdb
+*.vdb
