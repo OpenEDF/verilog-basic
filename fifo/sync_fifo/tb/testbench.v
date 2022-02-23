@@ -11,7 +11,6 @@ reg       wr_en;
 wire [7:0] data_out;
 wire       empty;
 wire       full;
-wire [7:0] debug_ram;
 
 initial begin
     clk   = 0;
@@ -51,13 +50,12 @@ sync_fifo u0_sync_fifo (
     .full(full),
     .rd_en(rd_en),
     .rst_n(rst_n),
-    .wr_en(wr_en),
-    .debug_ram(debug_ram)
+    .wr_en(wr_en)
 );
 
 initial begin
-    $monitor("rst_n = %d rd_en = %d  data_out = %d wr_en = %d data_in = %d empty = %d full = %d ram[0] = %d",
-            rst_n, rd_en, data_out, wr_en, data_in, empty, full, debug_ram);
+    $monitor("rst_n = %d rd_en = %d  data_out = %d wr_en = %d data_in = %d empty = %d full = %d",
+            rst_n, rd_en, data_out, wr_en, data_in, empty, full);
 end
 
 endmodule

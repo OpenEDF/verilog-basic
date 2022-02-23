@@ -7,8 +7,7 @@ module sync_fifo (
     input      [7:0] data_in,
     output reg [7:0] data_out,
     output reg       empty,
-    output reg       full,
-    output reg [7:0] debug_ram
+    output reg       full
 );
 
 reg [3:0] wr_addr;
@@ -87,11 +86,6 @@ always @(count) begin
         full = 1;
     else
         full = 0;
-end
-
-// debug ram 
-always @(posedge clk) begin
-    debug_ram <= fifo[0];    
 end
 
 endmodule
