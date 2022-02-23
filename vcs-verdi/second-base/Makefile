@@ -8,7 +8,7 @@
 ### ------------------------------------------------------------------------------------------
 # Project output target
 export OUTPUT = flowled
-TOP_MODULE = flowed_tb
+TOP_MODULE = flowled_tb
 
 # Set the debug GUI (verdi or dve)
 DEBUG_GUI = verdi
@@ -48,9 +48,11 @@ DVE_COV_CMD = dve -full64 -covdir $(OUTPUT).vdb &
 VCS_FLAGS = -f $(MODULE_FLIES)           \
             -f $(TB_FILES)               \
             -full64                      \
+            +lint=all                    \
+            +warn=noVPI-CT-NS            \
             +v2k                         \
             -override_timescale=1ns/10ps \
-            -debug_access                \
+            -debug_access+all            \
             -debug_acc+dmptf             \
             -debug_region+cell+encrypt   \
             -cpp g++-4.8                 \
@@ -67,8 +69,8 @@ VCS_FLAGS = -f $(MODULE_FLIES)           \
 # Simulation command
 SIM_FLAGS = -ucli -i ./script/dum_fsdb_vcs.tcl    \
             +fsdb+autoflush                       \
-			$(COV_FLAGS)                          \
-			-cm_log $(COV_LOG_FILE).log			  \
+            $(COV_FLAGS)                          \
+            -cm_log $(COV_LOG_FILE).log           \
             -l $(SIM_LOG_FILE).log
 
 # Debug command and flags
