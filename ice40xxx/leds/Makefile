@@ -41,4 +41,5 @@ prog_flash:
 # clean the temp file
 clean:
 	rm -rf $(filename).blif $(filename).asc $(filename).bin $(filename).json
+
 # -----------------------------------------------------------------------------
