@@ -17,7 +17,7 @@ initial begin
     rst_n = 0;
     rd_en = 0;
     wr_en = 0;
-    data_in = 0;
+    data_in = 8'h00;
 
     #20
     rst_n = 1;
@@ -26,14 +26,18 @@ initial begin
     wr_en = 1;
     #400 
     wr_en = 0;
+    #20
     rd_en = 1;
-    #1000
+    #200
+    wr_en = 1;
+    #200
     $finish;
 end
 
 integer count;
 initial begin
-    for (count = 0; count < 40; count = count + 1) begin
+    #40
+    for (count = 0; count < 100; count = count + 1) begin
         #20 data_in <= data_in + 1;
     end
 end

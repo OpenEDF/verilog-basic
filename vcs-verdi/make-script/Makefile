@@ -47,6 +47,7 @@ DVE_COV_CMD = dve -full64 -covdir $(OUTPUT).vdb &
 # Compile command and flags
 VCS_FLAGS = -f $(MODULE_FLIES)           \
             -f $(TB_FILES)               \
+            -sverilog                    \
             -full64                      \
             +lint=all                    \
             +warn=noVPI-CT-NS            \
