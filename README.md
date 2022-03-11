@@ -14,4 +14,6 @@ $ gtkwave test.cvd &
 $ asciinema ecp
 $ exit [wait save and upload to cloud...]
 ```
+## vcs & verdi
+
 [![asciicast](https://asciinema.org/a/8AvIYNfUfi9sQypDmhYCkdzZo.svg)](https://asciinema.org/a/8AvIYNfUfi9sQypDmhYCkdzZo)
