@@ -12,6 +12,11 @@ $ gtkwave test.cvd &
 ## compiler and simv
 ```shell
 $ asciinema ecp
-$ exit [wait save and upload to cloud...]✔✔✔
+$ exit [wait save and upload to cloud...]
 ```
+## vcs & verdi
+
 [![asciicast](https://asciinema.org/a/8AvIYNfUfi9sQypDmhYCkdzZo.svg)](https://asciinema.org/a/8AvIYNfUfi9sQypDmhYCkdzZo)
+
+
+## vivado generate bit and mcs file
