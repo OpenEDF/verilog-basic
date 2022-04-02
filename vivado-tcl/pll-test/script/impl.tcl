@@ -51,3 +51,27 @@ report_high_fanout_nets -file [file join $rptdir fanout.txt] -timing -load_types
 report_drc -file [file join $rptdir drc.txt]
 report_io -file [file join $rptdir io.txt]
 report_clocks -file [file join $rptdir clocks.txt]
+
+# Programmed the device
+set hw_fpga "xc7k325t_0"
+set program_files [list]
+lappend program_files [file join $wrkdir "${top}.bit"]
+
+# Connect the device
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+current_hw_device [get_hw_devices $hw_fpga]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices $hw_fpga] 0]
+
+set_property PROGRAM.FILE $program_files [get_hw_devices $hw_fpga]
+program_hw_devices [get_hw_devices $hw_fpga]
+refresh_hw_device [lindex [get_hw_devices $hw_fpga] 0]
+
+# Close the device
+close_hw_target
+disconnect_hw_server
+close_hw_manager
+
+# quit tcl
+quit
