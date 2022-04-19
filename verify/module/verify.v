@@ -21,8 +21,8 @@ always @(posedge clk or negedge rst_n) begin
     end else begin
         case (comp_wire)
             4'b0001: comp <= 6'b111101;
-            4'b0010: comp <= 6'b111110; 
-            default: comp <= 6'b000000; 
+            4'b0010: comp <= 6'b111110;
+            default: comp <= 6'b000000;
         endcase
     end
 end
@@ -56,4 +56,37 @@ always @(*) begin
         test_lrs_reg = 4'b1111;
 end
 
+// regiister is not same the memory
+
+//reg [7:0] rega;
+//reg memea[0:7];
+//
+
 endmodule
+
+/*
+// module parameter and modify parameter
+module name
+#(
+    parameter WIDTH = 8,
+    parameter DELAYS = 5)
+
+   // modify the parameter is illegal at the run time, expect compilation time,
+   // or used defparam and module instance statement.
+
+
+(
+    input clk,
+    input wire [31:0] data,
+    inout wire [31:0] addr
+);
+
+endmodule
+
+name #(WIDTH = 32, DELAY = 3) u2 (
+    .clk()
+);
+
+defparam u2.WIDTH = 64;
+*/
+

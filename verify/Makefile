@@ -126,7 +126,7 @@ cdebug:
 .PHONY: clean
 clean:
 	rm -rf csrc *simv *.daidir *.log *.key $(OUTPUT) *.vpd DVEfiles *.fsdb \
-	verdiLog novas.* *.vdb urgReport vdCovLog
+	verdiLog novas.* *.vdb urgReport vdCovLog *.txt
 
 ### ------------------------------------------------------------------------------------------
 # display the help information
