@@ -1,3 +1,5 @@
 # testbech file
 #./tb/testbench.v
-./tb/tb_dff_async_rst.v
+#./tb/tb_dff_async_rst.v
+#./tb/tb_register.v
+./tb/tb_pipeline.v

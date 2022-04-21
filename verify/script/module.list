@@ -1,3 +1,4 @@
 # design src file
 #./module/verify.v
-./module/dff_async_rst.v
+#./module/dff_async_rst.v
+./module/pipeline_stage.v
