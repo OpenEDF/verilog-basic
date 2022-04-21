@@ -1,2 +1,3 @@
 # testbech file
-./tb/testbench.v
+#./tb/testbench.v
+./tb/tb_dff_async_rst.v
