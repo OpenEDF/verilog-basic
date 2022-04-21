@@ -49,13 +49,13 @@ end
 
 // shift d-flip-flop
 initial begin
-    $display("[OK] 1-bit shift d-flop-fiop test start...\n");
+    $display("[OK] pipeline model stage test start...\n");
     rst_n = 1'b0;
     #3 
     rst_n = 1'b1; 
     data = 32'h0;
     #200
-    $display("[OK] 1-bit shift d-flop-fiop test end...\n");
+    $display("[OK] pipeline model stage test end...\n");
     $finish;
 end
 
