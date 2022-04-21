@@ -15,7 +15,7 @@ wire [31:0] id_ex;
 wire [31:0] ex_mem;
 wire [31:0] qout;
 
-// instance the dff async rst
+// instance pipeline stage
 pipeline_stage if_id_stage (
     .clk(clk),
     .rst_n(rst_n),
