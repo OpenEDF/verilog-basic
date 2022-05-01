@@ -28,6 +28,7 @@ set_property BITSTREAM.CONFIG.CONFIGRATE 50 [current_design]
 set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 4 [current_design]
 set_property BITSTREAM.CONFIG.SPI_FALL_EDGE Yes [current_design]
 
+# autogenerate from vivado tool
 set_property MARK_DEBUG true [get_nets {led_out_OBUF[0]}]
 set_property MARK_DEBUG true [get_nets {led_out_OBUF[1]}]
 set_property MARK_DEBUG true [get_nets {led_out_OBUF[2]}]
