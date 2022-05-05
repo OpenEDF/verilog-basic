@@ -3,7 +3,7 @@
 #
 #           Dc_Shell and Design_Analyzer
 #
-# Design Compiler Version: 2016
+# Design Compiler Version: 2018
 #--------------------------------------------------------------------------------------
 # Define work directory
 set SYN_WORK_PATH /home/macro/github/verilog-basic/dc-example 
@@ -84,12 +84,11 @@ history keep 200
 
 #  Show the design verify setting
 #
-echo "\n--------------------------------------------------------------------------------"
-echo "\n--------------------------------- Settings -------------------------------------"
+echo "**********************************************************************************"
+echo "*********************************** Setting **************************************"
 echo "search_path:          $search_path"
 echo "link_library:         $link_library"
 echo "target_library:       $target_library"
 echo "symbol_library:       $symbol_library\n"
-echo "\n--------------------------------------------------------------------------------"
-echo "\nI am ready...\n"
+echo "*********************************** Ready ****************************************"
 #--------------------------------------------------------------------------------------

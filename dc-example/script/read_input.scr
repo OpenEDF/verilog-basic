@@ -1,0 +1,9 @@
+# Read the design
+read_file -format verilog {rtl/flowled.v}
+current_design
+
+# Read the top file
+# read_file -top 
+#
+# Define macro info
+# read_file -define
