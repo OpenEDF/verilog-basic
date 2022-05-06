@@ -8,6 +8,7 @@
 # Define work directory
 set SYN_WORK_PATH /home/macro/github/verilog-basic/dc-example 
 set DESIGN_NAME "dc_example"
+set CURRENT_RTL_SRC $SYN_WORK_PATH/rtl
 
 define_design_lib work -path $SYN_WORK_PATH
 set SYMBOL_PATH_STD /home/macro/synopsys/dc_pdk_lib/SMIC180/std/symbols
@@ -21,7 +22,8 @@ set_app_var search_path [ list . $search_path $LINK_PATH \
                                  $SYMBOL_PATH_IO         \
                                  $SYMBOL_PATH_STD        \
                                  $RTL_PATH               \
-                                 $SCRIPT_PATH ]
+                                 $SCRIPT_PATH            \
+                                 $CURRENT_RTL_SRC]
 
 # Define the target logic library, symbol library,and link libraries
 # Logic Library
