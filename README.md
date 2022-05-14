@@ -1,7 +1,7 @@
 # verilog_basic
 ## introduction
 
-verilog_base uses Verilog to build 74x series of IP circuits to learn the basic combinational and sequential logic circuits.
+verilog_base uses Verilog to build 74x series of IP circuits to learn the basic combinational and sequential logic circuits. and build the entire chip step by step.
 
 ## Compile and simulation *command:*
 ```shell
