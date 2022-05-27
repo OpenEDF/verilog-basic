@@ -23,4 +23,5 @@ $ exit [wait save and upload to cloud...]
 ### create-ip and instance
 ```shell
 $ vivado
+$ vivado
 ```
