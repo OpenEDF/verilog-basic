@@ -16,6 +16,8 @@ module direct_cache
 // Params
 //--------------------------------------------------------------------------
 #(
+    parameter ENTRY = 8,
+
 )
 //--------------------------------------------------------------------------
 // Ports
@@ -24,12 +26,15 @@ module direct_cache
     // Inputs
     input wire         clk,
     input wire         rst_n, 
-    input wire [31:0]  mem_addr
-
+    input wire  [31:0] mem_addr
 
     // Outputs
+    output wire        hit,
+    output wire [31:0] data
 );
 
+// 8 Entry (1+27+32) bit SRAM
+reg []
 
 endmodule
 
