@@ -17,6 +17,7 @@ module direct_cache
 //--------------------------------------------------------------------------
 #(
     parameter ENTRY = 8,
+    parameter DATA_WIDTH = 60
 
 )
 //--------------------------------------------------------------------------
@@ -26,15 +27,24 @@ module direct_cache
     // Inputs
     input wire         clk,
     input wire         rst_n, 
-    input wire  [31:0] mem_addr
+    input wire  [31:0] mem_addr,
 
     // Outputs
-    output wire        hit,
-    output wire [31:0] data
+    output reg         hit,
+    output reg  [31:0] data
 );
 
 // 8 Entry (1+27+32) bit SRAM
-reg []
+reg [ENTRY-1:0] block [DATA_WIDTH-1:0];
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        hit  <= 1'b0;
+        data <= 32'h0;
+    end else begin
+        if         
+    end
+end
 
 endmodule
 
