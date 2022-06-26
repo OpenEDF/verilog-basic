@@ -24,4 +24,5 @@ $ exit [wait save and upload to cloud...]
 ```shell
 $ vivado
 $ vivado
+$ vivado
 ```
