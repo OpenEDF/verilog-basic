@@ -27,3 +27,4 @@ $ vivado
 ```
 ### TODO:
 Add the UVM example
+Add the systemverilog example
