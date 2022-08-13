@@ -26,6 +26,6 @@ $ exit [wait save and upload to cloud...]
 $ vivado
 ```
 ### TODO:
-add the UVM example
-add the systemverilog example
-add basic digital circuits described using verilg
+ - add the UVM example
+ - add the systemverilog example
+ - add basic digital circuits described using verilg
