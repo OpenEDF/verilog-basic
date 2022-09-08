@@ -23,7 +23,7 @@ $ exit [wait save and upload to cloud...]
 ## vivado generate bit and mcs file
 ### create-ip and instance
 ```shell
-$ vivado
+$ vivado &
 ```
 ### TODO:
  - add the UVM example
