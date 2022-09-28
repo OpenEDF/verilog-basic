@@ -30,3 +30,4 @@ $ vivado &
  - add the systemverilog example
  - add basic digital circuits described using verilg
  - add basic ip design
+ - add pheripherial design code
