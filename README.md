@@ -31,3 +31,4 @@ $ vivado &
  - add basic digital circuits described using verilg
  - add basic ip design
  - add pheripherial design code
+ - add cortex-m0 design amba 
