@@ -32,3 +32,4 @@ $ vivado &
  - add basic ip design
  - add pheripherial design code
  - add cortex-m0 design amba 
+ - add identify debuge example
