@@ -33,3 +33,4 @@ $ vivado &
  - add pheripherial design code
  - add cortex-m0 design amba 
  - add identify debuge example
+ - add maba wishbone axi bus
