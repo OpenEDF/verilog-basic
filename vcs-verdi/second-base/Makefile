@@ -82,6 +82,7 @@ DEBUG_FLAGS = -f $(MODULE_FLIES)                  \
 
 # Lint Flags
 LINT_FLAGS = --lint-only        \
+             --top-module $(TOP_MODULE) \
              -Wall              \
              -f $(MODULE_FLIES)
 
