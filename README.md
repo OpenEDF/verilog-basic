@@ -34,3 +34,4 @@ $ vivado &
  - add cortex-m0 design amba 
  - add identify debuge example
  - add maba wishbone axi bus
+ - add new ip
