@@ -36,3 +36,4 @@ $ vivado &
  - add maba wishbone axi bus
  - add new ip
  - search synopsys ip
+ - add gegneral pheripherial ip
