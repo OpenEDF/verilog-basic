@@ -63,10 +63,6 @@ module mem_ram
 reg [31:0] rdata;
 reg [31:0] mem[0:(2**(MEMWIDTH-2)-1)];
 
-initial begin
-    $readmemh("code.hex", mem);
-end
-
 // write mem
 always @(posedge clk) begin : mem_write
     if (cs & we) begin

@@ -1,13 +1,13 @@
 ### ------------------------------------------------------------------------------------------
-## 
-## Brief: makefile file for vcs and verdi 
+##
+## Brief: makefile file for vcs and verdi
 ## Author: Macro
 ## Email: makermuyi@gmail.com
-## Run: 
+## Run:
 ##
 ### ------------------------------------------------------------------------------------------
 # Project output target
-export OUTPUT = sync_fifo
+export OUTPUT = pc_if
 TOP_MODULE = top_tb
 
 # Set the debug GUI (verdi or dve)
@@ -91,7 +91,7 @@ sim:
 
 # debug the model via verdi
 vdebug:
-	verdi $(DEBUG_FLAGS)
+	verdi $(DEBUG_FLAGS) &
 
 # clean the compiler-time file
 .PHONY: clean com sim vdebug

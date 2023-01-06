@@ -1,2 +1,4 @@
 # testbech file
-./module/sync_fifo.v
+./module/if_id.v
+./module/mem_ram.v
+./module/update_pc.v
