@@ -37,3 +37,4 @@ $ vivado &
  - add new ip
  - search synopsys ip
  - add gegneral pheripherial ip
+ - analyze sysnopsys uart ip
