@@ -39,3 +39,4 @@ $ vivado &
  - search synopsys ip
  - add gegneral pheripherial ip
  - analyze sysnopsys uart ip
+ - add fifo design
