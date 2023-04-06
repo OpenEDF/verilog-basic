@@ -16,6 +16,7 @@ $ asciinema ecp
 $ exit [wait save and upload to cloud...]
 ```
 ## vcs & verdi
+## vcs & verdi
 
 [![asciicast](https://asciinema.org/a/8AvIYNfUfi9sQypDmhYCkdzZo.svg)](https://asciinema.org/a/8AvIYNfUfi9sQypDmhYCkdzZo)
 
@@ -38,3 +39,4 @@ $ vivado &
  - search synopsys ip
  - add gegneral pheripherial ip
  - analyze sysnopsys uart ip
+ - add fifo design
