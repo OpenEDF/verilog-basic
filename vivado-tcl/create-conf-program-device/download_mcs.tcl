@@ -3,6 +3,7 @@
 ### Author: Macro
 ### Reference: Vivado Design Suite User Guide Using Tcl Scripting(ug894)
 ### 
+###-----------------------------------------------------------------
 
 # 1. set the flash mcs file path, accroding the project setup
 set flashmcs_path prebuild_mcs/borad_flash.mcs
