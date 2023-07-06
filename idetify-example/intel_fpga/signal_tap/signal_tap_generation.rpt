@@ -1,0 +1,12 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate /home/macro/github/verilog-basic/idetify-example/intel_fpga/signal_tap.qsys --block-symbol-file --output-directory=/home/macro/github/verilog-basic/idetify-example/intel_fpga/signal_tap --family="Cyclone IV GX" --part=EP4CGX75CF23I7
+Progress: Loading intel_fpga/signal_tap.qsys
+Progress: Reading input file
+Progress: Adding signaltap_ii_logic_analyzer_0 [altera_signaltap_ii_logic_analyzer 21.1]
+Progress: Parameterizing module signaltap_ii_logic_analyzer_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsys-generate succeeded.
+Info: Stopping: Create block symbol file (.bsf)
