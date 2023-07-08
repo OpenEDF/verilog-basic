@@ -1,0 +1,171 @@
+#--  Synopsys, Inc.
+#--  Version N-2018.03-SP1
+#--  Project file /home/macro/github/verilog-basic/idetify-example/intel_fpga/test_new/proj_1.prj
+#--  Written on Sat Jul  8 19:59:10 2023
+
+
+#project files
+add_file -verilog "/home/macro/github/verilog-basic/idetify-example/src/flowled.v"
+add_file -verilog "../identy_example/idc_test.v"
+add_file -constraint "../identy_example/idc_test_pro.sdc"
+add_file -ident_constraint "/home/macro/github/verilog-basic/idetify-example/intel_fpga/identy_example_1/identify.idc"
+
+
+
+#implementation: "identy_example"
+impl -add identy_example -type fpga
+
+#
+#implementation attributes
+
+set_option -vlog_std sysv
+set_option -project_relative_includes 1
+
+#par_1 attributes
+set_option -job par_1 -add par
+set_option -job par_1 -option enable_run 1
+
+#pr_1 attributes
+set_option -job pr_1 -add par
+set_option -job pr_1 -option enable_run 1
+
+#device options
+set_option -technology CYCLONEIV-GX
+set_option -part EP4CGX75C
+set_option -package FI23
+set_option -speed_grade -7
+set_option -part_companion ""
+
+#compilation/mapping options
+set_option -use_fsm_explorer 0
+set_option -top_module "idc_test_pro"
+
+# hdl_compiler_options
+set_option -distributed_compile 1
+
+# altera_options
+set_option -reporting_ctd slack
+set_option -rw_check_on_ram 1
+set_option -par_strategy timing_qor
+
+# mapper_without_write_options
+set_option -frequency auto
+set_option -srs_instrumentation 1
+
+# mapper_options
+set_option -write_verilog 1
+set_option -write_vhdl 0
+
+# Intel STRATIX
+set_option -run_prop_extract 1
+set_option -maxfan 30
+set_option -disable_io_insertion 0
+set_option -pipe 1
+set_option -update_models_cp 0
+set_option -retiming 0
+set_option -no_sequential_opt 0
+set_option -fix_gated_and_generated_clocks 1
+set_option -quartus_version 18.0
+
+# sequential_optimization_options
+set_option -symbolic_fsm_compiler 1
+
+# Compiler Options
+set_option -compiler_compatible 0
+set_option -resource_sharing 1
+set_option -multi_file_compilation_unit 1
+
+# Compiler Options
+set_option -auto_infer_blackbox 0
+
+#timing report file option
+set_option -reporting_filename "../../../../../synopsys/synplify_pro_2018/fpga/N-2018.03-SP1/lib/syncore/xml/rev_1/flowled.ta"
+set_option -ident_constraint  ""
+
+#automatic place and route (vendor) options
+set_option -write_apr_constraint 1
+
+#set result format/file last
+project -result_file "../identy_example/output.vqm"
+
+#design plan options
+
+
+#implementation: "identy_example_1"
+impl -add identy_example_1 -type fpga
+
+#
+#implementation attributes
+
+set_option -vlog_std sysv
+set_option -project_relative_includes 1
+
+#par_1 attributes
+set_option -job par_1 -add par
+set_option -job par_1 -option enable_run 1
+
+#pr_1 attributes
+set_option -job pr_1 -add par
+set_option -job pr_1 -option enable_run 1
+
+#device options
+set_option -technology CYCLONEIV-GX
+set_option -part EP4CGX75C
+set_option -package FI23
+set_option -speed_grade -7
+set_option -part_companion ""
+
+#compilation/mapping options
+set_option -use_fsm_explorer 0
+set_option -top_module "idc_test_pro"
+
+# hdl_compiler_options
+set_option -distributed_compile 1
+
+# altera_options
+set_option -reporting_ctd slack
+set_option -rw_check_on_ram 1
+set_option -par_strategy timing_qor
+
+# mapper_without_write_options
+set_option -frequency auto
+set_option -identify_debug_mode 1
+set_option -srs_instrumentation 1
+
+# mapper_options
+set_option -write_verilog 1
+set_option -write_vhdl 0
+
+# Intel STRATIX
+set_option -run_prop_extract 1
+set_option -maxfan 30
+set_option -disable_io_insertion 0
+set_option -pipe 1
+set_option -update_models_cp 0
+set_option -retiming 0
+set_option -no_sequential_opt 0
+set_option -fix_gated_and_generated_clocks 1
+set_option -quartus_version 18.0
+
+# sequential_optimization_options
+set_option -symbolic_fsm_compiler 1
+
+# Compiler Options
+set_option -compiler_compatible 0
+set_option -resource_sharing 1
+set_option -multi_file_compilation_unit 1
+
+# Compiler Options
+set_option -auto_infer_blackbox 0
+
+#timing report file option
+set_option -reporting_filename "../../../../../synopsys/synplify_pro_2018/fpga/N-2018.03-SP1/lib/syncore/xml/rev_1/flowled.ta"
+
+#automatic place and route (vendor) options
+set_option -write_apr_constraint 1
+
+#set result format/file last
+project -result_file "../identy_example_1/output.vqm"
+
+#design plan options
+impl -active "identy_example_1"
