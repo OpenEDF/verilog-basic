@@ -42,7 +42,6 @@ set_global_assignment -name TOP_LEVEL_ENTITY idc_test_pro
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.0.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "19:42:56  JULY 08, 2023"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Standard Edition"
-set_global_assignment -name VQM_FILE ../identy_example_1/output.vqm
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
@@ -55,4 +54,8 @@ set_location_assignment PIN_AA12 -to clk
 set_location_assignment PIN_W4 -to led[1]
 set_location_assignment PIN_Y4 -to led[0]
 set_location_assignment PIN_AB12 -to rst_n
+set_global_assignment -name SDC_FILE src/idc_test_pro.sdc
+set_global_assignment -name VQM_FILE src/idc_output.vqm
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
