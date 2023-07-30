@@ -9,6 +9,7 @@
 SRC_FILE = work_src.list
 TOP_MODULE = testbench
 SPY_PRJ = sequ_div.prj
+nWave_SIGNAL = sequ_div.rc
 
 # clean old file --> compiler --> simluation
 all: com sim
@@ -31,6 +32,7 @@ wave:
 	verdi -f $(SRC_FILE)        \
 		-top $(TOP_MODULE)      \
 		-ssf $(TOP_MODULE).fsdb \
+		-sswr $(nWave_SIGNAL)   \
 		-nologo &
 # spy
 spy:

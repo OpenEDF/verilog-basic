@@ -58,3 +58,6 @@ simv*
 *.daidir
 *.fsdb
 *.vdb
+novas.conf
+novas.rc
+verdiLog

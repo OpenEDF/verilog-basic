@@ -50,7 +50,11 @@ reg         start;
 wire [31:0] quotient;
 wire [31:0] remainder;
 wire        ready;
-wire        illegal_divider_zero; 
+wire        illegal_divider_zero;
+
+reg  [31:0]  test_count;
+reg  [31:0] test_quotient;
+reg  [31:0] test_remainder;
 
 //--------------------------------------------------------------------------
 // Design: create the clock
@@ -65,29 +69,37 @@ end
 //--------------------------------------------------------------------------
 initial begin
     rst_n = 1'b0;
-    start = 1'b1;
+    start = 1'b0;
+    test_count = 8'd0;
     #10
     rst_n = 1'b1;
-    //dividend = $random();
-    //divider = $random();
 
-    dividend = 32'H9876ABCD;
-    divider =  32'h1006ab56;
-    //divider = 32'h0000_0000;
-    #8
-    start = 1'b0;
-    $display("dividend: 0x%h, diviver: 0x%h ", dividend, divider);
+    /* while test */
+    while (test_count < 32'd1000) begin
+        @(posedge  clk)
+            start = 1'b1;
+            dividend = $random();
+            divider = $random();
+            test_quotient  = dividend / divider;
+            test_remainder = dividend % divider;
+        @(posedge clk)
+            start = 1'b0;
 
-    #20
-    repeat(100) begin : loop
-        if (ready) begin
-            $display("0x%h / 0x%h = 0x%h...0x%h illegal: %b ", dividend, divider, quotient, remainder, illegal_divider_zero);
-            //disable loop;
-            #20
-            $finish();
+        /* wait the reday */
+        wait (ready) begin
+            #10
+            if ((test_quotient == quotient) && (test_remainder == remainder)) begin
+                $display("[pass] 0x%h / 0x%h = 0x%h...0x%h illegal: %b ", dividend,
+                        divider, quotient, remainder, illegal_divider_zero);
+            end else begin
+                $display("[fail] 0x%h / 0x%h = 0x%h...0x%h illegal: %b ", dividend,
+                        divider, quotient, remainder, illegal_divider_zero);
+            end
         end
-        #10;
+        test_count = test_count + 1;
     end
+    #20
+    $finish();
 end
 
 //--------------------------------------------------------------------------
