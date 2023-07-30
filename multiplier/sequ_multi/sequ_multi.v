@@ -82,6 +82,7 @@ reg [63:0] partial_product;
 reg [31:0] multiplier_copy;
 reg [63:0] multiplicand_copy;
 reg [5:0]  shift_count;
+reg        lsb;
 
 //--------------------------------------------------------------------------
 // Design: sequential multiplier shift version of multiplier and
@@ -95,31 +96,30 @@ always @(posedge clk or negedge rst_n) begin
         partial_product   <= 64'h0000_0000_0000_0000;
         multiplier_copy   <= 32'h0000_0000;
         multiplicand_copy <= 64'h0000_0000;
-        shift_count       <= 6'd32;
+        shift_count       <= 6'd0;
+        lsb               = 1'b0;
     end else begin
-        if (start && ~ready) begin
+        if (start) begin
             multiplicand_copy <= {32'h0000_0000, multiplicand};
             multiplier_copy   <= multiplier;
             shift_count       <= 6'd32;
-            ready             <= 1'b1;
+            ready             <= 1'b0;
+            partial_product   <= 64'h0000_0000_0000_0000;
         end else if ((multiplier == 32'h0000_0000) || (multiplicand == 32'h0000_0000)) begin
-            partial_product <= 64'h0000_0000_0000_0000;
-            ready   <= 1'b0;
-        end else if (shift_count == 6'b000000) begin
+            partial_product   <= 64'h0000_0000_0000_0000;
+            ready   <= 1'b1;
+        end else if (shift_count == 6'b00000) begin
             product_l <= partial_product[31:0];
             product_h <= partial_product[63:32];
-            ready   <= 1'b0;
-        end else if (ready) begin
-            if (multiplier_copy[0] == 1'b1) begin
+            ready     <= 1'b1;
+        end else begin
+            lsb = multiplier_copy[0];
+            if (lsb == 1'b1) begin
                 partial_product <= partial_product + multiplicand_copy;
             end
-            multiplicand_copy <= multiplicand_copy << 1;
             multiplier_copy   <= multiplier_copy >> 1;
+            multiplicand_copy <= multiplicand_copy << 1;
             shift_count       <= shift_count - 1;
-        end else begin
-            product_l <= product_l;
-            product_h <= product_h;
-            ready   <= ready;
         end
     end
 end

@@ -51,6 +51,9 @@ wire [31:0] product_l;
 wire [31:0] product_h;
 wire        ready;
 
+reg [31:0] test_count;
+reg [63:0] test_product;
+
 //--------------------------------------------------------------------------
 // Design: create the clock
 //--------------------------------------------------------------------------
@@ -64,26 +67,35 @@ end
 //--------------------------------------------------------------------------
 initial begin
     rst_n = 1'b0;
+    start = 1'b0;
+    test_count = 32'h0000_0000;
+    test_product = 64'h0000_0000_0000_0000;
     #10
     rst_n = 1'b1;
-    start = 1'b1;
-    multiplier = $random();
-    //multiplicand = $random();
-    multiplicand = 32'h0000_0000;
-    #8
-    start = 1'b0;
-    $display("multipiler: 0x%h, multiplicand: 0x%h ", multiplier, multiplicand);
 
     #10
-    repeat(100) begin : loop
-        if (!ready) begin
-            $display("0x%h * 0x%h = 0x%h 0x%h ", multiplier, multiplicand, product_h, product_l);
-            //disable loop;
-            #20
-            $finish();
+    while (test_count < 32'd4) begin
+        @(posedge clk)
+            start = 1'b1;
+            multiplier   = $random();
+            multiplicand = $random();
+            test_product = multiplier * multiplicand;
+        @(posedge clk)
+            start = 1'b0;
+
+        /* wait the ready */
+        wait (ready) begin
+            if ((product_h == test_product[63:32]) && (product_l == test_product[31:0])) begin
+                $display("[PASS] 0x%h * 0x%h = 0x%h 0x%h ", multiplier, multiplicand, product_h, product_l);
+            end else begin
+                $display("[FAIL] 0x%h * 0x%h = 0x%h 0x%h, result= 0x%h",
+                    multiplier, multiplicand, product_h, product_l, test_product);
+            end
         end
-        #100;
+        test_count = test_count + 1;
     end
+    #20
+    $finish();
 end
 
 //--------------------------------------------------------------------------
