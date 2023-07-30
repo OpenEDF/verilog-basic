@@ -9,6 +9,7 @@
 SRC_FILE = work_src.list
 TOP_MODULE = testbench
 SPY_PRJ = sequ_multi.prj
+nWave_SIGNAL = sequ_multi.rc
 
 # clean old file --> compiler --> simluation
 all: com sim
@@ -31,6 +32,7 @@ wave:
 	verdi -f $(SRC_FILE)        \
 		-top $(TOP_MODULE)      \
 		-ssf $(TOP_MODULE).fsdb \
+		-sswr $(nWave_SIGNAL)   \
 		-nologo &
 # spy
 spy:
@@ -38,6 +40,6 @@ spy:
 
 .PHONY: clean
 clean:
-	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf *.rc verdiLog sequ_multi
+	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc verdiLog sequ_multi
 
 #--------------------------------------------------------------------------
