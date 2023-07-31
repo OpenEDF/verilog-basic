@@ -112,7 +112,7 @@ always @(posedge clk or negedge rst_n) begin
         lsb               = 1'b0;
         state             <= MULTI_IDLE;
     end else begin
-        /* TODO: delted it will occur error */
+        /* default output */
         state             <= MULTI_IDLE;
         product_l         <= 32'h0000_0000;
         product_h         <= 32'h0000_0000;
@@ -166,7 +166,7 @@ always @(posedge clk or negedge rst_n) begin
                 end
             end
             MULTI_CALCUL: begin
-                if (shift_count == 6'b00000) begin
+                if (shift_count == 6'b000000) begin
                     /* update state */
                     state <= MULTI_OUTPUT;
                 end else begin
