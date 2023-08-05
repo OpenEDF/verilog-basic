@@ -1,0 +1,32 @@
+
+fsm_encoding {64681246811} onehot
+
+fsm_state_encoding {64681246811} b13_Ocm0f_TkA86EZ {00000000000001}
+
+fsm_state_encoding {64681246811} b13_Ocm0f_A7A86Rv {00000000000010}
+
+fsm_state_encoding {64681246811} b13_Ocm0f_HiP76Rv {00000000000100}
+
+fsm_state_encoding {64681246811} b13_Ocm0f_p5BT6Rv {00000000001000}
+
+fsm_state_encoding {64681246811} b12_Ocm0f_Q7B8qG {00000000010000}
+
+fsm_state_encoding {64681246811} b24_Ocm0f_HiP_gP0IFZ1mI_iIhO {00000000100000}
+
+fsm_state_encoding {64681246811} b24_Ocm0f_HiP_gP0IFZ1mI_MXwB {00000001000000}
+
+fsm_state_encoding {64681246811} b29_Ocm0f_HiP_gP0IFZ1mI_iIhO_vHEr {00000010000000}
+
+fsm_state_encoding {64681246811} b29_Ocm0f_HiP_gP0IFZ1mI_MXwB_vHEr {00000100000000}
+
+fsm_state_encoding {64681246811} b19_Ocm0f_HiP_8DFJ3s_0T {00001000000000}
+
+fsm_state_encoding {64681246811} b21_Ocm0f_HiP_8DFJ3s_0T_z {00010000000000}
+
+fsm_state_encoding {64681246811} b20_Ocm0f_p5BT_EZoHR0_CK {00100000000000}
+
+fsm_state_encoding {64681246811} b25_Ocm0f_p5BT_EZoHR0_CK_Iv3x {01000000000000}
+
+fsm_state_encoding {64681246811} b17_Ocm0f_TkQcUqbQVN5 {10000000000000}
+
+fsm_registers {64681246811} {b13_nAzGfFM_sLsv3[13]}  {b13_nAzGfFM_sLsv3[12]}  {b13_nAzGfFM_sLsv3[11]}  {b13_nAzGfFM_sLsv3[10]}  {b13_nAzGfFM_sLsv3[9]}  {b13_nAzGfFM_sLsv3[8]}  {b13_nAzGfFM_sLsv3[7]}  {b13_nAzGfFM_sLsv3[6]}  {b13_nAzGfFM_sLsv3[5]}  {b13_nAzGfFM_sLsv3[4]}  {b13_nAzGfFM_sLsv3[3]}  {b13_nAzGfFM_sLsv3[2]}  {b13_nAzGfFM_sLsv3[1]}  {b13_nAzGfFM_sLsv3[0]} 

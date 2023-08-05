@@ -1,0 +1,19 @@
+#OPTIONS:"|-layerid|0|-orig_srs|/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synwork/idc_test_comp.srs|-top|led_stream|-instrdir|/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources|-prodtype|synplify_premier|-dw|-dspmac|-pqdpadd|-use_vivado|-primux|-fixsmult|-sdff_counter|-infer_seqShift|-verification_mode|0|-nram|-divnmod|-continue_on_error|-loadunimacro|-I|/home/macro/github/verilog-basic/identify_example/xilinx/|-I|/home/macro/synopsys/fpga/N-2018.03-SP1/lib|-v95|-devicelib|/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_retarget.v|-devicelib|/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_vivado.v|-encrypt|-pro|-distcompmode|-noobf|-auto_infer_blackbox|0|-proto|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-srs_instrumentation|-fast_synthesis|0|-lib|work"
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/linux_a_64/c_ver":1527893550
+#CUR:"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.cdc":1691195869
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_retarget.v":1527870825
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_vivado.v":1527870826
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":1527893084
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/umr_capim.v":1527859597
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/scemi_objects.v":1527893084
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/scemi_pipes.svh":1527893084
+#CUR:"/home/macro/github/verilog-basic/identify_example/xilinx/src/flowled.v":1691192706
+#numinternalfiles:6
+#defaultlanguage:verilog
+0			"/home/macro/github/verilog-basic/identify_example/xilinx/src/flowled.v" verilog
+#Dependency Lists(Uses List)
+0 -1
+#Dependency Lists(Users Of)
+0 -1
+#Design Unit to File Association
+module work led_stream 0

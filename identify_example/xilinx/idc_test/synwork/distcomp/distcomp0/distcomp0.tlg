@@ -1,0 +1,46 @@
+@N:: Applying property .distcompmodetop with value 1 on module led_stream in library work
+@N:: Applying property .distcompnoprune with value 1 on module led_stream in library work
+@N:: Applying property .noprune with value 1 on module led_stream in library work
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000001000
+	tag=24'b011011000110010101100100
+   Generated name = syn_hyper_source_8s_led
+Running optimization stage 1 on syn_hyper_source_8s_led .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000000001
+	tag=24'b011000110110110001101011
+   Generated name = syn_hyper_source_1s_clk
+Running optimization stage 1 on syn_hyper_source_1s_clk .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000000001
+	tag=40'b0111001001110011011101000101111101101110
+   Generated name = syn_hyper_source_1s_Z1
+Running optimization stage 1 on syn_hyper_source_1s_Z1 .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000100000
+	tag=24'b011000110110111001110100
+   Generated name = syn_hyper_source_32s_cnt
+Running optimization stage 1 on syn_hyper_source_32s_cnt .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000000011
+	tag=104'b01101100011001010110010001011111011011110110111001011111011011100111010101101101011000100110010101110010
+   Generated name = syn_hyper_source_3s_Z2
+Running optimization stage 1 on syn_hyper_source_3s_Z2 .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/src/flowled.v":7:7:7:16|Synthesizing module led_stream in library work.
+Running optimization stage 1 on led_stream .......
+Running optimization stage 2 on led_stream .......
+Running optimization stage 2 on syn_hyper_source_3s_Z2 .......
+Running optimization stage 2 on syn_hyper_source_32s_cnt .......
+Running optimization stage 2 on syn_hyper_source_1s_Z1 .......
+Running optimization stage 2 on syn_hyper_source_1s_clk .......
+Running optimization stage 2 on syn_hyper_source_8s_led .......
+
+For a summary of runtime and memory usage per design unit, please see file:
+==========================================================
+@L: /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synwork//distcomp/distcomp0/distcomp0.rt.csv
+

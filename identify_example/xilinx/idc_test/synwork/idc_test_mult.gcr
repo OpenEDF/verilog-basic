@@ -1,0 +1,71 @@
+i ident_coreinst.comm_block_INST.tck
+m 0 0
+u 43 380
+p {t:ident_coreinst.comm_block_INST.tck_keep.OUT[0]}{t:ident_coreinst.comm_block_INST.b9_ORb_xNywD.b7_jWS_3vW}{p:ident_coreinst.comm_block_INST.b9_ORb_xNywD.b7_jWS_3vW}{t:ident_coreinst.comm_block_INST.b9_ORb_xNywD.b3_ORb[32:1].C}
+e ckid0_0 {t:ident_coreinst.comm_block_INST.b9_ORb_xNywD.b3_ORb[32:1].C} sdffpatre
+c ckid0_0 {t:ident_coreinst.comm_block_INST.jtagi.b3_PK3} jtag_interface_x Clock from user definition
+i ident_coreinst.comm_block_INST.hcr_update
+m 0 0
+u 1 8
+p {t:ident_coreinst.comm_block_INST.hcr_update_keep.OUT[0]}{t:ident_coreinst.comm_block_INST.b7_Rcmi_ql.b6_dZst39}{p:ident_coreinst.comm_block_INST.b7_Rcmi_ql.b6_dZst39}{t:ident_coreinst.comm_block_INST.b7_Rcmi_ql.genblk1\.b10_dZst39_EF3[7:0].C}
+e ckid0_1 {t:ident_coreinst.comm_block_INST.b7_Rcmi_ql.genblk1\.b10_dZst39_EF3[7:0].C} dffe
+c ckid0_1 {t:ident_coreinst.comm_block_INST.jtagi.b10_8Kz_rKlrtX} jtag_interface_x Clock from user definition
+i ident_coreinst.comm_block_INST.dr2_tck
+m 0 0
+u 1 8
+p {t:ident_coreinst.comm_block_INST.dr2_tck_keep.OUT[0]}{t:ident_coreinst.comm_block_INST.b7_Rcmi_ql.b3_PK3}{p:ident_coreinst.comm_block_INST.b7_Rcmi_ql.b3_PK3}{t:ident_coreinst.comm_block_INST.b7_Rcmi_ql.b9_OvyH3_saL[7:0].C}
+e ckid0_2 {t:ident_coreinst.comm_block_INST.b7_Rcmi_ql.b9_OvyH3_saL[7:0].C} dffe
+c ckid0_2 {t:ident_coreinst.comm_block_INST.jtagi.b7_oSD_3vW} jtag_interface_x Clock from user definition
+i clk
+m 0 0
+u 45 252
+p {p:clk}{t:cnt[31:0].C}
+e ckid0_3 {t:cnt[31:0].C} dffr
+c ckid0_3 {p:clk} Unconstrained_port Inferred clock from port
+i ident_coreinst.comm_block_INST.ch_update
+m 0 0
+u 13 13
+p {t:ident_coreinst.comm_block_INST.ch_update_keep.OUT[0]}{p:ident_coreinst.comm_block_INST.IICE_comm2iice[8]}{t:ident_coreinst.comm_block_INST.IICE_comm2iice[8]}{t:ident_coreinst.IICE_INST.IICE_comm2iice[8]}{p:ident_coreinst.IICE_INST.IICE_comm2iice[8]}{t:ident_coreinst.IICE_INST.b5_nUTGT.b6_dZst39}{p:ident_coreinst.IICE_INST.b5_nUTGT.b6_dZst39}{t:ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.b6_dZst39}{p:ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.b6_dZst39}{t:ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk3\.b8_vABZ3qsY.C}
+e ckid0_4 {t:ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk3\.b8_vABZ3qsY.C} dffrse
+c ckid0_4 {t:ident_coreinst.comm_block_INST.jtagi.b9_nv_oQwfYF} jtag_interface_x Clock from user definition
+i ident_coreinst.comm_block_INST.tdo_sig
+m 0 0
+u 0 0
+d ckid0_5 {t:ident_coreinst.comm_block_INST.b9_ORb_xNywD.b3_PLF} b9_ORbIwXaEF_32s_18446744071913144800_0s_x Potential generated clock but without a Generated Clock Object
+i ident_coreinst.comm_block_INST.jtagi.identify_clk2_tmp
+m 0 0
+u 0 0
+d ckid0_6 {t:ident_coreinst.comm_block_INST.jtagi.jtag_prim2.DRCK} BSCANE2 Black box on clock path
+i ident_coreinst.comm_block_INST.jtagi.un1_jtag_prim2_4
+m 0 0
+u 0 0
+d ckid0_7 {t:ident_coreinst.comm_block_INST.jtagi.jtag_prim2.DRCK} BSCANE2 Black box on clock path
+i ident_coreinst.comm_block_INST.jtagi.un1_clkbuf2
+m 0 0
+u 0 0
+c ckid0_8 {t:ident_coreinst.comm_block_INST.jtagi.clkbuf2.O} BUFG Clock from technology primitive
+i ident_coreinst.comm_block_INST.jtagi.b9_nv_oQwfYF
+m 0 0
+u 0 0
+d ckid0_9 {t:ident_coreinst.comm_block_INST.jtagi.jtag_prim1.UPDATE} BSCANE2 Black box on clock path
+i ident_coreinst.comm_block_INST.jtagi.un1_jtag_prim1_1
+m 0 0
+u 0 0
+d ckid0_10 {t:ident_coreinst.comm_block_INST.jtagi.jtag_prim1.UPDATE} BSCANE2 Black box on clock path
+i ident_coreinst.comm_block_INST.jtagi.b10_8Kz_rKlrtX
+m 0 0
+u 0 0
+d ckid0_11 {t:ident_coreinst.comm_block_INST.jtagi.jtag_prim2.UPDATE} BSCANE2 Black box on clock path
+i ident_coreinst.comm_block_INST.jtagi.un1_jtag_prim2
+m 0 0
+u 0 0
+d ckid0_12 {t:ident_coreinst.comm_block_INST.jtagi.jtag_prim2.UPDATE} BSCANE2 Black box on clock path
+i ident_coreinst.comm_block_INST.jtagi.identify_clk2
+m 0 0
+u 0 0
+d ckid0_13 {t:ident_coreinst.comm_block_INST.jtagi.clkbuf2.O} BUFG Gated clock propagation blocked by synkeep buffer
+i ident_coreinst.comm_block_INST.jtagi.identify_clk_tmp
+m 0 0
+u 0 0
+d ckid0_14 {t:ident_coreinst.comm_block_INST.jtagi.jtag_prim1.DRCK} BSCANE2 Black box on clock path
+l 0 0 0 0 0

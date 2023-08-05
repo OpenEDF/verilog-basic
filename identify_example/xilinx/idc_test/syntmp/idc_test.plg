@@ -1,0 +1,38 @@
+@P:  Worst Slack : 18.999
+@P:  ident_coreinst.comm_block_INST.ch_update - Estimated Frequency : 15923.6 MHz
+@P:  ident_coreinst.comm_block_INST.ch_update - Requested Frequency : 25.0 MHz
+@P:  ident_coreinst.comm_block_INST.ch_update - Estimated Period : 0.063
+@P:  ident_coreinst.comm_block_INST.ch_update - Requested Period : 40.000
+@P:  ident_coreinst.comm_block_INST.ch_update - Slack : NA
+@P:  ident_coreinst.comm_block_INST.dr2_tck - Estimated Frequency : 1736.7 MHz
+@P:  ident_coreinst.comm_block_INST.dr2_tck - Requested Frequency : 25.0 MHz
+@P:  ident_coreinst.comm_block_INST.dr2_tck - Estimated Period : 0.576
+@P:  ident_coreinst.comm_block_INST.dr2_tck - Requested Period : 40.000
+@P:  ident_coreinst.comm_block_INST.dr2_tck - Slack : 39.424
+@P:  ident_coreinst.comm_block_INST.hcr_update - Estimated Frequency : 3822.6 MHz
+@P:  ident_coreinst.comm_block_INST.hcr_update - Requested Frequency : 25.0 MHz
+@P:  ident_coreinst.comm_block_INST.hcr_update - Estimated Period : 0.262
+@P:  ident_coreinst.comm_block_INST.hcr_update - Requested Period : 40.000
+@P:  ident_coreinst.comm_block_INST.hcr_update - Slack : NA
+@P:  ident_coreinst.comm_block_INST.tck - Estimated Frequency : 474.3 MHz
+@P:  ident_coreinst.comm_block_INST.tck - Requested Frequency : 25.0 MHz
+@P:  ident_coreinst.comm_block_INST.tck - Estimated Period : 2.108
+@P:  ident_coreinst.comm_block_INST.tck - Requested Period : 40.000
+@P:  ident_coreinst.comm_block_INST.tck - Slack : 18.999
+@P:  led_stream|clk - Estimated Frequency : 479.1 MHz
+@P:  led_stream|clk - Requested Frequency : 1.0 MHz
+@P:  led_stream|clk - Estimated Period : 2.087
+@P:  led_stream|clk - Requested Period : 1000.000
+@P:  led_stream|clk - Slack : 997.913
+@P:  System - Estimated Frequency : 790.6 MHz
+@P:  System - Requested Frequency : 1.0 MHz
+@P:  System - Estimated Period : 1.265
+@P:  System - Requested Period : 1000.000
+@P:  System - Slack : 998.735
+@P: led_stream Part : xc7k325tfbg676-2
+@P: led_stream I/O primitives : 10
+@P: led_stream I/O Register bits : 0
+@P: led_stream Register bits (Non I/O) : 532 (0%)
+@P: led_stream Block Rams : 1 of 445 (0%)
+@P: led_stream Total Luts : 323 of 203800 (0%)
+@P:  CPU Time : 0h:00m:07s

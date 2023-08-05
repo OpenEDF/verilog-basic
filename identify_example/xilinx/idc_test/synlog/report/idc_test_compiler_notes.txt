@@ -1,0 +1,12 @@
+@N|Running in 64-bit mode
+@N|Running in 64-bit mode
+@N::Reading compiler constraint file /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.cdc
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/src/flowled.v":7:7:7:16|Synthesizing module led_stream in library work.
+@N|Running in 64-bit mode
+@N|Running in 64-bit mode
+

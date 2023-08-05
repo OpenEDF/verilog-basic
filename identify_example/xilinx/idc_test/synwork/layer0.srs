@@ -1,0 +1,233 @@
+%%% protect protected_file
+#
+#
+#
+# Created by Synplify Verilog HDL Compiler version comp2018q2p1, Build 016R from Synplicity, Inc.
+# Copyright (C) 1994-2018 Synopsys, Inc. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+# Synthesis Netlist written on Sat Aug  5 08:37:49 2023
+#
+#
+#OPTIONS:"|-layerid|0|-orig_srs|/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synwork/idc_test_comp.srs|-top|led_stream|-instrdir|/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources|-prodtype|synplify_premier|-dw|-dspmac|-pqdpadd|-use_vivado|-primux|-fixsmult|-sdff_counter|-infer_seqShift|-verification_mode|0|-nram|-divnmod|-continue_on_error|-loadunimacro|-I|/home/macro/github/verilog-basic/identify_example/xilinx/|-I|/home/macro/synopsys/fpga/N-2018.03-SP1/lib|-v95|-devicelib|/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_retarget.v|-devicelib|/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_vivado.v|-encrypt|-pro|-distcompmode|-noobf|-auto_infer_blackbox|0|-proto|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-srs_instrumentation|-fast_synthesis|0|-lib|work"
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/linux_a_64/c_ver":1527893550
+#CUR:"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.cdc":1691195869
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_retarget.v":1527870825
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_vivado.v":1527870826
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":1527893084
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/umr_capim.v":1527859597
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/scemi_objects.v":1527893084
+#CUR:"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/scemi_pipes.svh":1527893084
+#CUR:"/home/macro/github/verilog-basic/identify_example/xilinx/src/flowled.v":1691192706
+f "/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_retarget.v"; # file 0
+af .standard "01";
+af .is_verilog 1;
+f "/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_vivado.v"; # file 1
+af .standard "01";
+af .is_verilog 1;
+f "/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v"; # file 2
+af .is_verilog 1;
+f "/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/umr_capim.v"; # file 3
+af .standard "01";
+af .is_verilog 1;
+f "/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/scemi_objects.v"; # file 4
+af .is_verilog 1;
+f "/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/scemi_pipes.svh"; # file 5
+af .standard "sv";
+af .is_verilog 1;
+f "/home/macro/github/verilog-basic/identify_example/xilinx/src/flowled.v"; # file 6
+af .is_verilog 1;
+@E
+@ 
+ftell;
+@E@MR@g.::g(::R.._$_Eb_Cs_LDH_#_R$EM_$sbC_k#Fs_OCdZ#_.CRPsFHDoN;
+PCR3Gs0CMRND4N;
+PVR3FNslDC_ODNDMl"CR#_$MEC$bsF_#kCsO__d#Z;."
+RNP3PH#CDsHF4oR;P
+NR#3H_sPCHoDFR
+4;N3PRFosHhCNlR$"#M$_Eb_Cs#sFkO;C"
+RNPFosH_#HM0V_FR$"#M$_Eb_Cs#sFkO;C"
+RNP3MDNosuNNRl#"0IRN;o"
+RNPI;Rd
+RNP0RNo"8DC__FMMLklC;s"
+RNP3M#$_0N0VlFsNH0#x"CRI.=dR
+";N3PR#_$MNV00FNsl0IR"="7R;P
+NRs3FHHoDLlMNC_R"_bE$C_s_D_HL_
+";N3PRDCN$sRH8jN;
+P#R3$kM_#LCsL;R4
+RNP3bE$CMsQ#N0u0FEv8F1Ob"CRD_C8#C0sNHl380CM__E#D_C8FMM_kClLs
+";N3PR#_$M0NsC0#_N_NLDOF	LG;R4
+RNP#_$MMsFbkRMC4
+;
+
+@HR@4.:.n:4::4.4HURM.4r:Rj9HrM4.9:j;-
+y--------------------------------- 
+@
+ftell;
+@E@MR@g.::g(::R.._$_Eb_Cs_LDH_#_R$EM_$sbC_k#Fs_OCd_.#ORM0PHCsD;Fo
+RNP30CGCNsMD;R4
+RNP3sVFl_NDODCDMCNlR$"#M$_Eb_Cs#sFkOdC_.O#_M;0"
+RNP3PH#CDsHF4oR;P
+NR#3H_sPCHoDFR
+4;N3PRFosHhCNlR$"#M$_Eb_Cs#sFkO;C"
+RNPFosH_#HM0V_FR$"#M$_Eb_Cs#sFkO;C"
+RNP3MDNosuNNRl#"0IRN;o"
+RNPI.Rd;P
+NRo0NRM"O0
+";N3PR#_$MNV00FNsl0x#HCIR"=Rd."N;
+P#R3$NM_0F0Vs0lNR="I7;R"
+RNP3HFsoLDHMCNlR_"_EC$bsD__H_L_"N;
+PDR3Ns$CHj8R;P
+NR$3#M#_kCLsLR
+4;N3PREC$bs#QM00uNE8vF1bOFCDR"C#8_0NsCl83HC_M0EO#_M;0"
+RNP3M#$_C0sNN0_#D_LNLO	F4GR;P
+NRM#$_bMFsCkMR
+4;
+@HR@4.:.n:4::4.4HURMd4r49:jR4HMr:d4j
+9;y--------------------------------
+--@
+ 
+
+ftell;
+@E@MR@g.::g(::R.._$_Eb_Cs_LDH_#_R$EM_$sbC_k#Fs_OC4Z#_4CRPsFHDoN;
+PCR3Gs0CMRND4N;
+PVR3FNslDC_ODNDMl"CR#_$MEC$bsF_#kCsO__4#Z;4"
+RNP3PH#CDsHF4oR;P
+NR#3H_sPCHoDFR
+4;N3PRFosHhCNlR$"#M$_Eb_Cs#sFkO;C"
+RNPFosH_#HM0V_FR$"#M$_Eb_Cs#sFkO;C"
+RNP3MDNosuNNRl#"0IRN;o"
+RNPI;R4
+RNP0RNo"0s#_;M"
+RNP3M#$_0N0VlFsNH0#x"CRI.=dR
+";N3PR#_$MNV00FNsl0IR"="7R;P
+NRs3FHHoDLlMNC_R"_bE$C_s_D_HL_
+";N3PRDCN$sRH8jN;
+P#R3$kM_#LCsL;R4
+RNP3bE$CMsQ#N0u0FEv8F1Ob"CRD_C8#C0sNHl380CM__E#s_#0M
+";N3PR#_$M0NsC0#_N_NLDOF	LG;R4
+RNP#_$MMsFbkRMC4
+;
+
+@HR@4.:.n:4::4.4HURMj4r9MRH49rj;H
+NR$3#Ms_NsbN$FRs04y;
+---------------------------------@-
+ 
+
+
+
+ftell;
+@E@MR@g.::g(::R.._$_Eb_Cs_LDH_#_R$EM_$sbC_k#Fs_OC4O#_DP	RCDsHF
+o;N3PRCCG0sDMNR
+4;N3PRVlFsNOD_CMDDNRlC"M#$_bE$C#s_FOksC#_4_	OD"N;
+PHR3#sPCHoDFR
+4;N3PRHP#_CDsHF4oR;P
+NRs3FHNohl"CR#_$MEC$bsF_#kCsO"N;
+PsRFHHo_M_#0F"VR#_$MEC$bsF_#kCsO"N;
+PDR3NuMoNlsN#IR"Ro0N"N;
+PRRI4N;
+PNR0oOR"D;	"
+RNP3M#$_0N0VlFsNH0#x"CRI.=dR
+";N3PR#_$MNV00FNsl0IR"="7R;P
+NRs3FHHoDLlMNC_R"_bE$C_s_D_HL_
+";N3PRDCN$sRH8jN;
+P#R3$kM_#LCsL;R4
+RNP3bE$CMsQ#N0u0FEv8F1Ob"CRD_C8#C0sNHl380CM__E#O"D	;P
+NR$3#Ms_0C_N0NL#_D	NOLRFG4N;
+P$R#MF_MbMskC;R4
+@HR@4.:.n:4::4.4HURMj4r9MRH49rj;H
+NR$3#Ms_NsbN$FRs04y;
+---------------------------------@-
+ 
+
+
+
+ftell;
+@E@MR@g.::g(::R.._$_Eb_Cs_LDH_#_R$EM_$sbC_k#Fs_OCUD#_CP8RCDsHF
+o;N3PRCCG0sDMNR
+4;N3PRVlFsNOD_CMDDNRlC"M#$_bE$C#s_FOksC#_U_8DC"N;
+PHR3#sPCHoDFR
+4;N3PRHP#_CDsHF4oR;P
+NRs3FHNohl"CR#_$MEC$bsF_#kCsO"N;
+PsRFHHo_M_#0F"VR#_$MEC$bsF_#kCsO"N;
+PDR3NuMoNlsN#IR"Ro0N"N;
+PRRIUN;
+PNR0oDR"C;8"
+RNP3M#$_0N0VlFsNH0#x"CRI.=dR
+";N3PR#_$MNV00FNsl0IR"="7R;P
+NRs3FHHoDLlMNC_R"_bE$C_s_D_HL_
+";N3PRDCN$sRH8jN;
+P#R3$kM_#LCsL;R4
+RNP3bE$CMsQ#N0u0FEv8F1Ob"CRD_C8#C0sNHl380CM__E#D"C8;P
+NR$3#Ms_0C_N0NL#_D	NOLRFG4N;
+P$R#MF_MbMskC;R4
+@HR@4.:.n:4::4.4HURM(4r:Rj9HrM4(9:j;-
+y--------------------------------- 
+@
+ftell;
+@E@MR@(n::((::R4nI	FsR8DC_s#0CRNlPHCsD;Fo
+RNP3sVFl_NDODCDMCNlRC"D80_#slCN"N;
+P$R#MF_b#L#HDFC0b;R4
+RNP3PH#CDsHF4oR;P
+NR#3H_sPCHoDFR
+4;N3PRFosHhCNlRC"D80_#slCN"N;
+PsRFHHo_M_#0F"VRD_C8#C0sN;l"
+RNP3MDNosuNNRl#"mBpBwi_)R TBhmza_ )v_qXB"ha;P
+NRmBpBwi_)R T6jjjjjjj;P
+NRzBmh)a _Xvq_aBhRg.cgggggN;
+P#R3$NM_0F0Vs0lN#CHxRp"Bm_BiwT) =Rd.Bhmza_ )v_qXB=had".R;P
+NR$3#M0_N0sVFlRN0"mBpBwi_)= T7mRBz ha)q_vXh_BaR=7"N;
+PFR3sDHoHNLMl"CRI	Fs"N;
+PDR3Ns$CHj8R;P
+NR$3EbQCsMu#0Nv0EFO81FRbC"8DC_s#0C"Nl;P
+NR03#lH0D#C0llNk#ojCR3jjjj;jj
+RNP3l#00#DH0l0HC3Rjjjjjj
+n;
+@FR@Un:::.4Ud:.R8DCrj(:9
+R;NHHR80CM_L8Ck"oRuuz)m=1 Qh7 aYQw"
+;
+
+@HR@gn:::.4gd:.R	ODR	OD;H
+NRCH8M80_CoLkRz"u)1um 7=Q Qhaw;Y"
+@HR@4n:j4:.::4j.s6R#M0_R0s#_
+M;NHHR80CM_L8Ck"oRuuz)m=1 Qh7 aYQw"s;
+Rn@@::4c444:cd:.RE__$sbC_H_DLR__#_$MEC$bsF_#kCsO__d#ZP.RCDsHFHoR80CM__E#D_C8FMM_kClLsH
+SM.4r:=j9H_M4HM8C0#_E_8DC__FMMLklC.sr:;j9
+RNHI;Rd
+RNH3M#$_0N0VlFsNH0#x"CRI.=d"N;
+H#R3$NM_0F0Vs0lNR="I7
+";N0HRN"oRD_C8FMM_kClLs
+";N3HREC$bsC_8DCC0_PDCC4DRj
+j;N#HR$MM_FkbsM4CR;R
+s@:@n44d:4d:4:R4d_$_Eb_Cs_LDH_#_R$EM_$sbC_k#Fs_OCd_.#ORM0PHCsDRFoHM8C0#_E_0OM
+MSH44rd:=j9H_M4HM8C0#_E_0OMr:d4j
+9;NIHRR;d.
+RNH3M#$_0N0VlFsNH0#x"CRI.=d"N;
+H#R3$NM_0F0Vs0lNR="I7
+";N0HRN"oRO"M0;H
+NR$3Eb_Cs8CCD0DC_CDPCRj4j;H
+NRM#$_bMFsCkMR
+4;s@R@nj:4::.44.j:6_R_EC$bsD__H_L_RM#$_bE$C#s_FOksC#_4_RZ4PHCsDRFoHM8C0#_E_0s#_SM
+HrM4j9:j=4HM_CH8ME0_##_s0r_Mj9:j;H
+NR4IR;H
+NR$3#M0_N0sVFl#N0HRxC"dI=.
+";N3HR#_$MNV00FNsl0IR"=;7"
+RNH0RNo"0s#_;M"
+RNH3bE$C8s_C0DCCC_DPRCD4;jj
+RNH#_$MMsFbkRMC4s;
+Rn@@:.g:4::g._dR_bE$C_s_D_HL_$R#M$_Eb_Cs#sFkO4C_#D_O	CRPsFHDo8RHC_M0EO#_DS	
+HrM4j9:j=4HM_CH8ME0_#D_O	:rjj
+9;NIHRR
+4;N3HR#_$MNV00FNsl0x#HCIR"="d.;H
+NR$3#M0_N0sVFlRN0"7I="N;
+HNR0oOR"D;	"
+RNH3bE$C8s_C0DCCC_DPRCD4;jj
+RNH#_$MMsFbkRMC4s;
+Rn@@:.U:4::U._dR_bE$C_s_D_HL_$R#M$_Eb_Cs#sFkOUC_#C_D8CRPsFHDo8RHC_M0ED#_CS8
+HrM4(9:j=4HM_CH8ME0_#C_D8:r(j
+9;NIHRR
+U;N3HR#_$MNV00FNsl0x#HCIR"="d.;H
+NR$3#M0_N0sVFlRN0"7I="N;
+HNR0oDR"C;8"
+RNH3bE$C8s_C0DCCC_DPRCD4;jj
+RNH#_$MMsFbkRMC4C;
+; 
+@

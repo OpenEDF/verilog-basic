@@ -1,0 +1,56 @@
+---------------------------------------
+Resource Usage Report for led_stream 
+
+Mapping to part: xc7k325tfbg676-2
+Cell usage:
+BSCANE2         2 uses
+CARRY4          14 uses
+FD              151 uses
+FDC             83 uses
+FDCE            71 uses
+FDE             172 uses
+FDP             1 use
+FDPE            1 use
+FDRE            19 uses
+FDSE            13 uses
+FD_1            21 uses
+GND             43 uses
+RAMB36E1        1 use
+VCC             43 uses
+LUT1            45 uses
+LUT2            53 uses
+LUT3            77 uses
+LUT4            77 uses
+LUT5            19 uses
+LUT6            42 uses
+
+I/O ports: 10
+I/O primitives: 10
+IBUF           1 use
+IBUFG          1 use
+OBUF           8 uses
+
+BUFG           3 uses
+SRL primitives:
+SRLC16E        22 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   532 of 407600 (0%)
+
+RAM/ROM usage summary
+Occupied Block RAM sites (RAMB36) : 1 of 445 (0%)
+    Block Rams Used for Identify Debug logic: 1
+
+
+Global Clock Buffers: 3 of 32 (9%)
+
+
+@S |Mapping Summary:
+Total  LUTs: 323 (0%)
+
+Distribution of All Consumed LUTs = SRL + LUT1 + LUT2 + LUT3 + LUT4 + LUT5 + LUT6- HLUTNM/2 
+Distribution of All Consumed Luts 323 = 22 + 45 + 53 + 77 + 77 + 19 + 42- 24/2 
+
+
+ Number of unique control sets:              25
+

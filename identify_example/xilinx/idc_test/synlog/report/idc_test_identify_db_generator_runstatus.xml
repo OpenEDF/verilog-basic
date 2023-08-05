@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- *************************************************************************************
+FILE DESCRIPTION
+The file contains the job information from compiler to be displayed as part of the summary report.
+*******************************************************************************************-->
+
+<job_run_status name="identify_db_generator"> 
+  <report_link name="Detailed report">
+    <data>/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synlog/idc_test_identify_db_generator.srr</data>
+    <title>Synopsys HDL Compiler</title>
+  </report_link> 
+  <job_status>
+    <data>Completed    </data>
+  </job_status>
+<job_info> 
+			<info name="Notes">
+  <data>2</data>
+  <report_link name="more"><data>/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synlog/report/idc_test_identify_db_generator_notes.txt</data></report_link>
+  </info>
+			<info name="Warnings">
+  <data>0</data>
+  <report_link name="more"><data>/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synlog/report/idc_test_identify_db_generator_warnings.txt</data></report_link>
+  </info>
+			<info name="Errors">
+  <data>0</data>
+  <report_link name="more"><data>/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synlog/report/idc_test_identify_db_generator_errors.txt</data></report_link>
+  </info>
+			<info name="CPU Time">
+  <data>-</data>
+  </info>
+			<info name="Real Time">
+  <data>00h:00m:00s</data>
+  </info>
+			<info name="Peak Memory">
+  <data>-</data>
+  </info>
+			<info name="Date &amp;Time">
+  <data type="timestamp">1691195868</data>
+  </info>
+			</job_info>
+</job_run_status>

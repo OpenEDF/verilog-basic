@@ -1,0 +1,316 @@
+Selecting top level module syn_identify_core
+@W: CG730 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5374:7:5374:23|Top-level module syn_identify_core has no ports
+
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4321:7:4321:26|Synthesizing module b16_n2FydH_ab_FH9_K4 in library work.
+
+	b5_Dj4n7=32'b00000000000000000000000000000101
+   Generated name = b16_n2FydH_ab_FH9_K4_5s
+Running optimization stage 1 on b16_n2FydH_ab_FH9_K4_5s .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4321:7:4321:26|Synthesizing module b16_n2FydH_ab_FH9_K4 in library work.
+
+	b5_Dj4n7=32'b00000000000000000000000000000100
+   Generated name = b16_n2FydH_ab_FH9_K4_4s
+Running optimization stage 1 on b16_n2FydH_ab_FH9_K4_4s .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4959:7:4959:17|Synthesizing module b8_nR_ymqrG in library work.
+
+	b7_nUTZIuY=32'b00000000000000000000000000000111
+	b8_Nr4_94ip=32'b00000000000000000000000000000101
+	b8_Nr4_a8Up=5'b00000
+	b9_VNkO_AHpU=32'b00000000000000000000000000000000
+	b17_9ik_ncH_A7mWMdHkl=32'b00000000000000000000000000000000
+	b8_Wy0n_V19=5'b00000
+	b8_Wy0n_V8l=32'b00000000000000000000000000111111
+   Generated name = b8_nR_ymqrG_7s_5s_0_0s_0s_0_63s
+Running optimization stage 1 on b8_nR_ymqrG_7s_5s_0_0s_0s_0_63s .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4409:7:4409:16|Synthesizing module b7_OCByLXC in library work.
+
+	b7_nUTZIuY=32'b00000000000000000000000000000111
+	b10_c70EHoH6Cp=7'b0000001
+	b16_Wi_gYoK3Po69bvZx=32'b00000000000000000000000000000000
+	b11_Nku_poqpEpq=32'b00000000000000000000000000000000
+	b20_V72f_899_QU_PFNCPmDu=32'b00000000000000000000000000000000
+	b12_9ik_1V_3o_5K=32'b00000000000000000000000000000000
+	b17_Vl8gbo_7EWU_FHJJY=32'b00000000000000000000000000000111
+	b9_VNkO_AHpU=32'b00000000000000000000000000000000
+	b17_9ik_ncH_A7mWMdHkl=32'b00000000000000000000000000000000
+	b8_Wy0n_V19=5'b00000
+	b8_Wy0n_V8l=32'b00000000000000000000000000111111
+	b13_Ocm0f_TkA86EZ=4'b0000
+	b13_Ocm0f_A7A86Rv=4'b0001
+	b13_Ocm0f_HiP76Rv=4'b0010
+	b13_Ocm0f_p5BT6Rv=4'b0011
+	b12_Ocm0f_Q7B8qG=4'b0100
+	b24_Ocm0f_HiP_gP0IFZ1mI_iIhO=4'b0101
+	b24_Ocm0f_HiP_gP0IFZ1mI_MXwB=4'b0110
+	b29_Ocm0f_HiP_gP0IFZ1mI_iIhO_vHEr=4'b0111
+	b29_Ocm0f_HiP_gP0IFZ1mI_MXwB_vHEr=4'b1000
+	b19_Ocm0f_HiP_8DFJ3s_0T=4'b1001
+	b21_Ocm0f_HiP_8DFJ3s_0T_z=4'b1010
+	b20_Ocm0f_p5BT_EZoHR0_CK=4'b1011
+	b25_Ocm0f_p5BT_EZoHR0_CK_Iv3x=4'b1100
+	b17_Ocm0f_TkQcUqbQVN5=4'b1101
+	b8_Nr4_94ip=32'b00000000000000000000000000000101
+	b8_Nr4_a8Up=5'b00000
+	b7_Nr4_Yh8=5'b00001
+	b9_Nr4_YoSpQ=5'b00010
+	b7_Nr4_aj9=5'b11101
+	b22_Nr4_Yh8_K58DYdFN5_avNJ=5'b00100
+	b22_Nr4_Yh8_K58DYdFN5_EK2w=5'b01000
+	b17_Nr4_Yh8_CTNEmG_rg=5'b10000
+	b9_Vz2n_4X6U=5'b00000
+	b9_Vz2n_O64Y=5'b00001
+	b11_Vz2n_1V6Qca=5'b00010
+	b10_Vz2n_397o8=5'b00011
+	b9_Vz2n_AT6B=5'b00100
+	b8_Vz2n_S6k=5'b00101
+	b8_Vz2n_48l=5'b01000
+   Generated name = b7_OCByLXC_Z1
+Running optimization stage 1 on b7_OCByLXC_Z1 .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000000001
+	tag=200'b01001001011001000110010101101110011101000110100101100110011110010101111101001001010010010100001101000101010111110111010001110010011010010110011101100111011001010111001001011111011001010111100001110100
+   Generated name = syn_hyper_source_1s_Identify_IICE_trigger_ext
+Running optimization stage 1 on syn_hyper_source_1s_Identify_IICE_trigger_ext .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_vivado.v":26594:7:26594:13|Synthesizing module SRLC16E in library work.
+Running optimization stage 1 on SRLC16E .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":3867:7:3867:16|Synthesizing module b7_V71OJqz in library work.
+
+	b7_Wy0no6U=16'b1111111111111111
+   Generated name = b7_V71OJqz_65535
+Running optimization stage 1 on b7_V71OJqz_65535 .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":3915:7:3915:18|Synthesizing module b9_O2yyf_fG2 in library work.
+Running optimization stage 1 on b9_O2yyf_fG2 .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":3922:7:3922:25|Synthesizing module b15_CRGcTCua_eH4_ki in library work.
+Running optimization stage 1 on b15_CRGcTCua_eH4_ki .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":3960:7:3960:23|Synthesizing module b13_PSyil9s1fkJ_K in library work.
+Running optimization stage 1 on b13_PSyil9s1fkJ_K .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4249:7:4249:17|Synthesizing module b8_PfFzrNYI in library work.
+Running optimization stage 1 on b8_PfFzrNYI .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":3800:7:3800:12|Synthesizing module b3_uKr in library work.
+@W: CG296 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":3832:11:3833:103|Incomplete sensitivity list; assuming completeness. Make sure all referenced variables in message CG290 are included in the sensitivity list.
+@W: CG290 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":3855:30:3855:45|Referenced variable b12_ocsGfWYY_Lyh is not in sensitivity list.
+Running optimization stage 1 on b3_uKr .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2743:7:2743:29|Synthesizing module b19_nczQ_DYg_YFaRM_oUoP in library work.
+
+	b5_Dj4n7=32'b00000000000000000000000000100000
+	b7_57Y994K=32'b00000000000000000000000000000000
+   Generated name = b19_nczQ_DYg_YFaRM_oUoP_32s_0s
+Running optimization stage 1 on b19_nczQ_DYg_YFaRM_oUoP_32s_0s .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2743:7:2743:29|Synthesizing module b19_nczQ_DYg_YFaRM_oUoP in library work.
+
+	b5_Dj4n7=32'b00000000000000000000000000010010
+	b7_57Y994K=32'b00000000000000000000000000000000
+   Generated name = b19_nczQ_DYg_YFaRM_oUoP_18s_0s
+Running optimization stage 1 on b19_nczQ_DYg_YFaRM_oUoP_18s_0s .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":25:7:25:31|Synthesizing module syn_hyper_source_internal in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000000001
+   Generated name = syn_hyper_source_internal_1s
+Running optimization stage 1 on syn_hyper_source_internal_1s .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2488:7:2488:23|Synthesizing module b13_vFW_xNywD_EdR in library work.
+
+	b10_oFTt_arxt4=32'b00000000000000000000000000110010
+	b13_iLsGfWL_Gqyva=32'b00000000000000000000000000000111
+	b5_ooG0m=32'b00000000000000000000000010000000
+	b8_vFWZ3nCa=32'b00000000000000000000000000000000
+   Generated name = b13_vFW_xNywD_EdR_50s_7s_128s_0s
+Running optimization stage 1 on b13_vFW_xNywD_EdR_50s_7s_128s_0s .......
+@N: CL134 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2527:3:2527:8|Found RAM b3_SoW, depth=128, width=50
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2540:7:2540:21|Synthesizing module b11_SoWyP0zEFKY in library work.
+
+	b9_Vjx_R4Xlx=32'b00000000000000000000000000110010
+	b7_crO_j2S=32'b00000000000000000000000000000000
+	b9_crO_R4Xlx=32'b00000000000000000000000000000110
+	b15_c70EHoH_rJ_KWLZ=32'b00000000000000000000000000000000
+	b11_c70EHoH_BUD=32'b00000000000000000000000000000001
+	b15_c70EHoH_BUD_Wvc=32'b00000000000000000000000000000001
+	b14_6w28aATpE_eA21=32'b00000000000000000000000000000000
+	b19_YkH9y3_loSD9iv_BZ6Y=32'b00000000000000000000000000000000
+	b13_0jf_o6U5E_aDm=32'b00000000000000000000000000000001
+	b12_0aYfj_dkCC7W=32'b00000000000000000000000000000000
+	b18_6i_6aB87B_fAXHVtZh=32'b11111111111111111111111111111111
+	b15_XhR9b_9do_NC2XC=32'b00000000000000000000000000000110
+   Generated name = b11_SoWyP0zEFKY_Z2
+@W: CG133 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2575:34:2575:41|Object b5_PRWcJ is declared but not assigned. Either assign a value or remove the declaration.
+@W: CG133 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2576:34:2576:43|Object b7_PRWcJ_l is declared but not assigned. Either assign a value or remove the declaration.
+@W: CG133 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2578:8:2578:18|Object b8_2S5I_CuY is declared but not assigned. Either assign a value or remove the declaration.
+@W: CG133 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2579:8:2579:22|Object b11_oRB_MqCD2_y is declared but not assigned. Either assign a value or remove the declaration.
+@W: CG133 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2582:8:2582:19|Object b9_PSyil9s_2 is declared but not assigned. Either assign a value or remove the declaration.
+@W: CG360 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2583:9:2583:23|Removing wire b11_PSyil9s_8tZ, as there is no assignment to it.
+@W: CG360 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2584:28:2584:39|Removing wire b9_ofmZd_rGt, as there is no assignment to it.
+@W: CG360 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2585:9:2585:22|Removing wire b10_nZ5I_F_DbL, as there is no assignment to it.
+@W: CG360 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2586:9:2586:47|Removing wire b12_oFTt_v5rb3b4, as there is no assignment to it.
+@W: CG360 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2589:8:2589:19|Removing wire b9_db5G_vMEj, as there is no assignment to it.
+@W: CG133 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2591:7:2591:21|Object b11_db5G_vMEj_y is declared but not assigned. Either assign a value or remove the declaration.
+Running optimization stage 1 on b11_SoWyP0zEFKY_Z2 .......
+@W: CL169 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2638:4:2638:9|Pruning unused register genblk3[1].b13_oRB_MqCD2_EdR[1]. Make sure that there are no unused intermediate registers.
+@W: CL271 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2630:12:2630:17|Pruning unused bits 49 to 44 of genblk2.b5_oRB_C[49:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":1978:7:1978:21|Synthesizing module b11_OFWNT9s_8tZ in library work.
+
+	b9_Vjx_eo2lx=32'b00000000000000000000000010000000
+	b9_Vjx_R4Xlx=32'b00000000000000000000000000000000
+	b14_Vjx_c8XT_z6GeE=32'b00000000000000000000000000000111
+	b15_Vjx_p21ii_NC2XC=32'b00000000000000000000000000101100
+	b9_WjRr_jVdU=32'b01001001010010010100001101000101
+	b8_Nz1_94ip=32'b00000000000000000000000000000001
+	b7_crO_j2S=32'b00000000000000000000000000000000
+	b9_crO_R4Xlx=32'b00000000000000000000000000000110
+	b11_Nku_poqpEpq=32'b00000000000000000000000000000000
+	b15_c70EHoH_rJ_KWLZ=32'b00000000000000000000000000000000
+	b11_c70EHoH_BUD=32'b00000000000000000000000000000001
+	b14_6w28aATpE_eA21=32'b00000000000000000000000000000000
+	b19_YkH9y3_loSD9iv_BZ6Y=32'b00000000000000000000000000000000
+	b10_4wIEYd_kN0=32'b00000000000000000000000000000000
+	b11_9ik_qSTC7cU=32'b00000000000000000000000000000001
+	b7_57Y994K=32'b00000000000000000000000000000000
+	b9_VNkO_AHpU=32'b00000000000000000000000000000000
+	b24_9ik_es87ISX_XJNC2m_z6RwK=32'b00000000000000000000000000000000
+	b12_0aYfj_dkCC7W=32'b00000000000000000000000000000000
+	b17_9ik_ncH_A7mWMdHkl=32'b00000000000000000000000000000000
+	b17_Wy0n_8DC_JmqZ_tNy=32'b00000000000000000000000000100111
+	b10_Wy0n_817zm=32'b00000000000000000000000000000000
+	b17_Wy0n_3VdJTq_21OJY=32'b00000000000000000000000001111111
+	b18_6i_6aB87B_fAXHVtZh=32'b11111111111111111111111111111111
+	b16_Vr2VqA64AQlf_vHB=32'b00000000000000000000000000000000
+	b13_crO_94q_hSaSV=32'b00000000000000000000000000110010
+	b11_9ik_ihB_A7m=32'b00000000000000000000000000000000
+	b20_9ik_e697_J4K7vZs02CK=32'b00000000000000000000000000000000
+	b7_ah_9e8H=6'b111000
+	b14_Vl8gboH_z88SbG=6'b111001
+   Generated name = b11_OFWNT9s_8tZ_Z3
+@W: CS263 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2472:16:2472:34|Port-width mismatch for port b3_oRB. The port definition is 50 bits, but the actual port connection bit width is 44. Adjust either the definition or the instantiation of this port.
+@W: CS263 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2474:18:2474:25|Port-width mismatch for port b5_ofmZd. The port definition is 50 bits, but the actual port connection bit width is 44. Adjust either the definition or the instantiation of this port.
+Running optimization stage 1 on b11_OFWNT9s_8tZ_Z3 .......
+@W: CL169 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2324:2:2324:7|Pruning unused register b14_2_St6KCa_jHv_9[6:0]. Make sure that there are no unused intermediate registers.
+@A: CL282 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2324:2:2324:7|Feedback mux created for signal b12_PSyi_KyDbLbb[6:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@N: CL189 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2313:2:2313:7|Register bit b7_SZJ1fDs is always 0.
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5151:7:5151:10|Synthesizing module IICE in library work.
+@W: CG781 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5242:1:5242:8|Input b11_nUTZ3qM_tkL on instance b5_nUTGT is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5354:1:5354:6|Input b7_OFWNT9L on instance b3_SoW is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG360 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5176:7:5176:20|Removing wire b10_PbTt39_Y2x, as there is no assignment to it.
+@W: CG360 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5223:7:5223:27|Removing wire b17_nSFZ2_ME83hHx_kKU, as there is no assignment to it.
+@W: CG360 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5224:7:5224:21|Removing wire b11_nUTZ3qM_tkL, as there is no assignment to it.
+Running optimization stage 1 on IICE .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":31:7:31:32|Synthesizing module syn_hyper_connect_internal in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000000001
+   Generated name = syn_hyper_connect_internal_1s
+Running optimization stage 1 on syn_hyper_connect_internal_1s .......
+@W: CL318 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":33:17:33:20|*Output out1 has undriven bits; assigning undriven bits to 'Z'.  Simulation mismatch possible. Assign all bits of the output.
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":31:7:31:32|Synthesizing module syn_hyper_connect_internal in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000100000
+   Generated name = syn_hyper_connect_internal_32s
+Running optimization stage 1 on syn_hyper_connect_internal_32s .......
+@W: CL318 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":33:17:33:20|*Output out1 has undriven bits; assigning undriven bits to 'Z'.  Simulation mismatch possible. Assign all bits of the output.
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":31:7:31:32|Synthesizing module syn_hyper_connect_internal in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000001000
+   Generated name = syn_hyper_connect_internal_8s
+Running optimization stage 1 on syn_hyper_connect_internal_8s .......
+@W: CL318 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":33:17:33:20|*Output out1 has undriven bits; assigning undriven bits to 'Z'.  Simulation mismatch possible. Assign all bits of the output.
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":31:7:31:32|Synthesizing module syn_hyper_connect_internal in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000000011
+   Generated name = syn_hyper_connect_internal_3s
+Running optimization stage 1 on syn_hyper_connect_internal_3s .......
+@W: CL318 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":33:17:33:20|*Output out1 has undriven bits; assigning undriven bits to 'Z'.  Simulation mismatch possible. Assign all bits of the output.
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_vivado.v":206:7:206:10|Synthesizing module BUFG in library work.
+Running optimization stage 1 on BUFG .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_vivado.v":132:7:132:13|Synthesizing module BSCANE2 in library work.
+Running optimization stage 1 on BSCANE2 .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":88:7:88:20|Synthesizing module jtag_interface in library work.
+Running optimization stage 1 on jtag_interface .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":192:7:192:26|Synthesizing module b16_Rcmi_qlx9_yHpm7y in library work.
+
+	b15_Ng27p_V9EG_BY6Z=32'b00000000000000000000000000000110
+	b9_bw8_a4Kpz=32'b00000000000000000000000000000001
+	b9_VNkO_AHpU=32'b00000000000000000000000000000000
+	b17_9ik_ncH_A7mWMdHkl=32'b00000000000000000000000000000000
+	b9_KDx_R4Xlx=32'b00000000000000000000000000001000
+	b12_WjRr_o87k_7A=32'b00000000000000000000000000000000
+	b12_WjRr_o87k_3C=32'b00000000000000000000000000000000
+	b13_Ng27p_V9EG_DW=32'b00000000000000000000000000000001
+	b13_Ng27p_V9EG_zY=32'b00000000000000000000000000000110
+	b12_Vjxmck6TU_7A=32'b00000000000000000000000000000111
+   Generated name = b16_Rcmi_qlx9_yHpm7y_6s_1s_0s_0s_8s_0s_0s_1s_6s_7s
+Running optimization stage 1 on b16_Rcmi_qlx9_yHpm7y_6s_1s_0s_0s_8s_0s_0s_1s_6s_7s .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":43:7:43:18|Synthesizing module b9_ORbIwXaEF in library work.
+
+	b15_Vjxmck6TU_NC2XC=32'b00000000000000000000000000100000
+	b15_Vjxmck6TU_kEZUZ=32'b10010100111011010000000111100000
+	b9_VNkO_AHpU=32'b00000000000000000000000000000000
+   Generated name = b9_ORbIwXaEF_32s_18446744071913144800_0s
+Running optimization stage 1 on b9_ORbIwXaEF_32s_18446744071913144800_0s .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":282:7:282:16|Synthesizing module comm_block in library work.
+Running optimization stage 1 on comm_block .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5374:7:5374:23|Synthesizing module syn_identify_core in library work.
+Running optimization stage 1 on syn_identify_core .......
+Running optimization stage 2 on syn_identify_core .......
+Running optimization stage 2 on comm_block .......
+Running optimization stage 2 on b9_ORbIwXaEF_32s_18446744071913144800_0s .......
+Running optimization stage 2 on b16_Rcmi_qlx9_yHpm7y_6s_1s_0s_0s_8s_0s_0s_1s_6s_7s .......
+Running optimization stage 2 on jtag_interface .......
+Running optimization stage 2 on BSCANE2 .......
+Running optimization stage 2 on BUFG .......
+Running optimization stage 2 on syn_hyper_connect_internal_3s .......
+Running optimization stage 2 on syn_hyper_connect_internal_8s .......
+Running optimization stage 2 on syn_hyper_connect_internal_32s .......
+Running optimization stage 2 on syn_hyper_connect_internal_1s .......
+Running optimization stage 2 on IICE .......
+@W: CL156 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5176:7:5176:20|*Input b10_PbTt39_Y2x to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5326:22:5326:37|*Input b12_ocsGfWYY_Lyh to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+Running optimization stage 2 on b11_OFWNT9s_8tZ_Z3 .......
+@W: CL247 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2041:34:2041:50|Input port bit 0 of b13_OFWNT9L_bx2TS[44:0] is unused
+
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2028:8:2028:13|Input b3_PLy is unused.
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2030:8:2030:22|Input b11_nczQ_lzxWLb is unused.
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2040:44:2040:53|Input b7_OFWNT9L is unused.
+Running optimization stage 2 on b11_SoWyP0zEFKY_Z2 .......
+@W: CL246 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2557:33:2557:38|Input port bits 49 to 44 of b3_oRB[49:0] are unused. Assign logic for all port bits or change the input port size.
+@A: CL153 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2576:34:2576:43|*Unassigned bits of b7_PRWcJ_l[5:0] are referenced and tied to 0 -- simulation mismatch possible.
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2555:14:2555:23|Input b7_voSc3_u is unused.
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2556:14:2556:45|Input b6_nZ5I_F is unused.
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2558:33:2558:40|Input b5_ofmZd is unused.
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2559:14:2559:29|Input b12_3AmQIEra2_bd is unused.
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2560:14:2560:24|Input b8_ofmZd_YG is unused.
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2562:14:2562:23|Input b7_PSyil9s is unused.
+Running optimization stage 2 on b13_vFW_xNywD_EdR_50s_7s_128s_0s .......
+Running optimization stage 2 on syn_hyper_source_internal_1s .......
+Running optimization stage 2 on b19_nczQ_DYg_YFaRM_oUoP_18s_0s .......
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2751:14:2751:23|Input b7_nFG0rDY is unused.
+Running optimization stage 2 on b19_nczQ_DYg_YFaRM_oUoP_32s_0s .......
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2751:14:2751:23|Input b7_nFG0rDY is unused.
+Running optimization stage 2 on b3_uKr .......
+Running optimization stage 2 on b8_PfFzrNYI .......
+Running optimization stage 2 on b13_PSyil9s1fkJ_K .......
+Running optimization stage 2 on b15_CRGcTCua_eH4_ki .......
+Running optimization stage 2 on b9_O2yyf_fG2 .......
+Running optimization stage 2 on b7_V71OJqz_65535 .......
+Running optimization stage 2 on SRLC16E .......
+Running optimization stage 2 on syn_hyper_source_1s_Identify_IICE_trigger_ext .......
+Running optimization stage 2 on b7_OCByLXC_Z1 .......
+@N: CL201 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4681:2:4681:7|Trying to extract state machine for register b13_nAzGfFM_sLsv3.
+Extracted state machine for register b13_nAzGfFM_sLsv3
+State machine has 14 reachable states with original encodings of:
+   0000
+   0001
+   0010
+   0011
+   0100
+   0101
+   0110
+   0111
+   1000
+   1001
+   1010
+   1011
+   1100
+   1101
+@W: CL249 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4681:2:4681:7|Initial value is not supported on state machine b13_nAzGfFM_sLsv3
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4475:8:4475:22|Input b11_nUTZ3qM_tkL is unused.
+Running optimization stage 2 on b8_nR_ymqrG_7s_5s_0_0s_0s_0_63s .......
+@N: CL159 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4992:8:4992:17|Input b7_nFG0rDY is unused.
+Running optimization stage 2 on b16_n2FydH_ab_FH9_K4_4s .......
+Running optimization stage 2 on b16_n2FydH_ab_FH9_K4_5s .......

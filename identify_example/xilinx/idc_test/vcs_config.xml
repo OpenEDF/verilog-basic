@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VCSIntegration>
+   <state netlist_lang="verilog" family="KINTEX7" vcs_gui="0" vendor_version="" postpr_netlist="" lang_default="verilog" vcs_fpga="0" simtype="pre_syn"/>
+   <vlogan options=""/>
+   <vhdlan options=""/>
+   <vcs options=""/>
+   <simv options=""/>
+   <testbench testbench_browsedir="/home/macro/github/verilog-basic/identify_example/xilinx"/>
+   <toplevelmodules/>
+   <pre_syn rundir="vcs_presynth" lib_browsedir="/home/macro/github/verilog-basic/identify_example/xilinx" sim_setup_custom="0"/>
+   <post_syn rundir="vcs_postsynth" lib_browsedir="/home/macro/github/verilog-basic/identify_example/xilinx" sim_setup_custom="0"/>
+   <post_pr rundir="vcs_postpr" lib_browsedir="/home/macro/github/verilog-basic/identify_example/xilinx" sim_setup_custom="0"/>
+</VCSIntegration>

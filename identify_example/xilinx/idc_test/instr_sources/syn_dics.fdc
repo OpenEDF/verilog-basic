@@ -1,0 +1,8 @@
+# The JTAG clocks in the instrumentation logic need to run at 25 MHz for USB
+create_clock -name {ident_coreinst.comm_block_INST.tck} {n:ident_coreinst.comm_block_INST.tck} -period 40 -waveform {0 20.0}
+create_clock -name {ident_coreinst.comm_block_INST.dr2_tck} {n:ident_coreinst.comm_block_INST.dr2_tck} -period 40 -waveform {0 20.0}
+create_clock -name {ident_coreinst.comm_block_INST.ch_update} {n:ident_coreinst.comm_block_INST.ch_update} -period 40 -waveform {0 20.0}
+create_clock -name {ident_coreinst.comm_block_INST.hcr_update} {n:ident_coreinst.comm_block_INST.hcr_update} -period 40 -waveform {0 20.0}
+set_clock_groups -derive -asynchronous -name {identify_jtag_group1 } -group { {c:ident_coreinst.comm_block_INST.tck } {c:ident_coreinst.comm_block_INST.dr2_tck } {c:ident_coreinst.comm_block_INST.ch_update } {c:ident_coreinst.comm_block_INST.hcr_update} }
+set_false_path -from {c:ident_coreinst.comm_block_INST.ch_update:r};
+set_false_path -from {c:ident_coreinst.comm_block_INST.hcr_update:r};

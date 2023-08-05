@@ -1,0 +1,90 @@
+@N: MF284 |Setting synthesis effort to medium for the design
+@N: MF915 |Option synthesis_strategy=advanced is enabled. 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+@N: MF284 |Setting synthesis effort to medium for the design
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5268:2:5268:7|Removing sequential instance b13_PSyil9s_FMZ_L (in view: VhdlGenLib.IICE_x(verilog)) of type view:PrimLib.dff(prim) because it does not drive other instances.
+@N: MO231 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4656:3:4656:8|Found counter in view:VhdlGenLib.b7_OCByLXC_Z1_x(verilog) instance genblk4\.b7_nYhI39s[6:0] 
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4355:3:4355:8|Removing sequential instance iclksync_status.b8_uUT_CqMr[4] (in view: VhdlGenLib.b7_OCByLXC_Z1_x(verilog)) of type view:UNILIB.FDCPE(PRIM) because it does not drive other instances.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4383:3:4383:8|Removing sequential instance iclksync_status.b4_oYh0[4] (in view: VhdlGenLib.b7_OCByLXC_Z1_x(verilog)) of type view:UNILIB.FDCPE(PRIM) because it does not drive other instances.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Removing sequential instance iicestat_reg_r1[4] (in view: VhdlGenLib.b7_OCByLXC_Z1_x(verilog)) of type view:UNILIB.FDCPE(PRIM) because it does not drive other instances.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Removing sequential instance iicestat_reg_r0[4] (in view: VhdlGenLib.b7_OCByLXC_Z1_x(verilog)) of type view:UNILIB.FDCPE(PRIM) because it does not drive other instances.
+@N: MO231 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2375:10:2375:15|Found counter in view:VhdlGenLib.b11_OFWNT9s_8tZ_Z3_x(verilog) instance genblk9\.b9_v_mzCDYXs[6:0] 
+@N: MO231 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2324:2:2324:7|Found counter in view:VhdlGenLib.b11_OFWNT9s_8tZ_Z3_x(verilog) instance b12_2_St6KCa_jHv[6:0] 
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2394:10:2394:15|Removing sequential instance genblk9\.b3_PfG[50] (in view: VhdlGenLib.b11_OFWNT9s_8tZ_Z3_x(verilog)) of type view:UNILIB.FDCPE(PRIM) because it does not drive other instances.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4691:2:4691:7|Removing sequential instance b5_nUTGT.b13_xYTFKCkrt_FH9 (in view: VhdlGenLib.IICE_x(verilog)) of type view:UNILIB.FDCPE(PRIM) because it does not drive other instances.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2394:10:2394:15|Removing sequential instance b3_SoW.genblk9\.b3_PfG[49] (in view: VhdlGenLib.IICE_x(verilog)) of type view:UNILIB.FDCPE(PRIM) because it does not drive other instances.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2394:10:2394:15|Removing sequential instance ident_coreinst.IICE_INST.b3_SoW.genblk9\.b3_PfG[45] (in view: work.led_stream(verilog)) of type view:UNILIB.FDCPE(PRIM) because it does not drive other instances.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2394:10:2394:15|Removing sequential instance ident_coreinst.IICE_INST.b3_SoW.genblk9\.b3_PfG[46] (in view: work.led_stream(verilog)) of type view:UNILIB.FDCPE(PRIM) because it does not drive other instances.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2394:10:2394:15|Removing sequential instance ident_coreinst.IICE_INST.b3_SoW.genblk9\.b3_PfG[47] (in view: work.led_stream(verilog)) of type view:UNILIB.FDCPE(PRIM) because it does not drive other instances.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":2394:10:2394:15|Removing sequential instance ident_coreinst.IICE_INST.b3_SoW.genblk9\.b3_PfG[48] (in view: work.led_stream(verilog)) of type view:UNILIB.FDCPE(PRIM) because it does not drive other instances.
+@N: FX430 |Found 2 global buffers instantiated by user 
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[16] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[17] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[18] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[19] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[20] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[21] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[22] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[0] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[1] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[2] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[3] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[4] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[16] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[17] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[18] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[19] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[20] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[21] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[22] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[0] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[1] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[2] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[3] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[4] (in view: work.led_stream(verilog)).
+@N: FX164 |The option to pack registers in the IOB has not been specified. Please set syn_useioff attribute.  
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.iclksync_status.b7_OSr_J90.
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.iclksync_status.dst_req.
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.iclksync_status.dst_req_d.
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.iclksync_status.src_ack.
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.iclksync_status.b5_uU_cL.
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.iclksync_current_state.b7_OSr_J90.
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.iclksync_current_state.dst_req.
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.iclksync_current_state.dst_req_d.
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.iclksync_current_state.src_ack.
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.iclksync_current_state.b5_uU_cL.
+@N: FX493 |Applying initial value "1" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk3\.b8_vABZ3qsY.
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk1\.b3_nfs[0].
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk1\.b3_nfs[1].
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk1\.b3_nfs[2].
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk1\.b3_nfs[3].
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk1\.b3_nfs[4].
+@N: FX493 |Applying initial value "1" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk2\.b3_nUT[0].
+@N: FX493 |Applying initial value "1" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk2\.b3_nUT[1].
+@N: FX493 |Applying initial value "1" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk2\.b3_nUT[2].
+@N: FX493 |Applying initial value "1" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk2\.b3_nUT[3].
+@N: FX493 |Applying initial value "1" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk2\.b3_nUT[4].
+@N: FX493 |Applying initial value "1" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk2\.b3_nUT[5].
+@N: FX493 |Applying initial value "0" on instance ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk2\.b3_nUT[6].
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[16] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[17] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[18] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[19] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[20] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[21] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4889:2:4889:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.iicestat_reg_r0[22] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[0] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[1] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[2] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[3] (in view: work.led_stream(verilog)).
+@N: FX1019 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4621:2:4621:7|Adding ASYNC_REG property on synchronizing instance ident_coreinst.IICE_INST.b5_nUTGT.cmd_r0[4] (in view: work.led_stream(verilog)).
+@N: FX164 |The option to pack registers in the IOB has not been specified. Please set syn_useioff attribute.  
+@N: FX623 |Packing into LUT6_2
+@N: FX1056 |Writing EDF file: /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.edf
+@N: MT615 |Found clock ident_coreinst.comm_block_INST.tck with period 40.00ns 
+@N: MT615 |Found clock ident_coreinst.comm_block_INST.dr2_tck with period 40.00ns 
+@N: MT615 |Found clock ident_coreinst.comm_block_INST.ch_update with period 40.00ns 
+@N: MT615 |Found clock ident_coreinst.comm_block_INST.hcr_update with period 40.00ns 
+@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
+@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.

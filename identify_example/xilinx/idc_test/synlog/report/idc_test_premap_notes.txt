@@ -1,0 +1,31 @@
+@N: MF284 |Setting synthesis effort to medium for the design
+@N: MF915 |Option synthesis_strategy=advanced is enabled. 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+@N: MF284 |Setting synthesis effort to medium for the design
+@N: MF625 |Insert Identify debug core
+@N: FX493 |Applying initial value "1" on instance b13_xYTFKCkrt_FH9.
+@N: FX493 |Applying initial value "00000" on instance genblk1\.b3_nfs[4:0].
+@N: FX493 |Applying initial value "0111111" on instance genblk2\.b3_nUT[6:0].
+@N: FX493 |Applying initial value "1" on instance genblk3\.b8_vABZ3qsY.
+@N: FX493 |Applying initial value "0" on instance dst_req.
+@N: FX493 |Applying initial value "0" on instance dst_req_d.
+@N: FX493 |Applying initial value "0" on instance src_ack.
+@N: FX493 |Applying initial value "0" on instance b7_OSr_J90.
+@N: FX493 |Applying initial value "0" on instance b5_uU_cL.
+@N: FX493 |Applying initial value "0" on instance dst_req.
+@N: FX493 |Applying initial value "0" on instance dst_req_d.
+@N: FX493 |Applying initial value "0" on instance src_ack.
+@N: FX493 |Applying initial value "0" on instance b7_OSr_J90.
+@N: FX493 |Applying initial value "0" on instance b5_uU_cL.
+@N: BN397 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5420:28:5420:53|Connected syn_hyper_connect ident_coreinst.ident_hyperc_rst_n_IICE_43, tag rst_n to syn_hyper_source ident_hs_rst_n
+@N: BN397 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5413:28:5413:61|Connected syn_hyper_connect ident_coreinst.ident_hyperc_led_on_number_IICE_40, tag led_on_number to syn_hyper_source ident_hs_led_on_number
+@N: BN397 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5406:28:5406:51|Connected syn_hyper_connect ident_coreinst.ident_hyperc_led_IICE_32, tag led to syn_hyper_source ident_hs_led
+@N: BN397 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5399:28:5399:50|Connected syn_hyper_connect ident_coreinst.ident_hyperc_cnt_IICE_0, tag cnt to syn_hyper_source ident_hs_cnt
+@N: BN397 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5392:28:5392:48|Connected syn_hyper_connect ident_coreinst.ident_hyperc_clk_IICE, tag clk to syn_hyper_source ident_hs_clk
+@N: MH105 |UMR3 is only supported for HAPS-80.
+@N: MH105 |UMR3 is only supported for HAPS-80.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5093:6:5093:11|Removing sequential instance genblk4\.b9_ibScJX_E2 (in view: VhdlGenLib.b8_nR_ymqrG_7s_5s_0_0s_0s_0_63s_x(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5117:2:5117:7|Removing sequential instance b11_ibScJX_E2_P (in view: VhdlGenLib.b8_nR_ymqrG_7s_5s_0_0s_0s_0_63s_x(verilog)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+@N: FX1143 |Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized.
+@N: BN225 |Writing default property annotation file /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.sap.

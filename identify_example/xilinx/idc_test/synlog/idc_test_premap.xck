@@ -1,0 +1,5 @@
+ckid0_0:@|S:ident_coreinst.comm_block_INST.jtagi.b3_PK3@|E:ident_coreinst.comm_block_INST.b9_ORb_xNywD.b3_ORb[32:1]@|F:@syn_dgcc_clockid0_0==1@|M:ClockId_0_0
+ckid0_1:@|S:ident_coreinst.comm_block_INST.jtagi.b10_8Kz_rKlrtX@|E:ident_coreinst.comm_block_INST.b7_Rcmi_ql.genblk1\.b10_dZst39_EF3[7:0]@|F:@syn_dgcc_clockid0_1==1@|M:ClockId_0_1
+ckid0_2:@|S:ident_coreinst.comm_block_INST.jtagi.b7_oSD_3vW@|E:ident_coreinst.comm_block_INST.b7_Rcmi_ql.b9_OvyH3_saL[7:0]@|F:@syn_dgcc_clockid0_2==1@|M:ClockId_0_2
+ckid0_3:@|S:clk@|E:cnt[31:0]@|F:@syn_dgcc_clockid0_3==1@|M:ClockId_0_3
+ckid0_4:@|S:ident_coreinst.comm_block_INST.jtagi.b9_nv_oQwfYF@|E:ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk3\.b8_vABZ3qsY@|F:@syn_dgcc_clockid0_4==1@|M:ClockId_0_4

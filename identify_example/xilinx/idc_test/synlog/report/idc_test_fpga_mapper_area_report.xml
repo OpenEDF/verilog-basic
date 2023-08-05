@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- *************************************************************************************
+FILE DESCRIPTION
+The file contains the area information from mapper to be displayed as part of the summary report.
+*******************************************************************************************-->
+<report_table display_priority="1" name="Area Summary">
+<report_link name="Detailed report">
+<data>/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synlog/report/idc_test_fpga_mapper_resourceusage.rpt</data>
+<title>Resource Usage</title>
+</report_link>
+<report_link name="Hierarchical Area report">
+<data>/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synlog/report/idc_test_fpga_mapper_hier_area_report.xml</data>
+<title>Hierarchical Area Report</title>
+</report_link>
+<parameter tcl_name="io_port" tooltip="Total I/O ports used" name="I/O ports">
+<data>10</data>
+</parameter>
+<parameter tcl_name="non_io_reg" tooltip="Total Non I/O Register bits used" name="Non I/O Register bits">
+<data>532 (0%)</data>
+</parameter>
+<parameter tcl_name="total_io_reg" tooltip="Total I/O Register bits used" name="I/O Register bits">
+<data>0</data>
+</parameter>
+<parameter tcl_name="v_ram" tooltip="Total Block Rams used" name="Block Rams">
+<data>1 (445)</data>
+</parameter>
+<parameter tcl_name="dsp_used" tooltip="Total DSP48s used" name="DSP48s">
+<data>0 (840)</data>
+</parameter>
+<parameter tcl_name="total_luts" tooltip="Total LUTs used" name="LUTs">
+<data>323 (0%)</data>
+</parameter>
+</report_table>

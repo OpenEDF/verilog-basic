@@ -1,0 +1,4 @@
+/cnt i:ident_hs_cnt
+/led i:ident_hs_led
+/led_on_number i:ident_hs_led_on_number
+/rst_n i:ident_hs_rst_n

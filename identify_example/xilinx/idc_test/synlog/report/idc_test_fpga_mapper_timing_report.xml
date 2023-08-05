@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- *************************************************************************************
+FILE DESCRIPTION
+Max Top 5 critical clocks will be reported. For rest user needs to refer to Detailed report
+*******************************************************************************************-->
+<report_table display_priority="2" name="Timing Summary">
+<report_link name="Detailed report">
+<data>/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synlog/idc_test_fpga_mapper.srr</data>
+<title>START OF TIMING REPORT</title>
+</report_link>
+<row>
+<data tcl_name="clock_name">Clock Name</data>
+<data tcl_name="req_freq">Req Freq</data>
+<data tcl_name="est_freq">Est Freq</data>
+<data tcl_name="slack">Slack</data>
+</row>
+<row>
+<data>ident_coreinst.comm_block_INST.ch_update</data>
+<data>25.0 MHz</data>
+<data>15923.6 MHz</data>
+<data>NA</data>
+</row>
+<row>
+<data>ident_coreinst.comm_block_INST.dr2_tck</data>
+<data>25.0 MHz</data>
+<data>1736.7 MHz</data>
+<data>39.424</data>
+</row>
+<row>
+<data>ident_coreinst.comm_block_INST.hcr_update</data>
+<data>25.0 MHz</data>
+<data>3822.6 MHz</data>
+<data>NA</data>
+</row>
+<row>
+<data>ident_coreinst.comm_block_INST.tck</data>
+<data>25.0 MHz</data>
+<data>474.3 MHz</data>
+<data>18.999</data>
+</row>
+<row>
+<data>led_stream|clk</data>
+<data>1.0 MHz</data>
+<data>479.1 MHz</data>
+<data>997.913</data>
+</row>
+<row>
+<data>System</data>
+<data>1.0 MHz</data>
+<data>790.6 MHz</data>
+<data>998.735</data>
+</row>
+</report_table>

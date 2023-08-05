@@ -1,0 +1,188 @@
+# Sat Aug  5 08:37:53 2023
+
+
+Copyright (C) 1994-2018 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify (R) Premier
+Build: N-2018.03-SP1
+Install: /home/macro/synopsys/fpga/N-2018.03-SP1
+OS: CentOS Linux 7 (Core)
+Hostname: localhost.localdomain
+
+Implementation : idc_test
+Synopsys Xilinx Technology Pre-mapping, Version maprc, Build 4488R, Built Jun  1 2018 09:50:54
+
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+Reading constraint file: /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.sdc
+@N: MF284 |Setting synthesis effort to medium for the design
+@L: /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test_scck.rpt 
+Printing clock  summary report in "/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test_scck.rpt" file 
+@N: MF915 |Option synthesis_strategy=advanced is enabled. 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+
+@W: FX1020 |A simulation mismatch is possible. Ignoring vendor library default initial value on registers, because the default value is not set. To enable vendor library default initial values, add the command "set_option -support_implicit_init_netlist 1" to the project file.
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 101MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 101MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 103MB)
+
+@N: MF284 |Setting synthesis effort to medium for the design
+
+Making connections to hyper_source modules
+@N: MF625 |Insert Identify debug core
+*** Launch instrumentor shell: "/home/macro/synopsys/fpga/N-2018.03-SP1/bin/identify_instrumentor_shell" -srs_gen_hw "/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v" -prj "/home/macro/github/verilog-basic/identify_example/xilinx/idc_test.prj" -idb "/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/identify.db" -isrs /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synwork/idc_test_mult.srs -curimpl idc_test -write_fdc -log /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/identify.log -tsl VdtQPhpj -fidc /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/identify.idc
+@N: FX493 |Applying initial value "1" on instance b13_xYTFKCkrt_FH9.
+@W: FX474 |User-specified initial value defined for some sequential elements which can prevent optimum synthesis results from being achieved. 
+@N: FX493 |Applying initial value "00000" on instance genblk1\.b3_nfs[4:0].
+@N: FX493 |Applying initial value "0111111" on instance genblk2\.b3_nUT[6:0].
+@N: FX493 |Applying initial value "1" on instance genblk3\.b8_vABZ3qsY.
+@N: FX493 |Applying initial value "0" on instance dst_req.
+@N: FX493 |Applying initial value "0" on instance dst_req_d.
+@N: FX493 |Applying initial value "0" on instance src_ack.
+@N: FX493 |Applying initial value "0" on instance b7_OSr_J90.
+@N: FX493 |Applying initial value "0" on instance b5_uU_cL.
+@N: FX493 |Applying initial value "0" on instance dst_req.
+@N: FX493 |Applying initial value "0" on instance dst_req_d.
+@N: FX493 |Applying initial value "0" on instance src_ack.
+@N: FX493 |Applying initial value "0" on instance b7_OSr_J90.
+@N: FX493 |Applying initial value "0" on instance b5_uU_cL.
+Reading constraint file: /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.fdc
+
+Making connections to hyper_source modules
+@N: BN397 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5420:28:5420:53|Connected syn_hyper_connect ident_coreinst.ident_hyperc_rst_n_IICE_43, tag rst_n to syn_hyper_source ident_hs_rst_n
+@N: BN397 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5413:28:5413:61|Connected syn_hyper_connect ident_coreinst.ident_hyperc_led_on_number_IICE_40, tag led_on_number to syn_hyper_source ident_hs_led_on_number
+@N: BN397 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5406:28:5406:51|Connected syn_hyper_connect ident_coreinst.ident_hyperc_led_IICE_32, tag led to syn_hyper_source ident_hs_led
+@N: BN397 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5399:28:5399:50|Connected syn_hyper_connect ident_coreinst.ident_hyperc_cnt_IICE_0, tag cnt to syn_hyper_source ident_hs_cnt
+@N: BN397 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5392:28:5392:48|Connected syn_hyper_connect ident_coreinst.ident_hyperc_clk_IICE, tag clk to syn_hyper_source ident_hs_clk
+@N: MH105 |UMR3 is only supported for HAPS-80.
+@N: MH105 |UMR3 is only supported for HAPS-80.
+
+Making connections to hyper_source modules
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5093:6:5093:11|Removing sequential instance genblk4\.b9_ibScJX_E2 (in view: VhdlGenLib.b8_nR_ymqrG_7s_5s_0_0s_0s_0_63s_x(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":5117:2:5117:7|Removing sequential instance b11_ibScJX_E2_P (in view: VhdlGenLib.b8_nR_ymqrG_7s_5s_0_0s_0s_0_63s_x(verilog)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
+Encoding state machine b13_nAzGfFM_sLsv3[13:0] (in view: VhdlGenLib.b7_OCByLXC_Z1_x(verilog))
+original code -> new code
+   0000 -> 00000000000001
+   0001 -> 00000000000010
+   0010 -> 00000000000100
+   0011 -> 00000000001000
+   0100 -> 00000000010000
+   0101 -> 00000000100000
+   0110 -> 00000001000000
+   0111 -> 00000010000000
+   1000 -> 00000100000000
+   1001 -> 00001000000000
+   1010 -> 00010000000000
+   1011 -> 00100000000000
+   1100 -> 01000000000000
+   1101 -> 10000000000000
+syn_allowed_resources : blockrams=890  set on top level netlist led_stream
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 335MB peak: 335MB)
+
+
+
+Clock Summary
+******************
+
+          Start                                         Requested     Requested     Clock        Clock                    Clock
+Level     Clock                                         Frequency     Period        Type         Group                    Load 
+-------------------------------------------------------------------------------------------------------------------------------
+0 -       ident_coreinst.comm_block_INST.tck            25.0 MHz      40.000        declared     identify_jtag_group1     380  
+                                                                                                                               
+0 -       ident_coreinst.comm_block_INST.ch_update      25.0 MHz      40.000        declared     identify_jtag_group1     13   
+                                                                                                                               
+0 -       ident_coreinst.comm_block_INST.dr2_tck        25.0 MHz      40.000        declared     identify_jtag_group1     8    
+                                                                                                                               
+0 -       ident_coreinst.comm_block_INST.hcr_update     25.0 MHz      40.000        declared     identify_jtag_group1     8    
+                                                                                                                               
+0 -       System                                        1.0 MHz       1000.000      system       system_clkgroup          0    
+                                                                                                                               
+0 -       led_stream|clk                                1.0 MHz       1000.000      inferred     Inferred_clkgroup_0      295  
+===============================================================================================================================
+
+
+
+Clock Load Summary
+***********************
+
+                                              Clock     Source                                                              Clock Pin                                                                    Non-clock Pin     Non-clock Pin                                                       
+Clock                                         Load      Pin                                                                 Seq Example                                                                  Seq Example       Comb Example                                                        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ident_coreinst.comm_block_INST.tck            380       ident_coreinst.comm_block_INST.jtagi.clkbuf.O(BUFG)                 ident_coreinst.comm_block_INST.b9_ORb_xNywD.b3_ORb[32:1].C                   -                 ident_coreinst.IICE_INST.b4_PfFz.b7_PbTtl9G.un1_b7_jWS_3vW.I[0](inv)
+                                                                                                                                                                                                                                                                                               
+ident_coreinst.comm_block_INST.ch_update      13        ident_coreinst.comm_block_INST.jtagi.jtag_prim1.UPDATE(BSCANE2)     ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk1\.b3_nfs[0].C           -                 -                                                                   
+                                                                                                                                                                                                                                                                                               
+ident_coreinst.comm_block_INST.dr2_tck        8         ident_coreinst.comm_block_INST.jtagi.clkbuf2.O(BUFG)                ident_coreinst.comm_block_INST.b7_Rcmi_ql.b9_OvyH3_saL[7:0].C                -                 -                                                                   
+                                                                                                                                                                                                                                                                                               
+ident_coreinst.comm_block_INST.hcr_update     8         ident_coreinst.comm_block_INST.jtagi.jtag_prim2.UPDATE(BSCANE2)     ident_coreinst.comm_block_INST.b7_Rcmi_ql.genblk1\.b10_dZst39_EF3[7:0].C     -                 -                                                                   
+                                                                                                                                                                                                                                                                                               
+System                                        0         -                                                                   -                                                                            -                 -                                                                   
+                                                                                                                                                                                                                                                                                               
+led_stream|clk                                295       clk(port)                                                           led_on_number[2:0].C                                                         -                 -                                                                   
+===============================================================================================================================================================================================================================================================================================
+
+@W: MT529 :"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.v":4342:3:4342:8|Found inferred clock led_stream|clk which controls 295 sequential elements including ident_coreinst.IICE_INST.b5_nUTGT.iclksync_status.b5_uU_cL. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
+
+ICG Latch Removal Summary:
+Number of ICG latches removed: 0
+Number of ICG latches not removed:	0
+
+
+@S |Clock Optimization Summary
+
+
+
+#### START OF PREMAP CLOCK OPTIMIZATION REPORT #####[
+
+5 non-gated/non-generated clock tree(s) driving 661 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+========================================================================= Non-Gated/Non-Generated Clocks =========================================================================
+Clock Tree ID     Driving Element                                         Drive Element Type     Fanout     Sample Instance                                                       
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@KP:ckid0_0       ident_coreinst.comm_block_INST.jtagi.b3_PK3             jtag_interface_x       380        ident_coreinst.comm_block_INST.b9_ORb_xNywD.b3_ORb[32:1]              
+@KP:ckid0_1       ident_coreinst.comm_block_INST.jtagi.b10_8Kz_rKlrtX     jtag_interface_x       8          ident_coreinst.comm_block_INST.b7_Rcmi_ql.genblk1\.b10_dZst39_EF3[7:0]
+@KP:ckid0_2       ident_coreinst.comm_block_INST.jtagi.b7_oSD_3vW         jtag_interface_x       8          ident_coreinst.comm_block_INST.b7_Rcmi_ql.b9_OvyH3_saL[7:0]           
+@KP:ckid0_3       clk                                                     Unconstrained_port     252        cnt[31:0]                                                             
+@KP:ckid0_4       ident_coreinst.comm_block_INST.jtagi.b9_nv_oQwfYF       jtag_interface_x       13         ident_coreinst.IICE_INST.b5_nUTGT.cntrl_chain.genblk3\.b8_vABZ3qsY    
+==================================================================================================================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######
+
+@N: FX1143 |Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized.
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 335MB peak: 336MB)
+
+
+Finished constraint checker preprocessing (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 335MB peak: 336MB)
+
+None
+None
+
+Finished constraint checker (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 335MB peak: 337MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:03s; Memory used current: 247MB peak: 337MB)
+
+Process took 0h:00m:04s realtime, 0h:00m:03s cputime
+# Sat Aug  5 08:37:57 2023
+
+###########################################################]

@@ -1,0 +1,159 @@
+
+Copyright (C) 1994-2018 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify (R) Premier
+Build: N-2018.03-SP1
+Install: /home/macro/synopsys/fpga/N-2018.03-SP1
+OS: CentOS Linux 7 (Core)
+Hostname: localhost.localdomain
+
+Implementation : idc_test
+Synopsys HDL Compiler, Version comp2018q2p1, Build 016R, Built Jun  1 2018 15:50:58
+
+@N|Running in 64-bit mode
+
+Copyright (C) 1994-2018 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify (R) Premier
+Build: N-2018.03-SP1
+Install: /home/macro/synopsys/fpga/N-2018.03-SP1
+OS: CentOS Linux 7 (Core)
+Hostname: localhost.localdomain
+
+Implementation : idc_test
+Synopsys Verilog Compiler, Version comp2018q2p1, Build 016R, Built Jun  1 2018 15:50:58
+
+@N|Running in 64-bit mode
+@N::Reading compiler constraint file /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.cdc
+@I::"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_retarget.v" (library work)
+@I::"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/xilinx/unisim_vivado.v" (library work)
+@I::"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v" (library __hyper__lib__)
+@I::"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/umr_capim.v" (library snps_haps)
+@I::"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/scemi_objects.v" (library snps_haps)
+@I::"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/scemi_pipes.svh" (library snps_haps)
+@I::"/home/macro/github/verilog-basic/identify_example/xilinx/src/flowled.v" (library work)
+Verilog syntax check successful!
+Selecting top level module led_stream
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000001000
+	tag=24'b011011000110010101100100
+   Generated name = syn_hyper_source_8s_led
+Running optimization stage 1 on syn_hyper_source_8s_led .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000000001
+	tag=24'b011000110110110001101011
+   Generated name = syn_hyper_source_1s_clk
+Running optimization stage 1 on syn_hyper_source_1s_clk .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000000001
+	tag=40'b0111001001110011011101000101111101101110
+   Generated name = syn_hyper_source_1s_Z1
+Running optimization stage 1 on syn_hyper_source_1s_Z1 .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000100000
+	tag=24'b011000110110111001110100
+   Generated name = syn_hyper_source_32s_cnt
+Running optimization stage 1 on syn_hyper_source_32s_cnt .......
+@N: CG364 :"/home/macro/synopsys/fpga/N-2018.03-SP1/lib/vlog/hypermods.v":9:7:9:22|Synthesizing module syn_hyper_source in library __hyper__lib__.
+
+	w=32'b00000000000000000000000000000011
+	tag=104'b01101100011001010110010001011111011011110110111001011111011011100111010101101101011000100110010101110010
+   Generated name = syn_hyper_source_3s_Z2
+Running optimization stage 1 on syn_hyper_source_3s_Z2 .......
+@N: CG364 :"/home/macro/github/verilog-basic/identify_example/xilinx/src/flowled.v":7:7:7:16|Synthesizing module led_stream in library work.
+Running optimization stage 1 on led_stream .......
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 92MB peak: 93MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat Aug  5 08:37:49 2023
+
+###########################################################]
+
+Copyright (C) 1994-2018 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify (R) Premier
+Build: N-2018.03-SP1
+Install: /home/macro/synopsys/fpga/N-2018.03-SP1
+OS: CentOS Linux 7 (Core)
+Hostname: localhost.localdomain
+
+Implementation : idc_test
+Synopsys Synopsys Netlist Linker, Version comp2018q2p1, Build 016R, Built Jun  1 2018 15:50:58
+
+@N|Running in 64-bit mode
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 66MB peak: 67MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat Aug  5 08:37:49 2023
+
+###########################################################]
+
+Finished Containment srs generation. (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+@W:: Distributed compilation : All files are passed to distribution points
+Divided design in to 1 groups
+@L:"/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synwork//distcomp/distcomp0/distcomp0.log" "Log file for distribution node work.led_stream.verilog "
+Compiling work_led_stream_verilog as a separate process
+Compilation of node work.led_stream finished successfully.Real start time 0h:00m:00s, Real end time = 0h:00m:01s, Total real run time = 0h:00m:01s
+
+Distributed Compiler Report
+***************************
+
+DP Name                     Status      Start time     End Time       Total Real Time     Log File                                                                                                   
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+work.led_stream.verilog     Success     0h:00m:00s     0h:00m:01s     0h:00m:01s          /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/synwork//distcomp/distcomp0/distcomp0.log
+=====================================================================================================================================================================================================
+
+Copyright (C) 1994-2018 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify (R) Premier
+Build: N-2018.03-SP1
+Install: /home/macro/synopsys/fpga/N-2018.03-SP1
+OS: CentOS Linux 7 (Core)
+Hostname: localhost.localdomain
+
+Implementation : idc_test
+Synopsys Synopsys Netlist Linker, Version comp2018q2p1, Build 016R, Built Jun  1 2018 15:50:58
+
+@N|Running in 64-bit mode
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 67MB peak: 68MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat Aug  5 08:37:52 2023
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:02s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat Aug  5 08:37:52 2023
+
+###########################################################]

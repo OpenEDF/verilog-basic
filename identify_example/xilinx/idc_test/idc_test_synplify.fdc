@@ -1,0 +1,48 @@
+
+#1001 : create_clock -name ident_coreinst.comm_block_INST.tck n:ident_coreinst.comm_block_INST.tck -period 40 -waveform {0 20.0}
+# line 2 in /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.fdc
+
+create_clock -name {ident_coreinst.comm_block_INST.tck} [get_cells {ident_coreinst.comm_block_INST.tck_keep}] -period {40.000} -waveform {0.000 20.000}
+
+#1002 : create_clock -name ident_coreinst.comm_block_INST.dr2_tck n:ident_coreinst.comm_block_INST.dr2_tck -period 40 -waveform {0 20.0}
+# line 3 in /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.fdc
+
+create_clock -name {ident_coreinst.comm_block_INST.dr2_tck} [get_cells {ident_coreinst.comm_block_INST.dr2_tck_keep}] -period {40.000} -waveform {0.000 20.000}
+
+#1003 : create_clock -name ident_coreinst.comm_block_INST.ch_update n:ident_coreinst.comm_block_INST.ch_update -period 40 -waveform {0 20.0}
+# line 4 in /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.fdc
+
+create_clock -name {ident_coreinst.comm_block_INST.ch_update} [get_cells {ident_coreinst.comm_block_INST.ch_update_keep}] -period {40.000} -waveform {0.000 20.000}
+
+#1004 : create_clock -name ident_coreinst.comm_block_INST.hcr_update n:ident_coreinst.comm_block_INST.hcr_update -period 40 -waveform {0 20.0}
+# line 5 in /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.fdc
+
+create_clock -name {ident_coreinst.comm_block_INST.hcr_update} [get_cells {ident_coreinst.comm_block_INST.hcr_update_keep}] -period {40.000} -waveform {0.000 20.000}
+
+#1005 : set_clock_groups -derive -asynchronous -name identify_jtag_group1 -group {c:ident_coreinst.comm_block_INST.tck c:ident_coreinst.comm_block_INST.dr2_tck c:ident_coreinst.comm_block_INST.ch_update c:ident_coreinst.comm_block_INST.hcr_update}
+# line 6 in /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.fdc
+
+set_clock_groups -derive -asynchronous -name {identify_jtag_group1} -group [get_clocks {ident_coreinst.comm_block_INST.ch_update ident_coreinst.comm_block_INST.dr2_tck ident_coreinst.comm_block_INST.hcr_update ident_coreinst.comm_block_INST.tck}]
+
+#1006 : set_false_path -from c:ident_coreinst.comm_block_INST.ch_update:r
+# line 7 in /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.fdc
+
+set_false_path -rise_from [get_clocks {ident_coreinst.comm_block_INST.ch_update}]
+
+#1007 : set_false_path -from c:ident_coreinst.comm_block_INST.hcr_update:r
+# line 8 in /home/macro/github/verilog-basic/identify_example/xilinx/idc_test/instr_sources/syn_dics.fdc
+
+set_false_path -rise_from [get_clocks {ident_coreinst.comm_block_INST.hcr_update}]
+define_attribute {i:ident_coreinst.IICE_INST.b3_SoW} {syn_noprune} 1
+define_attribute {i:ident_coreinst.IICE_INST.b8_uKr_IFLY} {syn_noprune} 1
+define_attribute {i:ident_coreinst.IICE_INST.b5_nUTGT} {syn_noprune} 1
+define_attribute {i:ident_coreinst.comm_block_INST.jtagi.identify_clk2_tmp} {syn_noprune} 1
+define_attribute {i:ident_coreinst.comm_block_INST.jtagi.identify_clk2} {syn_noprune} 1
+define_attribute {i:ident_coreinst.comm_block_INST.jtagi.b9_nv_oQwfYF} {syn_noprune} 1
+define_attribute {i:ident_coreinst.comm_block_INST.jtagi.b10_8Kz_rKlrtX} {syn_noprune} 1
+define_attribute {i:ident_coreinst.comm_block_INST.jtagi.jtag_prim2} {syn_noprune} 1
+define_attribute {i:ident_coreinst.comm_block_INST.jtagi.jtag_prim1} {syn_noprune} 1
+define_attribute {i:ident_coreinst.comm_block_INST.tdo_sig} {syn_noprune} 1
+define_attribute {i:ident_coreinst.comm_block_INST} {syn_noprune} 1
+define_attribute {i:ident_coreinst.IICE_INST} {syn_noprune} 1
+define_attribute {i:ident_coreinst} {syn_noprune} 1
