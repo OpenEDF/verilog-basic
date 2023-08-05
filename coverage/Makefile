@@ -15,6 +15,7 @@ OUTPUT = sequ_div
 CM_NAME = -cm_name $(OUTPUT)
 CM_DIR  = -cm_dir ./$(OUTPUT).vdb
 VPD_NAME = +vpdfile+$(OUTPUT).vpd
+SIM_FLAGS = +fsdb+force
 
 # clean old file --> compiler --> simluation
 all: com sim
@@ -37,7 +38,7 @@ com:
 
 # simluation
 sim:
-	./$(OUTPUT) $(VPD_NAME) \
+	./$(OUTPUT) $(SIM_FLAGS) $(VPD_NAME) \
 	  $(CM) $(CM_NAME) \
 	  $(CM_DIR) -l $(OUTPUT).log
 
@@ -47,6 +48,7 @@ wave:
 		-top $(TOP_MODULE)      \
 		-ssf $(TOP_MODULE).fsdb \
 		-sswr $(nWave_SIGNAL)   \
+		-workMode hardwareDebug \
 		-nologo &
 # spy
 spy:
