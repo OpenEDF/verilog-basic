@@ -25,7 +25,7 @@ com:
 
 # simluation
 sim:
-	./simv +fsdb+autoflush
+	./simv +fsdb+autoflush+force
 
 # wave
 wave:
@@ -33,6 +33,7 @@ wave:
 		-top $(TOP_MODULE)      \
 		-ssf $(TOP_MODULE).fsdb \
 		-sswr $(nWave_SIGNAL)   \
+		-workMode hardwareDebug \
 		-nologo &
 # spy
 spy:

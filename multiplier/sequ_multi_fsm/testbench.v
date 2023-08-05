@@ -74,7 +74,7 @@ initial begin
     rst_n = 1'b1;
 
     #10
-    while (test_count < 32'd4) begin
+    while (test_count < 32'd1000) begin
         @(posedge clk)
             start = 1'b1;
             multiplier   = $random();

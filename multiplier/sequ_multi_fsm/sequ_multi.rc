@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 1278 553 155 65
+viewPort 0 27 1278 560 155 65
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,8 +16,8 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 398750.000000
-cursor 25000.000000
+zoom 990343.750000 1184718.750000
+cursor 1175000.000000
 marker 0.000000
 
 ; user define markers
@@ -46,13 +46,13 @@ curSTATUS ByChange
 
 
 aliasmapname sequ_multi.state
-nalias MULTI_START		7'b0000010		NULL
-nalias MULTI_ER_ONE		7'b0001000		NULL
 nalias MULTI_CALCUL		7'b0100000		NULL
-nalias MULTI_IDLE		7'b0000001		NULL
-nalias MULTI_ER_CAND_ZERO		7'b0000100		NULL
-nalias MULTI_OUTPUT		7'b1000000		NULL
+nalias MULTI_ER_ONE		7'b0001000		NULL
+nalias MULTI_START		7'b0000010		NULL
 nalias MULTI_CAND_ONE		7'b0010000		NULL
+nalias MULTI_OUTPUT		7'b1000000		NULL
+nalias MULTI_ER_CAND_ZERO		7'b0000100		NULL
+nalias MULTI_IDLE		7'b0000001		NULL
 
 addGroup "G1"
 activeDirFile "" "/home/macro/github/verilog-basic/multiplier/sequ_multi_fsm/testbench.fsdb"
@@ -68,9 +68,9 @@ addSignal -h 15 -holdScope partial_product[63:0]
 addSignal -h 15 -holdScope multiplier_copy[31:0]
 addSignal -h 15 -holdScope multiplicand_copy[63:0]
 addSignal -h 15 -holdScope shift_count[5:0]
-addSignal -h 15 -holdScope lsb
 aliasname sequ_multi.state
 addSignal -h 15 -UNSIGNED -HEX -holdScope state[6:0]
+addSignal -h 15 -holdScope lsb
 addGroup "G2"
 
 ; getSignalForm Scope Hierarchy Status

@@ -113,7 +113,6 @@ always @(posedge clk or negedge rst_n) begin
         state             <= MULTI_IDLE;
     end else begin
         /* default output */
-        state             <= MULTI_IDLE;
         product_l         <= 32'h0000_0000;
         product_h         <= 32'h0000_0000;
         ready             <= 1'b0;
