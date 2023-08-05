@@ -1,0 +1,9 @@
+com cabletype {Digilent_JTAG}
+com cableoption digilent_port auto
+com cableoption digilent_speed 750000
+server set -cabletype Digilent_JTAG -addr 127.0.0.1 -port 58015 -logf ipc_tcp_digilent.log -usecs 1 -userec 0 -ipvcli 4 -ipvsrv 4 -tcpconnect 500 -timeout 15000
+searchpath add {.}
+searchpath add {/home/macro/github/verilog-basic/identify_example/xilinx/idc_test}
+waveform preferences -period 20 -cycle 1 -clock 1 -qual_separate 0 -gsv_signal_mode 0 -enum native -gsv_append 0
+watch enable -iice {IICE} -condition 0 -language verilog {/led} {8'b00000010}
+iice current {IICE}

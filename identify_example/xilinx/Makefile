@@ -12,6 +12,10 @@ xilinx:
 	setvivado;
 	vivado -mode gui idc_vivado/idc_vivado.xpr & 
 
+debug:
+	verdi -top led_stream -ssf save_dir/IICE.fsdb
+
 clean:
 	rm -rf *.log *.log.bak.* synlog synlog.tcl \
-    *.jou	*.log.bak *.bak synlog.tcl output
+    *.jou *.log.bak *.bak synlog.tcl output \
+	verdiLog novas.*  
