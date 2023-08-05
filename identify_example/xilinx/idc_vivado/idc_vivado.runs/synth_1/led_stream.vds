@@ -1,0 +1,986 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Sat Aug  5 10:16:44 2023
+# Process ID: 33515
+# Current directory: /home/macro/github/verilog-basic/identify_example/xilinx/idc_vivado/idc_vivado.runs/synth_1
+# Command line: vivado -log led_stream.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source led_stream.tcl
+# Log file: /home/macro/github/verilog-basic/identify_example/xilinx/idc_vivado/idc_vivado.runs/synth_1/led_stream.vds
+# Journal file: /home/macro/github/verilog-basic/identify_example/xilinx/idc_vivado/idc_vivado.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source led_stream.tcl -notrace
+Command: synth_design -top led_stream -part xc7k325tfbg676-2
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7k325t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7k325t'
+INFO: [Device 21-403] Loading part xc7k325tfbg676-2
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 33721 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1994.094 ; gain = 200.719 ; free physical = 412 ; free virtual = 3540
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'led_stream' [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:8303]
+INFO: [Synth 8-6157] synthesizing module 'GND' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:14687]
+INFO: [Synth 8-6155] done synthesizing module 'GND' (1#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:14687]
+INFO: [Synth 8-6157] synthesizing module 'VCC' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:81656]
+INFO: [Synth 8-6155] done synthesizing module 'VCC' (2#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:81656]
+INFO: [Synth 8-6157] synthesizing module 'IBUF' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:32937]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IBUF' (3#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:32937]
+INFO: [Synth 8-6157] synthesizing module 'OBUF' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:46211]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'OBUF' (4#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:46211]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b0111100011110000111100001111000011110000111100001111000011110000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L' (5#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6157] synthesizing module 'LUT5_L' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+	Parameter INIT bound to: 32'b01101100110011001100110011001100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5_L' (6#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+INFO: [Synth 8-6157] synthesizing module 'LUT4_L' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+	Parameter INIT bound to: 16'b0111111100000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4_L' (7#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+INFO: [Synth 8-6157] synthesizing module 'LUT4_L__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+	Parameter INIT bound to: 16'b0111000011110000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4_L__parameterized0' (7#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+INFO: [Synth 8-6157] synthesizing module 'LUT4_L__parameterized1' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+	Parameter INIT bound to: 16'b0110101010101010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4_L__parameterized1' (7#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+INFO: [Synth 8-6157] synthesizing module 'LUT5' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b01000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5' (8#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT6' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1000000000000000000000000000000000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6' (9#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b0000000000000000000010000000000000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized0' (9#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000000000000001 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized0' (9#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT1_L' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39112]
+	Parameter INIT bound to: 2'b01 
+INFO: [Synth 8-6155] done synthesizing module 'LUT1_L' (10#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39112]
+INFO: [Synth 8-6157] synthesizing module 'LUT1_L__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39112]
+	Parameter INIT bound to: 2'b10 
+INFO: [Synth 8-6155] done synthesizing module 'LUT1_L__parameterized0' (10#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39112]
+INFO: [Synth 8-6157] synthesizing module 'FDC' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13479]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDC' (11#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13479]
+INFO: [Synth 8-6157] synthesizing module 'INV' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:36118]
+INFO: [Synth 8-6155] done synthesizing module 'INV' (12#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:36118]
+INFO: [Synth 8-6157] synthesizing module 'LUT1' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39089]
+	Parameter INIT bound to: 2'b10 
+INFO: [Synth 8-6155] done synthesizing module 'LUT1' (13#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39089]
+INFO: [Synth 8-6157] synthesizing module 'IBUFG' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:33402]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IBUFG' (14#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:33402]
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:1075]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (15#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:1075]
+INFO: [Synth 8-6157] synthesizing module 'CARRY4' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:1479]
+INFO: [Synth 8-6155] done synthesizing module 'CARRY4' (16#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:1479]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:9187]
+INFO: [Synth 8-6157] synthesizing module 'syn_identify_core0_0' [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:8249]
+INFO: [Synth 8-6157] synthesizing module 'IICE_x_0' [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:7103]
+INFO: [Synth 8-6157] synthesizing module 'FD' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13467]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FD' (17#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13467]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b01000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b00000100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized0' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized1' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b00001000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized1' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized2' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b00000010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized2' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized3' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b00010000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized3' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized4' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b00000001 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized4' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized5' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b00100000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized5' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'b7_OCByLXC_Z1_x_0' [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:843]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized6' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b11100010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized6' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized7' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b11001010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized7' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT4_L__parameterized2' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+	Parameter INIT bound to: 16'b0101001111110011 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4_L__parameterized2' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+INFO: [Synth 8-6157] synthesizing module 'LUT4_L__parameterized3' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+	Parameter INIT bound to: 16'b0011010111110101 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4_L__parameterized3' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+INFO: [Synth 8-6157] synthesizing module 'LUT4_L__parameterized4' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+	Parameter INIT bound to: 16'b0101001100000011 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4_L__parameterized4' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized1' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b0000000000000000111011101110111011100000111011101110111011101110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized1' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized2' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b0000000000001010000000110000101100000000000010100000000000001010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized2' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized3' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b0000000001010000000100010101000100000000010100000000000001010000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized3' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6157] synthesizing module 'LUT5_L__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+	Parameter INIT bound to: 32'b00110011000000100000001000000010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5_L__parameterized0' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b01000000010000000100000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized0' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized4' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b0000001000000010000000101111111100000010000000100000001000000010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized4' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6157] synthesizing module 'LUT5_L__parameterized1' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+	Parameter INIT bound to: 32'b11111111111111111100110000001000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5_L__parameterized1' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+INFO: [Synth 8-6157] synthesizing module 'LUT5_L__parameterized2' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+	Parameter INIT bound to: 32'b00000000000000000011001000100010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5_L__parameterized2' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized1' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111011111111111111001111111111111100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized1' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized5' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b0000000000000000000000000000000000000000000000000000010001000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized5' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6157] synthesizing module 'LUT5_L__parameterized3' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+	Parameter INIT bound to: 32'b00100010001100100011000000110000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5_L__parameterized3' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized2' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111110111111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized2' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized3' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111110101010101010101010101011111111111010101110101011101010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized3' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized4' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111011111111111111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized4' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized5' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000000000000000000000000000001000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized5' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized8' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b11101010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized8' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT4_L__parameterized5' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+	Parameter INIT bound to: 16'b1011101000110000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4_L__parameterized5' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized9' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b11011000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized9' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized10' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b11100100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized10' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized11' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b10111000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized11' (18#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT2_L' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39149]
+	Parameter INIT bound to: 4'b0010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT2_L' (19#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39149]
+INFO: [Synth 8-6157] synthesizing module 'LUT2' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+	Parameter INIT bound to: 4'b0001 
+INFO: [Synth 8-6155] done synthesizing module 'LUT2' (20#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized6' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111011101111111011100110011111100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized6' (20#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized7' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111000000000000000000000000000011100000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized7' (20#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized6' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b1111111100001111111111110000110001000100000001000100010000000100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized6' (20#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6157] synthesizing module 'LUT4_L__parameterized6' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+	Parameter INIT bound to: 16'b0000111000001010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4_L__parameterized6' (20#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized8' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111111111110000000000000000000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized8' (20#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT4_L__parameterized7' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+	Parameter INIT bound to: 16'b0101010001000100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4_L__parameterized7' (20#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized9' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111101011111111111110101111101011111010111111101111101011111010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized9' (20#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT4' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b0011001000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4' (21#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT5_L__parameterized4' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+	Parameter INIT bound to: 32'b11111111111111110000000100000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5_L__parameterized4' (21#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized7' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b1111101011111010111110101111101010101010111010101010101010101010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized7' (21#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized10' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b1111111101010100111111110000000001010100010101000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized10' (21#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'FDE' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13609]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDE' (22#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13609]
+INFO: [Synth 8-6157] synthesizing module 'FDP' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13635]
+	Parameter INIT bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'FDP' (23#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13635]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized8' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b0000000000000000000000000000000011110101111100100000000000000010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized8' (23#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6157] synthesizing module 'LUT4_L__parameterized8' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+	Parameter INIT bound to: 16'b1111111111111110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4_L__parameterized8' (23#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39235]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized1' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b11111111111111111111111111101010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized1' (23#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'b16_n2FydH_ab_FH9_K4_5s_x_0' [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:22]
+INFO: [Synth 8-6157] synthesizing module 'FDC__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13479]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDC__parameterized0' (23#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13479]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized12' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b10101100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized12' (23#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT3_L__parameterized13' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+	Parameter INIT bound to: 8'b01010100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3_L__parameterized13' (23#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39190]
+INFO: [Synth 8-6157] synthesizing module 'LUT2_L__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39149]
+	Parameter INIT bound to: 4'b1110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT2_L__parameterized0' (23#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39149]
+INFO: [Synth 8-6157] synthesizing module 'LUT2__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+	Parameter INIT bound to: 4'b0100 
+INFO: [Synth 8-6155] done synthesizing module 'LUT2__parameterized0' (23#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized9' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111011111111111111111111111111111010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized9' (23#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6155] done synthesizing module 'b16_n2FydH_ab_FH9_K4_5s_x_0' (24#1) [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:22]
+INFO: [Synth 8-6157] synthesizing module 'b16_n2FydH_ab_FH9_K4_4s_x_0' [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:260]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized10' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b1111111111111111111111111111111111111111111111111111111111111110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized10' (24#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6155] done synthesizing module 'b16_n2FydH_ab_FH9_K4_4s_x_0' (25#1) [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:260]
+INFO: [Synth 8-6157] synthesizing module 'b8_nR_ymqrG_7s_5s_0_0s_0s_0_63s_x_0' [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:534]
+INFO: [Synth 8-6157] synthesizing module 'FDE__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13609]
+	Parameter INIT bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'FDE__parameterized0' (25#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13609]
+INFO: [Synth 8-6157] synthesizing module 'FDE__parameterized1' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13609]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FDE__parameterized1' (25#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13609]
+INFO: [Synth 8-6157] synthesizing module 'FDC__parameterized1' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13479]
+	Parameter INIT bound to: 1'b1 
+INFO: [Synth 8-6155] done synthesizing module 'FDC__parameterized1' (25#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13479]
+INFO: [Synth 8-6157] synthesizing module 'LUT6_L__parameterized11' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+	Parameter INIT bound to: 64'b1111011111111111111111111111111110000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6_L__parameterized11' (25#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39385]
+INFO: [Synth 8-6157] synthesizing module 'LUT5_L__parameterized5' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+	Parameter INIT bound to: 32'b11101010101010100010101010101010 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5_L__parameterized5' (25#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39284]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized11' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0000000000000001000000000000000000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized11' (25#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized12' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 64'b0010000000000000000000000000000000000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized12' (25#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+INFO: [Synth 8-6155] done synthesizing module 'b8_nR_ymqrG_7s_5s_0_0s_0s_0_63s_x_0' (26#1) [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:534]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized0' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b0000000000000110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized0' (26#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized1' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 16'b0101001111110011 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized1' (26#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized2' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b00000000000100000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized2' (26#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT3' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+	Parameter INIT bound to: 8'b11101111 
+INFO: [Synth 8-6155] done synthesizing module 'LUT3' (27#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39161]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized3' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+	Parameter INIT bound to: 32'b11111111111111111111111111111110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized3' (27#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6157] synthesizing module 'LUT2__parameterized1' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+	Parameter INIT bound to: 4'b1110 
+INFO: [Synth 8-6155] done synthesizing module 'LUT2__parameterized1' (27#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39123]
+INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized4' [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Common 17-14] Message 'Synth 8-6157' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+	Parameter INIT bound to: 32'b11111111111111101111000011110000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized4' (27#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39249]
+INFO: [Synth 8-6155] done synthesizing module 'b7_OCByLXC_Z1_x_0' (28#1) [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:843]
+	Parameter INIT bound to: 16'b1000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized2' (28#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39203]
+	Parameter INIT bound to: 64'b0000000000000000000000000000000100000000000000000000000000000000 
+INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized13' (28#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39299]
+	Parameter INIT bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'FD_1' (29#1) [/home/macro/xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:13891]
+INFO: [Common 17-14] Message 'Synth 8-6155' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+	Parameter INIT bound to: 16'b1111111111111111 
+	Parameter IS_CLK_INVERTED bound to: 1'b0 
+	Parameter INIT bound to: 64'b1000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT bound to: 64'b0011111100111101001101110011010100001010000010000000001000000000 
+	Parameter INIT bound to: 32'b00100000000000000000000000000000 
+	Parameter INIT bound to: 64'b1111101111011001111010101100100001110011010100010110001001000000 
+	Parameter INIT bound to: 32'b00000000000000010000000000000000 
+	Parameter INIT bound to: 64'b0000000000000000000000010000000000000000000000000000000000000000 
+	Parameter INIT bound to: 16'b0001000000000000 
+	Parameter INIT bound to: 32'b11110100000001001111000000000000 
+	Parameter INIT bound to: 16'b0000000000000001 
+	Parameter INIT bound to: 1'b0 
+	Parameter IS_CLR_INVERTED bound to: 1'b0 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter INIT bound to: 4'b1000 
+	Parameter INIT bound to: 32'b10000000000000000000000000000000 
+	Parameter INIT bound to: 16'b0000000001000000 
+	Parameter INIT bound to: 16'b1111111000000010 
+	Parameter INIT bound to: 8'b11100000 
+	Parameter INIT bound to: 16'b1000000000000000 
+	Parameter INIT bound to: 64'b1110101010101010101010101010101010101010101010101010101010101010 
+	Parameter INIT bound to: 1'b1 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter IS_PRE_INVERTED bound to: 1'b0 
+	Parameter INIT bound to: 4'b1000 
+	Parameter INIT bound to: 4'b1011 
+	Parameter INIT bound to: 4'b1101 
+	Parameter DOA_REG bound to: 0 - type: integer 
+	Parameter DOB_REG bound to: 0 - type: integer 
+	Parameter EN_ECC_READ bound to: FALSE - type: string 
+	Parameter EN_ECC_WRITE bound to: FALSE - type: string 
+	Parameter INITP_00 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_01 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_02 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_03 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_04 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_05 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_06 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_07 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_08 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_09 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_0A bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_0B bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_0C bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_0D bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_0E bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INITP_0F bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_00 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_01 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_02 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_03 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_04 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_05 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_06 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_07 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_08 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_09 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_0A bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_0B bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_0C bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_0D bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_0E bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_0F bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_10 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_11 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_12 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_13 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_14 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_15 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_16 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_17 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_18 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_19 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_1A bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_1B bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_1C bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_1D bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_1E bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_1F bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_20 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_21 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_22 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_23 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_24 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_25 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_26 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_27 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_28 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_29 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_2A bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_2B bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_2C bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_2D bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_2E bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_2F bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_30 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_31 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_32 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_33 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_34 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_35 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_36 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_37 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_38 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_39 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_3A bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_3B bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_3C bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_3D bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_3E bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_3F bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_40 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_41 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_42 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_43 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_44 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_45 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_46 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_47 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_48 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_49 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_4A bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_4B bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_4C bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_4D bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_4E bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_4F bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_50 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_51 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_52 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_53 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_54 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_55 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_56 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_57 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_58 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_59 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_5A bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_5B bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_5C bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_5D bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_5E bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_5F bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_60 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_61 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_62 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_63 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_64 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_65 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_66 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_67 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_68 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_69 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_6A bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_6B bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_6C bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_6D bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_6E bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_6F bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_70 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_71 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_72 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_73 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_74 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_75 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_76 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_77 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_78 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_79 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_7A bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_7B bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_7C bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_7D bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_7E bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_7F bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+	Parameter INIT_A bound to: 36'b000000000000000000000000000000000000 
+	Parameter INIT_B bound to: 36'b000000000000000000000000000000000000 
+	Parameter INIT_FILE bound to: NONE - type: string 
+	Parameter IS_CLKARDCLK_INVERTED bound to: 1'b0 
+	Parameter IS_CLKBWRCLK_INVERTED bound to: 1'b0 
+	Parameter IS_ENARDEN_INVERTED bound to: 1'b0 
+	Parameter IS_ENBWREN_INVERTED bound to: 1'b0 
+	Parameter IS_RSTRAMARSTRAM_INVERTED bound to: 1'b0 
+	Parameter IS_RSTRAMB_INVERTED bound to: 1'b0 
+	Parameter IS_RSTREGARSTREG_INVERTED bound to: 1'b0 
+	Parameter IS_RSTREGB_INVERTED bound to: 1'b0 
+	Parameter RAM_EXTENSION_A bound to: NONE - type: string 
+	Parameter RAM_EXTENSION_B bound to: NONE - type: string 
+	Parameter RAM_MODE bound to: SDP - type: string 
+	Parameter RDADDR_COLLISION_HWCONFIG bound to: DELAYED_WRITE - type: string 
+	Parameter READ_WIDTH_A bound to: 72 - type: integer 
+	Parameter READ_WIDTH_B bound to: 0 - type: integer 
+	Parameter RSTREG_PRIORITY_A bound to: REGCE - type: string 
+	Parameter RSTREG_PRIORITY_B bound to: REGCE - type: string 
+	Parameter SIM_COLLISION_CHECK bound to: ALL - type: string 
+	Parameter SIM_DEVICE bound to: 7SERIES - type: string 
+	Parameter SRVAL_A bound to: 36'b000000000000000000000000000000000000 
+	Parameter SRVAL_B bound to: 36'b000000000000000000000000000000000000 
+	Parameter WRITE_MODE_A bound to: READ_FIRST - type: string 
+	Parameter WRITE_MODE_B bound to: READ_FIRST - type: string 
+	Parameter WRITE_WIDTH_A bound to: 0 - type: integer 
+	Parameter WRITE_WIDTH_B bound to: 72 - type: integer 
+	Parameter INIT bound to: 8'b11100100 
+	Parameter INIT bound to: 32'b00010000000000000000000000000000 
+WARNING: [Synth 8-3848] Net N_763 in module/entity IICE_x_0 does not have driver. [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:7140]
+	Parameter DISABLE_JTAG bound to: FALSE - type: string 
+	Parameter JTAG_CHAIN bound to: 3 - type: integer 
+	Parameter DISABLE_JTAG bound to: FALSE - type: string 
+	Parameter JTAG_CHAIN bound to: 4 - type: integer 
+	Parameter INIT bound to: 32'b11110011110100011110001011000000 
+	Parameter INIT bound to: 8'b00001000 
+	Parameter INIT bound to: 1'b0 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter IS_R_INVERTED bound to: 1'b0 
+	Parameter INIT bound to: 1'b1 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter IS_S_INVERTED bound to: 1'b0 
+WARNING: [Synth 8-3848] Net N_765 in module/entity comm_block_x_0 does not have driver. [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:8195]
+WARNING: [Synth 8-3848] Net N_764 in module/entity syn_identify_core0_0 does not have driver. [/home/macro/github/verilog-basic/identify_example/xilinx/idc_test/idc_test.vm:8268]
+	Parameter INIT bound to: 8'b00000010 
+	Parameter INIT bound to: 8'b00000001 
+	Parameter INIT bound to: 8'b10000000 
+	Parameter INIT bound to: 8'b00000100 
+	Parameter INIT bound to: 8'b00100000 
+	Parameter INIT bound to: 8'b01000000 
+WARNING: [Synth 8-3331] design b9_ORbIwXaEF_32s_18446744071913144800_0s_x_0 has unconnected port IICE_comm2iice[8]
+WARNING: [Synth 8-3331] design comm_block_x_0 has unconnected port IICE_comm2iice[6]
+WARNING: [Synth 8-3331] design b7_OCByLXC_Z1_x_0 has unconnected port IICE_comm2iice[6]
+WARNING: [Synth 8-3331] design IICE_x_0 has unconnected port IICE_comm2iice[6]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 2058.812 ; gain = 265.438 ; free physical = 425 ; free virtual = 3556
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2058.812 ; gain = 265.438 ; free physical = 428 ; free virtual = 3559
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2058.812 ; gain = 265.438 ; free physical = 428 ; free virtual = 3559
+---------------------------------------------------------------------------------
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2064.750 ; gain = 0.000 ; free physical = 421 ; free virtual = 3552
+INFO: [Netlist 29-17] Analyzing 681 Unisim elements for replacement
+WARNING: [Netlist 29-432] The IBUFG primitive 'clk_ibuf_iso_cZ' has been retargeted to an IBUF primitive only. No BUFG will be added. If a global buffer is intended, please instantiate an available global clock primitive from the current architecture.
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/macro/github/verilog-basic/identify_example/xilinx/src/flowled.xdc]
+Finished Parsing XDC File [/home/macro/github/verilog-basic/identify_example/xilinx/src/flowled.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/macro/github/verilog-basic/identify_example/xilinx/src/flowled.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/led_stream_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/led_stream_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2173.578 ; gain = 0.000 ; free physical = 335 ; free virtual = 3467
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 666 instances were transformed.
+  FD => FDRE: 151 instances
+  FDC => FDCE: 83 instances
+  FDE => FDRE: 172 instances
+  FDP => FDPE: 1 instance 
+  FD_1 => FDRE (inverted pins: C): 21 instances
+  IBUFG => IBUF: 1 instance 
+  INV => LUT1: 3 instances
+  LUT1_L => LUT1: 33 instances
+  LUT2_L => LUT2: 38 instances
+  LUT3_L => LUT3: 66 instances
+  LUT4_L => LUT4: 67 instances
+  LUT5_L => LUT5: 9 instances
+  LUT6_L => LUT6: 21 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2173.578 ; gain = 0.000 ; free physical = 335 ; free virtual = 3467
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 389 ; free virtual = 3521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7k325tfbg676-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 389 ; free virtual = 3521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 389 ; free virtual = 3521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 389 ; free virtual = 3522
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 840 (col length:140)
+BRAMs: 890 (col length: RAMB18 140 RAMB36 70)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 388 ; free virtual = 3524
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 271 ; free virtual = 3407
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 271 ; free virtual = 3407
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 262 ; free virtual = 3398
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:34 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 251 ; free virtual = 3397
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:34 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 251 ; free virtual = 3397
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:34 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 251 ; free virtual = 3397
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:34 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 251 ; free virtual = 3397
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:34 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 251 ; free virtual = 3397
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:34 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 251 ; free virtual = 3397
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BSCANE2  |     2|
+|2     |BUFG     |     3|
+|3     |CARRY4   |    14|
+|4     |GND      |     3|
+|5     |INV      |     3|
+|6     |LUT1     |    12|
+|7     |LUT1_L   |    33|
+|8     |LUT2     |    15|
+|9     |LUT2_L   |    38|
+|10    |LUT3     |    11|
+|11    |LUT3_L   |    66|
+|12    |LUT4     |    10|
+|13    |LUT4_L   |    67|
+|14    |LUT5     |    10|
+|15    |LUT5_L   |     9|
+|16    |LUT6     |    21|
+|17    |LUT6_L   |    21|
+|18    |RAMB36E1 |     1|
+|19    |SRLC16E  |    22|
+|20    |VCC      |     2|
+|21    |FD       |   151|
+|22    |FDC      |    83|
+|23    |FDCE     |    71|
+|24    |FDE      |   172|
+|25    |FDP      |     1|
+|26    |FDPE     |     1|
+|27    |FDRE     |    19|
+|28    |FDSE     |    13|
+|29    |FD_1     |    21|
+|30    |IBUF     |     1|
+|31    |IBUFG    |     1|
+|32    |OBUF     |     8|
++------+---------+------+
+
+Report Instance Areas: 
++------+------------------------------------------+-------------------------------------------------------+------+
+|      |Instance                                  |Module                                                 |Cells |
++------+------------------------------------------+-------------------------------------------------------+------+
+|1     |top                                       |                                                       |   905|
+|2     |  ident_coreinst                          |syn_identify_core0_0                                   |   789|
+|3     |    IICE_INST                             |IICE_x_0                                               |   732|
+|4     |      b3_SoW                              |b11_OFWNT9s_8tZ_Z3_x_0                                 |   351|
+|5     |        b3_SoW                            |b13_vFW_xNywD_EdR_50s_7s_128s_0s_x_0                   |     3|
+|6     |        b6_SoWyQD                         |b11_SoWyP0zEFKY_Z2_x_0                                 |    46|
+|7     |        samplerStatus                     |b19_nczQ_DYg_YFaRM_oUoP_18s_0s_x_0                     |    36|
+|8     |        virOut                            |b19_nczQ_DYg_YFaRM_oUoP_32s_0s_x_0                     |    64|
+|9     |      b4_PfFz                             |b8_PfFzrNYI_x_0                                        |    50|
+|10    |        b7_PbTtl9G                        |b13_PSyil9s1fkJ_K_x_0                                  |    50|
+|11    |          b6_2ZGFQ9                       |b15_CRGcTCua_eH4_ki_x_0                                |     5|
+|12    |            b25_O2yyf_fG2_MiQA1E6_h_lnxob |b9_O2yyf_fG2_x_0_0                                     |     5|
+|13    |          b8_1LbcgK_A                     |b7_V71OJqz_65535_x_15_0                                |     1|
+|14    |          b8_1LbcgK_I                     |b7_V71OJqz_65535_x_19_0                                |     1|
+|15    |          b8_1LbcgK_J                     |b7_V71OJqz_65535_x_14_0                                |     1|
+|16    |          b8_1LbcgK_Q0                    |b7_V71OJqz_65535_x_17_0                                |     1|
+|17    |          b8_1LbcgK_R                     |b7_V71OJqz_65535_x_21_0                                |     1|
+|18    |          b8_1LbcgK_S                     |b7_V71OJqz_65535_x_20_0                                |     1|
+|19    |          b8_1LbcgK_U                     |b7_V71OJqz_65535_x_16_0                                |     1|
+|20    |          b8_1LbcgK_V                     |b7_V71OJqz_65535_x_12_0                                |     1|
+|21    |          b8_1LbcgK_n                     |b7_V71OJqz_65535_x_13_0                                |     1|
+|22    |          b8_1LbcgK_q                     |b7_V71OJqz_65535_x_18_0                                |     1|
+|23    |          b9_1LbcgK_Im                    |b7_V71OJqz_65535_x_1_0                                 |     1|
+|24    |          b9_1LbcgK_In                    |b7_V71OJqz_65535_x_0_0                                 |     1|
+|25    |          b9_1LbcgK_S5                    |b7_V71OJqz_65535_x_5_0                                 |     1|
+|26    |          b9_1LbcgK_SS                    |b7_V71OJqz_65535_x_3_0                                 |     1|
+|27    |          b9_1LbcgK_SV                    |b7_V71OJqz_65535_x_8_0                                 |     1|
+|28    |          b9_1LbcgK_Sd                    |b7_V71OJqz_65535_x_9_0                                 |     1|
+|29    |          b9_1LbcgK_Se                    |b7_V71OJqz_65535_x_4_0                                 |     1|
+|30    |          b9_1LbcgK_Sl                    |b7_V71OJqz_65535_x_7_0                                 |     1|
+|31    |          b9_1LbcgK_Sm                    |b7_V71OJqz_65535_x_11_0                                |     1|
+|32    |          b9_1LbcgK_Sn                    |b7_V71OJqz_65535_x_10_0                                |     1|
+|33    |          b9_1LbcgK_Sp                    |b7_V71OJqz_65535_x_6_0                                 |     1|
+|34    |          b9_1LbcgK_Sq                    |b7_V71OJqz_65535_x_2_0                                 |     1|
+|35    |      b5_nUTGT                            |b7_OCByLXC_Z1_x_0                                      |   269|
+|36    |        cntrl_chain                       |b8_nR_ymqrG_7s_5s_0_0s_0s_0_63s_x_0                    |    30|
+|37    |        iclksync_current_state            |b16_n2FydH_ab_FH9_K4_4s_x_0                            |    29|
+|38    |        iclksync_status                   |b16_n2FydH_ab_FH9_K4_5s_x_0                            |    23|
+|39    |      b8_uKr_IFLY                         |b3_uKr_x_0                                             |    10|
+|40    |    comm_block_INST                       |comm_block_x_0                                         |    57|
+|41    |      b7_Rcmi_ql                          |b16_Rcmi_qlx9_yHpm7y_6s_1s_0s_0s_8s_0s_0s_1s_6s_7s_x_0 |    18|
+|42    |      b9_ORb_xNywD                        |b9_ORbIwXaEF_32s_18446744071913144800_0s_x_0           |    34|
+|43    |      jtagi                               |jtag_interface_x_0                                     |     5|
++------+------------------------------------------+-------------------------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:34 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.578 ; gain = 380.203 ; free physical = 251 ; free virtual = 3397
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:31 ; elapsed = 00:00:35 . Memory (MB): peak = 2173.578 ; gain = 265.438 ; free physical = 299 ; free virtual = 3445
+Synthesis Optimization Complete : Time (s): cpu = 00:00:34 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.586 ; gain = 380.203 ; free physical = 299 ; free virtual = 3445
+INFO: [Project 1-571] Translating synthesized netlist
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+WARNING: [Synth 37-28] Duplicate attribute 'INIT' found for instance 'b8_OvyH3DYg' of module 'SRLC16E'.
+Resolution: Check your design sources near the definition of the module or any related 'include files, looking for duplicate definitions with different values.
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2173.586 ; gain = 0.000 ; free physical = 364 ; free virtual = 3510
+INFO: [Netlist 29-17] Analyzing 681 Unisim elements for replacement
+WARNING: [Netlist 29-432] The IBUFG primitive 'clk_ibuf_iso_cZ' has been retargeted to an IBUF primitive only. No BUFG will be added. If a global buffer is intended, please instantiate an available global clock primitive from the current architecture.
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2173.586 ; gain = 0.000 ; free physical = 308 ; free virtual = 3455
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 666 instances were transformed.
+  FD => FDRE: 151 instances
+  FDC => FDCE: 83 instances
+  FDE => FDRE: 172 instances
+  FDP => FDPE: 1 instance 
+  FD_1 => FDRE (inverted pins: C): 21 instances
+  IBUFG => IBUF: 1 instance 
+  INV => LUT1: 3 instances
+  LUT1_L => LUT1: 33 instances
+  LUT2_L => LUT2: 38 instances
+  LUT3_L => LUT3: 66 instances
+  LUT4_L => LUT4: 67 instances
+  LUT5_L => LUT5: 9 instances
+  LUT6_L => LUT6: 21 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+216 Infos, 54 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:47 ; elapsed = 00:00:52 . Memory (MB): peak = 2173.586 ; gain = 687.887 ; free physical = 419 ; free virtual = 3566
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2173.586 ; gain = 0.000 ; free physical = 419 ; free virtual = 3566
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint '/home/macro/github/verilog-basic/identify_example/xilinx/idc_vivado/idc_vivado.runs/synth_1/led_stream.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file led_stream_utilization_synth.rpt -pb led_stream_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Aug  5 10:17:50 2023...

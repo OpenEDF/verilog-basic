@@ -1,0 +1,103 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
+| Date         : Sat Aug  5 10:19:09 2023
+| Host         : macro-ubuntu running 64-bit Ubuntu 20.04.3 LTS
+| Command      : report_control_sets -verbose -file led_stream_control_sets_placed.rpt
+| Design       : led_stream
+| Device       : xc7k325t
+---------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    25 |
+|    Minimum number of control sets                        |    25 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    68 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    25 |
+| >= 0 to < 4        |     2 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     5 |
+| >= 8 to < 10       |     2 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     1 |
+| >= 16              |    12 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             172 |           42 |
+| No           | No                    | Yes                    |              84 |           35 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |             172 |           51 |
+| Yes          | No                    | Yes                    |              72 |           14 |
+| Yes          | Yes                   | No                     |              32 |            4 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++---------------------------------------------------------+-----------------------------------------------------------------+-------------------------------------------------------------+------------------+----------------+
+|                       Clock Signal                      |                          Enable Signal                          |                       Set/Reset Signal                      | Slice Load Count | Bel Load Count |
++---------------------------------------------------------+-----------------------------------------------------------------+-------------------------------------------------------------+------------------+----------------+
+|  clk_c                                                  |                                                                 | ident_coreinst/IICE_INST/b5_nUTGT/b5_voSc3                  |                1 |              1 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[1] |                                                                 | ident_coreinst/IICE_INST/b5_nUTGT/cntrl_chain/b6_nfs_IF[1]  |                1 |              1 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[1] | ident_coreinst/IICE_INST/b8_uKr_IFLY/b7_nUTQ_9u_1z              |                                                             |                1 |              5 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] | ident_coreinst/IICE_INST/b5_nUTGT/cntrl_chain/b10_nfs_M9kYfr4   |                                                             |                2 |              5 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] | ident_coreinst/IICE_INST/b5_nUTGT/cntrl_chain/b10_nUT_M9kYfr4   |                                                             |                1 |              7 |
+|  clk_c                                                  | ident_coreinst/IICE_INST/b5_nUTGT/b7_nYhI39se                   |                                                             |                2 |              7 |
+|  clk_c                                                  | ident_coreinst/IICE_INST/b3_SoW/b12_PSyi_KyDbLbb_0_sqmuxa       |                                                             |                1 |              7 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] | ident_coreinst/IICE_INST/b3_SoW/b9_v_mzCDYXs13                  | ident_coreinst/IICE_INST/b5_nUTGT/b5_voSc3                  |                3 |              7 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[1] | ident_coreinst/IICE_INST/b8_uKr_IFLY/b9_PKFoLX_ab_1z            |                                                             |                2 |              7 |
+|  ident_coreinst/comm_block_INST/jtagi/hcr_update_i      | ident_coreinst/comm_block_INST/jtagi/b10_8Kz_fFfsjX             |                                                             |                2 |              8 |
+|  ident_coreinst/comm_block_INST/jtagi/dr2_tck_i         | ident_coreinst/comm_block_INST/b7_Rcmi_ql/b9_OvyH3_saL_0_sqmuxa |                                                             |                2 |              8 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] |                                                                 | ident_coreinst/IICE_INST/b5_nUTGT/cntrl_chain/b6_nfs_IF[1]  |                5 |             12 |
+|  clk_c                                                  | ident_coreinst/IICE_INST/b3_SoW/b6_SoWyQD/b4_2o_z               | ident_coreinst/IICE_INST/b5_nUTGT/b5_voSc3                  |                3 |             14 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] | ident_coreinst/IICE_INST/b3_SoW/b6_vob_fF                       |                                                             |                7 |             18 |
+| ~ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] |                                                                 |                                                             |                7 |             21 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] | ident_coreinst/IICE_INST/b4_PfFz/b7_PbTtl9G/b7_OvyH39u          |                                                             |               22 |             22 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] | ident_coreinst/IICE_INST/b5_nUTGT/un1_b12_uRrc2XfY_rbN10_i      |                                                             |               10 |             23 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] | ident_coreinst/IICE_INST/b3_SoW/virOut/b6_vob_fF                |                                                             |                9 |             32 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] | ident_coreinst/comm_block_INST/b9_ORb_xNywD/un1_b3_ORb9_i       | ident_coreinst/comm_block_INST/b9_ORb_xNywD/b3_ORb_0_sqmuxa |                4 |             32 |
+|  clk_c                                                  |                                                                 | rst_n_c_i                                                   |               14 |             35 |
+|  clk_c                                                  |                                                                 | ident_coreinst/IICE_INST/b5_nUTGT/cntrl_chain/b6_nfs_IF[1]  |               14 |             35 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] | ident_coreinst/IICE_INST/b3_SoW/un1_b7_nYJ_BFM8                 |                                                             |               12 |             45 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] |                                                                 |                                                             |               11 |             46 |
+|  ident_coreinst/comm_block_INST/jtagi/IICE_comm2iice[4] | ident_coreinst/IICE_INST/b3_SoW/b7_nYJ_BFM8                     | ident_coreinst/IICE_INST/b5_nUTGT/b5_voSc3                  |                8 |             51 |
+|  clk_c                                                  |                                                                 |                                                             |               24 |            105 |
++---------------------------------------------------------+-----------------------------------------------------------------+-------------------------------------------------------------+------------------+----------------+
+
+

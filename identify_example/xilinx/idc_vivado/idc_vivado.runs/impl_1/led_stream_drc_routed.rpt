@@ -1,0 +1,106 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
+| Date         : Sat Aug  5 10:19:59 2023
+| Host         : macro-ubuntu running 64-bit Ubuntu 20.04.3 LTS
+| Command      : report_drc -file led_stream_drc_routed.rpt -pb led_stream_drc_routed.pb -rpx led_stream_drc_routed.rpx
+| Design       : led_stream
+| Device       : xc7k325tfbg676-2
+| Speed File   : -2
+| Design State : Fully Routed
+------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 14
++-----------+----------+----------------------------+------------+
+| Rule      | Severity | Description                | Violations |
++-----------+----------+----------------------------+------------+
+| REQP-1839 | Warning  | RAMB36 async control check | 14         |
++-----------+----------+----------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+REQP-1839#1 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRARDADDR[10] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b9_v_mzCDYXs[4]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/genblk9.b9_v_mzCDYXs_Z[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#2 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRARDADDR[11] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b9_v_mzCDYXs[5]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/genblk9.b9_v_mzCDYXs_Z[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#3 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRARDADDR[12] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b9_v_mzCDYXs[6]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/genblk9.b9_v_mzCDYXs_Z[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#4 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRARDADDR[6] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b9_v_mzCDYXs[0]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/genblk9.b9_v_mzCDYXs_Z[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#5 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRARDADDR[7] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b9_v_mzCDYXs[1]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/genblk9.b9_v_mzCDYXs_Z[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#6 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRARDADDR[8] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b9_v_mzCDYXs[2]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/genblk9.b9_v_mzCDYXs_Z[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#7 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRARDADDR[9] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b9_v_mzCDYXs[3]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/genblk9.b9_v_mzCDYXs_Z[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#8 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRBWRADDR[10] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b12_2_St6KCa_jHv[4]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/b12_2_St6KCa_jHv_Z[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#9 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRBWRADDR[11] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b12_2_St6KCa_jHv[5]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/b12_2_St6KCa_jHv_Z[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#10 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRBWRADDR[12] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b12_2_St6KCa_jHv[6]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/b12_2_St6KCa_jHv_Z[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#11 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRBWRADDR[6] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b12_2_St6KCa_jHv[0]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/b12_2_St6KCa_jHv_Z[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#12 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRBWRADDR[7] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b12_2_St6KCa_jHv[1]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/b12_2_St6KCa_jHv_Z[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#13 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRBWRADDR[8] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b12_2_St6KCa_jHv[2]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/b12_2_St6KCa_jHv_Z[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1839#14 Warning
+RAMB36 async control check  
+The RAMB36E1 ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0 has an input control pin ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b3_SoW_b3_SoW_0_0/ADDRBWRADDR[9] (net: ident_coreinst/IICE_INST/b3_SoW/b3_SoW/b12_2_St6KCa_jHv[3]) which is driven by a register (ident_coreinst/IICE_INST/b3_SoW/b12_2_St6KCa_jHv_Z[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+

@@ -8,5 +8,10 @@ syn:
 idf:
 	identify_debugger -prj idc_test.prj &
 
+xilinx:
+	setvivado;
+	vivado -mode gui idc_vivado/idc_vivado.xpr & 
+
 clean:
-	rm -rf *.log *.log.bak.* synlog synlog.tcl *.log.bak *.bak synlog.tcl output
+	rm -rf *.log *.log.bak.* synlog synlog.tcl \
+    *.jou	*.log.bak *.bak synlog.tcl output
