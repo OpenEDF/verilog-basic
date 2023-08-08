@@ -1,0 +1,99 @@
+#=====================================================================
+#       ".synopsys_dc.setup" Initialization File for
+#
+#           Dc_Shell and Design_Analyzer
+#
+# Design Compiler Version: 2018
+#=====================================================================
+# Define work directory
+set SYN_WORK_PATH /home/macro/github/verilog-basic/dc-example/synthesis
+set DESIGN_NAME "sequ_div"
+set CURRENT_RTL_SRC $SYN_WORK_PATH/src
+
+#=====================================================================
+# 1. deifine symbol lib and link lib
+#=====================================================================
+define_design_lib work -path $SYN_WORK_PATH
+set SYMBOL_PATH_STD /home/macro/synopsys/dc_pdk_lib/SMIC180/std/symbols
+set SYMBOL_PATH_IO /home/macro/synopsys/dc_pdk_lib/SMIC180/io/symbol
+set LINK_PATH /home/macro/synopsys/dc_pdk_lib/SMIC180/std/synopsys
+set RTL_PATH $SYN_WORK_PATH/src/work
+set SCRIPT_PATH $SYN_WORK_PATH/syn/script
+
+# Define the search path
+set_app_var search_path [ list . $search_path $LINK_PATH \
+                                 $SYMBOL_PATH_IO         \
+                                 $SYMBOL_PATH_STD        \
+                                 $RTL_PATH               \
+                                 $SCRIPT_PATH            \
+                                 $CURRENT_RTL_SRC]
+
+# Define the target logic library, symbol library,and link libraries
+# Logic Library
+# The logic libraries that Design Compiler uses to resolve cell references 
+# are called link libraries. Link libraries contain the descriptions of
+# library cells and subdesigns in a mapped netlist and can also contain
+# design files.
+
+# Symbol Library .sdb
+set_app_var symbol_library [ list smic18.sdb ]
+
+# DesignWare Library .sldb
+# synthetic_library
+# dw_foundation.sldb library is automatically added to the synthetic
+#  library list.
+
+# Link Library .db
+set_app_var link_library [ list * fast.db fasta.db slow.db typical.db ]
+
+# Target Library .db
+set_app_var target_library [ list typical.db ]
+
+# Physical Library
+
+#=====================================================================
+# Set the user variable
+set_app_var designer "Macro"
+
+# Define aliases
+alias h history
+alias s "source -echo -verbose"
+alias rc "report_constraint -all_violators"
+alias rt report_timing
+alias ra report_area
+alias rq report_qor
+alias page_on {set sh_enable_page_mode true}
+alias page_off {set sh_enable_page_mode false}
+alias fr "remove_design -designs"
+
+# Configuration file
+history keep 200
+
+# Define the design environment
+#
+
+# Source the tcl script file
+#
+
+# Set the optimization constraints
+#
+
+#  Map and optimize the design
+#
+
+#  Analyze and debug the design
+#
+
+#  Save the design database
+#
+
+#  Show the design verify setting
+#
+echo "**********************************************************************************"
+echo "*********************************** Setting **************************************"
+echo "search_path:          $search_path"
+echo "link_library:         $link_library"
+echo "target_library:       $target_library"
+echo "symbol_library:       $symbol_library\n"
+echo "*********************************** Ready ****************************************"
+#=====================================================================

@@ -1,0 +1,56 @@
+#=====================================================================
+# Project   : Design Compiler tcl script
+# File Name : read_dile.scr
+# Author    : Macro
+# E-mail    : makermuyi@gmail.com
+# Version   : 0.0.1
+# Change Log:
+#   1. 2022-05-06  Initial version
+#   1. 2023-08-08  add 
+#
+#====================================================================
+
+#=====================================================================
+# Step 0: Setup the environment
+#=====================================================================
+set UNMAPPED_FILE_PATH  $SYN_WORK_PATH/unmapped
+set MAPPED_FILE_PATH    $SYN_WORK_PATH/mapped
+
+#=====================================================================
+# Step 1: Read & elaborate the RTL file list & check
+#=====================================================================
+set TOP_MODULE sequ_div
+analyze -format verilog [list sequ_div.v]
+elaborate       $TOP_MODULE -architecture verilog
+current_design  $TOP_MODULE
+
+if {[list] == 0} {
+    echo "Link with error!";
+    exit;
+}
+
+if {[check_design] == 0} {
+    echo "Check desing with error!";
+    exit;
+}
+
+#=====================================================================
+# Step 2: Reset the designi first
+#=====================================================================
+reset_design
+
+#=====================================================================
+# Step 3: Write the unmapped file
+#=====================================================================
+uniquify
+set uniquify_name_style "%s_%d"
+write_file -format ddc -hierarchy -output ${UNMAPPED_FILE_PATH}/${TOP_MODULE}.ddc
+
+#=====================================================================
+# Step 4: Define clock
+#=====================================================================
+
+#=====================================================================
+# Step 5: set
+#=====================================================================
+
