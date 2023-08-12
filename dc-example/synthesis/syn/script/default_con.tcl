@@ -71,15 +71,22 @@ set_output_delay  $OUTPUT_DELAY -clock $CLK_NAME  [all_outputs]
 set_load          [expr $MAX_LOAD*3]              [all_outputs]
 set_isolate_ports -type buffer                    [all_outputs]
 
-# set constraints on input and outputs ports
-suppress_message UID-401
-
-# set opearting conditions
-# set_operation_conditions 
-
-# turn on auto wire load selection
-# set auto_wire_load_selection true
+#====================================================================
+# 4. set opearting conditions
+#====================================================================
+set WIRE_LOAD_MODEL       csm18_wl10
+set OPERA_CONDITION       ss_lp62v_125c
+set_operating_conditions  -max $OPERA_CONDITION \
+                          -max_library $LIB_NAME
+set auto_wire_load_selection false
 set_wire_load_mode enclosed
-#set_wire_load_model -name xxx
+set_wire_load_model -name  $WIRE_LOAD_MODEL \
+                    -library $LIB_NAME
+
+#====================================================================
+# 5. set area constraint
+#====================================================================
+set_max_area  0
+
 
 #====================================================================
