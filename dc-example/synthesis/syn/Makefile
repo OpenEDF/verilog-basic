@@ -5,16 +5,15 @@
 # Brief: Design Compiler automated management by script.
 #
 #-----------------------------------------------------------------------------
-DC_OPTIONS = -f script/read_input.scr
 all: dc
 
 # start up dc on wire load mode
 dc:
-	dc_shell $(DC_OPTIONS)
+	dc_shell | tee dc_start.log
 
 # start up dc on topographical mode
 dcto:
-	dc_shell -topographical_mode $(DC_OPTIONS) 
+	dc_shell -topographical_mode | tee dc_start.log
 
 # clean the outfile
 .PHONY: clean

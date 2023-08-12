@@ -8,16 +8,16 @@
 #   1. 2022-05-06  Initial version
 #   1. 2023-08-08  add 
 #
-#====================================================================
+#=====================================================================
 
 #=====================================================================
-# Step 0: Setup the environment
+# step 0: setup the environment
 #=====================================================================
-set UNMAPPED_FILE_PATH  $SYN_WORK_PATH/unmapped
-set MAPPED_FILE_PATH    $SYN_WORK_PATH/mapped
+set UNMAPPED_FILE_PATH  $SYN_WORK_PATH/syn/unmapped
+set MAPPED_FILE_PATH    $SYN_WORK_PATH/syn/mapped
 
 #=====================================================================
-# Step 1: Read & elaborate the RTL file list & check
+# step 1: sead & elaborate the RTL file list & check
 #=====================================================================
 set TOP_MODULE sequ_div
 analyze -format verilog [list sequ_div.v]
@@ -35,22 +35,23 @@ if {[check_design] == 0} {
 }
 
 #=====================================================================
-# Step 2: Reset the designi first
+# step 2: reset the designi first
 #=====================================================================
 reset_design
 
 #=====================================================================
-# Step 3: Write the unmapped file
+# step 3: write the unmapped file
 #=====================================================================
 uniquify
 set uniquify_name_style "%s_%d"
 write_file -format ddc -hierarchy -output ${UNMAPPED_FILE_PATH}/${TOP_MODULE}.ddc
 
 #=====================================================================
-# Step 4: Define clock
+# step 4: define default constration
 #=====================================================================
+source default_con.tcl
 
 #=====================================================================
-# Step 5: set
+# step 5: check timing
 #=====================================================================
-
+check_timing

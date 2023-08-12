@@ -54,8 +54,9 @@ set_app_var target_library [ list typical.db ]
 #=====================================================================
 # Set the user variable
 set_app_var designer "Macro"
+set company "Synopsys,Inc."
 
-# Define aliases
+# define aliases
 alias h history
 alias s "source -echo -verbose"
 alias rc "report_constraint -all_violators"
@@ -66,30 +67,9 @@ alias page_on {set sh_enable_page_mode true}
 alias page_off {set sh_enable_page_mode false}
 alias fr "remove_design -designs"
 
-# Configuration file
+# configuration file
 history keep 200
 
-# Define the design environment
-#
-
-# Source the tcl script file
-#
-
-# Set the optimization constraints
-#
-
-#  Map and optimize the design
-#
-
-#  Analyze and debug the design
-#
-
-#  Save the design database
-#
-
-#  Show the design verify setting
-#
-echo "**********************************************************************************"
 echo "*********************************** Setting **************************************"
 echo "search_path:          $search_path"
 echo "link_library:         $link_library"
