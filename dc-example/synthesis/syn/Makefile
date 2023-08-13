@@ -21,10 +21,12 @@ dcto:
 clean_all:
 	rm -rf *.txt *.log default.svf alib-52 *.syn *.pvl *.mr ../*.mr \
 	       ../*-verilog.pvl ../*-verilog.syn mapped/*.ddc mapped/*.sdc \
-	       mapped/*.sdf unmapped/*.ddc netlist/*.v log/*.log
+	       mapped/*.sdf unmapped/*.ddc netlist/*.v log/*.log \
+		   /home/macro/synopsys_cache_L-2016.03-SP1
 
 clean:
 	rm -rf *.txt *.log default.svf alib-52 *.syn *.pvl *.mr ../*.mr \
-	       ../*-verilog.pvl ../*-verilog.syn  log/*.log
+	       ../*-verilog.pvl ../*-verilog.syn log/*.log \
+		   /home/macro/synopsys_cache_L-2016.03-SP1
 
 #-----------------------------------------------------------------------------
