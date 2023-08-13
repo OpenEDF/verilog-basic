@@ -10,15 +10,21 @@ all: dc
 
 # start up dc on wire load mode
 dc:
-	dc_shell $(DC_OPTION) | tee -i dc_start.log
+	dc_shell $(DC_OPTION) | tee -i log/dc_start.log
 
 # start up dc on topographical mode
 dcto:
-	dc_shell -topographical_mode $(DC_OPTION) | tee -i dc_start.log
+	dc_shell -topographical_mode $(DC_OPTION) | tee -i log/dc_start.log
 
 # clean the outfile
-.PHONY: clean
+.PHONY: clean dc dcto clean_all
+clean_all:
+	rm -rf *.txt *.log *.svf alib-52 *.syn *.pvl *.mr ../*.mr \
+	       ../*-verilog.pvl ../*-verilog.syn mapped/*.ddc mapped/*.sdc \
+	       mapped/*.sdf unmapped/*.ddc netlist/*.v log/*.log
+
 clean:
-	rm -rf *.txt *.log *.svf alib-52 *.syn *.pvl *.mr
+	rm -rf *.txt *.log *.svf alib-52 *.syn *.pvl *.mr ../*.mr \
+	       ../*-verilog.pvl ../*-verilog.syn  log/*.log
 
 #-----------------------------------------------------------------------------

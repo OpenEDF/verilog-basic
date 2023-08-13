@@ -15,6 +15,8 @@
 #=====================================================================
 set UNMAPPED_FILE_PATH  $SYN_WORK_PATH/syn/unmapped
 set MAPPED_FILE_PATH    $SYN_WORK_PATH/syn/mapped
+set NETLIST_PATH        $SYN_WORK_PATH/syn/netlist
+set REPORT_PATH         $SYN_WORK_PATH/syn/report
 
 #=====================================================================
 # step 1: sead & elaborate the RTL file list & check
@@ -52,6 +54,19 @@ write_file -format ddc -hierarchy -output ${UNMAPPED_FILE_PATH}/${TOP_MODULE}.dd
 source default_con.tcl
 
 #=====================================================================
-# step 5: check timing
+# step 5: check timing and design
 #=====================================================================
 check_timing
+check_design
+
+#=====================================================================
+# step 6: compile
+#=====================================================================
+source run_compile.tcl
+
+#=====================================================================
+# step 7: save report 
+#=====================================================================
+source save_output.tcl
+
+#=====================================================================

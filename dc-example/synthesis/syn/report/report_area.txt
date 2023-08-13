@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : sequ_div
+Version: L-2016.03-SP1
+Date   : Sun Aug 13 18:33:39 2023
+****************************************
+
+Library(s) Used:
+
+    typical (File: /home/macro/synopsys/dc_pdk_lib/SMIC180/std/synopsys/typical.db)
+
+Number of ports:                          303
+Number of nets:                          1612
+Number of cells:                         1374
+Number of combinational cells:           1080
+Number of sequential cells:               292
+Number of macros/black boxes:               0
+Number of buf/inv:                        222
+Number of references:                      46
+
+Combinational area:              15713.913801
+Buf/Inv area:                     1955.923226
+Noncombinational area:           13491.878159
+Macro/Black Box area:                0.000000
+Net Interconnect area:          143594.070038
+
+Total cell area:                 29205.791959
+Total area:                     172799.861997
+1

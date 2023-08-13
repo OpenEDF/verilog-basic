@@ -1,0 +1,168 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : sequ_div
+Version: L-2016.03-SP1
+Date   : Sun Aug 13 18:33:39 2023
+****************************************
+
+Operating Conditions: typical   Library: typical
+Wire Load Model Mode: enclosed
+
+  Startpoint: remainder_quotient_reg_32_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: remainder_quotient_reg_44_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  sequ_div           smic18_wl10           typical
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             2.00       2.00
+  remainder_quotient_reg_32_/CK (SDFFRXL)                 0.00       2.00 r
+  remainder_quotient_reg_32_/Q (SDFFRXL)                  0.85       2.85 r
+  sub_x_2/p_A[1] (sequ_div_DW01_sub_3)                    0.00       2.85 r
+  sub_x_2/U306/Y (NOR2XL)                                 0.23       3.09 f
+  sub_x_2/U310/Y (OAI21XL)                                0.37       3.45 r
+  sub_x_2/U229/Y (AOI21X1)                                0.16       3.62 f
+  sub_x_2/U196/Y (OAI21XL)                                0.36       3.98 r
+  sub_x_2/U122/Y (AOI21X1)                                0.17       4.14 f
+  sub_x_2/U319/Y (OAI21XL)                                0.38       4.53 r
+  sub_x_2/U87/Y (AOI21X1)                                 0.21       4.73 f
+  sub_x_2/U81/Y (OAI21XL)                                 0.39       5.12 r
+  sub_x_2/U73/Y (AOI21X1)                                 0.21       5.33 f
+  sub_x_2/U67/Y (OAI21XL)                                 0.39       5.72 r
+  sub_x_2/U59/Y (AOI21X1)                                 0.21       5.92 f
+  sub_x_2/U320/Y (OAI21XL)                                0.39       6.31 r
+  sub_x_2/U45/Y (AOI21X1)                                 0.21       6.51 f
+  sub_x_2/U39/Y (OAI21XL)                                 0.38       6.89 r
+  sub_x_2/U321/Y (AOI21XL)                                0.25       7.14 f
+  sub_x_2/U25/Y (OAI21XL)                                 0.40       7.54 r
+  sub_x_2/U17/Y (AOI21X1)                                 0.21       7.75 f
+  sub_x_2/U11/Y (OAI21XL)                                 0.38       8.12 r
+  sub_x_2/U315/Y (AOI21XL)                                0.18       8.30 f
+  sub_x_2/U1/Y (XOR2XL)                                   0.27       8.57 r
+  sub_x_2/p_DIFF[32] (sequ_div_DW01_sub_3)                0.00       8.57 r
+  I_7/Y (INVX1)                                           0.12       8.70 f
+  U633/Y (NOR2X2)                                         1.48      10.18 r
+  U594/Y (AOI22XL)                                        0.24      10.42 f
+  U282/Y (OAI21XL)                                        0.26      10.67 r
+  U429/Y (MX2X2)                                          0.16      10.84 r
+  remainder_quotient_reg_44_/D (SDFFRXL)                  0.00      10.84 r
+  data arrival time                                                 10.84
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (ideal)                             2.00      12.00
+  clock uncertainty                                      -0.50      11.50
+  remainder_quotient_reg_44_/CK (SDFFRXL)                 0.00      11.50 r
+  library setup time                                     -0.10      11.40
+  data required time                                                11.40
+  --------------------------------------------------------------------------
+  data required time                                                11.40
+  data arrival time                                                -10.84
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.56
+
+
+  Startpoint: divider[1] (input port clocked by clk)
+  Endpoint: remainder_quotient_reg_44_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: INPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  sequ_div           smic18_wl10           typical
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             2.00       2.00
+  input external delay                                    1.00       3.00 f
+  divider[1] (in)                                         0.19       3.19 f
+  sub_x_2/p_B[1] (sequ_div_DW01_sub_3)                    0.00       3.19 f
+  sub_x_2/U335/Y (INVXL)                                  0.27       3.47 r
+  sub_x_2/U306/Y (NOR2XL)                                 0.17       3.64 f
+  sub_x_2/U310/Y (OAI21XL)                                0.37       4.01 r
+  sub_x_2/U229/Y (AOI21X1)                                0.16       4.17 f
+  sub_x_2/U196/Y (OAI21XL)                                0.36       4.53 r
+  sub_x_2/U122/Y (AOI21X1)                                0.17       4.70 f
+  sub_x_2/U319/Y (OAI21XL)                                0.38       5.08 r
+  sub_x_2/U87/Y (AOI21X1)                                 0.21       5.28 f
+  sub_x_2/U81/Y (OAI21XL)                                 0.39       5.67 r
+  sub_x_2/U73/Y (AOI21X1)                                 0.21       5.88 f
+  sub_x_2/U67/Y (OAI21XL)                                 0.39       6.27 r
+  sub_x_2/U59/Y (AOI21X1)                                 0.21       6.47 f
+  sub_x_2/U320/Y (OAI21XL)                                0.39       6.86 r
+  sub_x_2/U45/Y (AOI21X1)                                 0.21       7.07 f
+  sub_x_2/U39/Y (OAI21XL)                                 0.38       7.44 r
+  sub_x_2/U321/Y (AOI21XL)                                0.25       7.69 f
+  sub_x_2/U25/Y (OAI21XL)                                 0.40       8.09 r
+  sub_x_2/U17/Y (AOI21X1)                                 0.21       8.30 f
+  sub_x_2/U11/Y (OAI21XL)                                 0.38       8.67 r
+  sub_x_2/U315/Y (AOI21XL)                                0.18       8.85 f
+  sub_x_2/U1/Y (XOR2XL)                                   0.27       9.13 r
+  sub_x_2/p_DIFF[32] (sequ_div_DW01_sub_3)                0.00       9.13 r
+  I_7/Y (INVX1)                                           0.12       9.25 f
+  U633/Y (NOR2X2)                                         1.48      10.73 r
+  U594/Y (AOI22XL)                                        0.24      10.97 f
+  U282/Y (OAI21XL)                                        0.26      11.23 r
+  U429/Y (MX2X2)                                          0.16      11.39 r
+  remainder_quotient_reg_44_/D (SDFFRXL)                  0.00      11.39 r
+  data arrival time                                                 11.39
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (ideal)                             2.00      12.00
+  clock uncertainty                                      -0.50      11.50
+  remainder_quotient_reg_44_/CK (SDFFRXL)                 0.00      11.50 r
+  library setup time                                     -0.10      11.40
+  data required time                                                11.40
+  --------------------------------------------------------------------------
+  data required time                                                11.40
+  data arrival time                                                -11.39
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.01
+
+
+  Startpoint: illegal_divider_zero_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: illegal_divider_zero
+            (output port clocked by clk)
+  Path Group: OUTPUTS
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  sequ_div           smic18_wl10           typical
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             2.00       2.00
+  illegal_divider_zero_reg/CK (SDFFRXL)                   0.00       2.00 r
+  illegal_divider_zero_reg/Q (SDFFRXL)                    0.62       2.62 r
+  U656/Y (CLKBUFX3)                                       1.33       3.95 r
+  illegal_divider_zero (out)                              0.00       3.95 r
+  data arrival time                                                  3.95
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (ideal)                             2.00      12.00
+  clock uncertainty                                      -0.50      11.50
+  output external delay                                  -1.00      10.50
+  data required time                                                10.50
+  --------------------------------------------------------------------------
+  data required time                                                10.50
+  data arrival time                                                 -3.95
+  --------------------------------------------------------------------------
+  slack (MET)                                                        6.55
+
+
+1

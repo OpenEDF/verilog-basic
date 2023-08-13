@@ -1,0 +1,112 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 1
+Design : sequ_div
+Version: L-2016.03-SP1
+Date   : Sun Aug 13 18:33:39 2023
+****************************************
+
+Operating Conditions: typical   Library: typical
+Wire Load Model Mode: enclosed
+
+  Startpoint: illegal_divider_zero_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: illegal_divider_zero_reg
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  sequ_div           smic18_wl10           typical
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  illegal_divider_zero_reg/CK (SDFFRXL)                   0.00       0.00 r
+  illegal_divider_zero_reg/Q (SDFFRXL)                    0.40       0.40 f
+  U481/Y (MX2X1)                                          0.19       0.59 f
+  illegal_divider_zero_reg/D (SDFFRXL)                    0.00       0.59 f
+  data arrival time                                                  0.59
+
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  illegal_divider_zero_reg/CK (SDFFRXL)                   0.00       0.00 r
+  library hold time                                      -0.09      -0.09
+  data required time                                                -0.09
+  --------------------------------------------------------------------------
+  data required time                                                -0.09
+  data arrival time                                                 -0.59
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.68
+
+
+  Startpoint: start (input port clocked by clk)
+  Endpoint: cur_state_reg_1_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: INPUTS
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  sequ_div           smic18_wl10           typical
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     1.00       1.00 r
+  start (in)                               0.11       1.11 r
+  U159/Y (AND2XL)                          0.18       1.29 r
+  cur_state_reg_1_/D (SDFFRX1)             0.00       1.29 r
+  data arrival time                                   1.29
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  cur_state_reg_1_/CK (SDFFRX1)            0.00       0.00 r
+  library hold time                       -0.11      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -1.29
+  -----------------------------------------------------------
+  slack (MET)                                         1.39
+
+
+  Startpoint: quotient_reg_6_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: quotient[6]
+            (output port clocked by clk)
+  Path Group: OUTPUTS
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  sequ_div           smic18_wl10           typical
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  quotient_reg_6_/CK (SDFFRXL)             0.00       0.00 r
+  quotient_reg_6_/Q (SDFFRXL)              0.40       0.40 f
+  U696/Y (CLKBUFX3)                        1.35       1.74 f
+  quotient[6] (out)                        0.00       1.74 f
+  data arrival time                                   1.74
+
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  output external delay                   -1.00      -1.00
+  data required time                                 -1.00
+  -----------------------------------------------------------
+  data required time                                 -1.00
+  data arrival time                                  -1.74
+  -----------------------------------------------------------
+  slack (MET)                                         2.74
+
+
+1
