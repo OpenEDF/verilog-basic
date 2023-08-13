@@ -21,6 +21,7 @@ set REPORT_PATH         $SYN_WORK_PATH/syn/report
 #=====================================================================
 # step 1: sead & elaborate the RTL file list & check
 #=====================================================================
+set_svf sequ_div.svf
 set TOP_MODULE sequ_div
 analyze -format verilog [list sequ_div.v]
 elaborate       $TOP_MODULE -architecture verilog

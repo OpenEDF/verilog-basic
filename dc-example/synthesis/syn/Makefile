@@ -19,12 +19,12 @@ dcto:
 # clean the outfile
 .PHONY: clean dc dcto clean_all
 clean_all:
-	rm -rf *.txt *.log *.svf alib-52 *.syn *.pvl *.mr ../*.mr \
+	rm -rf *.txt *.log default.svf alib-52 *.syn *.pvl *.mr ../*.mr \
 	       ../*-verilog.pvl ../*-verilog.syn mapped/*.ddc mapped/*.sdc \
 	       mapped/*.sdf unmapped/*.ddc netlist/*.v log/*.log
 
 clean:
-	rm -rf *.txt *.log *.svf alib-52 *.syn *.pvl *.mr ../*.mr \
+	rm -rf *.txt *.log default.svf alib-52 *.syn *.pvl *.mr ../*.mr \
 	       ../*-verilog.pvl ../*-verilog.syn  log/*.log
 
 #-----------------------------------------------------------------------------
