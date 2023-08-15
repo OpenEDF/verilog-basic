@@ -1,3 +1,7 @@
+### command：
+make dc
+
+```shell
 dc_shell -f script/read_input.tcl | tee -i log/dc_start.log
 
                            Design Compiler Graphical 
@@ -11,9 +15,9 @@ dc_shell -f script/read_input.tcl | tee -i log/dc_start.log
                                VHDL Compiler (TM)
                                   DFT Compiler
                                Design Compiler(R)
-
+    
                Version L-2016.03-SP1 for linux64 - Apr 18, 2016 
-
+    
                     Copyright (c) 1988 - 2016 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
  Inc. This software may only be used in accordance with the terms and conditions
@@ -131,7 +135,7 @@ if {[check_design] == 0} {
     echo "Check desing with error!";
     exit;
 }
- 
+
 ****************************************
 check_design summary:
 Version:     L-2016.03-SP1
@@ -306,7 +310,7 @@ Warning: Design rule attributes from the driving cell will be
 Using operating conditions 'typical' found in library 'typical'.
 Information: Updating design information... (UID-85)
 Warning: Design 'sequ_div' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
- 
+
 ****************************************
 Report : path_group
 Design : sequ_div
@@ -624,7 +628,7 @@ Information: Checking no_driving_cell...
 Information: Checking partial_input_delay...
 1
 check_design
- 
+
 ****************************************
 check_design summary:
 Version:     L-2016.03-SP1
@@ -689,7 +693,7 @@ Information: Automatic shift-register identification is enabled for scan. Not al
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
-  --------- --------- --------- --------- --------- ------------------------- ---------
+--------- --------- --------- --------- --------- ------------------------- ---------
     0:00:05   29119.3     11.25    4802.5     501.0                           130229.6328
     0:00:05   29119.3     11.25    4802.5     501.0                           130229.6328
 
@@ -719,7 +723,7 @@ Information: Automatic shift-register identification is enabled for scan. Not al
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
-  --------- --------- --------- --------- --------- ------------------------- ---------
+--------- --------- --------- --------- --------- ------------------------- ---------
     0:00:07   40119.7      0.00       0.0      12.4                           184652.6875
     0:00:07   38363.4      0.00       0.0      12.4                           167011.9844
     0:00:07   33706.4      0.00       0.0      12.4                           132671.7969
@@ -744,7 +748,7 @@ Information: Automatic shift-register identification is enabled for scan. Not al
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
-  --------- --------- --------- --------- --------- ------------------------- ---------
+--------- --------- --------- --------- --------- ------------------------- ---------
     0:00:08   33540.1      0.00       0.0      12.3                           130450.3516
     0:00:08   33550.1      0.00       0.0       0.0                           130469.2188
     0:00:08   33244.0      0.00       0.0       0.0                           128493.9219
@@ -764,7 +768,7 @@ Information: Automatic shift-register identification is enabled for scan. Not al
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
-  --------- --------- --------- --------- --------- ------------------------- ---------
+--------- --------- --------- --------- --------- ------------------------- ---------
     0:00:08   33244.0      0.00       0.0       0.0                           128493.9219
 
 
@@ -774,7 +778,7 @@ Information: Automatic shift-register identification is enabled for scan. Not al
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
-  --------- --------- --------- --------- --------- ------------------------- ---------
+--------- --------- --------- --------- --------- ------------------------- ---------
     0:00:08   33244.0      0.00       0.0       0.0                           128493.9219
     0:00:09   32172.9      0.00       0.0       0.0                           124170.1797
     0:00:09   32083.1      0.00       0.0       0.0                           123659.9844
@@ -787,11 +791,11 @@ Information: Automatic shift-register identification is enabled for scan. Not al
     0:00:09   32083.1      0.00       0.0       0.0                           123659.9844
     0:00:09   32083.1      0.00       0.0       0.0                           123659.9844
     0:00:09   32083.1      0.00       0.0       0.0                           123659.9844
-
+    
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
-  --------- --------- --------- --------- --------- ------------------------- ---------
+--------- --------- --------- --------- --------- ------------------------- ---------
     0:00:09  175677.2      0.00       0.0       0.0                           123659.9844
     0:00:09  175677.2      0.00       0.0       0.0                           123659.9844
     0:00:10  172853.1      0.00       0.0       0.0                           98928.5156
@@ -812,7 +816,7 @@ Information: State dependent leakage is now switched from off to on.
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 Error: unknown option '-all_violatiors' (CMD-010)
 Information: Updating design information... (UID-85)
- 
+
 ****************************************
 Report : timing
         -path full
@@ -979,7 +983,7 @@ Wire Load Model Mode: enclosed
   slack (MET)                                                        6.55
 
 
- 
+
 ****************************************
 Report : area
 Design : sequ_div
@@ -1017,7 +1021,7 @@ Information: Writing timing information to file '/home/macro/github/verilog-basi
 # step 7: save report 
 #=====================================================================
 source save_output.tcl
- 
+
 ****************************************
 check_design summary:
 Version:     L-2016.03-SP1
@@ -1071,7 +1075,7 @@ Information: Checking no_driving_cell...
 
 Information: Checking partial_input_delay...
 1
- 
+
 ****************************************
 Report : constraint
         -all_violators
@@ -1100,7 +1104,7 @@ Date   : Sun Aug 13 22:09:51 2023
 
 
 1
- 
+
 ****************************************
 Report : timing
         -path full
@@ -1268,7 +1272,7 @@ Wire Load Model Mode: enclosed
 
 
 1
- 
+
 ****************************************
 Report : timing
         -path full
@@ -1380,7 +1384,7 @@ Wire Load Model Mode: enclosed
 
 
 1
- 
+
 ****************************************
 Report : area
 Design : sequ_div
@@ -1415,3 +1419,4 @@ dc_shell>
 Information: Interrupting current command. (INT-2)
 Information: One more interrupt will exit process. (INT-3)
 Information: Process terminated by interrupt. (INT-4)
+```
