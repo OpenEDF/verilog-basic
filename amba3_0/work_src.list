@@ -1,0 +1,3 @@
+# source file list
+./sequ_multi.v
+./testbench.v

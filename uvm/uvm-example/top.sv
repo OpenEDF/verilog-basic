@@ -50,9 +50,6 @@ module tbench_top;
   //---------------------------------------
   initial begin 
     uvm_config_db#(virtual mem_if)::set(uvm_root::get(),"*","vif",intf);
-    //enable wave dump
-    $dumpfile("dump.vcd"); 
-    $dumpvars;
   end
   
   //---------------------------------------
@@ -63,10 +60,10 @@ module tbench_top;
   end
   
   //---------------------------------------
-  //vcd
+  //fsdb
   //---------------------------------------
   initial begin
-    $dumpfile("uvm_test.vcd");
-    $dumpvars(0, tbench_top);
+    $fsdbDumpfile("uvm_test.fsdb");
+    $fsdbDumpvars(0, tbench_top);
   end
 endmodule

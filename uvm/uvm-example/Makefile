@@ -23,6 +23,8 @@ com:$(TEST_FILE)
 	vcs -sverilog $(ACC_HDL_REG) -full64 +v2k -timescale=1ns/1ns -cpp g++-4.8 \
     -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed +incdir+$(UVM_HOME)/src \
     $(UVM_HOME)/src/uvm.sv $(UVM_HOME)/src/dpi/uvm_dpi.cc -CFLAGS -DVCS \
+    -P $(VERDI_HOME)/share/PLI/VCS/LINUX64/novas.tab                         \
+    $(VERDI_HOME)/share/PLI/VCS/LINUX64/pli.a -load libnovas.so:FSDBDumpCmd  \
     -timescale=1ns/1ps +incdir+./tb_class -f $(TEST_FILE)
 
 #com:$(TEST_FILE)
@@ -41,9 +43,14 @@ wrrd_sim:
 sim:
 	./simv +UVM_TESTNAME=$(TEST_CASE) +UVM_VERBOSITY=$(UVM_VERBOSITY) +UVM_PHASE_RECORD -l vcs_sim.log
 
+wave:
+	verdi -f $(TEST_FILE)       \
+		-ssf uvm_test.fsdb \
+		-nologo &
 # clean
 .PHONY: clean
 clean:
-	rm -rf csrc simv* *.key *~ core vc_hdrs.h ucli.key urg* *.log dump.vcd
+	rm -rf csrc simv* *.key *~ core vc_hdrs.h ucli.key urg* *.log dump.vcd \
+		   novas* *.vcd *.fsdb verdiLog uvmgen_options_log.txt
 
 #--------------------------------------------------------------------------
