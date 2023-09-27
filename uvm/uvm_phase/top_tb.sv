@@ -7,10 +7,13 @@ import uvm_pkg::*;
 module top_tb;
 
 initial begin
-    new_world world;
+    //new_world world;
+    //world = new("world", null);
    
     /* run uvm test */ 
-    run_test("world");
+    run_test("new_world");
+    //world.run_phase(null);
+    //
 end
 
 endmodule
