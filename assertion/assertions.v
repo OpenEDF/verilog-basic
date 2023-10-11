@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: a practical guide for systemverilog asserations example and learning 
+// Brief: a practical guide for systemverilog asserations example and learning
 // Change Log:
 //--------------------------------------------------------------------------
 
@@ -46,13 +46,23 @@ module asserations
     // inputs
     input wire         clk,
     input wire         rst_n,
+    input wire         a_in,
+    input wire         b_in,
 
     // outputs
+    output reg        c_ou
 );
 
 //--------------------------------------------------------------------------
-// Design: 
+// Design: assertion basic test
 //--------------------------------------------------------------------------
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        c_ou <= 1'b0;
+    end else begin
+        c_ou <= a_in | b_in;
+    end
+end
 
 endmodule
 //--------------------------------------------------------------------------

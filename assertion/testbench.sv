@@ -42,6 +42,12 @@ module testbench();
 //--------------------------------------------------------------------------
 // Ports
 //--------------------------------------------------------------------------
+reg top_a;
+reg top_b;
+wire top_c;
+reg clk;
+reg rst_n;
+
 //--------------------------------------------------------------------------
 // Design: create the clock
 //--------------------------------------------------------------------------
@@ -58,6 +64,11 @@ initial begin
     #10
     rst_n = 1'b1;
 
+    repeat(100) begin
+        @(posedge clk)
+        top_a = $random;
+        top_b = $random;
+    end
     #20
     $finish();
 end
@@ -68,11 +79,36 @@ end
 initial begin
     $fsdbDumpfile("testbench.fsdb");
     $fsdbDumpvars(0, testbench);
+    $fsdbDumpSVA(0, testbench);
 end
+
+//--------------------------------------------------------------------------
+// assert: a simple sequence
+//--------------------------------------------------------------------------
+sequence s1;
+    @(posedge clk) top_c;
+endsequence
+
+property p1;
+//disable iff (!rst_n) top_c;
+    s1;
+endproperty;
+
+a1: assert property(p1);
 
 //--------------------------------------------------------------------------
 // Design: instance design module
 //--------------------------------------------------------------------------
+asserations asserations_u (
+    // inputs
+    .clk         (clk),
+    .rst_n       (rst_n),
+    .a_in        (top_a),
+    .b_in        (top_b),
+
+    // outputs
+    .c_ou        (top_c)
+);
 
 endmodule
 //--------------------------------------------------------------------------
