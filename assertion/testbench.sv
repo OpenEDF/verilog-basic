@@ -45,6 +45,8 @@ module testbench();
 reg top_a;
 reg top_b;
 wire top_c;
+wire top_d;
+wire top_e;
 reg clk;
 reg rst_n;
 
@@ -57,20 +59,26 @@ initial begin
 end
 
 //--------------------------------------------------------------------------
-// Design: initial
+// Design: driver task and initial
 //--------------------------------------------------------------------------
-initial begin
+task driver();
+begin
     rst_n = 1'b0;
     #10
     rst_n = 1'b1;
 
-    repeat(100) begin
+    repeat(10) begin
         @(posedge clk)
         top_a = $random;
         top_b = $random;
     end
     #20
     $finish();
+end
+endtask
+
+initial begin
+    driver();
 end
 
 //--------------------------------------------------------------------------
@@ -90,11 +98,109 @@ sequence s1;
 endsequence
 
 property p1;
-//disable iff (!rst_n) top_c;
     s1;
 endproperty;
+a1: assert property(p1) begin
+        $info("assertion a1: test sucess");
+    end else begin
+        $error("assertion a1: test error");
+    end
 
-a1: assert property(p1);
+//--------------------------------------------------------------------------
+// assert: assertion delay
+//--------------------------------------------------------------------------
+property p2;
+    @(posedge clk) top_c |=> top_d;
+endproperty;
+a2: assert property(p2);
+
+//--------------------------------------------------------------------------
+// assert: assertion delay
+//--------------------------------------------------------------------------
+property p3;
+    @(posedge clk) top_c ##1 top_d;
+endproperty;
+a3: assert property(p3);
+
+//--------------------------------------------------------------------------
+// assert: assertion timing window
+//--------------------------------------------------------------------------
+property p4;
+    @(posedge clk) top_c |-> ##[0:$] top_d;
+endproperty;
+a4: assert property(p4);
+
+//--------------------------------------------------------------------------
+// assert: assertion disable iff
+//--------------------------------------------------------------------------
+property p5;
+   @(posedge clk) disable iff (!rst_n) top_c;
+endproperty;
+a5: assert property(p5);
+
+//--------------------------------------------------------------------------
+// assert: assertion rose
+//--------------------------------------------------------------------------
+property p6;
+   @(posedge clk) $rose(top_a) |-> top_c;
+endproperty;
+a6: assert property(p6);
+
+//--------------------------------------------------------------------------
+// assert: assertion fell
+//--------------------------------------------------------------------------
+property p7;
+   @(posedge clk) $fell(top_a) |-> top_c;
+endproperty;
+a7: assert property(p7);
+
+//--------------------------------------------------------------------------
+// assert: assertion stable
+//--------------------------------------------------------------------------
+property p8;
+   @(posedge clk) $stable(top_a);
+endproperty;
+a8: assert property(p8);
+
+//--------------------------------------------------------------------------
+// assert: assertion past
+//--------------------------------------------------------------------------
+property p9;
+   @(posedge clk) top_a |-> ($past(top_c, 2) == 1'b1);
+endproperty;
+a9: assert property(p9);
+
+//--------------------------------------------------------------------------
+// assert: assertion change
+//--------------------------------------------------------------------------
+property p10;
+   @(posedge clk) $changed(top_a);
+endproperty;
+a10: assert property(p10);
+
+//--------------------------------------------------------------------------
+// assert: assertion sampled
+//--------------------------------------------------------------------------
+property p11;
+   @(posedge clk) $sampled(top_e);
+endproperty;
+a11: assert property(p11);
+
+//--------------------------------------------------------------------------
+// assert: assertion select
+//--------------------------------------------------------------------------
+property p12;
+   @(posedge clk) top_c ? top_a : top_b;
+endproperty;
+a12: assert property(p12);
+
+//--------------------------------------------------------------------------
+// assert: assertion delay
+//--------------------------------------------------------------------------
+property p13;
+   @(posedge clk) top_a |=> top_c ##1 top_d ##1 !top_e;
+endproperty;
+a13: assert property(p13);
 
 //--------------------------------------------------------------------------
 // Design: instance design module
@@ -107,8 +213,37 @@ asserations asserations_u (
     .b_in        (top_b),
 
     // outputs
-    .c_ou        (top_c)
+    .c_ou        (top_c),
+    .d_ou        (top_d),
+    .e_ou        (top_e)
 );
 
 endmodule
+/*
+//--------------------------------------------------------------------------
+// assert: assertion bind
+//--------------------------------------------------------------------------
+module assert_check
+(
+    input logic ck_clk,
+    input logic ck_a,
+    input logic ck_b,
+
+    output logic ck_c
+);
+
+property p14;
+   @(posedge ck_clk) ck_c |-> (ck_a & ck_b);
+endproperty;
+a14: assert property(p14);
+
+endmodule
+
+bind asserations assert_check assert_ck_or (
+    .ck_clk  (clk),
+    .ck_a    (top_a),
+    .ck_b    (top_b),
+    .ck_c    (top_c),
+);
+*/
 //--------------------------------------------------------------------------

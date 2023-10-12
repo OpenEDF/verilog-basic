@@ -50,7 +50,9 @@ module asserations
     input wire         b_in,
 
     // outputs
-    output reg        c_ou
+    output reg        c_ou,
+    output reg        d_ou,
+    output reg        e_ou
 );
 
 //--------------------------------------------------------------------------
@@ -61,6 +63,28 @@ always @(posedge clk or negedge rst_n) begin
         c_ou <= 1'b0;
     end else begin
         c_ou <= a_in | b_in;
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: assertion basic test
+//--------------------------------------------------------------------------
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        d_ou <= 1'b0;
+    end else begin
+        d_ou <= c_ou;
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: assertion basic test
+//--------------------------------------------------------------------------
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        e_ou <= 1'b0;
+    end else begin
+        e_ou <= ~c_ou;
     end
 end
 
