@@ -49,6 +49,7 @@ wire top_d;
 wire top_e;
 reg clk;
 reg rst_n;
+reg [7:0] top_f;
 
 //--------------------------------------------------------------------------
 // Design: create the clock
@@ -64,6 +65,7 @@ end
 task driver();
 begin
     rst_n = 1'b0;
+    top_f = 8'b0000_0000;
     #10
     rst_n = 1'b1;
 
@@ -71,6 +73,7 @@ begin
         @(posedge clk)
         top_a = $random;
         top_b = $random;
+        top_f = top_f + 1;
     end
     #20
     $finish();
@@ -203,6 +206,53 @@ endproperty;
 a13: assert property(p13);
 
 //--------------------------------------------------------------------------
+// assert: assertion for bind module and assert
+//--------------------------------------------------------------------------
+bind asserations assert_module u_assert_ip (
+    .clk_ip      (clk),
+    .rst_n_ip    (rst_n),
+    .a_in_ip     (a_in),
+    .b_in_ip     (b_in),
+
+    .c_ou_ip     (c_ou)
+);
+
+//--------------------------------------------------------------------------
+// assert:immediate assertions
+//--------------------------------------------------------------------------
+always @(posedge clk) begin
+    a14: assert(!top_e) $info("passed");
+        else begin
+            $error("dailed");
+        end
+end
+
+//--------------------------------------------------------------------------
+// assert: assertions for onehot
+//--------------------------------------------------------------------------
+property p15;
+   @(posedge clk) $onehot(top_f);
+endproperty;
+a15: assert property(p15);
+
+//--------------------------------------------------------------------------
+// assert: assertions for onehot0
+//--------------------------------------------------------------------------
+property p16;
+   @(posedge clk) $onehot0(top_f);
+endproperty;
+a16: assert property(p16);
+
+//--------------------------------------------------------------------------
+// assert: assertions for countbits
+//--------------------------------------------------------------------------
+//TODO: bug
+property p17;
+   @(posedge clk) ($countbits(top_f, '1) >= 2);
+endproperty;
+a17: assert property(p17);
+
+//--------------------------------------------------------------------------
 // Design: instance design module
 //--------------------------------------------------------------------------
 asserations asserations_u (
@@ -219,31 +269,4 @@ asserations asserations_u (
 );
 
 endmodule
-/*
-//--------------------------------------------------------------------------
-// assert: assertion bind
-//--------------------------------------------------------------------------
-module assert_check
-(
-    input logic ck_clk,
-    input logic ck_a,
-    input logic ck_b,
-
-    output logic ck_c
-);
-
-property p14;
-   @(posedge ck_clk) ck_c |-> (ck_a & ck_b);
-endproperty;
-a14: assert property(p14);
-
-endmodule
-
-bind asserations assert_check assert_ck_or (
-    .ck_clk  (clk),
-    .ck_a    (top_a),
-    .ck_b    (top_b),
-    .ck_c    (top_c),
-);
-*/
 //--------------------------------------------------------------------------

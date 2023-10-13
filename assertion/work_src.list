@@ -1,3 +1,5 @@
 # source file list
 ./assertions.v
+./assert_module.sv
 ./testbench.sv
+
