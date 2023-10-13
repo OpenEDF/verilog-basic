@@ -44,13 +44,13 @@ module assert_module
 //--------------------------------------------------------------------------
 (
     // inputs
-    input wire         clk_ip,
-    input wire         rst_n_ip,
-    input wire         a_in_ip,
-    input wire         b_in_ip,
+    input logic         clk_ip,
+    input logic         rst_n_ip,
+    input logic         a_in_ip,
+    input logic         b_in_ip,
 
     // outputs
-    input wire         c_ou_ip
+    input logic         c_ou_ip
 );
 
 //--------------------------------------------------------------------------
