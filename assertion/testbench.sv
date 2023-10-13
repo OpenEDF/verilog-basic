@@ -253,6 +253,22 @@ endproperty;
 a17: assert property(p17);
 
 //--------------------------------------------------------------------------
+// assert: assertions for cover
+//--------------------------------------------------------------------------
+property p18;
+   @(posedge clk) top_a |-> top_c;
+endproperty;
+a18: cover property(p18);
+
+//--------------------------------------------------------------------------
+// assert: assertions for asumme
+//--------------------------------------------------------------------------
+property p19;
+   @(posedge clk) top_a |-> top_c;
+endproperty;
+a19: assume property(p19) else $error("Assupmtion failed.");
+
+//--------------------------------------------------------------------------
 // Design: instance design module
 //--------------------------------------------------------------------------
 asserations asserations_u (
