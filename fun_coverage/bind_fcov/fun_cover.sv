@@ -43,11 +43,22 @@ module fun_cover
 // Port
 //--------------------------------------------------------------------------
 (
+    input logic        clk_cov,
+
+    // outputs
+    input logic [4:0] c_ou_cov,
+    input logic [4:0] d_ou_cov
 );
 
 //--------------------------------------------------------------------------
-// assertion property module
+// functional coverage test
 //--------------------------------------------------------------------------
+covergroup cov1 @(posedge clk_cov);
+    op_c: coverpoint c_ou_cov;
+    op_d: coverpoint d_ou_cov;
+endgroup: cov1
+
+    cov1 cov1_u = new();
 
 endmodule
 //--------------------------------------------------------------------------

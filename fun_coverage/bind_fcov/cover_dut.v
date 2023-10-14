@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: testbenchi systemverilog assertions
+// Brief: a practical guide for systemverilog asserations example and learning
 // Change Log:
 //--------------------------------------------------------------------------
 
@@ -38,71 +38,43 @@
 //--------------------------------------------------------------------------
 // Module
 //--------------------------------------------------------------------------
-module testbench();
+module cover_dut
 //--------------------------------------------------------------------------
 // Ports
 //--------------------------------------------------------------------------
-reg top_a;
-reg top_b;
-wire top_c;
-wire top_d;
-wire top_e;
-reg clk;
-reg rst_n;
-
-//--------------------------------------------------------------------------
-// Design: create the clock
-//--------------------------------------------------------------------------
-initial begin
-    clk = 1'b0;
-    forever #5 clk = ~clk;
-end
-
-//--------------------------------------------------------------------------
-// Design: driver task and initial
-//--------------------------------------------------------------------------
-task driver();
-begin
-    rst_n = 1'b0;
-    #10
-    rst_n = 1'b1;
-
-    repeat(10) begin
-        @(posedge clk)
-    end
-    #20
-    $finish();
-end
-endtask
-
-initial begin
-    driver();
-end
-
-//--------------------------------------------------------------------------
-// Design: dump .fsdb file
-//--------------------------------------------------------------------------
-initial begin
-    $fsdbDumpfile("testbench.fsdb");
-    $fsdbDumpvars(0, testbench);
-    $fsdbDumpSVA(0, testbench);
-end
-
-//--------------------------------------------------------------------------
-// Design: instance design module
-//--------------------------------------------------------------------------
-asserations asserations_u (
+(
     // inputs
-    .clk         (clk),
-    .rst_n       (rst_n),
-    .a_in        (top_a),
-    .b_in        (top_b),
+    input wire        clk,
+    input wire        rst_n,
+    input wire [4:0] a_in,
+    input wire [4:0] b_in,
 
     // outputs
-    .c_ou        (top_c),
-    .d_ou        (top_d),
-    .e_ou        (top_e)
+    output reg [4:0] c_ou,
+    output reg [4:0] d_ou
 );
+
+//--------------------------------------------------------------------------
+// Design: assertion basic test
+//--------------------------------------------------------------------------
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        c_ou <= 4'b000;
+    end else begin
+        c_ou <= a_in;
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: assertion basic test
+//--------------------------------------------------------------------------
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        d_ou <= 4'b0000;
+    end else begin
+        d_ou <= b_in;
+    end
+end
 
 endmodule
 //--------------------------------------------------------------------------

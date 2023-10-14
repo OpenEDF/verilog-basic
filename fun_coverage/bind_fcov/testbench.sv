@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: a practical guide for systemverilog asserations example and learning
+// Brief: testbenchi systemverilog assertions
 // Change Log:
 //--------------------------------------------------------------------------
 
@@ -38,55 +38,82 @@
 //--------------------------------------------------------------------------
 // Module
 //--------------------------------------------------------------------------
-module asserations
+module testbench();
 //--------------------------------------------------------------------------
 // Ports
 //--------------------------------------------------------------------------
-(
-    // inputs
-    input wire         clk,
-    input wire         rst_n,
-    input wire         a_in,
-    input wire         b_in,
+reg  [4:0] top_a;
+reg  [4:0] top_b;
+wire [4:0] top_c;
+wire [4:0] top_d;
+reg clk;
+reg rst_n;
 
-    // outputs
-    output reg        c_ou,
-    output reg        d_ou,
-    output reg        e_ou
+//--------------------------------------------------------------------------
+// Design: create the clock
+//--------------------------------------------------------------------------
+initial begin
+    clk = 1'b0;
+    forever #5 clk = ~clk;
+end
+
+//--------------------------------------------------------------------------
+// Design: driver task and initial
+//--------------------------------------------------------------------------
+task driver();
+begin
+    rst_n = 1'b0;
+    #10
+    rst_n = 1'b1;
+
+    repeat(200) begin
+        @(posedge clk)
+        top_a =$random;
+        top_b =$random;
+    end
+    #20
+    $display("Coverage = %0.2f %%", fun_cover.cov1_u.get_coverage());
+    $finish();
+end
+endtask
+
+// start driver
+initial begin
+    driver();
+end
+
+//--------------------------------------------------------------------------
+// Design: dump .fsdb file
+//--------------------------------------------------------------------------
+initial begin
+    $fsdbDumpfile("testbench.fsdb");
+    $fsdbDumpvars(0, testbench);
+end
+
+//--------------------------------------------------------------------------
+// Design: bound coverage group to design module
+//--------------------------------------------------------------------------
+bind cover_dut fun_cover fun_cover_u(
+    .clk_cov     (clk),
+
+    .c_ou_cov    (c_ou),
+    .d_ou_cov    (d_ou)
 );
 
 //--------------------------------------------------------------------------
-// Design: assertion basic test
+// Design: instance design module
 //--------------------------------------------------------------------------
-always @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
-        c_ou <= 1'b0;
-    end else begin
-        c_ou <= a_in | b_in;
-    end
-end
+cover_dut cover_dut_u (
+    // inputs
+    .clk         (clk),
+    .rst_n       (rst_n),
+    .a_in        (top_a),
+    .b_in        (top_b),
 
-//--------------------------------------------------------------------------
-// Design: assertion basic test
-//--------------------------------------------------------------------------
-always @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
-        d_ou <= 1'b0;
-    end else begin
-        d_ou <= c_ou;
-    end
-end
-
-//--------------------------------------------------------------------------
-// Design: assertion basic test
-//--------------------------------------------------------------------------
-always @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
-        e_ou <= 1'b0;
-    end else begin
-        e_ou <= ~c_ou;
-    end
-end
+    // outputs
+    .c_ou        (top_c),
+    .d_ou        (top_d)
+);
 
 endmodule
 //--------------------------------------------------------------------------
