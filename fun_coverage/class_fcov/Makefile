@@ -27,9 +27,16 @@ sim:
 	./simv +fsdb+autoflush+force
 	urg -dir simv.vdb
 
-# wave
+# coverage
 cov:
 	verdi -cov -covdir simv.vdb & \
+		-nologo &
+
+# wave
+wave:
+	verdi -sverilog -f $(SRC_FILE) \
+		-top $(TOP_MODULE)      \
+		-ssf $(TOP_MODULE).fsdb \
 		-nologo &
 
 .PHONY: clean sim com wave

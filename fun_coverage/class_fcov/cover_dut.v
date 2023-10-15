@@ -54,14 +54,19 @@ module cover_dut
     output reg [4:0] d_ou
 );
 
+reg [31:0] test_module_inter_signal;
+reg en;
 //--------------------------------------------------------------------------
 // Design: assertion basic test
 //--------------------------------------------------------------------------
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
-        c_ou <= 4'b000;
+        c_ou <= 5'b00000;
+        en   <= 1'b1;
     end else begin
-        c_ou <= a_in;
+        if (en) begin
+            c_ou <= a_in;
+        end
     end
 end
 
@@ -70,9 +75,22 @@ end
 //--------------------------------------------------------------------------
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
-        d_ou <= 4'b0000;
+        d_ou <= 5'b00000;
     end else begin
         d_ou <= b_in;
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: module internal signal test
+//--------------------------------------------------------------------------
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        test_module_inter_signal <= 32'h0000_0000;
+    end else begin
+        if (c_ou == 5'b11111) begin
+            test_module_inter_signal <= 32'h0000_FFFF;
+        end
     end
 end
 

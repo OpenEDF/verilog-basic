@@ -65,7 +65,9 @@ modport dut_intf(
 //--------------------------------------------------------------------------
 modport cover_intf(
     input  clk,
+    input  rst_n,
 
+    input  b_in,
     input  c_ou,
     input  d_ou
 );
