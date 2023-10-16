@@ -113,6 +113,7 @@ initial begin
     $display("Coverage cov8 = %0.2f %%", test_cover.cov8.get_coverage());
     $display("Coverage cov9 = %0.2f %%", test_cover.cov9.get_coverage());
     $display("Coverage cov10 = %0.2f %%", test_cover.cov10.get_coverage());
+    $display("Coverage cov11 = %0.2f %%", test_cover.cov11.get_coverage());
     $finish();
 end
 

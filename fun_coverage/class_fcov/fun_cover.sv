@@ -59,6 +59,7 @@ function new(virtual test_intf.cover_intf vif);
     cov8 = new();
     cov9 = new(3, 15, vif.d_ou);
     cov10 = new();
+    cov11 = new();
 endfunction
 
 //--------------------------------------------------------------------------
@@ -171,7 +172,7 @@ covergroup cov9(int low, int high, ref logic [4:0] address) @(posedge vif.clk);
 endgroup: cov9
 
 //--------------------------------------------------------------------------
-// functional coverage:
+// functional coverage: input signal
 //--------------------------------------------------------------------------
 covergroup cov10 @(posedge vif.clk);
     in_bins1: coverpoint vif.b_in {
@@ -179,6 +180,28 @@ covergroup cov10 @(posedge vif.clk);
         bins feat2 = (3 => 5);
     }
 endgroup: cov10
+
+//--------------------------------------------------------------------------
+// functional coverage: wildcard
+//--------------------------------------------------------------------------
+covergroup cov11 @(posedge vif.clk);
+    in_bins1: coverpoint vif.b_in {
+        wildcard bins feat1 = {5'b0011?, 5'b1111x, 5'bx1???};
+        wildcard bins feat2 = (5'b00?11 => 5'b??101);
+    }
+    in_bins2: coverpoint vif.c_ou {
+        bins feat3 = {[10:15]};
+        bins feat4 = {[20:31]};
+    }
+    cross_t: cross in_bins1, in_bins2 {
+        bins c1 = binsof(in_bins2) intersect {[21:30]};
+        bins c2 = !binsof(in_bins2) intersect {[21:30]};
+    }
+    with_bins: coverpoint vif.d_ou {
+        bins mod[] = {[0:31]} with (item % 3 == 0);
+    }
+
+endgroup: cov11
 
 endclass
 //--------------------------------------------------------------------------
