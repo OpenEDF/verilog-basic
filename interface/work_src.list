@@ -1,0 +1,5 @@
+# source file list
+./test_dut.v
+./test_intf.sv
+./testbench.sv
+
