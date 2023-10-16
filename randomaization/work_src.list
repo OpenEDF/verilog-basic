@@ -1,0 +1,6 @@
+# source file list
+./cover_dut.v
+./fun_cover.sv
+./test_intf.sv
+./testbench.sv
+
