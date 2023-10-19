@@ -47,19 +47,100 @@ module testebench;
 // Design: instance
 //--------------------------------------------------------------------------
 mem_seq_item seq_item;
+mem_seq_item seq_item_1;
+mem_seq_item seq_item_2;
+mem_seq_item seq_item_3;
+mem_seq_item seq_item_4;
+mem_seq_item seq_item_5;
+bit bit_packed_data[];
+byte unsigned byte_packed_data[];
+int unsigned int_packed_data[];
 
 //--------------------------------------------------------------------------
 // Design: initial and run
 //--------------------------------------------------------------------------
 initial begin
+    /* log output */
+    `uvm_info("TEST", "uvm base class method test start !", UVM_LOW)
     /* create method */
-    seq_item = mem_seq_item::type_id::create();
+    seq_item = mem_seq_item::type_id::create("seq_item");
+    seq_item_1 = mem_seq_item::type_id::create("seq_item_1");
+    seq_item_3 = mem_seq_item::type_id::create("seq_item_3");
+    seq_item_4 = mem_seq_item::type_id::create("seq_item_4");
+    seq_item_5 = mem_seq_item::type_id::create("seq_item_5");
 
     /* randomizing the seq_item */
     seq_item.randomize();
 
     /* printing the seq_item */
     seq_item.print();
+
+    /* copy method */
+    seq_item_1.copy(seq_item); // copy seq_item to seq_item_1
+    seq_item_1.print();
+
+    /* clone method */
+    $cast(seq_item_2, seq_item.clone()); // create and copy seq_item to seq_item_2
+    seq_item_2.print();
+
+    /* compare method */
+    if(seq_item.compare(seq_item_1)) begin
+        `uvm_info("", "sequ_item matching with seq_item_1", UVM_LOW)
+        `uvm_info("", "sequ_item matching with seq_item_1 begin end test!", UVM_LOW)
+    end
+    else
+        `uvm_error("", "sequ_item is not matching with seq_item_1")
+
+    /* not matching case */
+    seq_item_1.randomize();
+    seq_item_1.print();
+    if(seq_item.compare(seq_item_1))
+        `uvm_info("COMPARE", "sequ_item matching with seq_item_1", UVM_LOW)
+    else
+        `uvm_error("COMPARE", "sequ_item is not matching with seq_item_1")
+
+    /* packed modthod */
+    seq_item.pack(bit_packed_data); //pack method
+    seq_item.print();
+    foreach(bit_packed_data[i])
+        `uvm_info("PACK", $sformatf("bit_packed_data[%0d] = %b", i, bit_packed_data[i]), UVM_LOW)
+
+    /* unpack method */
+    `uvm_info("UNPACK", "before unpack", UVM_LOW)
+    seq_item_3.print();
+    seq_item_3.unpack(bit_packed_data);  //unpack method
+    `uvm_info("UNPACK", "after unpack", UVM_LOW)
+    seq_item_3.print();
+
+    /* packed modthod by byte */
+    seq_item.pack_bytes(byte_packed_data); //pack method
+    seq_item.print();
+    foreach(byte_packed_data[i])
+        `uvm_info("PACK", $sformatf("bit_packed_data[%0d] = %b", i, byte_packed_data[i]), UVM_LOW)
+
+    /* unpack method */
+    `uvm_info("UNPACK", "before unpack", UVM_LOW)
+    seq_item_4.print();
+    seq_item_4.unpack_bytes(byte_packed_data);  //unpack method
+    `uvm_info("UNPACK", "after unpack", UVM_LOW)
+    seq_item_4.print();
+
+    /* packed modthod by int */
+    seq_item.pack_ints(int_packed_data); //pack method
+    seq_item.print();
+    foreach(int_packed_data[i]) begin
+        `uvm_info("PACK", $sformatf("bit_packed_data[%0d] = %b", i, int_packed_data[i]), UVM_LOW)
+        `uvm_info("PACK", $sformatf("bit_packed_data[%0d] = %d", i, int_packed_data[i]), UVM_LOW)
+    end
+
+    /* unpack method */
+    `uvm_info("UNPACK", "before unpack", UVM_LOW)
+    seq_item_5.print();
+    seq_item_5.unpack_ints(int_packed_data);  //unpack method
+    `uvm_info("UNPACK", "after unpack", UVM_LOW)
+    seq_item_5.print();
+    /* log output */
+    `uvm_info("TEST", "uvm base class method test end !", UVM_LOW)
 end
 
 endmodule
