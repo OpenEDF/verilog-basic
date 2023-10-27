@@ -26,30 +26,52 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: uvm sequence test
+// Brief: uvm sequence example 
 // Change Log:
 //--------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`timescale 1ns/1ps
-`include "uvm_macros.svh"
-
-import uvm_pkg::*;
-`include "basic_test.sv"
 
 //--------------------------------------------------------------------------
-// Module
+// Class
 //--------------------------------------------------------------------------
-module testebench;
+class write_sequence extends uvm_sequence #(mem_seq_item);
 
 //--------------------------------------------------------------------------
-// Design: initial and run
+// Design: new
 //--------------------------------------------------------------------------
-initial begin
-    run_test("basic_test");
-end
+function new(string name = "mem_sequence");
+    super.new(name);
+endfunction
 
-endmodule
 //--------------------------------------------------------------------------
+// Design: body
+//--------------------------------------------------------------------------
+virtual task body();
+    /* create_item/create req */
+    req = mem_seq_item::type_id::create("req");
+
+    /* wait_for_grant() */
+    wait_for_grant();
+
+    /* randomize teh req */
+    assert(req.randomize());
+
+    /* send the req */
+    send_request(req);
+
+    /* wait for item done */
+    wait_for_item_done();
+
+    /* get response */
+    get_response(rsp);
+endtask
+
+//--------------------------------------------------------------------------
+// Design: utility and field macros
+//--------------------------------------------------------------------------
+
+
+endclass: mem_seq_item

@@ -26,30 +26,29 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: uvm sequence test
+// Brief: uvm sequencer example 
 // Change Log:
 //--------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`timescale 1ns/1ps
-`include "uvm_macros.svh"
-
-import uvm_pkg::*;
-`include "basic_test.sv"
 
 //--------------------------------------------------------------------------
-// Module
+// Class
 //--------------------------------------------------------------------------
-module testebench;
+class mem_sequencer extends uvm_sequencer #(mem_seq_item);
 
 //--------------------------------------------------------------------------
-// Design: initial and run
+// Design: register factory
 //--------------------------------------------------------------------------
-initial begin
-    run_test("basic_test");
-end
+`uvm_sequencer_utils(mem_sequencer)
 
-endmodule
 //--------------------------------------------------------------------------
+// Design: new
+//--------------------------------------------------------------------------
+function new(string name, uvm_component partent);
+    super.new(name, partent);
+endfunction: new
+
+endclass: mem_seq_item

@@ -26,30 +26,79 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: uvm sequence test
+// Brief: uvm barries
 // Change Log:
 //--------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`timescale 1ns/1ps
+`timescale 1ns/1ns
 `include "uvm_macros.svh"
 
 import uvm_pkg::*;
-`include "basic_test.sv"
 
 //--------------------------------------------------------------------------
 // Module
 //--------------------------------------------------------------------------
 module testebench;
 
+uvm_barrier ba;
 //--------------------------------------------------------------------------
 // Design: initial and run
 //--------------------------------------------------------------------------
 initial begin
-    run_test("basic_test");
+    ba = new("ba", 4);
+    ba.set_threshold(3);
+    ba.set_auto_reset(0);
+    fork
+        process("A", 30);
+        process("B", 10);
+        process("C", 20);
+        process("D", 5);
+        monitor_process(ba);
+        cancel_process(ba);
+    join
 end
+
+//--------------------------------------------------------------------------
+// Design: uvm barrier task 
+//--------------------------------------------------------------------------
+task automatic process(input string p_name, int delay);
+    $display("[%0t] inside the process-%s", $time, p_name);
+    #delay;
+    $display("[%0t] process-%s completed", $time, p_name);
+    $display("[%0t] process-%s waiting for barrier", $time, p_name);
+    ba.wait_for();
+    $display("[%0t] process-%s after wait_for method", $time, p_name);
+endtask
+
+//--------------------------------------------------------------------------
+// Design: monitor process
+//--------------------------------------------------------------------------
+task monitor_process(ref uvm_barrier bar);
+    #15;
+    $display("[%0t] threshold value of barrie ba is %0d", $time, bar.get_threshold());
+    $display("[%0t] number of process waiting are %0d", $time, bar.get_num_waiters());
+endtask
+
+//--------------------------------------------------------------------------
+// Design: reset process 
+//--------------------------------------------------------------------------
+task reset_process(input int th, ref uvm_barrier bar);
+    #32
+    bar.reset(th);
+endtask
+
+//--------------------------------------------------------------------------
+// Design: cancel process 
+//--------------------------------------------------------------------------
+task cancel_process(ref uvm_barrier bar);
+    #16;
+    $display("[%0t] number of process waiting before cancel is %0d", $time, bar.get_num_waiters());
+    bar.cancel();
+    $display("[%0t] number of process waiting after cancel is %0d", $time, bar.get_num_waiters());
+endtask
 
 endmodule
 //--------------------------------------------------------------------------
