@@ -27,53 +27,38 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: a practical guide for systemverilog asserations example and learning
+// Brief: randomination
 // Change Log:
 //--------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-
+`include "packet.sv"
 //--------------------------------------------------------------------------
 // Module
 //--------------------------------------------------------------------------
-module cover_dut
+module testebench;
 //--------------------------------------------------------------------------
 // Ports
 //--------------------------------------------------------------------------
-(
-    // inputs
-    input wire       clk,
-    input wire       rst_n,
-    input wire [4:0] a_in,
-    input wire [4:0] b_in,
-
-    // outputs
-    output reg [4:0] c_ou,
-    output reg [4:0] d_ou
-);
 
 //--------------------------------------------------------------------------
-// Design: assertion basic test
+// Design: initial and create 
 //--------------------------------------------------------------------------
-always @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
-        c_ou <= 4'b000;
-    end else begin
-        c_ou <= a_in;
+initial begin
+    packet pkt;
+    pkt = new();
+    $display("time: %0t addr1.rand_mode = %0d \t addr2.rand_mode = %0d", 
+        $time, pkt.addr1.rand_mode(), pkt.addr2.rand_mode());
+
+    pkt.rand_mode(0);
+    repeat(20) begin
+        pkt.randomize();
+        $display("time: %0t addr1 = %0d \t addr2 = %0d", $time, pkt.addr1, pkt.addr2);
     end
-end
-
-//--------------------------------------------------------------------------
-// Design: assertion basic test
-//--------------------------------------------------------------------------
-always @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
-        d_ou <= 4'b0000;
-    end else begin
-        d_ou <= b_in;
-    end
+    $display("time: %0t addr1.rand_mode = %0d \t addr2.rand_mode = %0d", 
+        $time, pkt.addr1.rand_mode(), pkt.addr2.rand_mode());
 end
 
 endmodule

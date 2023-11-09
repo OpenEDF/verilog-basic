@@ -25,14 +25,8 @@ com:
 # simluation
 sim:
 	./simv +fsdb+autoflush+force
-	urg -dir simv.vdb
 
-# wave
-cov:
-	verdi -cov -covdir simv.vdb & \
-		-nologo &
-
-.PHONY: clean sim com wave
+.PHONY: clean sim com 
 clean:
 	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc verdiLog \
 		urgReport vdCovLog
