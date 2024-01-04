@@ -43,15 +43,34 @@ module ahb_lite_master
 // Ports
 //--------------------------------------------------------------------------
 (
-    // inputs
-    input wire         CLK,
-    input wire         HRESET,
+    // global inputs
+    input wire         HCLK,
+    input wire         HRESETn,
 
-    // outputs
+    // AHB master input
+    input wire         HREADY,
+    input wire         HRESP,
+    input wire [31:0]  HRDATA,
+
+    // AHB master outputs
+    output reg  [31:0] HADDR,
+    output reg         HWRITE,
+    output reg  [2:0]  HSIZE.
+    output reg  [2:0]  HBURST,
+    output reg  [1:0]  HTRANS,
+    output reg         HMASTERLOCK,
+    output reg  [31:0] HWDATA,
+
+    //custom
+    output reg         BUSY
 );
 
 //--------------------------------------------------------------------------
-// Design:
+// Design: master FSM
+//--------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------
+// Design: output address and control signal
 //--------------------------------------------------------------------------
 
 endmodule
