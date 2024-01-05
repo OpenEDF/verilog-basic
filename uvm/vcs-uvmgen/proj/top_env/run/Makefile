@@ -38,7 +38,7 @@ else
  ERR_STATUS = 1
 endif
 
-COMP_OPTS = -full64 -timescale=1ns/1ns -cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed \
+COMP_OPTS = -full64 -timescale=1ns/1ns  -LDFLAGS -Wl,--no-as-needed \
 		   	-sverilog -l vcs.log $(UVM) $(INCL) $(DEFINES)
 
 all default: check clean comp run

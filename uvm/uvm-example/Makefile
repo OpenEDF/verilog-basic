@@ -29,7 +29,7 @@ com:$(TEST_FILE)
 
 #com:$(TEST_FILE)
 #	vcs -sverilog $(ACC_HDL_REG) -ntb_opts uvm-1.2 -full64 +v2k -timescale=1ns/1ns \
-#   	-cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed -CFLAGS -DVCS \
+#   	 -LDFLAGS -Wl,--no-as-needed -CFLAGS -DVCS \
 #   	-timescale=1ns/1ps +incdir+./tb_class -f $(TEST_FILE)
 
 # simluation

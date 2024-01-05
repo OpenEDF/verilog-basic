@@ -29,7 +29,7 @@ com_centos:
 	$(CM) $(CM_NAME) $(CM_DIR) $(VPD_NAME) -f $(SRC_FILE) -o $(OUTPUT)
 
 com:
-	vcs -full64 +v2k -cpp g++-4.8 -cc gcc-4.8 \
+	vcs -full64 +v2k  \
 	-LDFLAGS -Wl,--no-as-needed -timescale=1ns/1ps \
 	-debug_access+all +warn=noVPI-CT-NS            \
     -P $(VERDI_HOME)/share/PLI/VCS/LINUX64/novas.tab                         \
