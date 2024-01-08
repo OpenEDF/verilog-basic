@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: ahb lite decoder
+// Brief: ahb lite multiplexor
 // Change Log:
 //--------------------------------------------------------------------------
 
@@ -39,53 +39,83 @@
 //--------------------------------------------------------------------------
 // Module
 //--------------------------------------------------------------------------
-module ahb_lite_decoder
+module ahb_lite_multiplexor
 //--------------------------------------------------------------------------
 // Ports
 //--------------------------------------------------------------------------
 (
     // global inputs
-    input wire [31:0]  HADDR,
+    input wire         HCLK,
+    input wire         HRESETn,
 
-    // outputs to slave
-    output wire        HSEL_ROM,
-    output wire        HSEL_DEF_SLAVE,
-    output wire        HSEL_NOMAP,
+    // decoder input
+    input wire  [3:0]  HSEL_MUX,
 
-    // outputs to multiplexor
-    output reg [3:0]   HSEL_MUX
+    // slave inputs data
+    input wire  [31:0] rom_rdata_mux,
+    input wire  [31:0] defslave_rdata_mux,
+    input wire  [31:0] nomap_rdata_mux,
+
+    // slave inputs hreadyout
+    inout wire         rom_hredayout_mux,
+    inout wire         defslave_hreadyout_mux,
+    inout wire         nomap_hreadyout_mux,
+
+    // slave inputs hresp
+    inout wire         rom_hresp_mux,
+    inout wire         defslave_hresp_mux,
+    inout wire         nomap_hresp_mux,
+
+    // outputs to master
+    output reg         HREADY,
+    output reg         HRESP,
+    output reg  [31:0] HRDATA
 );
 
 //--------------------------------------------------------------------------
 // Design: module internal control signal
 //--------------------------------------------------------------------------
-reg [15:0] slave_set_coding;
-assign HSEL_ROM           = slave_set_coding[0];   // 0x0050_0000 --> 0x0050FFFF: 64K ROM
-assign HSEL_DEF_SLAVE     = slave_set_coding[14];  // 0x005E_0000 --> 0x005EFFFF: 64K default memory
-assign HSEL_NOMAP         = slave_set_coding[15];
-wire [15:0] slave_mem_map;
-assign slave_mem_map = HADDR[31:16];
+reg [3:0] address_phase_hsel_mux;
 
 //--------------------------------------------------------------------------
-// Design: output the slave select signal
+// Design: store the address phase signal
+//--------------------------------------------------------------------------
+always @(posedge HCLK or negedge HRESETn) begin
+    if (!HRESETn) begin
+        address_phase_hsel_mux <= `MUX_SEL_DEF_SLAVE;
+    end else begin
+        address_phase_hsel_mux <= HSEL_MUX;
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: read the slave data and response signal to master
 //--------------------------------------------------------------------------
 always @(*) begin
-    slave_set_coding <= 16'h0000;
-    HSEL_MUX         <= 4'h0;
-    case (slave_mem_map)
-        `MEM_MAP_ROM: begin
-            slave_set_coding <= `MEM_MAP_HSEL_ROM;
-            HSEL_MUX         <= `MUX_SEL_ROM;
-        end
-        `MEM_MAP_DEF_SLAVE: begin
-            slave_set_coding <= `MEM_MAP_HSEL_DEF_SLAVE;
-            HSEL_MUX         <= `MUX_SEL_DEF_SLAVE;
-        end
-        default: begin   //TODO: assert the exception
-            slave_set_coding <= `MEM_MAP_HSEL_NO_MAP;
-            HSEL_MUX         <= `MUX_SEL_NOMAP;
-        end
-    endcase
+    if (!HRESETn) begin
+        HREADY <= 1'b0;
+        HRESP  <= 1'b1;
+        HRDATA <= 32'h0000_0000;
+    end
+    else begin
+        case(address_phase_hsel_mux)
+            `MUX_SEL_ROM: begin
+                HREADY <= rom_hredayout_mux;
+                HRESP  <= rom_hresp_mux;
+                HRDATA <= rom_rdata_mux;
+             end
+            `MUX_SEL_DEF_SLAVE: begin
+                HREADY <= defslave_hreadyout_mux;
+                HRESP  <= defslave_hresp_mux;
+                HRDATA <= defslave_rdata_mux;
+             end
+            default: begin
+                HREADY <= nomap_hreadyout_mux;
+                HRESP  <= nomap_hresp_mux;
+                HRDATA <= nomap_rdata_mux;
+            end
+        endcase
+    end
 end
 
 endmodule

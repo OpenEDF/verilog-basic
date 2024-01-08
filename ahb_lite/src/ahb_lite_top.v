@@ -38,21 +38,160 @@
 //--------------------------------------------------------------------------
 // Module
 //--------------------------------------------------------------------------
-module ahb_lite_top 
+module ahb_lite_top
 //--------------------------------------------------------------------------
 // Ports
 //--------------------------------------------------------------------------
 (
-    // inputs
-    input wire         clk,
-    input wire         rst_n,
+    // global inputs
+    input wire          HCLK,
+    input wire          HRESETn,
 
-    // outputs
+    // AHB master inputs
+    input wire [31:0]   master_in_wdata,
+    input wire [31:0]   master_in_addr,
+    input wire          master_en,
+    input wire          master_wr,
+
+    //custom master outputs
+    output wire         master_hreadyn_wait,
+    output wire [31:0]  master_out_data
 );
 
 //--------------------------------------------------------------------------
-// Design:
+// Design: module inner connect signal
 //--------------------------------------------------------------------------
+/* ahb matser */
+wire [31:0] master_haddr_slave;
+wire        master_hwrite_slave;
+wire [2:0]  master_hsize_slave;
+wire [2:0]  master_hburst_slave;
+wire [3:0]  master_hprot_slave;
+wire [1:0]  master_htrans_slave;
+wire        master_hmasterlock_slave;
+wire [31:0] master_hwdata_slave;
+
+/* decoder signal */
+wire        decoder_hsel_def_slave;
+wire [3:0]  decoder_hsel_mux_multi;
+
+/* multiplexor */
+wire        multi_hready_master;
+wire        multi_hresp_master;
+wire [31:0] multi_hrdata_master;
+
+/* default slave */
+wire [31:0] defslave_rdata_multi;
+wire        defslave_hreadyout_multi;
+wire        defslave_hresp_multi;
+
+//--------------------------------------------------------------------------
+// Design: instance ahb lite master
+//--------------------------------------------------------------------------
+ahb_lite_master ahb_lite_master_u
+(
+    .HCLK                   (HCLK),
+    .HRESETn                (HRESETn),
+
+    // AHB master inputs
+    .master_in_wdata        (master_in_wdata),
+    .master_in_addr         (master_in_addr),
+    .master_en              (master_en),
+    .master_wr              (master_wr),
+    .HREADY                 (multi_hready_master),
+    .HRESP                  (multi_hresp_master),
+    .HRDATA                 (multi_hrdata_master),
+
+    // AHB master outputs
+    .HADDR                  (master_haddr_slave),
+    .HWRITE                 (master_hwrite_slave),
+    .HSIZE                  (master_hsize_slave),
+    .HBURST                 (master_hburst_slave),
+    .HPROT                  (master_hprot_slave),
+    .HTRANS                 (master_htrans_slave),
+    .HMASTERLOCK            (master_hmasterlock_slave),
+    .HWDATA                 (master_hwdata_slave),
+
+    //custom master outputs
+    .master_hreadyn_wait    (master_hreadyn_wait),
+    .master_out_data        (master_out_data)
+);
+
+//--------------------------------------------------------------------------
+// Design: instance ahb lite decoder
+//--------------------------------------------------------------------------
+ahb_lite_decoder ahb_lite_decoder_u
+(
+    // master inputs
+    .HADDR                  (master_haddr_slave),
+
+    // outputs to slave
+    .HSEL_ROM               (),
+    .HSEL_DEF_SLAVE         (decoder_hsel_def_slave),
+    .HSEL_NOMAP             (),
+
+    // outputs to multiplexor
+    .HSEL_MUX               (decoder_hsel_mux_multi)
+);
+
+//--------------------------------------------------------------------------
+// Design: instance ahb lite multiplexor
+//--------------------------------------------------------------------------
+ahb_lite_multiplexor ahb_lite_multiplexor_u
+(
+    // global inputs
+    .HCLK                   (HCLK),
+    .HRESETn                (HRESETn),
+
+    // decoder input
+    .HSEL_MUX               (decoder_hsel_mux_multi),
+
+    // slave inputs data
+    .rom_rdata_mux          (),
+    .defslave_rdata_mux     (defslave_rdata_multi),
+    .nomap_rdata_mux        (),
+
+    // slave inputs hreadyout
+    .rom_hredayout_mux      (),
+    .defslave_hreadyout_mux (defslave_hreadyout_multi),
+    .nomap_hreadyout_mux    (),
+
+    // slave inputs hresp
+    .rom_hresp_mux          (),
+    .defslave_hresp_mux     (defslave_hresp_multi),
+    .nomap_hresp_mux        (),
+
+    // outputs to master
+    .HREADY                 (multi_hready_master),
+    .HRESP                  (multi_hresp_master),
+    .HRDATA                 (multi_hrdata_master)
+);
+
+//--------------------------------------------------------------------------
+// Design: instance ahb lite default slave
+//--------------------------------------------------------------------------
+ahb_lite_def_slave ahb_lite_def_slave_u
+(
+    // global inputs
+    .HCLK                   (HCLK),
+    .HRESETn                (HRESETn),
+
+    .HSEL                   (decoder_hsel_def_slave),
+    .HADDR                  (master_haddr_slave),
+    .HWRITE                 (master_hwrite_slave),
+    .HSIZE                  (master_hsize_slave),
+    .HBURST                 (master_hburst_slave),
+    .HPROT                  (master_hprot_slave),
+    .HTRANS                 (master_htrans_slave),
+    .HMASTLOCK              (master_hmasterlock_slave),
+    .HREADY                 (),  //TODO: is it needed?
+    .HWDATA                 (master_hwdata_slave),
+
+    // outputs
+    .HRDATA                 (defslave_rdata_multi),
+    .HREDAYOUT              (defslave_hreadyout_multi),
+    .HRESP                  (defslave_hresp_multi)
+);
 
 endmodule
 //--------------------------------------------------------------------------

@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: ahb lite master 
+// Brief: ahb lite master
 // Change Log:
 //--------------------------------------------------------------------------
 
@@ -38,7 +38,7 @@
 //--------------------------------------------------------------------------
 // Module
 //--------------------------------------------------------------------------
-module ahb_lite_master 
+module ahb_lite_master
 //--------------------------------------------------------------------------
 // Ports
 //--------------------------------------------------------------------------
@@ -59,81 +59,58 @@ module ahb_lite_master
     // AHB master outputs
     output reg [31:0]  HADDR,
     output reg         HWRITE,
-    output reg [2:0]   HSIZE.
+    output reg [2:0]   HSIZE,
     output reg [2:0]   HBURST,
+    output reg [3:0]   HPROT,
     output reg [1:0]   HTRANS,
     output reg         HMASTERLOCK,
     output reg [31:0]  HWDATA,
 
     //custom master outputs
     output reg         master_hreadyn_wait,
-    output reg         master_out_data
+    output reg [31:0]  master_out_data
 );
 
 //--------------------------------------------------------------------------
 // Design: module internal signals
 //--------------------------------------------------------------------------
 reg [31:0] master_address_phase_data;
-`define DEF_ACCRESS_SLAVE_ADDR 32'hF000_0000
-localparam MASTER_IDLE = 4'b01;
-localparam MASTER_WORK = 4'b01;
+`define DEF_ACCRESS_SLAVE_ADDR 32'h005E_0000
 
 //--------------------------------------------------------------------------
-// Design: master FSM control address phase and data phase impletement the
-//         pipeline transaction
-//--------------------------------------------------------------------------
-always @(posedge HCLK or negedge HRESETn) begin
-    if (!HRESETn) begin
-        master_cur_state <= MASTER_IDLE;
-    end else begin
-        master_cur_state <= master_next_state;
-    end
-
-//--------------------------------------------------------------------------
-// Design: master FSM  update
-//--------------------------------------------------------------------------
-always @(*) begin
-    if (!HRESETn) begin
-        master_next_state <= MASTER_IDLE;
-    end else begin
-        case (master_cur_state)
-            MASTER_IDLE:
-                if (master_en) begin
-                    master_next_state <= MASTER_WORK;
-                end else begin
-                    master_next_state <= MASTER_IDLE;
-                end
-            MASTER_WORK:
-                if (!master_en) begin
-                    master_next_state <= MASTER_IDLE;
-                end else begin
-                    master_next_state <= MASTER_WORK;
-                end
-            default:
-                master_next_state <= MASTER_IDLE;
-        endcase
-    end
-end
-
-//--------------------------------------------------------------------------
-// Design: address phase, master output the address, _data and control 
-//         signal 
+// Design: address phase, master output the address, _data and control
+//         signal
 //--------------------------------------------------------------------------
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
         HADDR       <= `DEF_ACCRESS_SLAVE_ADDR;
         HWRITE      <= 1'b0;
         HSIZE       <= 3'b010;
-        HBRUST      <= 3'b000;
+        HBURST      <= 3'b000;
+        HPROT       <= 3'b000;
         HTRANS      <= 2'b00;
-        HMASTERLOCK <= 1'b0; 
-        HWDATA      <= 32'h0000_0000;
+        HMASTERLOCK <= 1'b0;
         master_address_phase_data <= 32'h0000_0000;
     end else begin
-        case (master_cur_state)
+        if (master_en) begin
+            HADDR       <= master_in_addr;
+            HWRITE      <= master_wr;
+            HSIZE       <= 3'b010;          // word
+            HBURST      <= 3'b000;
+            HPROT       <= 3'b000;
+            HTRANS      <= 2'b01;           // busy
+            HMASTERLOCK <= 1'b0;
             master_address_phase_data <= master_in_wdata;
-
-        endcase
+        end else begin
+            HADDR       <= `DEF_ACCRESS_SLAVE_ADDR;
+            HWRITE      <= 1'b0;
+            HSIZE       <= 3'b010;
+            HBURST      <= 3'b000;
+            HPROT       <= 3'b000;
+            HTRANS      <= 2'b00;
+            HMASTERLOCK <= 1'b0;
+            master_address_phase_data <= 32'h0000_0000;
+        end
     end
 end
 
@@ -149,8 +126,23 @@ always @(posedge HCLK or negedge HRESETn) begin
 end
 
 //--------------------------------------------------------------------------
-// Design: read response data and control singal 
+// Design: read response data and control singal
 //--------------------------------------------------------------------------
+always @(posedge HCLK or negedge HRESETn) begin
+    if (!HRESETn) begin
+        master_hreadyn_wait <= 1'b0;
+        master_out_data     <= 32'h0000_0000;
+    end else begin
+        if (HREADY & !HRESP) begin
+            master_hreadyn_wait <= 1'b1;
+            master_out_data     <= HRDATA;
+        end else begin
+            master_hreadyn_wait <= 1'b0;
+            master_out_data     <= 32'h0000_0000;
+        end
+        //TODO: add timeout
+    end
+end
 
 endmodule
 //--------------------------------------------------------------------------
