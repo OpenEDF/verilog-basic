@@ -184,12 +184,12 @@ ahb_lite_def_slave ahb_lite_def_slave_u
     .HPROT                  (master_hprot_slave),
     .HTRANS                 (master_htrans_slave),
     .HMASTLOCK              (master_hmasterlock_slave),
-    .HREADY                 (),  //TODO: is it needed?
+    .HREADY                 (multi_hready_master),
     .HWDATA                 (master_hwdata_slave),
 
     // outputs
     .HRDATA                 (defslave_rdata_multi),
-    .HREDAYOUT              (defslave_hreadyout_multi),
+    .HREADYOUT              (defslave_hreadyout_multi),
     .HRESP                  (defslave_hresp_multi)
 );
 

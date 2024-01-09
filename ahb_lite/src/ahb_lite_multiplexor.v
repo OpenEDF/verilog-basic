@@ -57,14 +57,14 @@ module ahb_lite_multiplexor
     input wire  [31:0] nomap_rdata_mux,
 
     // slave inputs hreadyout
-    inout wire         rom_hredayout_mux,
-    inout wire         defslave_hreadyout_mux,
-    inout wire         nomap_hreadyout_mux,
+    input wire         rom_hredayout_mux,
+    input wire         defslave_hreadyout_mux,
+    input wire         nomap_hreadyout_mux,
 
     // slave inputs hresp
-    inout wire         rom_hresp_mux,
-    inout wire         defslave_hresp_mux,
-    inout wire         nomap_hresp_mux,
+    input wire         rom_hresp_mux,
+    input wire         defslave_hresp_mux,
+    input wire         nomap_hresp_mux,
 
     // outputs to master
     output reg         HREADY,

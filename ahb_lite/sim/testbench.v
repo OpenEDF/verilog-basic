@@ -140,7 +140,7 @@ endtask
 initial begin
     forever @(posedge hclk) begin
         if (master_hreadyn_wait & !master_wr) begin
-            $display("[%0t] AHB Lite read test: data: 0x%h", $time, master_out_data);
+            $display("[%0t] AHB Lite read data: 0x%h", $time, master_out_data);
         end
     end
 end
