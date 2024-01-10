@@ -75,7 +75,8 @@ reg [2:0]  addr_phase_hsize;
 reg [2:0]  addr_phase_hburst;
 reg [3:0]  addr_phase_hport;
 reg        addr_phase_hmastlock;
-reg        addr_phase_heady;
+reg        addr_phase_hready;
+reg [31:0] data_phase_addr;
 
 reg [31:0] def_test_reg0;
 reg [31:0] def_test_reg1;
@@ -91,8 +92,8 @@ wire [15:0] mem_map_addr_offset;
 wire        data_phase_read;
 wire        data_phase_wire;
 wire        data_phase_rd_wr_comm;
-assign mem_map_addr_offset = addr_phase_addr[15:0];
-assign data_phase_rd_wr_comm = addr_phase_hsel & addr_phase_hsize[1] & addr_phase_heady;
+assign mem_map_addr_offset = data_phase_addr[15:0];
+assign data_phase_rd_wr_comm = addr_phase_hsel & addr_phase_hsize[1] & addr_phase_hready;
 assign data_phase_read  = data_phase_rd_wr_comm & !addr_phase_hwrite;
 assign data_phase_write = data_phase_rd_wr_comm & addr_phase_hwrite;
 
@@ -116,9 +117,8 @@ always @(posedge HCLK or negedge HRESETn) begin
         addr_phase_hburst    <= 3'b000;
         addr_phase_hport     <= 4'b0000;
         addr_phase_hmastlock <= 1'b0;
-        addr_phase_heady     <= 1'b1;
-    end
-    else begin
+        addr_phase_hready    <= 1'b0;
+    end else begin
         addr_phase_addr      <= HADDR;
         addr_phase_hsel      <= HSEL;
         addr_phase_htrans    <= HTRANS;
@@ -127,7 +127,7 @@ always @(posedge HCLK or negedge HRESETn) begin
         addr_phase_hburst    <= HBURST;
         addr_phase_hport     <= HPROT;
         addr_phase_hmastlock <= HMASTLOCK;
-        addr_phase_heady     <= HREADY;
+        addr_phase_hready    <= HREADY;
     end
 end
 
@@ -253,5 +253,53 @@ end
 assign HREADYOUT = data_phase_hreadyout;
 assign HRESP     = data_phase_hresp;
 
+//--------------------------------------------------------------------------
+// Design: brust address update
+//--------------------------------------------------------------------------
+always @(posedge or negedge HRESETn) begin
+    if (!HRESETn) begin
+
+    end else begin
+        case (addr_phase_hburst)
+        SINGLE:
+            burst_incr_addr = HADDR;
+        BURST_INCR:
+            burst_incr_addr = burst_incr_addr + 32'h4;
+        BURST_WRAP4:
+
+        BURST_INCR4:
+            if (burst_cnt <= 10'd4) begin
+                burst_incr_addr = burst_incr_addr + 32'h4;
+            end
+        BURST_WRAP8:
+        BURST_INCR8:
+            if (burst_cnt <= 10'd8) begin
+                burst_incr_addr = burst_incr_addr + 32'h4;
+            end
+        BURST_WRAP16:
+        BURST_INCR16:
+            if (burst_cnt <= 10'd16) begin
+                burst_incr_addr = burst_incr_addr + 32'h4;
+            end
+        default:
+        endcase
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: select uses brust address or bus address
+//--------------------------------------------------------------------------
+always @(*) begin
+    if (addr_phase_hburst)
+        data_phase_addr = burst_incr_addr;
+    else
+        data_phase_addr = addr_phase_addr;
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: ahb brust counter
+//--------------------------------------------------------------------------
+//
 endmodule
 //--------------------------------------------------------------------------

@@ -48,4 +48,8 @@
 `define MEM_MAP_HSEL_DEF_SLAVE 16'b0100_0000_0000_0000
 `define MEM_MAP_HSEL_NO_MAP    16'b1000_0000_0000_0000
 
+/* config define */
+`define DEF_ACCRESS_SLAVE_ADDR 32'h005E_0000
+
+
 //--------------------------------------------------------------------------

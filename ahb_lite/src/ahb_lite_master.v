@@ -67,15 +67,14 @@ module ahb_lite_master
     output reg [31:0]  HWDATA,
 
     //custom master outputs
-    output reg         master_hreadyn_wait,
-    output reg [31:0]  master_out_data
+    output wire         master_hreadyn_wait,
+    output wire [31:0]  master_out_data
 );
 
 //--------------------------------------------------------------------------
 // Design: module internal signals
 //--------------------------------------------------------------------------
-reg [31:0] master_address_phase_data;
-`define DEF_ACCRESS_SLAVE_ADDR 32'h005E_0000
+reg [31:0] master_addr_phase_hdata;
 
 //--------------------------------------------------------------------------
 // Design: address phase, master output the address, _data and control
@@ -90,17 +89,13 @@ always @(posedge HCLK or negedge HRESETn) begin
         HPROT       <= 3'b000;
         HTRANS      <= 2'b00;
         HMASTERLOCK <= 1'b0;
-        master_address_phase_data <= 32'h0000_0000;
+        master_addr_phase_hdata <= 32'h0000_0000;
     end else begin
         if (master_en) begin
             HADDR       <= master_in_addr;
             HWRITE      <= master_wr;
             HSIZE       <= 3'b010;          // word
-            HBURST      <= 3'b000;
-            HPROT       <= 3'b000;
-            HTRANS      <= 2'b01;           // busy
-            HMASTERLOCK <= 1'b0;
-            master_address_phase_data <= master_in_wdata;
+            master_addr_phase_hdata <= master_in_wdata;
         end else begin
             HADDR       <= `DEF_ACCRESS_SLAVE_ADDR;
             HWRITE      <= 1'b0;
@@ -109,7 +104,7 @@ always @(posedge HCLK or negedge HRESETn) begin
             HPROT       <= 3'b000;
             HTRANS      <= 2'b00;
             HMASTERLOCK <= 1'b0;
-            master_address_phase_data <= 32'h0000_0000;
+            master_addr_phase_hdata <= 32'h0000_0000;
         end
     end
 end
@@ -120,29 +115,18 @@ end
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
         HWDATA <= 32'h0000_0000;
+    end else if (master_en)begin
+        HWDATA <= master_addr_phase_hdata;
     end else begin
-        HWDATA <= master_address_phase_data;
+        HWDATA <= 32'h0000_0000;
     end
 end
 
 //--------------------------------------------------------------------------
 // Design: read response data and control singal
 //--------------------------------------------------------------------------
-always @(posedge HCLK or negedge HRESETn) begin
-    if (!HRESETn) begin
-        master_hreadyn_wait <= 1'b0;
-        master_out_data     <= 32'h0000_0000;
-    end else begin
-        if (HREADY & !HRESP) begin
-            master_hreadyn_wait <= 1'b1;
-            master_out_data     <= HRDATA;
-        end else begin
-            master_hreadyn_wait <= 1'b0;
-            master_out_data     <= 32'h0000_0000;
-        end
-        //TODO: add timeout
-    end
-end
+assign master_hreadyn_wait = HREADY & !HRESP;
+assign master_out_data     = HRDATA;
 
 endmodule
 //--------------------------------------------------------------------------
