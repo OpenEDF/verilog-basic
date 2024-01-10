@@ -48,8 +48,47 @@
 `define MEM_MAP_HSEL_DEF_SLAVE 16'b0100_0000_0000_0000
 `define MEM_MAP_HSEL_NO_MAP    16'b1000_0000_0000_0000
 
+/* brust operation type */
+`define BURST_SINGLE           3'b000
+`define BURST_INCR             3'b001
+`define BURST_WRAP4            3'b010
+`define BURST_INCR4            3'b011
+`define BURST_WRAP8            3'b100
+`define BURST_INCR8            3'b101
+`define BURST_WRAP16           3'b110
+`define BURST_INCR16           3'b111
+
+/* transfer size */
+`define SIZE_BYTE              3'b000
+`define SIZE_HALFWORD          3'b001
+`define SIZE_WORD              3'b010
+`define SIZE_DOUBLEWORD        3'b011
+`define SIZE_4_WORD_LINE       3'b100
+`define SIZE_8_WORD_LINE       3'b101
+`define SIZE_512_LINE          3'b110
+`define SIZE_1024_LINE         3'b111
+
+/* transfer type */
+`define TRANS_IDLE             2'b00
+`define TRANS_BUSY             2'b01
+`define TRANS_NONSEQ           2'b10
+`define TRANS_SEQ              2'b11
+
+/* read and write */
+`define MASTER_WIRTE           1'b1
+`define MASTER_READ            1'b0
+
+/* hready and resp */
+`define READYOUT               1'b1
+`define WAIT_READYOUT          1'b0
+`define RESP_ERROR             1'b1
+`define RESP_OKAY              1'b0
+
+/* slave select */
+`define SLAVE_SEL              1'b1
+`define SLAVE_FRE              1'b0
+
 /* config define */
 `define DEF_ACCRESS_SLAVE_ADDR 32'h005E_0000
-
 
 //--------------------------------------------------------------------------

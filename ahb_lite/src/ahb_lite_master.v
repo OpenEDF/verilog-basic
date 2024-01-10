@@ -83,26 +83,35 @@ reg [31:0] master_addr_phase_hdata;
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
         HADDR       <= `DEF_ACCRESS_SLAVE_ADDR;
-        HWRITE      <= 1'b0;
-        HSIZE       <= 3'b010;
-        HBURST      <= 3'b000;
+        HWRITE      <= `MASTER_READ;
+        HSIZE       <= `SIZE_WORD;
+        HBURST      <= `BURST_SINGLE;
         HPROT       <= 3'b000;
-        HTRANS      <= 2'b00;
+        HTRANS      <= `TRANS_IDLE;
         HMASTERLOCK <= 1'b0;
         master_addr_phase_hdata <= 32'h0000_0000;
     end else begin
         if (master_en) begin
             HADDR       <= master_in_addr;
             HWRITE      <= master_wr;
-            HSIZE       <= 3'b010;          // word
+            HSIZE       <= `SIZE_WORD;
+            HBURST      <= `BURST_SINGLE;
+            HTRANS      <= `TRANS_NONSEQ;
             master_addr_phase_hdata <= master_in_wdata;
+        end else if (!HREADY) begin /* keep */
+            HADDR       <= HADDR;
+            HWRITE      <= HWRITE;
+            HSIZE       <= HSIZE;
+            HBURST      <= HBURST;
+            HTRANS      <= `TRANS_BUSY;
+            master_addr_phase_hdata <= master_addr_phase_hdata;
         end else begin
             HADDR       <= `DEF_ACCRESS_SLAVE_ADDR;
-            HWRITE      <= 1'b0;
-            HSIZE       <= 3'b010;
-            HBURST      <= 3'b000;
+            HWRITE      <= `MASTER_READ;
+            HSIZE       <= `SIZE_WORD;
+            HBURST      <= `BURST_SINGLE;
             HPROT       <= 3'b000;
-            HTRANS      <= 2'b00;
+            HTRANS      <= `TRANS_IDLE;
             HMASTERLOCK <= 1'b0;
             master_addr_phase_hdata <= 32'h0000_0000;
         end

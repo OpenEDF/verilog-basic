@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 1278 598 209 73
+viewPort 0 27 1278 408 209 73
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 306360.359192
-cursor 0.000000
+zoom 92240.342853 168830.432651
+cursor 135000.000000
 marker 0.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 22
+top 31
 ; marker line index
-markerPos 29
+markerPos 44
 
 ; event list
 ; addEvent event_name event_expression
@@ -75,7 +75,6 @@ addSignal -h 15 -holdScope data_phase_wr_hreadyout
 addSignal -h 15 -holdScope data_phase_wr_hresp
 addSignal -h 15 -holdScope data_phase_read
 addSignal -h 15 -holdScope data_phase_write
-addSignal -h 15 -holdScope addr_phase_heady
 addGroup "G4"
 addSignal -h 15 /testbench/ahb_lite_top_u/ahb_lite_multiplexor_u/HSEL_MUX[3:0]
 addSignal -h 15 -holdScope address_phase_hsel_mux[3:0]
@@ -91,7 +90,7 @@ addSignal -h 15 -holdScope HRESP
 addSignal -h 15 -holdScope HRDATA[31:0]
 addSignal -h 15 -holdScope master_hreadyn_wait
 addSignal -h 15 -UNSIGNED -HEX -holdScope master_out_data[31:0]
-addGroup "G6"
+addGroup "G6" -e FALSE
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

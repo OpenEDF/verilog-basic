@@ -93,8 +93,8 @@ end
 //--------------------------------------------------------------------------
 always @(*) begin
     if (!HRESETn) begin
-        HREADY <= 1'b0;
-        HRESP  <= 1'b1;
+        HREADY <= `WAIT_READYOUT;
+        HRESP  <= `RESP_OKAY;
         HRDATA <= 32'h0000_0000;
     end
     else begin

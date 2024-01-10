@@ -34,6 +34,7 @@
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
+`include "ahb_lite_config.v"
 
 //--------------------------------------------------------------------------
 // Module
@@ -77,6 +78,9 @@ reg [3:0]  addr_phase_hport;
 reg        addr_phase_hmastlock;
 reg        addr_phase_hready;
 reg [31:0] data_phase_addr;
+reg [31:0] burst_incr_addr;
+reg        burst_cnt_clr;
+reg [9:0]  burst_cnt;
 
 reg [31:0] def_test_reg0;
 reg [31:0] def_test_reg1;
@@ -92,10 +96,12 @@ wire [15:0] mem_map_addr_offset;
 wire        data_phase_read;
 wire        data_phase_wire;
 wire        data_phase_rd_wr_comm;
+wire        master_burst_tran;
 assign mem_map_addr_offset = data_phase_addr[15:0];
 assign data_phase_rd_wr_comm = addr_phase_hsel & addr_phase_hsize[1] & addr_phase_hready;
 assign data_phase_read  = data_phase_rd_wr_comm & !addr_phase_hwrite;
 assign data_phase_write = data_phase_rd_wr_comm & addr_phase_hwrite;
+assign master_burst_tran = addr_phase_hburst[0] | addr_phase_hburst[1] | addr_phase_hburst[2];
 
 reg         data_phase_rd_hreadyout;
 reg         data_phase_rd_hresp;
@@ -110,14 +116,14 @@ reg         data_phase_hresp;
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
         addr_phase_addr      <= 32'h005E_0000;
-        addr_phase_hsel      <= 1'b0;
-        addr_phase_htrans    <= 2'b00;
-        addr_phase_hwrite    <= 1'b0;
-        addr_phase_hsize     <= 3'b000;
-        addr_phase_hburst    <= 3'b000;
+        addr_phase_hsel      <= `SLAVE_FRE;
+        addr_phase_htrans    <= `TRANS_IDLE;
+        addr_phase_hwrite    <= `MASTER_READ;
+        addr_phase_hsize     <= `SIZE_WORD;
+        addr_phase_hburst    <= `BURST_SINGLE;
         addr_phase_hport     <= 4'b0000;
         addr_phase_hmastlock <= 1'b0;
-        addr_phase_hready    <= 1'b0;
+        addr_phase_hready    <= `READYOUT;
     end else begin
         addr_phase_addr      <= HADDR;
         addr_phase_hsel      <= HSEL;
@@ -140,35 +146,35 @@ always @(posedge HCLK or negedge HRESETn) begin
         def_test_reg1 <= 32'h0000_0000;
         def_test_reg2 <= 32'h0000_0000;
         def_test_reg3 <= 32'h0000_0000;
-        data_phase_wr_hreadyout <= 1'b0;
-        data_phase_wr_hresp  <= 1'b1;
+        data_phase_wr_hreadyout <= `WAIT_READYOUT;
+        data_phase_wr_hresp  <= `RESP_ERROR;
     end
     else begin
         if (data_phase_write) begin
             case(mem_map_addr_offset)
                 REG0_OFFSET: begin
                     def_test_reg0 <= HWDATA;
-                    data_phase_wr_hreadyout <= 1'b1;
-                    data_phase_wr_hresp  <= 1'b0;
+                    data_phase_wr_hreadyout <= `READYOUT;
+                    data_phase_wr_hresp  <= `RESP_OKAY;
                 end
                 REG1_OFFSET: begin
                     def_test_reg1 <= HWDATA;
-                    data_phase_wr_hreadyout <= 1'b1;
-                    data_phase_wr_hresp  <= 1'b0;
+                    data_phase_wr_hreadyout <= `READYOUT;
+                    data_phase_wr_hresp  <= `RESP_OKAY;
                 end
                 REG2_OFFSET: begin
                     def_test_reg2 <= HWDATA;
-                    data_phase_wr_hreadyout <= 1'b1;
-                    data_phase_wr_hresp  <= 1'b0;
+                    data_phase_wr_hreadyout <= `READYOUT;
+                    data_phase_wr_hresp  <= `RESP_OKAY;
                 end
                 REG3_OFFSET: begin
                     def_test_reg3 <= HWDATA;
-                    data_phase_wr_hreadyout <= 1'b1;
-                    data_phase_wr_hresp  <= 1'b0;
+                    data_phase_wr_hreadyout <= `READYOUT;
+                    data_phase_wr_hresp  <= `RESP_OKAY;
                 end
                 default: begin
-                    data_phase_wr_hreadyout <= 1'b0;
-                    data_phase_wr_hresp  <= 1'b1;
+                    data_phase_wr_hreadyout <= `READYOUT;
+                    data_phase_wr_hresp  <= `RESP_OKAY;
                     /* illege address access  */
                 end
            endcase
@@ -186,42 +192,42 @@ end
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
         HRDATA        <= 32'h0000_0000;
-        data_phase_rd_hreadyout <= 1'b0;
-        data_phase_rd_hresp  <= 1'b1;
+        data_phase_rd_hreadyout <= `WAIT_READYOUT;
+        data_phase_rd_hresp  <= `RESP_ERROR;
     end
     else begin
         if (data_phase_read) begin
             case(mem_map_addr_offset)
                 REG0_OFFSET: begin
                     HRDATA <= def_test_reg0;
-                    data_phase_rd_hreadyout <= 1'b1;
-                    data_phase_rd_hresp  <= 1'b0;
+                    data_phase_rd_hreadyout <= `READYOUT;
+                    data_phase_rd_hresp  <= `RESP_OKAY;
                 end
                 REG1_OFFSET: begin
                     HRDATA <= def_test_reg1;
-                    data_phase_rd_hreadyout <= 1'b1;
-                    data_phase_rd_hresp  <= 1'b0;
+                    data_phase_rd_hreadyout <= `READYOUT;
+                    data_phase_rd_hresp  <= `RESP_OKAY;
                 end
                 REG2_OFFSET: begin
                     HRDATA <= def_test_reg2;
-                    data_phase_rd_hreadyout <= 1'b1;
-                    data_phase_rd_hresp  <= 1'b0;
+                    data_phase_rd_hreadyout <= `READYOUT;
+                    data_phase_rd_hresp  <= `RESP_OKAY;
                 end
                 REG3_OFFSET: begin
                     HRDATA <= def_test_reg3;
-                    data_phase_rd_hreadyout <= 1'b1;
-                    data_phase_rd_hresp  <= 1'b0;
+                    data_phase_rd_hreadyout <= `READYOUT;
+                    data_phase_rd_hresp  <= `RESP_OKAY;
                 end
                 default: begin
                     HRDATA <= 32'hFFFF_FFFF;
-                    data_phase_rd_hreadyout <= 1'b0;
-                    data_phase_rd_hresp  <= 1'b1;
+                    data_phase_rd_hreadyout <= `READYOUT;
+                    data_phase_rd_hresp  <= `RESP_OKAY;
                 end
             endcase
         end
         else begin
-            data_phase_rd_hreadyout <= 1'b1;
-            data_phase_rd_hresp  <= 1'b1;
+            data_phase_rd_hreadyout <= `READYOUT;
+            data_phase_rd_hresp  <= `RESP_ERROR;
         end
     end
 end
@@ -242,8 +248,8 @@ always @(data_phase_rd_hresp or
         data_phase_hresp  <= data_phase_rd_hresp;
     end
     else begin
-        data_phase_hreadyout <= 1'b1;
-        data_phase_hresp  <= 1'b1;
+        data_phase_hreadyout <= `READYOUT;
+        data_phase_hresp  <= `RESP_ERROR;
     end
 end
 
@@ -254,34 +260,47 @@ assign HREADYOUT = data_phase_hreadyout;
 assign HRESP     = data_phase_hresp;
 
 //--------------------------------------------------------------------------
-// Design: brust address update
+// Design: burst address update
+// TODO: WRAP
+// TODO: plus HIZE[xx]
 //--------------------------------------------------------------------------
-always @(posedge or negedge HRESETn) begin
+always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
-
+        burst_incr_addr <= 32'h0000_0000;
+        burst_cnt_clr   <= 1'b0;
     end else begin
         case (addr_phase_hburst)
-        SINGLE:
-            burst_incr_addr = HADDR;
-        BURST_INCR:
-            burst_incr_addr = burst_incr_addr + 32'h4;
-        BURST_WRAP4:
-
-        BURST_INCR4:
-            if (burst_cnt <= 10'd4) begin
-                burst_incr_addr = burst_incr_addr + 32'h4;
+            `BURST_SINGLE:
+                burst_incr_addr <= HADDR;
+            `BURST_INCR: begin
+                burst_incr_addr <= burst_incr_addr + 32'h4;
+                burst_cnt_clr   <= 1'b1;
             end
-        BURST_WRAP8:
-        BURST_INCR8:
-            if (burst_cnt <= 10'd8) begin
-                burst_incr_addr = burst_incr_addr + 32'h4;
+            `BURST_INCR4:
+                if (burst_cnt == 10'd4) begin
+                    burst_cnt_clr <= 1'b1;
+                end else begin
+                    burst_cnt_clr   <= 1'b0;
+                    burst_incr_addr <= burst_incr_addr + 32'h4;
+                end
+            `BURST_INCR8:
+                if (burst_cnt <= 10'd8) begin
+                    burst_cnt_clr <= 1'b1;
+                end else begin
+                    burst_cnt_clr   <= 1'b0;
+                    burst_incr_addr <= burst_incr_addr + 32'h4;
+                end
+            `BURST_INCR16:
+                if (burst_cnt == 10'd16) begin
+                    burst_cnt_clr <= 1'b1;
+                end else begin
+                    burst_cnt_clr   <= 1'b1;
+                    burst_incr_addr <= burst_incr_addr + 32'h4;
+                end
+            default: begin
+                burst_cnt_clr   <= 1'b0;
+                burst_incr_addr <= burst_incr_addr;
             end
-        BURST_WRAP16:
-        BURST_INCR16:
-            if (burst_cnt <= 10'd16) begin
-                burst_incr_addr = burst_incr_addr + 32'h4;
-            end
-        default:
         endcase
     end
 end
@@ -290,9 +309,9 @@ end
 // Design: select uses brust address or bus address
 //--------------------------------------------------------------------------
 always @(*) begin
-    if (addr_phase_hburst)
+    if (master_burst_tran) begin
         data_phase_addr = burst_incr_addr;
-    else
+    end else begin
         data_phase_addr = addr_phase_addr;
     end
 end
@@ -300,6 +319,19 @@ end
 //--------------------------------------------------------------------------
 // Design: ahb brust counter
 //--------------------------------------------------------------------------
-//
+always @(posedge HCLK or negedge HRESETn) begin
+    if (!HRESETn) begin
+        burst_cnt <= 10'd0;
+    end else begin
+        if (master_burst_tran) begin
+            burst_cnt <= burst_cnt + 1'd1;
+        end else if (burst_cnt_clr) begin
+            burst_cnt <= 10'd0;
+        end else begin
+            burst_cnt <= burst_cnt;
+        end
+    end
+end
+
 endmodule
 //--------------------------------------------------------------------------
