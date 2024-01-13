@@ -257,7 +257,7 @@ end
 // Design: assign hready and hresp
 //--------------------------------------------------------------------------
 assign HREADYOUT = (addr_phase_htrans == `TRANS_IDLE) ? `READYOUT : data_phase_hreadyout;
-assign HRESP     = (addr_phase_htrans == `TRANS_IDLE) ? `RESP_OKAY : data_phase_hresp;
+assign HRESP     = (addr_phase_htrans == `TRANS_IDLE) ? `RESP_OKAY :data_phase_hresp;
 
 //--------------------------------------------------------------------------
 // Design: burst address update

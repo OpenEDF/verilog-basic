@@ -124,12 +124,16 @@ end
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
         HWDATA <= 32'h0000_0000;
-    end else if (master_en)begin
+    end else if (master_en) begin
         HWDATA <= master_addr_phase_hdata;
     end else begin
         HWDATA <= 32'h0000_0000;
     end
 end
+
+//--------------------------------------------------------------------------
+// Design: read data and hreadyout for master output
+//--------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------
 // Design: read response data and control singal
