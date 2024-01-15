@@ -34,6 +34,7 @@
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
+`include "ahb_lite_config.v"
 
 //--------------------------------------------------------------------------
 // Module
@@ -45,13 +46,40 @@ module testbench();
 reg         hclk;
 reg         hresetn;
 // AHB master inputs
-reg [31:0]  master_in_wdata;
-reg [31:0]  master_in_addr;
-reg         master_en;
-reg         master_wr;
+reg [31:0]  master_haddr;
+reg         master_hwrite;
+reg [2:0]   master_hsize;
+reg [2:0]   master_hburst;
+reg [3:0]   master_hport;
+reg [1:0]   master_htrans;
+reg         master_hmasterlock;
+reg [31:0]  master_hwdata;
+
 //custom master outputs
-wire        master_hreadyn_wait;
+wire        master_hready_wait;
+wire        master_hresp_error;
 wire [31:0] master_out_data;
+reg  [31:0] ahb_wr_addr, ahb_wr_data, ahb_rd_data;
+
+//--------------------------------------------------------------------------
+// Design: reset control logic initial
+//--------------------------------------------------------------------------
+initial begin
+    $display("[%0t] AHB Lite testbench case...", $time);
+    fork
+        /* reset control logic */
+        reset();
+
+        /* init logic */
+        init_and_start();
+    join
+
+    /* run */
+    main();
+
+    /* clean */
+    clean_and_exit();
+end
 
 //--------------------------------------------------------------------------
 // Design: create the clock
@@ -62,48 +90,59 @@ initial begin
 end
 
 //--------------------------------------------------------------------------
-// Design: initial
+// Design: reset control logic initial
 //--------------------------------------------------------------------------
-reg [31:0] ahb_wr_addr, ahb_wr_data, ahb_rd_data;
-initial begin
+task reset();
+begin
+    $display("[%0t] AHB Lite testbench reset...", $time);
+    hresetn = 1'b1;
+    #10
     hresetn = 1'b0;
     #10
     hresetn = 1'b1;
+end
+endtask
+
+//--------------------------------------------------------------------------
+// Design: initiali
+//--------------------------------------------------------------------------
+task init_and_start();
+begin
     /* initial input signal */
-    $display("[%0t] AHB Lite test:", $time);
+    @(negedge hresetn);
+    $display("[%0t] AHB Lite testbench init...", $time);
+    master_haddr         <= 32'h005E_0000;
+    master_hwrite        <= `MASTER_READ;
+    master_hsize         <= `SIZE_WORD;
+    master_hburst        <= `BURST_SINGLE;
+    master_hport         <= 4'b0000;
+    master_htrans        <= `TRANS_IDLE;
+    master_hmasterlock   <= 1'b0;
+    master_hwdata        <= 32'h0000_0000;
+    #10;
+end
+endtask
+
+//--------------------------------------------------------------------------
+// Design: main run task
+//--------------------------------------------------------------------------
+task main();
+begin
+    $display("[%0t] AHB Lite testbench run...", $time);
+end
+endtask
+
+//--------------------------------------------------------------------------
+// Design: clean and exit
+//--------------------------------------------------------------------------
+task clean_and_exit();
+begin
+    $display("[%0t] AHB Lite testbench exit...", $time);
     @(posedge hclk);
-    master_in_addr  <= 32'h005E_0000;
-    master_in_wdata <= 32'h0000_0000;
-    master_en       <= 1'b1;
-    master_wr       <= 1'b0;
-
-    /* write test */
-    ahb_wr_addr <= 32'h005E_0000;
-    ahb_wr_data <= 32'hFFFF_0000;
-    ahb_rd_data <= 32'h0000_0000;
-    repeat (4) begin
-        @(posedge hclk);
-        ahb_lite_write(ahb_wr_addr, ahb_wr_data);
-        ahb_wr_addr = ahb_wr_addr + 32'h0000_0004;
-        ahb_wr_data = ahb_wr_data + 32'h0000_0001;
-    end
-
-    ahb_wr_addr <= 32'h005E_0000;
-    repeat (4) begin
-        @(posedge hclk);
-        ahb_lite_read(ahb_wr_addr);
-        ahb_wr_addr <= ahb_wr_addr + 32'h0000_0004;
-    end
-
-    #20
-    @(posedge hclk);
-    master_en       <= 1'b1;
-    master_wr       <= 1'b0;
-    master_in_addr  <= 32'h0000_0000;
-    master_in_wdata <= 32'h0000_0000;
-    #1000
+    #100
     $finish();
 end
+endtask
 
 //--------------------------------------------------------------------------
 // Design: ahb master write task
@@ -111,10 +150,10 @@ end
 task ahb_lite_write(input [31:0] addr, data);
 begin
     $display("[%0t] AHB Lite wirte test: address: 0x%h, data: 0x%h", $time, addr, data);
-    master_in_addr  <= addr;
-    master_in_wdata <= data;
-    master_wr       <= 1'b1;
-    wait (master_hreadyn_wait) begin
+    master_haddr  <= addr;
+    master_hwdata <= data;
+    master_hwrite  <= 1'b1;
+    wait (master_hready_wait) begin
         $display("[%0t] AHB Lite write done!", $time);
     end
 end
@@ -126,24 +165,13 @@ endtask
 task ahb_lite_read(input [31:0] addr);
 begin
     $display("[%0t] AHB Lite read test: address: 0x%h", $time, addr);
-    master_in_addr  <= addr;
-    master_wr       <= 1'b0;
-    wait (master_hreadyn_wait) begin
+    master_haddr  <= addr;
+    master_hwrite  <= 1'b0;
+    wait (master_hready_wait) begin
         $display("[%0t] AHB Lite read done!", $time);
     end
 end
 endtask
-
-//--------------------------------------------------------------------------
-// Design: ahb lite read the data
-//--------------------------------------------------------------------------
-initial begin
-    forever @(posedge hclk) begin
-        if (master_hreadyn_wait & !master_wr) begin
-            $display("[%0t] AHB Lite read data: 0x%h", $time, master_out_data);
-        end
-    end
-end
 
 //--------------------------------------------------------------------------
 // Design: dump .fsdb file
@@ -163,13 +191,18 @@ ahb_lite_top ahb_lite_top_u
     .HRESETn                (hresetn),
 
     // AHB master inputs
-    .master_in_wdata        (master_in_wdata),
-    .master_in_addr         (master_in_addr),
-    .master_en              (master_en),
-    .master_wr              (master_wr),
+    .master_haddr           (master_haddr),
+    .master_hwrite          (master_hwrite),
+    .master_hsize           (master_hsize),
+    .master_hburst          (master_hburst),
+    .master_hport           (master_hport),
+    .master_htrans          (master_htrans),
+    .master_hmasterlock     (master_hmasterlock),
+    .master_hwdata          (master_hwdata),
 
     //custom master outputs
-    .master_hreadyn_wait    (master_hreadyn_wait),
+    .master_hready_wait     (master_hready_wait),
+    .master_hresp_error     (master_hresp_error),
     .master_out_data        (master_out_data)
 );
 

@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 92240.342853 168830.432651
-cursor 135000.000000
+zoom 0.000000 126250.000000
+cursor 10000.000000
 marker 0.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 31
+top 0
 ; marker line index
-markerPos 44
+markerPos 11
 
 ; event list
 ; addEvent event_name event_expression
@@ -47,51 +47,31 @@ curSTATUS ByChange
 
 addGroup "G1"
 activeDirFile "" "/home/macro/work/github/verilog-basic/ahb_lite/testbench.fsdb"
-addSignal -h 15 /testbench/ahb_lite_top_u/ahb_lite_master_u/HCLK
-addSignal -h 15 -holdScope HRESETn
-addSignal -h 15 -holdScope HADDR[31:0]
-addSignal -h 15 -holdScope HWRITE
-addSignal -h 15 -holdScope HWDATA[31:0]
+addSignal -h 15 /testbench/hclk
+addSignal -h 15 -holdScope hresetn
+addSignal -h 15 -holdScope master_haddr[31:0]
+addSignal -h 15 -holdScope master_hwrite
+addSignal -h 15 -holdScope master_hsize[2:0]
+addSignal -h 15 -holdScope master_hburst[2:0]
+addSignal -h 15 -holdScope master_hport[3:0]
+addSignal -h 15 -holdScope master_htrans[1:0]
+addSignal -h 15 -holdScope master_hmasterlock
+addSignal -h 15 -holdScope master_hwdata[31:0]
 addGroup "G2"
-addSignal -expanded -h 15 /testbench/ahb_lite_top_u/ahb_lite_decoder_u/HSEL_MUX[3:0]
-addSignal -h 15 -holdScope HSEL_ROM
-addSignal -h 15 -holdScope HSEL_DEF_SLAVE
-addSignal -h 15 -holdScope HSEL_NOMAP
-addGroup "G3"
-addSignal -h 15 /testbench/ahb_lite_top_u/ahb_lite_def_slave_u/addr_phase_addr[31:0]
-addSignal -h 15 -holdScope HWDATA[31:0]
-addSignal -h 15 -holdScope addr_phase_hsel
-addSignal -h 15 -holdScope addr_phase_hwrite
-addSignal -h 15 -holdScope def_test_reg0[31:0]
-addSignal -h 15 -holdScope def_test_reg1[31:0]
-addSignal -h 15 -holdScope def_test_reg2[31:0]
-addSignal -h 15 -holdScope def_test_reg3[31:0]
-addSignal -h 15 -holdScope HRDATA[31:0]
-addSignal -h 15 -holdScope HREADYOUT
-addSignal -h 15 -holdScope HRESP
-addSignal -h 15 -holdScope data_phase_rd_hreadyout
-addSignal -h 15 -holdScope data_phase_rd_hresp
-addSignal -h 15 -holdScope data_phase_wr_hreadyout
-addSignal -h 15 -holdScope data_phase_wr_hresp
-addSignal -h 15 -holdScope data_phase_read
-addSignal -h 15 -holdScope data_phase_write
-addGroup "G4"
-addSignal -h 15 /testbench/ahb_lite_top_u/ahb_lite_multiplexor_u/HSEL_MUX[3:0]
-addSignal -h 15 -holdScope address_phase_hsel_mux[3:0]
-addSignal -h 15 -holdScope defslave_rdata_mux[31:0]
-addSignal -h 15 -holdScope defslave_hreadyout_mux
-addSignal -h 15 -holdScope defslave_hresp_mux
-addSignal -h 15 -holdScope HREADY
-addSignal -h 15 -holdScope HRESP
-addSignal -h 15 -holdScope HRDATA[31:0]
-addGroup "G5"
-addSignal -h 15 /testbench/ahb_lite_top_u/ahb_lite_master_u/HREADY
-addSignal -h 15 -holdScope HRESP
-addSignal -h 15 -holdScope HRDATA[31:0]
-addSignal -h 15 -holdScope master_hreadyn_wait
-addSignal -h 15 -UNSIGNED -HEX -holdScope master_out_data[31:0]
-addGroup "G6" -e FALSE
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm
+activeDirFile "" "/home/macro/work/github/verilog-basic/ahb_lite/testbench.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/testbench"
+
+SCOPE_LIST_BEGIN
+"/testbench"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
 

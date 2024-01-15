@@ -94,7 +94,7 @@ end
 always @(*) begin
     if (!HRESETn) begin
         HREADY <= `WAIT_READYOUT;
-        HRESP  <= `RESP_OKAY;
+        HRESP  <= `RESP_ERROR;
         HRDATA <= 32'h0000_0000;
     end
     else begin

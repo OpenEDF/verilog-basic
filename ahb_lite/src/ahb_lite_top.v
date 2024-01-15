@@ -44,18 +44,23 @@ module ahb_lite_top
 //--------------------------------------------------------------------------
 (
     // global inputs
-    input wire          HCLK,
-    input wire          HRESETn,
+    input wire         HCLK,
+    input wire         HRESETn,
 
     // AHB master inputs
-    input wire [31:0]   master_in_wdata,
-    input wire [31:0]   master_in_addr,
-    input wire          master_en,
-    input wire          master_wr,
+    input wire [31:0]  master_haddr,
+    input wire         master_hwrite,
+    input wire [2:0]   master_hsize,
+    input wire [2:0]   master_hburst,
+    input wire [3:0]   master_hport,
+    input wire [1:0]   master_htrans,
+    input wire         master_hmasterlock,
+    input wire [31:0]  master_hwdata,
 
     //custom master outputs
-    output wire         master_hreadyn_wait,
-    output wire [31:0]  master_out_data
+    output wire        master_hready_wait,
+    output wire        master_hresp_error,
+    output wire [31:0] master_out_data
 );
 
 //--------------------------------------------------------------------------
@@ -94,10 +99,14 @@ ahb_lite_master ahb_lite_master_u
     .HRESETn                (HRESETn),
 
     // AHB master inputs
-    .master_in_wdata        (master_in_wdata),
-    .master_in_addr         (master_in_addr),
-    .master_en              (master_en),
-    .master_wr              (master_wr),
+    .master_haddr           (master_haddr),
+    .master_hwrite          (master_hwrite),
+    .master_hsize           (master_hsize),
+    .master_hburst          (master_hburst),
+    .master_hport           (master_hport),
+    .master_htrans          (master_htrans),
+    .master_hmasterlock     (master_hmasterlock),
+    .master_hwdata          (master_hwdata),
     .HREADY                 (multi_hready_master),
     .HRESP                  (multi_hresp_master),
     .HRDATA                 (multi_hrdata_master),
@@ -113,7 +122,8 @@ ahb_lite_master ahb_lite_master_u
     .HWDATA                 (master_hwdata_slave),
 
     //custom master outputs
-    .master_hreadyn_wait    (master_hreadyn_wait),
+    .master_hready_wait     (master_hready_wait),
+    .master_hresp_error     (master_hresp_error),
     .master_out_data        (master_out_data)
 );
 

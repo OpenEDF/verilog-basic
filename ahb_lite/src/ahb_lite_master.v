@@ -48,10 +48,14 @@ module ahb_lite_master
     input wire         HRESETn,
 
     // AHB master inputs
-    input wire [31:0]  master_in_wdata,
-    input wire [31:0]  master_in_addr,
-    input wire         master_en,
-    input wire         master_wr,
+    input wire [31:0]  master_haddr,
+    input wire         master_hwrite,
+    input wire [2:0]   master_hsize,
+    input wire [2:0]   master_hburst,
+    input wire [3:0]   master_hport,
+    input wire [1:0]   master_htrans,
+    input wire         master_hmasterlock,
+    input wire [31:0]  master_hwdata,
     input wire         HREADY,
     input wire         HRESP,
     input wire [31:0]  HRDATA,
@@ -67,14 +71,15 @@ module ahb_lite_master
     output reg [31:0]  HWDATA,
 
     //custom master outputs
-    output wire         master_hreadyn_wait,
+    output wire         master_hready_wait,
+    output wire         master_hresp_error,
     output wire [31:0]  master_out_data
 );
 
 //--------------------------------------------------------------------------
 // Design: module internal signals
 //--------------------------------------------------------------------------
-reg [31:0] master_addr_phase_hdata;
+reg [31:0] addr_phase_hdata;
 
 //--------------------------------------------------------------------------
 // Design: address phase, master output the address, _data and control
@@ -82,39 +87,23 @@ reg [31:0] master_addr_phase_hdata;
 //--------------------------------------------------------------------------
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
-        HADDR       <= `DEF_ACCRESS_SLAVE_ADDR;
-        HWRITE      <= `MASTER_READ;
-        HSIZE       <= `SIZE_WORD;
-        HBURST      <= `BURST_SINGLE;
-        HPROT       <= 3'b000;
-        HTRANS      <= `TRANS_IDLE;
-        HMASTERLOCK <= 1'b0;
-        master_addr_phase_hdata <= 32'h0000_0000;
+        HADDR            <= `DEF_ACCRESS_SLAVE_ADDR;
+        HWRITE           <= `MASTER_READ;
+        HSIZE            <= `SIZE_WORD;
+        HBURST           <= `BURST_SINGLE;
+        HPROT            <= 3'b000;
+        HTRANS           <= `TRANS_IDLE;
+        HMASTERLOCK      <= 1'b0;
+        addr_phase_hdata <= 32'h0000_0000;
     end else begin
-        if (master_en) begin
-            HADDR       <= master_in_addr;
-            HWRITE      <= master_wr;
-            HSIZE       <= `SIZE_WORD;
-            HBURST      <= `BURST_SINGLE;
-            HTRANS      <= `TRANS_NONSEQ;
-            master_addr_phase_hdata <= master_in_wdata;
-        end else if (!HREADY) begin /* keep */
-            HADDR       <= HADDR;
-            HWRITE      <= HWRITE;
-            HSIZE       <= HSIZE;
-            HBURST      <= HBURST;
-            HTRANS      <= `TRANS_BUSY;
-            master_addr_phase_hdata <= master_addr_phase_hdata;
-        end else begin
-            HADDR       <= `DEF_ACCRESS_SLAVE_ADDR;
-            HWRITE      <= `MASTER_READ;
-            HSIZE       <= `SIZE_WORD;
-            HBURST      <= `BURST_SINGLE;
-            HPROT       <= 3'b000;
-            HTRANS      <= `TRANS_IDLE;
-            HMASTERLOCK <= 1'b0;
-            master_addr_phase_hdata <= 32'h0000_0000;
-        end
+        HADDR            <= master_haddr;
+        HWRITE           <= master_hwrite;
+        HSIZE            <= master_hsize;
+        HBURST           <= master_hburst;
+        HPROT            <= master_hport;
+        HTRANS           <= master_htrans;
+        HMASTERLOCK      <= master_hmasterlock;
+        addr_phase_hdata <= master_hwdata;
     end
 end
 
@@ -124,22 +113,17 @@ end
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
         HWDATA <= 32'h0000_0000;
-    end else if (master_en) begin
-        HWDATA <= master_addr_phase_hdata;
     end else begin
-        HWDATA <= 32'h0000_0000;
+        HWDATA <= addr_phase_hdata;
     end
 end
 
 //--------------------------------------------------------------------------
-// Design: read data and hreadyout for master output
-//--------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------
 // Design: read response data and control singal
 //--------------------------------------------------------------------------
-assign master_hreadyn_wait = HREADY & !HRESP;
-assign master_out_data     = HRDATA;
+assign master_hready_wait = HREADY;
+assign master_hresp_error = HRESP;
+assign master_out_data    = HRDATA;
 
 endmodule
 //--------------------------------------------------------------------------

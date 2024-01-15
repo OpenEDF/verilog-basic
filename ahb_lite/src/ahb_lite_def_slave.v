@@ -60,7 +60,7 @@ module ahb_lite_def_slave
     input wire [31:0]  HWDATA,
 
     // outputs
-    output reg [31:0]  HRDATA,
+    output wire [31:0] HRDATA,
     output wire        HREADYOUT,
     output wire        HRESP
 );
@@ -99,16 +99,13 @@ wire        data_phase_rd_wr_comm;
 wire        master_burst_tran;
 assign mem_map_addr_offset = data_phase_addr[15:0];
 assign data_phase_rd_wr_comm = addr_phase_hsel & addr_phase_hsize[1] & addr_phase_hready;
-assign data_phase_read  = data_phase_rd_wr_comm & !addr_phase_hwrite;
 assign data_phase_write = data_phase_rd_wr_comm & addr_phase_hwrite;
 assign master_burst_tran = addr_phase_hburst[0] | addr_phase_hburst[1] | addr_phase_hburst[2];
 
-reg         data_phase_rd_hreadyout;
-reg         data_phase_rd_hresp;
-reg         data_phase_wr_hreadyout;
-reg         data_phase_wr_hresp;
 reg         data_phase_hreadyout;
 reg         data_phase_hresp;
+reg [31:0]  data_phase_hdata;
+wire        vaild_data;
 
 //--------------------------------------------------------------------------
 // Design: address phase samplig
@@ -138,126 +135,76 @@ always @(posedge HCLK or negedge HRESETn) begin
 end
 
 //--------------------------------------------------------------------------
-// Design: write register operation
+// Design: read and write register operation
 //--------------------------------------------------------------------------
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
-        def_test_reg0 <= 32'h0000_0000;
-        def_test_reg1 <= 32'h0000_0000;
-        def_test_reg2 <= 32'h0000_0000;
-        def_test_reg3 <= 32'h0000_0000;
-        data_phase_wr_hreadyout <= `WAIT_READYOUT;
-        data_phase_wr_hresp  <= `RESP_ERROR;
-    end
-    else begin
-        if (data_phase_write) begin
-            case(mem_map_addr_offset)
-                REG0_OFFSET: begin
-                    def_test_reg0 <= HWDATA;
-                    data_phase_wr_hreadyout <= `READYOUT;
-                    data_phase_wr_hresp  <= `RESP_OKAY;
+        def_test_reg0        <= 32'h0000_0001; /* default value */
+        def_test_reg1        <= 32'h0000_0002;
+        def_test_reg2        <= 32'h0000_0003;
+        def_test_reg3        <= 32'h0000_0004;
+        data_phase_hreadyout <= `WAIT_READYOUT;
+        data_phase_hresp     <= `RESP_ERROR;
+        data_phase_hdata     <= 32'h0000_0000;
+    end else begin
+        /* TODO: need ? */
+        data_phase_hreadyout <= `WAIT_READYOUT;
+        data_phase_hresp     <= `RESP_ERROR;
+        data_phase_hdata     <= 32'h0000_0000;
+        case(mem_map_addr_offset)
+            REG0_OFFSET: begin
+                if (data_phase_write) begin
+                    def_test_reg0        <= HWDATA;
+                    data_phase_hreadyout <= `READYOUT;
+                    data_phase_hresp     <= `RESP_OKAY;
+                end else begin
+                    data_phase_hdata     <= def_test_reg0;
+                    data_phase_hreadyout <= `READYOUT;
+                    data_phase_hresp     <= `RESP_OKAY;
                 end
-                REG1_OFFSET: begin
-                    def_test_reg1 <= HWDATA;
-                    data_phase_wr_hreadyout <= `READYOUT;
-                    data_phase_wr_hresp  <= `RESP_OKAY;
+            end
+            REG1_OFFSET: begin
+                if (data_phase_write) begin
+                    def_test_reg1        <= HWDATA;
+                    data_phase_hreadyout <= `READYOUT;
+                    data_phase_hresp     <= `RESP_OKAY;
+                end else begin
+                    data_phase_hdata     <= def_test_reg1;
+                    data_phase_hreadyout <= `READYOUT;
+                    data_phase_hresp     <= `RESP_OKAY;
                 end
-                REG2_OFFSET: begin
-                    def_test_reg2 <= HWDATA;
-                    data_phase_wr_hreadyout <= `READYOUT;
-                    data_phase_wr_hresp  <= `RESP_OKAY;
+            end
+            REG2_OFFSET: begin
+                if (data_phase_write) begin
+                    def_test_reg2        <= HWDATA;
+                    data_phase_hreadyout <= `READYOUT;
+                    data_phase_hresp     <= `RESP_OKAY;
+                end else begin
+                    data_phase_hdata     <= def_test_reg2;
+                    data_phase_hreadyout <= `READYOUT;
+                    data_phase_hresp     <= `RESP_OKAY;
                 end
-                REG3_OFFSET: begin
-                    def_test_reg3 <= HWDATA;
-                    data_phase_wr_hreadyout <= `READYOUT;
-                    data_phase_wr_hresp  <= `RESP_OKAY;
+            end
+            REG3_OFFSET: begin
+                if (data_phase_write) begin
+                    def_test_reg3        <= HWDATA;
+                    data_phase_hreadyout <= `READYOUT;
+                    data_phase_hresp     <= `RESP_OKAY;
+                end else begin
+                    data_phase_hdata     <= def_test_reg3;
+                    data_phase_hreadyout <= `READYOUT;
+                    data_phase_hresp     <= `RESP_OKAY;
                 end
-                default: begin
-                    data_phase_wr_hreadyout <= `READYOUT;
-                    data_phase_wr_hresp  <= `RESP_OKAY;
-                    /* illege address access  */
-                end
-           endcase
-        end
-        else begin
-            data_phase_wr_hreadyout <= 1'b1;
-            data_phase_wr_hresp  <= 1'b1;
-        end
-    end
-end
-
-//--------------------------------------------------------------------------
-// Design: read register operation
-//--------------------------------------------------------------------------
-always @(posedge HCLK or negedge HRESETn) begin
-    if (!HRESETn) begin
-        HRDATA        <= 32'h0000_0000;
-        data_phase_rd_hreadyout <= `WAIT_READYOUT;
-        data_phase_rd_hresp  <= `RESP_ERROR;
-    end
-    else begin
-        if (data_phase_read) begin
-            case(mem_map_addr_offset)
-                REG0_OFFSET: begin
-                    HRDATA <= def_test_reg0;
-                    data_phase_rd_hreadyout <= `READYOUT;
-                    data_phase_rd_hresp  <= `RESP_OKAY;
-                end
-                REG1_OFFSET: begin
-                    HRDATA <= def_test_reg1;
-                    data_phase_rd_hreadyout <= `READYOUT;
-                    data_phase_rd_hresp  <= `RESP_OKAY;
-                end
-                REG2_OFFSET: begin
-                    HRDATA <= def_test_reg2;
-                    data_phase_rd_hreadyout <= `READYOUT;
-                    data_phase_rd_hresp  <= `RESP_OKAY;
-                end
-                REG3_OFFSET: begin
-                    HRDATA <= def_test_reg3;
-                    data_phase_rd_hreadyout <= `READYOUT;
-                    data_phase_rd_hresp  <= `RESP_OKAY;
-                end
-                default: begin
-                    HRDATA <= 32'hFFFF_FFFF;
-                    data_phase_rd_hreadyout <= `READYOUT;
-                    data_phase_rd_hresp  <= `RESP_OKAY;
-                end
-            endcase
-        end
-        else begin
-            data_phase_rd_hreadyout <= `READYOUT;
-            data_phase_rd_hresp  <= `RESP_ERROR;
-        end
+            end
+            default: begin
+                data_phase_hreadyout     <= `WAIT_READYOUT;
+                data_phase_hresp         <= `RESP_ERROR;
+                data_phase_hdata         <= 32'h0000_0000;
+                /* illege address access  */
+            end
+        endcase
     end
 end
-
-//--------------------------------------------------------------------------
-// Design: output the read and write hready and hresp
-//--------------------------------------------------------------------------
-always @(data_phase_rd_hresp or
-         data_phase_rd_hreadyout or
-         data_phase_wr_hresp  or
-         data_phase_wr_hreadyout) begin
-    if (data_phase_write) begin
-        data_phase_hreadyout <= data_phase_wr_hreadyout;
-        data_phase_hresp  <= data_phase_wr_hresp;
-    end
-    else if (data_phase_read) begin
-        data_phase_hreadyout <= data_phase_rd_hreadyout;
-        data_phase_hresp  <= data_phase_rd_hresp;
-    end
-    else begin
-        data_phase_hreadyout <= `READYOUT;
-        data_phase_hresp  <= `RESP_ERROR;
-    end
-end
-
-//--------------------------------------------------------------------------
-// Design: assign hready and hresp
-//--------------------------------------------------------------------------
-assign HREADYOUT = (addr_phase_htrans == `TRANS_IDLE) ? `READYOUT : data_phase_hreadyout;
-assign HRESP     = (addr_phase_htrans == `TRANS_IDLE) ? `RESP_OKAY : data_phase_hresp;
 
 //--------------------------------------------------------------------------
 // Design: burst address update
@@ -332,6 +279,13 @@ always @(posedge HCLK or negedge HRESETn) begin
         end
     end
 end
+
+//--------------------------------------------------------------------------
+// Design: assign hready and hresp
+//--------------------------------------------------------------------------
+assign HREADYOUT = (addr_phase_htrans == `TRANS_IDLE) ? `READYOUT : data_phase_hreadyout;
+assign HRESP     = (addr_phase_htrans == `TRANS_IDLE) ? `RESP_OKAY : data_phase_hresp;
+assign HRDATA    = (addr_phase_htrans == `TRANS_IDLE) ? 32'h0000_0000 : data_phase_hdata;
 
 endmodule
 //--------------------------------------------------------------------------
