@@ -75,16 +75,16 @@ module ahb_lite_multiplexor
 //--------------------------------------------------------------------------
 // Design: module internal control signal
 //--------------------------------------------------------------------------
-reg [3:0] address_phase_hsel_mux;
+reg [3:0] addr_phase_hsel_mux;
 
 //--------------------------------------------------------------------------
 // Design: store the address phase signal
 //--------------------------------------------------------------------------
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
-        address_phase_hsel_mux <= `MUX_SEL_DEF_SLAVE;
+        addr_phase_hsel_mux <= `MUX_SEL_DEF_SLAVE;
     end else begin
-        address_phase_hsel_mux <= HSEL_MUX;
+        addr_phase_hsel_mux <= HSEL_MUX;
     end
 end
 
@@ -92,30 +92,23 @@ end
 // Design: read the slave data and response signal to master
 //--------------------------------------------------------------------------
 always @(*) begin
-    if (!HRESETn) begin
-        HREADY <= `WAIT_READYOUT;
-        HRESP  <= `RESP_ERROR;
-        HRDATA <= 32'h0000_0000;
-    end
-    else begin
-        case(address_phase_hsel_mux)
-            `MUX_SEL_ROM: begin
-                HREADY <= rom_hredayout_mux;
-                HRESP  <= rom_hresp_mux;
-                HRDATA <= rom_rdata_mux;
-             end
-            `MUX_SEL_DEF_SLAVE: begin
-                HREADY <= defslave_hreadyout_mux;
-                HRESP  <= defslave_hresp_mux;
-                HRDATA <= defslave_rdata_mux;
-             end
-            default: begin
-                HREADY <= nomap_hreadyout_mux;
-                HRESP  <= nomap_hresp_mux;
-                HRDATA <= nomap_rdata_mux;
-            end
-        endcase
-    end
+    case(addr_phase_hsel_mux)
+        `MUX_SEL_ROM: begin
+            HREADY <= rom_hredayout_mux;
+            HRESP  <= rom_hresp_mux;
+            HRDATA <= rom_rdata_mux;
+         end
+        `MUX_SEL_DEF_SLAVE: begin
+            HREADY <= defslave_hreadyout_mux;
+            HRESP  <= defslave_hresp_mux;
+            HRDATA <= defslave_rdata_mux;
+         end
+        default: begin
+            HREADY <= nomap_hreadyout_mux;
+            HRESP  <= nomap_hresp_mux;
+            HRDATA <= nomap_rdata_mux;
+        end
+     endcase
 end
 
 endmodule

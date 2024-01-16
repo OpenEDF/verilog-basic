@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 1278 408 209 73
+viewPort 0 27 1278 544 209 73
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 126250.000000
+zoom 0.000000 146450.000000
 cursor 10000.000000
 marker 0.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 0
+top 11
 ; marker line index
-markerPos 11
+markerPos 0
 
 ; event list
 ; addEvent event_name event_expression
@@ -57,7 +57,36 @@ addSignal -h 15 -holdScope master_hport[3:0]
 addSignal -h 15 -holdScope master_htrans[1:0]
 addSignal -h 15 -holdScope master_hmasterlock
 addSignal -h 15 -holdScope master_hwdata[31:0]
+addGroup "G3"
+addSignal -h 15 /testbench/ahb_lite_top_u/ahb_lite_master_u/HADDR[31:0]
+addSignal -h 15 -holdScope HBURST[2:0]
+addSignal -h 15 -holdScope HWRITE
+addSignal -h 15 -holdScope HSIZE[2:0]
+addSignal -h 15 -holdScope HPROT[3:0]
+addSignal -h 15 -holdScope HTRANS[1:0]
+addSignal -h 15 -holdScope HWDATA[31:0]
+addSignal -h 15 -holdScope HMASTERLOCK
 addGroup "G2"
+addSignal -h 15 /testbench/ahb_lite_top_u/ahb_lite_def_slave_u/addr_phase_addr[31:0]
+addSignal -h 15 -holdScope addr_phase_hsel
+addSignal -h 15 -holdScope addr_phase_htrans[1:0]
+addSignal -h 15 -holdScope addr_phase_hwrite
+addSignal -h 15 -holdScope addr_phase_hsize[2:0]
+addSignal -h 15 -holdScope addr_phase_hburst[2:0]
+addSignal -h 15 -holdScope addr_phase_hport[3:0]
+addSignal -h 15 -holdScope addr_phase_hmastlock
+addSignal -h 15 -holdScope addr_phase_hready
+addSignal -h 15 -holdScope HWDATA[31:0]
+addSignal -h 15 -holdScope def_test_reg0[31:0]
+addSignal -h 15 -holdScope def_test_reg1[31:0]
+addSignal -h 15 -holdScope def_test_reg2[31:0]
+addSignal -h 15 -holdScope def_test_reg3[31:0]
+addSignal -h 15 -holdScope data_phase_hdata[31:0]
+addSignal -h 15 -holdScope data_phase_write
+addSignal -h 15 -holdScope HRDATA[31:0]
+addSignal -h 15 -holdScope HREADYOUT
+addSignal -h 15 -holdScope HRESP
+addGroup "G4"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

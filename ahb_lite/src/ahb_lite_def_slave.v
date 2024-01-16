@@ -93,7 +93,6 @@ parameter REG2_OFFSET = 16'h0008;
 parameter REG3_OFFSET = 16'h000C;
 
 wire [15:0] mem_map_addr_offset;
-wire        data_phase_read;
 wire        data_phase_wire;
 wire        data_phase_rd_wr_comm;
 wire        master_burst_tran;
@@ -105,7 +104,6 @@ assign master_burst_tran = addr_phase_hburst[0] | addr_phase_hburst[1] | addr_ph
 reg         data_phase_hreadyout;
 reg         data_phase_hresp;
 reg [31:0]  data_phase_hdata;
-wire        vaild_data;
 
 //--------------------------------------------------------------------------
 // Design: address phase samplig
@@ -116,7 +114,7 @@ always @(posedge HCLK or negedge HRESETn) begin
         addr_phase_hsel      <= `SLAVE_FRE;
         addr_phase_htrans    <= `TRANS_IDLE;
         addr_phase_hwrite    <= `MASTER_READ;
-        addr_phase_hsize     <= `SIZE_WORD;
+        addr_phase_hsize     <= `SIZE_BYTE;
         addr_phase_hburst    <= `BURST_SINGLE;
         addr_phase_hport     <= 4'b0000;
         addr_phase_hmastlock <= 1'b0;

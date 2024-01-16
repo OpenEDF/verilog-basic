@@ -59,7 +59,7 @@ reg [31:0]  master_hwdata;
 wire        master_hready_wait;
 wire        master_hresp_error;
 wire [31:0] master_out_data;
-reg  [31:0] ahb_wr_addr, ahb_wr_data, ahb_rd_data;
+reg  [31:0] ahb_wr_addr, ahb_wr_data, ahb_rd_addr, ahb_rd_data;
 
 //--------------------------------------------------------------------------
 // Design: reset control logic initial
@@ -113,7 +113,7 @@ begin
     $display("[%0t] AHB Lite testbench init...", $time);
     master_haddr         <= 32'h005E_0000;
     master_hwrite        <= `MASTER_READ;
-    master_hsize         <= `SIZE_WORD;
+    master_hsize         <= `SIZE_BYTE;
     master_hburst        <= `BURST_SINGLE;
     master_hport         <= 4'b0000;
     master_htrans        <= `TRANS_IDLE;
@@ -129,6 +129,10 @@ endtask
 task main();
 begin
     $display("[%0t] AHB Lite testbench run...", $time);
+    ahb_wr_addr = 32'h005E_0000;
+    ahb_wr_data = 32'hFFFF_0001;
+    /* write test */
+    ahb_lite_write(ahb_wr_addr, ahb_wr_data);
 end
 endtask
 
@@ -150,9 +154,20 @@ endtask
 task ahb_lite_write(input [31:0] addr, data);
 begin
     $display("[%0t] AHB Lite wirte test: address: 0x%h, data: 0x%h", $time, addr, data);
-    master_haddr  <= addr;
-    master_hwdata <= data;
-    master_hwrite  <= 1'b1;
+    @(posedge hclk)  /* master input data */
+    master_haddr         <= addr;
+    master_hwdata        <= data;
+    master_hwrite        <= `MASTER_WIRTE;
+    master_hsize         <= `SIZE_WORD;
+    master_hburst        <= `BURST_SINGLE;
+    master_htrans        <= `TRANS_NONSEQ;
+    @(posedge hclk)  /* address phase */
+    master_haddr         <= 32'h005E_0000;
+    master_hwdata        <= 32'h0000_0000;
+    master_hsize         <= `SIZE_BYTE;
+    master_htrans        <= `TRANS_IDLE;
+    master_hwrite        <= `MASTER_READ;
+    @(posedge hclk)  /* master output data, data phase */
     wait (master_hready_wait) begin
         $display("[%0t] AHB Lite write done!", $time);
     end
