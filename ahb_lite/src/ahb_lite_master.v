@@ -89,7 +89,7 @@ always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
         HADDR            <= `DEF_ACCRESS_SLAVE_ADDR;
         HWRITE           <= `MASTER_READ;
-        HSIZE            <= `SIZE_WORD;
+        HSIZE            <= `SIZE_BYTE;
         HBURST           <= `BURST_SINGLE;
         HPROT            <= 3'b000;
         HTRANS           <= `TRANS_IDLE;

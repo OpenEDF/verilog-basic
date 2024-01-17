@@ -129,10 +129,23 @@ endtask
 task main();
 begin
     $display("[%0t] AHB Lite testbench run...", $time);
+    /* write test
     ahb_wr_addr = 32'h005E_0000;
     ahb_wr_data = 32'hFFFF_0001;
-    /* write test */
-    ahb_lite_write(ahb_wr_addr, ahb_wr_data);
+    repeat (4) begin
+        @(posedge hclk)  /* master input data
+        ahb_lite_write(ahb_wr_addr, ahb_wr_data);
+        ahb_wr_addr = ahb_wr_addr + 32'h0000_0004;
+        ahb_wr_data = ahb_wr_data + 32'h0000_0001;
+    end */
+    /* read test */
+    ahb_rd_addr = 32'h005E_0000;
+    ahb_rd_data = 32'h0000_0000;
+    repeat (4) begin
+        @(posedge hclk)  /* master input data */
+        ahb_lite_read(ahb_rd_addr);
+        ahb_rd_addr = ahb_rd_addr + 32'h0000_0004;
+    end
 end
 endtask
 
@@ -154,7 +167,6 @@ endtask
 task ahb_lite_write(input [31:0] addr, data);
 begin
     $display("[%0t] AHB Lite wirte test: address: 0x%h, data: 0x%h", $time, addr, data);
-    @(posedge hclk)  /* master input data */
     master_haddr         <= addr;
     master_hwdata        <= data;
     master_hwrite        <= `MASTER_WIRTE;
@@ -180,10 +192,22 @@ endtask
 task ahb_lite_read(input [31:0] addr);
 begin
     $display("[%0t] AHB Lite read test: address: 0x%h", $time, addr);
-    master_haddr  <= addr;
-    master_hwrite  <= 1'b0;
+    master_haddr         <= addr;
+    master_hwdata        <= 32'h0000_0000;
+    master_hwrite        <= `MASTER_READ;
+    master_hsize         <= `SIZE_WORD;
+    master_hburst        <= `BURST_SINGLE;
+    master_htrans        <= `TRANS_NONSEQ;
+    @(posedge hclk)  /* address phase */
+    master_haddr         <= master_haddr;
+    master_hwdata        <= master_hwdata;
+    master_hwrite        <= master_hwrite;
+    master_hsize         <= master_hsize;
+    master_hburst        <= master_hburst;
+    master_htrans        <= master_htrans;
+    @(posedge hclk)  /* data phase */
     wait (master_hready_wait) begin
-        $display("[%0t] AHB Lite read done!", $time);
+        $display("[%0t] AHB Lite read done, data: 0x%x", $time, master_out_data);
     end
 end
 endtask
