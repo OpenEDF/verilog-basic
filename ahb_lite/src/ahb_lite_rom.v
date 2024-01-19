@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: ahb lite rom
+// Brief: ahb lite rom, only support read
 // Change Log:
 //--------------------------------------------------------------------------
 
@@ -78,14 +78,23 @@ reg [3:0]  addr_phase_hport;
 reg        addr_phase_hmastlock;
 reg        addr_phase_hready;
 
-wire        data_phase_wire;
-wire        data_phase_rd_wr_comm;
-assign data_phase_rd_wr_comm = addr_phase_hsel & addr_phase_hsize[1] & addr_phase_hready;
-assign data_phase_write = data_phase_rd_wr_comm & addr_phase_hwrite;
+//--------------------------------------------------------------------------
+// Design: data phase output data
+//--------------------------------------------------------------------------
+reg        data_phase_hreadyout;
+reg        data_phase_hresp;
+reg [31:0] data_phase_hdata;
 
-reg         data_phase_hreadyout;
-reg         data_phase_hresp;
-reg [31:0]  data_phase_hdata;
+//--------------------------------------------------------------------------
+// Design: read phase control logic
+//--------------------------------------------------------------------------
+wire        data_phase_read;
+wire        data_phase_rd_wr_comm;
+wire        rd_word_vaild;
+assign data_phase_rd_wr_comm = addr_phase_hsel & addr_phase_htrans[1] & addr_phase_hready;
+assign data_phase_read       = data_phase_rd_wr_comm & (~addr_phase_hwrite);
+/* only support word */
+assign rd_word_vaild = addr_phase_hsize[1] & (~addr_phase_addr[0]) & (~addr_phase_addr[1]);
 
 //--------------------------------------------------------------------------
 // Design: address phase samplig

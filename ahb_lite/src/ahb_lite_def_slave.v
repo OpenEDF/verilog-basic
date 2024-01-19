@@ -93,12 +93,14 @@ parameter REG2_OFFSET = 16'h0008;
 parameter REG3_OFFSET = 16'h000C;
 
 wire [15:0] mem_map_addr_offset;
-wire        data_phase_wire;
+wire        data_phase_write;
+wire        data_phase_read;
 wire        data_phase_rd_wr_comm;
 wire        master_burst_tran;
 assign mem_map_addr_offset = data_phase_addr[15:0];
-assign data_phase_rd_wr_comm = addr_phase_hsel & addr_phase_hsize[1] & addr_phase_hready;
+assign data_phase_rd_wr_comm = addr_phase_hsel & addr_phase_htrans[1] & addr_phase_hready;
 assign data_phase_write = data_phase_rd_wr_comm & addr_phase_hwrite;
+assign data_phase_read  = data_phase_rd_wr_comm & (~addr_phase_hwrite);
 assign master_burst_tran = addr_phase_hburst[0] | addr_phase_hburst[1] | addr_phase_hburst[2];
 
 reg         data_phase_hreadyout;
