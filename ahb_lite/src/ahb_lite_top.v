@@ -79,6 +79,7 @@ wire [31:0] master_hwdata_slave;
 /* decoder signal */
 wire        decoder_hsel_def_slave;
 wire        decoder_hsel_nonmap_slave;
+wire        decoder_hsel_rom_slave;
 wire [3:0]  decoder_hsel_mux_multi;
 
 /* multiplexor */
@@ -95,6 +96,11 @@ wire        defslave_hresp_multi;
 wire [31:0] nonmap_rdata_multi;
 wire        nonmap_hreadyout_multi;
 wire        nonmap_hresp_multi;
+
+/* rom slave */
+wire [31:0] rom_rdata_multi;
+wire        rom_hreadyout_multi;
+wire        rom_hresp_multi;
 
 //--------------------------------------------------------------------------
 // Design: instance ahb lite master
@@ -142,7 +148,7 @@ ahb_lite_decoder ahb_lite_decoder_u
     .HADDR                  (master_haddr_slave),
 
     // outputs to slave
-    .HSEL_ROM               (),
+    .HSEL_ROM               (decoder_hsel_rom_slave),
     .HSEL_DEF_SLAVE         (decoder_hsel_def_slave),
     .HSEL_NOMAP             (decoder_hsel_nonmap_slave),
 
@@ -163,17 +169,17 @@ ahb_lite_multiplexor ahb_lite_multiplexor_u
     .HSEL_MUX               (decoder_hsel_mux_multi),
 
     // slave inputs data
-    .rom_rdata_mux          (),
+    .rom_rdata_mux          (rom_rdata_multi),
     .defslave_rdata_mux     (defslave_rdata_multi),
     .nomap_rdata_mux        (nonmap_rdata_multi),
 
     // slave inputs hreadyout
-    .rom_hredayout_mux      (),
+    .rom_hredayout_mux      (rom_hreadyout_multi),
     .defslave_hreadyout_mux (defslave_hreadyout_multi),
     .nomap_hreadyout_mux    (nonmap_hreadyout_multi),
 
     // slave inputs hresp
-    .rom_hresp_mux          (),
+    .rom_hresp_mux          (rom_hresp_multi),
     .defslave_hresp_mux     (defslave_hresp_multi),
     .nomap_hresp_mux        (nonmap_hresp_multi),
 
@@ -234,5 +240,32 @@ ahb_lite_nonmap ahb_lite_nonmap_u
     .HREADYOUT              (nonmap_hreadyout_multi),
     .HRESP                  (nonmap_hresp_multi)
 );
+
+//--------------------------------------------------------------------------
+// Design: instance ahb lite rom slave
+//--------------------------------------------------------------------------
+ahb_lite_rom ahb_lite_rom_u
+(
+    // global inputs
+    .HCLK                   (HCLK),
+    .HRESETn                (HRESETn),
+
+    .HSEL                   (decoder_hsel_rom_slave),
+    .HADDR                  (master_haddr_slave),
+    .HWRITE                 (master_hwrite_slave),
+    .HSIZE                  (master_hsize_slave),
+    .HBURST                 (master_hburst_slave),
+    .HPROT                  (master_hprot_slave),
+    .HTRANS                 (master_htrans_slave),
+    .HMASTLOCK              (master_hmasterlock_slave),
+    .HREADY                 (multi_hready_master),
+    .HWDATA                 (master_hwdata_slave),
+
+    // outputs
+    .HRDATA                 (rom_rdata_multi),
+    .HREADYOUT              (rom_hreadyout_multi),
+    .HRESP                  (rom_hresp_multi)
+);
+
 endmodule
 //--------------------------------------------------------------------------

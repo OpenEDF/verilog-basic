@@ -129,15 +129,17 @@ endtask
 task main();
 begin
     $display("[%0t] AHB Lite testbench run...", $time);
-    /* write test
+`ifdef WRITE_TEST
+    /* write test */
     ahb_wr_addr = 32'h005E_0000;
     ahb_wr_data = 32'hFFFF_0001;
     repeat (4) begin
-        @(posedge hclk)  /* master input data
+        @(posedge hclk)  /* master input data */
         ahb_lite_write(ahb_wr_addr, ahb_wr_data);
         ahb_wr_addr = ahb_wr_addr + 32'h0000_0004;
         ahb_wr_data = ahb_wr_data + 32'h0000_0001;
-    end */
+    end
+`endif
     /* read test */
     ahb_rd_addr = 32'h005E_0000;
     ahb_rd_data = 32'h0000_0000;
@@ -218,6 +220,7 @@ endtask
 initial begin
     $fsdbDumpfile("testbench.fsdb");
     $fsdbDumpvars(0, testbench);
+    $fsdbDumpMDA();
 end
 
 //--------------------------------------------------------------------------

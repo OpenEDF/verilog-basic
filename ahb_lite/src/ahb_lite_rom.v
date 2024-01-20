@@ -39,7 +39,14 @@
 //--------------------------------------------------------------------------
 // Module
 //--------------------------------------------------------------------------
-module ahb_lite_nonmap
+module ahb_lite_rom
+//--------------------------------------------------------------------------
+// Parameters
+//--------------------------------------------------------------------------
+#(
+    parameter ROM_WIDTH = 8,
+    parameter ROM_SIZE  = 4096
+)
 //--------------------------------------------------------------------------
 // Ports
 //--------------------------------------------------------------------------
@@ -86,6 +93,16 @@ reg        data_phase_hresp;
 reg [31:0] data_phase_hdata;
 
 //--------------------------------------------------------------------------
+// Design: rom model, TODO: use vivado rom ip for fpga test
+//--------------------------------------------------------------------------
+`ifdef SYN_USE_FPGA
+    $display("[TODO]: !!! ADD FPGA ROM IP !!!");
+`else
+    reg [ROM_WIDTH-1:0] rom_model[0:ROM_SIZE-1];
+    /* external init */
+`endif
+
+//--------------------------------------------------------------------------
 // Design: read phase control logic
 //--------------------------------------------------------------------------
 wire        data_phase_read;
@@ -128,12 +145,25 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
-        bus_monitor_addr     <= 32'h0000_0001; /* default value */
-        bus_monitor_data     <= 32'h0000_0002;
         data_phase_hreadyout <= `WAIT_READYOUT;
         data_phase_hresp     <= `RESP_ERROR;
         data_phase_hdata     <= 32'h0000_0000;
     end else begin
+        if (data_phase_read) begin
+            data_phase_hdata[7:0]   <= rom_model[addr_phase_addr];
+            data_phase_hdata[15:8]  <= rom_model[addr_phase_addr+1];
+            data_phase_hdata[23:16] <= rom_model[addr_phase_addr+2];
+            data_phase_hdata[31:24] <= rom_model[addr_phase_addr+3];
+            data_phase_hreadyout    <= `READYOUT;
+            data_phase_hresp        <= `RESP_OKAY;
+        end else begin
+            data_phase_hdata[7:0]   <= 32'h0000_0000;
+            data_phase_hdata[15:8]  <= 32'h0000_0000;
+            data_phase_hdata[23:16] <= 32'h0000_0000;
+            data_phase_hdata[31:24] <= 32'h0000_0000;
+            data_phase_hreadyout    <= `WAIT_READYOUT;
+            data_phase_hresp        <= `RESP_ERROR;
+        end
     end
 end
 

@@ -43,6 +43,6 @@ spy:
 
 .PHONY: clean sim com spy
 clean:
-	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc verdiLog sequ_multi
+	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc verdiLog
 
 #--------------------------------------------------------------------------
