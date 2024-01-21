@@ -1,0 +1,72 @@
+#--  Synopsys, Inc.
+#--  Version N-2018.03-SP1
+#--  Project file syn_example.prj
+#--  Written on Mon May  2 16:28:57 2022
+#===========================================================================
+
+#project files
+add_file -verilog "rtl/full_case.v"
+
+#implementation: "rev_1"
+impl -add rev_1 -type fpga
+
+#
+#implementation attributes
+
+set_option -vlog_std sysv
+set_option -project_relative_includes 1
+
+#device options
+set_option -technology ACHRONIXSPEEDSTER22IHD
+set_option -part AC22iHD1000
+set_option -package F53
+set_option -speed_grade C1
+set_option -part_companion ""
+
+#compilation/mapping options
+
+# hdl_compiler_options
+set_option -distributed_compile 0
+
+# mapper_without_write_options
+set_option -frequency auto
+set_option -srs_instrumentation 1
+
+# mapper_options
+set_option -write_verilog 0
+set_option -write_vhdl 0
+
+# Achronix Speedster22iHD
+set_option -maxfan 10000
+set_option -rw_check_on_ram 0
+set_option -disable_io_insertion 0
+set_option -retime_registers_forward 0
+set_option -pipe 1
+set_option -retiming 1
+set_option -update_models_cp 0
+set_option -run_prop_extract 1
+set_option -fix_gated_and_generated_clocks 1
+
+# NFilter
+set_option -no_sequential_opt 0
+
+# sequential_optimization_options
+set_option -symbolic_fsm_compiler 1
+
+# Compiler Options
+set_option -compiler_compatible 0
+set_option -resource_sharing 1
+set_option -multi_file_compilation_unit 1
+
+# Compiler Options
+set_option -auto_infer_blackbox 0
+
+#automatic place and route (vendor) options
+set_option -write_apr_constraint 1
+
+#set result format/file last
+project -result_file "rev_1/syn_example.vm"
+impl -active "rev_1"
+
+#===========================================================================
+
