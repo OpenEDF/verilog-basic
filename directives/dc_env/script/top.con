@@ -1,0 +1,16 @@
+set lib_name fast
+current_design $TOM_MODULE
+
+# Reset all constraints 
+reset_design
+
+# Create clock object and set uncertainty
+create_clock -period 2 [get_ports sys_clk]
+set_clock_uncertainty 0.2 [get_clocks sys_clk]
+
+# Set constraints on input ports
+suppress_message UID-401
+set_input_delay 0.1 -max -clock sys_clk [remove_from_collection [all_inputs] [get_ports sys_clk]]
+
+# Set constraints on output ports
+set_output_delay 1 -max -clock sys_clk [all_outputs]
