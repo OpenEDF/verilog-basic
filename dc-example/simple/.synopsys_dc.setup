@@ -6,16 +6,18 @@
 # Design Compiler Version: 2018
 #--------------------------------------------------------------------------------------
 # Define work directory
-set SYN_WORK_PATH /home/macro/github/verilog-basic/dc-example 
+set SYN_WORK_PATH [exec pwd]
+set DC_TECH_LIB_PATH /home/macro/tools/synopsys/pdk
+set TECH_LIB_PATH $DC_TECH_LIB_PATH/SMIC180
 set DESIGN_NAME "dc_example"
 set CURRENT_RTL_SRC $SYN_WORK_PATH/rtl
 
 define_design_lib work -path $SYN_WORK_PATH
-set SYMBOL_PATH_STD /home/macro/synopsys/dc_pdk_lib/SMIC180/std/symbols
-set SYMBOL_PATH_IO /home/macro/synopsys/dc_pdk_lib/SMIC180/io/symbol
-set LINK_PATH /home/macro/synopsys/dc_pdk_lib/SMIC180/std/synopsys
-set RTL_PATH /home/macro/DC-PRO/src/work
-set SCRIPT_PATH /home/macro/DC-PRO/syn/script
+set SYMBOL_PATH_STD $TECH_LIB_PATH/symbols
+set SYMBOL_PATH_IO $TECH_LIB_PATH/io/symbol
+set LINK_PATH $TECH_LIB_PATH/std/synopsys
+set RTL_PATH $SYN_WORK_PATH/src/work
+set SCRIPT_PATH $SYN_WORK_PATH/syn/script
 
 # Define the search path
 set_app_var search_path [ list . $search_path $LINK_PATH \
@@ -27,7 +29,7 @@ set_app_var search_path [ list . $search_path $LINK_PATH \
 
 # Define the target logic library, symbol library,and link libraries
 # Logic Library
-# The logic libraries that Design Compiler uses to resolve cell references 
+# The logic libraries that Design Compiler uses to resolve cell references
 # are called link libraries. Link libraries contain the descriptions of
 # library cells and subdesigns in a mapped netlist and can also contain
 # design files.
