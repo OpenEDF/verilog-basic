@@ -13,10 +13,10 @@
 #=====================================================================
 # step 0: setup the environment
 #=====================================================================
-set UNMAPPED_FILE_PATH  $SYN_WORK_PATH/syn/unmapped
-set MAPPED_FILE_PATH    $SYN_WORK_PATH/syn/mapped
-set NETLIST_PATH        $SYN_WORK_PATH/syn/netlist
-set REPORT_PATH         $SYN_WORK_PATH/syn/report
+set UNMAPPED_FILE_PATH  $SYN_WORK_PATH/unmapped
+set MAPPED_FILE_PATH    $SYN_WORK_PATH/mapped
+set NETLIST_PATH        $SYN_WORK_PATH/netlist
+set REPORT_PATH         $SYN_WORK_PATH/report
 
 #=====================================================================
 # step 1: sead & elaborate the RTL file list & check

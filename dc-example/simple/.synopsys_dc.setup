@@ -6,24 +6,22 @@
 # Design Compiler Version: 2018
 #--------------------------------------------------------------------------------------
 # Define work directory
+set DESIGN_NAME "dc_example"
 set SYN_WORK_PATH [exec pwd]
 set DC_TECH_LIB_PATH /home/macro/tools/synopsys/pdk
 set TECH_LIB_PATH $DC_TECH_LIB_PATH/SMIC180
-set DESIGN_NAME "dc_example"
-set CURRENT_RTL_SRC $SYN_WORK_PATH/rtl
 
 define_design_lib work -path $SYN_WORK_PATH
 set SYMBOL_PATH_STD $TECH_LIB_PATH/symbols
 set SYMBOL_PATH_IO $TECH_LIB_PATH/io/symbol
 set LINK_PATH $TECH_LIB_PATH/std/synopsys
-set RTL_PATH $SYN_WORK_PATH/src/work
-set SCRIPT_PATH $SYN_WORK_PATH/syn/script
+set CURRENT_RTL_SRC $SYN_WORK_PATH/rtl
+set SCRIPT_PATH $SYN_WORK_PATH/script
 
 # Define the search path
 set_app_var search_path [ list . $search_path $LINK_PATH \
                                  $SYMBOL_PATH_IO         \
                                  $SYMBOL_PATH_STD        \
-                                 $RTL_PATH               \
                                  $SCRIPT_PATH            \
                                  $CURRENT_RTL_SRC]
 
