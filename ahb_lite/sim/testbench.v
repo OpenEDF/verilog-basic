@@ -66,6 +66,9 @@ reg  [31:0] ahb_wr_addr, ahb_wr_data, ahb_rd_addr, ahb_rd_data;
 //--------------------------------------------------------------------------
 initial begin
     $display("[%0t] AHB Lite testbench case...", $time);
+    $display("[%0t]: start loading hex file to memory...", $time);
+    $readmemh("rom.hex", ahb_lite_top_u.ahb_lite_rom_u.rom_model);
+    $display("[%0t]: loading hex file to memory end...", $time);
     fork
         /* reset control logic */
         reset();
@@ -141,9 +144,9 @@ begin
     end
 `endif
     /* read test */
-    ahb_rd_addr = 32'h005E_0000;
+    ahb_rd_addr = 32'h0050_0000;
     ahb_rd_data = 32'h0000_0000;
-    repeat (4) begin
+    repeat (32) begin
         @(posedge hclk)  /* master input data */
         ahb_lite_read(ahb_rd_addr);
         ahb_rd_addr = ahb_rd_addr + 32'h0000_0004;

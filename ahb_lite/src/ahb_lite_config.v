@@ -91,4 +91,7 @@
 /* config define */
 `define DEF_ACCRESS_SLAVE_ADDR 32'h005E_0000
 
+/* rom size */
+`define ROM_SIZE_BYTE          4096
+
 //--------------------------------------------------------------------------

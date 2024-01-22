@@ -108,10 +108,12 @@ reg [31:0] data_phase_hdata;
 wire        data_phase_read;
 wire        data_phase_rd_wr_comm;
 wire        rd_word_vaild;
+wire [15:0] addr_vaild_feild;
 assign data_phase_rd_wr_comm = addr_phase_hsel & addr_phase_htrans[1] & addr_phase_hready;
 assign data_phase_read       = data_phase_rd_wr_comm & (~addr_phase_hwrite);
 /* only support word */
-assign rd_word_vaild = addr_phase_hsize[1] & (~addr_phase_addr[0]) & (~addr_phase_addr[1]);
+assign rd_word_vaild  = addr_phase_hsize[1] & (~addr_phase_addr[0]) & (~addr_phase_addr[1]);
+assign addr_vaild_feild = addr_phase_addr[15:0];
 
 //--------------------------------------------------------------------------
 // Design: address phase samplig
@@ -150,17 +152,17 @@ always @(posedge HCLK or negedge HRESETn) begin
         data_phase_hdata     <= 32'h0000_0000;
     end else begin
         if (data_phase_read) begin
-            data_phase_hdata[7:0]   <= rom_model[addr_phase_addr];
-            data_phase_hdata[15:8]  <= rom_model[addr_phase_addr+1];
-            data_phase_hdata[23:16] <= rom_model[addr_phase_addr+2];
-            data_phase_hdata[31:24] <= rom_model[addr_phase_addr+3];
+            data_phase_hdata[7:0]   <= rom_model[addr_vaild_feild];
+            data_phase_hdata[15:8]  <= rom_model[addr_vaild_feild+1];
+            data_phase_hdata[23:16] <= rom_model[addr_vaild_feild+2];
+            data_phase_hdata[31:24] <= rom_model[addr_vaild_feild+3];
             data_phase_hreadyout    <= `READYOUT;
             data_phase_hresp        <= `RESP_OKAY;
         end else begin
-            data_phase_hdata[7:0]   <= 32'h0000_0000;
-            data_phase_hdata[15:8]  <= 32'h0000_0000;
-            data_phase_hdata[23:16] <= 32'h0000_0000;
-            data_phase_hdata[31:24] <= 32'h0000_0000;
+            data_phase_hdata[7:0]   <= 8'h00;
+            data_phase_hdata[15:8]  <= 8'h00;
+            data_phase_hdata[23:16] <= 8'h00;
+            data_phase_hdata[31:24] <= 8'h00;
             data_phase_hreadyout    <= `WAIT_READYOUT;
             data_phase_hresp        <= `RESP_ERROR;
         end
