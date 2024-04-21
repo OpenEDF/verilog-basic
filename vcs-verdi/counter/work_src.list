@@ -1,0 +1,3 @@
+# source file list
+./counter.v
+./testbench.v
