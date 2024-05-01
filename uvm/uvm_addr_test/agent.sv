@@ -60,7 +60,6 @@ endfunction
 //--------------------------------------------------------------------------
 function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-
     /* UVM_ACTIVE and UVM PASSIVE */
     if (get_is_active == UVM_ACTIVE) begin
         drv = driver::type_id::create("drv", this);

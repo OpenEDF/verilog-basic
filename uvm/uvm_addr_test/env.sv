@@ -50,7 +50,7 @@ scoreboard sb;
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "agent", uvm_component parent = null);
+function new(string name = "env", uvm_component parent = null);
     super.new(name, parent);
 endfunction
 

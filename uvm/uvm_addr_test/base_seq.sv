@@ -62,7 +62,6 @@ endfunction
 //--------------------------------------------------------------------------
 task body();
     `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
-    req.print();
     `uvm_do(req);
 endtask
 

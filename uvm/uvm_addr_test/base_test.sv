@@ -60,6 +60,7 @@ endfunction
 function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     env_o = env::type_id::create("env_o", this);
+    bseq = base_seq::type_id::create("bseq");
 endfunction
 
 //--------------------------------------------------------------------------
@@ -67,10 +68,9 @@ endfunction
 //--------------------------------------------------------------------------
 task run_phase(uvm_phase phase);
     phase.raise_objection(this);
-    bseq = base_seq::type_id::create("bseq");
 
-    /* Executes this sequence, returning when the sequence has completed  */
     repeat(10) begin
+        /* Executes this sequence, returning when the sequence has completed  */
         #5;
         bseq.start(env_o.agt.seqr);
     end
@@ -79,6 +79,14 @@ task run_phase(uvm_phase phase);
     phase.drop_objection(this);
     `uvm_info(get_type_name, "end of testcase", UVM_LOW);
 endtask
+
+//--------------------------------------------------------------------------
+// Design: end of elaboration
+//--------------------------------------------------------------------------
+virtual function void end_of_elaboration();
+    /* show uvm class arch */
+    print();
+endfunction
 
 endclass: base_test
 //--------------------------------------------------------------------------

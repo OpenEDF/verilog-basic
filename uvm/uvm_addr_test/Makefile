@@ -27,10 +27,10 @@ com:
 		-lca -kdb \
 		-debug_access+all+reverse \
 		-ntb_opts $(UVM_VER) \
-		-timescale=1ns/1ps \
-		+define+$(UVM_DEFINES)+$(DEFINES) \
+		-timescale=1ns/1ns \
+		+define+$(UVM_DEFINES)  \
 		-top $(TB_TOP) \
-		-f $(TEST_FILE) $(PROGRAM_TOP) \
+		-f $(TEST_FILE) \
 		-l comp.log
 
 # simluation
@@ -39,13 +39,15 @@ sim:
 		+UVM_VERBOSITY=$(UVM_VERBOSITY)  \
 		+UVM_VERDI_OPTS \
 		+UVM_VERDI_TRACE=$(TRACE) \
+		+$(DEFINES)     \
 		-l ssim.log
 
 # debug
 wave:
-	verdi -f $(TEST_FILE)  \
+	verdi -sverilog -f $(TEST_FILE)  \
 		-ssf uvm_test.fsdb \
 		-nologo &
+
 # clean
 .PHONY: clean
 clean:

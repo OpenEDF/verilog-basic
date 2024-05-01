@@ -48,6 +48,7 @@ import uvm_pkg::*;
 `include "scoreboard.sv"
 `include "agent.sv"
 `include "env.sv"
+`include "base_test.sv"
 
 endpackage: base_test_pkg
 
