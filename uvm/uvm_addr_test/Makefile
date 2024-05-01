@@ -8,26 +8,38 @@
 TEST_FILE = work_list.f
 UVM_VERBOSITY =	UVM_LOW
 
-# Accessing HDL Registers Through UVM Backdoor
-ACC_HDL_REG = -debug_pp
-
 # UVM simv Test options
+UVM_VER = uvm-1.2
 TEST_CASE = base_test
+TB_TOP = tb_top
+DEFINES = UVM_NO_RELNOTES
+UVM_DEFINES = UVM_NO_DEPRECATED+UVM_OBJECT_MUST_HAVE_CONSTRUCTOR
+PROGRAM_TOP = base_test.sv
+#UVM_AWARE|RAL|TLM|MSG|HIER|PRINT
+TRACE = HIER
+UVM_VERDI_OPTS = +UVM_TR_RECORD +UVM_LOG_RECORD +UVM_PHASE_RECORD
 
 # run
 all: clean com sim
 # compiler
 com:
-	vcs -sverilog -full64 +v2k $(ACC_HDL_REG) -top tb_top\
-     +incdir+$(UVM_HOME)/src \
-    $(UVM_HOME)/src/uvm.sv $(UVM_HOME)/src/dpi/uvm_dpi.cc -CFLAGS -DVCS \
-    -P $(VERDI_HOME)/share/PLI/VCS/LINUX64/novas.tab                         \
-    $(VERDI_HOME)/share/PLI/VCS/LINUX64/pli.a -load libnovas.so:FSDBDumpCmd  \
-    -timescale=1ns/1ps +incdir+./tb_class -f $(TEST_FILE) base_test.sv  -l comp.log
+	vcs -sverilog -full64 +v2k \
+		-lca -kdb \
+		-debug_access+all+reverse \
+		-ntb_opts $(UVM_VER) \
+		-timescale=1ns/1ps \
+		+define+$(UVM_DEFINES)+$(DEFINES) \
+		-top $(TB_TOP) \
+		-f $(TEST_FILE) $(PROGRAM_TOP) \
+		-l comp.log
 
 # simluation
 sim:
-	./simv +UVM_TESTNAME=$(TEST_CASE) +UVM_VERBOSITY=$(UVM_VERBOSITY) +UVM_PHASE_RECORD -l ssim.log
+	./simv +UVM_TESTNAME=$(TEST_CASE)    \
+		+UVM_VERBOSITY=$(UVM_VERBOSITY)  \
+		+UVM_VERDI_OPTS \
+		+UVM_VERDI_TRACE=$(TRACE) \
+		-l ssim.log
 
 # debug
 wave:
