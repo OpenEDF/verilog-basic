@@ -27,11 +27,6 @@ com:$(TEST_FILE)
     $(VERDI_HOME)/share/PLI/VCS/LINUX64/pli.a -load libnovas.so:FSDBDumpCmd  \
     -timescale=1ns/1ps +incdir+./tb_class -f $(TEST_FILE)
 
-#com:$(TEST_FILE)
-#	vcs -sverilog $(ACC_HDL_REG) -ntb_opts uvm-1.2 -full64 +v2k -timescale=1ns/1ns \
-#   	 -LDFLAGS -Wl,--no-as-needed -CFLAGS -DVCS \
-#   	-timescale=1ns/1ps +incdir+./tb_class -f $(TEST_FILE)
-
 # simluation
 base_sim:
 	./simv +UVM_TESTNAME=mem_model_base_test +UVM_VERBOSITY=$(UVM_VERBOSITY) -l vcs_base_sim.log
