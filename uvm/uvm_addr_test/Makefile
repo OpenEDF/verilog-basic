@@ -44,8 +44,7 @@ sim:
 
 # debug
 wave:
-	verdi -sverilog -f $(TEST_FILE)  \
-		-ssf uvm_test.fsdb \
+	verdi -ssf uvm_test.fsdb \
 		-nologo &
 
 # clean

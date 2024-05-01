@@ -72,13 +72,14 @@ endfunction
 //--------------------------------------------------------------------------
 task run_phase(uvm_phase phase);
     forever begin
-        wait(!vif.rst_n);
+        wait(vif.rst_n);
         @(posedge vif.clk);
         mon_item.ina = vif.ina;
         mon_item.inb = vif.inb;
-        `uvm_info(get_type_name, $sformatf("ina = %0d, inb = %0d", mon_item.ina, mon_item.inb), UVM_HIGH);
+        `uvm_info(get_type_name, $sformatf("ina = %0d, inb = %0d", mon_item.ina, mon_item.inb), UVM_LOW);
         @(posedge vif.clk)
         mon_item.out = vif.out;
+        `uvm_info(get_type_name, $sformatf("out = %0d", mon_item.out), UVM_LOW);
         /* send specified value to all connected interface */
         item_collect_port.write(mon_item);
     end

@@ -52,10 +52,11 @@ module adder (
 // Design: adder
 //--------------------------------------------------------------------------
 always @(posedge clk or negedge rst_n) begin
-    if (!rst_n)
+    if (!rst_n) begin
         out <= 8'h00;
-    else
+    end else begin
         out <= ina + inb;
+    end
 end
 
 endmodule

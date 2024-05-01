@@ -77,14 +77,12 @@ endfunction
 task run_phase(uvm_phase phase);
     seq_item sb_item;
     forever begin
-        wait (item_q.size > 0);
-        if (item_q.size > 0) begin
-            sb_item = item_q.pop_front();
-            if (sb_item.ina + sb_item.inb == sb_item.out) begin
-                `uvm_info(get_type_name, $sformatf("matched: ina = %0d, inb = %0d out = %0d", sb_item.ina, sb_item.inb, sb_item.out), UVM_LOW);
-            end else begin
-                `uvm_error(get_type_name, $sformatf("not matched: ina = %0d, inb = %0d out = %0d", sb_item.ina, sb_item.inb, sb_item.out));
-            end
+        wait (item_q.size() > 0);
+        sb_item = item_q.pop_front();
+        if (sb_item.ina + sb_item.inb == sb_item.out) begin
+            `uvm_info(get_type_name, $sformatf("matched: ina = %0d, inb = %0d out = %0d", sb_item.ina, sb_item.inb, sb_item.out), UVM_LOW);
+        end else begin
+            `uvm_error(get_type_name, $sformatf("not matched: ina = %0d, inb = %0d out = %0d", sb_item.ina, sb_item.inb, sb_item.out));
         end
     end
 endtask

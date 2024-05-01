@@ -71,7 +71,7 @@ task run_phase(uvm_phase phase);
 
     repeat(10) begin
         /* Executes this sequence, returning when the sequence has completed  */
-        #5;
+        #10;
         bseq.start(env_o.agt.seqr);
     end
 

@@ -44,7 +44,7 @@ class seq_item extends uvm_sequence_item;
 //--------------------------------------------------------------------------
 rand bit [7:0] ina;
 rand bit [7:0] inb;
-bit            out;
+bit      [8:0] out;
 
 //--------------------------------------------------------------------------
 // Design: utility and field macros
