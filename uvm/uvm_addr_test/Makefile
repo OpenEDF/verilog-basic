@@ -41,6 +41,9 @@ sim:
 		+UVM_VERDI_TRACE=$(TRACE) \
 		+$(DEFINES)     \
 		-l ssim.log
+# verdi debug
+debug:
+	./svim -gui=verdi &
 
 # debug
 wave:
