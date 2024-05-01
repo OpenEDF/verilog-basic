@@ -20,8 +20,8 @@ all: clean com base_sim wrrd_sim
 
 # compiler
 com:$(TEST_FILE)
-	vcs -sverilog $(ACC_HDL_REG) -full64 +v2k -timescale=1ns/1ns -cpp g++-4.8 \
-    -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed +incdir+$(UVM_HOME)/src \
+	vcs -sverilog $(ACC_HDL_REG) -full64 +v2k -timescale=1ns/1ns \
+     +incdir+$(UVM_HOME)/src \
     $(UVM_HOME)/src/uvm.sv $(UVM_HOME)/src/dpi/uvm_dpi.cc -CFLAGS -DVCS \
     -P $(VERDI_HOME)/share/PLI/VCS/LINUX64/novas.tab                         \
     $(VERDI_HOME)/share/PLI/VCS/LINUX64/pli.a -load libnovas.so:FSDBDumpCmd  \
