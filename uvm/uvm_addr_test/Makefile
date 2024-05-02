@@ -75,5 +75,5 @@ help:
 clean:
 	@rm -rf csrc simv* *.key *~ core vc_hdrs.h ucli.key urg* *.log dump.vcd \
 		   novas* *.vcd *.fsdb verdiLog uvmgen_options_log.txt *fsdb*
-	echo "clean the intermediate files..."
+	@echo "clean the intermediate files..."
 #--------------------------------------------------------------------------
