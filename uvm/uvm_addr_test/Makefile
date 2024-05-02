@@ -22,7 +22,6 @@ CM = -cm line+cond+fsm+tgl+branch+assert
 CM_NAME = -cm_name $(TEST_CASE)
 CM_DIR = -cm_dir ./$(TEST_CASE).vdb
 SIM_FLAGS = +fsdb+force
-
 # SIM OPTIONS
 #ENABLE_UCLI = -ucli
 ENABLE_UCLI =
@@ -35,6 +34,7 @@ com:
 		-lca -kdb \
 		-Mupdate \
 		-debug_access+all+reverse \
+		-assert success+enable_diag -R \
 		-ntb_opts $(UVM_VER) \
 		-timescale=1ns/1ns \
 		+define+$(UVM_DEFINES)  \
