@@ -18,6 +18,10 @@ PROGRAM_TOP = base_test.sv
 #UVM_AWARE|RAL|TLM|MSG|HIER|PRINT
 TRACE = HIER
 UVM_VERDI_OPTS = +UVM_TR_RECORD +UVM_LOG_RECORD +UVM_PHASE_RECORD
+CM = -cm line+cond+fsm+tgl+branch+assert
+CM_NAME = -cm_name $(TEST_CASE)
+CM_DIR = -cm_dir ./$(TEST_CASE).vdb
+SIM_FLAGS = +fsdb+force
 
 # SIM OPTIONS
 #ENABLE_UCLI = -ucli
@@ -34,6 +38,7 @@ com:
 		-ntb_opts $(UVM_VER) \
 		-timescale=1ns/1ns \
 		+define+$(UVM_DEFINES)  \
+		$(CM) $(CM_NAME) $(CM_DIR) \
 		-top $(TB_TOP) \
 		-f $(TEST_FILE) \
 		-l comp.log
@@ -45,6 +50,8 @@ sim:
 		$(UVM_VERDI_OPTS) \
 		+UVM_VERDI_TRACE=$(TRACE) \
 		$(ENABLE_CULI)            \
+		$(CM) $(CM_NAME) $(CM_DIR) \
+		$(SIM_FLAGS)    \
 		+$(DEFINES)     \
 		-l ssim.log
 # verdi debug
@@ -58,6 +65,11 @@ debug:
 wave:
 	verdi -ssf uvm_test.fsdb \
 		-nologo &
+
+#coverage
+cov:
+	verdi -cov -covdir $(TEST_CASE).vdb &
+
 # help
 help:
 	@echo ===================================================================
@@ -68,12 +80,15 @@ help:
 	@echo "sim      => Run the simulation with text"
 	@echo "debug    => Run the simulation with verdi gui uvm debug"
 	@echo "wave     => Display the fsdb waveform by verdi"
+	@echo "cov      => Display the coverage info by verdi"
 	@echo ===================================================================
 
 # clean
 .PHONY: clean
 clean:
 	@rm -rf csrc simv* *.key *~ core vc_hdrs.h ucli.key urg* *.log dump.vcd \
-		   novas* *.vcd *.fsdb verdiLog uvmgen_options_log.txt *fsdb*
+		   novas* *.vcd *.fsdb verdiLog uvmgen_options_log.txt *fsdb*       \
+		   vdCovLog base_test.vdb
+
 	@echo "clean the intermediate files..."
 #--------------------------------------------------------------------------

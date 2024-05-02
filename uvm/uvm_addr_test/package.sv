@@ -47,6 +47,7 @@ import uvm_pkg::*;
 `include "monitor.sv"
 `include "scoreboard.sv"
 `include "agent.sv"
+`include "coverage.sv"
 `include "env.sv"
 `include "base_test.sv"
 

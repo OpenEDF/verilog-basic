@@ -26,8 +26,8 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: An environment provides a container for agents, scoreboards, and
-//        other verification components.
+// Brief: The UVM subscriber provides an analysis export for receiving
+//        transactions form a connected analysis export.
 // Change Log:
 //--------------------------------------------------------------------------
 
@@ -38,21 +38,42 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class env extends uvm_env;
+class coverage extends uvm_subscriber#(seq_item);
 
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-`uvm_component_utils(env)
-agent agt;
-scoreboard sb;
-coverage cov;
+uvm_analysis_imp #(seq_item, coverage) item_cov_export;
+seq_item seq_cov;
+`uvm_component_utils(coverage)
+
+//--------------------------------------------------------------------------
+// Design: coverage
+//--------------------------------------------------------------------------
+covergroup test_coverage;
+    option.comment = "uvm test coverage";
+    val_ina: coverpoint(seq_cov.ina)
+    {
+        bins low_a  = {[0:20]};
+        bins high_a = {[90:99]};
+    }
+
+    val_inb: coverpoint(seq_cov.inb)
+    {
+        bins low_b  = {[0:20]};
+        bins high_b = {[90:99]};
+    }
+
+    combi: cross val_ina, val_inb;
+endgroup: test_coverage
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "env", uvm_component parent = null);
+function new(string name = "coverage", uvm_component parent = null);
     super.new(name, parent);
+    item_cov_export = new("item_cov_export", this);
+    test_coverage = new();
 endfunction
 
 //--------------------------------------------------------------------------
@@ -60,19 +81,22 @@ endfunction
 //--------------------------------------------------------------------------
 function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    agt = agent::type_id::create("agt", this);
-    sb  = scoreboard::type_id::create("sb", this);
-    cov = coverage::type_id::create("cov", this);
 endfunction
 
 //--------------------------------------------------------------------------
-// Design: connect phase: establish cross-componement connections
+// Design: write: receives all transactions boardcasted
 //--------------------------------------------------------------------------
-function void connect_phase(uvm_phase phase);
-    /* monitor ---> scoreboard */
-    agt.mon.item_collect_port.connect(sb.item_collect_export);
-    agt.mon.item_collect_port.connect(cov.item_cov_export);
+function void write(seq_item t);
+    seq_cov = t; /* assign */
+    test_coverage.sample();
 endfunction
 
-endclass: env
+//--------------------------------------------------------------------------
+// Design: report phase: Report results of the test.
+//--------------------------------------------------------------------------
+function void report_phase(uvm_phase phase);
+    `uvm_info(get_full_name(), $sformatf("coverage is %0.2f%%", test_coverage.get_coverage()), UVM_LOW);
+endfunction
+
+endclass: coverage 
 //--------------------------------------------------------------------------
