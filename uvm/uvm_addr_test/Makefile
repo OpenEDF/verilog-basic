@@ -19,6 +19,10 @@ PROGRAM_TOP = base_test.sv
 TRACE = HIER
 UVM_VERDI_OPTS = +UVM_TR_RECORD +UVM_LOG_RECORD +UVM_PHASE_RECORD
 
+# SIM OPTIONS
+#ENABLE_UCLI = -ucli
+ENABLE_UCLI =
+
 # run
 all: clean com sim
 # compiler
@@ -40,6 +44,7 @@ sim:
 		+UVM_VERBOSITY=$(UVM_VERBOSITY)  \
 		+UVM_VERDI_OPTS \
 		+UVM_VERDI_TRACE=$(TRACE) \
+		$(ENABLE_CULI)            \
 		+$(DEFINES)     \
 		-l ssim.log
 # verdi debug
