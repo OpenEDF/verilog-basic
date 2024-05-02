@@ -42,25 +42,38 @@ com:
 sim:
 	./simv +UVM_TESTNAME=$(TEST_CASE)    \
 		+UVM_VERBOSITY=$(UVM_VERBOSITY)  \
-		+UVM_VERDI_OPTS \
+		$(UVM_VERDI_OPTS) \
 		+UVM_VERDI_TRACE=$(TRACE) \
 		$(ENABLE_CULI)            \
 		+$(DEFINES)     \
 		-l ssim.log
 # verdi debug
 debug:
-	./svim -gui=verdi &
+	./simv -gui=verdi \
+		$(UVM_VERDI_OPTS) \
+		+UVM_VERDI_TRACE=$(TRACE) \
+		-l verdi_debug.log
 
 # debug
 wave:
 	verdi -ssf uvm_test.fsdb \
 		-nologo &
+# help
+help:
+	@echo ===================================================================
+	@echo "------------------------- TARGET ---------------------------------"
+	@echo "help     => Display the message"
+	@echo "clean    => Remove all intermediate simv and log files"
+	@echo "com      => Compile TB and DUT files"
+	@echo "sim      => Run the simulation with text"
+	@echo "debug    => Run the simulation with verdi gui uvm debug"
+	@echo "wave     => Display the fsdb waveform by verdi"
+	@echo ===================================================================
 
 # clean
 .PHONY: clean
 clean:
-	rm -rf csrc simv* *.key *~ core vc_hdrs.h ucli.key urg* *.log dump.vcd \
-		   novas* *.vcd *.fsdb verdiLog uvmgen_options_log.txt \
-		   *fsdb*
-
+	@rm -rf csrc simv* *.key *~ core vc_hdrs.h ucli.key urg* *.log dump.vcd \
+		   novas* *.vcd *.fsdb verdiLog uvmgen_options_log.txt *fsdb*
+	echo "clean the intermediate files..."
 #--------------------------------------------------------------------------
