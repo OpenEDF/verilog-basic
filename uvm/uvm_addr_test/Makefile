@@ -25,6 +25,7 @@ all: clean com sim
 com:
 	vcs -sverilog -full64 +v2k \
 		-lca -kdb \
+		-Mupdate \
 		-debug_access+all+reverse \
 		-ntb_opts $(UVM_VER) \
 		-timescale=1ns/1ns \
