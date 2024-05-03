@@ -79,5 +79,18 @@ function void connect_phase(uvm_phase phase);
     end
 endfunction
 
+//--------------------------------------------------------------------------
+// Design: Report results of the test.
+//--------------------------------------------------------------------------
+virtual function void report_phase(uvm_phase phase);
+    `uvm_info(get_type_name, "IN report_phase...", UVM_LOW);
+endfunction
+
+//--------------------------------------------------------------------------
+// Design: Tie up loose ends.
+//--------------------------------------------------------------------------
+virtual function void final_phase(uvm_phase phase);
+    `uvm_info(get_type_name, "IN final_phase...", UVM_LOW);
+endfunction
 endclass: agent
 //--------------------------------------------------------------------------

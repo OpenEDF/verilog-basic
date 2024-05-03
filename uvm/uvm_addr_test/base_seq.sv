@@ -63,6 +63,7 @@ endfunction
 task body();
     `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
     `uvm_do(req);
+    //`uvm_do_with(req, {ina = 10});
 endtask
 
 endclass: base_seq

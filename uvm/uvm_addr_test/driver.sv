@@ -68,7 +68,8 @@ endfunction
 task run_phase(uvm_phase phase);
     forever begin
         seq_item_port.get_next_item(req);
-        `uvm_info(get_type_name, $sformatf("ina = %0d, inb = %0d", req.ina, req.inb), UVM_LOW);
+        //`uvm_info(get_type_name, $sformatf("ina = %0d, inb = %0d", req.ina, req.inb), UVM_LOW);
+        `uvm_info(get_type_name, {"\n", req.sprint()}, UVM_LOW);
         vif.ina <= req.ina;
         vif.inb <= req.inb;
         seq_item_port.item_done();
