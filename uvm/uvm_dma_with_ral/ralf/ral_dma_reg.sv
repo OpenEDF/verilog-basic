@@ -133,7 +133,6 @@ class ral_block_dma_reg extends uvm_reg_block;
       this.MEM_ADDR.build();
       this.default_map.add_reg(this.MEM_ADDR, `UVM_REG_ADDR_WIDTH'hC, "RO", 0);
 		this.MEM_ADDR_ADDRESS = this.MEM_ADDR.ADDRESS;
-       lock_model();
    endfunction : build
 
 	`uvm_object_utils(ral_block_dma_reg)

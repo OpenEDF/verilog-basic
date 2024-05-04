@@ -64,7 +64,11 @@ function void build_phase(uvm_phase phase);
     agt = agent::type_id::create("agt", this);
     sb  = scoreboard::type_id::create("sb", this);
     regmodel = ral_block_dma_reg::type_id::create("regmodel", this);
+
+    /* Create UVM register hierarchy Not build_phase()! */
     regmodel.build();
+    /* Lock register hierarchy and create address map */
+    regmodel.lock_model();
     m_adapter = dma_adapter::type_id::create("m_adapter",, get_full_name());
 endfunction
 
@@ -74,6 +78,8 @@ endfunction
 function void connect_phase(uvm_phase phase);
     /* monitor ---> scoreboard */
     agt.mon.item_collect_port.connect(sb.item_collect_export);
+
+    /* Tie Sequencer Adapter to Register Map */
     regmodel.default_map.set_sequencer(.sequencer(agt.seqr), .adapter(m_adapter));
     regmodel.default_map.set_base_addr('h0000_0400);
 endfunction
