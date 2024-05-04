@@ -1,7 +1,7 @@
 #
 # ABSTRACT : RAL file generated for dma_uvm
 #
-block dma_memory_map_dma_address_block {
+block dma_reg {
   endian little;
   bytes 4;
   register INTR @'h0 {
@@ -15,7 +15,6 @@ block dma_memory_map_dma_address_block {
        access rw;
        reset 16'h0;
     }
-    attributes { NO_REG_BIT_BASH_TEST 1 }
   }
   register CTRL @'h4 {
     field START_DMA @0 {
@@ -38,7 +37,6 @@ block dma_memory_map_dma_address_block {
        access rw;
        reset 22'h0;
     }
-    attributes { NO_REG_BIT_BASH_TEST 1 }
   }
   register IO_ADDR @'h8 {
     field ADDRESS @0 {
@@ -58,6 +56,6 @@ block dma_memory_map_dma_address_block {
 
 system dma_uvm {
   bytes 4;
-  block dma_memory_map_dma_address_block @'h0;
+  block dma_reg @'h0;
 }
 

@@ -41,7 +41,7 @@ import uvm_pkg::*;
 // Include File
 //--------------------------------------------------------------------------
 `include "package/seq_item.sv"
-`include "ralf/ral_dma_uvm.sv"
+`include "ralf/ral_dma_reg.sv"
 `include "package/sequence.sv"
 `include "package/write_sequence.sv"
 `include "package/read_sequence.sv"

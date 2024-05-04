@@ -46,7 +46,7 @@ class env extends uvm_env;
 `uvm_component_utils(env)
 agent agt;
 scoreboard sb;
-ral_block_dma_memory_map_dma_address_block regmodel;
+ral_block_dma_reg regmodel;
 dma_adapter m_adapter;
 
 //--------------------------------------------------------------------------
@@ -63,7 +63,7 @@ function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     agt = agent::type_id::create("agt", this);
     sb  = scoreboard::type_id::create("sb", this);
-    regmodel = ral_block_dma_memory_map_dma_address_block::type_id::create("regmodel", this);
+    regmodel = ral_block_dma_reg::type_id::create("regmodel", this);
     regmodel.build();
     m_adapter = dma_adapter::type_id::create("m_adapter",, get_full_name());
 endfunction

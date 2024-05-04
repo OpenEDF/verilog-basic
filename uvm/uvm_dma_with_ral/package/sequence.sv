@@ -43,7 +43,7 @@ class base_seq extends uvm_sequence;
 // Design: declear and register
 //--------------------------------------------------------------------------
 `uvm_object_utils(base_seq)
-ral_block_dma_memory_map_dma_address_block regmodel;
+ral_block_dma_reg regmodel;
 uvm_phase starting_phase;
 
 //--------------------------------------------------------------------------
