@@ -1,0 +1,63 @@
+#
+# ABSTRACT : RAL file generated for dma_uvm
+#
+block dma_memory_map_dma_address_block {
+  endian little;
+  bytes 4;
+  register INTR @'h0 {
+    field STATUS @0 {
+       bits 16;
+       access rw;
+       reset 16'h0;
+    }
+    field MASK @16 {
+       bits 16;
+       access rw;
+       reset 16'h0;
+    }
+    attributes { NO_REG_BIT_BASH_TEST 1 }
+  }
+  register CTRL @'h4 {
+    field START_DMA @0 {
+       bits 1;
+       access rw;
+       reset 1'h0;
+    }
+    field W_COUNT@1 {
+       bits 8;
+       access rw;
+       reset 8'h0;
+    }
+    field IO_MEM @9 {
+       bits 1;
+       access rw;
+       reset 1'h0;
+    }
+    field RESVD @10 {
+       bits 22;
+       access rw;
+       reset 22'h0;
+    }
+    attributes { NO_REG_BIT_BASH_TEST 1 }
+  }
+  register IO_ADDR @'h8 {
+    field ADDRESS @0 {
+       bits 32;
+       access rw;
+       reset 32'h0;
+    }
+  }
+  register MEM_ADDR@'hc {
+    field ADDRESS@0 {
+       bits 32;
+       access ro;
+       reset 32'h0;
+    }
+  }
+}
+
+system dma_uvm {
+  bytes 4;
+  block dma_memory_map_dma_address_block @'h0;
+}
+
