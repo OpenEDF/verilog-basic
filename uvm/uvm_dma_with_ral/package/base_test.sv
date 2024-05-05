@@ -76,7 +76,6 @@ task run_phase(uvm_phase phase);
     end
 
     bseq.regmodel = env_o.regmodel;
-    bseq.regmodel = env_o.regmodel;
     bseq.starting_phase = phase;
     bseq.start(env_o.agt.seqr);
 

@@ -43,8 +43,6 @@ import uvm_pkg::*;
 `include "package/seq_item.sv"
 `include "ralf/ral_dma_reg.sv"
 `include "package/sequence.sv"
-`include "package/write_sequence.sv"
-`include "package/read_sequence.sv"
 `include "package/sequencer.sv"
 `include "package/driver.sv"
 `include "package/monitor.sv"
