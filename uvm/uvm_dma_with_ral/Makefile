@@ -30,7 +30,7 @@ RALF_FILE = dma_uvm
 # run
 all: clean com sim
 # compiler
-com: ralf
+com:
 	vcs -sverilog -full64 +v2k \
 		-lca -kdb \
 		-Mupdate \
@@ -72,7 +72,8 @@ cov:
 
 # generate ralf file
 ralf:
-	ralgen -full64 -uvm -t $(RALF_FILE) $(RALF_FILE).ralf
+	ralgen -full64 -uvm -t $(RALF_FILE) ralf/$(RALF_FILE).ralf
+	# mv ral_$(RALF_FILE).sv ralf
 
 # help
 help:
@@ -89,7 +90,7 @@ help:
 	@echo ===================================================================
 
 # clean
-.PHONY: clean
+.PHONY: clean com sim help cove debug ralf all
 clean:
 	@rm -rf csrc simv* *.key *~ core vc_hdrs.h ucli.key urg* *.log dump.vcd \
 		   novas* *.vcd *.fsdb verdiLog uvmgen_options_log.txt *fsdb*       \
