@@ -32,7 +32,7 @@ all: clean com sim
 com:
 	vcs -sverilog -full64 +v2k \
 		-lca -kdb \
-		-Mupdate \
+		-Mupdate -simprofile\
 		-debug_access+all+reverse \
 		-assert success+enable_diag -R \
 		-ntb_opts $(UVM_VER) \
@@ -88,7 +88,8 @@ help:
 clean:
 	@rm -rf csrc simv* *.key *~ core vc_hdrs.h ucli.key urg* *.log dump.vcd \
 		   novas* *.vcd *.fsdb verdiLog uvmgen_options_log.txt *fsdb*       \
-		   vdCovLog base_test.vdb
+		   vdCovLog base_test.vdb profileReport.* simprofile_dir* \
+		   profileReport
 
 	@echo "clean the intermediate files..."
 #--------------------------------------------------------------------------
