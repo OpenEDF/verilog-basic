@@ -45,6 +45,7 @@ class base_test extends uvm_test;
 //--------------------------------------------------------------------------
 env env_o;
 base_seq bseq;
+intr_seq isr_seq;
 `uvm_component_utils(base_test)
 
 //--------------------------------------------------------------------------
@@ -62,6 +63,7 @@ function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     env_o = env::type_id::create("env_o", this);
     bseq = base_seq::type_id::create("bseq");
+    isr_seq = intr_seq::type_id::create("isr_seq");
 endfunction
 
 //--------------------------------------------------------------------------
@@ -162,10 +164,17 @@ task run_phase(uvm_phase phase);
     `uvm_info(get_type_name, "IN run_phase...", UVM_LOW);
     phase.raise_objection(this);
 
-    repeat(10) begin
+    repeat(1) begin
         /* Executes this sequence, returning when the sequence has completed  */
+        /* isr sequence */
+        fork
+            isr_seq.start(env_o.agt.seqr);
+        //join_none
+
+        /* main sequence */
         #10;
         bseq.start(env_o.agt.seqr);
+        join
     end
 
     /* The drop is expected to be matched with an earlier raise */

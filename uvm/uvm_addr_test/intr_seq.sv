@@ -26,9 +26,7 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: A UVM monitor is a passive component used to capture DUT signals
-//        using a virtual interface and translate them into a sequence item
-//        format.
+// Brief: uvm sequence
 // Change Log:
 //--------------------------------------------------------------------------
 
@@ -39,62 +37,45 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class monitor extends uvm_monitor;
+class intr_seq extends uvm_sequence#(seq_item);
 
 //--------------------------------------------------------------------------
-// Design: declare and register
+// Design: declear and register
 //--------------------------------------------------------------------------
-virtual add_if vif;
-uvm_analysis_port #(seq_item) item_collect_port;
-seq_item mon_item;
+seq_item req;
 uvm_event intr_e;
-`uvm_component_utils(monitor)
+`uvm_object_utils(intr_seq);
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "monitor", uvm_component parent = null);
-    super.new(name, parent);
-    item_collect_port = new("item_collect_port", this);
-    mon_item = new();
+function new(string name = "intr_seq");
+    super.new(name);
     intr_e = uvm_event_pool::get_global("INT");
 endfunction
 
 //--------------------------------------------------------------------------
-// Design: build phase: create and configure of testbench structure
+// Design: sequence, your stimulus code, this is the user-defined task
+//         whers the main sequence code resides.
+// uvm_do:
+//        start_item(item);
+//        item.randaomize();
+//        finish_item(item);
 //--------------------------------------------------------------------------
-function void build_phase(uvm_phase phase);
-    super.build_phase(phase);
-    if (!uvm_config_db#(virtual add_if) :: get(this, "", "vif", vif))
-        `uvm_fatal(get_type_name(), "vif not set the top level!")
-endfunction
+task body();
+    intr_e.wait_trigger();
+    `uvm_info(get_type_name(), "interrupt seq: inside body", UVM_LOW);
 
-//--------------------------------------------------------------------------
-// Design: run phase: stmulate the DUT
-//--------------------------------------------------------------------------
-task run_phase(uvm_phase phase);
-    forever begin
-        wait(vif.rst_n);
-        @(posedge vif.clk);
-        mon_item.ina = vif.ina;
-        mon_item.inb = vif.inb;
-        `uvm_info(get_type_name, $sformatf("ina = %0d, inb = %0d", mon_item.ina, mon_item.inb), UVM_LOW);
-        @(posedge vif.clk)
-        mon_item.out = vif.out;
-        `uvm_info(get_type_name, $sformatf("out = %0d", mon_item.out), UVM_LOW);
+    /* grab sequencer for exclusive access */
+    grab();
 
-        /* trigger interrupt */
-        if (mon_item.out > 100) begin
-            `uvm_info(get_type_name, "trigger interrupt", UVM_LOW);
-            intr_e.trigger();
-        end
+    `uvm_do_with(req, {ina == 10; inb == 20;});
 
-        /* TODO: signal from DUT module */
-
-        /* send specified value to all connected interface */
-        item_collect_port.write(mon_item);
-    end
+    /* ungrab sequencer once service is finished */
+    ungrab();
+    `uvm_info(get_type_name(), "interrupt seq: body finished", UVM_LOW);
+    intr_e.reset();
 endtask
 
-endclass: monitor
+endclass: intr_seq
 //--------------------------------------------------------------------------

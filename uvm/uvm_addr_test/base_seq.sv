@@ -61,9 +61,12 @@ endfunction
 //        finish_item(item);
 //--------------------------------------------------------------------------
 task body();
+    repeat(10) begin
+    #10;
     `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
     `uvm_do(req);
-    //`uvm_do_with(req, {ina = 10});
+    end
+    //`uvm_do_with(req, {ina == 10;});
 endtask
 
 endclass: base_seq

@@ -42,6 +42,7 @@ import uvm_pkg::*;
 //--------------------------------------------------------------------------
 `include "seq_item.sv"
 `include "base_seq.sv"
+`include "intr_seq.sv"
 `include "sequencer.sv"
 `include "driver.sv"
 `include "monitor.sv"
