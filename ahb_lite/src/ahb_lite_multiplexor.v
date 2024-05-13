@@ -52,19 +52,25 @@ module ahb_lite_multiplexor
     input wire  [3:0]  HSEL_MUX,
 
     // slave inputs data
-    input wire  [31:0] rom_rdata_mux,
-    input wire  [31:0] defslave_rdata_mux,
-    input wire  [31:0] nomap_rdata_mux,
+    input wire  [31:0] slave_s0_data,
+    input wire  [31:0] slave_s1_data,
+    input wire  [31:0] slave_s2_data,
+    input wire  [31:0] slave_s3_data,
+    input wire  [31:0] slave_def_data,
 
     // slave inputs hreadyout
-    input wire         rom_hredayout_mux,
-    input wire         defslave_hreadyout_mux,
-    input wire         nomap_hreadyout_mux,
+    input wire         slave_s0_hreadyout,
+    input wire         slave_s1_hreadyout,
+    input wire         slave_s2_hreadyout,
+    input wire         slave_s3_hreadyout,
+    input wire         slave_def_hreadyout,
 
     // slave inputs hresp
-    input wire         rom_hresp_mux,
-    input wire         defslave_hresp_mux,
-    input wire         nomap_hresp_mux,
+    input wire         slave_s0_hresp,
+    input wire         slave_s1_hresp,
+    input wire         slave_s2_hresp,
+    input wire         slave_s3_hresp,
+    input wire         slave_def_hresp,
 
     // outputs to master
     output reg         HREADY,
@@ -82,7 +88,7 @@ reg [3:0] addr_phase_hsel_mux;
 //--------------------------------------------------------------------------
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
-        addr_phase_hsel_mux <= `MUX_SEL_DEF_SLAVE;
+        addr_phase_hsel_mux <= `MUX_SEL_NOMAP;
     end else begin
         addr_phase_hsel_mux <= HSEL_MUX;
     end
@@ -91,22 +97,32 @@ end
 //--------------------------------------------------------------------------
 // Design: read the slave data and response signal to master
 //--------------------------------------------------------------------------
-always @(*) begin
+always @(addr_phase_hsel_mux) begin
     case(addr_phase_hsel_mux)
-        `MUX_SEL_ROM: begin
-            HREADY <= rom_hredayout_mux;
-            HRESP  <= rom_hresp_mux;
-            HRDATA <= rom_rdata_mux;
+        `MUX_sEL_S0: begin
+            HREADY <= slave_s0_hreadyout;
+            HRESP  <= slave_s0_hresp ;
+            HRDATA <= slave_s0_data ;
          end
-        `MUX_SEL_DEF_SLAVE: begin
-            HREADY <= defslave_hreadyout_mux;
-            HRESP  <= defslave_hresp_mux;
-            HRDATA <= defslave_rdata_mux;
+        `MUX_sEL_S1: begin
+            HREADY <= slave_s1_hreadyout;
+            HRESP  <= slave_s1_hresp ;
+            HRDATA <= slave_s1_data ;
+         end
+        `MUX_sEL_S2: begin
+            HREADY <= slave_s2_hreadyout;
+            HRESP  <= slave_s2_hresp ;
+            HRDATA <= slave_s2_data ;
+         end
+        `MUX_sEL_S3: begin
+            HREADY <= slave_s3_hreadyout;
+            HRESP  <= slave_s3_hresp ;
+            HRDATA <= slave_s3_data ;
          end
         default: begin
-            HREADY <= nomap_hreadyout_mux;
-            HRESP  <= nomap_hresp_mux;
-            HRDATA <= nomap_rdata_mux;
+            HREADY <= slave_def_hreadyout;
+            HRESP  <= slave_def_hresp ;
+            HRDATA <= slave_def_data ;
         end
      endcase
 end

@@ -40,6 +40,7 @@
 // Module
 //--------------------------------------------------------------------------
 module ahb_lite_decoder
+
 //--------------------------------------------------------------------------
 // Ports
 //--------------------------------------------------------------------------
@@ -48,9 +49,11 @@ module ahb_lite_decoder
     input wire [31:0]  HADDR,
 
     // outputs to slave
-    output wire        HSEL_ROM,
-    output wire        HSEL_DEF_SLAVE,
-    output wire        HSEL_NOMAP,
+    output wire        HSEL_S0,
+    output wire        HSEL_S1,
+    output wire        HSEL_S2,
+    output wire        HSEL_S3,
+    output wire        HSEL_DEF,
 
     // outputs to multiplexor
     output reg [3:0]   HSEL_MUX
@@ -59,32 +62,55 @@ module ahb_lite_decoder
 //--------------------------------------------------------------------------
 // Design: module internal control signal
 //--------------------------------------------------------------------------
-reg [15:0] slave_set_coding;
-assign HSEL_ROM           = slave_set_coding[0];   // 0x0050_0000 --> 0x0050FFFF: 64K ROM
-assign HSEL_DEF_SLAVE     = slave_set_coding[14];  // 0x005E_0000 --> 0x005EFFFF: 64K default memory
-assign HSEL_NOMAP         = slave_set_coding[15];
-wire [15:0] slave_mem_map;
-assign slave_mem_map = HADDR[31:16];
+wire    [`MUX_SEL_NOMAP:0]  slave_sel_coding;
 
 //--------------------------------------------------------------------------
 // Design: output the slave select signal
 //--------------------------------------------------------------------------
-always @(*) begin
-    slave_set_coding <= 16'h0000;
-    HSEL_MUX         <= 4'h0;
-    case (slave_mem_map)
-        `MEM_MAP_ROM: begin
-            slave_set_coding <= `MEM_MAP_HSEL_ROM;
-            HSEL_MUX         <= `MUX_SEL_ROM;
-        end
-        `MEM_MAP_DEF_SLAVE: begin
-            slave_set_coding <= `MEM_MAP_HSEL_DEF_SLAVE;
-            HSEL_MUX         <= `MUX_SEL_DEF_SLAVE;
-        end
-        default: begin   //TODO: assert the exception
-            slave_set_coding <= `MEM_MAP_HSEL_NO_MAP;
-            HSEL_MUX         <= `MUX_SEL_NOMAP;
-        end
+`define ASSIGN_HSEL_CODING(INDEX, ARG1, ARG2) \
+    assign slave_sel_coding[INDEX] = ((HADDR >= ARG1) && (HADDR <= ARG2));
+
+`ASSIGN_HSEL_CODING(0, `MEM_MAP_S0_BASE, `MEM_MAP_S0_END)
+`ASSIGN_HSEL_CODING(1, `MEM_MAP_S1_BASE, `MEM_MAP_S1_END)
+`ASSIGN_HSEL_CODING(2, `MEM_MAP_S2_BASE, `MEM_MAP_S2_END)
+`ASSIGN_HSEL_CODING(3, `MEM_MAP_S3_BASE, `MEM_MAP_S3_END)
+
+assign slave_sel_coding[`MUX_SEL_NOMAP] = ~(slave_sel_coding[0] ||
+                                slave_sel_coding[1] ||
+                                slave_sel_coding[2] ||
+                                slave_sel_coding[3]);
+
+//--------------------------------------------------------------------------
+// Design: slave select signal, memory map to slave
+//--------------------------------------------------------------------------
+`define ASSIGN_PER_SEL(ARG) \
+    assign HSEL_S``ARG = slave_sel_coding[index];
+
+genvar index;
+generate
+    for (index = 0; index = index + 1; index < `MAX_SLAVE_NUM) begin: slave_sel_gen
+        `ASSIGN_PER_SEL(index)
+    end
+endgenerate
+assign HSEL_DEF           = slave_sel_coding[`MAX_SLAVE_NUM];
+
+//--------------------------------------------------------------------------
+// Design: output the salve response select signal
+//--------------------------------------------------------------------------
+always @(slave_sel_coding) begin
+    case(slave_sel_coding)
+        `MEM_MAP_HSEL_S0:
+            HSEL_MUX <= `MUX_SEL_S0;
+        `MEM_MAP_HSEL_S1:
+            HSEL_MUX <= `MUX_SEL_S1;
+        `MEM_MAP_HSEL_S2:
+            HSEL_MUX <= `MUX_SEL_S2;
+        `MEM_MAP_HSEL_S3:
+            HSEL_MUX <= `MUX_SEL_S3;
+        `MEM_MAP_HSEL_DEF:
+            HSEL_MUX <= `MUX_SEL_NOMAP;
+        default:
+            HSEL_MUX <= `MUX_SEL_NOMAP;
     endcase
 end
 

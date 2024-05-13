@@ -65,227 +65,97 @@ module ahb_lite_def_slave
     output wire        HRESP
 );
 
-//--------------------------------------------------------------------------
-// Design: address phase sampling register
-//--------------------------------------------------------------------------
-reg [31:0] addr_phase_addr;
-reg        addr_phase_hsel;
-reg [1:0]  addr_phase_htrans;
-reg        addr_phase_hwrite;
-reg [2:0]  addr_phase_hsize;
-reg [2:0]  addr_phase_hburst;
-reg [3:0]  addr_phase_hport;
-reg        addr_phase_hmastlock;
-reg        addr_phase_hready;
-reg [31:0] data_phase_addr;
-reg [31:0] burst_incr_addr;
-reg        burst_cnt_clr;
-reg [9:0]  burst_cnt;
-
-reg [31:0] def_test_reg0;
-reg [31:0] def_test_reg1;
-reg [31:0] def_test_reg2;
-reg [31:0] def_test_reg3;
-
-parameter REG0_OFFSET = 16'h0000;
-parameter REG1_OFFSET = 16'h0004;
-parameter REG2_OFFSET = 16'h0008;
-parameter REG3_OFFSET = 16'h000C;
-
-wire [15:0] mem_map_addr_offset;
-wire        data_phase_write;
-wire        data_phase_read;
-wire        data_phase_rd_wr_comm;
-wire        master_burst_tran;
-assign mem_map_addr_offset = data_phase_addr[15:0];
-assign data_phase_rd_wr_comm = addr_phase_hsel & addr_phase_htrans[1] & addr_phase_hready;
-assign data_phase_write = data_phase_rd_wr_comm & addr_phase_hwrite;
-assign data_phase_read  = data_phase_rd_wr_comm & (~addr_phase_hwrite);
-assign master_burst_tran = addr_phase_hburst[0] | addr_phase_hburst[1] | addr_phase_hburst[2];
-
-reg         data_phase_hreadyout;
-reg         data_phase_hresp;
-reg [31:0]  data_phase_hdata;
+localparam SUCCESS_CPL  = 3'b001;
+localparam ERROR_FIRST  = 3'b010;
+localparam ERROR_SECOND = 3'b100;
 
 //--------------------------------------------------------------------------
-// Design: address phase samplig
+// Design: internal siginal
+//--------------------------------------------------------------------------
+reg [2:0] cur_state;
+reg [2:0] next_state;
+wire      invalid;
+reg       ihreadyout;
+reg       ihresp;
+
+//--------------------------------------------------------------------------
+// Design: set high during the address phase if an invalid transder, and it
+//         used to control the generation of the response outputs.
+//--------------------------------------------------------------------------
+assign invalid = ((HREADY == 1'b1 && HSEL == 1'b1 &&
+                 (HTRANS == `TRN_NONSEQ || HTRANS == `TRN_SEQ)) ? 1'b1 :
+                 1'b0);
+
+//--------------------------------------------------------------------------
+// Design: FSM for update
 //--------------------------------------------------------------------------
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
-        addr_phase_addr      <= 32'h005E_0000;
-        addr_phase_hsel      <= `SLAVE_FRE;
-        addr_phase_htrans    <= `TRANS_IDLE;
-        addr_phase_hwrite    <= `MASTER_READ;
-        addr_phase_hsize     <= `SIZE_BYTE;
-        addr_phase_hburst    <= `BURST_SINGLE;
-        addr_phase_hport     <= 4'b0000;
-        addr_phase_hmastlock <= 1'b0;
-        addr_phase_hready    <= `READYOUT;
+        cur_state <= SUCCESS_CPL;
     end else begin
-        addr_phase_addr      <= HADDR;
-        addr_phase_hsel      <= HSEL;
-        addr_phase_htrans    <= HTRANS;
-        addr_phase_hwrite    <= HWRITE;
-        addr_phase_hsize     <= HSIZE;
-        addr_phase_hburst    <= HBURST;
-        addr_phase_hport     <= HPROT;
-        addr_phase_hmastlock <= HMASTLOCK;
-        addr_phase_hready    <= HREADY;
+        cur_state <= next_state;
     end
 end
 
 //--------------------------------------------------------------------------
-// Design: read and write register operation
+// Design: A two-cycle response is required for an error condition with HREADY
+//         being asserted in the second cycle.
 //--------------------------------------------------------------------------
-always @(posedge HCLK or negedge HRESETn) begin
-    if (!HRESETn) begin
-        def_test_reg0        <= 32'h0000_0001; /* default value */
-        def_test_reg1        <= 32'h0000_0002;
-        def_test_reg2        <= 32'h0000_0003;
-        def_test_reg3        <= 32'h0000_0004;
-        data_phase_hreadyout <= `WAIT_READYOUT;
-        data_phase_hresp     <= `RESP_ERROR;
-        data_phase_hdata     <= 32'h0000_0000;
-    end else begin
-        /* TODO: need ? */
-        data_phase_hreadyout <= `WAIT_READYOUT;
-        data_phase_hresp     <= `RESP_ERROR;
-        data_phase_hdata     <= 32'h0000_0000;
-        case(mem_map_addr_offset)
-            REG0_OFFSET: begin
-                if (data_phase_write) begin
-                    def_test_reg0        <= HWDATA;
-                    data_phase_hreadyout <= `READYOUT;
-                    data_phase_hresp     <= `RESP_OKAY;
-                end else begin
-                    data_phase_hdata     <= def_test_reg0;
-                    data_phase_hreadyout <= `READYOUT;
-                    data_phase_hresp     <= `RESP_OKAY;
-                end
-            end
-            REG1_OFFSET: begin
-                if (data_phase_write) begin
-                    def_test_reg1        <= HWDATA;
-                    data_phase_hreadyout <= `READYOUT;
-                    data_phase_hresp     <= `RESP_OKAY;
-                end else begin
-                    data_phase_hdata     <= def_test_reg1;
-                    data_phase_hreadyout <= `READYOUT;
-                    data_phase_hresp     <= `RESP_OKAY;
-                end
-            end
-            REG2_OFFSET: begin
-                if (data_phase_write) begin
-                    def_test_reg2        <= HWDATA;
-                    data_phase_hreadyout <= `READYOUT;
-                    data_phase_hresp     <= `RESP_OKAY;
-                end else begin
-                    data_phase_hdata     <= def_test_reg2;
-                    data_phase_hreadyout <= `READYOUT;
-                    data_phase_hresp     <= `RESP_OKAY;
-                end
-            end
-            REG3_OFFSET: begin
-                if (data_phase_write) begin
-                    def_test_reg3        <= HWDATA;
-                    data_phase_hreadyout <= `READYOUT;
-                    data_phase_hresp     <= `RESP_OKAY;
-                end else begin
-                    data_phase_hdata     <= def_test_reg3;
-                    data_phase_hreadyout <= `READYOUT;
-                    data_phase_hresp     <= `RESP_OKAY;
-                end
-            end
-            default: begin
-                data_phase_hreadyout     <= `WAIT_READYOUT;
-                data_phase_hresp         <= `RESP_ERROR;
-                data_phase_hdata         <= 32'h0000_0000;
-                /* illege address access  */
-            end
-        endcase
-    end
-end
-
-//--------------------------------------------------------------------------
-// Design: burst address update
-// TODO: WRAP
-// TODO: plus HIZE[xx]
-//--------------------------------------------------------------------------
-always @(posedge HCLK or negedge HRESETn) begin
-    if (!HRESETn) begin
-        burst_incr_addr <= 32'h0000_0000;
-        burst_cnt_clr   <= 1'b0;
-    end else begin
-        case (addr_phase_hburst)
-            `BURST_SINGLE:
-                burst_incr_addr <= HADDR;
-            `BURST_INCR: begin
-                burst_incr_addr <= burst_incr_addr + 32'h4;
-                burst_cnt_clr   <= 1'b1;
-            end
-            `BURST_INCR4:
-                if (burst_cnt == 10'd4) begin
-                    burst_cnt_clr <= 1'b1;
-                end else begin
-                    burst_cnt_clr   <= 1'b0;
-                    burst_incr_addr <= burst_incr_addr + 32'h4;
-                end
-            `BURST_INCR8:
-                if (burst_cnt <= 10'd8) begin
-                    burst_cnt_clr <= 1'b1;
-                end else begin
-                    burst_cnt_clr   <= 1'b0;
-                    burst_incr_addr <= burst_incr_addr + 32'h4;
-                end
-            `BURST_INCR16:
-                if (burst_cnt == 10'd16) begin
-                    burst_cnt_clr <= 1'b1;
-                end else begin
-                    burst_cnt_clr   <= 1'b1;
-                    burst_incr_addr <= burst_incr_addr + 32'h4;
-                end
-            default: begin
-                burst_cnt_clr   <= 1'b0;
-                burst_incr_addr <= burst_incr_addr;
-            end
-        endcase
-    end
-end
-
-//--------------------------------------------------------------------------
-// Design: select uses brust address or bus address
-//--------------------------------------------------------------------------
-always @(*) begin
-    if (master_burst_tran) begin
-        data_phase_addr = burst_incr_addr;
-    end else begin
-        data_phase_addr = addr_phase_addr;
-    end
-end
-
-//--------------------------------------------------------------------------
-// Design: ahb brust counter
-//--------------------------------------------------------------------------
-always @(posedge HCLK or negedge HRESETn) begin
-    if (!HRESETn) begin
-        burst_cnt <= 10'd0;
-    end else begin
-        if (master_burst_tran) begin
-            burst_cnt <= burst_cnt + 1'd1;
-        end else if (burst_cnt_clr) begin
-            burst_cnt <= 10'd0;
-        end else begin
-            burst_cnt <= burst_cnt;
+always @(invalid or cur_state) begin
+    case(cur_state)
+        SUCCESS_CPL: begin
+            if (invalid)
+                next_state <= ERROR_FIRST;
         end
-    end
+        ERROR_FIRST: begin
+            if (invalid)
+                next_state <= ERROR_SECOND;
+        end
+        ERROR_SECOND: begin
+            if (!invalid)
+                next_state <= SUCCESS_CPL;
+        end
+        default:
+            next_state <= SUCCESS_CPL;
+    endcase
 end
 
 //--------------------------------------------------------------------------
-// Design: assign hready and hresp
+// Design: for the two cycle error response, hready is set low during the
+//         first cycle and high during the second cycle.
+//         okay response is generated for idle, two cycle error response is
+//         generated if a non-sequential or sequential transder is attempted.
 //--------------------------------------------------------------------------
-assign HREADYOUT = (addr_phase_htrans == `TRANS_IDLE) ? `READYOUT : data_phase_hreadyout;
-assign HRESP     = (addr_phase_htrans == `TRANS_IDLE) ? `RESP_OKAY : data_phase_hresp;
-assign HRDATA    = (addr_phase_htrans == `TRANS_IDLE) ? 32'h0000_0000 : data_phase_hdata;
+always @(posedge HCLK or negedge HRESETn) begin
+    if (!HRESETn) begin
+        ihreadyout <= `READY;
+        ihresp     <= `OKAY;
+    end else begin
+        case(cur_state)
+            SUCCESS_CPL: begin
+                ihreadyout <= `READY;
+                ihresp     <= `OKAY;
+            end
+            ERROR_FIRST: begin /* first cycle  */
+                ihreadyout <= `WAIT;
+                ihresp     <= `ERROR;
+            end
+            ERROR_SECOND: begin /* second cycle */
+                ihreadyout <= `READY;
+                ihresp     <= `ERROR;
+            end
+            default: begin
+                ihreadyout <= `READY;
+                ihresp     <= `OKAY;
+            end
+        endcase
+end
+//--------------------------------------------------------------------------
+// Design: output the hreadyout and hresp
+//--------------------------------------------------------------------------
+assign HRDATA    = `ALL_32BIT_ZERO;
+assign HREADYOUT = ihreadyout;
+assign HRESP     = ihresp;
 
 endmodule
 //--------------------------------------------------------------------------
