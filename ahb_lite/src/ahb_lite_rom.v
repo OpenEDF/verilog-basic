@@ -44,8 +44,9 @@ module ahb_lite_rom
 // Parameters
 //--------------------------------------------------------------------------
 #(
-    parameter ROM_WIDTH = 8,
-    parameter ROM_SIZE  = 4096
+    parameter ROM_WIDTH    = 8,
+    parameter ROM_DEPTH    = 4096,
+    parameter ROM_FILENAME = ""       // rom init filename
 )
 //--------------------------------------------------------------------------
 // Ports
@@ -95,11 +96,25 @@ reg [31:0] data_phase_hdata;
 //--------------------------------------------------------------------------
 // Design: rom model, TODO: use vivado rom ip for fpga test
 //--------------------------------------------------------------------------
-`ifdef SYN_USE_FPGA
+`ifdef SYN_FOR_FPGA
     $display("[TODO]: !!! ADD FPGA ROM IP !!!");
 `else
     reg [ROM_WIDTH-1:0] rom_model[0:ROM_SIZE-1];
     /* external init */
+`endif
+
+//--------------------------------------------------------------------------
+// Design: initialise memory
+//--------------------------------------------------------------------------
+`ifndef SYN_FOR_FPGA
+integer index;
+initial begin
+    for (index = 0; index <= ROM_DEPTH - 1; index = index + 1)
+        rom_model[index] = 8'h00;
+
+    if (ROM_FILENAME != "") begin
+        $readmemh(ROM_FILENAME, rom_model);
+end
 `endif
 
 //--------------------------------------------------------------------------
@@ -111,6 +126,7 @@ wire        rd_word_vaild;
 wire [15:0] addr_vaild_feild;
 assign data_phase_rd_wr_comm = addr_phase_hsel & addr_phase_htrans[1] & addr_phase_hready;
 assign data_phase_read       = data_phase_rd_wr_comm & (~addr_phase_hwrite);
+
 /* only support word */
 assign rd_word_vaild  = addr_phase_hsize[1] & (~addr_phase_addr[0]) & (~addr_phase_addr[1]);
 assign addr_vaild_feild = addr_phase_addr[15:0];
@@ -122,13 +138,13 @@ always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
         addr_phase_addr      <= 32'h0000_0000;
         addr_phase_hsel      <= `SLAVE_FRE;
-        addr_phase_htrans    <= `TRANS_IDLE;
-        addr_phase_hwrite    <= `MASTER_READ;
-        addr_phase_hsize     <= `SIZE_BYTE;
+        addr_phase_htrans    <= `TRN_IDLE;
+        addr_phase_hwrite    <= `READ;
+        addr_phase_hsize     <= `BYTE;
         addr_phase_hburst    <= `BURST_SINGLE;
         addr_phase_hport     <= 4'b0000;
         addr_phase_hmastlock <= 1'b0;
-        addr_phase_hready    <= `READYOUT;
+        addr_phase_hready    <= `READY;
     end else begin
         addr_phase_addr      <= HADDR;
         addr_phase_hsel      <= HSEL;
@@ -147,8 +163,8 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
-        data_phase_hreadyout <= `WAIT_READYOUT;
-        data_phase_hresp     <= `RESP_ERROR;
+        data_phase_hreadyout <= `WAIT;
+        data_phase_hresp     <= `ERROR;
         data_phase_hdata     <= 32'h0000_0000;
     end else begin
         if (data_phase_read) begin
@@ -156,15 +172,15 @@ always @(posedge HCLK or negedge HRESETn) begin
             data_phase_hdata[15:8]  <= rom_model[addr_vaild_feild+1];
             data_phase_hdata[23:16] <= rom_model[addr_vaild_feild+2];
             data_phase_hdata[31:24] <= rom_model[addr_vaild_feild+3];
-            data_phase_hreadyout    <= `READYOUT;
-            data_phase_hresp        <= `RESP_OKAY;
+            data_phase_hreadyout    <= `READY;
+            data_phase_hresp        <= `OKAY;
         end else begin
             data_phase_hdata[7:0]   <= 8'h00;
             data_phase_hdata[15:8]  <= 8'h00;
             data_phase_hdata[23:16] <= 8'h00;
             data_phase_hdata[31:24] <= 8'h00;
-            data_phase_hreadyout    <= `WAIT_READYOUT;
-            data_phase_hresp        <= `RESP_ERROR;
+            data_phase_hreadyout    <= `WAIT;
+            data_phase_hresp        <= `ERROR;
         end
     end
 end
@@ -172,9 +188,9 @@ end
 //--------------------------------------------------------------------------
 // Design: assign hready and hresp
 //--------------------------------------------------------------------------
-assign HREADYOUT = (addr_phase_htrans == `TRANS_IDLE) ? `READYOUT : data_phase_hreadyout;
-assign HRESP     = (addr_phase_htrans == `TRANS_IDLE) ? `RESP_OKAY : data_phase_hresp;
-assign HRDATA    = (addr_phase_htrans == `TRANS_IDLE) ? 32'h0000_0000 : data_phase_hdata;
+assign HREADYOUT = (addr_phase_htrans == `TR_IDLE) ? `READY : data_phase_hreadyout;
+assign HRESP     = (addr_phase_htrans == `TR_IDLE) ? `OKAY : data_phase_hresp;
+assign HRDATA    = (addr_phase_htrans == `TR_IDLE) ? 32'h0000_0000 : data_phase_hdata;
 
 endmodule
 //--------------------------------------------------------------------------
