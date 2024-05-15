@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: ahb lite ram, only support read
+// Brief: ahb lite ram, support read and write
 // Change Log:
 //--------------------------------------------------------------------------
 
@@ -39,14 +39,13 @@
 //--------------------------------------------------------------------------
 // Module
 //--------------------------------------------------------------------------
-module ahb_lite_rom
+module ahb_lite_ram
 //--------------------------------------------------------------------------
 // Parameters
 //--------------------------------------------------------------------------
 #(
-    parameter ROM_WIDTH    = 32,
-    parameter ROM_DEPTH    = 4096,
-    parameter ROM_FILENAME = ""       // mem init filename
+    parameter RAM_WIDTH    = 32,
+    parameter RAM_DEPTH    = 4096,
 )
 //--------------------------------------------------------------------------
 // Ports
@@ -97,9 +96,9 @@ reg [31:0] d_phase_hdata;
 // Design: rom model, TODO: use vivado rom ip for fpga test
 //--------------------------------------------------------------------------
 `ifdef SYN_FOR_FPGA
-    $display("[TODO]: !!! ADD FPGA ROM IP !!!");
+    $display("[TODO]: !!! ADD FPGA RAM IP !!!");
 `else
-    reg [ROM_WIDTH-1:0] mem_model[0:ROM_SIZE-1];
+    reg [RAM_WIDTH-1:0] mem_model[0:RAM_SIZE-1];
     /* external init */
 `endif
 
@@ -110,10 +109,7 @@ reg [31:0] d_phase_hdata;
 integer index;
 initial begin
     for (index = 0; index <= ROM_DEPTH - 1; index = index + 1)
-        mem_model[index] = 32'h0000_0000;
-
-    if (ROM_FILENAME != "") begin
-        $readmemh(ROM_FILENAME, mem_model);
+        mem_model[index] = 8'h00;
 end
 `endif
 
@@ -121,6 +117,7 @@ end
 // Design: read and write control logic
 //--------------------------------------------------------------------------
 wire        ahb_access      = a_phase_htrans[1] & a_phase_hsel & a_phase_hready;
+wire        ahb_write       = ahb_access &   a_phase_hwrite;
 wire        ahb_read        = ahb_access & (~a_phase_hwrite);
 wire [29:0] word_valid_addr = a_phase_addr[31:2];
 
@@ -145,6 +142,11 @@ wire byte_sel_0 = word_at_00 | half_at_00 | byte_at_00;
 wire byte_sel_1 = word_at_00 | half_at_00 | byte_at_01;
 wire byte_sel_2 = word_at_00 | half_at_10 | byte_at_10;
 wire byte_sel_3 = word_at_00 | half_at_10 | byte_at_11;
+
+wire [3:0] mem_width_we = { byte_sel_3 & ahb_write,
+                            byte_sel_2 & ahb_write,
+                            byte_sel_1 & ahb_write,
+                            byte_sel_0 & ahb_write };
 
 wire [3:0] mem_width_re = { byte_sel_3 & ahb_read,
                             byte_sel_2 & ahb_read,
@@ -175,6 +177,42 @@ always @(posedge HCLK or negedge HRESETn) begin
         a_phase_hport     <= HPROT;
         a_phase_hmastlock <= HMASTLOCK;
         a_phase_hready    <= HREADY;
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: write memory operation word [7:0]
+//--------------------------------------------------------------------------
+always @(posedge HCLK) begin
+    if (mem_width_we[0]) begin
+        mem_mode[word_valid_addr][7:0] = HWDATA[7:0];
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: write memory operation word [15:8]
+//--------------------------------------------------------------------------
+always @(posedge HCLK) begin
+    if (mem_width_we[1]) begin
+        mem_mode[word_valid_addr][15:8] = HWDATA[15:8];
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: write memory operation word [23:16]
+//--------------------------------------------------------------------------
+always @(posedge HCLK) begin
+    if (mem_width_we[2]) begin
+        mem_mode[word_valid_addr][23:16] = HWDATA[23:16];
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: write memory operation word [31:24]
+//--------------------------------------------------------------------------
+always @(posedge HCLK) begin
+    if (mem_width_we[3]) begin
+        mem_mode[word_valid_addr][31:24] = HWDATA[31:24];
     end
 end
 
