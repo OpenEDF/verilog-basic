@@ -8,7 +8,7 @@
 # test case file
 SRC_FILE = script/work_src.lst
 TOP_MODULE = testbench
-SPY_PRJ = ahb_lite_top.prj
+SPY_PRJ = spy/ahb_lite_top.prj
 nWave_SIGNAL = script/ahb_lite_top.rc
 
 # clean old file --> compiler --> simluation

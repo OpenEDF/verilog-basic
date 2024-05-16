@@ -62,7 +62,7 @@ module ahb_lite_decoder
 //--------------------------------------------------------------------------
 // Design: module internal control signal
 //--------------------------------------------------------------------------
-wire    [`MUX_SEL_NOMAP:0]  slave_sel_coding;
+wire    [`MAX_SLAVE_NUM:0]  slave_sel_coding;
 
 //--------------------------------------------------------------------------
 // Design: output the slave select signal
@@ -75,7 +75,7 @@ wire    [`MUX_SEL_NOMAP:0]  slave_sel_coding;
 `ASSIGN_HSEL_CODING(2, `MEM_MAP_S2_BASE, `MEM_MAP_S2_END)
 `ASSIGN_HSEL_CODING(3, `MEM_MAP_S3_BASE, `MEM_MAP_S3_END)
 
-assign slave_sel_coding[`MUX_SEL_NOMAP] = ~(slave_sel_coding[0] ||
+assign slave_sel_coding[`MAX_SLAVE_NUM] = ~(slave_sel_coding[0] ||
                                 slave_sel_coding[1] ||
                                 slave_sel_coding[2] ||
                                 slave_sel_coding[3]);
@@ -84,14 +84,13 @@ assign slave_sel_coding[`MUX_SEL_NOMAP] = ~(slave_sel_coding[0] ||
 // Design: slave select signal, memory map to slave
 //--------------------------------------------------------------------------
 `define ASSIGN_PER_SEL(ARG) \
-    assign HSEL_S``ARG = slave_sel_coding[index];
+    assign HSEL_S``ARG = slave_sel_coding[``ARG];
 
-genvar index;
-generate
-    for (index = 0; index = index + 1; index < `MAX_SLAVE_NUM) begin: slave_sel_gen
-        `ASSIGN_PER_SEL(index)
-    end
-endgenerate
+`ASSIGN_PER_SEL(0);
+`ASSIGN_PER_SEL(1);
+`ASSIGN_PER_SEL(2);
+`ASSIGN_PER_SEL(3);
+
 assign HSEL_DEF           = slave_sel_coding[`MAX_SLAVE_NUM];
 
 //--------------------------------------------------------------------------

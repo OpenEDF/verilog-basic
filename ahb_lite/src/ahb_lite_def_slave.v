@@ -149,6 +149,7 @@ always @(posedge HCLK or negedge HRESETn) begin
                 ihresp     <= `OKAY;
             end
         endcase
+    end
 end
 //--------------------------------------------------------------------------
 // Design: output the hreadyout and hresp

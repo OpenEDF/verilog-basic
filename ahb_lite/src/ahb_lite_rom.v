@@ -99,7 +99,7 @@ reg [31:0] d_phase_hdata;
 `ifdef SYN_FOR_FPGA
     $display("[TODO]: !!! ADD FPGA ROM IP !!!");
 `else
-    reg [ROM_WIDTH-1:0] mem_model[0:ROM_SIZE-1];
+    reg [ROM_WIDTH-1:0] mem_model[0:ROM_DEPTH-1];
     /* external init */
 `endif
 
@@ -114,6 +114,7 @@ initial begin
 
     if (ROM_FILENAME != "") begin
         $readmemh(ROM_FILENAME, mem_model);
+    end
 end
 `endif
 
@@ -157,10 +158,10 @@ wire [3:0] mem_width_re = { byte_sel_3 & ahb_read,
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
         a_phase_addr      <= 32'h0000_0000;
-        a_phase_hsel      <= `SLAVE_FRE;
+        a_phase_hsel      <= `S_FRE;
         a_phase_htrans    <= `TRN_IDLE;
-        a_phase_hwrite    <= `READ;
-        a_phase_hsize     <= `BYTE;
+        a_phase_hwrite    <= `M_READ;
+        a_phase_hsize     <= `SIZE_BYTE;
         a_phase_hburst    <= `BURST_SINGLE;
         a_phase_hport     <= 4'b0000;
         a_phase_hmastlock <= 1'b0;

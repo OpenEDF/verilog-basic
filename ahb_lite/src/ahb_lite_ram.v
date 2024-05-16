@@ -45,7 +45,7 @@ module ahb_lite_ram
 //--------------------------------------------------------------------------
 #(
     parameter RAM_WIDTH    = 32,
-    parameter RAM_DEPTH    = 4096,
+    parameter RAM_DEPTH    = 4096
 )
 //--------------------------------------------------------------------------
 // Ports
@@ -98,7 +98,7 @@ reg [31:0] d_phase_hdata;
 `ifdef SYN_FOR_FPGA
     $display("[TODO]: !!! ADD FPGA RAM IP !!!");
 `else
-    reg [RAM_WIDTH-1:0] mem_model[0:RAM_SIZE-1];
+    reg [RAM_WIDTH-1:0] mem_model[0:RAM_DEPTH-1];
     /* external init */
 `endif
 
@@ -108,7 +108,7 @@ reg [31:0] d_phase_hdata;
 `ifndef SYN_FOR_FPGA
 integer index;
 initial begin
-    for (index = 0; index <= ROM_DEPTH - 1; index = index + 1)
+    for (index = 0; index <= RAM_DEPTH - 1; index = index + 1)
         mem_model[index] = 8'h00;
 end
 `endif
@@ -159,10 +159,10 @@ wire [3:0] mem_width_re = { byte_sel_3 & ahb_read,
 always @(posedge HCLK or negedge HRESETn) begin
     if (!HRESETn) begin
         a_phase_addr      <= 32'h0000_0000;
-        a_phase_hsel      <= `SLAVE_FRE;
+        a_phase_hsel      <= `S_FRE;
         a_phase_htrans    <= `TRN_IDLE;
-        a_phase_hwrite    <= `READ;
-        a_phase_hsize     <= `BYTE;
+        a_phase_hwrite    <= `M_READ;
+        a_phase_hsize     <= `SIZE_BYTE;
         a_phase_hburst    <= `BURST_SINGLE;
         a_phase_hport     <= 4'b0000;
         a_phase_hmastlock <= 1'b0;
@@ -185,7 +185,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[0]) begin
-        mem_mode[word_valid_addr][7:0] = HWDATA[7:0];
+        mem_model[word_valid_addr][7:0] = HWDATA[7:0];
     end
 end
 
@@ -194,7 +194,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[1]) begin
-        mem_mode[word_valid_addr][15:8] = HWDATA[15:8];
+        mem_model[word_valid_addr][15:8] = HWDATA[15:8];
     end
 end
 
@@ -203,7 +203,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[2]) begin
-        mem_mode[word_valid_addr][23:16] = HWDATA[23:16];
+        mem_model[word_valid_addr][23:16] = HWDATA[23:16];
     end
 end
 
@@ -212,7 +212,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[3]) begin
-        mem_mode[word_valid_addr][31:24] = HWDATA[31:24];
+        mem_model[word_valid_addr][31:24] = HWDATA[31:24];
     end
 end
 

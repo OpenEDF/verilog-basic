@@ -194,12 +194,15 @@ ahb_lite_def_slave ahb_lite_def_slave_u
 //--------------------------------------------------------------------------
 // Design: instance ahb lite rom slave 0
 //--------------------------------------------------------------------------
-ahb_lite_rom ahb_lite_rom_u
-(
+ahb_lite_rom # (
     /*autoinst*/
-        //--------------------------------------------------------------------------
-        // Parameters
-        //--------------------------------------------------------------------------
+    /*autoinstparam*/
+    /*autoinstparam_value*/
+        .ROM_WIDTH              (32                             ),
+        .ROM_DEPTH              (4096                           )
+    )
+ahb_lite_rom_u
+(
         //--------------------------------------------------------------------------
         // Ports
         //--------------------------------------------------------------------------
@@ -220,6 +223,108 @@ ahb_lite_rom ahb_lite_rom_u
         .HRDATA                 (s0_rdata_multi                 ), //output
         .HREADYOUT              (s0_hreadyout_multi             ), //output
         .HRESP                  (s0_hresp_multi                 )  //output
+    );
+
+//--------------------------------------------------------------------------
+// Design: instance ahb lite ram slave 1
+//--------------------------------------------------------------------------
+ahb_lite_ram # (
+    /*autoinst*/
+    /*autoinstparam*/
+    /*autoinstparam_value*/
+        .RAM_WIDTH              (32                             ),
+        .RAM_DEPTH              (4096                           )
+    )
+ahb_lite_ram_u
+(
+        //--------------------------------------------------------------------------
+        // Ports
+        //--------------------------------------------------------------------------
+        // global inputs
+        .HCLK                   (HCLK                           ), //input
+        .HRESETn                (HRESETn                        ), //input
+        .HSEL                   (dcdr_hsel_s1                   ), //input
+        .HADDR                  (m0_haddr                       ), //input
+        .HWRITE                 (m0_hwrite                      ), //input
+        .HSIZE                  (m0_hsize                       ), //input
+        .HBURST                 (m0_hburst                      ), //input
+        .HPROT                  (m0_hport                       ), //input
+        .HTRANS                 (m0_htrans                      ), //input
+        .HMASTLOCK              (m0_hmasterlock                 ), //input
+        .HREADY                 (m0_hready                      ), //input
+        .HWDATA                 (m0_hwdata                      ), //input
+        // outputs
+        .HRDATA                 (s1_rdata_multi                 ), //output
+        .HREADYOUT              (s1_hreadyout_multi             ), //output
+        .HRESP                  (s1_hresp_multi                 )  //output
+    );
+
+//--------------------------------------------------------------------------
+// Design: instance ahb lite ram slave 2
+//--------------------------------------------------------------------------
+ahb_lite_ram # (
+    /*autoinst*/
+    /*autoinstparam*/
+    /*autoinstparam_value*/
+        .RAM_WIDTH              (32                             ),
+        .RAM_DEPTH              (1024                           )
+    )
+ahb_lite_ram_u1
+(
+        //--------------------------------------------------------------------------
+        // Ports
+        //--------------------------------------------------------------------------
+        // global inputs
+        .HCLK                   (HCLK                           ), //input
+        .HRESETn                (HRESETn                        ), //input
+        .HSEL                   (dcdr_hsel_s2                   ), //input
+        .HADDR                  (m0_haddr                       ), //input
+        .HWRITE                 (m0_hwrite                      ), //input
+        .HSIZE                  (m0_hsize                       ), //input
+        .HBURST                 (m0_hburst                      ), //input
+        .HPROT                  (m0_hport                       ), //input
+        .HTRANS                 (m0_htrans                      ), //input
+        .HMASTLOCK              (m0_hmasterlock                 ), //input
+        .HREADY                 (m0_hready                      ), //input
+        .HWDATA                 (m0_hwdata                      ), //input
+        // outputs
+        .HRDATA                 (s2_rdata_multi                 ), //output
+        .HREADYOUT              (s2_hreadyout_multi             ), //output
+        .HRESP                  (s2_hresp_multi                 )  //output
+    );
+
+//--------------------------------------------------------------------------
+// Design: instance ahb lite ram slave 3
+//--------------------------------------------------------------------------
+ahb_lite_ram # (
+    /*autoinst*/
+    /*autoinstparam*/
+    /*autoinstparam_value*/
+        .RAM_WIDTH              (32                             ),
+        .RAM_DEPTH              (1024                           )
+    )
+ahb_lite_ram_u2
+(
+        //--------------------------------------------------------------------------
+        // Ports
+        //--------------------------------------------------------------------------
+        // global inputs
+        .HCLK                   (HCLK                           ), //input
+        .HRESETn                (HRESETn                        ), //input
+        .HSEL                   (dcdr_hsel_s3                   ), //input
+        .HADDR                  (m0_haddr                       ), //input
+        .HWRITE                 (m0_hwrite                      ), //input
+        .HSIZE                  (m0_hsize                       ), //input
+        .HBURST                 (m0_hburst                      ), //input
+        .HPROT                  (m0_hport                       ), //input
+        .HTRANS                 (m0_htrans                      ), //input
+        .HMASTLOCK              (m0_hmasterlock                 ), //input
+        .HREADY                 (m0_hready                      ), //input
+        .HWDATA                 (m0_hwdata                      ), //input
+        // outputs
+        .HRDATA                 (s3_rdata_multi                 ), //output
+        .HREADYOUT              (s3_hreadyout_multi             ), //output
+        .HRESP                  (s3_hresp_multi                 )  //output
     );
 
 endmodule

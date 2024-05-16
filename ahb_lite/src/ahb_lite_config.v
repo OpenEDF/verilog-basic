@@ -142,7 +142,7 @@
 
 /* slave select */
 `define S_SEL                 1'b1
-`define S_FRE                  1'b0
+`define S_FRE                 1'b0
 
 /* common */
 `define ALL_32BIT_ZERO         32'h0000_0000

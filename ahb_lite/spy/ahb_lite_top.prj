@@ -4,7 +4,7 @@
 #  This is a software generated project file. Manual edits to this file could be lost during the next save operation
 #  Copyright Synopsys Inc.
 #  Last Updated By: SpyGlass SpyGlass_vN-2017.12-SP2
-#  Last Updated On Sun Jan  7 14:30:31 2024
+#  Last Updated On Thu May 16 23:55:07 2024
 #
 #  -------------------------------------------------------------------
 
@@ -13,11 +13,10 @@
 read_file -type verilog src/ahb_lite_config.v
 read_file -type verilog src/ahb_lite_decoder.v
 read_file -type verilog src/ahb_lite_def_slave.v
-read_file -type verilog src/ahb_lite_master.v
-read_file -type verilog src/ahb_lite_multi_layrer_intercon.v
+read_file -type verilog src/ahb_lite_rom.v
+read_file -type verilog src/ahb_lite_ram.v
 read_file -type verilog src/ahb_lite_multiplexor.v
 read_file -type verilog src/ahb_lite_top.v
-read_file -type verilog sim/testbench.v
 
 ##Common Options Section
 
@@ -27,7 +26,9 @@ set_option designread_enable_synthesis no
 set_option designread_disable_flatten no
 set_option top ahb_lite_top
 set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+set_option enableV05 yes
 set_option incdir { ./src }
+set_option enableSV yes
 
 
 ##Goal Setup Section

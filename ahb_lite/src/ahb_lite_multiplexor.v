@@ -99,22 +99,22 @@ end
 //--------------------------------------------------------------------------
 always @(addr_phase_hsel_mux) begin
     case(addr_phase_hsel_mux)
-        `MUX_sEL_S0: begin
+        `MUX_SEL_S0: begin
             HREADY <= slave_s0_hreadyout;
             HRESP  <= slave_s0_hresp ;
             HRDATA <= slave_s0_data ;
          end
-        `MUX_sEL_S1: begin
+        `MUX_SEL_S1: begin
             HREADY <= slave_s1_hreadyout;
             HRESP  <= slave_s1_hresp ;
             HRDATA <= slave_s1_data ;
          end
-        `MUX_sEL_S2: begin
+        `MUX_SEL_S2: begin
             HREADY <= slave_s2_hreadyout;
             HRESP  <= slave_s2_hresp ;
             HRDATA <= slave_s2_data ;
          end
-        `MUX_sEL_S3: begin
+        `MUX_SEL_S3: begin
             HREADY <= slave_s3_hreadyout;
             HRESP  <= slave_s3_hresp ;
             HRDATA <= slave_s3_data ;
