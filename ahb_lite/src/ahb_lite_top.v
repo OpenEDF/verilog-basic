@@ -74,11 +74,6 @@ wire        dcdr_hsel_s2;
 wire        dcdr_hsel_s3;
 wire [3:0]  dcdr_hsel_mux_multi;
 
-/* multiplexor */
-wire        multi_hready_master;
-wire        multi_hresp_master;
-wire [31:0] multi_hrdata_master;
-
 /* default slave */
 wire [31:0] defs_rdata_multi;
 wire        defs_hreadyout_multi;
@@ -114,7 +109,7 @@ ahb_lite_decoder ahb_lite_decoder_u
         // Ports
         //--------------------------------------------------------------------------
         // global inputs
-        .HADDR                  (master0_haddr                  ), //input
+        .HADDR                  (m0_haddr                       ), //input
         // outputs to slave
         .HSEL_S0                (dcdr_hsel_s0                   ), //output
         .HSEL_S1                (dcdr_hsel_s1                   ), //output
@@ -138,7 +133,7 @@ ahb_lite_multiplexor ahb_lite_multiplexor_u
         .HCLK                   (HCLK                           ), //input
         .HRESETn                (HRESETn                        ), //input
         // decoder input
-        .HSEL_MUX               (decoder_hsel_mux_multi         ), //input
+        .HSEL_MUX               (dcdr_hsel_mux_multi            ), //input
         // slave inputs data
         .slave_s0_data          (s0_rdata_multi                 ), //input
         .slave_s1_data          (s1_rdata_multi                 ), //input
@@ -158,9 +153,9 @@ ahb_lite_multiplexor ahb_lite_multiplexor_u
         .slave_s3_hresp         (s3_hresp_multi                 ), //input
         .slave_def_hresp        (defs_hresp_multi               ), //input
         // outputs to master
-        .HREADY                 (multi_hready_master            ), //output
-        .HRESP                  (multi_hresp_master             ), //output
-        .HRDATA                 (multi_hrdata_master            )  //output
+        .HREADY                 (m0_hready                      ), //output
+        .HRESP                  (m0_hresp                       ), //output
+        .HRDATA                 (m0_rdata                       )  //output
     );
 
 //--------------------------------------------------------------------------
@@ -175,7 +170,7 @@ ahb_lite_def_slave ahb_lite_def_slave_u
         // global inputs
         .HCLK                   (HCLK                           ), //input
         .HRESETn                (HRESETn                        ), //input
-        .HSEL                   (dcdr_hsel_mux_multi            ), //input
+        .HSEL                   (dcdr_hsel_def_slave            ), //input
         .HADDR                  (m0_haddr                       ), //input
         .HWRITE                 (m0_hwrite                      ), //input
         .HSIZE                  (m0_hsize                       ), //input
@@ -199,9 +194,9 @@ ahb_lite_rom # (
     /*autoinstparam*/
     /*autoinstparam_value*/
         .ROM_WIDTH              (32                             ),
-        .ROM_DEPTH              (4096                           )
+        .ROM_DEPTH              (128                            )
     )
-ahb_lite_rom_u
+ahb_lite_rom_u1
 (
         //--------------------------------------------------------------------------
         // Ports
@@ -233,9 +228,9 @@ ahb_lite_ram # (
     /*autoinstparam*/
     /*autoinstparam_value*/
         .RAM_WIDTH              (32                             ),
-        .RAM_DEPTH              (4096                           )
+        .RAM_DEPTH              (128                            )
     )
-ahb_lite_ram_u
+ahb_lite_ram_u1
 (
         //--------------------------------------------------------------------------
         // Ports
@@ -267,9 +262,9 @@ ahb_lite_ram # (
     /*autoinstparam*/
     /*autoinstparam_value*/
         .RAM_WIDTH              (32                             ),
-        .RAM_DEPTH              (1024                           )
+        .RAM_DEPTH              (128                            )
     )
-ahb_lite_ram_u1
+ahb_lite_ram_u2
 (
         //--------------------------------------------------------------------------
         // Ports
@@ -301,9 +296,9 @@ ahb_lite_ram # (
     /*autoinstparam*/
     /*autoinstparam_value*/
         .RAM_WIDTH              (32                             ),
-        .RAM_DEPTH              (1024                           )
+        .RAM_DEPTH              (128                            )
     )
-ahb_lite_ram_u2
+ahb_lite_ram_u3
 (
         //--------------------------------------------------------------------------
         // Ports

@@ -103,6 +103,7 @@ reg [31:0] d_phase_hdata;
     /* external init */
 `endif
 
+// synopsys translate_off
 //--------------------------------------------------------------------------
 // Design: initialise memory
 //--------------------------------------------------------------------------
@@ -117,6 +118,8 @@ initial begin
     end
 end
 `endif
+
+// synopsys translate_on
 
 //--------------------------------------------------------------------------
 // Design: read and write control logic

@@ -102,6 +102,7 @@ reg [31:0] d_phase_hdata;
     /* external init */
 `endif
 
+// synopsys translate_off
 //--------------------------------------------------------------------------
 // Design: initialise memory
 //--------------------------------------------------------------------------
@@ -109,9 +110,10 @@ reg [31:0] d_phase_hdata;
 integer index;
 initial begin
     for (index = 0; index <= RAM_DEPTH - 1; index = index + 1)
-        mem_model[index] = 8'h00;
+        mem_model[index] = 32'h0000_0000;
 end
 `endif
+// synopsys translate_on
 
 //--------------------------------------------------------------------------
 // Design: read and write control logic
@@ -185,7 +187,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[0]) begin
-        mem_model[word_valid_addr][7:0] = HWDATA[7:0];
+        mem_model[word_valid_addr][7:0] <= HWDATA[7:0];
     end
 end
 
@@ -194,7 +196,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[1]) begin
-        mem_model[word_valid_addr][15:8] = HWDATA[15:8];
+        mem_model[word_valid_addr][15:8] <= HWDATA[15:8];
     end
 end
 
@@ -203,7 +205,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[2]) begin
-        mem_model[word_valid_addr][23:16] = HWDATA[23:16];
+        mem_model[word_valid_addr][23:16] <= HWDATA[23:16];
     end
 end
 
@@ -212,7 +214,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[3]) begin
-        mem_model[word_valid_addr][31:24] = HWDATA[31:24];
+        mem_model[word_valid_addr][31:24] <= HWDATA[31:24];
     end
 end
 

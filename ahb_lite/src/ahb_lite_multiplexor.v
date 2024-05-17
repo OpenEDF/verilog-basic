@@ -97,7 +97,12 @@ end
 //--------------------------------------------------------------------------
 // Design: read the slave data and response signal to master
 //--------------------------------------------------------------------------
-always @(addr_phase_hsel_mux) begin
+always @(addr_phase_hsel_mux or
+         slave_s0_data or slave_s0_hreadyout or slave_s0_hresp or
+         slave_s1_data or slave_s1_hreadyout or slave_s1_hresp or
+         slave_s2_data or slave_s2_hreadyout or slave_s2_hresp or
+         slave_s3_data or slave_s3_hreadyout or slave_s3_hresp or
+         slave_def_data or slave_def_hreadyout or slave_def_hresp) begin
     case(addr_phase_hsel_mux)
         `MUX_SEL_S0: begin
             HREADY <= slave_s0_hreadyout;

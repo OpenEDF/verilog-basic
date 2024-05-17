@@ -42,6 +42,7 @@ spy:
 
 .PHONY: clean sim com spy
 clean:
-	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc verdiLog
+	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc verdiLog \
+		   ahb_lite_top
 
 #--------------------------------------------------------------------------

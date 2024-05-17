@@ -62,7 +62,7 @@ module ahb_lite_decoder
 //--------------------------------------------------------------------------
 // Design: module internal control signal
 //--------------------------------------------------------------------------
-wire    [`MAX_SLAVE_NUM:0]  slave_sel_coding;
+wire    [15:0]  slave_sel_coding;
 
 //--------------------------------------------------------------------------
 // Design: output the slave select signal
@@ -75,10 +75,12 @@ wire    [`MAX_SLAVE_NUM:0]  slave_sel_coding;
 `ASSIGN_HSEL_CODING(2, `MEM_MAP_S2_BASE, `MEM_MAP_S2_END)
 `ASSIGN_HSEL_CODING(3, `MEM_MAP_S3_BASE, `MEM_MAP_S3_END)
 
-assign slave_sel_coding[`MAX_SLAVE_NUM] = ~(slave_sel_coding[0] ||
+assign slave_sel_coding[15] = ~(slave_sel_coding[0] ||
                                 slave_sel_coding[1] ||
                                 slave_sel_coding[2] ||
                                 slave_sel_coding[3]);
+
+assign slave_sel_coding[14:4] = {11{1'b0}};
 
 //--------------------------------------------------------------------------
 // Design: slave select signal, memory map to slave
@@ -91,7 +93,7 @@ assign slave_sel_coding[`MAX_SLAVE_NUM] = ~(slave_sel_coding[0] ||
 `ASSIGN_PER_SEL(2);
 `ASSIGN_PER_SEL(3);
 
-assign HSEL_DEF           = slave_sel_coding[`MAX_SLAVE_NUM];
+assign HSEL_DEF           = slave_sel_coding[15];
 
 //--------------------------------------------------------------------------
 // Design: output the salve response select signal

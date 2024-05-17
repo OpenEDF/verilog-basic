@@ -102,6 +102,7 @@ end
 //         being asserted in the second cycle.
 //--------------------------------------------------------------------------
 always @(invalid or cur_state) begin
+    next_state <= 3'b000;
     case(cur_state)
         SUCCESS_CPL: begin
             if (invalid)
