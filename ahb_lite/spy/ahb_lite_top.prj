@@ -30,6 +30,7 @@ set_option enableV05 yes
 set_option incdir { ./src }
 set_option enableSV yes
 set_option disablev2k yes
+set_option mthresh 131072
 
 
 ##Goal Setup Section
@@ -39,6 +40,3 @@ set_parameter handle_large_bus yes
 
 
 current_goal lint/lint_rtl -top ahb_lite_top
-read_file -type awl ./ahb_lite_top/ahb_lite_top/lint/lint_rtl/ahb_lite_top_waiver_file.awl
-set_goal_option default_waiver_file ./ahb_lite_top/ahb_lite_top/lint/lint_rtl/ahb_lite_top_waiver_file.awl
-
