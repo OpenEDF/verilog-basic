@@ -40,7 +40,11 @@ wave:
 spy:
 	spyglass -shell -tcl spy/core.tcl -l spyglass_logfile.log
 
-.PHONY: clean sim com spy
+# spy
+spy_gui:
+	spyglass -project spy/ahb_lite_top.prj &
+
+.PHONY: clean sim com spy spy_gui
 clean:
 	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc verdiLog \
 		   ahb_lite_top core *.log

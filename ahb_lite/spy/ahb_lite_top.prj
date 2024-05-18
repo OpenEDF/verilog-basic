@@ -40,7 +40,6 @@ set_option report                      {count moresimple_sevclass sign_off summa
 
 ##Goal Setup Section
 current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
-set_parameter handle_large_bus yes
 
 #===============================================================================
 # Declare HDL list(Source) file
