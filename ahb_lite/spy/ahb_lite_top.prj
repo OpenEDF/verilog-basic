@@ -4,12 +4,49 @@
 #  This is a software generated project file. Manual edits to this file could be lost during the next save operation
 #  Copyright Synopsys Inc.
 #  Last Updated By: SpyGlass SpyGlass_vN-2017.12-SP2
-#  Last Updated On Sat May 18 00:50:17 2024
+#  Last Updated On Sat May 18 10:42:43 2024
 #
 #  -------------------------------------------------------------------
+#===============================================================================
+# Setup
+#===============================================================================
+# Setup Folders
+set        sSpyglassDir                "."
+set        sProjectDir                 .
 
-##Data Import Section
+# Setup Project
+set_option top                         ahb_lite_top
+set_option projectwdir                 $sProjectDir
 
+
+##Common Options Section
+
+set_option top ahb_lite_top
+set_option projectwdir .
+set_option language_mode mixed
+set_option designread_enable_synthesis no
+set_option designread_disable_flatten no
+set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+set_option enableV05 yes
+set_option incdir { ./src }
+set_option enableSV yes
+set_option disablev2k yes
+set_option sort yes
+
+# Contributes to the size of arrays that can be expanded in memory bits
+set_option mthresh                     131072
+set_option sort                        yes
+set_option report                      {count moresimple_sevclass sign_off summary waiver spyglass_violations}
+
+##Goal Setup Section
+current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+set_parameter handle_large_bus yes
+
+#===============================================================================
+# Declare HDL list(Source) file
+# Read source file(s)
+#===============================================================================
+#TODO: read_file -type sourcelist $env(SG_RTL_SRC_FILE)
 read_file -type verilog src/ahb_lite_config.v
 read_file -type verilog src/ahb_lite_decoder.v
 read_file -type verilog src/ahb_lite_def_slave.v
@@ -18,25 +55,17 @@ read_file -type verilog src/ahb_lite_ram.v
 read_file -type verilog src/ahb_lite_multiplexor.v
 read_file -type verilog src/ahb_lite_top.v
 
-##Common Options Section
+#===============================================================================
+# Lib Files
+#===============================================================================
 
-set_option projectwdir .
-set_option language_mode mixed
-set_option designread_enable_synthesis no
-set_option designread_disable_flatten no
-set_option top ahb_lite_top
-set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
-set_option enableV05 yes
-set_option incdir { ./src }
-set_option enableSV yes
-set_option disablev2k yes
-set_option mthresh 131072
-
-
-##Goal Setup Section
-
-current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
-set_parameter handle_large_bus yes
-
-
-current_goal lint/lint_rtl -top ahb_lite_top
+#===============================================================================
+# Design Specific Waivers File
+#===============================================================================
+set sDesignSpecificWaiversFile "${sSpyglassDir}/spy/spyglass_design_specific_waivers.swl"
+if {[file exists "$sDesignSpecificWaiversFile"]} {
+   puts "NOTE: Reading the local design waivers file '$sDesignSpecificWaiversFile'"
+   read_file -type waiver $sDesignSpecificWaiversFile
+   set_option default_waiver_file $sDesignSpecificWaiversFile
+}
+#===============================================================================

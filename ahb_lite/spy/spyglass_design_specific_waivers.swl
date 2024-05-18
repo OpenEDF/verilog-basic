@@ -1,0 +1,17 @@
+#SMD: Avoid sequentially derived asynchronous signals with common clock 
+#SJ: Refer to comment 
+#SMD: Some inputs to instance are not driven or unconnecte
+#SJ: Some of the I/O ports will remain unused and are left unconnected. These are reviewed for correctness and found to be functionally correct.
+waive -rule "W240" -msg "*Input * declared but not read*" -comment "Some of the I/O ports will remain unused and are left unconnected. These are reviewed for correctness and found to be functionally correct."
+
+#SMD: Variable set but not read 
+#SJ: Refer the below comment 
+waive -rule "W528" -msg "*Variable * set but not read*" -comment "Some of the variables will remain unused and are left unconnected. These are reviewed for correctness and found to be functionally correct."
+
+#SMD: A signal or variable has been read but is not set
+#SJ: rom memory mdoel
+waive -rule "W123" -msg "*Variable * read but never set*" -comment "Some of the variables will inital 0 time. These are reviewed for correctness and found to be functionally correct."
+
+#SMD: A signal or variable has been read but is not set
+#SJ: rom memory mdoel
+waive -rule {  {UndrivenInTerm-ML}  }  -comment "only rom model" 
