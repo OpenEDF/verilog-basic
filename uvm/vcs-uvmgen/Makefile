@@ -6,7 +6,6 @@
 
 #--------------------------------------------------------------------------
 UVMGEN_GENERATOR = uvmgen
-TEST_NAME = test_proj.sv
 
 #--------------------------------------------------------------------------
 uvm:
@@ -14,19 +13,20 @@ uvm:
 
 # options file argument
 opt_gen: cfile
-	$(UVMGEN_GENERATOR) -options_file cfile 
+	$(UVMGEN_GENERATOR) -RAL=y -ENV=apb -TR=apb_data+ahb_data -SE=n
 
 # help
 .PHONY: help
 help:
-	@echo "                    -- HELP --                             "
+	@echo "------------------------ HELP ---------------------------------"
 	@echo "uvmgen : UVM Template Generator"
 	@echo "[CMD] make : manual input argument to generator UVM Template"
+	@echo "------------------------ HELP ---------------------------------"
 
 #--------------------------------------------------------------------------
 
 # clean
-.PHONY: clean
+.PHONY: clean uvm 
 clean:
 	rm -rf proj ENV 
 

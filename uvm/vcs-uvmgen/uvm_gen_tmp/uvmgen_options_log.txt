@@ -1,0 +1,28 @@
+UVM Version : 2 
+Complete Env.(1) OR Individual Template(2)? : 1 
+Want to create your own methods[Instead of uvm shorthand macros]? : n 
+RAL env? : 1 
+Env. Name : ms_env 
+Agents? : y 
+Name of master agent:  : m_agt 
+Name of sequencer in m_agt master agent:  : m_seqr 
+Name of driver in m_agt master agent:  : m_drv 
+Name of monitor in m_agt master agent:  : m_mon 
+Name of interface related to m_agt master agent:  : m_intf 
+Name of transaction in m_agt master agent:  : m_item 
+BU class for this transaction? : n 
+Name of slave agent:  : s_agt 
+Name of sequencer in s_agt slave agent:  : s_quer 
+Name of driver in s_agt slave agent:  : s_drv 
+Name of monitor in s_agt slave agent:  : s_mon 
+Name of physical interface related to s_agt slave agent:  : s_intf 
+BU class for this transaction? : n 
+Name of transaction related to s_agt slave agent:  : s_item 
+RAL BFM type : 2. RAL sequence adapter, multiplexed domains 
+Name of second RAL Adapter : ms_sub_adapter 
+Driver information for the slave agent s_agt :  :  
+Driver Type : Driver, PULL DRIVER (uvm_driver) 
+Driver information for the master agent m_agt :  :  
+Driver Type : Driver, PUSH DRIVER (uvm_push_driver) 
+Scoreboard? : y 
+Name of Scoreboard Class : ms_sbd 
