@@ -1,3 +1,7 @@
+#  -------------------------------------------------------------------
+#  This is a software generated project file. Manual edits to this file could be lost during the next save operation
+#  Copyright Atrenta, Inc 2010
+#  -------------------------------------------------------------------
 #!SPYGLASS_PROJECT_FILE
 #!VERSION 3.0
 #  -------------------------------------------------------------------
@@ -17,7 +21,6 @@ set        sProjectDir                 .
 # Setup Project
 set_option top                         ahb_lite_top
 set_option projectwdir                 $sProjectDir
-
 
 ##Common Options Section
 
@@ -59,6 +62,11 @@ read_file -type verilog src/ahb_lite_top.v
 #===============================================================================
 
 #===============================================================================
+# Goal
+#===============================================================================
+set SPYGLASS_GOALS "lint/lint_rtl, lint/lint_functional_rtl"
+
+#===============================================================================
 # Design Specific Waivers File
 #===============================================================================
 set sDesignSpecificWaiversFile "${sSpyglassDir}/spy/spyglass_design_specific_waivers.swl"
@@ -67,4 +75,5 @@ if {[file exists "$sDesignSpecificWaiversFile"]} {
    read_file -type waiver $sDesignSpecificWaiversFile
    set_option default_waiver_file $sDesignSpecificWaiversFile
 }
+
 #===============================================================================

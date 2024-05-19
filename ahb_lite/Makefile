@@ -6,10 +6,11 @@
 
 #--------------------------------------------------------------------------
 # test case file
+DESIGN_TOP = ahb_lite_top
 SRC_FILE = script/work_src.lst
 TOP_MODULE = testbench
-SPY_PRJ = spy/ahb_lite_top.prj
-nWave_SIGNAL = script/ahb_lite_top.rc
+SPY_PRJ = spy/$(DESIGN_TOP).prj
+nWave_SIGNAL = script/$(DESIGN_TOP).rc
 
 # clean old file --> compiler --> simluation
 all: com sim
@@ -46,7 +47,8 @@ spy_gui:
 
 .PHONY: clean sim com spy spy_gui
 clean:
-	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc verdiLog \
-		   ahb_lite_top core *.log
+	@rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc verdiLog \
+		   $(DESIGN_TOP) core *.log ./spy/*.awl
+	@echo "clean the files that generated during compilation..."
 
 #--------------------------------------------------------------------------

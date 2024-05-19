@@ -3,7 +3,6 @@ puts "# Opening project"
 puts "#==============================================================================="
 open_project spy/ahb_lite_top.prj
 
-set SPYGLASS_GOALS lint/lint_rtl
 puts ""
 puts "#==============================================================================="
 puts "# Running Goals"
