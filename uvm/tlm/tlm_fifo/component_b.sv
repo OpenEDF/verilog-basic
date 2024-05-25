@@ -66,6 +66,12 @@ virtual task run_phase(uvm_phase phase);
     `uvm_info(get_type_name(), $sformatf("after calling port get method"), UVM_LOW)
     `uvm_info(get_type_name(), $sformatf("printing trans, \n %s", trans.sprint()), UVM_LOW)
 
+    `uvm_info(get_type_name(), $sformatf("requesting transacting"), UVM_LOW)
+    `uvm_info(get_type_name(), $sformatf("before calling port get method"), UVM_LOW)
+    trans_in.get(trans);
+    `uvm_info(get_type_name(), $sformatf("after calling port get method"), UVM_LOW)
+    `uvm_info(get_type_name(), $sformatf("printing trans, \n %s", trans.sprint()), UVM_LOW)
+
     phase.drop_objection(this);
 endtask: run_phase
 
