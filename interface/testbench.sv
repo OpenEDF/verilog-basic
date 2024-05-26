@@ -73,7 +73,6 @@ begin
         intf.b_in =$random;
     end
     #20
-    $display("Coverage = %0.2f %%", fun_cover.cov1_u.get_coverage());
     $finish();
 end
 endtask

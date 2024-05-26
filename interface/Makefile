@@ -25,7 +25,6 @@ com:
 # simluation
 sim:
 	./simv +fsdb+autoflush+force
-	urg -dir simv.vdb
 
 # wave
 cov:
