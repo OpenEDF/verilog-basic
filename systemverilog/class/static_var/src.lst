@@ -1,0 +1,5 @@
+# test file
+static_var.sv
+
+# testbench file
+testbench.sv
