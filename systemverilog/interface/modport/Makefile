@@ -27,7 +27,7 @@ sim:
 
 # wave
 wave:
-	verdi -ssf $(TOP_MODULE).fsdb \
+	verdi -sverilog -ssf $(TOP_MODULE).fsdb \
 		  -top $(TOP_MODULE) \
 		  -f $(SRC_FILE) \
 		  -nologo &

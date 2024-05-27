@@ -66,11 +66,23 @@ begin
     vif.dut_intf.dut_port_cb.a_in <= $random;
     vif.dut_intf.dut_port_cb.b_in <= $random;
     $display("test a_in = %0d, b_in = %0d", vif.a_in, vif.b_in);
-    repeat(10) @(vif.dut_intf.dut_port_cb);
-    $display("test c_ou = %0d, d_ou = %0d", vif.c_ou, vif.d_ou);
+    //repeat(10) @(vif.dut_intf.dut_port_cb);
+    //$display("test c_ou = %0d, d_ou = %0d", vif.c_ou, vif.d_ou);
 end
 endtask
 
+//--------------------------------------------------------------------------
+// Design: monitor task
+//--------------------------------------------------------------------------
+task monitor();
+begin
+    do
+        @(vif.dut_intf.dut_port_cb);
+    while(!vif.dut_intf.rst_n);
+    @(vif.dut_intf.dut_port_cb);
+    $display("test c_ou = %0d, d_ou = %0d", vif.c_ou, vif.d_ou);
+end
+endtask
 //--------------------------------------------------------------------------
 // Design: reset task and initial
 //--------------------------------------------------------------------------
@@ -99,11 +111,17 @@ endtask
 //--------------------------------------------------------------------------
 task run();
 begin
-    reset();
-    /* driver module */
-    repeat (10) begin
-        driver();
-    end
+    fork
+        reset();
+        /* driver module */
+        repeat (10) begin
+            driver();
+        end
+        /* monitor module */
+        repeat (10) begin
+            monitor();
+        end
+    join
     done();
 end
 endtask
