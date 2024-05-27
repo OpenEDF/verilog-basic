@@ -52,7 +52,7 @@ logic [4:0] d_ou;
 // clocking
 //--------------------------------------------------------------------------
 clocking dut_port_cb @(posedge clk);
-    default input #1 output #1;
+    default input #2 output #2;
     output     a_in;
     output  #1 b_in;
 

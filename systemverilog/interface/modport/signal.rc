@@ -50,8 +50,8 @@ activeDirFile "" "/home/macro/work/github/verilog-basic/systemverilog/interface/
 addSignal -h 15 /testbench/dut_u/clk
 addSignal -h 15 -holdScope rst_n
 addSignal -h 15 -holdScope a_in[4:0]
-addSignal -h 15 -holdScope c_ou[4:0]
 addSignal -h 15 -holdScope b_in[4:0]
+addSignal -h 15 -holdScope c_ou[4:0]
 addSignal -h 15 -holdScope d_ou[4:0]
 addGroup "G2"
 

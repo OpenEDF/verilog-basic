@@ -8,9 +8,11 @@
 # test case file
 SRC_FILE = src.lst
 TOP_MODULE = testbench
+SEED = 2
+VERDI_RC_FILE = signal.rc
 
 # clean old file --> compiler --> simluation
-all: com sim
+all: clean com sim
 
 # compiler
 com:
@@ -23,22 +25,25 @@ com:
 
 # simluation
 sim:
-	./simv +fsdb+autoflush+force
+	./simv +fsdb+autoflush+force +ntb_random_seed=$(SEED) -l simv.log
 
 # wave
 wave:
 	verdi -sverilog -ssf $(TOP_MODULE).fsdb \
 		  -top $(TOP_MODULE) \
 		  -f $(SRC_FILE) \
+		  -sswr $(VERDI_RC_FILE) \
 		  -nologo &
 
 # debug
 debug:
-	./simv -gui=verdi &
+	./simv -gui=verdi \
+		   +ntb_random_seed=$(SEEED) \
+           -l simv.log &
 
 .PHONY: clean sim com wave debug
 clean:
-	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc verdiLog \
-		urgReport vdCovLog
+	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc \
+	       verdiLog
 
 #--------------------------------------------------------------------------
