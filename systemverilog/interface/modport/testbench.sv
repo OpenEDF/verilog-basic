@@ -42,26 +42,27 @@ module testbench();
 //--------------------------------------------------------------------------
 // Ports
 //--------------------------------------------------------------------------
-bit clk;
+parameter simulation_cycle = 10;
+bit systemclock = 0;
 
 //--------------------------------------------------------------------------
 // Interface
 //--------------------------------------------------------------------------
-intf    intf_i(clk);
+intf    intf_i(systemclock);
 test    t0(intf_i);
 
 //--------------------------------------------------------------------------
 // Design: create the clock
 //--------------------------------------------------------------------------
-initial begin
-    clk = 1'b0;
-    forever #5 clk = ~clk;
+always begin
+    #(simulation_cycle / 2) systemclock = ~systemclock;
 end
 
 //--------------------------------------------------------------------------
 // Design: dump .fsdb file
 //--------------------------------------------------------------------------
 initial begin
+    $timeformat(-9, 1, "ns", 10);
     $fsdbDumpfile("testbench.fsdb");
     $fsdbDumpvars(0, testbench);
 end
@@ -71,7 +72,7 @@ end
 //--------------------------------------------------------------------------
 design dut_u (
     // inputs
-    .clk         (clk),
+    .clk         (systemclock),
     .rst_n       (intf.rst_n),
     .a_in        (intf.a_in),
     .b_in        (intf.b_in),
