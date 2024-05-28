@@ -1,0 +1,193 @@
+program automatic test(router_io.TB rtr_io);
+  int run_for_n_packets = 0;      // number of packets to test
+  bit[3:0] sa;                        // source address
+  bit[3:0] da;                        // destination address
+  logic[7:0] payload[$];              // expected packet data array
+  //Lab 3 - Task 2, Step 2
+  //
+  //Add a global declaration for queue used to store sampled data
+
+  //ToDo
+
+  initial begin
+
+    //Lab 3 - Task 6, Step 2
+    //
+    //Send 2000 packets
+
+    //ToDo Caution!! Do only in Task 6
+    run_for_n_packets = 21;
+    reset();
+    repeat(run_for_n_packets) begin
+
+      gen();
+
+        //Lab 3 - Task 2, Step 3
+        //
+        //Execute receive routine recv() concurrently with send()
+        //followed by self-checking routine check()
+
+        //ToDo
+        send();
+
+    end
+    repeat(10) @rtr_io.cb;
+
+  end
+
+  task reset();
+    rtr_io.reset_n = 1'b0;
+    rtr_io.cb.frame_n <= '1;
+    rtr_io.cb.valid_n <= '1;
+    repeat(2) @rtr_io.cb;
+    rtr_io.cb.reset_n <= 1'b1;
+    repeat(15) @rtr_io.cb;
+  endtask: reset
+
+  task gen();
+
+    //Lab 3 - Task 6, Step 1
+    //
+    //Randomly generate sa and da
+
+    //ToDo Caution!! Do only in Task 6
+    sa = 3;
+    da = 7;
+    payload.delete(); //clear previous data
+    repeat($urandom_range(4,2))
+      payload.push_back($urandom);
+
+  endtask: gen
+
+  task send();
+
+    send_addrs();
+    send_pad();
+    send_payload();
+
+  endtask: send
+
+  task send_addrs();
+
+    rtr_io.cb.frame_n[sa] <= 1'b0; //start of packet
+    for(int i=0; i<4; i++) begin
+      rtr_io.cb.din[sa] <= da[i]; //i'th bit of da
+      @rtr_io.cb;
+    end
+
+  endtask: send_addrs
+
+  task send_pad();
+
+    rtr_io.cb.frame_n[sa] <= 1'b0;
+    rtr_io.cb.din[sa] <= 1'b1;
+    rtr_io.cb.valid_n[sa] <= 1'b1;
+    repeat(5) @rtr_io.cb;
+
+  endtask: send_pad
+
+  task send_payload();
+
+    foreach(payload[index])
+      for(int i=0; i<8; i++) begin
+        rtr_io.cb.din[sa] <= payload[index][i];
+      rtr_io.cb.valid_n[sa] <= 1'b0; //driving a valid bit
+      rtr_io.cb.frame_n[sa] <= ((i == 7) && (index == (payload.size() - 1)));
+      @rtr_io.cb;
+      end
+    rtr_io.cb.valid_n[sa] <= 1'b1;
+  endtask: send_payload
+
+  //Lab 3 - Task 3, Step 1
+  //
+  //Declare the recv() task
+
+  //ToDo
+
+    //Lab 3 - Task 3, Step 2
+    //
+    //In recv() task call get_payload() to retrieve payload
+
+    //ToDo
+
+  //Lab 3 - Task 3, Step 3
+  //
+  //Declare the get_payload() task
+
+  //ToDo
+
+    //Lab 3 - Task 3, Step 4
+    //
+    //In get_payload() delete content of pkt2cmp_payload[$]
+
+    //ToDo
+
+    //Lab 3 - Task 3, Step 5
+    //
+    //Continuing in get_payload() wait for falling edge of output frame signal
+    //Do not use @(negedge rtr_io.cb.frameo_n[da]);
+    //This may cause timing issues because of how the LRM defines it.
+    //Refer to class slides for the suggested code.
+    //Implement a watchdog timer of 1000 clocks
+
+    //ToDo
+
+    //Lab 3 - Task 3, Step 6
+    //
+    //Continuing in get_payload() sample output of the router:
+    //Loop until end of frame is detected.
+    //Within the loop, assemble a byte of data at a time(8 clocks)
+    //Store each byte in pkt2cmp_payload[$]
+
+    //ToDo
+
+          //Lab 3 - Task 3, Step 7
+          //
+          //If payload is not byte aligned, print message and end simulation
+
+          //ToDo
+
+  //Lab 3 - Task 4, Step 1
+  //
+  //Create function compare() which returns single bit
+  //and has pass-by-reference string argument
+
+  //ToDo
+
+    //Lab 3 - Task 4, Step 2
+    //
+    //In compare() compare data payload[$] with pkt2cmp_payload[$]
+    //If sizes do not match
+    //   set string argument with description of error
+    //   terminate subroutine by returning a 0
+    //If data matches (you can directly compare arrays using ==)
+    //   set string argument with description of success
+    //   terminate subroutine successfully by returning a 1
+    //If data does not match
+    //   set string argument with description of error
+    //   terminate subroutine by returning a 0
+
+    //ToDo
+
+  //Lab 3 - Task 4, Step 3
+  //
+  //Create function called check()
+
+  //ToDo
+
+    //Lab 3 - Task 4, Step 4
+    //
+    //In check() declare a string variable message
+    //keep a count of packets checked with variable pkts_checked
+
+    //ToDo
+
+    //Lab 3 - Task 4, Step 4
+    //
+    //In check() call compare() to check the packet received
+    //If error detected print error message and end simulation
+    //If successful print message indicating number of packets checked
+
+    //ToDo
+
+endprogram: test

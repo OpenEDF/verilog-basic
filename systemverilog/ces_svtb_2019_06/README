@@ -1,0 +1,100 @@
+Synopsys
+Customer Education Services
+======================================================================
+SystemVerilog Testbench
+Lab Notes Rev 2019.06
+Last Update: 2019-06-24
+======================================================================
+
+These Instructions are intended to help you with the installation of 
+the tools needed to successfully run the labs, and with the installation 
+of the lab database itself.
+
+CONTENTS
+================================
+
+1. Software installation
+2. Lab database installation
+3. Lab database configuration and testing
+
+**********************************************************************
+1. Software installation
+======================================================================
+
+This workshop needs the following tool(s) to be installed:
+
+- VCS  P-2019.06
+- VERDI Verdi_P-2019.06
+
+**********************************************************************
+2. Lab database Installation
+======================================================================
+
+1. Execute the following commands to unpack the archive:
+
+        unix$  gzip -dc ces_svtb_2019.06.tar.gz | tar xf -
+
+   Or if you are using gtar:
+
+        unix$  gtar xzf ces_svtb_2019.06.tar.gz
+
+
+Multiple account installation:
+Since the lab directory structure may contain symbolic links that 
+should be preserved instead of being expanded, it is strongly 
+recommended that you untar the file directly into each account.
+Repeat the following for every user account:
+
+        unix$ cd /path/to/user/account1
+        unix$ gzip -dc ces_svtb_2019.06.tar.gz | tar xf -
+
+**********************************************************************
+3. Lab database configuration and testing
+======================================================================
+
+Testing
+==============================
+
+To verify the functionality of the lab files, it is recommended that
+you run the supplied test script (the current directory has to be
+the "ces_svtb_2019.06" directory):
+
+        unix$  ./.testscript
+
+This will run a series of tests to verify that all files exist, and that
+the tool can be invoked.
+
+If everything is ok, you should see output similar to:
+
+
+------------------------------------------------------------
+ 
+  ******************************************************
+ Running the Synopsys Workshop Installation Test Script
+ 
+       Course Name:    SVTB
+       VCS Version:    2019.06
+       Verdi Version:  Verdi_P-2019.06
+       Last Update:    2019-06-24
+ ******************************************************
+
+ Running  Test 1 - installation integrity check
+ Running  Tests 2a,b,c - availability of VCS executables
+ Running  Test 2d - availability of verdi executables
+ Running  Test 3a - vcs invocation test
+ Running  Test 3b - verdi invocation test
+ Running  Test 4 - vcs SystemVerilog simulation test
+ Skipping Test 5 - GUI (dve)
+
+ Installation Test PASSED for SVTB Course
+
+
+------------------------------------------------------------
+
+Note:
+By default, the GUI (dve) test is skipped.
+To include the GUI test, edit the file ".testscript" and change the
+variable $test_vcs_gui to "1" at the top of the file. 
+Rerun the test after that.
+Make sure that you have the DISPLAY environment variable set
+correctly, otherwise the test will fail.

@@ -1,0 +1,123 @@
+`ifndef INC_DRIVER_DV
+`define INC_DRIVER_DV
+`include "DriverBase.sv"
+class Driver extends DriverBase;
+  pkt_mbox in_box;  // Generator mailbox
+  pkt_mbox out_box;  // Scoreboard mailbox
+  semaphore sem[];  // output port arbitration
+
+  extern function new(string name = "Driver", int port_id, semaphore sem[], pkt_mbox in_box, out_box, virtual router_io.TB rtr_io);
+  extern virtual task start();
+endclass: Driver
+
+function Driver::new(string name, int port_id, semaphore sem[], pkt_mbox in_box, out_box, virtual router_io.TB rtr_io);
+  //Lab 5 - Task 3, Step 1
+  //
+  //Call super.new() with name and interface arguments
+
+  //ToDo
+
+  //Lab 5 - Task 3, Step 2
+  //
+  //Add a tracing statement
+
+  //ToDo
+
+  //Lab 5 - Task 3, Step 3
+  //
+  //Assign port_id argument to class property sa
+
+  //ToDo
+
+  //Lab 5 - Task 3, Step 4
+  //
+  //Assign the correct arguments to sem, in_box and out_box class properties
+
+  //ToDo
+
+endfunction: new
+
+task Driver::start();
+  //Lab 5 - Task 4, Step 1
+  //
+  //In the existing start() method body, add a trace statement
+
+  //ToDo
+
+  //Lab 5 - Task 4, Step 2
+  //
+  //After the trace statement, create a non-blocking fork-join block.
+
+  //ToDo
+
+    //Lab 5 - Task 4, Step 3
+    //
+    //Inside the fork-join construct, create a single infinite loop
+
+    //ToDo
+
+      //Lab 5 - Task 4, Step 4a
+      //
+      //Retrieve a Packet object (pkt2send) from in_box
+
+      //ToDo
+
+      //Lab 5 - Task 4, Step 4b
+      //
+      //If the sa property in the retrieved Packet object does not match this.sa,
+      //continue on to the next iteration of the loop
+
+      //ToDo
+
+      //Lab 5 - Task 4, Step 4c
+      //
+      //If the retrieved Packet sa does match this.sa, update the da and
+      //payload class properties with the content of pkt2send
+
+      //ToDo
+
+      //Lab 5 - Task 4, Step 4d
+      //
+      //Use the semaphore sem[] array to arbitrate for access to the
+      //output port specified by da
+
+      //ToDo
+
+      //Lab 5 - Task 4, Step 4e
+      //
+      //Once the arbitration is successful, call send() to drive the
+      //packet through the DUT
+
+      //ToDo
+
+      //Lab 5 - Task 4, Step 4f
+      //
+      //When send() completes, deposit Packet object into out_box
+
+      //ToDo
+
+      //Lab 5 - Task 4, Step 4g
+      //
+      //Put the semaphore key back into its bin in the final step of the loop
+
+      //ToDo
+
+endtask: start
+`endif
+
+// Do not uncomment!
+// The following is the prototype of the DriverBase class:
+//
+// class DriverBase;
+//   virtual router_io.TB rtr_io;  // interface signal
+//   string    name;               // unique identifier
+//   bit[3:0]  sa, da;             // source and destination addresses
+//   logic[7:0]  payload[$];       // Packet payload
+//   Packet    pkt2send;           // stimulus Packet object
+//
+//   extern function new(string name = "DriverBase", virtual router_io.TB rtr_io);
+//   extern virtual task send();
+//   extern virtual task send_addrs();
+//   extern virtual task send_pad();
+//   extern virtual task send_payload();
+// endclass

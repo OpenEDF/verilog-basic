@@ -1,0 +1,7 @@
+
+function void Packet::display(string prefix);
+  $display("[%s]%t %s sa = %0d, da = %0d", prefix, $realtime, name, sa, da);
+  foreach(payload[i])
+    $display("[%s]%t %s payload[%0d] = %0d", prefix, $realtime, name, i, payload[i]);
+endfunction: display
+
