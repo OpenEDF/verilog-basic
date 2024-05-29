@@ -65,6 +65,8 @@ task body();
     #10;
     `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
     `uvm_do(req);
+    get_response(req);
+    `uvm_info(get_type_name(), {"get response after:\n", req.sprint()}, UVM_LOW);
     end
     //`uvm_do_with(req, {ina == 10;});
 endtask

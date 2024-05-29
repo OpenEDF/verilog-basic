@@ -72,7 +72,10 @@ task run_phase(uvm_phase phase);
         `uvm_info(get_type_name, {"\n", req.sprint()}, UVM_LOW);
         vif.ina <= req.ina;
         vif.inb <= req.inb;
-        seq_item_port.item_done();
+        #10;
+        req.set_id_info(req);
+        seq_item_port.item_done(req);
+        `uvm_info(get_type_name(), "After item_done call", UVM_LOW);
     end
 endtask
 
