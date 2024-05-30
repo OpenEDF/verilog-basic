@@ -1,0 +1,72 @@
+@verdi rc file Version 1.0
+[General]
+VerdiVersion = Verdi3_J-2014.12
+[KeyNote]
+Line1 = invoke directory: /remote/us01home17/jachang/ces_uvm-1.2_2014.12/labs/lab4
+Line2 = command line: -sverilog -ntb_opts uvm-1.2 ../../rtl/router.sv ../../rtl/router_io.sv ../../rtl/ral/host_io.sv ../../rtl/reset_io.sv ../../rtl/router_test_top.sv ./packages/router_stimulus_pkg.sv ./packages/router_env_pkg.sv ./packages/test_pkg.sv ./test.sv\
+ -l simv.log +UVM_TESTNAME=test_base +UVM_VERBOSITY=UVM_MEDIUM + + +UVM_TR_RECORD +UVM_LOG_RECORD +ntb_random_seed=1 -ba 
+Line3 = current trace scope: uvm_custom_install_recording
+Line4 = memo:
+[TestBench]
+ConstrViewShow = 0
+InherViewShow = 0
+FSDBMsgShow = 0
+AnnotationShow = 0
+[hb]
+postSimFile = /remote/us01home17/jachang/ces_uvm-1.2_2014.12/labs/lab4/novas.fsdb
+syncTime = 0
+viewport = 252 139 1052 826 344 169 286 1050
+activeNode = "uvm_custom_install_recording"
+activeScope = "uvm_custom_install_recording"
+activeFile = "/global/apps5/vcs_2014.12/etc/uvm-1.2/vcs/uvm_custom_install_vcs_recorder.sv"
+interactiveMode = False
+viewType = Source
+simulatorMode = False
+sourceBeginLine = 25
+baMode = False
+srcLineNum = True
+syncSignal = False
+traceMode = Hierarchical
+showTraceInSchema = True
+paMode = False
+funcMode = False
+traceCrossHier = True
+DnDtraceCrossHierOnly = True
+traceIncTopPort = False
+leadingZero = False
+signalPane = False
+Scope1 = "uvm_custom_install_recording"
+multipleSelection = 1 25 3 0 0
+sdfCheckUndef = FALSE
+[hb.sourceTab.1]
+scope = uvm_custom_install_recording
+File = /global/apps5/vcs_2014.12/etc/uvm-1.2/vcs/uvm_custom_install_vcs_recorder.sv
+Line = 26
+[imp.design1]
+dbEnum =  oh
+invokeDir = /remote/us01home17/jachang/ces_uvm-1.2_2014.12/labs/lab4
+design = DebussyLib
+hostCommand = hostCommand -sverilog -ntb_opts uvm-1.2 ../../rtl/router.sv ../../rtl/router_io.sv ../../rtl/ral/host_io.sv ../../rtl/reset_io.sv ../../rtl/router_test_top.sv ./packages/router_stimulus_pkg.sv ./packages/router_env_pkg.sv ./packages/test_pkg.sv ./test.sv -\
+l simv.log +UVM_TESTNAME=test_base +UVM_VERBOSITY=UVM_MEDIUM + + +UVM_TR_RECORD +UVM_LOG_RECORD +ntb_random_seed=1
+[nMemoryManager]
+FsdbFile = /remote/us01home17/jachang/ces_uvm-1.2_2014.12/labs/lab4/novas.fsdb
+UserActionNum = 0
+nMemWindowNum = 0
+[wave.0]
+viewPort = 0 30 1052 459 162 65
+SessionFile = /remote/us01home17/jachang/ces_uvm-1.2_2014.12/labs/lab4/packet.ses.wave.0
+displayGrid = FALSE
+hierarchicalName = FALSE
+snap = TRUE
+displayLeadingZeros = FALSE
+fixDelta = FALSE
+displayCursorMarker = FALSE
+autoUpdate = FALSE
+highlightGlitchs = FALSE
+waveformSync = FALSE
+displayErrors = TRUE
+displayMsgSymbols = TRUE
+showMsgDescriptions = TRUE
+autoFit = FALSE
+displayDeltaY = FALSE
+centerCursor = FALSE

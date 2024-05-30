@@ -1,0 +1,57 @@
+# This file contains the DUT register and memory definitions
+
+#
+# Lab 6 - Task 8, Step 2
+# Populate each of the following register and memory specification.
+#
+
+register HOST_ID {
+#  ToDo
+  field REV_ID {
+
+
+
+  }
+  field CHIP_ID {
+
+
+
+  }
+}
+
+register LOCK {
+#  ToDo
+  field LOCK {
+
+
+
+  }
+}
+
+register R_ARRAY {
+#  ToDo
+  field H_REG {
+
+
+
+  }
+}
+
+memory RAM {
+#  ToDo
+
+
+
+}
+
+#
+# The block level declaration is done for you.  This include the hdl_path name for
+# the signals in the DUT.  Later on, the hdl_path will be in RAL backdoor access.
+#
+block host_regmodel {
+  bytes 2;
+  register HOST_ID        (host_id)       @'h0000;
+  register LOCK           (lock)          @'h0100;
+  register R_ARRAY[256]   (host_reg[%d])  @'h1000; # array must specify HDL index
+  memory   RAM            (ram)           @'h4000;
+}

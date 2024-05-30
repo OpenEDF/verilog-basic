@@ -1,0 +1,23 @@
+Synopsys
+Customer Education Services
+======================================================================
+UVM 1.2
+Lab Notes Rev 2018.09
+Last Update: 2019-01-02
+======================================================================
+
+The labs are setup to run in 32-bit mode by default.
+
+You can enable 64-bit compilation and simulation by setting the CES64
+environment variable to TRUE.
+e.g. setenv CES64 TRUE
+
+The labs can also run with IEEE UVM.
+
+To enable executing the IEEE UVM source code, you need to set the VCS_UVM_HOME
+environment variable to the IEEE UVM source code directory.  The IEEE UVM source
+code directory is 1800.2-2017-1.0/src under the ces_uvm-1.2_2018.09 directory.
+e.g. setenv VCS_UVM_HOME user_pwd/ces_uvm-1.2_2018.09/1800.2-2017-1.0/src
+
+Remember to unset the VCS_UVM_HOME environment variable afterwards.  Forgetting
+to do this will result in running all your UVM testbenches with IEEE UVM.
