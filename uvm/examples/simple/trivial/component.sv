@@ -32,7 +32,7 @@ class my_component extends uvm_component;
 
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
-    `uvm_info("component", "hello out there!", UVM_MEDIUM)
+    `uvm_info("component", "hello out there!", UVM_LOW)
     phase.drop_objection(this);
   endtask
 
