@@ -83,6 +83,14 @@ endfunction
 //--------------------------------------------------------------------------
 // Design: constructor
 //--------------------------------------------------------------------------
+constraint addr_size {
+    HADDR.size > 0;
+    if(HBURST == SINGLE) HADDR.size == 1;
+    if(HBURST == INCR) HADDR.size < (1024 / (2 ** HSIZE));
+    if(HBURST == INCR4 || HBURST == WRAP4) HADDR.size == 4;
+    if(HBURST == INCR8 || HBURST == WRAP8) HADDR.size == 8;
+    if(HBURST == INCR16 || HBURST == WRAP16) HADDR.size == 16;
+}
 
 endclass: ahb_mst_transaction 
 //--------------------------------------------z-----------------------------
