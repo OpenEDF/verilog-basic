@@ -38,17 +38,17 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class seqcr extends uvm_sequencer#(seq_item);
+class ahb_mst_seqr extends uvm_sequencer#(ahb_mst_tran);
 
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-`uvm_component_utils(seqcr)
+`uvm_component_utils(ahb_mst_seqr)
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "seqcr", uvm_component parent = null);
+function new(string name = "ahb_mst_seqr", uvm_component parent = null);
     super.new(name, parent);
 endfunction
 
@@ -59,5 +59,5 @@ function void build_phase(uvm_phase phase);
     super.build_phase(phase);
 endfunction
 
-endclass: seqcr
+endclass:ahb_mst_seqr
 //--------------------------------------------------------------------------

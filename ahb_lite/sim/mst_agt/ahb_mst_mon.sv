@@ -39,25 +39,23 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class monitor extends uvm_monitor;
+class ahb_mst_mon extends uvm_monitor;
 
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-virtual add_if vif;
-uvm_analysis_port #(seq_item) item_collect_port;
-seq_item mon_item;
-uvm_event intr_e;
-`uvm_component_utils(monitor)
+virtual ahb_mst_intf vif;
+uvm_analysis_port #(ahb_mst_tran) item_collect_port;
+ahb_mst_tran mon_tran;
+`uvm_component_utils(ahb_mst_mon)
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "monitor", uvm_component parent = null);
+function new(string name = "ahb_mst_mon", uvm_component parent = null);
     super.new(name, parent);
     item_collect_port = new("item_collect_port", this);
-    mon_item = new();
-    intr_e = uvm_event_pool::get_global("INT");
+    mon_tran = new();
 endfunction
 
 //--------------------------------------------------------------------------
@@ -65,7 +63,7 @@ endfunction
 //--------------------------------------------------------------------------
 function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if (!uvm_config_db#(virtual add_if) :: get(this, "", "vif", vif))
+    if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "vif", vif))
         `uvm_fatal(get_type_name(), "vif not set the top level!")
 endfunction
 
@@ -74,27 +72,12 @@ endfunction
 //--------------------------------------------------------------------------
 task run_phase(uvm_phase phase);
     forever begin
-        wait(vif.rst_n);
-        @(posedge vif.clk);
-        mon_item.ina = vif.ina;
-        mon_item.inb = vif.inb;
-        `uvm_info(get_type_name, $sformatf("ina = %0d, inb = %0d", mon_item.ina, mon_item.inb), UVM_LOW);
-        @(posedge vif.clk)
-        mon_item.out = vif.out;
-        `uvm_info(get_type_name, $sformatf("out = %0d", mon_item.out), UVM_LOW);
-
-        /* trigger interrupt */
-        if (mon_item.out > 100) begin
-            `uvm_info(get_type_name, "trigger interrupt", UVM_LOW);
-            intr_e.trigger();
-        end
-
-        /* TODO: signal from DUT module */
+        /* signal from DUT module */
 
         /* send specified value to all connected interface */
-        item_collect_port.write(mon_item);
+        item_collect_port.write(mon_tran);
     end
 endtask
 
-endclass: monitor
+endclass: ahb_mst_mon
 //--------------------------------------------------------------------------

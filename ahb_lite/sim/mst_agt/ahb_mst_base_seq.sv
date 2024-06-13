@@ -37,18 +37,18 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class base_seq extends uvm_sequence#(seq_item);
+class ahb_mst_base_seq extends uvm_sequence#(ahb_mst_tran);
 
 //--------------------------------------------------------------------------
 // Design: declear and register
 //--------------------------------------------------------------------------
-seq_item req;
-`uvm_object_utils(base_seq);
+ahb_mst_tran req;
+`uvm_object_utils(ahb_mst_base_seq);
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "base_seq");
+function new(string name = "ahb_mst_base_seq");
     super.new(name);
 endfunction
 
@@ -71,5 +71,5 @@ task body();
     //`uvm_do_with(req, {ina == 10;});
 endtask
 
-endclass: base_seq
+endclass: ahb_mst_base_seq
 //--------------------------------------------------------------------------

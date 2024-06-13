@@ -38,18 +38,18 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class driver extends uvm_driver#(seq_item);
+class ahb_mst_drv extends uvm_driver#(ahb_mst_tran);
 
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-virtual add_if vif;
-`uvm_component_utils(driver)
+virtual ahb_mst_intf vif;
+`uvm_component_utils(ahb_mst_drv)
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "driver", uvm_component parent = null);
+function new(string name = "ahb_mst_drv", uvm_component parent = null);
     super.new(name, parent);
 endfunction
 
@@ -58,7 +58,7 @@ endfunction
 //--------------------------------------------------------------------------
 function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if (!uvm_config_db#(virtual add_if) :: get(this, "", "vif", vif))
+    if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "vif", vif))
         `uvm_fatal(get_type_name(), "vif not set the top level!");
 endfunction
 
@@ -67,17 +67,12 @@ endfunction
 //--------------------------------------------------------------------------
 task run_phase(uvm_phase phase);
     forever begin
-        seq_item_port.get_next_item(req);
-        //`uvm_info(get_type_name, $sformatf("ina = %0d, inb = %0d", req.ina, req.inb), UVM_LOW);
+        ahb_mst_tran_port.get_next_item(req);
         `uvm_info(get_type_name, {"\n", req.sprint()}, UVM_LOW);
-        vif.ina <= req.ina;
-        vif.inb <= req.inb;
-        #10;
-        req.set_id_info(req);
-        seq_item_port.item_done(req);
+        ahb_mst_tran_port.item_done(req);
         `uvm_info(get_type_name(), "After item_done call", UVM_LOW);
     end
 endtask
 
-endclass: driver
+endclass: ahb_mst_drv
 //--------------------------------------------------------------------------

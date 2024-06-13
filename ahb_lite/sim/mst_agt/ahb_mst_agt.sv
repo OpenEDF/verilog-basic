@@ -38,20 +38,20 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class agent extends uvm_agent;
+class ahb_mst_agt extends uvm_agent;
 
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-`uvm_component_utils(agent)
-driver  drv;
-seqcr   seqr;
-monitor mon;
+`uvm_component_utils(ahb_mst_agt)
+ahb_mst_drv    mst_drv;
+ahb_mst_seqcr  mst_seqr;
+ahb_mst_mon    mst_mon;
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "agent", uvm_component parent = null);
+function new(string name = "ahb_mst_agt", uvm_component parent = null);
     super.new(name, parent);
 endfunction
 
@@ -62,11 +62,11 @@ function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     /* UVM_ACTIVE and UVM PASSIVE */
     if (get_is_active == UVM_ACTIVE) begin
-        drv = driver::type_id::create("drv", this);
-        seqr = seqcr::type_id::create("seqr", this);
+        mst_drv  = ahb_mst_drv::type_id::create("mst_drv", this);
+        mst_seqr = ahb_mst_seqcr::type_id::create("mst_seqr", this);
     end
 
-    mon = monitor::type_id::create("mob", this);
+    mst_mon = monitor::type_id::create("mst_mon", this);
 endfunction
 
 //--------------------------------------------------------------------------
@@ -75,8 +75,10 @@ endfunction
 function void connect_phase(uvm_phase phase);
     /* UVM_ACTIVE and UVM PASSIVE */
     if (get_is_active == UVM_ACTIVE) begin
-        drv.seq_item_port.connect(seqr.seq_item_export);
+        mst_drv.seq_item_port.connect(mst_seqr.seq_item_export);
     end
+
+    /* TODO: rsp_export(sequencer) and rsp_port(driver)*/
 endfunction
 
 //--------------------------------------------------------------------------
@@ -92,5 +94,5 @@ endfunction
 virtual function void final_phase(uvm_phase phase);
     `uvm_info(get_type_name, "IN final_phase...", UVM_LOW);
 endfunction
-endclass: agent
+endclass: ahb_mst_agt
 //--------------------------------------------------------------------------
