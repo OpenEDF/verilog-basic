@@ -1,0 +1,667 @@
+system AHBLiteTarget_SLAVE_MM {
+    bytes 4;
+    block cmsdk_ahb_gpio_Register_AddressBlock @0x0 {
+        bytes 4;
+        register DATA [1] @0x0000 {
+            bytes 4;
+            field read_data @'h0 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Sampled at pin. Read back value goes through double flip-flop
+                }
+            }
+            field write_data @'h0 {
+                bits 16;
+                access wo;
+                hard_reset 'h0;
+                doc {
+                    To data output register
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Data valueData value
+            }
+        }
+        register DATOUT [1] @0x0004 {
+            bytes 4;
+            field read_data @'h0 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Current value of data output register
+                }
+            }
+            field write_data @'h0 {
+                bits 16;
+                access wo;
+                hard_reset 'h0;
+                doc {
+                    To data output register.
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Data output register valueData output register value
+            }
+        }
+        register OUTENSET [1] @0x0010 {
+            bytes 4;
+            field output_enable @'h0 {
+                bits 16;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Set output enables
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Output enable setOutput enable set
+            }
+        }
+        register OUTENCLR [1] @0x0014 {
+            bytes 4;
+            field output_enable_clear @'h0 {
+                bits 16;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Clear output enables
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Output enable clearOutput enable clear
+            }
+        }
+        register ALTFUNCSET [1] @0x0018 {
+            bytes 4;
+            field alternate_function_set @'h0 {
+                bits 16;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Set alternative functions
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Alternative function setAlternative function set
+            }
+        }
+        register ALTFUNCCLR [1] @0x001C {
+            bytes 4;
+            field alternate_function_clear @'h0 {
+                bits 16;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Clear alternative functions
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Alternative function clearAlternative function clear
+            }
+        }
+        register INTENSET [1] @0x0020 {
+            bytes 4;
+            field interrupt_enable @'h0 {
+                bits 16;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Enable interrupts
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Interrupt enable setInterrupt enable set
+            }
+        }
+        register INTENCLR [1] @0x0024 {
+            bytes 4;
+            field interrupt_enable_clear @'h0 {
+                bits 16;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Clear interrupts
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Interrupt enable clearInterrupt enable clear
+            }
+        }
+        register INTTYPESET [1] @0x0028 {
+            bytes 4;
+            field set_irq_type @'h0 {
+                bits 16;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Set interrupt types
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Interrupt type setInterrupt type set
+            }
+        }
+        register INTTYPECLR [1] @0x002C {
+            bytes 4;
+            field clear_irq_type @'h0 {
+                bits 16;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Clear interrupt types
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Interrupt type clearInterrupt type clear
+            }
+        }
+        register INTPOLSET [1] @0x0030 {
+            bytes 4;
+            field set_irq_polarity_level @'h0 {
+                bits 16;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Set interrupt polarity levels
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Polarity-level, edge IRQ configurationPolarity-level, edge IRQ configuration
+            }
+        }
+        register INTPOLCLR [1] @0x0034 {
+            bytes 4;
+            field clear_irq_polarity_level @'h0 {
+                bits 16;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Clear interrupt polarity levels
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Polarity-level, edge IRQ configuration clearPolarity-level, edge IRQ configuration clear
+            }
+        }
+        register INTSTATUS [1] @0x0038 {
+            bytes 4;
+            field read_irq_status @'h0 {
+                bits 16;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Interrup Status
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Interrupt status/clear registerInterrupt status/clear register
+            }
+        }
+        register MASKLOWBYTE [256] @0x0400 {
+            bytes 4;
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            field lower_enable_mask @'h0 {
+                bits 8;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Lower enable mask
+                }
+            }
+            doc {
+                Lower eight bits masked access. Bits[9:2] of theLower eight bits masked access. Bits[9:2] of the
+            }
+        }
+        register MASKHIGHBYTE [256] @0x0800 {
+            bytes 4;
+            field higher_enable_mask @'h8 {
+                bits 8;
+                access rw;
+                hard_reset 'h0;
+                doc {
+                    Higher enable mask
+                }
+            }
+            field Reserved_7_0 @'h0 {
+                bits 8;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            field Reserved_31_16 @'h10 {
+                bits 16;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Higher eight bits masked access. Bits[9:2] of theHigher eight bits masked access. Bits[9:2] of the
+            }
+        }
+        register PID4 [1] @0xFD0 {
+            bytes 4;
+            field block_count @'h4 {
+                bits 4;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    4KB block count
+                }
+            }
+            field jep106_c_code @'h0 {
+                bits 4;
+                access ro;
+                hard_reset 'h4;
+                doc {
+                    jep106_c_code
+                }
+            }
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Peripheral ID Register 4Peripheral ID Register 4
+            }
+        }
+        register PID5 [1] @0xFD4 {
+            bytes 4;
+            field PID5 @'h0 {
+                bits 8;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Peripheral ID Register 5
+                }
+            }
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Peripheral ID Register 5Peripheral ID Register 5
+            }
+        }
+        register PID6 [1] @0xFD8 {
+            bytes 4;
+            field PID6 @'h0 {
+                bits 8;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Peripheral ID Register 6
+                }
+            }
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Peripheral ID Register 6Peripheral ID Register 6
+            }
+        }
+        register PID7 [1] @0xFDC {
+            bytes 4;
+            field PID7 @'h0 {
+                bits 8;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Peripheral ID Register 7
+                }
+            }
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Peripheral ID Register 7Peripheral ID Register 7
+            }
+        }
+        register PID0 [1] @0xFE0 {
+            bytes 4;
+            field part_num @'h0 {
+                bits 8;
+                access ro;
+                hard_reset 'h21;
+                doc {
+                    Part number[7:0]
+                }
+            }
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Peripheral ID Register 0Peripheral ID Register 0
+            }
+        }
+        register PID1 [1] @0xFE4 {
+            bytes 4;
+            field jep106_id_3_0 @'h4 {
+                bits 4;
+                access ro;
+                hard_reset 'hb;
+                doc {
+                    jep106_id_3_0
+                }
+            }
+            field part_num @'h0 {
+                bits 4;
+                access ro;
+                hard_reset 'h8;
+                doc {
+                    Part number[11:8]
+                }
+            }
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Peripheral ID Register 1Peripheral ID Register 1
+            }
+        }
+        register PID2 [1] @0xFE8 {
+            bytes 4;
+            field revision_num @'h4 {
+                bits 4;
+                access ro;
+                hard_reset 'h1;
+                doc {
+                    Revision
+                }
+            }
+            field jedec_used @'h3 {
+                access ro;
+                hard_reset 'h1;
+                doc {
+                    jedec_used
+                }
+            }
+            field jep106_id_6_4 @'h0 {
+                bits 3;
+                access ro;
+                hard_reset 'h3;
+                doc {
+                    jep106_id_6_4
+                }
+            }
+            field Reserved_31__8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Peripheral ID Register 2Peripheral ID Register 2
+            }
+        }
+        register PID3 [1] @0xFEC {
+            bytes 4;
+            field eco_rev_num @'h4 {
+                bits 4;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    ECO revision number
+                }
+            }
+            field customer_mod_num @'h0 {
+                bits 4;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Customer Modification Number
+                }
+            }
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Peripheral ID Register 3Peripheral ID Register 3
+            }
+        }
+        register CID0 [1] @0xFF0 {
+            bytes 4;
+            field CID0 @'h0 {
+                bits 8;
+                access ro;
+                hard_reset 'hd;
+                doc {
+                    Component ID Register 0
+                }
+            }
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Component ID Register 0Component ID Register 0
+            }
+        }
+        register CID1 [1] @0xFF4 {
+            bytes 4;
+            field CID1 @'h0 {
+                bits 8;
+                access ro;
+                hard_reset 'hf0;
+                doc {
+                    Component ID Register 1
+                }
+            }
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Component ID Register 1Component ID Register 1
+            }
+        }
+        register CID2 [1] @0xFF8 {
+            bytes 4;
+            field CID2 @'h0 {
+                bits 8;
+                access ro;
+                hard_reset 'h5;
+                doc {
+                    Component ID Register 2
+                }
+            }
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Component ID Register 2Component ID Register 2
+            }
+        }
+        register CID3 [1] @0xFFC {
+            bytes 4;
+            field CID3 @'h0 {
+                bits 8;
+                access ro;
+                hard_reset 'hb1;
+                doc {
+                    Component ID Register 3
+                }
+            }
+            field Reserved_31_8 @'h8 {
+                bits 24;
+                access ro;
+                hard_reset 'h0;
+                doc {
+                    Reserved
+                }
+            }
+            doc {
+                Component ID Register 3Component ID Register 3
+            }
+        }
+    }
+    doc {
+        Memory map for AHBLiteTarget_SLAVE
+    }
+}
+

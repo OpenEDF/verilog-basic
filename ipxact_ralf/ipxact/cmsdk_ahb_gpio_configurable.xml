@@ -1,0 +1,1872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+//============================================================================
+//   The confidential and proprietary information contained in this file may
+//   only be used by a person authorised under and to the extent permitted
+//   by a subsisting licensing agreement from ARM Limited or its affiliates.
+//
+//          (C) COPYRIGHT 2017 ARM Limited or its affiliates.
+//              ALL RIGHTS RESERVED
+//
+//   This entire notice must be reproduced on all copies of this file
+//   and copies of this file may only be made by a person if such person is
+//   permitted to do so under the terms of a subsisting license agreement
+//   from ARM Limited or its affiliates.
+//
+//      SVN Information
+//
+//      Checked In          : $Date: 2017-10-10 15:55:38 +0100 (Tue, 10 Oct 2017) $
+//
+//      Revision            : $Revision: 371321 $
+//
+//      Release Information : Cortex-M System Design Kit-r1p1-00rel0
+//
+//============================================================================
+-->
+<spirit:component xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009"
+xmlns:arm="http://www.arm.com/SPIRIT/1685-2009"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009 http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009/index.xsd">
+  <spirit:vendor>arm.com</spirit:vendor>
+  <spirit:library>CoreLink</spirit:library>
+  <spirit:name>cmsdk_ahb_gpio</spirit:name>
+  <spirit:version>r1p0_1</spirit:version>
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>AHBLiteTarget_SLAVE</spirit:name>
+      <spirit:description>AHB SLAVE bus interface for port </spirit:description>
+      <spirit:busType spirit:vendor="amba.com" spirit:library="AMBA3" spirit:name="AHBLiteTarget" spirit:version="r2p0_0"/>
+      <spirit:abstractionType spirit:vendor="amba.com" spirit:library="AMBA3" spirit:name="AHBLiteTarget_rtl" spirit:version="r2p0_0"/>
+      <spirit:slave>
+        <spirit:memoryMapRef spirit:memoryMapRef="AHBLiteTarget_SLAVE_MM"/>
+      </spirit:slave>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HCLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HRESETn</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HRESETn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HADDR</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HADDR</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HSIZE</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HSIZE</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HTRANS</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HTRANS</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HWDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HWDATA</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HWRITE</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HWRITE</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HRDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HRDATA</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HREADYOUT</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HREADYOUT</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HRESP</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HRESP</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HREADY</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HSELx</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HSEL</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HBURST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HBURST</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>Staticcfg_ECOrevnum_Slave</spirit:name>
+      <spirit:description>ECO Revision tie-off. Configures the ECO revision number in Peripheral ID register Register 3 to show revision changes during ECO of the chip design process.</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="Staticcfg" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="Staticcfg_rtl" spirit:version="r0p0_0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CONFIGURATION</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>ECOREVNUM</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>GPIO_Port_in_Slave</spirit:name>
+      <spirit:description>GPIO input</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="GPIO" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="GPIO_rtl" spirit:version="r0p0_0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RESETn</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HRESETn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>GPIO_PORT</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>PORTIN</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>GPIO_Port_out_Master</spirit:name>
+      <spirit:description>GPIO output</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="GPIO" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="GPIO_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RESETn</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HRESETn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>GPIO_PORT</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>PORTOUT</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>GPIO_Port_en_Master</spirit:name>
+      <spirit:description>GPIO enable</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="GPIO" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="GPIO_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RESETn</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HRESETn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>GPIO_PORT</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>PORTEN</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>GPIO_Port_func_Master</spirit:name>
+      <spirit:description>GPIO alternate function</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="GPIO" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="GPIO_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RESETn</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>HRESETn</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>GPIO_PORT</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>PORTFUNC</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_COMBINT_Master</spirit:name>
+      <spirit:description>Combined GPIO interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>COMBINT</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_0_Master</spirit:name>
+      <spirit:description>GPIO Port 0 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>0</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_1_Master</spirit:name>
+      <spirit:description>GPIO Port 1 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>1</spirit:left>
+              <spirit:right>1</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_2_Master</spirit:name>
+      <spirit:description>GPIO Port 2 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>2</spirit:left>
+              <spirit:right>2</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_3_Master</spirit:name>
+      <spirit:description>GPIO Port 3 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>3</spirit:left>
+              <spirit:right>3</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_4_Master</spirit:name>
+      <spirit:description>GPIO Port 4 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>4</spirit:left>
+              <spirit:right>4</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_5_Master</spirit:name>
+      <spirit:description>GPIO Port 5 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>5</spirit:left>
+              <spirit:right>5</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_6_Master</spirit:name>
+      <spirit:description>GPIO Port 6 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>6</spirit:left>
+              <spirit:right>6</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_7_Master</spirit:name>
+      <spirit:description>GPIO Port 7 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>7</spirit:left>
+              <spirit:right>7</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_8_Master</spirit:name>
+      <spirit:description>GPIO Port 8 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>8</spirit:left>
+              <spirit:right>8</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_9_Master</spirit:name>
+      <spirit:description>GPIO Port 9 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>9</spirit:left>
+              <spirit:right>9</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_10_Master</spirit:name>
+      <spirit:description>GPIO Port 10 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>10</spirit:left>
+              <spirit:right>10</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_11_Master</spirit:name>
+      <spirit:description>GPIO Port 11 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>11</spirit:left>
+              <spirit:right>11</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_12_Master</spirit:name>
+      <spirit:description>GPIO Port 12 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>12</spirit:left>
+              <spirit:right>12</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_13_Master</spirit:name>
+      <spirit:description>GPIO Port 13 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>13</spirit:left>
+              <spirit:right>13</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_14_Master</spirit:name>
+      <spirit:description>GPIO Port 14 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>14</spirit:left>
+              <spirit:right>14</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>interrupt_GPIOINT_15_Master</spirit:name>
+      <spirit:description>GPIO Port 15 interrupt</spirit:description>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt" spirit:version="r0p0_0"/>
+      <spirit:abstractionType spirit:vendor="arm.com" spirit:library="generic" spirit:name="interrupt_rtl" spirit:version="r0p0_0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>IRQ</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>GPIOINT</spirit:name>
+            <spirit:vector>
+              <spirit:left>15</spirit:left>
+              <spirit:right>15</spirit:right>
+            </spirit:vector>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>FCLK</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
+  <spirit:memoryMaps>
+    <spirit:memoryMap>
+      <spirit:name>AHBLiteTarget_SLAVE_MM</spirit:name>
+      <spirit:description>Memory map for AHBLiteTarget_SLAVE</spirit:description>
+      <spirit:addressBlock>
+        <spirit:name>cmsdk_ahb_gpio_Register_AddressBlock</spirit:name>
+        <spirit:baseAddress>0x0</spirit:baseAddress>
+        <spirit:range>4124</spirit:range>
+        <spirit:width>32</spirit:width>
+        <spirit:usage>register</spirit:usage>
+        <spirit:register>
+          <spirit:name>DATA</spirit:name>
+          <spirit:displayName>DATA</spirit:displayName>
+          <spirit:description>Data value</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x0000</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>read_data</spirit:name>
+            <spirit:displayName>read_data</spirit:displayName>
+            <spirit:description>Sampled at pin. Read back value goes through double flip-flop</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>write_data</spirit:name>
+            <spirit:displayName>write_data</spirit:displayName>
+            <spirit:description>To data output register</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>write-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>DATOUT</spirit:name>
+          <spirit:displayName>DATOUT</spirit:displayName>
+          <spirit:description>Data output register value</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x0004</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>read_data</spirit:name>
+            <spirit:displayName>read_data</spirit:displayName>
+            <spirit:description>Current value of data output register</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>write_data</spirit:name>
+            <spirit:displayName>write_data</spirit:displayName>
+            <spirit:description>To data output register.</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>write-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>OUTENSET</spirit:name>
+          <spirit:displayName>OUTENSET</spirit:displayName>
+          <spirit:description>Output enable set</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x0010</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>output_enable</spirit:name>
+            <spirit:displayName>output_enable</spirit:displayName>
+            <spirit:description>Set output enables</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>OUTENCLR</spirit:name>
+          <spirit:displayName>OUTENCLR</spirit:displayName>
+          <spirit:description>Output enable clear</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x0014</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>output_enable_clear</spirit:name>
+            <spirit:displayName>output_enable_clear</spirit:displayName>
+            <spirit:description>Clear output enables</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>ALTFUNCSET</spirit:name>
+          <spirit:displayName>ALTFUNCSET</spirit:displayName>
+          <spirit:description>Alternative function set</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x0018</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>alternate_function_set</spirit:name>
+            <spirit:displayName>alternate_function_set</spirit:displayName>
+            <spirit:description>Set alternative functions</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>ALTFUNCCLR</spirit:name>
+          <spirit:displayName>ALTFUNCCLR</spirit:displayName>
+          <spirit:description>Alternative function clear</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x001C</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>alternate_function_clear</spirit:name>
+            <spirit:displayName>alternate_function_clear</spirit:displayName>
+            <spirit:description>Clear alternative functions</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>INTENSET</spirit:name>
+          <spirit:displayName>INTENSET</spirit:displayName>
+          <spirit:description>Interrupt enable set</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x0020</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>interrupt_enable</spirit:name>
+            <spirit:displayName>interrupt_enable</spirit:displayName>
+            <spirit:description>Enable interrupts</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>INTENCLR</spirit:name>
+          <spirit:displayName>INTENCLR</spirit:displayName>
+          <spirit:description>Interrupt enable clear</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x0024</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>interrupt_enable_clear</spirit:name>
+            <spirit:displayName>interrupt_enable_clear</spirit:displayName>
+            <spirit:description>Clear interrupts</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>INTTYPESET</spirit:name>
+          <spirit:displayName>INTTYPESET</spirit:displayName>
+          <spirit:description>Interrupt type set</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x0028</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>set_irq_type</spirit:name>
+            <spirit:displayName>set_irq_type</spirit:displayName>
+            <spirit:description>Set interrupt types</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>INTTYPECLR</spirit:name>
+          <spirit:displayName>INTTYPECLR</spirit:displayName>
+          <spirit:description>Interrupt type clear</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x002C</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>clear_irq_type</spirit:name>
+            <spirit:displayName>clear_irq_type</spirit:displayName>
+            <spirit:description>Clear interrupt types</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>INTPOLSET</spirit:name>
+          <spirit:displayName>INTPOLSET</spirit:displayName>
+          <spirit:description>Polarity-level, edge IRQ configuration</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x0030</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>set_irq_polarity_level</spirit:name>
+            <spirit:displayName>set_irq_polarity_level</spirit:displayName>
+            <spirit:description>Set interrupt polarity levels</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>INTPOLCLR</spirit:name>
+          <spirit:displayName>INTPOLCLR</spirit:displayName>
+          <spirit:description>Polarity-level, edge IRQ configuration clear</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x0034</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>clear_irq_polarity_level</spirit:name>
+            <spirit:displayName>clear_irq_polarity_level</spirit:displayName>
+            <spirit:description>Clear interrupt polarity levels</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>INTSTATUS</spirit:name>
+          <spirit:displayName>INTSTATUS</spirit:displayName>
+          <spirit:description>Interrupt status/clear register</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0x0038</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0000</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>read_irq_status</spirit:name>
+            <spirit:displayName>read_irq_status</spirit:displayName>
+            <spirit:description>Interrup Status</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>MASKLOWBYTE</spirit:name>
+          <spirit:displayName>MASKLOWBYTE</spirit:displayName>
+          <spirit:description>Lower eight bits masked access. Bits[9:2] of the</spirit:description>
+          <spirit:dim>256</spirit:dim>
+          <spirit:addressOffset>0x0400</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>lower_enable_mask</spirit:name>
+            <spirit:displayName>lower_enable_mask</spirit:displayName>
+            <spirit:description>Lower enable mask</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>8</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>MASKHIGHBYTE</spirit:name>
+          <spirit:displayName>MASKHIGHBYTE</spirit:displayName>
+          <spirit:description>Higher eight bits masked access. Bits[9:2] of the</spirit:description>
+          <spirit:dim>256</spirit:dim>
+          <spirit:addressOffset>0x0800</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-write</spirit:access>
+          <spirit:reset>
+            <spirit:value>0</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>higher_enable_mask</spirit:name>
+            <spirit:displayName>higher_enable_mask</spirit:displayName>
+            <spirit:description>Higher enable mask</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>8</spirit:bitWidth>
+            <spirit:access>read-write</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_7_0</spirit:name>
+            <spirit:displayName>Reserved_7_0</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>8</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_16</spirit:name>
+            <spirit:displayName>Reserved_31_16</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>16</spirit:bitOffset>
+            <spirit:bitWidth>16</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>PID4</spirit:name>
+          <spirit:displayName>PID4</spirit:displayName>
+          <spirit:description>Peripheral ID Register 4</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFD0</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x04</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>block_count</spirit:name>
+            <spirit:displayName>block_count</spirit:displayName>
+            <spirit:description>4KB block count</spirit:description>
+            <spirit:bitOffset>4</spirit:bitOffset>
+            <spirit:bitWidth>4</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>jep106_c_code</spirit:name>
+            <spirit:displayName>jep106_c_code</spirit:displayName>
+            <spirit:description>jep106_c_code</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>4</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>PID5</spirit:name>
+          <spirit:displayName>PID5</spirit:displayName>
+          <spirit:description>Peripheral ID Register 5</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFD4</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x00</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>PID5</spirit:name>
+            <spirit:displayName>PID5</spirit:displayName>
+            <spirit:description>Peripheral ID Register 5</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>8</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>PID6</spirit:name>
+          <spirit:displayName>PID6</spirit:displayName>
+          <spirit:description>Peripheral ID Register 6</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFD8</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x00</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>PID6</spirit:name>
+            <spirit:displayName>PID6</spirit:displayName>
+            <spirit:description>Peripheral ID Register 6</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>8</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>PID7</spirit:name>
+          <spirit:displayName>PID7</spirit:displayName>
+          <spirit:description>Peripheral ID Register 7</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFDC</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x00</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>PID7</spirit:name>
+            <spirit:displayName>PID7</spirit:displayName>
+            <spirit:description>Peripheral ID Register 7</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>8</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>PID0</spirit:name>
+          <spirit:displayName>PID0</spirit:displayName>
+          <spirit:description>Peripheral ID Register 0</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFE0</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x21</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>part_num</spirit:name>
+            <spirit:displayName>part_num</spirit:displayName>
+            <spirit:description>Part number[7:0]</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>8</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>PID1</spirit:name>
+          <spirit:displayName>PID1</spirit:displayName>
+          <spirit:description>Peripheral ID Register 1</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFE4</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0xB8</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>jep106_id_3_0</spirit:name>
+            <spirit:displayName>jep106_id_3_0</spirit:displayName>
+            <spirit:description>jep106_id_3_0</spirit:description>
+            <spirit:bitOffset>4</spirit:bitOffset>
+            <spirit:bitWidth>4</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>part_num</spirit:name>
+            <spirit:displayName>part_num</spirit:displayName>
+            <spirit:description>Part number[11:8]</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>4</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>PID2</spirit:name>
+          <spirit:displayName>PID2</spirit:displayName>
+          <spirit:description>Peripheral ID Register 2</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFE8</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x1B</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>revision_num</spirit:name>
+            <spirit:displayName>revision_num</spirit:displayName>
+            <spirit:description>Revision</spirit:description>
+            <spirit:bitOffset>4</spirit:bitOffset>
+            <spirit:bitWidth>4</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>jedec_used</spirit:name>
+            <spirit:displayName>jedec_used</spirit:displayName>
+            <spirit:description>jedec_used</spirit:description>
+            <spirit:bitOffset>3</spirit:bitOffset>
+            <spirit:bitWidth>1</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>jep106_id_6_4</spirit:name>
+            <spirit:displayName>jep106_id_6_4</spirit:displayName>
+            <spirit:description>jep106_id_6_4</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>3</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31..8</spirit:name>
+            <spirit:displayName>Reserved_31..8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>PID3</spirit:name>
+          <spirit:displayName>PID3</spirit:displayName>
+          <spirit:description>Peripheral ID Register 3</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFEC</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x00</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>eco_rev_num</spirit:name>
+            <spirit:displayName>eco_rev_num</spirit:displayName>
+            <spirit:description>ECO revision number</spirit:description>
+            <spirit:bitOffset>4</spirit:bitOffset>
+            <spirit:bitWidth>4</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>customer_mod_num</spirit:name>
+            <spirit:displayName>customer_mod_num</spirit:displayName>
+            <spirit:description>Customer Modification Number</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>4</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>CID0</spirit:name>
+          <spirit:displayName>CID0</spirit:displayName>
+          <spirit:description>Component ID Register 0</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFF0</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x0D</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>CID0</spirit:name>
+            <spirit:displayName>CID0</spirit:displayName>
+            <spirit:description>Component ID Register 0</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>8</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>CID1</spirit:name>
+          <spirit:displayName>CID1</spirit:displayName>
+          <spirit:description>Component ID Register 1</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFF4</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0xF0</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>CID1</spirit:name>
+            <spirit:displayName>CID1</spirit:displayName>
+            <spirit:description>Component ID Register 1</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>8</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>CID2</spirit:name>
+          <spirit:displayName>CID2</spirit:displayName>
+          <spirit:description>Component ID Register 2</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFF8</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0x05</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>CID2</spirit:name>
+            <spirit:displayName>CID2</spirit:displayName>
+            <spirit:description>Component ID Register 2</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>8</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>CID3</spirit:name>
+          <spirit:displayName>CID3</spirit:displayName>
+          <spirit:description>Component ID Register 3</spirit:description>
+          <spirit:dim>1</spirit:dim>
+          <spirit:addressOffset>0xFFC</spirit:addressOffset>
+          <spirit:size>32</spirit:size>
+          <spirit:access>read-only</spirit:access>
+          <spirit:reset>
+            <spirit:value>0xB1</spirit:value>
+          </spirit:reset>
+          <spirit:field>
+            <spirit:name>CID3</spirit:name>
+            <spirit:displayName>CID3</spirit:displayName>
+            <spirit:description>Component ID Register 3</spirit:description>
+            <spirit:bitOffset>0</spirit:bitOffset>
+            <spirit:bitWidth>8</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+          <spirit:field>
+            <spirit:name>Reserved_31_8</spirit:name>
+            <spirit:displayName>Reserved_31_8</spirit:displayName>
+            <spirit:description>Reserved</spirit:description>
+            <spirit:bitOffset>8</spirit:bitOffset>
+            <spirit:bitWidth>24</spirit:bitWidth>
+            <spirit:access>read-only</spirit:access>
+          </spirit:field>
+        </spirit:register>
+      </spirit:addressBlock>
+    </spirit:memoryMap>
+  </spirit:memoryMaps>
+  <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>RTL</spirit:name>
+        <spirit:description>RTL view</spirit:description>
+        <spirit:envIdentifier>verilogSource:*Simulation:</spirit:envIdentifier>
+        <spirit:envIdentifier>verilogSource:*Synthesis:</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>cmsdk_ahb_gpio</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>RTL</spirit:localName>
+        </spirit:fileSetRef>
+      </spirit:view>
+    </spirit:views>
+    <spirit:ports>
+      <spirit:port>
+        <spirit:name>HCLK</spirit:name>
+        <spirit:description>system bus clock</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HRESETn</spirit:name>
+        <spirit:description>system bus reset</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>FCLK</spirit:name>
+        <spirit:description>system bus clock</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HSEL</spirit:name>
+        <spirit:description>AHB peripheral select</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HREADY</spirit:name>
+        <spirit:description>AHB ready input</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HTRANS</spirit:name>
+        <spirit:description>AHB transfer type</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left>1</spirit:left>
+            <spirit:right>0</spirit:right>
+          </spirit:vector>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HSIZE</spirit:name>
+        <spirit:description>AHB hsize</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left>2</spirit:left>
+            <spirit:right>0</spirit:right>
+          </spirit:vector>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HWRITE</spirit:name>
+        <spirit:description>AHB hwrite</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HADDR</spirit:name>
+        <spirit:description>AHB address bus</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left>11</spirit:left>
+            <spirit:right>0</spirit:right>
+          </spirit:vector>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HWDATA</spirit:name>
+        <spirit:description>AHB write data bus</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left>31</spirit:left>
+            <spirit:right>0</spirit:right>
+          </spirit:vector>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>ECOREVNUM</spirit:name>
+        <spirit:description>Engineering-change-order revision bits</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left>3</spirit:left>
+            <spirit:right>0</spirit:right>
+          </spirit:vector>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>PORTIN</spirit:name>
+        <spirit:description>GPIO Interface input</spirit:description>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left>15</spirit:left>
+            <spirit:right>0</spirit:right>
+          </spirit:vector>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HREADYOUT</spirit:name>
+        <spirit:description>AHB ready output to S-&gt;M mux</spirit:description>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HRESP</spirit:name>
+        <spirit:description>AHB response</spirit:description>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HRDATA</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left>31</spirit:left>
+            <spirit:right>0</spirit:right>
+          </spirit:vector>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>PORTOUT</spirit:name>
+        <spirit:description>GPIO output</spirit:description>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left>15</spirit:left>
+            <spirit:right>0</spirit:right>
+          </spirit:vector>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>PORTEN</spirit:name>
+        <spirit:description>GPIO output enable</spirit:description>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left>15</spirit:left>
+            <spirit:right>0</spirit:right>
+          </spirit:vector>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>PORTFUNC</spirit:name>
+        <spirit:description>Alternate function control</spirit:description>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left>15</spirit:left>
+            <spirit:right>0</spirit:right>
+          </spirit:vector>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>GPIOINT</spirit:name>
+        <spirit:description>Interrupt output for each pin</spirit:description>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left>15</spirit:left>
+            <spirit:right>0</spirit:right>
+          </spirit:vector>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>COMBINT</spirit:name>
+        <spirit:description>Combined interrupt</spirit:description>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>HBURST</spirit:name>
+        <spirit:wire>
+          <spirit:direction>phantom</spirit:direction>
+        </spirit:wire>
+      </spirit:port>
+    </spirit:ports>
+    <spirit:modelParameters>
+      <spirit:modelParameter>
+        <spirit:name>ALTERNATE_FUNC_MASK</spirit:name>
+        <spirit:description>Alternate function bit mask. Indicates which ports can have an alternate function instead of GPIO logic. Default 16&apos;hFFFF so all ports can have alternate functions</spirit:description>
+        <spirit:value spirit:id="ALTERNATE_FUNC_MASK" spirit:resolve="user" spirit:format="long" spirit:configGroups="requiredConfig" spirit:prompt="Alternate function bit mask. Indicates which ports can have an alternate function instead of GPIO logic." spirit:minimum="0" spirit:maximum="65535">65535</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter>
+        <spirit:name>ALTERNATE_FUNC_DEFAULT</spirit:name>
+        <spirit:description>Alternate function default value. Indicates which ports are used with alternate function. Default 16&apos;h0000 so all pins are used as GPIO</spirit:description>
+        <spirit:value spirit:id="ALTERNATE_FUNC_DEFAULT" spirit:resolve="user" spirit:format="long" spirit:configGroups="requiredConfig" spirit:prompt="Alternate function default value. Indicates which ports are used with alternate function." spirit:minimum="0" spirit:maximum="65535">0</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter>
+        <spirit:name>BE</spirit:name>
+        <spirit:description>Big-endian (1) or little-endian (0)</spirit:description>
+        <spirit:value spirit:id="BE" spirit:resolve="user" spirit:format="long" spirit:configGroups="requiredConfig" spirit:prompt="Big-endian (1) or little-endian (0)" spirit:choiceRef="littleBigEndian">0</spirit:value>
+      </spirit:modelParameter>
+    </spirit:modelParameters>
+  </spirit:model>
+  <spirit:choices>
+    <spirit:choice>
+      <spirit:name>littleBigEndian</spirit:name>
+      <spirit:enumeration spirit:text="Little-endian">0</spirit:enumeration>
+      <spirit:enumeration spirit:text="Big-endian">1</spirit:enumeration>
+    </spirit:choice>
+  </spirit:choices>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>RTL</spirit:name>
+      <spirit:description>This fileset describes the synthesizable RTL source files for this component</spirit:description>
+      <spirit:file>
+        <spirit:name>../../cmsdk_iop_gpio/verilog/cmsdk_iop_gpio.v</spirit:name>
+        <spirit:fileType>verilogSource-2001</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../verilog/cmsdk_ahb_to_iop.v</spirit:name>
+        <spirit:fileType>verilogSource-2001</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../verilog/cmsdk_ahb_gpio.v</spirit:name>
+        <spirit:fileType>verilogSource-2001</spirit:fileType>
+        <spirit:isIncludeFile spirit:externalDeclarations="true">false</spirit:isIncludeFile>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
+  <spirit:description>AHB GPIO</spirit:description>
+</spirit:component>
