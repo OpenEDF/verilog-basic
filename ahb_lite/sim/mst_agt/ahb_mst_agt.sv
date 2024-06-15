@@ -30,6 +30,8 @@
 //       and sequencer instances.
 // Change Log:
 //--------------------------------------------------------------------------
+`ifndef _AHB_MST_AGT_SV_
+`define _AHB_MST_AGT_SV_
 
 //--------------------------------------------------------------------------
 // Include File
@@ -48,6 +50,13 @@ ahb_mst_drv    mst_drv;
 ahb_mst_seqcr  mst_seqr;
 ahb_mst_mon    mst_mon;
 
+extern function new(string name = "ahb_mst_agt", uvm_component parent = null);
+extern function void build_phase(uvm_phase phase);
+extern function void connect_phase(uvm_phase phase);
+extern function void end_of_elaboration_phase(uvm_phase phase);
+
+endclass: ahb_mst_agt
+
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
@@ -65,7 +74,6 @@ function void build_phase(uvm_phase phase);
         mst_drv  = ahb_mst_drv::type_id::create("mst_drv", this);
         mst_seqr = ahb_mst_seqcr::type_id::create("mst_seqr", this);
     end
-
     mst_mon = monitor::type_id::create("mst_mon", this);
 endfunction
 
@@ -77,22 +85,8 @@ function void connect_phase(uvm_phase phase);
     if (get_is_active == UVM_ACTIVE) begin
         mst_drv.seq_item_port.connect(mst_seqr.seq_item_export);
     end
-
     /* TODO: rsp_export(sequencer) and rsp_port(driver)*/
 endfunction
 
-//--------------------------------------------------------------------------
-// Design: Report results of the test.
-//--------------------------------------------------------------------------
-virtual function void report_phase(uvm_phase phase);
-    `uvm_info(get_type_name, "IN report_phase...", UVM_LOW);
-endfunction
-
-//--------------------------------------------------------------------------
-// Design: Tie up loose ends.
-//--------------------------------------------------------------------------
-virtual function void final_phase(uvm_phase phase);
-    `uvm_info(get_type_name, "IN final_phase...", UVM_LOW);
-endfunction
-endclass: ahb_mst_agt
+`endif /* _AHB_MST_AGT_SV_ */
 //--------------------------------------------------------------------------

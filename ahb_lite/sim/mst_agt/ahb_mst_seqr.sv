@@ -30,6 +30,8 @@
 //        sequence and driver.
 // Change Log:
 //--------------------------------------------------------------------------
+`ifndef _AHB_MST_SEQR_SV_
+`define _AHB_MST_SEQR_SV_
 
 //--------------------------------------------------------------------------
 // Include File
@@ -44,7 +46,10 @@ class ahb_mst_seqr extends uvm_sequencer#(ahb_mst_tran);
 // Design: declare and register
 //--------------------------------------------------------------------------
 `uvm_component_utils(ahb_mst_seqr)
+extern function new(string name = "ahb_mst_seqr", uvm_component parent = null);
+extern function void build_phase(uvm_phase phase);
 
+endclass:ahb_mst_seqr
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
@@ -59,5 +64,5 @@ function void build_phase(uvm_phase phase);
     super.build_phase(phase);
 endfunction
 
-endclass:ahb_mst_seqr
+`endif /* _AHB_MST_SEQR_SV_ */
 //--------------------------------------------------------------------------

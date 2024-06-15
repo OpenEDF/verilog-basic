@@ -29,10 +29,13 @@
 // Brief: uvm sequence item example
 // Change Log:
 //--------------------------------------------------------------------------
+`ifndef _AHB_MST_TRAN_SV_
+`define _AHB_MST_TRAN_SV_
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
+`include "ahb_type.sv"
 
 //--------------------------------------------------------------------------
 // Class
@@ -43,15 +46,15 @@ class ahb_mst_tran extends uvm_sequence_item;
 // Design: control signal
 //--------------------------------------------------------------------------
 bit               HRESETn;
-rand bit [31:0]   HADDR[];
+rand bit [31:0]   HADDR;
 rand bit hburst_e HBURST;
 rand bit          HMASTLOCK;
 rand bit hport_e  HPORT;
 rand bit hsize_e  HSZIE;
 rand bit htrans_e HTRANS;
-rand bit [31:0]   HWDATA[];
-rand bit          HWRITE;
-bit      [31:0]   HRADTA[];
+rand bit [31:0]   HWDATA;
+rand bit hwrite_e HWRITE;
+bit      [31:0]   HRADTA;
 bit      hready_e HREADY;
 bit      hresp_e  HRESP;
 
@@ -60,15 +63,15 @@ bit      hresp_e  HRESP;
 //--------------------------------------------------------------------------
 `uvm_object_utils_begin(ahb_mst_transaction)
     `uvm_field_int(HRESETn, UVM_ALL_ON)
-    `uvm_field_array_int(HADDR, UVM_ALL_ON)
+    `uvm_field_int(HADDR, UVM_ALL_ON)
     `uvm_field_enum(burst_e,HBURST, UVM_ALL_ON)
     `uvm_field_int(HMASTLOCK, UVM_ALL_ON)
     `uvm_field_int(HPROT, UVM_ALL_ON)
     `uvm_field_enum(hsize_e, HSIZE, UVM_ALL_ON)
-    `uvm_field_array_enum(htrans_e, HTRANS, UVM_ALL_ON)
+    `uvm_field_enum(htrans_e, HTRANS, UVM_ALL_ON)
     `uvm_field_array_int(HWDATA, UVM_ALL_ON)
     `uvm_field_enum(rw_e, HWRITE, UVM_ALL_ON)
-    `uvm_field_array_int(HRDATA, UVM_ALL_ON)
+    `uvm_field_int(HRDATA, UVM_ALL_ON)
     `uvm_field_enum(hready_e,  HREADY, UVM_ALL_ON)
     `uvm_field_enum(hresp_e, HRESP, UVM_ALL_ON)
 `uvm_object_utils_end
@@ -93,4 +96,7 @@ constraint addr_size {
 }
 
 endclass: ahb_mst_transaction 
+
+
+`endif  /* _AHB_MST_TRAN_SV_ */
 //--------------------------------------------z-----------------------------

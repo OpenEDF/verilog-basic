@@ -26,7 +26,7 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: systemverilog define macro 
+// Brief: systemverilog define macro
 // Change Log:
 //--------------------------------------------------------------------------
 `ifdef  _AHB_TYPES_SV_
@@ -40,57 +40,65 @@
 // Define data type
 //--------------------------------------------------------------------------
 //--------------------------------------------------------------------------
-// enum: transfer types 
+// enum: transfer types
 //--------------------------------------------------------------------------
 typedef enum bit [1:0] {
-    IDLE = 2'b00, 
-    BUSY, 
-    NONSEQ, 
+    IDLE = 2'b00,
+    BUSY,
+    NONSEQ,
     SEQ
 } htrans_e;
 
 //--------------------------------------------------------------------------
-// enum: operation types 
+// enum: operation types
 //--------------------------------------------------------------------------
 typedef enum bit {
-    READ, 
+    READ,
     WRITE
 } rw_e;
 
 //--------------------------------------------------------------------------
-// enum: burst signal encoding 
+// enum: burst signal encoding
 //--------------------------------------------------------------------------
 typedef enum bit [2:0] {
-    SINGLE, 
-    INCR, 
-    WRAP4, 
-    INCR4, 
-    WRAP8, 
-    INCR8, 
-    WRAP16, 
+    SINGLE,
+    INCR,
+    WRAP4,
+    INCR4,
+    WRAP8,
+    INCR8,
+    WRAP16,
     INCR16
 } hburst_e;
 
 //--------------------------------------------------------------------------
-// enum: transfer size 
+// enum: transfer size
 //--------------------------------------------------------------------------
 typedef enum bit [2:0] {
-    BYTE, 
-    HALFWORD, 
-    WORD, 
-    DWORD, 
-    WORD4, 
-    WORD8, 
-    WORD16, 
+    BYTE,
+    HALFWORD,
+    WORD,
+    DWORD,
+    WORD4,
+    WORD8,
+    WORD16,
     WORD32
 } hsize_e;
+
+//--------------------------------------------------------------------------
+// enum: read and write opeartion type
+//--------------------------------------------------------------------------
+typedef enum bit {
+    READ,
+    WRITE
+} hwrite_e;
 
 //--------------------------------------------------------------------------
 // enum: response type
 //--------------------------------------------------------------------------
 typedef enum bit {
-    OKAY, 
-    ERROR 
+    OKAY,
+    ERROR
 } hresp_e;
 
 //--------------------------------------------------------------------------
@@ -101,5 +109,5 @@ typedef enum bit {
     READY
 } hready_e;
 
-`endif _AHB_TYPES_SV_ 
+`endif _AHB_TYPES_SV_
 //--------------------------------------------------------------------------

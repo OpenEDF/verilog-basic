@@ -31,10 +31,13 @@
 //        format.
 // Change Log:
 //--------------------------------------------------------------------------
+`ifndef _AHB_MST_MON_
+`define _AHB_MST_MON_
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
+`include "ahb_type.sv"
 
 //--------------------------------------------------------------------------
 // Class
@@ -44,11 +47,17 @@ class ahb_mst_mon extends uvm_monitor;
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-virtual ahb_mst_intf vif;
+virtual ahb_mst_intf ahb_vif;
 uvm_analysis_port #(ahb_mst_tran) item_collect_port;
 ahb_mst_tran mon_tran;
 `uvm_component_utils(ahb_mst_mon)
 
+extern function new(string name = "ahb_mst_mon", uvm_component parent = null);
+extern function void build_phase(uvm_phase phase);
+extern task run_phase(uvm_phase phase);
+extern task do_monitor(uvm_phase phase);
+
+endclass: ahb_mst_mon
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
@@ -63,7 +72,7 @@ endfunction
 //--------------------------------------------------------------------------
 function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "vif", vif))
+    if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "vif", ahb_vif))
         `uvm_fatal(get_type_name(), "vif not set the top level!")
 endfunction
 
@@ -71,13 +80,60 @@ endfunction
 // Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
 task run_phase(uvm_phase phase);
-    forever begin
-        /* signal from DUT module */
-
-        /* send specified value to all connected interface */
-        item_collect_port.write(mon_tran);
-    end
+    super.run_phase(phase);
+    /* run monitor */
+    fork
+        do_monitor();
+    join
 endtask
 
-endclass: ahb_mst_mon
+//--------------------------------------------------------------------------
+// Design: monitor the dtu signal
+//--------------------------------------------------------------------------
+task do_monitor(uvm_phase phase);
+    forever begin
+        `uvm_info(get_type_name(), "starting monitor transaction...", UVM_LOW);
+        /* wait reset is high */
+        do
+            @(ahb_vif.master_mon.mst_mon_cb);
+        while(!ahb_vif.master_mon.HRESETn);
+
+        /* monitor signal from DUT module */
+        /* monitor address phase */
+        do
+            @(ahb_vif.master_mon.mst_mon_cb);
+        while(!ahb_vif.master_mon.mst_mon_cb.HREADY)
+        mon_tran.HADDR     = ahb_vif.master_mon.mst_mon_cb.HADDR;
+        mon_tran.HBURST    = ahb_vif.master_mon.mst_mon_cb.HBURST;
+        mon_tran.HMASTLOCK = ahb_vif.master_mon.mst_mon_cb.HMASTLOCK;
+        mon_tran.HPORT     = ahb_vif.master_mon.mst_mon_cb.HPORT;
+        mon_tran.HSZIE     = ahb_vif.master_mon.mst_mon_cb.HSZIE;
+        mon_tran.HTRANS    = ahb_vif.master_mon.mst_mon_cb.HTRANS;
+        mon_tran.HWRITE    = ahb_vif.master_mon.mst_mon_cb.HREADY;
+
+        /* monitor data phase */
+        do
+            @(ahb_vif.master_mon.mst_mon_cb);
+        while(!ahb_vif.master_mon.mst_mon_cb.HREADY)
+        if (ahb_vif.master_mon.mst_mon_cb.HWRITE) begin
+            mon_tran.HWDATA    = ahb_vif.master_mon.mst_mon_cb.HWDATA;
+            mon_tran.HRDATA    = 0;
+        end else begin
+            mon_tran.HWDATA    = 0;
+            mon_tran.HRDATA    = master_mon.mst_mon_cb.HRDATA;
+        end
+        mon_tran.HREADY    = ahb_vif.master_mon.mst_mon_cb.HREADY;
+        mon_tran.HRESP     = ahb_vif.master_mon.mst_mon_cb.HRESP;
+
+        /* send specified value to all connected interface */
+        `uvm_info(get_type_name(), "completed monitor transaction...", UVM_LOW);
+        `uvm_info(get_type_name(), {"\n", mon_tran.sprint()}, UVM_HIGH);
+
+        /* send data to analysis port */
+        item_collect_port.write(mon_tran);
+    end
+
+endtask
+
+`endif /* _AHB_MST_MON_ */
 //--------------------------------------------------------------------------

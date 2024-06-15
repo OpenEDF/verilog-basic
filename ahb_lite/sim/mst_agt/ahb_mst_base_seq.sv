@@ -29,6 +29,8 @@
 // Brief: uvm sequence
 // Change Log:
 //--------------------------------------------------------------------------
+`ifndef _AHB_MST_BASE_SEQ_SV_
+`define _AHB_MST_BASE_SEQ_SV_
 
 //--------------------------------------------------------------------------
 // Include File
@@ -44,6 +46,10 @@ class ahb_mst_base_seq extends uvm_sequence#(ahb_mst_tran);
 //--------------------------------------------------------------------------
 ahb_mst_tran req;
 `uvm_object_utils(ahb_mst_base_seq);
+
+extern function new(string name = "ahb_mst_base_seq");
+extern task body();
+endclass: ahb_mst_base_seq
 
 //--------------------------------------------------------------------------
 // Design: new
@@ -71,5 +77,5 @@ task body();
     //`uvm_do_with(req, {ina == 10;});
 endtask
 
-endclass: ahb_mst_base_seq
+`endif /* _AHB_MST_BASE_SEQ_SV_ */
 //--------------------------------------------------------------------------

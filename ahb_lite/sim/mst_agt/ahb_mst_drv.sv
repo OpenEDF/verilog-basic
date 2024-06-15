@@ -30,10 +30,13 @@
 //        as a pin-level activity using an interface.
 // Change Log:
 //--------------------------------------------------------------------------
+`ifndef _AHB_MST_DRV_
+`define _AHB_MST_DRV_
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
+`include "ahb_type.sv"
 
 //--------------------------------------------------------------------------
 // Class
@@ -43,36 +46,98 @@ class ahb_mst_drv extends uvm_driver#(ahb_mst_tran);
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-virtual ahb_mst_intf vif;
+virtual ahb_mst_intf ahb_vif;
 `uvm_component_utils(ahb_mst_drv)
+
+//--------------------------------------------------------------------------
+// Design: extern method
+//--------------------------------------------------------------------------
+extern function new(string name = "ahb_mst_drv", uvm_component parent = null);
+extern function void build_phase(uvm_phase phase);
+extern task run_phase(uvm_phase phase);
+extern task driver(void);
+
+endclass: ahb_mst_drv
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "ahb_mst_drv", uvm_component parent = null);
+function ahb_mst_drv::new(string name = "ahb_mst_drv", uvm_component parent = null);
     super.new(name, parent);
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: build phase: create and configure of testbench structure
 //--------------------------------------------------------------------------
-function void build_phase(uvm_phase phase);
+function void ahb_mst_drv::build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "vif", vif))
+    if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "vif", ahb_vif))
         `uvm_fatal(get_type_name(), "vif not set the top level!");
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
-task run_phase(uvm_phase phase);
+task ahb_mst_intf::run_phase(uvm_phase phase);
     forever begin
-        ahb_mst_tran_port.get_next_item(req);
-        `uvm_info(get_type_name, {"\n", req.sprint()}, UVM_LOW);
-        ahb_mst_tran_port.item_done(req);
-        `uvm_info(get_type_name(), "After item_done call", UVM_LOW);
+        seq_item_port.get_next_item(req);
+        `uvm_info(get_type_name, {"\n", req.sprint()}, UVM_HIGH);
+
+        /* driver dtu */
+        driver();
+
+        seq_item_port.item_done(req); /* TODO: processor response and rsp */
+        `uvm_info(get_type_name(), "after item_done call", UVM_LOW);
+        `uvm_info(get_type_name(), "Completed transaction...",UVM_LOW);
     end
 endtask
 
-endclass: ahb_mst_drv
+//--------------------------------------------------------------------------
+// Design: run phase: driver the DTU
+//--------------------------------------------------------------------------
+task ahb_mst_intf::driver(void);
+    /* wait reset is high */
+    do
+        @(ahb_vif.master_drv.mst_drv_cb);
+    while(!ahb_vif.master_drv.HRESETn);
+    /* address phase */
+    ahb_vif.master_drv.mst_drv_cb.HADDR  = req.HADDR;
+    ahb_vif.master_drv.mst_drv_cb.HWRITE = req.HWRITE;
+    ahb_vif.master_drv.mst_drv_cb.HTRANS = req.HTRANS;
+    ahb_vif.master_drv.mst_drv_cb.HSIZE  = req.HSIZE;
+    ahb_vif.master_drv.mst_drv_cb.HBURST = req.HBURST; /* TODO: process brust data */
+    ahb_vif.master_drv.mst_drv_cb.HPORT  = req.HPORT;
+    ahb_vif.master_drv.mst_drv_cb.HMASTERLOCK = req.HMASTERLOCK;
+
+    /* wait address phase ready */
+    do
+        @(ahb_vif.master_drv.mst_drv_cb);
+    while(!ahb_vif.master_drv.mst_drv_cb.HREADY)
+    `uvm_info(get_type_name(), "address phase ready...",UVM_LOW);
+    case(req.HWRITE)
+        /* read */
+        ahb_mst_tran::READ: begin
+            ahb_vif.master_drv.mst_drv_cb.HWDATA = 0;
+            req.HRDATA = ahb_vif.master_drv.mst_drv_cb.HRDATA;
+        end
+        /* write */
+        ahb_mst_tran::WRITE: begin
+            ahb_vif.master_drv.mst_drv_cb.HWDATA = req.HWDATA;
+            req.HRDATA = 0;
+        end
+    endcase
+
+    /* wait data phase ready */
+    while(!ahb_vif.master_drv.mst_drv_cb.HREADY) begin
+        @(ahb_vif.master_drv.mst_drv_cb);
+    end
+    `uvm_info(get_type_name(), "data phase ready...",UVM_LOW);
+
+    /* response */
+    req.HRESP  = ahb_vif.master_drv.mst_drv_cb.HRESP;
+    req.HREADY = ahb_vif.master_drv.mst_drv_cb.HREADY;
+
+endtask
+
+`endif /* _AHB_MST_DRV_ */
 //--------------------------------------------------------------------------
