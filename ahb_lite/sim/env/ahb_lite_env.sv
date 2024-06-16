@@ -26,83 +26,64 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: The testbench top is a static container that has an instantiation of
-//        DUT and interfaces.
+// Brief: An environment provides a container for agents, scoreboards, and
+//        other verification components.
 // Change Log:
 //--------------------------------------------------------------------------
+`ifndef _AHB_LITE_ENV_
+`define _AHB_LITE_ENV_
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`include "uvm_macros.svh"
-import uvm_pkg::*;
-import ahb_lite_pkg::*;
 
 //--------------------------------------------------------------------------
-// Module
+// Class
 //--------------------------------------------------------------------------
-module tb_top;
-bit hclk;
-parameter SYSTEM_CLK_CYCLE = 10;
+class ahb_lite_env extends uvm_env;
 
 //--------------------------------------------------------------------------
-// Design: initial clk
+// Design: declare and register
 //--------------------------------------------------------------------------
-initial begin
-    hclk = 1;
-    forever #(SYSTEM_CLK_CYCLE / 2) hclk = ~hclk;
-end
+`uvm_component_utils(env)
+ahb_mst_agt          mst_agt;
+ahb_lite_scoreboard  ahb_lite_sb;
+ahb_lite_coverage    ahb_lite_cov;
 
 //--------------------------------------------------------------------------
-// Design: instance module interface
+// Design: declare method 
 //--------------------------------------------------------------------------
-ahb_mst_intf ahb_vif (hclk);
+extern function new(string name = "ahb_lite_env", uvm_component parent = null);
+extern function void build_phase(uvm_phase phase);
+extern function void connect_phase(uvm_phase phase);
+
+endclass: ahb_lite_env
 
 //--------------------------------------------------------------------------
-// Design: instance top module
+// Design: new
 //--------------------------------------------------------------------------
-ahb_lite_top ahb_lite_top_u0
-(
-    // global inputs
-    .HCLK            (hclk                    ), // input
-    .HRESETn         (ahb_vif.HRESETn         ), // input
-
-    // AHB master inputs
-    .m0_haddr        (ahb_vif.HADDR           ), // input
-    .m0_hwrite       (ahb_vif.HWRITE          ), // input
-    .m0_hsize        (ahb_vif.HSIZE           ), // input
-    .m0_hburst       (ahb_vif.HBURST          ), // input
-    .m0_hport        (ahb_vif.HPORT           ), // input
-    .m0_htrans       (ahb_vif.HTRANS          ), // input
-    .m0_hmasterlock  (ahb_vif.HMASTERLOCK     ), // input
-    .m0_hwdata       (ahb_vif.HWDATA          ), // input
-
-    //custom master outputs
-    .m0_hready       (ahb_vif.HREADY          ), // output
-    .m0_hresp        (ahb_vif.HRESP           ), // output
-    .m0_rdata        (ahb_vif.HRDATA          )  // output
-);
+function ahb_lite_env::new(string name = "env", uvm_component parent = null);
+    super.new(name, parent);
+endfunction
 
 //--------------------------------------------------------------------------
-// Design: set interface in config db
+// Design: build phase: create and configure of testbench structure
 //--------------------------------------------------------------------------
-initial begin
-    uvm_config_db#(virtual ahb_mst_intf)::set(uvm_root::get(), "*", "ahb_vif", ahb_vif);
-    $fsdbDumpfile("tb_top.fsdb");
-    $fsdbDumpvars(0, tb_top);
-    /* memory dump */
-    //$fsdbDumpMDA();
-
-    /* assert dump */
-    //$fsdbDumpSVA();
-end
+function void ahb_lite_env::build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    mst_agt = agent::type_id::create("ahb_mst_agt", this);
+    ahb_lite_sb  = scoreboard::type_id::create("ahb_lite_scoreboard", this);
+    ahb_lite_cov = coverage::type_id::create("ahb_lite_coverage", this);
+endfunction
 
 //--------------------------------------------------------------------------
-// Design: uvm run test
+// Design: connect phase: establish cross-componement connections
 //--------------------------------------------------------------------------
-initial begin
-    run_test("ahb_lite_test");
-end
+function void ahb_lite_env::connect_phase(uvm_phase phase);
+    /* monitor ---> scoreboard */
+    mst_agt.mst_mon.item_collect_port.connect(ahb_lite_sb.item_collect_export);
+    mst_agt.mst_mon.item_collect_port.connect(ahb_lite_cov.item_cov_export);
+endfunction
 
-endmodule
+`ednif /* _AHB_LITE_ENV_ */
 //--------------------------------------------------------------------------

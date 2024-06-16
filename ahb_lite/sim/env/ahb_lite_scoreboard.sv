@@ -26,83 +26,75 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: The testbench top is a static container that has an instantiation of
-//        DUT and interfaces.
+// Brief: The UVM scoreboard is a component that checks the functionality of
+//        the DUT. It receives transactions from the monitor using the
+//        analysis export for checking purposes.
 // Change Log:
 //--------------------------------------------------------------------------
+`idndef _AHB_LITE_SCOREBOARD_SV_
+`define _AHB_LITE_SCOREBOARD_SV_
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`include "uvm_macros.svh"
-import uvm_pkg::*;
-import ahb_lite_pkg::*;
 
 //--------------------------------------------------------------------------
-// Module
+// Class
 //--------------------------------------------------------------------------
-module tb_top;
-bit hclk;
-parameter SYSTEM_CLK_CYCLE = 10;
+class ahb_lite_scoreboard extends uvm_scoreboard;
 
 //--------------------------------------------------------------------------
-// Design: initial clk
+// Design: declare and register
 //--------------------------------------------------------------------------
-initial begin
-    hclk = 1;
-    forever #(SYSTEM_CLK_CYCLE / 2) hclk = ~hclk;
-end
+uvm_analysis_imp #(ahb_mst_tran, scoreboard) item_collect_export;
+ahb_mst_tran mst_tran_q[$];
+`uvm_component_utils(ahb_lite_scoreboard)
 
 //--------------------------------------------------------------------------
-// Design: instance module interface
+// Design: declare method 
 //--------------------------------------------------------------------------
-ahb_mst_intf ahb_vif (hclk);
+extern function new(string name = "ahb_lite_scoreboard", uvm_component parent = null);
+extern function void build_phase(uvm_phase phase);
+extern function void write(seq_item req);
+extern task run_phase(uvm_phase phase);
+extern function void report_phase(uvm_phase phase);
+extern function void final_phase(uvm_phase phase);
+ 
+endclass: ahb_lite_scoreboard
+//--------------------------------------------------------------------------
+// Design: new
+//--------------------------------------------------------------------------
+function new(string name = "ahb_lite_scoreboard", uvm_component parent = null);
+    super.new(name, parent);
+    item_collect_export = new("item_collect_export", this);
+endfunction
 
 //--------------------------------------------------------------------------
-// Design: instance top module
+// Design: build phase: create and configure of testbench structure
 //--------------------------------------------------------------------------
-ahb_lite_top ahb_lite_top_u0
-(
-    // global inputs
-    .HCLK            (hclk                    ), // input
-    .HRESETn         (ahb_vif.HRESETn         ), // input
-
-    // AHB master inputs
-    .m0_haddr        (ahb_vif.HADDR           ), // input
-    .m0_hwrite       (ahb_vif.HWRITE          ), // input
-    .m0_hsize        (ahb_vif.HSIZE           ), // input
-    .m0_hburst       (ahb_vif.HBURST          ), // input
-    .m0_hport        (ahb_vif.HPORT           ), // input
-    .m0_htrans       (ahb_vif.HTRANS          ), // input
-    .m0_hmasterlock  (ahb_vif.HMASTERLOCK     ), // input
-    .m0_hwdata       (ahb_vif.HWDATA          ), // input
-
-    //custom master outputs
-    .m0_hready       (ahb_vif.HREADY          ), // output
-    .m0_hresp        (ahb_vif.HRESP           ), // output
-    .m0_rdata        (ahb_vif.HRDATA          )  // output
-);
+function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+endfunction
 
 //--------------------------------------------------------------------------
-// Design: set interface in config db
+// Design: write: receives all transactions boardcasted
 //--------------------------------------------------------------------------
-initial begin
-    uvm_config_db#(virtual ahb_mst_intf)::set(uvm_root::get(), "*", "ahb_vif", ahb_vif);
-    $fsdbDumpfile("tb_top.fsdb");
-    $fsdbDumpvars(0, tb_top);
-    /* memory dump */
-    //$fsdbDumpMDA();
-
-    /* assert dump */
-    //$fsdbDumpSVA();
-end
+function void write(seq_item req);
+    /* Inserts the given item at the back of the queue */
+    item_q.push_back(req);
+endfunction
 
 //--------------------------------------------------------------------------
-// Design: uvm run test
+// Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
-initial begin
-    run_test("ahb_lite_test");
-end
+task run_phase(uvm_phase phase);
+    ahb_mst_tran mst_sb_item;
+    forever begin
+        wait (mst_tran_q.size() > 0);
+        mst_sb_item = mst_tran_q.pop_front();
+        `uvm_info(get_type_name, mst_tran_q.sprintf(), UVM_LOW); 
+    end
+endtask
 
-endmodule
+`endif /* _AHB_LITE_SCOREBOARD_SV_ */
 //--------------------------------------------------------------------------

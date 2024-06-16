@@ -26,83 +26,103 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: The testbench top is a static container that has an instantiation of
-//        DUT and interfaces.
+// Brief: interface connection DUT and driver between
 // Change Log:
 //--------------------------------------------------------------------------
+`ifndef _AHB_MST_INTF_
+`define _AHB_MST_INTF_
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`include "uvm_macros.svh"
-import uvm_pkg::*;
-import ahb_lite_pkg::*;
 
 //--------------------------------------------------------------------------
-// Module
+// Interface
 //--------------------------------------------------------------------------
-module tb_top;
-bit hclk;
-parameter SYSTEM_CLK_CYCLE = 10;
-
+interface ahb_mst_intf (
 //--------------------------------------------------------------------------
-// Design: initial clk
+// Port
 //--------------------------------------------------------------------------
-initial begin
-    hclk = 1;
-    forever #(SYSTEM_CLK_CYCLE / 2) hclk = ~hclk;
-end
-
-//--------------------------------------------------------------------------
-// Design: instance module interface
-//--------------------------------------------------------------------------
-ahb_mst_intf ahb_vif (hclk);
-
-//--------------------------------------------------------------------------
-// Design: instance top module
-//--------------------------------------------------------------------------
-ahb_lite_top ahb_lite_top_u0
-(
-    // global inputs
-    .HCLK            (hclk                    ), // input
-    .HRESETn         (ahb_vif.HRESETn         ), // input
-
-    // AHB master inputs
-    .m0_haddr        (ahb_vif.HADDR           ), // input
-    .m0_hwrite       (ahb_vif.HWRITE          ), // input
-    .m0_hsize        (ahb_vif.HSIZE           ), // input
-    .m0_hburst       (ahb_vif.HBURST          ), // input
-    .m0_hport        (ahb_vif.HPORT           ), // input
-    .m0_htrans       (ahb_vif.HTRANS          ), // input
-    .m0_hmasterlock  (ahb_vif.HMASTERLOCK     ), // input
-    .m0_hwdata       (ahb_vif.HWDATA          ), // input
-
-    //custom master outputs
-    .m0_hready       (ahb_vif.HREADY          ), // output
-    .m0_hresp        (ahb_vif.HRESP           ), // output
-    .m0_rdata        (ahb_vif.HRDATA          )  // output
+    input logic HCLK
 );
 
 //--------------------------------------------------------------------------
-// Design: set interface in config db
+// Design: setup and hold time
 //--------------------------------------------------------------------------
-initial begin
-    uvm_config_db#(virtual ahb_mst_intf)::set(uvm_root::get(), "*", "ahb_vif", ahb_vif);
-    $fsdbDumpfile("tb_top.fsdb");
-    $fsdbDumpvars(0, tb_top);
-    /* memory dump */
-    //$fsdbDumpMDA();
-
-    /* assert dump */
-    //$fsdbDumpSVA();
-end
+parameter setup_time = 3;
+parameter hold_time  = 2;
 
 //--------------------------------------------------------------------------
-// Design: uvm run test
+// Design: bus
 //--------------------------------------------------------------------------
-initial begin
-    run_test("ahb_lite_test");
-end
+logic         HRESETn;
+logic  [31:0] HADDR;
+logic         HWRITE;
+logic  [2:0 ] HSIZE;
+logic  [31:0] HWDATA;
+logic  [1:0 ] HTRANS;
+logic  [2:0 ] HBURST;
+logic  [3:0 ] HPORT;
+logic         HMASTERLOCK;
+logic         HREADY;
+logic         HRESP;
+logic  [31:0] HRDATA;
 
-endmodule
+//--------------------------------------------------------------------------
+// Design: master clocking block 
+//--------------------------------------------------------------------------
+clocking mst_drv_cb @(posedge HCLK);
+    default input #setup_time output #hold_time;
+    input  HRESP;
+    inout  HREADY;
+    input  HRDATA;
+    output HADDR;
+    output HWDATA;
+    output HWRITE;
+    output HTRANS;
+    output HSIZE;
+    output HPORT;
+    output HBURST;
+    output HMASTERLOCK;
+endclocking 
+
+//--------------------------------------------------------------------------
+// Design: master monitor clocking block 
+//--------------------------------------------------------------------------
+clocking mst_mon_cb @(posedge HCLK);
+    default input #setup_time output #hold_time;
+    input  HADDR;
+    input  HWDATA;
+    input  HWRITE;
+    input  HTRANS;
+    input  HSIZE;
+    input  HPORT;
+    input  HBURST;
+    input  HMASTERLOCK;
+    input  HRESP;
+    inout  HREADY;
+    input  HRDATA;
+endclocking
+
+//--------------------------------------------------------------------------
+// Design: master modport 
+//--------------------------------------------------------------------------
+modport master_drv (clocking mst_drv_cb, input HRESETn);
+
+//--------------------------------------------------------------------------
+// Design: master monitor modport 
+//--------------------------------------------------------------------------
+modport master_mon (clocking mst_mon_cb, input HRESETn);
+
+//--------------------------------------------------------------------------
+// Design: assertion
+//--------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------
+// Design: coverage
+//--------------------------------------------------------------------------
+
+endinterface
+
+`endif /* _AHB_MST_INTF_ */
 //--------------------------------------------------------------------------

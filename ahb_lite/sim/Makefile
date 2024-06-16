@@ -5,7 +5,8 @@
 #
 #--------------------------------------------------------------------------
 # test case file
-TEST_FILE = work_list.f
+TEST_FILE = src.lst
+INC_DIR = ../src/+mst_agt/
 UVM_VERBOSITY =	UVM_LOW
 
 # UVM simv Test options
@@ -27,17 +28,18 @@ SIM_FLAGS = +fsdb+force
 ENABLE_UCLI =
 
 # run
-all: clean com sim
+all: clean com 
 # compiler
 com:
 	vcs -sverilog -full64 +v2k \
 		-lca -kdb \
-		-Mupdate -simprofile\
+		-Mupdate \
 		-debug_access+all+reverse \
 		-assert success+enable_diag -R \
 		-ntb_opts $(UVM_VER) \
 		-timescale=1ns/1ns \
 		+define+$(UVM_DEFINES)  \
+		+incdir+$(INC_DIR)      \
 		$(CM) $(CM_NAME) $(CM_DIR) \
 		-top $(TB_TOP) \
 		-f $(TEST_FILE) \

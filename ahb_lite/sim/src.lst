@@ -1,8 +1,18 @@
 # UVM project work file
 # Package
+ahb_lite_pkg.svh
 
 # interface
+inf/ahb_mst_intf.sv
 
 # DTU
+../src/ahb_lite_config.v
+../src/ahb_lite_decoder.v
+../src/ahb_lite_multiplexor.v
+../src/ahb_lite_def_slave.v
+../src/ahb_lite_ram.v
+../src/ahb_lite_rom.v
+../src/ahb_lite_top.v
 
 # testbench_top
+tb_top.sv

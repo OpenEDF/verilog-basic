@@ -26,88 +26,75 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: systemverilog define macro
+// Brief: The UVM subscriber provides an analysis export for receiving
+//        transactions form a connected analysis export.
 // Change Log:
 //--------------------------------------------------------------------------
-`ifdef  _AHB_TYPES_SV_
-`define _AHB_TYPES_SV_
+`idndef _AHB_LITE_COVERAGE_SV_
+`define _AHB_LITE_COVERAGE_SV_
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------
-// Define data type
+// Class
 //--------------------------------------------------------------------------
-//--------------------------------------------------------------------------
-// enum: transfer types
-//--------------------------------------------------------------------------
-typedef enum bit [1:0] {
-    IDLE = 2'b00,
-    BUSY,
-    NONSEQ,
-    SEQ
-} htrans_e;
+class ahb_lite_coverage extends uvm_subscriber#(ahb_mst_tran);
 
 //--------------------------------------------------------------------------
-// enum: operation types
+// Design: declare and register
 //--------------------------------------------------------------------------
-typedef enum bit {
-    READ,
-    WRITE
-} rw_e;
+uvm_analysis_imp #(seq_item, coverage) item_cov_export;
+ahb_mst_tran     mst_tran_cov;
+`uvm_component_utils(ahb_lite_coverage)
 
 //--------------------------------------------------------------------------
-// enum: burst signal encoding
+// Design: declare method 
 //--------------------------------------------------------------------------
-typedef enum bit [2:0] {
-    SINGLE,
-    INCR,
-    WRAP4,
-    INCR4,
-    WRAP8,
-    INCR8,
-    WRAP16,
-    INCR16
-} hburst_e;
+extern function new(string name = "ahb_lite_coverage", uvm_component parent = null);
+extern function void build_phase(uvm_phase phase);
+extern function void write(seq_item t);
+extern function void report_phase(uvm_phase phase);
+
+endclass: ahb_lite_coverage 
+//--------------------------------------------------------------------------
+// Design: coverage
+//--------------------------------------------------------------------------
+covergroup test_coverage;
+    option.comment = "uvm test coverage";
+endgroup: test_coverage
 
 //--------------------------------------------------------------------------
-// enum: transfer size
+// Design: new
 //--------------------------------------------------------------------------
-typedef enum bit [2:0] {
-    BYTE,
-    HALFWORD,
-    WORD,
-    DWORD,
-    WORD4,
-    WORD8,
-    WORD16,
-    WORD32
-} hsize_e;
+function ahb_lite_coverage::new(string name = "coverage", uvm_component parent = null);
+    super.new(name, parent);
+    item_cov_export = new("item_cov_export", this);
+    test_coverage = new();
+endfunction
 
 //--------------------------------------------------------------------------
-// enum: read and write opeartion type
+// Design: build phase: create and configure of testbench structure
 //--------------------------------------------------------------------------
-typedef enum bit {
-    READ,
-    WRITE
-} hwrite_e;
+function void ahb_lite_coverage::build_phase(uvm_phase phase);
+    super.build_phase(phase);
+endfunction
 
 //--------------------------------------------------------------------------
-// enum: response type
+// Design: write: receives all transactions boardcasted
 //--------------------------------------------------------------------------
-typedef enum bit {
-    OKAY,
-    ERROR
-} hresp_e;
+function void ahb_lite_coverage::write(ahb_mst_tran tran);
+    mst_tran_cov = tran; /* assign */
+    test_coverage.sample();
+endfunction
 
 //--------------------------------------------------------------------------
-// enum: hready type
+// Design: report phase: Report results of the test.
 //--------------------------------------------------------------------------
-typedef enum bit {
-    WAIT,
-    READY
-} hready_e;
+function void report_phase(uvm_phase phase);
+    `uvm_info(get_full_name(), $sformatf("coverage is %0.2f%%", test_coverage.get_coverage()), UVM_LOW);
+endfunction
 
-`endif _AHB_TYPES_SV_
+`ednif /* _AHB_LITE_COVERAGE_SV_ */
 //--------------------------------------------------------------------------

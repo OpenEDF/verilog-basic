@@ -26,100 +26,88 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: interface connection DUT and driver between
+// Brief: systemverilog define macro
 // Change Log:
 //--------------------------------------------------------------------------
-`ifdef _AHB_MST_INTF_
-`define _AHB_MST_INTF_
+`ifndef  _AHB_TYPES_SV_
+`define _AHB_TYPES_SV_
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------
-// Interface
+// Define data type
 //--------------------------------------------------------------------------
-interface ahb_mst_intf (
 //--------------------------------------------------------------------------
-// Port
+// enum: transfer types
 //--------------------------------------------------------------------------
-    input logic HCLK
-);
+typedef enum bit [1:0] {
+    IDLE = 2'b00,
+    BUSY,
+    NONSEQ,
+    SEQ
+} htrans_e;
 
 //--------------------------------------------------------------------------
-// Design: setup and hold time
+// enum: operation types
 //--------------------------------------------------------------------------
-parameter setup_time = 3;
-parameter hold_time  = 2;
+typedef enum bit {
+    READ,
+    WRITE
+} rw_e;
 
 //--------------------------------------------------------------------------
-// Design: bus
+// enum: burst signal encoding
 //--------------------------------------------------------------------------
-logic         HRESETn;
-logic         HREADY;
-logic         HWRITE;
-logic  [1:0 ] HRESP;
-logic  [1:0 ] HTRANS;
-logic  [2:0 ] HBURST;
-logic         HMASTERLOCK;
-logic  [2:0 ] HSIZE;
-logic  [31:0] HADDR;
-logic  [31:0] HWDATA;
-logic  [31:0] HRDATA;
+typedef enum bit [2:0] {
+    SINGLE,
+    INCR,
+    WRAP4,
+    INCR4,
+    WRAP8,
+    INCR8,
+    WRAP16,
+    INCR16
+} hburst_e;
 
 //--------------------------------------------------------------------------
-// Design: master clocking block 
+// enum: transfer size
 //--------------------------------------------------------------------------
-clocking mst_drv_cb @(posedge HCLK);
-    default input #setup_time output #hold_time;
-    input  HRESP;
-    inout  HREADY;
-    input  HRDATA;
-    output HADDR;
-    output HWDATA;
-    output HWRITE;
-    output HTRANS;
-    output HSIZE;
-    output HBURST;
-    output HMASTERLOCK;
-endclocking 
+typedef enum bit [2:0] {
+    BYTE,
+    HALFWORD,
+    WORD,
+    DWORD,
+    WORD4,
+    WORD8,
+    WORD16,
+    WORD32
+} hsize_e;
 
 //--------------------------------------------------------------------------
-// Design: master monitor clocking block 
+// enum: read and write opeartion type
 //--------------------------------------------------------------------------
-clocking mst_mon_cb @(posedge HCLK);
-    default input #setup_time output #hold_time;
-    input  HADDR;
-    input  HWDATA;
-    input  HWRITE;
-    input  HTRANS;
-    input  HSIZE;
-    input  HBURST;
-    input  HMASTERLOCK;
-    input  HRESP;
-    inout  HREADY;
-    input  HRDATA;
-endclocking
+typedef enum bit {
+    READ,
+    WRITE
+} hwrite_e;
 
 //--------------------------------------------------------------------------
-// Design: master modport 
+// enum: response type
 //--------------------------------------------------------------------------
-modport master_drv (clocking mst_drv_cb, input HRESETn);
+typedef enum bit {
+    OKAY,
+    ERROR
+} hresp_e;
 
 //--------------------------------------------------------------------------
-// Design: master monitor modport 
+// enum: hready type
 //--------------------------------------------------------------------------
-modport master_mon (clocking mst_mon_cb, input HRESETn);
+typedef enum bit {
+    WAIT,
+    READY
+} hready_e;
 
-//--------------------------------------------------------------------------
-// Design: assertion
-//--------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------
-// Design: coverage
-//--------------------------------------------------------------------------
-
-endinterface
-
-`endif /* _AHB_MST_INTF_ */
+`endif _AHB_TYPES_SV_
 //--------------------------------------------------------------------------

@@ -72,7 +72,7 @@ endfunction
 //--------------------------------------------------------------------------
 function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "vif", ahb_vif))
+    if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "ahb_vif", ahb_vif))
         `uvm_fatal(get_type_name(), "vif not set the top level!")
 endfunction
 

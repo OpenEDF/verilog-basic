@@ -35,7 +35,7 @@
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`include "ahb_type.sv"
+`include "ahb_type.svh"
 
 //--------------------------------------------------------------------------
 // Class
@@ -48,15 +48,15 @@ class ahb_mst_tran extends uvm_sequence_item;
 bit               HRESETn;
 rand bit [31:0]   HADDR;
 rand bit hburst_e HBURST;
-rand bit          HMASTLOCK;
-rand bit hport_e  HPORT;
 rand bit hsize_e  HSZIE;
+rand bit hport_e  HPORT;
+rand bit          HMASTLOCK;
 rand bit htrans_e HTRANS;
 rand bit [31:0]   HWDATA;
 rand bit hwrite_e HWRITE;
-bit      [31:0]   HRADTA;
 bit      hready_e HREADY;
 bit      hresp_e  HRESP;
+bit      [31:0]   HRADTA;
 
 //--------------------------------------------------------------------------
 // Design: utility and field macros
