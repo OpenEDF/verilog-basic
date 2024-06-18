@@ -29,8 +29,8 @@
 // Brief: systemverilog define macro
 // Change Log:
 //--------------------------------------------------------------------------
-`ifndef  _AHB_TYPES_SV_
-`define _AHB_TYPES_SV_
+`ifndef _AHB_TYPE_SV_
+`define _AHB_TYPE_SV_
 
 //--------------------------------------------------------------------------
 // Include File
@@ -48,14 +48,6 @@ typedef enum bit [1:0] {
     NONSEQ,
     SEQ
 } htrans_e;
-
-//--------------------------------------------------------------------------
-// enum: operation types
-//--------------------------------------------------------------------------
-typedef enum bit {
-    READ,
-    WRITE
-} rw_e;
 
 //--------------------------------------------------------------------------
 // enum: burst signal encoding
@@ -109,5 +101,19 @@ typedef enum bit {
     READY
 } hready_e;
 
-`endif _AHB_TYPES_SV_
+//--------------------------------------------------------------------------
+// enum: hport encoding
+//--------------------------------------------------------------------------
+typedef enum bit [3:0] {
+    OPCODE_FETCH   = 4'bxxx0,
+    DATA_ACCESS    = 4'bxxx1,
+    USER_ACCESS    = 4'bxx0x,
+    PRIVILE_ACCESS = 4'bxx1x,
+    NON_BUFFER     = 4'bx0xx,
+    BUFFERABLE     = 4'bx1xx,
+    NON_CACHE      = 4'b0xxx,
+    CACHEABLE      = 4'b1xxx
+} hport_e;
+
+`endif /* _AHB_TYPES_SV_ */
 //--------------------------------------------------------------------------

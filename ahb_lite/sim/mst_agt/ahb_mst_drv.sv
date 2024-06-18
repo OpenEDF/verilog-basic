@@ -36,7 +36,7 @@
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`include "ahb_type.sv"
+`include "ahb_type.svh"
 
 //--------------------------------------------------------------------------
 // Class
@@ -55,7 +55,7 @@ virtual ahb_mst_intf ahb_vif;
 extern function new(string name = "ahb_mst_drv", uvm_component parent = null);
 extern function void build_phase(uvm_phase phase);
 extern task run_phase(uvm_phase phase);
-extern task driver(void);
+extern task driver();
 
 endclass: ahb_mst_drv
 
@@ -78,10 +78,10 @@ endfunction
 //--------------------------------------------------------------------------
 // Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
-task ahb_mst_intf::run_phase(uvm_phase phase);
+task ahb_mst_drv::run_phase(uvm_phase phase);
     forever begin
         seq_item_port.get_next_item(req);
-        `uvm_info(get_type_name, {"\n", req.sprint()}, UVM_HIGH);
+        `uvm_info(get_type_name(), {"\n", req.sprint()}, UVM_HIGH);
 
         /* driver dtu */
         driver();
@@ -95,7 +95,7 @@ endtask
 //--------------------------------------------------------------------------
 // Design: run phase: driver the DTU
 //--------------------------------------------------------------------------
-task ahb_mst_intf::driver(void);
+task ahb_mst_drv::driver();
     /* wait reset is high */
     do
         @(ahb_vif.master_drv.mst_drv_cb);
@@ -112,16 +112,16 @@ task ahb_mst_intf::driver(void);
     /* wait address phase ready */
     do
         @(ahb_vif.master_drv.mst_drv_cb);
-    while(!ahb_vif.master_drv.mst_drv_cb.HREADY)
+    while(!ahb_vif.master_drv.mst_drv_cb.HREADY);
     `uvm_info(get_type_name(), "address phase ready...",UVM_LOW);
     case(req.HWRITE)
         /* read */
-        ahb_mst_tran::READ: begin
+        READ: begin
             ahb_vif.master_drv.mst_drv_cb.HWDATA = 0;
             req.HRDATA = ahb_vif.master_drv.mst_drv_cb.HRDATA;
         end
         /* write */
-        ahb_mst_tran::WRITE: begin
+        WRITE: begin
             ahb_vif.master_drv.mst_drv_cb.HWDATA = req.HWDATA;
             req.HRDATA = 0;
         end

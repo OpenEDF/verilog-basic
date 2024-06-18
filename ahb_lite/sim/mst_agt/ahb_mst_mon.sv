@@ -37,7 +37,7 @@
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`include "ahb_type.sv"
+`include "ahb_type.svh"
 
 //--------------------------------------------------------------------------
 // Class
@@ -55,13 +55,13 @@ ahb_mst_tran mon_tran;
 extern function new(string name = "ahb_mst_mon", uvm_component parent = null);
 extern function void build_phase(uvm_phase phase);
 extern task run_phase(uvm_phase phase);
-extern task do_monitor(uvm_phase phase);
+extern task do_monitor();
 
 endclass: ahb_mst_mon
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "ahb_mst_mon", uvm_component parent = null);
+function ahb_mst_mon::new(string name = "ahb_mst_mon", uvm_component parent = null);
     super.new(name, parent);
     item_collect_port = new("item_collect_port", this);
     mon_tran = new();
@@ -70,7 +70,7 @@ endfunction
 //--------------------------------------------------------------------------
 // Design: build phase: create and configure of testbench structure
 //--------------------------------------------------------------------------
-function void build_phase(uvm_phase phase);
+function void ahb_mst_mon::build_phase(uvm_phase phase);
     super.build_phase(phase);
     if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "ahb_vif", ahb_vif))
         `uvm_fatal(get_type_name(), "vif not set the top level!")
@@ -79,7 +79,7 @@ endfunction
 //--------------------------------------------------------------------------
 // Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
-task run_phase(uvm_phase phase);
+task ahb_mst_mon::run_phase(uvm_phase phase);
     super.run_phase(phase);
     /* run monitor */
     fork
@@ -90,9 +90,10 @@ endtask
 //--------------------------------------------------------------------------
 // Design: monitor the dtu signal
 //--------------------------------------------------------------------------
-task do_monitor(uvm_phase phase);
+task ahb_mst_mon::do_monitor();
     forever begin
         `uvm_info(get_type_name(), "starting monitor transaction...", UVM_LOW);
+        //mon_tran = ahb_mst_tran::type_id::create("pon_tran");
         /* wait reset is high */
         do
             @(ahb_vif.master_mon.mst_mon_cb);
@@ -102,7 +103,7 @@ task do_monitor(uvm_phase phase);
         /* monitor address phase */
         do
             @(ahb_vif.master_mon.mst_mon_cb);
-        while(!ahb_vif.master_mon.mst_mon_cb.HREADY)
+        while(!ahb_vif.master_mon.mst_mon_cb.HREADY);
         mon_tran.HADDR     = ahb_vif.master_mon.mst_mon_cb.HADDR;
         mon_tran.HBURST    = ahb_vif.master_mon.mst_mon_cb.HBURST;
         mon_tran.HMASTLOCK = ahb_vif.master_mon.mst_mon_cb.HMASTLOCK;
@@ -114,7 +115,7 @@ task do_monitor(uvm_phase phase);
         /* monitor data phase */
         do
             @(ahb_vif.master_mon.mst_mon_cb);
-        while(!ahb_vif.master_mon.mst_mon_cb.HREADY)
+        while(!ahb_vif.master_mon.mst_mon_cb.HREADY);
         if (ahb_vif.master_mon.mst_mon_cb.HWRITE) begin
             mon_tran.HWDATA    = ahb_vif.master_mon.mst_mon_cb.HWDATA;
             mon_tran.HRDATA    = 0;

@@ -47,21 +47,21 @@ class ahb_mst_tran extends uvm_sequence_item;
 //--------------------------------------------------------------------------
 bit               HRESETn;
 rand bit [31:0]   HADDR;
-rand bit hburst_e HBURST;
-rand bit hsize_e  HSZIE;
-rand bit hport_e  HPORT;
-rand bit          HMASTLOCK;
-rand bit htrans_e HTRANS;
+rand     hwrite_e HWRITE;
+rand     hsize_e  HSZIE;
 rand bit [31:0]   HWDATA;
-rand bit hwrite_e HWRITE;
-bit      hready_e HREADY;
-bit      hresp_e  HRESP;
+rand     hburst_e HBURST;
+rand     htrans_e HTRANS;
+rand bit          HMASTLOCK;
+rand     hport_e  HPORT;
+         hready_e HREADY;
+         hresp_e  HRESP;
 bit      [31:0]   HRADTA;
 
 //--------------------------------------------------------------------------
 // Design: utility and field macros
 //--------------------------------------------------------------------------
-`uvm_object_utils_begin(ahb_mst_transaction)
+`uvm_object_utils_begin(ahb_mst_tran)
     `uvm_field_int(HRESETn, UVM_ALL_ON)
     `uvm_field_int(HADDR, UVM_ALL_ON)
     `uvm_field_enum(burst_e,HBURST, UVM_ALL_ON)
@@ -95,7 +95,7 @@ constraint addr_size {
     if(HBURST == INCR16 || HBURST == WRAP16) HADDR.size == 16;
 }
 
-endclass: ahb_mst_transaction 
+endclass: ahb_mst_tran
 
 
 `endif  /* _AHB_MST_TRAN_SV_ */
