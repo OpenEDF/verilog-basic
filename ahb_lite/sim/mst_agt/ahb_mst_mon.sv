@@ -104,27 +104,27 @@ task ahb_mst_mon::do_monitor();
         do
             @(ahb_vif.master_mon.mst_mon_cb);
         while(!ahb_vif.master_mon.mst_mon_cb.HREADY);
-        mon_tran.HADDR     = ahb_vif.master_mon.mst_mon_cb.HADDR;
-        mon_tran.HBURST    = ahb_vif.master_mon.mst_mon_cb.HBURST;
-        mon_tran.HMASTLOCK = ahb_vif.master_mon.mst_mon_cb.HMASTLOCK;
-        mon_tran.HPORT     = ahb_vif.master_mon.mst_mon_cb.HPORT;
-        mon_tran.HSZIE     = ahb_vif.master_mon.mst_mon_cb.HSZIE;
-        mon_tran.HTRANS    = ahb_vif.master_mon.mst_mon_cb.HTRANS;
-        mon_tran.HWRITE    = ahb_vif.master_mon.mst_mon_cb.HREADY;
+        mon_tran.HADDR     <= ahb_vif.master_mon.mst_mon_cb.HADDR;
+        $cast(mon_tran.HBURST, ahb_vif.master_mon.mst_mon_cb.HBURST);
+        mon_tran.HMASTLOCK <= ahb_vif.master_mon.mst_mon_cb.HMASTLOCK;
+        mon_tran.HPORT     <= ahb_vif.master_mon.mst_mon_cb.HPORT;
+        $cast(mon_tran.HSIZE, ahb_vif.master_mon.mst_mon_cb.HSIZE);
+        $cast(mon_tran.HTRANS, ahb_vif.master_mon.mst_mon_cb.HTRANS);
+        $cast(mon_tran.HWRITE,ahb_vif.master_mon.mst_mon_cb.HREADY);
 
         /* monitor data phase */
         do
             @(ahb_vif.master_mon.mst_mon_cb);
         while(!ahb_vif.master_mon.mst_mon_cb.HREADY);
         if (ahb_vif.master_mon.mst_mon_cb.HWRITE) begin
-            mon_tran.HWDATA    = ahb_vif.master_mon.mst_mon_cb.HWDATA;
-            mon_tran.HRDATA    = 0;
+            mon_tran.HWDATA    <= ahb_vif.master_mon.mst_mon_cb.HWDATA;
+            mon_tran.HRDATA    <= 0;
         end else begin
-            mon_tran.HWDATA    = 0;
-            mon_tran.HRDATA    = master_mon.mst_mon_cb.HRDATA;
+            mon_tran.HWDATA    <= 0;
+            mon_tran.HRDATA    <= ahb_vif.master_mon.mst_mon_cb.HRDATA;
         end
-        mon_tran.HREADY    = ahb_vif.master_mon.mst_mon_cb.HREADY;
-        mon_tran.HRESP     = ahb_vif.master_mon.mst_mon_cb.HRESP;
+        $cast(mon_tran.HREADY, ahb_vif.master_mon.mst_mon_cb.HREADY);
+        $cast(mon_tran.HRESP, ahb_vif.master_mon.mst_mon_cb.HRESP);
 
         /* send specified value to all connected interface */
         `uvm_info(get_type_name(), "completed monitor transaction...", UVM_LOW);

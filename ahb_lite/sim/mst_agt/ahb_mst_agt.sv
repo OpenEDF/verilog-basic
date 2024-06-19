@@ -47,40 +47,39 @@ class ahb_mst_agt extends uvm_agent;
 //--------------------------------------------------------------------------
 `uvm_component_utils(ahb_mst_agt)
 ahb_mst_drv    mst_drv;
-ahb_mst_seqcr  mst_seqr;
+ahb_mst_seqr   mst_seqr;
 ahb_mst_mon    mst_mon;
 
 extern function new(string name = "ahb_mst_agt", uvm_component parent = null);
 extern function void build_phase(uvm_phase phase);
 extern function void connect_phase(uvm_phase phase);
-extern function void end_of_elaboration_phase(uvm_phase phase);
 
 endclass: ahb_mst_agt
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "ahb_mst_agt", uvm_component parent = null);
+function ahb_mst_agt::new(string name = "ahb_mst_agt", uvm_component parent = null);
     super.new(name, parent);
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: build phase: create and configure of testbench structure
 //--------------------------------------------------------------------------
-function void build_phase(uvm_phase phase);
+function void ahb_mst_agt::build_phase(uvm_phase phase);
     super.build_phase(phase);
     /* UVM_ACTIVE and UVM PASSIVE */
     if (get_is_active == UVM_ACTIVE) begin
         mst_drv  = ahb_mst_drv::type_id::create("mst_drv", this);
-        mst_seqr = ahb_mst_seqcr::type_id::create("mst_seqr", this);
+        mst_seqr = ahb_mst_seqr::type_id::create("mst_seqr", this);
     end
-    mst_mon = monitor::type_id::create("mst_mon", this);
+    mst_mon = ahb_mst_mon::type_id::create("mst_mon", this);
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: connect phase: establish cross-componement connections
 //--------------------------------------------------------------------------
-function void connect_phase(uvm_phase phase);
+function void ahb_mst_agt::connect_phase(uvm_phase phase);
     /* UVM_ACTIVE and UVM PASSIVE */
     if (get_is_active == UVM_ACTIVE) begin
         mst_drv.seq_item_port.connect(mst_seqr.seq_item_export);
@@ -89,4 +88,4 @@ function void connect_phase(uvm_phase phase);
 endfunction
 
 `endif /* _AHB_MST_AGT_SV_ */
-//--------------------------------------------------------------------------
+//-----------------------------------------------------------z--------------

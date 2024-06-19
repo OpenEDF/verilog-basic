@@ -43,8 +43,8 @@ import uvm_pkg::*;
 `include "ahb_mst_tran.sv"
 `include "ahb_mst_drv.sv"
 `include "ahb_mst_mon.sv"
-`include "ahb_mst_agt.sv"
 `include "ahb_mst_seqr.sv"
+`include "ahb_mst_agt.sv"
 `include "ahb_mst_base_seq.sv"
 
 endpackage: ahb_lite_pkg 

@@ -53,14 +53,14 @@ endclass:ahb_mst_seqr
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "ahb_mst_seqr", uvm_component parent = null);
+function ahb_mst_seqr::new(string name = "ahb_mst_seqr", uvm_component parent = null);
     super.new(name, parent);
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: build phase: create and configure of testbench structure
 //--------------------------------------------------------------------------
-function void build_phase(uvm_phase phase);
+function void ahb_mst_seqr::build_phase(uvm_phase phase);
     super.build_phase(phase);
 endfunction
 

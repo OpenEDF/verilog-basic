@@ -101,19 +101,5 @@ typedef enum bit {
     READY
 } hready_e;
 
-//--------------------------------------------------------------------------
-// enum: hport encoding
-//--------------------------------------------------------------------------
-typedef enum bit [3:0] {
-    OPCODE_FETCH   = 4'bxxx0,
-    DATA_ACCESS    = 4'bxxx1,
-    USER_ACCESS    = 4'bxx0x,
-    PRIVILE_ACCESS = 4'bxx1x,
-    NON_BUFFER     = 4'bx0xx,
-    BUFFERABLE     = 4'bx1xx,
-    NON_CACHE      = 4'b0xxx,
-    CACHEABLE      = 4'b1xxx
-} hport_e;
-
 `endif /* _AHB_TYPES_SV_ */
 //--------------------------------------------------------------------------

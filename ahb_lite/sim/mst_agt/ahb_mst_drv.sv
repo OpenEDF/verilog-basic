@@ -101,13 +101,13 @@ task ahb_mst_drv::driver();
         @(ahb_vif.master_drv.mst_drv_cb);
     while(!ahb_vif.master_drv.HRESETn);
     /* address phase */
-    ahb_vif.master_drv.mst_drv_cb.HADDR  = req.HADDR;
-    ahb_vif.master_drv.mst_drv_cb.HWRITE = req.HWRITE;
-    ahb_vif.master_drv.mst_drv_cb.HTRANS = req.HTRANS;
-    ahb_vif.master_drv.mst_drv_cb.HSIZE  = req.HSIZE;
-    ahb_vif.master_drv.mst_drv_cb.HBURST = req.HBURST; /* TODO: process brust data */
-    ahb_vif.master_drv.mst_drv_cb.HPORT  = req.HPORT;
-    ahb_vif.master_drv.mst_drv_cb.HMASTERLOCK = req.HMASTERLOCK;
+    ahb_vif.master_drv.mst_drv_cb.HADDR  <= req.HADDR;
+    ahb_vif.master_drv.mst_drv_cb.HWRITE <= req.HWRITE;
+    ahb_vif.master_drv.mst_drv_cb.HTRANS <= req.HTRANS;
+    ahb_vif.master_drv.mst_drv_cb.HSIZE  <= req.HSIZE;
+    ahb_vif.master_drv.mst_drv_cb.HBURST <= req.HBURST; /* TODO: process brust data */
+    ahb_vif.master_drv.mst_drv_cb.HPORT  <= req.HPORT;
+    ahb_vif.master_drv.mst_drv_cb.HMASTLOCK <= req.HMASTLOCK;
 
     /* wait address phase ready */
     do
@@ -117,12 +117,12 @@ task ahb_mst_drv::driver();
     case(req.HWRITE)
         /* read */
         READ: begin
-            ahb_vif.master_drv.mst_drv_cb.HWDATA = 0;
+            ahb_vif.master_drv.mst_drv_cb.HWDATA <= 0;
             req.HRDATA = ahb_vif.master_drv.mst_drv_cb.HRDATA;
         end
         /* write */
         WRITE: begin
-            ahb_vif.master_drv.mst_drv_cb.HWDATA = req.HWDATA;
+            ahb_vif.master_drv.mst_drv_cb.HWDATA <= req.HWDATA;
             req.HRDATA = 0;
         end
     endcase
@@ -134,8 +134,8 @@ task ahb_mst_drv::driver();
     `uvm_info(get_type_name(), "data phase ready...",UVM_LOW);
 
     /* response */
-    req.HRESP  = ahb_vif.master_drv.mst_drv_cb.HRESP;
-    req.HREADY = ahb_vif.master_drv.mst_drv_cb.HREADY;
+    req.HRESP  <= ahb_vif.master_drv.mst_drv_cb.HRESP;
+    req.HREADY <= ahb_vif.master_drv.mst_drv_cb.HREADY;
 
 endtask
 

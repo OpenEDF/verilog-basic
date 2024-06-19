@@ -54,7 +54,7 @@ endclass: ahb_mst_base_seq
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "ahb_mst_base_seq");
+function ahb_mst_base_seq::new(string name = "ahb_mst_base_seq");
     super.new(name);
 endfunction
 
@@ -66,7 +66,7 @@ endfunction
 //        item.randaomize();
 //        finish_item(item);
 //--------------------------------------------------------------------------
-task body();
+task ahb_mst_base_seq::body();
     repeat(10) begin
     #10;
     `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);

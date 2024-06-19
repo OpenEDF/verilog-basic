@@ -48,15 +48,15 @@ class ahb_mst_tran extends uvm_sequence_item;
 bit               HRESETn;
 rand bit [31:0]   HADDR;
 rand     hwrite_e HWRITE;
-rand     hsize_e  HSZIE;
+rand     hsize_e  HSIZE;
 rand bit [31:0]   HWDATA;
 rand     hburst_e HBURST;
 rand     htrans_e HTRANS;
 rand bit          HMASTLOCK;
-rand     hport_e  HPORT;
+rand bit [3:0]    HPORT;
          hready_e HREADY;
          hresp_e  HRESP;
-bit      [31:0]   HRADTA;
+bit      [31:0]   HRDATA;
 
 //--------------------------------------------------------------------------
 // Design: utility and field macros
@@ -64,39 +64,34 @@ bit      [31:0]   HRADTA;
 `uvm_object_utils_begin(ahb_mst_tran)
     `uvm_field_int(HRESETn, UVM_ALL_ON)
     `uvm_field_int(HADDR, UVM_ALL_ON)
-    `uvm_field_enum(burst_e,HBURST, UVM_ALL_ON)
+    `uvm_field_enum(hburst_e,HBURST, UVM_ALL_ON)
     `uvm_field_int(HMASTLOCK, UVM_ALL_ON)
-    `uvm_field_int(HPROT, UVM_ALL_ON)
+    `uvm_field_int(HPORT, UVM_ALL_ON)
     `uvm_field_enum(hsize_e, HSIZE, UVM_ALL_ON)
     `uvm_field_enum(htrans_e, HTRANS, UVM_ALL_ON)
-    `uvm_field_array_int(HWDATA, UVM_ALL_ON)
-    `uvm_field_enum(rw_e, HWRITE, UVM_ALL_ON)
+    `uvm_field_int(HWDATA, UVM_ALL_ON)
+    `uvm_field_enum(hwrite_e, HWRITE, UVM_ALL_ON)
     `uvm_field_int(HRDATA, UVM_ALL_ON)
     `uvm_field_enum(hready_e,  HREADY, UVM_ALL_ON)
     `uvm_field_enum(hresp_e, HRESP, UVM_ALL_ON)
 `uvm_object_utils_end
 
 //--------------------------------------------------------------------------
-// Design: new
-//--------------------------------------------------------------------------
-function new(string name = "ahb_mst_transaction");
-    super.new(name);
-endfunction
-
-//--------------------------------------------------------------------------
 // Design: constructor
 //--------------------------------------------------------------------------
-constraint addr_size {
-    HADDR.size > 0;
-    if(HBURST == SINGLE) HADDR.size == 1;
-    if(HBURST == INCR) HADDR.size < (1024 / (2 ** HSIZE));
-    if(HBURST == INCR4 || HBURST == WRAP4) HADDR.size == 4;
-    if(HBURST == INCR8 || HBURST == WRAP8) HADDR.size == 8;
-    if(HBURST == INCR16 || HBURST == WRAP16) HADDR.size == 16;
-}
 
+//--------------------------------------------------------------------------
+// Design: declaer method
+//--------------------------------------------------------------------------
+extern function new(string name = "ahb_mst_tran");
 endclass: ahb_mst_tran
 
+//--------------------------------------------------------------------------
+// Design: new
+//--------------------------------------------------------------------------
+function ahb_mst_tran::new(string name = "ahb_mst_tran");
+    super.new(name);
+endfunction
 
 `endif  /* _AHB_MST_TRAN_SV_ */
 //--------------------------------------------z-----------------------------

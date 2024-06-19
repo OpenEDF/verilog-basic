@@ -63,7 +63,7 @@ logic  [31:0] HWDATA;
 logic  [1:0 ] HTRANS;
 logic  [2:0 ] HBURST;
 logic  [3:0 ] HPORT;
-logic         HMASTERLOCK;
+logic         HMASTLOCK;
 logic         HREADY;
 logic         HRESP;
 logic  [31:0] HRDATA;
@@ -83,7 +83,7 @@ clocking mst_drv_cb @(posedge HCLK);
     output HSIZE;
     output HPORT;
     output HBURST;
-    output HMASTERLOCK;
+    output HMASTLOCK;
 endclocking 
 
 //--------------------------------------------------------------------------
@@ -98,7 +98,7 @@ clocking mst_mon_cb @(posedge HCLK);
     input  HSIZE;
     input  HPORT;
     input  HBURST;
-    input  HMASTERLOCK;
+    input  HMASTLOCK;
     input  HRESP;
     inout  HREADY;
     input  HRDATA;

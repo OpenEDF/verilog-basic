@@ -74,7 +74,7 @@ ahb_lite_top ahb_lite_top_u0
     .m0_hburst       (ahb_vif.HBURST          ), // input
     .m0_hport        (ahb_vif.HPORT           ), // input
     .m0_htrans       (ahb_vif.HTRANS          ), // input
-    .m0_hmasterlock  (ahb_vif.HMASTERLOCK     ), // input
+    .m0_hmastlock    (ahb_vif.HMASTLOCK       ), // input
     .m0_hwdata       (ahb_vif.HWDATA          ), // input
 
     //custom master outputs
