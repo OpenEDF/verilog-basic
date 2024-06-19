@@ -54,7 +54,7 @@ module ahb_lite_top
     input wire [2:0]   m0_hburst,
     input wire [3:0]   m0_hport,
     input wire [1:0]   m0_htrans,
-    input wire         m0_hmasterlock,
+    input wire         m0_hmastlock,
     input wire [31:0]  m0_hwdata,
 
     //custom master outputs
@@ -177,7 +177,7 @@ ahb_lite_def_slave ahb_lite_def_slave_u
         .HBURST                 (m0_hburst                      ), //input
         .HPROT                  (m0_hport                       ), //input
         .HTRANS                 (m0_htrans                      ), //input
-        .HMASTLOCK              (m0_hmasterlock                 ), //input
+        .HMASTLOCK              (m0_hmastlock                   ), //input
         .HREADY                 (m0_hready                      ), //input
         .HWDATA                 (m0_hwdata                      ), //input
         // outputs
@@ -211,7 +211,7 @@ ahb_lite_rom_u1
         .HBURST                 (m0_hburst                      ), //input
         .HPROT                  (m0_hport                       ), //input
         .HTRANS                 (m0_htrans                      ), //input
-        .HMASTLOCK              (m0_hmasterlock                 ), //input
+        .HMASTLOCK              (m0_hmastlock                   ), //input
         .HREADY                 (m0_hready                      ), //input
         .HWDATA                 (m0_hwdata                      ), //input
         // outputs
@@ -245,7 +245,7 @@ ahb_lite_ram_u1
         .HBURST                 (m0_hburst                      ), //input
         .HPROT                  (m0_hport                       ), //input
         .HTRANS                 (m0_htrans                      ), //input
-        .HMASTLOCK              (m0_hmasterlock                 ), //input
+        .HMASTLOCK              (m0_hmastlock                   ), //input
         .HREADY                 (m0_hready                      ), //input
         .HWDATA                 (m0_hwdata                      ), //input
         // outputs
@@ -279,7 +279,7 @@ ahb_lite_ram_u2
         .HBURST                 (m0_hburst                      ), //input
         .HPROT                  (m0_hport                       ), //input
         .HTRANS                 (m0_htrans                      ), //input
-        .HMASTLOCK              (m0_hmasterlock                 ), //input
+        .HMASTLOCK              (m0_hmastlock                   ), //input
         .HREADY                 (m0_hready                      ), //input
         .HWDATA                 (m0_hwdata                      ), //input
         // outputs
@@ -313,7 +313,7 @@ ahb_lite_ram_u3
         .HBURST                 (m0_hburst                      ), //input
         .HPROT                  (m0_hport                       ), //input
         .HTRANS                 (m0_htrans                      ), //input
-        .HMASTLOCK              (m0_hmasterlock                 ), //input
+        .HMASTLOCK              (m0_hmastlock                   ), //input
         .HREADY                 (m0_hready                      ), //input
         .HWDATA                 (m0_hwdata                      ), //input
         // outputs
