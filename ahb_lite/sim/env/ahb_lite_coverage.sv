@@ -30,7 +30,7 @@
 //        transactions form a connected analysis export.
 // Change Log:
 //--------------------------------------------------------------------------
-`idndef _AHB_LITE_COVERAGE_SV_
+`ifndef _AHB_LITE_COVERAGE_SV_
 `define _AHB_LITE_COVERAGE_SV_
 
 //--------------------------------------------------------------------------
@@ -45,19 +45,10 @@ class ahb_lite_coverage extends uvm_subscriber#(ahb_mst_tran);
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-uvm_analysis_imp #(seq_item, coverage) item_cov_export;
+uvm_analysis_imp #(ahb_mst_tran, ahb_lite_coverage) item_cov_export;
 ahb_mst_tran     mst_tran_cov;
 `uvm_component_utils(ahb_lite_coverage)
 
-//--------------------------------------------------------------------------
-// Design: declare method 
-//--------------------------------------------------------------------------
-extern function new(string name = "ahb_lite_coverage", uvm_component parent = null);
-extern function void build_phase(uvm_phase phase);
-extern function void write(seq_item t);
-extern function void report_phase(uvm_phase phase);
-
-endclass: ahb_lite_coverage 
 //--------------------------------------------------------------------------
 // Design: coverage
 //--------------------------------------------------------------------------
@@ -66,9 +57,19 @@ covergroup test_coverage;
 endgroup: test_coverage
 
 //--------------------------------------------------------------------------
+// Design: declare method 
+//--------------------------------------------------------------------------
+extern function new(string name = "ahb_lite_coverage", uvm_component parent = null);
+extern function void build_phase(uvm_phase phase);
+extern function void write(ahb_mst_tran t);
+extern function void report_phase(uvm_phase phase);
+
+endclass: ahb_lite_coverage 
+
+//--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function ahb_lite_coverage::new(string name = "coverage", uvm_component parent = null);
+function ahb_lite_coverage::new(string name = "ahb_lite_coverage", uvm_component parent = null);
     super.new(name, parent);
     item_cov_export = new("item_cov_export", this);
     test_coverage = new();
@@ -84,17 +85,17 @@ endfunction
 //--------------------------------------------------------------------------
 // Design: write: receives all transactions boardcasted
 //--------------------------------------------------------------------------
-function void ahb_lite_coverage::write(ahb_mst_tran tran);
-    mst_tran_cov = tran; /* assign */
+function void ahb_lite_coverage::write(ahb_mst_tran t);
+    mst_tran_cov = t; /* assign */
     test_coverage.sample();
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: report phase: Report results of the test.
 //--------------------------------------------------------------------------
-function void report_phase(uvm_phase phase);
-    `uvm_info(get_full_name(), $sformatf("coverage is %0.2f%%", test_coverage.get_coverage()), UVM_LOW);
+function void ahb_lite_coverage::report_phase(uvm_phase phase);
+    //`uvm_info(get_type_name(), $sformatf("coverage is %0.2f%%", ahb_lite_coverage::test_coverage.get_coveragr()), UVM_LOW);
 endfunction
 
-`ednif /* _AHB_LITE_COVERAGE_SV_ */
+`endif /* _AHB_LITE_COVERAGE_SV_ */
 //--------------------------------------------------------------------------

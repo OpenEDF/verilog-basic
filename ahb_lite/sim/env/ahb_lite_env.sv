@@ -45,7 +45,7 @@ class ahb_lite_env extends uvm_env;
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-`uvm_component_utils(env)
+`uvm_component_utils(ahb_lite_env)
 ahb_mst_agt          mst_agt;
 ahb_lite_scoreboard  ahb_lite_sb;
 ahb_lite_coverage    ahb_lite_cov;
@@ -62,7 +62,7 @@ endclass: ahb_lite_env
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function ahb_lite_env::new(string name = "env", uvm_component parent = null);
+function ahb_lite_env::new(string name = "ahb_lite_env", uvm_component parent = null);
     super.new(name, parent);
 endfunction
 
@@ -71,9 +71,9 @@ endfunction
 //--------------------------------------------------------------------------
 function void ahb_lite_env::build_phase(uvm_phase phase);
     super.build_phase(phase);
-    mst_agt = agent::type_id::create("ahb_mst_agt", this);
-    ahb_lite_sb  = scoreboard::type_id::create("ahb_lite_scoreboard", this);
-    ahb_lite_cov = coverage::type_id::create("ahb_lite_coverage", this);
+    mst_agt = ahb_mst_agt::type_id::create("ahb_mst_agt", this);
+    ahb_lite_sb  = ahb_lite_scoreboard::type_id::create("ahb_lite_scoreboard", this);
+    ahb_lite_cov = ahb_lite_coverage::type_id::create("ahb_lite_coverage", this);
 endfunction
 
 //--------------------------------------------------------------------------
@@ -85,5 +85,5 @@ function void ahb_lite_env::connect_phase(uvm_phase phase);
     mst_agt.mst_mon.item_collect_port.connect(ahb_lite_cov.item_cov_export);
 endfunction
 
-`ednif /* _AHB_LITE_ENV_ */
+`endif /* _AHB_LITE_ENV_ */
 //--------------------------------------------------------------------------

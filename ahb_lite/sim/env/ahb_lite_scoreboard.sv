@@ -31,7 +31,7 @@
 //        analysis export for checking purposes.
 // Change Log:
 //--------------------------------------------------------------------------
-`idndef _AHB_LITE_SCOREBOARD_SV_
+`ifndef _AHB_LITE_SCOREBOARD_SV_
 `define _AHB_LITE_SCOREBOARD_SV_
 
 //--------------------------------------------------------------------------
@@ -46,25 +46,23 @@ class ahb_lite_scoreboard extends uvm_scoreboard;
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-uvm_analysis_imp #(ahb_mst_tran, scoreboard) item_collect_export;
+uvm_analysis_imp #(ahb_mst_tran, ahb_lite_scoreboard) item_collect_export;
 ahb_mst_tran mst_tran_q[$];
 `uvm_component_utils(ahb_lite_scoreboard)
 
 //--------------------------------------------------------------------------
-// Design: declare method 
+// Design: declare method
 //--------------------------------------------------------------------------
 extern function new(string name = "ahb_lite_scoreboard", uvm_component parent = null);
 extern function void build_phase(uvm_phase phase);
-extern function void write(seq_item req);
+extern function void write(ahb_mst_tran req);
 extern task run_phase(uvm_phase phase);
-extern function void report_phase(uvm_phase phase);
-extern function void final_phase(uvm_phase phase);
- 
+
 endclass: ahb_lite_scoreboard
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "ahb_lite_scoreboard", uvm_component parent = null);
+function ahb_lite_scoreboard::new(string name = "ahb_lite_scoreboard", uvm_component parent = null);
     super.new(name, parent);
     item_collect_export = new("item_collect_export", this);
 endfunction
@@ -72,27 +70,27 @@ endfunction
 //--------------------------------------------------------------------------
 // Design: build phase: create and configure of testbench structure
 //--------------------------------------------------------------------------
-function void build_phase(uvm_phase phase);
+function void ahb_lite_scoreboard::build_phase(uvm_phase phase);
     super.build_phase(phase);
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: write: receives all transactions boardcasted
 //--------------------------------------------------------------------------
-function void write(seq_item req);
+function void ahb_lite_scoreboard::write(ahb_mst_tran req);
     /* Inserts the given item at the back of the queue */
-    item_q.push_back(req);
+    mst_tran_q.push_back(req);
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
-task run_phase(uvm_phase phase);
+task ahb_lite_scoreboard::run_phase(uvm_phase phase);
     ahb_mst_tran mst_sb_item;
     forever begin
         wait (mst_tran_q.size() > 0);
         mst_sb_item = mst_tran_q.pop_front();
-        `uvm_info(get_type_name, mst_tran_q.sprintf(), UVM_LOW); 
+        //`uvm_info(get_type_name(), mst_sb_item.sprintf(), UVM_LOW);
     end
 endtask
 
