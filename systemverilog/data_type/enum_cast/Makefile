@@ -13,7 +13,8 @@ all: clean com sim
 
 # compiler
 com:$(TEST_FILE)
-	vcs -full64  -sverilog -f $(TEST_FILE) +v2k -R -Mupdate -l sv.log
+	vcs -full64  -sverilog -f $(TEST_FILE) +v2k -R \
+	-Mupdate -l sv_`date '+%Y_%m_%d_%H_%M'`.log
 
 # clean
 .PHONY: clean
