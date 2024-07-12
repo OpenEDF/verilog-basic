@@ -45,6 +45,7 @@ program tb_top;
 //--------------------------------------------------------------------------
 bit    [31:0] queue_1[$];
 string        queue_2[$];
+int           tmp;
 
 //--------------------------------------------------------------------------
 // Design: inital
@@ -68,6 +69,32 @@ initial begin
     /* delete method */
     queue_1.delete(4);
     $display("-------- queue 1 size after delete is %0d --------", queue_1.size());
+    foreach(queue_1[i])
+        $display("\tqueue_1[%0d] = %0d", i, queue_1[i]);
+
+    /* push front method */
+    queue_1.push_front(99);
+    $display("-------- queue 1 size after push front is %0d --------", queue_1.size());
+    foreach(queue_1[i])
+        $display("\tqueue_1[%0d] = %0d", i, queue_1[i]);
+
+    /* push back method */
+    queue_1.push_back(5);
+    $display("-------- queue 1 size after push back is %0d --------", queue_1.size());
+    foreach(queue_1[i])
+        $display("\tqueue_1[%0d] = %0d", i, queue_1[i]);
+
+    /* pop fornt method */
+    tmp = queue_1.pop_back();
+    $display("-------- queue 1 size after pop back is %0d --------", queue_1.size());
+    $display("queue_1 pop back value: %0d", tmp);
+    foreach(queue_1[i])
+        $display("\tqueue_1[%0d] = %0d", i, queue_1[i]);
+
+    /* pop back method */
+    tmp = queue_1.pop_back();
+    $display("-------- queue 1 size after pop back is %0d --------", queue_1.size());
+    $display("queue_1 pop back value: %0d", tmp);
     foreach(queue_1[i])
         $display("\tqueue_1[%0d] = %0d", i, queue_1[i]);
 end
