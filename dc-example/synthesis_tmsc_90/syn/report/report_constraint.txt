@@ -1,0 +1,28 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : sequ_div
+Version: O-2018.06-SP1
+Date   : Sat Jul 27 12:45:52 2024
+****************************************
+
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   sequ_div                     0.00        6624.88       -6624.88  (VIOLATED)
+
+
+   max_leakage_power
+
+                             Required        Actual
+   Design                   Leakage Power  Leakage Power     Slack
+   -----------------------------------------------------------------
+   sequ_div                     0.00       24034416.00    -24034416.00
+                                                                    (VIOLATED)
+
+
+1

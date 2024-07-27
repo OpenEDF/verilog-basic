@@ -1,0 +1,35 @@
+#!SPYGLASS_PROJECT_FILE
+#!VERSION 3.0
+#  -------------------------------------------------------------------
+#  This is a software generated project file. Manual edits to this file could be lost during the next save operation
+#  Copyright Synopsys Inc.
+#  Last Updated By: SpyGlass SpyGlass_vL-2016.06
+#  Last Updated On Sun Jul 30 19:28:24 2023
+#
+#  -------------------------------------------------------------------
+
+##Data Import Section
+
+read_file -type verilog sequ_div.v
+read_file -type lef ../../../../synopsys/dc_pdk_lib/SMIC180/std/lef/smic18_5lm_techhead.lef
+
+##Common Options Section
+
+set_option projectwdir .
+set_option language_mode mixed
+set_option designread_enable_synthesis yes
+set_option designread_disable_flatten no
+set_option top sequ_div
+set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+set_option enableSV no
+set_option report_incr_messages yes
+
+
+##Goal Setup Section
+
+current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+
+
+current_goal lint/lint_rtl -top sequ_div
+set_goal_option report_incr_messages yes
+

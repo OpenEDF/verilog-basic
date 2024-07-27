@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : sequ_div
+Version: O-2018.06-SP1
+Date   : Sat Jul 27 12:45:52 2024
+****************************************
+
+Library(s) Used:
+
+    slow (File: /home/macro/tools/synopsys/pdk/tsmc_90/aci/sc-x/synopsys/slow.db)
+
+Number of ports:                          303
+Number of nets:                          1346
+Number of cells:                         1078
+Number of combinational cells:            784
+Number of sequential cells:               292
+Number of macros/black boxes:               0
+Number of buf/inv:                        158
+Number of references:                      40
+
+Combinational area:               3709.339240
+Buf/Inv area:                      382.435213
+Noncombinational area:            2915.539211
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                  6624.878452
+Total area:                 undefined
+1
