@@ -55,16 +55,24 @@ virtual function calsulate_sum(int a, int b);
     $display("[%0t] inside sum function", $time);
 endfunction
 
+pure virtual function int get_data();
 endclass
 
 class extended_class extends base_class;
-    
+int tmp;
+
 function new();
     this.data = 32'h5678_00FF;
     this.addr = 32'hFF00_00FF;
     this.status = 32'h0000_0001;
     this.calsulate_sum(this.data, this.status);
     $display("[%0t] inside extended class", $time);
+endfunction
+
+virtual function int get_data();
+    tmp = data;
+    $display("[%0t] tmp = 0x%h", $time, tmp);
+    return tmp;
 endfunction
 
 endclass
@@ -87,6 +95,7 @@ initial begin
     $display("[%0t] addr = 0x%0h", $time, child.addr);
     $display("[%0t] status = 0x%0h", $time, child.status);
     $display("[%0t] sum = 0x%0h", $time, child.sum);
+    child.get_data();
 end
 
 endmodule
