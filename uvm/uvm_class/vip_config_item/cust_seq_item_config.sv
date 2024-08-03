@@ -26,7 +26,7 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: uvm sequence item example 
+// Brief: uvm sequence item example
 // Change Log:
 //--------------------------------------------------------------------------
 
@@ -37,20 +37,19 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class cust_sequence_item_config extends sequence_item_config;
+class cust_seq_item_config extends seq_item_config;
 
+`uvm_object_utils(cust_seq_item_config)
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "cust_sequence_item_config");
+function new(string name = "cust_seq_item_config");
+    super.new(name);
     this.addr = 10;
     this.wr_en = 1;
     this.rd_en = 0;
     this.wdata = 16;
     this.rdata = 33;
-    this.data1 = 32'h11223344;
-    this.data2 = 32'h55667788;
-    this.data_sum(this.data1, 2);
 endfunction
 
-endclass: cust_sequence_item_config 
+endclass: cust_seq_item_config

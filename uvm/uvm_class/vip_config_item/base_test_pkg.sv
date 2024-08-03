@@ -26,43 +26,26 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: uvm sequence test
+// Brief: package
 // Change Log:
 //--------------------------------------------------------------------------
+`ifndef __BASE_TEST_PKG__
+`define __BASE_TEST_PKG__
+//--------------------------------------------------------------------------
+// Package
+//--------------------------------------------------------------------------
+package base_test_pkg;
+import uvm_pkg::*;
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`timescale 1ns/1ps
-`include "uvm_macros.svh"
+`include "seq_item_config.sv"
+`include "cust_seq_item_config.sv"
+`include "test_basic_env.sv"
+`include "base_test.sv"
 
-import uvm_pkg::*;
-`include "sequence_item_config.sv"
-`include "cust_sequence_item_config.sv"
+endpackage: base_test_pkg
 
+`endif  /* __BASE_TEST_PKG__ */
 //--------------------------------------------------------------------------
-// Module
-//--------------------------------------------------------------------------
-module testebench;
-//--------------------------------------------------------------------------
-// Design: instance
-//--------------------------------------------------------------------------
-cust_sequence_item_config cust_cfg;
-sequence_item_config base_cfg;
-
-//--------------------------------------------------------------------------
-// Design: initial and run
-//--------------------------------------------------------------------------
-initial begin
-    /* log output */
-    `uvm_info("TEST", "item config test!", UVM_LOW);
-    cust_cfg =new();
-    base_cfg = cust_cfg;
-    //$cast(base_cfg, cust_cfg);
-
-    /* printing the seq_item */
-    base_cfg.print();
-
-end
-
-endmodule

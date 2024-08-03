@@ -26,7 +26,7 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: uvm sequence item example 
+// Brief: uvm sequence item example
 // Change Log:
 //--------------------------------------------------------------------------
 
@@ -37,10 +37,10 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class sequence_item_config extends uvm_sequence_item;
+class seq_item_config extends uvm_sequence_item;
 
 //--------------------------------------------------------------------------
-// Design: control signal 
+// Design: control signal
 //--------------------------------------------------------------------------
 rand bit [3:0] addr;
 rand bit       wr_en;
@@ -55,7 +55,7 @@ int            sum;
 //--------------------------------------------------------------------------
 // Design: utility and field macros
 //--------------------------------------------------------------------------
-`uvm_object_utils_begin(sequence_item_config)
+`uvm_object_utils_begin(seq_item_config)
     `uvm_field_int(addr, UVM_ALL_ON)
     `uvm_field_int(wr_en, UVM_ALL_ON)
     `uvm_field_int(rd_en, UVM_ALL_ON)
@@ -68,10 +68,9 @@ int            sum;
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function new(string name = "mem_seq_item");
+function new(string name = "seq_item_config");
     super.new(name);
 endfunction
-
 
 //--------------------------------------------------------------------------
 // Design: sum
@@ -92,4 +91,4 @@ endfunction
 //--------------------------------------------------------------------------
 constraint wr_rd_c {wr_en != rd_en;};
 
-endclass: sequence_item_config 
+endclass: seq_item_config
