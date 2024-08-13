@@ -41,21 +41,21 @@
 //--------------------------------------------------------------------------
 module testbench();
 
+parameter simulation_cycle = 10;
 //--------------------------------------------------------------------------
 // internal sigle
 //--------------------------------------------------------------------------
-reg         clk;
-reg         rst_n;
-reg         data_in;
+bit         systemclock;
+bit         rst_n;
+logic       data_in;
 wire        data_ou;
-int         systemclock = 10;
 
 //--------------------------------------------------------------------------
 // Design: create the clock
 //--------------------------------------------------------------------------
 initial begin
-    clk = 1'b0;
-    forever #(systemclock / 2) clk = ~clk;
+    systemclock = 1'b0;
+    forever #(simulation_cycle / 2) systemclock = ~systemclock;
 end
 
 //--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ task system_reset();
     $display("[%0t]: system reset...", $time);
     rst_n = 1'b0;
     data_in = 1'b0; 
-    #(systemclock * 1);
+    repeat (1) #simulation_cycle;
     rst_n <= 1'b1;
 endtask: system_reset
 
@@ -74,7 +74,7 @@ endtask: system_reset
 //--------------------------------------------------------------------------
 task system_exit();
     $display("[%0t]: system exit...", $time);
-    #(systemclock * 10);
+    repeat (10) #simulation_cycle;
     $finish();
 endtask: system_exit
 
@@ -86,12 +86,12 @@ task system_main();
     $display("[%0t]: system main run...", $time);
     repeat(1) begin
         data_in = 1'b1; 
-        @(posedge clk);
+        @(posedge systemclock);
         $display("[%0t]: system input data: %0d", $time, data_in);
-        @(posedge clk);
+        @(posedge systemclock);
         data_in = 1'b0; 
-        @(posedge clk);
-        @(posedge clk);
+        @(posedge systemclock);
+        @(posedge systemclock);
         $display("[%0t]: system output data: %0d", $time, data_ou);
     end
 endtask: system_main
@@ -123,7 +123,7 @@ sync_1bit # (
     sync_1bit_u (
     /*autoinst*/
     // inputs
-    .clk                    (clk                            ), //input
+    .clk                    (systemclock                    ), //input
     .rst_n                  (rst_n                          ), //input
     .i_data                 (data_in                        ), //input
     // outputs
