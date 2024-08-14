@@ -2,11 +2,11 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 1272 313 100 65
+viewPort 0 27 1272 315 100 65
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
-openDirFile -d / "" "/home/macro/work/github/verilog-basic/cdc/sync_1bit/testbench.fsdb"
+openDirFile -d / "" "/home/macro/work/github/verilog-basic/assertion/assert_checker/testbench.fsdb"
 
 ; file time scale:
 ; fileTimeScale ### s|ms|us|ns|ps
@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 146450.000000
-cursor 35000.000000
+zoom 0.000000 171.700000
+cursor 35.000000
 marker 0.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 1
+top 0
 ; marker line index
-markerPos 1
+markerPos 3
 
 ; event list
 ; addEvent event_name event_expression
@@ -46,17 +46,11 @@ curSTATUS ByChange
 
 
 addGroup "G1"
-activeDirFile "" "/home/macro/work/github/verilog-basic/cdc/sync_1bit/testbench.fsdb"
+activeDirFile "" "/home/macro/work/github/verilog-basic/assertion/assert_checker/testbench.fsdb"
 addSignal -h 15 /testbench/systemclock
 addSignal -h 15 -holdScope rst_n
-addSignal -h 15 /testbench/sync_1bit_u/i_data
-addSignal -h 15 -holdScope o_data
-addSignal -expanded -h 15 -holdScope sync_flops[2:0]
-addSignal -h 15 -holdScope sync_flops[2]
-addSignal -h 15 -holdScope sync_flops[1]
-addSignal -h 15 -holdScope sync_flops[0]
+addSignal -h 15 /testbench/count_u/counts[3:0]
 addGroup "G2"
-addGroup "G3"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm
