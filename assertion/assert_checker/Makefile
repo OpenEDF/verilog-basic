@@ -16,9 +16,9 @@ all: com sim
 # compiler
 com:
 	vcs -full64 +v2k -sverilog \
-	+define+ASSERT_ON \
-	-y $(VCS_HOME)/packages/sva +libext+.v \
-	+incdir+$(VCS_HOME)/packages/sva \
+	+define+ASSERT_ON+COVER_ON \
+	-y $(VCS_HOME)/packages/sva_cg +libext+.v \
+	+incdir+$(VCS_HOME)/packages/sva_cg \
 	-LDFLAGS -Wl,--no-as-needed -timescale=1ns/1ns \
 	-debug_access+all +warn=noVPI-CT-NS            \
     -P $(VERDI_HOME)/share/PLI/VCS/LINUX64/novas.tab                         \
@@ -37,13 +37,17 @@ wave:
 		-sswr $(nWave_SIGNAL)   \
 		-nologo &
 
-#-sswr $(nWave_SIGNAL)   \
+# urg
+urg:
+	urg -full64 -dir simv.vdb
+
 # spy
 spy:
 	spyglass -project $(SPY_PRJ) &
 
 .PHONY: clean
 clean:
-	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc verdiLog sequ_div
+	rm -rf csrc simv* *.key *.vcd *.log *.fsdb *.conf novas.rc \
+		verdiLog sequ_div urgReport
 
 #--------------------------------------------------------------------------

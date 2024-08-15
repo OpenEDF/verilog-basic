@@ -71,7 +71,7 @@ initial $monitor("[%0t] test count = 4'b%4b", $time, counts);
 // Design: assert checker 
 //--------------------------------------------------------------------------
 assert_always #(
-    0, 0, "ERROR: count not within 0 and 9.", 0, 15)
+    0, 0, "ERROR: count not within 0 and 9.", 0, 1, 0, 0)
 vaild_count (
     clk, rst_n, (counts >= 4'b0000) && (counts <= 4'b1001));
 `endif
