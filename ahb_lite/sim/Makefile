@@ -11,7 +11,7 @@ UVM_VERBOSITY =	UVM_LOW
 
 # UVM simv Test options
 UVM_VER = uvm-1.2
-TEST_CASE = base_test
+TEST_CASE = ahb_lite_test
 TB_TOP = tb_top
 DEFINES = UVM_NO_RELNOTES
 UVM_DEFINES = UVM_NO_DEPRECATED+UVM_OBJECT_MUST_HAVE_CONSTRUCTOR
@@ -26,16 +26,16 @@ SIM_FLAGS = +fsdb+force
 # SIM OPTIONS
 #ENABLE_UCLI = -ucli
 ENABLE_UCLI =
+FSDB_FILE = $(TB_TOP)
 
 # run
-all: clean com 
+all: clean com sim
 # compiler
 com:
 	vcs -sverilog -full64 +v2k \
 		-lca -kdb \
 		-Mupdate \
 		-debug_access+all+reverse \
-		-assert success+enable_diag -R \
 		-ntb_opts $(UVM_VER) \
 		-timescale=1ns/1ns \
 		+define+$(UVM_DEFINES)  \
@@ -56,6 +56,7 @@ sim:
 		$(SIM_FLAGS)    \
 		+$(DEFINES)     \
 		-l ssim.log
+
 # verdi debug
 debug:
 	./simv -gui=verdi \
@@ -65,7 +66,7 @@ debug:
 
 # debug
 wave:
-	verdi -ssf uvm_test.fsdb \
+	verdi -ssf $(FSDB_FILE).fsdb \
 		-nologo &
 
 #coverage
@@ -91,7 +92,7 @@ clean:
 	@rm -rf csrc simv* *.key *~ core vc_hdrs.h ucli.key urg* *.log dump.vcd \
 		   novas* *.vcd *.fsdb verdiLog uvmgen_options_log.txt *fsdb*       \
 		   vdCovLog base_test.vdb profileReport.* simprofile_dir* \
-		   profileReport
+		   profileReport *.vdb
 
 	@echo "clean the intermediate files..."
 #--------------------------------------------------------------------------

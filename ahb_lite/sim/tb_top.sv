@@ -42,21 +42,21 @@ import ahb_lite_pkg::*;
 // Module
 //--------------------------------------------------------------------------
 module tb_top;
-bit hclk;
+bit systemclock;
 parameter SYSTEM_CLK_CYCLE = 10;
 
 //--------------------------------------------------------------------------
 // Design: initial clk
 //--------------------------------------------------------------------------
 initial begin
-    hclk = 1;
-    forever #(SYSTEM_CLK_CYCLE / 2) hclk = ~hclk;
+    systemclock = 1;
+    forever #(SYSTEM_CLK_CYCLE / 2) systemclock = ~systemclock;
 end
 
 //--------------------------------------------------------------------------
 // Design: instance module interface
 //--------------------------------------------------------------------------
-ahb_mst_intf ahb_vif (hclk);
+ahb_mst_intf ahb_vif (systemclock);
 
 //--------------------------------------------------------------------------
 // Design: instance top module
@@ -64,7 +64,7 @@ ahb_mst_intf ahb_vif (hclk);
 ahb_lite_top ahb_lite_top_u0
 (
     // global inputs
-    .HCLK            (hclk                    ), // input
+    .HCLK            (systemclock             ), // input
     .HRESETn         (ahb_vif.HRESETn         ), // input
 
     // AHB master inputs
@@ -91,17 +91,17 @@ initial begin
     $fsdbDumpfile("tb_top.fsdb");
     $fsdbDumpvars(0, tb_top);
     /* memory dump */
-    //$fsdbDumpMDA();
+    $fsdbDumpMDA();
 
     /* assert dump */
-    //$fsdbDumpSVA();
+    $fsdbDumpSVA();
 end
 
 //--------------------------------------------------------------------------
 // Design: uvm run test
 //--------------------------------------------------------------------------
 initial begin
-    run_test("ahb_lite_test");
+    run_test();
 end
 
 endmodule

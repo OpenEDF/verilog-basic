@@ -45,7 +45,7 @@ class ahb_lite_test extends uvm_test;
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-ahb_lite_env ahb_env;
+ahb_lite_env      ahb_env;
 ahb_mst_base_seq  mst_seq;
 `uvm_component_utils(ahb_lite_test)
 
@@ -211,7 +211,7 @@ endtask
 function void ahb_lite_test::end_of_elaboration_phase(uvm_phase phase);
     /* show uvm class arch */
     `uvm_info(get_type_name(), "IN end_of_elaboration_phase...", UVM_LOW);
-    print();
+    //print();
 endfunction
 
 //--------------------------------------------------------------------------
