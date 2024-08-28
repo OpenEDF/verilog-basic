@@ -29,7 +29,7 @@ ENABLE_UCLI =
 FSDB_FILE = $(TB_TOP)
 
 # run
-all: clean com sim
+all: com sim
 # compiler
 com:
 	vcs -sverilog -full64 +v2k \

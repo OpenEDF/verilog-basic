@@ -74,6 +74,9 @@ function void ahb_mst_mon::build_phase(uvm_phase phase);
     super.build_phase(phase);
     if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "ahb_vif", ahb_vif))
         `uvm_fatal(get_type_name(), "vif not set the top level!")
+    else
+        `uvm_info(get_type_name(), "vif get success...", UVM_LOW);
+
 endfunction
 
 //--------------------------------------------------------------------------
@@ -96,35 +99,42 @@ task ahb_mst_mon::do_monitor();
         //mon_tran = ahb_mst_tran::type_id::create("pon_tran");
         /* wait reset is high */
         do
-            @(ahb_vif.master_mon.mst_mon_cb);
-        while(!ahb_vif.master_mon.HRESETn);
+            @(ahb_vif.mst_mon_cb);
+        while(!ahb_vif.HRESETn);
 
         /* monitor signal from DUT module */
         /* monitor address phase */
         do
-            @(ahb_vif.master_mon.mst_mon_cb);
-        while(!ahb_vif.master_mon.mst_mon_cb.HREADY);
-        mon_tran.HADDR     <= ahb_vif.master_mon.mst_mon_cb.HADDR;
-        $cast(mon_tran.HBURST, ahb_vif.master_mon.mst_mon_cb.HBURST);
-        mon_tran.HMASTLOCK <= ahb_vif.master_mon.mst_mon_cb.HMASTLOCK;
-        mon_tran.HPORT     <= ahb_vif.master_mon.mst_mon_cb.HPORT;
-        $cast(mon_tran.HSIZE, ahb_vif.master_mon.mst_mon_cb.HSIZE);
-        $cast(mon_tran.HTRANS, ahb_vif.master_mon.mst_mon_cb.HTRANS);
-        $cast(mon_tran.HWRITE,ahb_vif.master_mon.mst_mon_cb.HREADY);
+            @(ahb_vif.mst_mon_cb);
+        while(!ahb_vif.mst_mon_cb.HREADY);
+        mon_tran.HADDR     <= ahb_vif.mst_mon_cb.HADDR;
+        if ($cast(mon_tran.HBURST, ahb_vif.mst_mon_cb.HBURST))
+            `uvm_fatal(get_type_name(), "mon tran HBURST get failed")
+        mon_tran.HMASTLOCK <= ahb_vif.mst_mon_cb.HMASTLOCK;
+        mon_tran.HPORT     <= ahb_vif.mst_mon_cb.HPORT;
+        if ($cast(mon_tran.HSIZE, ahb_vif.mst_mon_cb.HSIZE))
+            `uvm_fatal(get_type_name(), "mon tran HSIZE get failed")
+        if ($cast(mon_tran.HTRANS, ahb_vif.mst_mon_cb.HTRANS))
+            `uvm_fatal(get_type_name(), "mon tran HTRANS get failed")
+        if ($cast(mon_tran.HWRITE,ahb_vif.mst_mon_cb.HWRITE))
+            `uvm_fatal(get_type_name(), "mon tran WRITE get failed")
 
         /* monitor data phase */
         do
-            @(ahb_vif.master_mon.mst_mon_cb);
-        while(!ahb_vif.master_mon.mst_mon_cb.HREADY);
-        if (ahb_vif.master_mon.mst_mon_cb.HWRITE) begin
-            mon_tran.HWDATA    <= ahb_vif.master_mon.mst_mon_cb.HWDATA;
+            @(ahb_vif.mst_mon_cb);
+        while(!ahb_vif.mst_mon_cb.HREADY);
+        if (ahb_vif.mst_mon_cb.HWRITE) begin
+            mon_tran.HWDATA    <= ahb_vif.mst_mon_cb.HWDATA;
             mon_tran.HRDATA    <= 0;
         end else begin
             mon_tran.HWDATA    <= 0;
-            mon_tran.HRDATA    <= ahb_vif.master_mon.mst_mon_cb.HRDATA;
+            mon_tran.HRDATA    <= ahb_vif.mst_mon_cb.HRDATA;
         end
-        $cast(mon_tran.HREADY, ahb_vif.master_mon.mst_mon_cb.HREADY);
-        $cast(mon_tran.HRESP, ahb_vif.master_mon.mst_mon_cb.HRESP);
+        //if ($cast(mon_tran.HREADY, ahb_vif.mst_mon_cb.HREADY))
+        //    `uvm_fatal(get_type_name(), "mon tran HREADY get failed")
+
+        //if ($cast(mon_tran.HRESP, ahb_vif.mst_mon_cb.HRESP))
+        //    `uvm_fatal(get_type_name(), "mon tran HRESP get failed")
 
         /* send specified value to all connected interface */
         `uvm_info(get_type_name(), "completed monitor transaction...", UVM_LOW);

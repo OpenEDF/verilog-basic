@@ -196,7 +196,6 @@ task ahb_lite_test::run_phase(uvm_phase phase);
         /* isr sequence */
 
         /* main sequence */
-        #10;
         mst_seq.start(ahb_env.mst_agt.mst_seqr);
     end
 
