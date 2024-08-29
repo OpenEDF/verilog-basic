@@ -54,9 +54,9 @@ rand     hburst_e HBURST;
 rand     htrans_e HTRANS;
 rand bit          HMASTLOCK;
 rand bit [3:0]    HPORT;
-         hready_e HREADY;
+         hready_e HREADY;   /* no rand */
          hresp_e  HRESP;
-bit      [31:0]   HRDATA;
+    bit  [31:0]   HRDATA;
 
 //--------------------------------------------------------------------------
 // Design: utility and field macros
@@ -77,8 +77,40 @@ bit      [31:0]   HRDATA;
 `uvm_object_utils_end
 
 //--------------------------------------------------------------------------
-// Design: constructor
+// Design: randomization and constraint addr
 //--------------------------------------------------------------------------
+constraint ahb_lite_addr {
+    HADDR <= 32'h000F_FFFF;
+    HADDR[1:0] == 0;
+}
+
+//--------------------------------------------------------------------------
+// Design: constraint size
+//--------------------------------------------------------------------------
+constraint ahb_lite_size_word {
+    HSIZE == WORD;
+}
+
+//--------------------------------------------------------------------------
+// Design: constraint burst
+//--------------------------------------------------------------------------
+constraint ahb_lite_burst {
+    HBURST inside { SINGLE };
+}
+
+//--------------------------------------------------------------------------
+// Design: constraint port
+//--------------------------------------------------------------------------
+constraint ahb_lite_port {
+    HPORT == 0;
+}
+
+//--------------------------------------------------------------------------
+// Design: constraint hmastlock
+//--------------------------------------------------------------------------
+constraint ahb_lite_hmastlock {
+    HMASTLOCK == 0;
+}
 
 //--------------------------------------------------------------------------
 // Design: declaer method

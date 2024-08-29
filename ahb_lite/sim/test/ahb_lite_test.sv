@@ -191,13 +191,13 @@ task ahb_lite_test::run_phase(uvm_phase phase);
     `uvm_info(get_type_name(), "IN run_phase...", UVM_LOW);
     phase.raise_objection(this);
 
-    repeat(1) begin
+    fork
         /* Executes this sequence, returning when the sequence has completed  */
         /* isr sequence */
 
         /* main sequence */
         mst_seq.start(ahb_env.mst_agt.mst_seqr);
-    end
+    join
 
     /* The drop is expected to be matched with an earlier raise */
     phase.drop_objection(this);

@@ -48,8 +48,8 @@ class ahb_mst_mon extends uvm_monitor;
 // Design: declare and register
 //--------------------------------------------------------------------------
 virtual ahb_mst_intf ahb_vif;
-uvm_analysis_port #(ahb_mst_tran) item_collect_port;
 ahb_mst_tran mon_tran;
+uvm_analysis_port #(ahb_mst_tran) item_collect_port;
 `uvm_component_utils(ahb_mst_mon)
 
 extern function new(string name = "ahb_mst_mon", uvm_component parent = null);
@@ -64,7 +64,6 @@ endclass: ahb_mst_mon
 function ahb_mst_mon::new(string name = "ahb_mst_mon", uvm_component parent = null);
     super.new(name, parent);
     item_collect_port = new("item_collect_port", this);
-    mon_tran = new();
 endfunction
 
 //--------------------------------------------------------------------------
@@ -83,11 +82,11 @@ endfunction
 // Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
 task ahb_mst_mon::run_phase(uvm_phase phase);
-    super.run_phase(phase);
+    mon_tran = ahb_mst_tran::type_id::create("pon_tran");
+
     /* run monitor */
-    fork
-        do_monitor();
-    join
+    do_monitor();
+
 endtask
 
 //--------------------------------------------------------------------------
@@ -96,7 +95,6 @@ endtask
 task ahb_mst_mon::do_monitor();
     forever begin
         `uvm_info(get_type_name(), "starting monitor transaction...", UVM_LOW);
-        //mon_tran = ahb_mst_tran::type_id::create("pon_tran");
         /* wait reset is high */
         do
             @(ahb_vif.mst_mon_cb);
@@ -107,16 +105,18 @@ task ahb_mst_mon::do_monitor();
         do
             @(ahb_vif.mst_mon_cb);
         while(!ahb_vif.mst_mon_cb.HREADY);
+
         mon_tran.HADDR     <= ahb_vif.mst_mon_cb.HADDR;
-        if ($cast(mon_tran.HBURST, ahb_vif.mst_mon_cb.HBURST))
+        if (!$cast(mon_tran.HBURST, ahb_vif.mst_mon_cb.HBURST))
             `uvm_fatal(get_type_name(), "mon tran HBURST get failed")
+
         mon_tran.HMASTLOCK <= ahb_vif.mst_mon_cb.HMASTLOCK;
         mon_tran.HPORT     <= ahb_vif.mst_mon_cb.HPORT;
-        if ($cast(mon_tran.HSIZE, ahb_vif.mst_mon_cb.HSIZE))
+        if (!$cast(mon_tran.HSIZE, ahb_vif.mst_mon_cb.HSIZE))
             `uvm_fatal(get_type_name(), "mon tran HSIZE get failed")
-        if ($cast(mon_tran.HTRANS, ahb_vif.mst_mon_cb.HTRANS))
+        if (!$cast(mon_tran.HTRANS, ahb_vif.mst_mon_cb.HTRANS))
             `uvm_fatal(get_type_name(), "mon tran HTRANS get failed")
-        if ($cast(mon_tran.HWRITE,ahb_vif.mst_mon_cb.HWRITE))
+        if (!$cast(mon_tran.HWRITE,ahb_vif.mst_mon_cb.HWRITE))
             `uvm_fatal(get_type_name(), "mon tran WRITE get failed")
 
         /* monitor data phase */
@@ -130,11 +130,12 @@ task ahb_mst_mon::do_monitor();
             mon_tran.HWDATA    <= 0;
             mon_tran.HRDATA    <= ahb_vif.mst_mon_cb.HRDATA;
         end
-        //if ($cast(mon_tran.HREADY, ahb_vif.mst_mon_cb.HREADY))
-        //    `uvm_fatal(get_type_name(), "mon tran HREADY get failed")
 
-        //if ($cast(mon_tran.HRESP, ahb_vif.mst_mon_cb.HRESP))
-        //    `uvm_fatal(get_type_name(), "mon tran HRESP get failed")
+        if (!$cast(mon_tran.HREADY, ahb_vif.mst_mon_cb.HREADY))
+            `uvm_fatal(get_type_name(), "mon tran HREADY get failed")
+
+        if (!$cast(mon_tran.HRESP, ahb_vif.mst_mon_cb.HRESP))
+            `uvm_fatal(get_type_name(), "mon tran HRESP get failed")
 
         /* send specified value to all connected interface */
         `uvm_info(get_type_name(), "completed monitor transaction...", UVM_LOW);

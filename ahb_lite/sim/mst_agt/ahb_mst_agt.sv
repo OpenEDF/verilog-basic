@@ -83,8 +83,8 @@ function void ahb_mst_agt::connect_phase(uvm_phase phase);
     /* UVM_ACTIVE and UVM PASSIVE */
     if (get_is_active == UVM_ACTIVE) begin
         mst_drv.seq_item_port.connect(mst_seqr.seq_item_export);
+        mst_drv.rsp_port.connect(mst_seqr.rsp_export);
     end
-    /* TODO: rsp_export(sequencer) and rsp_port(driver)*/
 endfunction
 
 `endif /* _AHB_MST_AGT_SV_ */

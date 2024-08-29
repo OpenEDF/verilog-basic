@@ -44,7 +44,6 @@ class ahb_mst_base_seq extends uvm_sequence#(ahb_mst_tran);
 //--------------------------------------------------------------------------
 // Design: declear and register
 //--------------------------------------------------------------------------
-ahb_mst_tran req;
 `uvm_object_utils(ahb_mst_base_seq);
 
 extern function new(string name = "ahb_mst_base_seq");
@@ -67,14 +66,27 @@ endfunction
 //        finish_item(item);
 //--------------------------------------------------------------------------
 task ahb_mst_base_seq::body();
+    REQ req_item;
+    RSP rsp_item;
+
     repeat(10) begin
-    #10;
     `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
-    `uvm_do(req);
-    get_response(req);
-    `uvm_info(get_type_name(), {"get response after:\n", req.sprint()}, UVM_LOW);
+    req_item = ahb_mst_tran::type_id::create("req_item");
+    /* send item */
+    start_item(req_item);
+
+    if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == NONSEQ; }) begin
+        `uvm_fatal("body:", "req randomization failure")
+    end else begin
+        `uvm_info(get_type_name(), {"set item:\n", req_item.sprint()}, UVM_LOW);
     end
-    //`uvm_do_with(req, {ina == 10;});
+
+    finish_item(req_item);
+
+    /* receive item */
+    get_response(rsp_item);
+    `uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_LOW);
+    end
 endtask
 
 `endif /* _AHB_MST_BASE_SEQ_SV_ */

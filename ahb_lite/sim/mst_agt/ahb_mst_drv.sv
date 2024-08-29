@@ -47,6 +47,8 @@ class ahb_mst_drv extends uvm_driver#(ahb_mst_tran);
 // Design: declare and register
 //--------------------------------------------------------------------------
 virtual ahb_mst_intf ahb_vif;
+ahb_mst_tran  req;
+ahb_mst_tran  rsp;
 `uvm_component_utils(ahb_mst_drv)
 
 //--------------------------------------------------------------------------
@@ -81,13 +83,14 @@ endfunction
 task ahb_mst_drv::run_phase(uvm_phase phase);
     forever begin
         seq_item_port.get_next_item(req);
-        `uvm_info(get_type_name(), {"\n", req.sprint()}, UVM_HIGH);
+        `uvm_info(get_type_name(), {"\n", req.sprint()}, UVM_LOW);
 
         /* driver dtu */
         driver();
 
         seq_item_port.item_done(req); /* TODO: processor response and rsp */
         `uvm_info(get_type_name(), "after item_done call", UVM_LOW);
+
         `uvm_info(get_type_name(), "Completed transaction...",UVM_LOW);
     end
 endtask
@@ -98,44 +101,44 @@ endtask
 task ahb_mst_drv::driver();
     /* wait reset is high */
     do
-        @(ahb_vif.master_drv.mst_drv_cb);
-    while(!ahb_vif.master_drv.HRESETn);
+        @(ahb_vif.mst_drv_cb);
+    while(!ahb_vif.HRESETn);
     /* address phase */
-    ahb_vif.master_drv.mst_drv_cb.HADDR  <= req.HADDR;
-    ahb_vif.master_drv.mst_drv_cb.HWRITE <= req.HWRITE;
-    ahb_vif.master_drv.mst_drv_cb.HTRANS <= req.HTRANS;
-    ahb_vif.master_drv.mst_drv_cb.HSIZE  <= req.HSIZE;
-    ahb_vif.master_drv.mst_drv_cb.HBURST <= req.HBURST; /* TODO: process brust data */
-    ahb_vif.master_drv.mst_drv_cb.HPORT  <= req.HPORT;
-    ahb_vif.master_drv.mst_drv_cb.HMASTLOCK <= req.HMASTLOCK;
-
+    ahb_vif.mst_drv_cb.HADDR  <= req.HADDR;
+    ahb_vif.mst_drv_cb.HWRITE <= req.HWRITE;
+    ahb_vif.mst_drv_cb.HTRANS <= req.HTRANS;
+    ahb_vif.mst_drv_cb.HSIZE  <= req.HSIZE;
+    ahb_vif.mst_drv_cb.HBURST <= req.HBURST; /* TODO: process brust data */
+    ahb_vif.mst_drv_cb.HPORT  <= req.HPORT;
+    ahb_vif.mst_drv_cb.HMASTLOCK <= req.HMASTLOCK;
     /* wait address phase ready */
     do
-        @(ahb_vif.master_drv.mst_drv_cb);
-    while(!ahb_vif.master_drv.mst_drv_cb.HREADY);
-    `uvm_info(get_type_name(), "address phase ready...",UVM_LOW);
+        @(ahb_vif.mst_drv_cb);
+    while(!ahb_vif.mst_drv_cb.HREADY);
+    `uvm_info(get_type_name(), "address phase ready...", UVM_LOW);
+
     case(req.HWRITE)
         /* read */
         READ: begin
-            ahb_vif.master_drv.mst_drv_cb.HWDATA <= 0;
-            req.HRDATA = ahb_vif.master_drv.mst_drv_cb.HRDATA;
+            ahb_vif.mst_drv_cb.HWDATA <= 0;
+            req.HRDATA = ahb_vif.mst_drv_cb.HRDATA;
         end
         /* write */
         WRITE: begin
-            ahb_vif.master_drv.mst_drv_cb.HWDATA <= req.HWDATA;
+            ahb_vif.mst_drv_cb.HWDATA <= req.HWDATA;
             req.HRDATA = 0;
         end
     endcase
 
     /* wait data phase ready */
-    while(!ahb_vif.master_drv.mst_drv_cb.HREADY) begin
-        @(ahb_vif.master_drv.mst_drv_cb);
+    while(!ahb_vif.mst_drv_cb.HREADY) begin
+        @(ahb_vif.mst_drv_cb);
     end
-    `uvm_info(get_type_name(), "data phase ready...",UVM_LOW);
+    `uvm_info(get_type_name(), "data phase ready...", UVM_LOW);
 
     /* response */
-    req.HRESP  <= ahb_vif.master_drv.mst_drv_cb.HRESP;
-    req.HREADY <= ahb_vif.master_drv.mst_drv_cb.HREADY;
+    req.HRESP  <= ahb_vif.mst_drv_cb.HRESP;
+    req.HREADY <= ahb_vif.mst_drv_cb.HREADY;
 
 endtask
 
