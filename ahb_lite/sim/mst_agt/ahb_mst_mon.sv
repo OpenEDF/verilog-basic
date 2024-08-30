@@ -56,6 +56,7 @@ extern function new(string name = "ahb_mst_mon", uvm_component parent = null);
 extern function void build_phase(uvm_phase phase);
 extern task run_phase(uvm_phase phase);
 extern task do_monitor();
+extern task wait_for_reset();
 
 endclass: ahb_mst_mon
 //--------------------------------------------------------------------------
@@ -93,6 +94,7 @@ endtask
 // Design: monitor the dtu signal
 //--------------------------------------------------------------------------
 task ahb_mst_mon::do_monitor();
+    wait_for_reset();
     forever begin
         `uvm_info(get_type_name(), "starting monitor transaction...", UVM_LOW);
         /* wait reset is high */
@@ -145,6 +147,14 @@ task ahb_mst_mon::do_monitor();
         item_collect_port.write(mon_tran);
     end
 
+endtask
+
+//--------------------------------------------------------------------------
+// Design: wait controller reset
+//--------------------------------------------------------------------------
+task ahb_mst_mon::wait_for_reset();
+    `uvm_info(get_type_name(), "wait controller reset...", UVM_LOW);
+    @(posedge ahb_vif.HRESETn);
 endtask
 
 `endif /* _AHB_MST_MON_ */

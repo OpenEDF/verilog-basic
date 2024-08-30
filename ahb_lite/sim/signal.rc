@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 1278 621 100 65
+viewPort 0 27 1278 549 100 65
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,8 +16,8 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 262.600000
-cursor 2.000000
+zoom 0.000000 196.083984
+cursor 0.000000
 marker 0.000000
 
 ; user define markers
@@ -25,7 +25,7 @@ marker 0.000000
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 13
+markerPos 5
 
 ; event list
 ; addEvent event_name event_expression
@@ -51,6 +51,7 @@ addSignal -h 15 /tb_top/ahb_lite_top_u0/HCLK
 addSignal -h 15 -holdScope HRESETn
 addSignal -h 15 -holdScope m0_haddr[31:0]
 addSignal -h 15 -holdScope m0_hwrite
+addSignal -h 15 -holdScope m0_rdata[31:0]
 addSignal -h 15 -holdScope m0_hsize[2:0]
 addSignal -h 15 -holdScope m0_hburst[2:0]
 addSignal -h 15 -holdScope m0_hport[3:0]
@@ -59,7 +60,6 @@ addSignal -h 15 -holdScope m0_hmastlock
 addSignal -h 15 -holdScope m0_hwdata[31:0]
 addSignal -h 15 -holdScope m0_hready
 addSignal -h 15 -holdScope m0_hresp
-addSignal -h 15 -holdScope m0_rdata[31:0]
 addGroup "G2"
 
 ; getSignalForm Scope Hierarchy Status

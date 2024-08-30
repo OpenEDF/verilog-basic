@@ -47,8 +47,8 @@ class ahb_mst_drv extends uvm_driver#(ahb_mst_tran);
 // Design: declare and register
 //--------------------------------------------------------------------------
 virtual ahb_mst_intf ahb_vif;
-ahb_mst_tran  req;
-ahb_mst_tran  rsp;
+ahb_mst_tran req;
+ahb_mst_tran rsp;
 `uvm_component_utils(ahb_mst_drv)
 
 //--------------------------------------------------------------------------
@@ -57,7 +57,9 @@ ahb_mst_tran  rsp;
 extern function new(string name = "ahb_mst_drv", uvm_component parent = null);
 extern function void build_phase(uvm_phase phase);
 extern task run_phase(uvm_phase phase);
+extern task reset_phase(uvm_phase phase);
 extern task driver();
+extern task wait_for_reset();
 
 endclass: ahb_mst_drv
 
@@ -81,6 +83,8 @@ endfunction
 // Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
 task ahb_mst_drv::run_phase(uvm_phase phase);
+    rsp = ahb_mst_tran::type_id::create("rsp");
+    wait_for_reset();
     forever begin
         seq_item_port.get_next_item(req);
         `uvm_info(get_type_name(), {"\n", req.sprint()}, UVM_LOW);
@@ -91,6 +95,9 @@ task ahb_mst_drv::run_phase(uvm_phase phase);
         seq_item_port.item_done(req); /* TODO: processor response and rsp */
         `uvm_info(get_type_name(), "after item_done call", UVM_LOW);
 
+        /* response */
+        rsp.set_id_info(req);
+        seq_item_port.put(rsp);
         `uvm_info(get_type_name(), "Completed transaction...",UVM_LOW);
     end
 endtask
@@ -104,6 +111,7 @@ task ahb_mst_drv::driver();
         @(ahb_vif.mst_drv_cb);
     while(!ahb_vif.HRESETn);
     /* address phase */
+    ahb_vif.HRESETn           <= req.HRESETn;
     ahb_vif.mst_drv_cb.HADDR  <= req.HADDR;
     ahb_vif.mst_drv_cb.HWRITE <= req.HWRITE;
     ahb_vif.mst_drv_cb.HTRANS <= req.HTRANS;
@@ -142,5 +150,23 @@ task ahb_mst_drv::driver();
 
 endtask
 
+//--------------------------------------------------------------------------
+// Design: reset phase task, reset is actiover LOW
+//--------------------------------------------------------------------------
+task ahb_mst_drv::reset_phase(uvm_phase phase);
+    phase.raise_objection(this);
+    ahb_vif.HRESETn = 0;
+    #20;
+    ahb_vif.HRESETn = 1;
+    phase.drop_objection(this);
+endtask
+
+//--------------------------------------------------------------------------
+// Design: wait controller reset
+//--------------------------------------------------------------------------
+task ahb_mst_drv::wait_for_reset();
+    `uvm_info(get_type_name(), "wait controller reset...", UVM_LOW);
+    @(posedge ahb_vif.HRESETn);
+endtask
 `endif /* _AHB_MST_DRV_ */
 //--------------------------------------------------------------------------

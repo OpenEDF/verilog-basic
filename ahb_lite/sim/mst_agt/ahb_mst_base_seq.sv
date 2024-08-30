@@ -69,23 +69,24 @@ task ahb_mst_base_seq::body();
     REQ req_item;
     RSP rsp_item;
 
-    repeat(10) begin
-    `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
-    req_item = ahb_mst_tran::type_id::create("req_item");
-    /* send item */
-    start_item(req_item);
+    repeat(5) begin
+        `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
+        req_item = ahb_mst_tran::type_id::create("req_item");
+        /* send item */
+        start_item(req_item);
 
-    if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == NONSEQ; }) begin
-        `uvm_fatal("body:", "req randomization failure")
-    end else begin
-        `uvm_info(get_type_name(), {"set item:\n", req_item.sprint()}, UVM_LOW);
-    end
+        if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == NONSEQ; }) begin
+            `uvm_fatal("body:", "req randomization failure")
+        end else begin
+            `uvm_info(get_type_name(), {"set item:\n", req_item.sprint()}, UVM_LOW);
+        end
+        req_item.HRESETn = 1;
 
-    finish_item(req_item);
+        finish_item(req_item);
 
-    /* receive item */
-    get_response(rsp_item);
-    `uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_LOW);
+        /* receive item */
+        get_response(rsp_item);
+        `uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_LOW);
     end
 endtask
 
