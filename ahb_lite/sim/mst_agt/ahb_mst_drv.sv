@@ -83,11 +83,11 @@ endfunction
 // Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
 task ahb_mst_drv::run_phase(uvm_phase phase);
-    rsp = ahb_mst_tran::type_id::create("rsp");
     wait_for_reset();
+    rsp = ahb_mst_tran::type_id::create("rsp");
     forever begin
         seq_item_port.get_next_item(req);
-        `uvm_info(get_type_name(), {"\n", req.sprint()}, UVM_LOW);
+        `uvm_info(get_type_name(), {"\n", req.sprint()}, UVM_HIGH);
 
         /* driver dtu */
         driver();
@@ -145,8 +145,8 @@ task ahb_mst_drv::driver();
     `uvm_info(get_type_name(), "data phase ready...", UVM_LOW);
 
     /* response */
-    req.HRESP  <= ahb_vif.mst_drv_cb.HRESP;
-    req.HREADY <= ahb_vif.mst_drv_cb.HREADY;
+    rsp.HRESP  <= ahb_vif.mst_drv_cb.HRESP;
+    rsp.HREADY <= ahb_vif.mst_drv_cb.HREADY;
 
 endtask
 
