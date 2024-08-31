@@ -47,6 +47,7 @@ class ahb_lite_test extends uvm_test;
 //--------------------------------------------------------------------------
 ahb_lite_env      ahb_env;
 ahb_mst_base_seq  mst_seq;
+ahb_lite_system_config sys_cfg;
 `uvm_component_utils(ahb_lite_test)
 
 //--------------------------------------------------------------------------
@@ -91,6 +92,11 @@ function void ahb_lite_test::build_phase(uvm_phase phase);
     super.build_phase(phase);
     ahb_env = ahb_lite_env::type_id::create("ahb_env", this);
     mst_seq = ahb_mst_base_seq::type_id::create("mst_seq");
+    sys_cfg = ahb_lite_system_config::type_id::create("sys_cfg");
+    sys_cfg.test_var = 10;
+    sys_cfg.has_scoreboard = 1;
+    sys_cfg.has_functional_coverage = 1;
+    uvm_config_db #(ahb_lite_system_config)::set(this, "*", "ahb_lite_system_config", sys_cfg);
 endfunction
 
 //--------------------------------------------------------------------------

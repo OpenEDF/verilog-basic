@@ -6,7 +6,7 @@
 #--------------------------------------------------------------------------
 # test case file
 TEST_FILE = src.lst
-INC_DIR = ../src/+mst_agt/
+INC_DIR = ../src/+mst_agt/+inf/
 UVM_VERBOSITY =	UVM_LOW
 
 # UVM simv Test options

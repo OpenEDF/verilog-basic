@@ -40,6 +40,7 @@ import uvm_pkg::*;
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
+`include "test/ahb_lite_system_config.sv"
 `include "ahb_mst_tran.sv"
 `include "ahb_mst_drv.sv"
 `include "ahb_mst_mon.sv"

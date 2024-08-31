@@ -47,13 +47,15 @@ class ahb_mst_mon extends uvm_monitor;
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
+`uvm_component_utils(ahb_mst_mon)
 virtual ahb_mst_intf ahb_vif;
 ahb_mst_tran mon_tran;
 uvm_analysis_port #(ahb_mst_tran) item_collect_port;
-`uvm_component_utils(ahb_mst_mon)
+ahb_lite_system_config sys_cfg;
 
 extern function new(string name = "ahb_mst_mon", uvm_component parent = null);
 extern function void build_phase(uvm_phase phase);
+extern function void connect_phase(uvm_phase phase);
 extern task run_phase(uvm_phase phase);
 extern task do_monitor();
 extern task wait_for_reset();
@@ -72,11 +74,16 @@ endfunction
 //--------------------------------------------------------------------------
 function void ahb_mst_mon::build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "ahb_vif", ahb_vif))
-        `uvm_fatal(get_type_name(), "vif not set the top level!")
-    else
-        `uvm_info(get_type_name(), "vif get success...", UVM_LOW);
+    if (!uvm_config_db#(ahb_lite_system_config)::get(this, "", "ahb_lite_system_config", sys_cfg)) begin
+        `uvm_fatal("FATAL MSG", "config object is not set properly");
+    end
+endfunction
 
+//--------------------------------------------------------------------------
+// Design: connect phase
+//--------------------------------------------------------------------------
+function void ahb_mst_mon::connect_phase(uvm_phase phase);
+    ahb_vif = sys_cfg.ahb_lite_vif;
 endfunction
 
 //--------------------------------------------------------------------------
@@ -144,7 +151,9 @@ task ahb_mst_mon::do_monitor();
         `uvm_info(get_type_name(), {"\n", mon_tran.sprint()}, UVM_HIGH);
 
         /* send data to analysis port */
-        item_collect_port.write(mon_tran);
+        if (sys_cfg.has_scoreboard) begin
+            item_collect_port.write(mon_tran);
+        end
     end
 
 endtask

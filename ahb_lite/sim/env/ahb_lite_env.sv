@@ -49,6 +49,8 @@ class ahb_lite_env extends uvm_env;
 ahb_mst_agt          mst_agt;
 ahb_lite_scoreboard  ahb_lite_sb;
 ahb_lite_coverage    ahb_lite_cov;
+ahb_lite_system_config sys_cfg;
+virtual ahb_mst_intf   ahb_vif;
 
 //--------------------------------------------------------------------------
 // Design: declare method 
@@ -74,6 +76,19 @@ function void ahb_lite_env::build_phase(uvm_phase phase);
     mst_agt = ahb_mst_agt::type_id::create("ahb_mst_agt", this);
     ahb_lite_sb  = ahb_lite_scoreboard::type_id::create("ahb_lite_scoreboard", this);
     ahb_lite_cov = ahb_lite_coverage::type_id::create("ahb_lite_coverage", this);
+    if (!uvm_config_db#(ahb_lite_system_config)::get(this, "", "ahb_lite_system_config", sys_cfg)) begin
+        `uvm_fatal("FATAL MSG", "config object is not set properly");
+    end else begin
+        sys_cfg.config_display();
+        /* TODO: object print */
+       // `uvm_info(get_type_name(), $sformatf("**************** system configuration ******************\n%0s", sys_cfg.sprint()), UVM_LOW);
+        if (!uvm_config_db#(virtual ahb_mst_intf)::get(this, "", "ahb_vif", ahb_vif)) begin
+            `uvm_fatal("FATAL MSG", "ahb lite interface is not set properly");
+        end else begin
+            sys_cfg.ahb_lite_vif = ahb_vif;
+        end
+    end
+
 endfunction
 
 //--------------------------------------------------------------------------
@@ -81,8 +96,13 @@ endfunction
 //--------------------------------------------------------------------------
 function void ahb_lite_env::connect_phase(uvm_phase phase);
     /* monitor ---> scoreboard */
-    mst_agt.mst_mon.item_collect_port.connect(ahb_lite_sb.item_collect_export);
-    mst_agt.mst_mon.item_collect_port.connect(ahb_lite_cov.item_cov_export);
+    if (sys_cfg.has_scoreboard) begin
+        mst_agt.mst_mon.item_collect_port.connect(ahb_lite_sb.item_collect_export);
+    end
+
+    if (sys_cfg.has_functional_coverage) begin
+        mst_agt.mst_mon.item_collect_port.connect(ahb_lite_cov.item_cov_export);
+    end
 endfunction
 
 `endif /* _AHB_LITE_ENV_ */

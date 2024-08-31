@@ -49,8 +49,12 @@ parameter SYSTEM_CLK_CYCLE = 10;
 // Design: initial clk
 //--------------------------------------------------------------------------
 initial begin
-    systemclock = 1;
-    forever #(SYSTEM_CLK_CYCLE / 2) systemclock = ~systemclock;
+    #(SYSTEM_CLK_CYCLE / 2);
+    systemclock = 0;
+    forever begin
+        #(SYSTEM_CLK_CYCLE / 2)
+        systemclock = ~systemclock;
+    end
 end
 
 //--------------------------------------------------------------------------

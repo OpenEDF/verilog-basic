@@ -46,16 +46,18 @@ class ahb_mst_drv extends uvm_driver#(ahb_mst_tran);
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
+`uvm_component_utils(ahb_mst_drv)
 virtual ahb_mst_intf ahb_vif;
 ahb_mst_tran req;
 ahb_mst_tran rsp;
-`uvm_component_utils(ahb_mst_drv)
+ahb_lite_system_config sys_cfg;
 
 //--------------------------------------------------------------------------
 // Design: extern method
 //--------------------------------------------------------------------------
 extern function new(string name = "ahb_mst_drv", uvm_component parent = null);
 extern function void build_phase(uvm_phase phase);
+extern function void connect_phase(uvm_phase phase);
 extern task run_phase(uvm_phase phase);
 extern task reset_phase(uvm_phase phase);
 extern task driver();
@@ -75,8 +77,17 @@ endfunction
 //--------------------------------------------------------------------------
 function void ahb_mst_drv::build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if (!uvm_config_db#(virtual ahb_mst_intf) :: get(this, "", "ahb_vif", ahb_vif))
-        `uvm_fatal(get_type_name(), "vif not set the top level!");
+
+    if (!uvm_config_db#(ahb_lite_system_config)::get(this, "", "ahb_lite_system_config", sys_cfg)) begin
+        `uvm_fatal("FATAL MSG", "config object is not set properly");
+    end
+endfunction
+
+//--------------------------------------------------------------------------
+// Design: connect phase
+//--------------------------------------------------------------------------
+function void ahb_mst_drv::connect_phase(uvm_phase phase);
+    ahb_vif = sys_cfg.ahb_lite_vif;
 endfunction
 
 //--------------------------------------------------------------------------

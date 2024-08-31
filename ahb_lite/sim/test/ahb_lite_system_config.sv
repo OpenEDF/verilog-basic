@@ -26,12 +26,12 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief:An agent is a container that holds and connects the driver, monitor,
-//       and sequencer instances.
+// Brief: The UVM subscriber provides an analysis export for receiving
+//        transactions form a connected analysis export.
 // Change Log:
 //--------------------------------------------------------------------------
-`ifndef _AHB_MST_AGT_SV_
-`define _AHB_MST_AGT_SV_
+`ifndef _AHB_LITE_SYSTEM_CONFIG_SV_
+`define _AHB_LITE_SYSTEM_CONFIG_SV_
 
 //--------------------------------------------------------------------------
 // Include File
@@ -40,57 +40,49 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class ahb_mst_agt extends uvm_agent;
+class ahb_lite_system_config extends uvm_object;
 
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-`uvm_component_utils(ahb_mst_agt)
-ahb_mst_drv    mst_drv;
-ahb_mst_seqr   mst_seqr;
-ahb_mst_mon    mst_mon;
-ahb_lite_system_config sys_cfg;
+`uvm_object_utils(ahb_lite_system_config)
 
-extern function new(string name = "ahb_mst_agt", uvm_component parent = null);
-extern function void build_phase(uvm_phase phase);
-extern function void connect_phase(uvm_phase phase);
+//--------------------------------------------------------------------------
+// Design: system config variable
+//--------------------------------------------------------------------------
+virtual ahb_mst_intf ahb_lite_vif;
+uvm_active_passive_enum active = UVM_ACTIVE;
+bit has_functional_coverage = 0;
+bit has_scoreboard = 0;
+int test_var = 0;
 
-endclass: ahb_mst_agt
+//--------------------------------------------------------------------------
+// Design: declare method
+//--------------------------------------------------------------------------
+extern function new(string name = "ahb_lite_system_config");
+extern function void config_display();
+
+endclass: ahb_lite_system_config
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function ahb_mst_agt::new(string name = "ahb_mst_agt", uvm_component parent = null);
-    super.new(name, parent);
+function ahb_lite_system_config::new(string name = "ahb_lite_system_config");
+    super.new(name);
 endfunction
 
 //--------------------------------------------------------------------------
-// Design: build phase: create and configure of testbench structure
+// Design: display
 //--------------------------------------------------------------------------
-function void ahb_mst_agt::build_phase(uvm_phase phase);
-    super.build_phase(phase);
-    if (!uvm_config_db#(ahb_lite_system_config)::get(this, "", "ahb_lite_system_config", sys_cfg)) begin
-        `uvm_fatal("FATAL MSG", "config object is not set properly");
-    end
+function void ahb_lite_system_config::config_display();
+    `uvm_info(get_type_name(), "********************* system config ********************", UVM_LOW);
+    `uvm_info(get_type_name(), $sformatf("has_scoreboard: %d", has_scoreboard), UVM_LOW);
+    `uvm_info(get_type_name(), $sformatf("has_functional_coverage: %d", has_functional_coverage), UVM_LOW);
+    `uvm_info(get_type_name(), $sformatf("active: %d", active), UVM_LOW);
+    `uvm_info(get_type_name(), $sformatf("test_var: %d", test_var), UVM_LOW);
 
-    /* UVM_ACTIVE and UVM PASSIVE */
-    if (sys_cfg.active == UVM_ACTIVE) begin
-        mst_drv  = ahb_mst_drv::type_id::create("mst_drv", this);
-        mst_seqr = ahb_mst_seqr::type_id::create("mst_seqr", this);
-    end
-    mst_mon = ahb_mst_mon::type_id::create("mst_mon", this);
+    /* TODO: object print */
 endfunction
 
-//--------------------------------------------------------------------------
-// Design: connect phase: establish cross-componement connections
-//--------------------------------------------------------------------------
-function void ahb_mst_agt::connect_phase(uvm_phase phase);
-    /* UVM_ACTIVE and UVM PASSIVE */
-    if (sys_cfg.active == UVM_ACTIVE) begin
-        mst_drv.seq_item_port.connect(mst_seqr.seq_item_export);
-        mst_drv.rsp_port.connect(mst_seqr.rsp_export);
-    end
-endfunction
-
-`endif /* _AHB_MST_AGT_SV_ */
+`endif /* _AHB_LITE_SYSTEM_CONFIG_SV_ */
 //--------------------------------------------------------------------------
