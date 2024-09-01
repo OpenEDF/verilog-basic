@@ -60,3 +60,6 @@ simv*
 novas.conf
 novas.rc
 verdiLog
+
+# UVM
+vc_hdrs.h
