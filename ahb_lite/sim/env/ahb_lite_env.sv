@@ -83,7 +83,10 @@ function void ahb_lite_env::build_phase(uvm_phase phase);
         if (!uvm_config_db#(virtual ahb_mst_intf)::get(this, "", "ahb_vif", ahb_vif)) begin
             `uvm_fatal("FATAL MSG", "ahb lite interface is not set properly");
         end else begin
-            sys_cfg.ahb_lite_vif = ahb_vif;
+            sys_cfg.set_vif(ahb_vif);
+            if (sys_cfg.ahb_lite_vif == null) begin
+                `uvm_fatal("FATAL MSG", "ahb lite interface set fail");
+            end
         end
     end
 

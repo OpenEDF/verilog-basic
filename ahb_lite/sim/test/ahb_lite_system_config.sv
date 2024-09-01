@@ -65,6 +65,7 @@ int test_var = 0;
 // Design: declare method
 //--------------------------------------------------------------------------
 extern function new(string name = "ahb_lite_system_config");
+extern function void set_vif(virtual ahb_mst_intf vif);
 
 endclass: ahb_lite_system_config
 
@@ -73,6 +74,13 @@ endclass: ahb_lite_system_config
 //--------------------------------------------------------------------------
 function ahb_lite_system_config::new(string name = "ahb_lite_system_config");
     super.new(name);
+endfunction
+
+//--------------------------------------------------------------------------
+// Design: set system interface
+//--------------------------------------------------------------------------
+function void ahb_lite_system_config::set_vif(virtual ahb_mst_intf vif);
+    ahb_lite_vif = vif;
 endfunction
 
 `endif /* _AHB_LITE_SYSTEM_CONFIG_SV_ */
