@@ -206,6 +206,9 @@ function void report_test::end_of_elaboration_phase(uvm_phase phase);
     /* show uvm class arch */
     `uvm_info(get_type_name(), "IN end_of_elaboration_phase...", UVM_LOW);
     print();
+    set_report_severity_action(UVM_FATAL | UVM_LOG, UVM_DISPLAY);
+    set_report_id_action("CFG_ERROR", UVM_NO_ACTION);
+    set_report_severity_id_action(UVM_ERROR, "CFG_ERROR", UVM_EXIT);
 endfunction
 
 //--------------------------------------------------------------------------
