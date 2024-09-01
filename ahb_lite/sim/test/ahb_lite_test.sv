@@ -216,7 +216,8 @@ endtask
 function void ahb_lite_test::end_of_elaboration_phase(uvm_phase phase);
     /* show uvm class arch */
     `uvm_info(get_type_name(), "IN end_of_elaboration_phase...", UVM_LOW);
-    //print();
+    uvm_config_db#(int)::dump();
+    uvm_factory::get().print();
 endfunction
 
 //--------------------------------------------------------------------------
