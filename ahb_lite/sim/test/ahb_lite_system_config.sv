@@ -43,11 +43,6 @@
 class ahb_lite_system_config extends uvm_object;
 
 //--------------------------------------------------------------------------
-// Design: declare and register
-//--------------------------------------------------------------------------
-`uvm_object_utils(ahb_lite_system_config)
-
-//--------------------------------------------------------------------------
 // Design: system config variable
 //--------------------------------------------------------------------------
 virtual ahb_mst_intf ahb_lite_vif;
@@ -57,10 +52,19 @@ bit has_scoreboard = 0;
 int test_var = 0;
 
 //--------------------------------------------------------------------------
+// Design: declare and register
+//--------------------------------------------------------------------------
+`uvm_object_utils_begin(ahb_lite_system_config)
+    `uvm_field_enum(uvm_active_passive_enum, active, UVM_ALL_ON)
+    `uvm_field_int(has_functional_coverage, UVM_ALL_ON)
+    `uvm_field_int(has_scoreboard, UVM_ALL_ON)
+    `uvm_field_int(test_var, UVM_ALL_ON | UVM_DEC)
+`uvm_object_utils_end
+
+//--------------------------------------------------------------------------
 // Design: declare method
 //--------------------------------------------------------------------------
 extern function new(string name = "ahb_lite_system_config");
-extern function void config_display();
 
 endclass: ahb_lite_system_config
 
@@ -69,19 +73,6 @@ endclass: ahb_lite_system_config
 //--------------------------------------------------------------------------
 function ahb_lite_system_config::new(string name = "ahb_lite_system_config");
     super.new(name);
-endfunction
-
-//--------------------------------------------------------------------------
-// Design: display
-//--------------------------------------------------------------------------
-function void ahb_lite_system_config::config_display();
-    `uvm_info(get_type_name(), "********************* system config ********************", UVM_LOW);
-    `uvm_info(get_type_name(), $sformatf("has_scoreboard: %d", has_scoreboard), UVM_LOW);
-    `uvm_info(get_type_name(), $sformatf("has_functional_coverage: %d", has_functional_coverage), UVM_LOW);
-    `uvm_info(get_type_name(), $sformatf("active: %d", active), UVM_LOW);
-    `uvm_info(get_type_name(), $sformatf("test_var: %d", test_var), UVM_LOW);
-
-    /* TODO: object print */
 endfunction
 
 `endif /* _AHB_LITE_SYSTEM_CONFIG_SV_ */
