@@ -67,7 +67,7 @@ debug:
 # debug
 wave:
 	verdi -ssf $(FSDB_FILE).fsdb \
-		-ssf signal.rc \
+		-sswr signal.rc \
 		-nologo &
 
 #coverage

@@ -37,6 +37,7 @@
 `define MAX_SLAVE_NUM         4
 
 /* memory map 4K map size defalut */
+`define MEM_BLOCK_WIDTH        12
 `define MEM_MAP_S0_BASE        32'h0004_0000
 `define MEM_MAP_S0_END         32'h0004_0FFF
 `define MEM_MAP_S1_BASE        32'h0004_1000

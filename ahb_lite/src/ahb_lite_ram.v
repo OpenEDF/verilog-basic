@@ -44,7 +44,7 @@ module ahb_lite_ram
 // Parameters
 //--------------------------------------------------------------------------
 #(
-    parameter RAM_WIDTH    = 32,
+    parameter RAM_WIDTH    = 8,
     parameter RAM_DEPTH    = 4096
 )
 //--------------------------------------------------------------------------
@@ -98,7 +98,7 @@ reg [31:0] d_phase_hdata;
 `ifdef SYN_FOR_FPGA
     $display("[TODO]: !!! ADD FPGA RAM IP !!!");
 `else
-    reg [RAM_WIDTH-1:0] mem_model[0:RAM_DEPTH-1];
+    reg [RAM_WIDTH-1:0] mem_model[0:(RAM_DEPTH/4)-1];
     /* external init */
 `endif
 
@@ -110,7 +110,7 @@ reg [31:0] d_phase_hdata;
 integer index;
 initial begin
     for (index = 0; index <= RAM_DEPTH - 1; index = index + 1)
-        mem_model[index] = 32'h0000_0000;
+        mem_model[index] = {RAM_DEPTH{1'b0}};
 end
 `endif
 // synopsys translate_on
@@ -121,7 +121,7 @@ end
 wire        ahb_access      = a_phase_htrans[1] & a_phase_hsel & a_phase_hready;
 wire        ahb_write       = ahb_access &   a_phase_hwrite;
 wire        ahb_read        = ahb_access & (~a_phase_hwrite);
-wire [29:0] word_valid_addr = a_phase_addr[31:2];
+wire [`MEM_BLOCK_WIDTH-1:0] word_valid_addr = a_phase_addr[`MEM_BLOCK_WIDTH-1:0];
 
 // ----------------------------------------------------------
 // Byte lane decoder and next state logic
@@ -187,7 +187,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[0]) begin
-        mem_model[word_valid_addr][7:0] <= HWDATA[7:0];
+        mem_model[word_valid_addr] <= HWDATA[7:0];
     end
 end
 
@@ -196,7 +196,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[1]) begin
-        mem_model[word_valid_addr][15:8] <= HWDATA[15:8];
+        mem_model[word_valid_addr + 1] <= HWDATA[15:8];
     end
 end
 
@@ -205,7 +205,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[2]) begin
-        mem_model[word_valid_addr][23:16] <= HWDATA[23:16];
+        mem_model[word_valid_addr + 2] <= HWDATA[23:16];
     end
 end
 
@@ -214,17 +214,17 @@ end
 //--------------------------------------------------------------------------
 always @(posedge HCLK) begin
     if (mem_width_we[3]) begin
-        mem_model[word_valid_addr][31:24] <= HWDATA[31:24];
+        mem_model[word_valid_addr + 3] <= HWDATA[31:24];
     end
 end
 
 //--------------------------------------------------------------------------
 // Design: read memory operation
 //--------------------------------------------------------------------------
-assign HRDATA = { mem_width_re[3] ? 8'h00 : mem_model[a_phase_addr][31:24],
-                  mem_width_re[2] ? 8'h00 : mem_model[a_phase_addr][23:16],
-                  mem_width_re[1] ? 8'h00 : mem_model[a_phase_addr][15:8],
-                  mem_width_re[0] ? 8'h00 : mem_model[a_phase_addr][7:0] };
+assign HRDATA = { mem_width_re[3] ? 8'h00 : mem_model[a_phase_addr + 3],
+                  mem_width_re[2] ? 8'h00 : mem_model[a_phase_addr + 2],
+                  mem_width_re[1] ? 8'h00 : mem_model[a_phase_addr + 1],
+                  mem_width_re[0] ? 8'h00 : mem_model[a_phase_addr]};
 
 //--------------------------------------------------------------------------
 // Design: assign hready and hresp

@@ -49,8 +49,8 @@ interface ahb_mst_intf (
 //--------------------------------------------------------------------------
 // Design: setup and hold time
 //--------------------------------------------------------------------------
-parameter setup_time = 3;
-parameter hold_time  = 2;
+parameter setup_time = 1;
+parameter hold_time  = 1;
 
 //--------------------------------------------------------------------------
 // Design: bus

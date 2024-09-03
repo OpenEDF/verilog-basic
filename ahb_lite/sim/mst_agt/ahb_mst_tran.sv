@@ -46,7 +46,7 @@ class ahb_mst_tran extends uvm_sequence_item;
 // Design: control signal
 //--------------------------------------------------------------------------
 bit               HRESETn;
-rand bit [31:0]   HADDR;
+randc bit [31:0]  HADDR;
 rand     hwrite_e HWRITE;
 rand     hsize_e  HSIZE;
 rand bit [31:0]   HWDATA;
@@ -80,7 +80,8 @@ rand bit [3:0]    HPORT;
 // Design: randomization and constraint addr
 //--------------------------------------------------------------------------
 constraint ahb_lite_addr {
-    HADDR <= 32'h000F_FFFF;
+    HADDR >= 32'h0004_1000;
+    HADDR <= 32'h0004_13FC;
     HADDR[1:0] == 0;
 }
 

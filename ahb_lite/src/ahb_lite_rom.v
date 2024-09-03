@@ -44,7 +44,7 @@ module ahb_lite_rom
 // Parameters
 //--------------------------------------------------------------------------
 #(
-    parameter ROM_WIDTH    = 32,
+    parameter ROM_WIDTH    = 8,
     parameter ROM_DEPTH    = 4096,
     parameter ROM_FILENAME = ""       // mem init filename
 )
@@ -126,7 +126,7 @@ end
 //--------------------------------------------------------------------------
 wire        ahb_access      = a_phase_htrans[1] & a_phase_hsel & a_phase_hready;
 wire        ahb_read        = ahb_access & (~a_phase_hwrite);
-wire [29:0] word_valid_addr = a_phase_addr[31:2];
+wire [`MEM_BLOCK_WIDTH-1:0] word_valid_addr = a_phase_addr[`MEM_BLOCK_WIDTH-1:2];
 
 // ----------------------------------------------------------
 // Byte lane decoder and next state logic
@@ -185,10 +185,10 @@ end
 //--------------------------------------------------------------------------
 // Design: read memory operation
 //--------------------------------------------------------------------------
-assign HRDATA = { mem_width_re[3] ? 8'h00 : mem_model[a_phase_addr][31:24],
-                  mem_width_re[2] ? 8'h00 : mem_model[a_phase_addr][23:16],
-                  mem_width_re[1] ? 8'h00 : mem_model[a_phase_addr][15:8],
-                  mem_width_re[0] ? 8'h00 : mem_model[a_phase_addr][7:0] };
+assign HRDATA = { mem_width_re[3] ? 8'h00 : mem_model[a_phase_addr + 3],
+                  mem_width_re[2] ? 8'h00 : mem_model[a_phase_addr + 2],
+                  mem_width_re[1] ? 8'h00 : mem_model[a_phase_addr + 1],
+                  mem_width_re[0] ? 8'h00 : mem_model[a_phase_addr] };
 
 //--------------------------------------------------------------------------
 // Design: assign hready and hresp

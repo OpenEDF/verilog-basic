@@ -69,7 +69,7 @@ task ahb_mst_base_seq::body();
     REQ req_item;
     RSP rsp_item;
 
-    repeat(5) begin
+    repeat(1023) begin
         `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
         req_item = ahb_mst_tran::type_id::create("req_item");
         /* send item */
@@ -86,7 +86,7 @@ task ahb_mst_base_seq::body();
 
         /* receive item */
         get_response(rsp_item);
-        `uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_LOW);
+        //`uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_LOW);
     end
 endtask
 
