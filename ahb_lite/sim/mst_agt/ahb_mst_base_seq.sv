@@ -45,9 +45,10 @@ class ahb_mst_base_seq extends uvm_sequence#(ahb_mst_tran);
 // Design: declear and register
 //--------------------------------------------------------------------------
 `uvm_object_utils(ahb_mst_base_seq);
-
+int count;
 extern function new(string name = "ahb_mst_base_seq");
 extern task body();
+extern function void response_handler(uvm_sequence_item response);
 endclass: ahb_mst_base_seq
 
 //--------------------------------------------------------------------------
@@ -69,13 +70,17 @@ task ahb_mst_base_seq::body();
     REQ req_item;
     RSP rsp_item;
 
+    `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
+    req_item = ahb_mst_tran::type_id::create("req_item");
+    count = 0;
+
+    /* enable response handler */
+    use_response_handler(1);
     repeat(10) begin
-        `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
-        req_item = ahb_mst_tran::type_id::create("req_item");
         /* send item */
         start_item(req_item);
 
-        if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == NONSEQ; }) begin
+        if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == SEQ; }) begin
             `uvm_fatal("body:", "req randomization failure")
         end else begin
             `uvm_info(get_type_name(), {"set item:\n", req_item.sprint()}, UVM_LOW);
@@ -85,10 +90,19 @@ task ahb_mst_base_seq::body();
         finish_item(req_item);
 
         /* receive item */
-        get_response(rsp_item);
+        // get_response(rsp_item);
         //`uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_LOW);
     end
+    wait(count == 10);
 endtask
+
+//--------------------------------------------------------------------------
+// Design: response handler
+//--------------------------------------------------------------------------
+function void ahb_mst_base_seq::response_handler(uvm_sequence_item response);
+    `uvm_info(get_type_name(), "IN response_handler", UVM_LOW);
+    count++;
+endfunction: response_handler
 
 `endif /* _AHB_MST_BASE_SEQ_SV_ */
 //--------------------------------------------------------------------------

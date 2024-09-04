@@ -51,6 +51,8 @@ virtual ahb_mst_intf ahb_vif;
 ahb_mst_tran req;
 ahb_mst_tran rsp;
 ahb_lite_system_config sys_cfg;
+semaphore pipeline_lock;
+uvm_event pipe_ev;
 
 //--------------------------------------------------------------------------
 // Design: extern method
@@ -60,7 +62,7 @@ extern function void build_phase(uvm_phase phase);
 extern function void connect_phase(uvm_phase phase);
 extern task run_phase(uvm_phase phase);
 extern task reset_phase(uvm_phase phase);
-extern task driver();
+extern task do_pipeline_tran();
 extern task wait_for_reset();
 
 endclass: ahb_mst_drv
@@ -70,6 +72,8 @@ endclass: ahb_mst_drv
 //--------------------------------------------------------------------------
 function ahb_mst_drv::new(string name = "ahb_mst_drv", uvm_component parent = null);
     super.new(name, parent);
+    pipeline_lock = new(1);
+    pipe_ev       = new();
 endfunction
 
 //--------------------------------------------------------------------------
@@ -95,73 +99,76 @@ endfunction
 //--------------------------------------------------------------------------
 task ahb_mst_drv::run_phase(uvm_phase phase);
     wait_for_reset();
-    rsp = ahb_mst_tran::type_id::create("rsp");
-    forever begin
-        seq_item_port.get_next_item(req);
-        `uvm_info(get_type_name(), {"\n", req.sprint()}, UVM_HIGH);
 
-        /* driver dtu */
-        driver();
+    fork
+        do_pipeline_tran();
+        do_pipeline_tran();
+    join
 
-        seq_item_port.item_done(req); /* TODO: processor response and rsp */
-        `uvm_info(get_type_name(), "after item_done call", UVM_LOW);
-
-        /* response */
-        rsp.set_id_info(req);
-        seq_item_port.put(rsp);
-        `uvm_info(get_type_name(), "Completed transaction...",UVM_LOW);
-    end
+    `uvm_info(get_type_name(), "completed transaction...",UVM_LOW);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: run phase: driver the DTU
 //--------------------------------------------------------------------------
-task ahb_mst_drv::driver();
-    /* wait reset is high */
-    do
-        @(ahb_vif.mst_drv_cb);
-    while(!ahb_vif.HRESETn);
-
-    /* address phase */
-    ahb_vif.HRESETn           <= req.HRESETn;
-    ahb_vif.mst_drv_cb.HADDR  <= req.HADDR;
-    ahb_vif.mst_drv_cb.HWRITE <= req.HWRITE;
-    ahb_vif.mst_drv_cb.HTRANS <= req.HTRANS;
-    ahb_vif.mst_drv_cb.HSIZE  <= req.HSIZE;
-    ahb_vif.mst_drv_cb.HBURST <= req.HBURST; /* TODO: process brust data */
-    ahb_vif.mst_drv_cb.HPORT  <= req.HPORT;
-    ahb_vif.mst_drv_cb.HMASTLOCK <= req.HMASTLOCK;
-
-    /* wait address phase ready */
-    do
-        @(ahb_vif.mst_drv_cb);
-    while(!ahb_vif.mst_drv_cb.HREADY);
-    `uvm_info(get_type_name(), "address phase ready...", UVM_LOW);
-
-    case(req.HWRITE)
-        /* read */
-        READ: begin
-            ahb_vif.mst_drv_cb.HWDATA <= 0;
-            req.HRDATA = ahb_vif.mst_drv_cb.HRDATA;
+task ahb_mst_drv::do_pipeline_tran();
+    forever begin
+		ahb_mst_tran item_req;
+        /* wait reset is high */
+        while(!ahb_vif.HRESETn) begin
+            @(ahb_vif.mst_drv_cb);
         end
-        /* write */
-        WRITE: begin
-            ahb_vif.mst_drv_cb.HWDATA <= req.HWDATA;
-            req.HRDATA = 0;
-        end
-    endcase
 
-    /* wait data phase ready */
-    while(!ahb_vif.mst_drv_cb.HREADY) begin
-        @(ahb_vif.mst_drv_cb);
+		/* Completes the sequencer-driver handshake */
+		pipeline_lock.get();
+        seq_item_port.get(item_req);
+        `uvm_info(get_type_name(), {"\n", req.sprint()}, UVM_HIGH);
+
+		accept_tr(item_req, $time);
+		/* request bus, wait for grant, etc. */
+		begin_tr(item_req, "pipeline_tran");
+
+        ahb_vif.mst_drv_cb.HADDR  <= item_req.HADDR;
+        ahb_vif.mst_drv_cb.HWRITE <= item_req.HWRITE;
+        ahb_vif.mst_drv_cb.HTRANS <= item_req.HTRANS;
+        ahb_vif.mst_drv_cb.HSIZE  <= item_req.HSIZE;
+        ahb_vif.mst_drv_cb.HBURST <= item_req.HBURST; /* TODO: process brust data */
+        ahb_vif.mst_drv_cb.HPORT  <= item_req.HPORT;
+        ahb_vif.mst_drv_cb.HMASTLOCK <= item_req.HMASTLOCK;
+
+		/* execute address phase */
+        do
+            @(ahb_vif.mst_drv_cb);
+        while(!ahb_vif.mst_drv_cb.HREADY);
+        `uvm_info(get_type_name(), "address phase ready...", UVM_LOW);
+
+		/* allows next transaction to begin address phase */
+		pipeline_lock.put();
+
+		/* execute data phase */
+		if (item_req.HWRITE == READ) begin /* read data */
+			@(ahb_vif.mst_drv_cb);
+            while(!ahb_vif.mst_drv_cb.HREADY) begin
+			    @(ahb_vif.mst_drv_cb);
+			end
+            item_req.HRDATA <= ahb_vif.mst_drv_cb.HRDATA;
+		end else begin  /* write data */
+            ahb_vif.mst_drv_cb.HWDATA <= item_req.HWDATA;
+			@(ahb_vif.mst_drv_cb);
+            while(!ahb_vif.mst_drv_cb.HREADY) begin
+			    @(ahb_vif.mst_drv_cb);
+			end
+		end
+
+        item_req.HRESP  <= ahb_vif.mst_drv_cb.HRESP;
+        item_req.HREADY <= ahb_vif.mst_drv_cb.HREADY;
+        `uvm_info(get_type_name(), "data phase ready...", UVM_LOW);
+
+		/* return the request as response */
+        seq_item_port.put(item_req);
+		end_tr(item_req);
     end
-    `uvm_info(get_type_name(), "data phase ready...", UVM_LOW);
-
-    /* response */
-    rsp.HRESP  <= ahb_vif.mst_drv_cb.HRESP;
-    rsp.HREADY <= ahb_vif.mst_drv_cb.HREADY;
-
-endtask
+endtask: do_pipeline_tran
 
 //--------------------------------------------------------------------------
 // Design: reset phase task, reset is actiover LOW
