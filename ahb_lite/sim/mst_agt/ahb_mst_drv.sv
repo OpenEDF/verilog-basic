@@ -121,6 +121,7 @@ task ahb_mst_drv::driver();
     do
         @(ahb_vif.mst_drv_cb);
     while(!ahb_vif.HRESETn);
+
     /* address phase */
     ahb_vif.HRESETn           <= req.HRESETn;
     ahb_vif.mst_drv_cb.HADDR  <= req.HADDR;
@@ -130,6 +131,7 @@ task ahb_mst_drv::driver();
     ahb_vif.mst_drv_cb.HBURST <= req.HBURST; /* TODO: process brust data */
     ahb_vif.mst_drv_cb.HPORT  <= req.HPORT;
     ahb_vif.mst_drv_cb.HMASTLOCK <= req.HMASTLOCK;
+
     /* wait address phase ready */
     do
         @(ahb_vif.mst_drv_cb);

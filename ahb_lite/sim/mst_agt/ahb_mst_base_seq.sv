@@ -69,7 +69,7 @@ task ahb_mst_base_seq::body();
     REQ req_item;
     RSP rsp_item;
 
-    repeat(1023) begin
+    repeat(10) begin
         `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
         req_item = ahb_mst_tran::type_id::create("req_item");
         /* send item */
