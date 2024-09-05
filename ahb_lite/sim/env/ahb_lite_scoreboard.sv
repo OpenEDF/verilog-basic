@@ -91,6 +91,10 @@ task ahb_lite_scoreboard::run_phase(uvm_phase phase);
         wait (mst_tran_q.size() > 0);
         mst_sb_item = mst_tran_q.pop_front();
         `uvm_info(get_type_name(), mst_sb_item.sprint(), UVM_LOW);
+        /* check */
+        if ((mst_sb_item.HREADY != READY) || (mst_sb_item.HRESP != OKAY)) begin
+            `uvm_fatal(get_type_name(), "protocol check is not ready!!!");
+        end
     end
 endtask
 

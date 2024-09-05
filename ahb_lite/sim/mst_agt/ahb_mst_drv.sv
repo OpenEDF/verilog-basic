@@ -52,7 +52,7 @@ ahb_mst_tran req;
 ahb_mst_tran rsp;
 ahb_lite_system_config sys_cfg;
 semaphore pipeline_lock;
-uvm_event pipe_ev;
+uvm_event pipeline_ev;
 
 //--------------------------------------------------------------------------
 // Design: extern method
@@ -73,7 +73,7 @@ endclass: ahb_mst_drv
 function ahb_mst_drv::new(string name = "ahb_mst_drv", uvm_component parent = null);
     super.new(name, parent);
     pipeline_lock = new(1);
-    pipe_ev       = new();
+    pipeline_ev   = new();
 endfunction
 
 //--------------------------------------------------------------------------
@@ -102,7 +102,10 @@ task ahb_mst_drv::run_phase(uvm_phase phase);
 
     fork
         do_pipeline_tran();
-        do_pipeline_tran();
+        begin
+            pipeline_ev.wait_trigger;
+            do_pipeline_tran();
+        end
     join
 
     `uvm_info(get_type_name(), "completed transaction...",UVM_LOW);
@@ -127,6 +130,12 @@ task ahb_mst_drv::do_pipeline_tran();
 		accept_tr(item_req, $time);
 		/* request bus, wait for grant, etc. */
 		begin_tr(item_req, "pipeline_tran");
+
+        if (item_req.HTRANS == SEQ) begin
+            if (pipeline_ev.is_off) begin
+                pipeline_ev.trigger;
+            end
+        end
 
         ahb_vif.mst_drv_cb.HADDR  <= item_req.HADDR;
         ahb_vif.mst_drv_cb.HWRITE <= item_req.HWRITE;

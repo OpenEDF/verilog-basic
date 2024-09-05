@@ -69,31 +69,43 @@ endfunction
 task ahb_mst_base_seq::body();
     REQ req_item;
     RSP rsp_item;
+    int each_ctrl;
 
     `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
     req_item = ahb_mst_tran::type_id::create("req_item");
     count = 0;
+    each_ctrl = 0;
 
     /* enable response handler */
     use_response_handler(1);
-    repeat(10) begin
+    repeat(50) begin
         /* send item */
         start_item(req_item);
 
-        if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == SEQ; }) begin
-            `uvm_fatal("body:", "req randomization failure")
+        if (each_ctrl == 0) begin
+            if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == NONSEQ; }) begin
+                `uvm_fatal("body:", "req randomization failure")
+            end else begin
+                `uvm_info(get_type_name(), {"set item:\n", req_item.sprint()}, UVM_LOW);
+            end
         end else begin
-            `uvm_info(get_type_name(), {"set item:\n", req_item.sprint()}, UVM_LOW);
+            if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == SEQ; }) begin
+                `uvm_fatal("body:", "req randomization failure")
+            end else begin
+                `uvm_info(get_type_name(), {"set item:\n", req_item.sprint()}, UVM_LOW);
+            end
         end
         req_item.HRESETn = 1;
+        each_ctrl++;
 
         finish_item(req_item);
+
 
         /* receive item */
         // get_response(rsp_item);
         //`uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_LOW);
     end
-    wait(count == 10);
+    wait(count == 50);
 endtask
 
 //--------------------------------------------------------------------------
