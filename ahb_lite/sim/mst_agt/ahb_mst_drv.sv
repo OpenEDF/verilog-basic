@@ -98,8 +98,8 @@ endfunction
 // Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
 task ahb_mst_drv::run_phase(uvm_phase phase);
-    wait_for_reset();
-
+    sys_cfg.wait_for_reset();
+    @(ahb_vif.mst_drv_cb);
     fork
         do_pipeline_tran();
         begin
@@ -185,7 +185,15 @@ endtask: do_pipeline_tran
 task ahb_mst_drv::reset_phase(uvm_phase phase);
     phase.raise_objection(this);
     ahb_vif.HRESETn = 0;
-    #20;
+    #23;
+    ahb_vif.mst_drv_cb.HADDR  <= 0;
+    ahb_vif.mst_drv_cb.HWRITE <= 0;
+    ahb_vif.mst_drv_cb.HTRANS <= 0;
+    ahb_vif.mst_drv_cb.HSIZE  <= 0;
+    ahb_vif.mst_drv_cb.HBURST <= 0;
+    ahb_vif.mst_drv_cb.HPORT  <= 0;
+    ahb_vif.mst_drv_cb.HMASTLOCK <= 0;
+    ahb_vif.mst_drv_cb.HWDATA <= 0;
     ahb_vif.HRESETn = 1;
     phase.drop_objection(this);
 endtask

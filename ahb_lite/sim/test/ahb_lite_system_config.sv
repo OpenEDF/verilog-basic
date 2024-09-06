@@ -66,6 +66,8 @@ int test_var = 0;
 //--------------------------------------------------------------------------
 extern function new(string name = "ahb_lite_system_config");
 extern function void set_vif(virtual ahb_mst_intf vif);
+extern task wait_for_clock(int count = 1);
+extern task wait_for_reset();
 
 endclass: ahb_lite_system_config
 
@@ -83,5 +85,20 @@ function void ahb_lite_system_config::set_vif(virtual ahb_mst_intf vif);
     ahb_lite_vif = vif;
 endfunction
 
+//--------------------------------------------------------------------------
+// Design: wait clock task
+//--------------------------------------------------------------------------
+task ahb_lite_system_config::wait_for_clock(int count = 1);
+    repeat (count) begin
+        @(posedge ahb_lite_vif.HCLK);
+    end
+endtask: wait_for_clock
+
+//--------------------------------------------------------------------------
+// Design: wait clock reset
+//--------------------------------------------------------------------------
+task ahb_lite_system_config::wait_for_reset();
+    @(posedge ahb_lite_vif.HRESETn);
+endtask: wait_for_reset
 `endif /* _AHB_LITE_SYSTEM_CONFIG_SV_ */
 //--------------------------------------------------------------------------

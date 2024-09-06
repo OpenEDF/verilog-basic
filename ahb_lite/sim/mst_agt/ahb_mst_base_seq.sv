@@ -46,6 +46,8 @@ class ahb_mst_base_seq extends uvm_sequence#(ahb_mst_tran);
 //--------------------------------------------------------------------------
 `uvm_object_utils(ahb_mst_base_seq);
 int count;
+logic [31:0] addr[50];
+
 extern function new(string name = "ahb_mst_base_seq");
 extern task body();
 extern function void response_handler(uvm_sequence_item response);
@@ -96,6 +98,7 @@ task ahb_mst_base_seq::body();
             end
         end
         req_item.HRESETn = 1;
+        addr[each_ctrl] = req_item.HADDR;
         each_ctrl++;
 
         finish_item(req_item);
@@ -105,7 +108,15 @@ task ahb_mst_base_seq::body();
         // get_response(rsp_item);
         //`uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_LOW);
     end
-    wait(count == 50);
+
+    foreach (addr[index]) begin
+        start_item(req_item);
+        req_item.HADDR  = addr[index];
+        req_item.HWRITE = READ;
+        finish_item(req_item);
+    end
+
+    wait(count == 100);
 endtask
 
 //--------------------------------------------------------------------------

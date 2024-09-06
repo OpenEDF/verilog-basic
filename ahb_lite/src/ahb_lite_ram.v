@@ -221,10 +221,10 @@ end
 //--------------------------------------------------------------------------
 // Design: read memory operation
 //--------------------------------------------------------------------------
-assign HRDATA = { mem_width_re[3] ? 8'h00 : mem_model[a_phase_addr + 3],
-                  mem_width_re[2] ? 8'h00 : mem_model[a_phase_addr + 2],
-                  mem_width_re[1] ? 8'h00 : mem_model[a_phase_addr + 1],
-                  mem_width_re[0] ? 8'h00 : mem_model[a_phase_addr]};
+assign HRDATA = { mem_width_re[3] ? mem_model[a_phase_addr + 3] : 8'h00,
+                  mem_width_re[2] ? mem_model[a_phase_addr + 2] : 8'h00,
+                  mem_width_re[1] ? mem_model[a_phase_addr + 1] : 8'h00,
+                  mem_width_re[0] ? mem_model[a_phase_addr] : 8'h00 };
 
 //--------------------------------------------------------------------------
 // Design: assign hready and hresp
