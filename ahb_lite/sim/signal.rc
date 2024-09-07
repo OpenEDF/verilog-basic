@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 1278 541 138 113
+viewPort 0 27 1278 507 138 113
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,8 +16,8 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 131.250000
-cursor 0.000000
+zoom 0.000000 41420.100000
+cursor 31.000000
 marker 0.000000
 
 ; user define markers
@@ -25,7 +25,7 @@ marker 0.000000
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 32
+markerPos 4
 
 ; event list
 ; addEvent event_name event_expression
@@ -42,7 +42,7 @@ COMPLEX_EVENT_END
 
 ; toolbar current search type
 ; curSTATUS search_type
-curSTATUS ByChange
+curSTATUS ByValue
 
 
 addGroup "G1"
@@ -50,7 +50,7 @@ activeDirFile "" "/home/macro/work/github/verilog-basic/ahb_lite/sim/tb_top.fsdb
 addSignal -h 15 /tb_top/ahb_lite_top_u0/HCLK
 addSignal -h 15 -holdScope HRESETn
 addSignal -h 15 -holdScope m0_haddr[31:0]
-addSignal -h 15 -holdScope m0_hwrite
+addSignal -c ID_YELLOW5 -ls solid -lw 1 -h 15 -holdScope m0_hwrite
 addSignal -h 15 -holdScope m0_hsize[2:0]
 addSignal -h 15 -holdScope m0_hburst[2:0]
 addSignal -h 15 -holdScope m0_hport[3:0]
@@ -75,10 +75,21 @@ addSignal -h 15 -holdScope HRDATA[31:0]
 addSignal -h 15 -holdScope HREADYOUT
 addSignal -h 15 -holdScope HRESP
 addSignal -h 15 -holdScope mem_width_we[3:0]
-addGroup "G3"
-addSignal -h 15 /tb_top/ahb_lite_top_u0/ahb_lite_ram_u1/mem_width_re[3:0]
+addSignal -h 15 -holdScope mem_width_re[3:0]
+addGroup "G3" -e FALSE
+addSignal -h 15 /tb_top/ahb_lite_top_u0/ahb_lite_rom_u1/HSEL
+addSignal -h 15 -holdScope HADDR[31:0]
+addSignal -h 15 -holdScope HWRITE
+addSignal -h 15 -holdScope HSIZE[2:0]
+addSignal -h 15 -holdScope HBURST[2:0]
+addSignal -h 15 -holdScope HPROT[3:0]
+addSignal -h 15 -holdScope HTRANS[1:0]
+addSignal -h 15 -holdScope HMASTLOCK
+addSignal -h 15 -holdScope HREADY
+addSignal -h 15 -holdScope HWDATA[31:0]
 addSignal -h 15 -holdScope HRDATA[31:0]
-addSignal -h 15 -holdScope a_phase_addr[31:0]
+addSignal -h 15 -holdScope HREADYOUT
+addSignal -h 15 -holdScope HRESP
 addGroup "G4"
 
 ; getSignalForm Scope Hierarchy Status

@@ -92,6 +92,8 @@ endfunction
 task ahb_mst_mon::run_phase(uvm_phase phase);
     mon_tran = ahb_mst_tran::type_id::create("pon_tran");
 
+    wait_for_reset();
+    @(ahb_vif.mst_drv_cb);
     /* run monitor */
     do_monitor();
 
@@ -101,45 +103,16 @@ endtask
 // Design: monitor the dtu signal
 //--------------------------------------------------------------------------
 task ahb_mst_mon::do_monitor();
-    wait_for_reset();
     forever begin
-        `uvm_info(get_type_name(), "starting monitor transaction...", UVM_LOW);
+        `uvm_info(get_type_name(), "starting monitor transaction...", UVM_HIGH);
+
         /* wait reset is high */
-        do
-            @(ahb_vif.mst_mon_cb);
-        while(!ahb_vif.HRESETn);
-
-        /* monitor signal from DUT module */
-        /* monitor address phase */
-        do
-            @(ahb_vif.mst_mon_cb);
-        while(!ahb_vif.mst_mon_cb.HREADY);
-
-        mon_tran.HADDR     <= ahb_vif.mst_mon_cb.HADDR;
-        if (!$cast(mon_tran.HBURST, ahb_vif.mst_mon_cb.HBURST))
-            `uvm_fatal(get_type_name(), "mon tran HBURST get failed")
-
-        mon_tran.HMASTLOCK <= ahb_vif.mst_mon_cb.HMASTLOCK;
-        mon_tran.HPORT     <= ahb_vif.mst_mon_cb.HPORT;
-        if (!$cast(mon_tran.HSIZE, ahb_vif.mst_mon_cb.HSIZE))
-            `uvm_fatal(get_type_name(), "mon tran HSIZE get failed")
-        if (!$cast(mon_tran.HTRANS, ahb_vif.mst_mon_cb.HTRANS))
-            `uvm_fatal(get_type_name(), "mon tran HTRANS get failed")
-        if (!$cast(mon_tran.HWRITE,ahb_vif.mst_mon_cb.HWRITE))
-            `uvm_fatal(get_type_name(), "mon tran WRITE get failed")
-
-        /* monitor data phase */
-        do
-            @(ahb_vif.mst_mon_cb);
-        while(!ahb_vif.mst_mon_cb.HREADY);
-        if (ahb_vif.mst_mon_cb.HWRITE) begin
-            mon_tran.HWDATA    <= ahb_vif.mst_mon_cb.HWDATA;
-            mon_tran.HRDATA    <= 0;
-        end else begin
-            mon_tran.HWDATA    <= 0;
-            mon_tran.HRDATA    <= ahb_vif.mst_mon_cb.HRDATA;
+        while(!ahb_vif.HRESETn) begin
+            @(ahb_vif.mst_drv_cb);
         end
 
+        /* monitor output signal */
+        @(ahb_vif.mst_mon_cb);
         if (!$cast(mon_tran.HREADY, ahb_vif.mst_mon_cb.HREADY))
             `uvm_fatal(get_type_name(), "mon tran HREADY get failed")
 
@@ -147,8 +120,7 @@ task ahb_mst_mon::do_monitor();
             `uvm_fatal(get_type_name(), "mon tran HRESP get failed")
 
         /* send specified value to all connected interface */
-        `uvm_info(get_type_name(), "completed monitor transaction...", UVM_LOW);
-        `uvm_info(get_type_name(), {"\n", mon_tran.sprint()}, UVM_HIGH);
+        `uvm_info(get_type_name(), "completed monitor transaction...", UVM_HIGH);
 
         /* send data to analysis port */
         if (sys_cfg.has_scoreboard) begin
@@ -162,7 +134,7 @@ endtask
 // Design: wait controller reset
 //--------------------------------------------------------------------------
 task ahb_mst_mon::wait_for_reset();
-    `uvm_info(get_type_name(), "wait controller reset...", UVM_LOW);
+    `uvm_info(get_type_name(), "wait controller reset...", UVM_HIGH);
     @(posedge ahb_vif.HRESETn);
 endtask
 

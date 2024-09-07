@@ -88,7 +88,7 @@ endfunction
 // Design: build phase: create and configure of testbench structure
 //--------------------------------------------------------------------------
 function void ahb_lite_test::build_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN build_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN build_phase...", UVM_HIGH);
     super.build_phase(phase);
     ahb_env = ahb_lite_env::type_id::create("ahb_env", this);
     mst_seq = ahb_mst_base_seq::type_id::create("mst_seq");
@@ -103,98 +103,98 @@ endfunction
 // Design: connect phase
 //--------------------------------------------------------------------------
 function void ahb_lite_test::connect_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN connect_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN connect_phase...", UVM_HIGH);
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: Before reset is asserted.
 //--------------------------------------------------------------------------
 task ahb_lite_test::pre_reset_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN pre_reset_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN pre_reset_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: Reset DUT/De-assert control signals
 //--------------------------------------------------------------------------
 task ahb_lite_test::reset_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN reset_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN reset_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: Wait for DUT to be at a known state
 //--------------------------------------------------------------------------
 task ahb_lite_test::post_reset_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN post_reset_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN post_reset_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: Setup/Wait for conditions to configure DUT
 //--------------------------------------------------------------------------
 task ahb_lite_test::pre_configure_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN pre_configure_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN pre_configure_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: Configure the DUT
 //--------------------------------------------------------------------------
 task ahb_lite_test::configure_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN configure_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN configure_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: Wait for DUT to be at a known configured state
 //--------------------------------------------------------------------------
 task ahb_lite_test::post_configure_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN post_configure_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN post_configure_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: Setup/Wait for conditions to start testing DUT
 //--------------------------------------------------------------------------
 task ahb_lite_test::pre_mian_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN pre_configure_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN pre_configure_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: Test DUT
 //--------------------------------------------------------------------------
 task ahb_lite_test::main_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN main_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN main_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: Typically a no-op
 //--------------------------------------------------------------------------
 task ahb_lite_test::post_main_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN post_main_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN post_main_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: Typically a no-op
 //--------------------------------------------------------------------------
 task ahb_lite_test::pre_shutdown_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN pre_shutdown_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN pre_shutdown_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: Wait for data in DUT to be drained
 //--------------------------------------------------------------------------
 task ahb_lite_test::shutdown_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN main_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN main_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: Perform final checks that consume simulation time
 //--------------------------------------------------------------------------
 task ahb_lite_test::post_shutdown_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN post_shutdown_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN post_shutdown_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
 // Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
 task ahb_lite_test::run_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN run_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN run_phase...", UVM_HIGH);
     phase.raise_objection(this);
 
     fork
@@ -207,7 +207,7 @@ task ahb_lite_test::run_phase(uvm_phase phase);
 
     /* The drop is expected to be matched with an earlier raise */
     phase.drop_objection(this);
-    `uvm_info(get_type_name(), "end of testcase", UVM_LOW);
+    `uvm_info(get_type_name(), "end of testcase", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
@@ -215,7 +215,7 @@ endtask
 //--------------------------------------------------------------------------
 function void ahb_lite_test::end_of_elaboration_phase(uvm_phase phase);
     /* show uvm class arch */
-    `uvm_info(get_type_name(), "IN end_of_elaboration_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN end_of_elaboration_phase...", UVM_HIGH);
     uvm_config_db#(int)::dump();
     uvm_factory::get().print();
 endfunction
@@ -224,7 +224,7 @@ endfunction
 // Design: Get ready for DUT to be simulated
 //--------------------------------------------------------------------------
 function void ahb_lite_test::start_of_simulation_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN start_of_simulation_phase..", UVM_LOW);
+    `uvm_info(get_type_name(), "IN start_of_simulation_phase..", UVM_HIGH);
     /* display environment topology */
     uvm_root::get().print_topology(uvm_default_table_printer);
 endfunction
@@ -233,28 +233,28 @@ endfunction
 // Design: Extract data from different points of the verification environment
 //--------------------------------------------------------------------------
 function void ahb_lite_test::extract_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN extract_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN extract_phase...", UVM_HIGH);
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: Check for any unexpected conditions in the verification environment
 //--------------------------------------------------------------------------
 function void ahb_lite_test::check_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN check_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN check_phase...", UVM_HIGH);
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: Report results of the test.
 //--------------------------------------------------------------------------
 function void ahb_lite_test::report_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN report_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN report_phase...", UVM_HIGH);
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: Tie up loose ends.
 //--------------------------------------------------------------------------
 function void ahb_lite_test::final_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN final_phase...", UVM_LOW);
+    `uvm_info(get_type_name(), "IN final_phase...", UVM_HIGH);
 endfunction
 
 `endif /*_AHB_LITE_TEST_SV_ */

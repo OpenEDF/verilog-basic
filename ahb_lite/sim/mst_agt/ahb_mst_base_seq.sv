@@ -35,8 +35,8 @@
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`define TEST_NUM 100
-`define WAIT_NUM (`TEST_NUM * 2)
+`define TEST_NUM 1024
+`define WAIT_NUM (`TEST_NUM * 4)
 
 //--------------------------------------------------------------------------
 // Class
@@ -75,28 +75,49 @@ task ahb_mst_base_seq::body();
     RSP rsp_item;
     int each_ctrl;
 
-    `uvm_info(get_type_name(), "base seq: inside body", UVM_LOW);
+    `uvm_info(get_type_name(), "base seq: inside body", UVM_HIGH);
     req_item = ahb_mst_tran::type_id::create("req_item");
     count = 0;
     each_ctrl = 0;
 
     /* enable response handler */
     use_response_handler(1);
+    /* ------------------------ ROM TEST -------------------------- */
+    req_item.ahb_lite_addr.constraint_mode(0);
+    repeat(`TEST_NUM) begin
+        /* send item */
+        start_item(req_item);
+        if (each_ctrl == 0) begin
+            if (!req_item.randomize() with { HWRITE == READ; HTRANS == NONSEQ;
+                HADDR inside {[32'h0004_0000:32'h0004_03FF]}; }) begin
+                `uvm_fatal("body:", "req randomization failure")
+            end
+        end else begin
+            if (!req_item.randomize() with { HWRITE == READ; HTRANS == SEQ;
+                HADDR inside {[32'h0004_0000:32'h0004_03FF]}; }) begin
+                `uvm_fatal("body:", "req randomization failure")
+            end
+        end
+        req_item.HRESETn = 1;
+        each_ctrl++;
+        finish_item(req_item);
+    end
+
+    /* --------------- RAM READ & WRITE TEST ---------------------- */
+    each_ctrl = 0;
     repeat(`TEST_NUM) begin
         /* send item */
         start_item(req_item);
 
         if (each_ctrl == 0) begin
-            if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == NONSEQ; }) begin
+            if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == NONSEQ;
+                HADDR inside {[32'h4_1000:32'h4_13FF]}; }) begin
                 `uvm_fatal("body:", "req randomization failure")
-            end else begin
-                `uvm_info(get_type_name(), {"set item:\n", req_item.sprint()}, UVM_LOW);
             end
         end else begin
-            if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == SEQ; }) begin
+            if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == SEQ;
+                HADDR inside {[32'h4_1000:32'h4_13FF]}; }) begin
                 `uvm_fatal("body:", "req randomization failure")
-            end else begin
-                `uvm_info(get_type_name(), {"set item:\n", req_item.sprint()}, UVM_LOW);
             end
         end
         req_item.HRESETn = 1;
@@ -105,10 +126,9 @@ task ahb_mst_base_seq::body();
 
         finish_item(req_item);
 
-
         /* receive item */
         // get_response(rsp_item);
-        //`uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_LOW);
+        //`uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_HIGH);
     end
 
     foreach (addr[index]) begin
@@ -118,6 +138,22 @@ task ahb_mst_base_seq::body();
         finish_item(req_item);
     end
 
+    /* --------------- RAM ROM MULTI READ & WRITE TEST ---------------------- */
+    req_item.ahb_lite_addr.constraint_mode(1);
+    each_ctrl = 0;
+    repeat(`TEST_NUM) begin
+        /* send item */
+        start_item(req_item);
+
+        if (!req_item.randomize() with {HTRANS == SEQ; }) begin
+            `uvm_fatal("body:", "req randomization failure")
+        end
+        req_item.HRESETn = 1;
+
+        finish_item(req_item);
+    end
+
+    /* wait all operation complete */
     wait(count == `WAIT_NUM);
 endtask
 
@@ -125,7 +161,7 @@ endtask
 // Design: response handler
 //--------------------------------------------------------------------------
 function void ahb_mst_base_seq::response_handler(uvm_sequence_item response);
-    `uvm_info(get_type_name(), "IN response_handler", UVM_LOW);
+    `uvm_info(get_type_name(), "IN response_handler", UVM_HIGH);
     count++;
 endfunction: response_handler
 

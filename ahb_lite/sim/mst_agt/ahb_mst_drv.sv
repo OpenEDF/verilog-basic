@@ -108,7 +108,7 @@ task ahb_mst_drv::run_phase(uvm_phase phase);
         end
     join
 
-    `uvm_info(get_type_name(), "completed transaction...",UVM_LOW);
+    `uvm_info(get_type_name(), "completed transaction...",UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
@@ -125,7 +125,7 @@ task ahb_mst_drv::do_pipeline_tran();
 		/* Completes the sequencer-driver handshake */
 		pipeline_lock.get();
         seq_item_port.get(item_req);
-        `uvm_info(get_type_name(), {"\n", req.sprint()}, UVM_HIGH);
+        `uvm_info(get_type_name(), {"seq_item:\n", item_req.sprint()}, UVM_MEDIUM);
 
 		accept_tr(item_req, $time);
 		/* request bus, wait for grant, etc. */
@@ -149,7 +149,7 @@ task ahb_mst_drv::do_pipeline_tran();
         do
             @(ahb_vif.mst_drv_cb);
         while(!ahb_vif.mst_drv_cb.HREADY);
-        `uvm_info(get_type_name(), "address phase ready...", UVM_LOW);
+        `uvm_info(get_type_name(), "address phase ready...", UVM_HIGH);
 
 		/* allows next transaction to begin address phase */
 		pipeline_lock.put();
@@ -171,7 +171,7 @@ task ahb_mst_drv::do_pipeline_tran();
 
         item_req.HRESP  <= ahb_vif.mst_drv_cb.HRESP;
         item_req.HREADY <= ahb_vif.mst_drv_cb.HREADY;
-        `uvm_info(get_type_name(), "data phase ready...", UVM_LOW);
+        `uvm_info(get_type_name(), "data phase ready...", UVM_HIGH);
 
 		/* return the request as response */
         seq_item_port.put(item_req);
@@ -202,7 +202,7 @@ endtask
 // Design: wait controller reset
 //--------------------------------------------------------------------------
 task ahb_mst_drv::wait_for_reset();
-    `uvm_info(get_type_name(), "wait controller reset...", UVM_LOW);
+    `uvm_info(get_type_name(), "wait controller reset...", UVM_HIGH);
     @(posedge ahb_vif.HRESETn);
 endtask
 `endif /* _AHB_MST_DRV_ */
