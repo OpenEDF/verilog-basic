@@ -79,7 +79,7 @@ function void ahb_lite_env::build_phase(uvm_phase phase);
     if (!uvm_config_db#(ahb_lite_system_config)::get(this, "", "ahb_lite_system_config", sys_cfg)) begin
         `uvm_fatal("FATAL MSG", "config object is not set properly");
     end else begin
-        `uvm_info(get_type_name(), $sformatf("system configuration:\n%0s", sys_cfg.sprint()), UVM_HIGH);
+        `uvm_info(get_type_name(), $sformatf("system configuration:\n%0s", sys_cfg.sprint()), UVM_MEDIUM);
         if (!uvm_config_db#(virtual ahb_mst_intf)::get(this, "", "ahb_vif", ahb_vif)) begin
             `uvm_fatal("FATAL MSG", "ahb lite interface is not set properly");
         end else begin
@@ -101,6 +101,7 @@ function void ahb_lite_env::connect_phase(uvm_phase phase);
         mst_agt.mst_mon.item_collect_port.connect(ahb_lite_sb.item_collect_export);
     end
 
+    /* monitor ---> coverage */
     if (sys_cfg.has_functional_coverage) begin
         mst_agt.mst_mon.item_collect_port.connect(ahb_lite_cov.item_cov_export);
     end

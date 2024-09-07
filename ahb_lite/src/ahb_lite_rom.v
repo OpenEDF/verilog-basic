@@ -111,7 +111,7 @@ reg [31:0] d_phase_hdata;
 integer index;
 initial begin
     for (index = 0; index <= ROM_DEPTH - 1; index = index + 1)
-        mem_model[index] = 32'h0000_0000;
+        mem_model[index] = $urandom();
 
     if (ROM_FILENAME != "") begin
         $readmemh(ROM_FILENAME, mem_model);
@@ -126,6 +126,7 @@ end
 //--------------------------------------------------------------------------
 wire        ahb_access      = a_phase_htrans[1] & a_phase_hsel & a_phase_hready;
 wire        ahb_read        = ahb_access & (~a_phase_hwrite);
+wire        ahb_write       = ahb_access & a_phase_hwrite;
 wire [`MEM_BLOCK_WIDTH-1:0] word_valid_addr = a_phase_addr[`MEM_BLOCK_WIDTH-1:2];
 
 // ----------------------------------------------------------
@@ -185,15 +186,19 @@ end
 //--------------------------------------------------------------------------
 // Design: read memory operation
 //--------------------------------------------------------------------------
-assign HRDATA = { mem_width_re[3] ? 8'h00 : mem_model[a_phase_addr + 3],
-                  mem_width_re[2] ? 8'h00 : mem_model[a_phase_addr + 2],
-                  mem_width_re[1] ? 8'h00 : mem_model[a_phase_addr + 1],
-                  mem_width_re[0] ? 8'h00 : mem_model[a_phase_addr] };
+assign HRDATA = { mem_width_re[3] ? mem_model[word_valid_addr + 3] : 8'h0,
+                  mem_width_re[2] ? mem_model[word_valid_addr + 2] : 8'h0,
+                  mem_width_re[1] ? mem_model[word_valid_addr + 1] : 8'h0,
+                  mem_width_re[0] ? mem_model[word_valid_addr] : 8'h00};
+
+//--------------------------------------------------------------------------
+// Design: exception when write data
+//--------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------
 // Design: assign hready and hresp
 //--------------------------------------------------------------------------
-assign HREADYOUT = `READY;
+assign HREADYOUT = ahb_write ? `WAIT : `READY;
 assign HRESP     = `OKAY;
 
 endmodule

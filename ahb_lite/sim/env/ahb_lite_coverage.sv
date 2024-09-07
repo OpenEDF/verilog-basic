@@ -54,6 +54,16 @@ ahb_mst_tran     mst_tran_cov;
 //--------------------------------------------------------------------------
 covergroup test_coverage;
     option.comment = "uvm test coverage";
+    opr_addr: coverpoint mst_tran_cov.HADDR {
+        bins opr_rom0 = {[32'h4_0000:32'h4_0FFF]};
+        bins opr_ram1 = {[32'h4_1000:32'h4_1FFF]};
+        bins opr_ram2 = {[32'h4_2000:32'h4_23FF]};
+        bins opr_ram3 = {[32'h4_3000:32'h4_33FF]};
+    }
+
+    opr_type: coverpoint mst_tran_cov.HWRITE {
+        bins wr[]  = {1, 0};
+    }
 endgroup: test_coverage
 
 //--------------------------------------------------------------------------
@@ -94,7 +104,7 @@ endfunction
 // Design: report phase: Report results of the test.
 //--------------------------------------------------------------------------
 function void ahb_lite_coverage::report_phase(uvm_phase phase);
-    //`uvm_info(get_type_name(), $sformatf("coverage is %0.2f%%", ahb_lite_coverage::test_coverage.get_coveragr()), UVM_LOW);
+    `uvm_info(get_type_name(), $sformatf("coverage is %0.2f%%", test_coverage.get_coverage()), UVM_LOW);
 endfunction
 
 `endif /* _AHB_LITE_COVERAGE_SV_ */

@@ -193,8 +193,8 @@ ahb_lite_rom # (
     /*autoinst*/
     /*autoinstparam*/
     /*autoinstparam_value*/
-        .ROM_WIDTH              (32                             ),
-        .ROM_DEPTH              (512                            )
+        .ROM_WIDTH              (8                              ),
+        .ROM_DEPTH              (4096                           )
     )
 ahb_lite_rom_u1
 (
@@ -262,7 +262,7 @@ ahb_lite_ram # (
     /*autoinstparam*/
     /*autoinstparam_value*/
         .RAM_WIDTH              (8                              ),
-        .RAM_DEPTH              (512                            )
+        .RAM_DEPTH              (1024                           )
     )
 ahb_lite_ram_u2
 (

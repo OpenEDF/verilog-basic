@@ -98,7 +98,7 @@ reg [31:0] d_phase_hdata;
 `ifdef SYN_FOR_FPGA
     $display("[TODO]: !!! ADD FPGA RAM IP !!!");
 `else
-    reg [RAM_WIDTH-1:0] mem_model[0:(RAM_DEPTH/4)-1];
+    reg [RAM_WIDTH-1:0] mem_model[0:(RAM_DEPTH)-1];
     /* external init */
 `endif
 
@@ -221,10 +221,10 @@ end
 //--------------------------------------------------------------------------
 // Design: read memory operation
 //--------------------------------------------------------------------------
-assign HRDATA = { mem_width_re[3] ? mem_model[a_phase_addr + 3] : 8'h00,
-                  mem_width_re[2] ? mem_model[a_phase_addr + 2] : 8'h00,
-                  mem_width_re[1] ? mem_model[a_phase_addr + 1] : 8'h00,
-                  mem_width_re[0] ? mem_model[a_phase_addr] : 8'h00 };
+assign HRDATA = { mem_width_re[3] ? mem_model[word_valid_addr + 3] : 8'h00,
+                  mem_width_re[2] ? mem_model[word_valid_addr + 2] : 8'h00,
+                  mem_width_re[1] ? mem_model[word_valid_addr + 1] : 8'h00,
+                  mem_width_re[0] ? mem_model[word_valid_addr] : 8'h00 };
 
 //--------------------------------------------------------------------------
 // Design: assign hready and hresp
