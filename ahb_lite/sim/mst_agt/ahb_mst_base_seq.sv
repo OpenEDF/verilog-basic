@@ -35,6 +35,8 @@
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
+`define TEST_NUM 100
+`define WAIT_NUM (`TEST_NUM * 2)
 
 //--------------------------------------------------------------------------
 // Class
@@ -46,7 +48,7 @@ class ahb_mst_base_seq extends uvm_sequence#(ahb_mst_tran);
 //--------------------------------------------------------------------------
 `uvm_object_utils(ahb_mst_base_seq);
 int count;
-logic [31:0] addr[50];
+logic [31:0] addr[`TEST_NUM];
 
 extern function new(string name = "ahb_mst_base_seq");
 extern task body();
@@ -80,7 +82,7 @@ task ahb_mst_base_seq::body();
 
     /* enable response handler */
     use_response_handler(1);
-    repeat(50) begin
+    repeat(`TEST_NUM) begin
         /* send item */
         start_item(req_item);
 
@@ -116,7 +118,7 @@ task ahb_mst_base_seq::body();
         finish_item(req_item);
     end
 
-    wait(count == 100);
+    wait(count == `WAIT_NUM);
 endtask
 
 //--------------------------------------------------------------------------
