@@ -102,8 +102,9 @@ function void ahb_lite_env::connect_phase(uvm_phase phase);
     end
 
     /* monitor ---> coverage */
+    //This export provides access to the write method, which derived subscribers must implement.
     if (sys_cfg.has_functional_coverage) begin
-        mst_agt.mst_mon.item_collect_port.connect(ahb_lite_cov.item_cov_export);
+        mst_agt.mst_mon.item_collect_port.connect(ahb_lite_cov.analysis_export);
     end
 endfunction
 
