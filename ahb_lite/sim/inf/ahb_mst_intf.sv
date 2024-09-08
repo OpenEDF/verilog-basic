@@ -117,10 +117,15 @@ modport master_mon (clocking mst_mon_cb, input HRESETn);
 //--------------------------------------------------------------------------
 // Design: assertion
 //--------------------------------------------------------------------------
+property ready_test;
+    @(posedge HCLK) HREADY;
+endproperty
+rsp_test: assert property(ready_test);
 
 //--------------------------------------------------------------------------
 // Design: coverage
 //--------------------------------------------------------------------------
+/* TODO: add test */
 
 endinterface
 
