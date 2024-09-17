@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 1278 507 138 113
+viewPort 0 27 1278 486 138 113
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,8 +16,8 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 41420.100000
-cursor 31.000000
+zoom 0.000000 321.250000
+cursor 90.000000
 marker 0.000000
 
 ; user define markers
@@ -25,7 +25,7 @@ marker 0.000000
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 4
+markerPos 61
 
 ; event list
 ; addEvent event_name event_expression
@@ -45,8 +45,9 @@ COMPLEX_EVENT_END
 curSTATUS ByValue
 
 
-addGroup "G1"
+addGroup "G1" -e FALSE
 activeDirFile "" "/home/macro/work/github/verilog-basic/ahb_lite/sim/tb_top.fsdb"
+addSignal -h 15 -UNSIGNED -HEX /tb_top/ahb_lite_top_u0/ahb_eg_slave_u0/ahb_eg_reg_u/addr[31:0]
 addSignal -h 15 /tb_top/ahb_lite_top_u0/HCLK
 addSignal -h 15 -holdScope HRESETn
 addSignal -h 15 -holdScope m0_haddr[31:0]
@@ -91,6 +92,22 @@ addSignal -h 15 -holdScope HRDATA[31:0]
 addSignal -h 15 -holdScope HREADYOUT
 addSignal -h 15 -holdScope HRESP
 addGroup "G4"
+addSignal -h 15 /tb_top/ahb_lite_top_u0/ahb_eg_slave_u0/HCLK
+addSignal -h 15 -holdScope HRESETn
+addSignal -h 15 -holdScope HSEL
+addSignal -h 15 -holdScope HADDR[31:0]
+addSignal -h 15 -holdScope HWRITE
+addSignal -h 15 -holdScope HSIZE[2:0]
+addSignal -h 15 -holdScope HBURST[2:0]
+addSignal -h 15 -holdScope HPROT[3:0]
+addSignal -h 15 -holdScope HTRANS[1:0]
+addSignal -h 15 -holdScope HMASTLOCK
+addSignal -h 15 -holdScope HREADY
+addSignal -h 15 -holdScope HWDATA[31:0]
+addSignal -h 15 -holdScope HRDATA[31:0]
+addSignal -h 15 -holdScope HREADYOUT
+addSignal -h 15 -holdScope HRESP
+addGroup "G5"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

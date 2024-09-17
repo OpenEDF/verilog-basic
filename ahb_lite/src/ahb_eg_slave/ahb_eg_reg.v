@@ -93,7 +93,7 @@ always @(posedge hclk or negedge hresetn) begin
     if (!hresetn) begin
         eg_ver <= {4'h1, 4'h0};
     end else begin
-        if ((addr == `PER_VER) || write_en || byte_strobe[0]) begin
+        if ((addr == `PER_VER) && write_en && byte_strobe[0]) begin
             eg_ver <= wdata[7:0];
         end
     end
@@ -111,7 +111,7 @@ always @(posedge hclk or negedge hresetn) begin
     if (!hresetn) begin
          {test1_3, test1_2, test1_1} <= {32{1'b0}};
     end else begin
-        if ((addr == `TEST_1) || write_en) begin
+        if ((csr_offset == `TEST_1) && write_en) begin
             if (byte_strobe[0])
                 test1_1 <= wdata[7:0];
             if (byte_strobe[1])
@@ -132,7 +132,7 @@ always @(posedge hclk or negedge hresetn) begin
     if (!hresetn) begin
         test2 <= {32{1'b0}};
     end else begin
-        if ((addr == `PER_VER) || write_en) begin
+        if ((csr_offset == `TEST_2) && write_en) begin
             test2 <= wdata;
         end
     end
@@ -148,7 +148,7 @@ always @(posedge hclk or negedge hresetn) begin
     if (!hresetn) begin
         test3 <= {32{1'b0}};
     end else begin
-        if ((addr == `PER_VER) || write_en) begin
+        if ((csr_offset == `TEST_3) && write_en) begin
             test3 <= wdata;
         end
     end

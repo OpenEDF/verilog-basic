@@ -75,7 +75,7 @@ wire    [15:0]  slave_sel_coding;
 `ASSIGN_HSEL_CODING(1, `MEM_MAP_S1_BASE, `MEM_MAP_S1_END)
 `ASSIGN_HSEL_CODING(2, `MEM_MAP_S2_BASE, `MEM_MAP_S2_END)
 `ASSIGN_HSEL_CODING(3, `MEM_MAP_S3_BASE, `MEM_MAP_S3_END)
-`ASSIGN_HSEL_CODING(3, `MEM_MAP_S4_BASE, `MEM_MAP_S4_END)
+`ASSIGN_HSEL_CODING(4, `MEM_MAP_S4_BASE, `MEM_MAP_S4_END)
 
 assign slave_sel_coding[15] = ~(slave_sel_coding[0] ||
                                 slave_sel_coding[1] ||
@@ -83,7 +83,7 @@ assign slave_sel_coding[15] = ~(slave_sel_coding[0] ||
                                 slave_sel_coding[3] ||
                                 slave_sel_coding[4]);
 
-assign slave_sel_coding[14:4] = {11{1'b0}};
+assign slave_sel_coding[14:5] = {11{1'b0}};
 
 //--------------------------------------------------------------------------
 // Design: slave select signal, memory map to slave

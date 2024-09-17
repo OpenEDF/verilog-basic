@@ -53,6 +53,8 @@ logic [31:0] addr[`TEST_NUM];
 extern function new(string name = "ahb_mst_base_seq");
 extern task body();
 extern function void response_handler(uvm_sequence_item response);
+extern task ahb_read(input logic[31:0] addr, output logic[31:0] data);
+extern task ahb_write(input logic[31:0] addr, input logic[31:0] data);
 endclass: ahb_mst_base_seq
 
 //--------------------------------------------------------------------------
@@ -74,11 +76,26 @@ task ahb_mst_base_seq::body();
     REQ req_item;
     RSP rsp_item;
     int each_ctrl;
+    int rdata, wdata, rwaddr;
 
     `uvm_info(get_type_name(), "base seq: inside body", UVM_HIGH);
     req_item = ahb_mst_tran::type_id::create("req_item");
     count = 0;
     each_ctrl = 0;
+
+    /* --------------- AHB PERIPHERIAL READ & WRITE TEST ------------------- */
+    wdata  = 32'h1234abcd;
+    rwaddr = 32'h0004_4004;
+    ahb_write(rwaddr, wdata);
+    ahb_read(rwaddr, rdata);
+    rwaddr = rwaddr + 4;
+    wdata = wdata + 4;
+    ahb_write(rwaddr, wdata);
+    ahb_read(rwaddr, rdata);
+    rwaddr = rwaddr + 4;
+    wdata = wdata + 4;
+    ahb_write(rwaddr, wdata);
+    ahb_read(rwaddr, rdata);
 
     /* enable response handler */
     use_response_handler(1);
@@ -165,5 +182,40 @@ function void ahb_mst_base_seq::response_handler(uvm_sequence_item response);
     count++;
 endfunction: response_handler
 
+//--------------------------------------------------------------------------
+// Design: ahb nonseq read
+//--------------------------------------------------------------------------
+task ahb_mst_base_seq::ahb_read(input logic[31:0] addr, output logic[31:0] data);
+    REQ req_item;
+    RSP rsp_item;
+    `uvm_info(get_type_name(), "ahb read data.", UVM_HIGH);
+    req_item = ahb_mst_tran::type_id::create("req_item");
+    rsp_item = ahb_mst_tran::type_id::create("req_item");
+    start_item(req_item);
+    if (!req_item.randomize() with {HTRANS == NONSEQ; HWRITE == READ; HADDR == addr;}) begin
+        `uvm_fatal("body:", "req randomization failure")
+    end
+    req_item.HRESETn = 1;
+    finish_item(req_item);
+    req_item.end_event.wait_on();
+    get_response(rsp_item);
+    data = rsp_item.HRDATA;
+    `uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_HIGH);
+endtask: ahb_read
+
+//--------------------------------------------------------------------------
+// Design: ahb nonseq write
+//--------------------------------------------------------------------------
+task ahb_mst_base_seq::ahb_write(input logic[31:0] addr, input logic[31:0] data);
+    REQ req_item;
+    `uvm_info(get_type_name(), "ahb read data.", UVM_HIGH);
+    req_item = ahb_mst_tran::type_id::create("req_item");
+    start_item(req_item);
+    if (!req_item.randomize() with {HTRANS == NONSEQ; HWRITE == WRITE; HADDR == addr; HWDATA == data;}) begin
+        `uvm_fatal("body:", "req randomization failure")
+    end
+    req_item.HRESETn = 1;
+    finish_item(req_item);
+endtask: ahb_write
 `endif /* _AHB_MST_BASE_SEQ_SV_ */
 //--------------------------------------------------------------------------
