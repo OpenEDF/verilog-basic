@@ -1,9 +1,0 @@
-# source file list
-./src/ahb_lite_config.v
-./src/ahb_lite_decoder.v
-./src/ahb_lite_multiplexor.v
-./src/ahb_lite_def_slave.v
-./src/ahb_lite_rom.v
-./src/ahb_lite_ram.v
-./src/ahb_lite_top.v
-./sim/testbench.v
