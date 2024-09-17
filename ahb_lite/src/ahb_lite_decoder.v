@@ -53,6 +53,7 @@ module ahb_lite_decoder
     output wire        HSEL_S1,
     output wire        HSEL_S2,
     output wire        HSEL_S3,
+    output wire        HSEL_S4,
     output wire        HSEL_DEF,
 
     // outputs to multiplexor
@@ -74,11 +75,13 @@ wire    [15:0]  slave_sel_coding;
 `ASSIGN_HSEL_CODING(1, `MEM_MAP_S1_BASE, `MEM_MAP_S1_END)
 `ASSIGN_HSEL_CODING(2, `MEM_MAP_S2_BASE, `MEM_MAP_S2_END)
 `ASSIGN_HSEL_CODING(3, `MEM_MAP_S3_BASE, `MEM_MAP_S3_END)
+`ASSIGN_HSEL_CODING(3, `MEM_MAP_S4_BASE, `MEM_MAP_S4_END)
 
 assign slave_sel_coding[15] = ~(slave_sel_coding[0] ||
                                 slave_sel_coding[1] ||
                                 slave_sel_coding[2] ||
-                                slave_sel_coding[3]);
+                                slave_sel_coding[3] ||
+                                slave_sel_coding[4]);
 
 assign slave_sel_coding[14:4] = {11{1'b0}};
 
@@ -92,6 +95,7 @@ assign slave_sel_coding[14:4] = {11{1'b0}};
 `ASSIGN_PER_SEL(1);
 `ASSIGN_PER_SEL(2);
 `ASSIGN_PER_SEL(3);
+`ASSIGN_PER_SEL(4);
 
 assign HSEL_DEF           = slave_sel_coding[15];
 
@@ -108,6 +112,8 @@ always @(slave_sel_coding) begin
             HSEL_MUX <= `MUX_SEL_S2;
         `MEM_MAP_HSEL_S3:
             HSEL_MUX <= `MUX_SEL_S3;
+        `MEM_MAP_HSEL_S4:
+            HSEL_MUX <= `MUX_SEL_S4;
         `MEM_MAP_HSEL_DEF:
             HSEL_MUX <= `MUX_SEL_NOMAP;
         default:

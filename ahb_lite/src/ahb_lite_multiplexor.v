@@ -56,6 +56,7 @@ module ahb_lite_multiplexor
     input wire  [31:0] slave_s1_data,
     input wire  [31:0] slave_s2_data,
     input wire  [31:0] slave_s3_data,
+    input wire  [31:0] slave_s4_data,
     input wire  [31:0] slave_def_data,
 
     // slave inputs hreadyout
@@ -63,6 +64,7 @@ module ahb_lite_multiplexor
     input wire         slave_s1_hreadyout,
     input wire         slave_s2_hreadyout,
     input wire         slave_s3_hreadyout,
+    input wire         slave_s4_hreadyout,
     input wire         slave_def_hreadyout,
 
     // slave inputs hresp
@@ -70,6 +72,7 @@ module ahb_lite_multiplexor
     input wire         slave_s1_hresp,
     input wire         slave_s2_hresp,
     input wire         slave_s3_hresp,
+    input wire         slave_s4_hresp,
     input wire         slave_def_hresp,
 
     // outputs to master
@@ -102,6 +105,7 @@ always @(addr_phase_hsel_mux or
          slave_s1_data or slave_s1_hreadyout or slave_s1_hresp or
          slave_s2_data or slave_s2_hreadyout or slave_s2_hresp or
          slave_s3_data or slave_s3_hreadyout or slave_s3_hresp or
+         slave_s4_data or slave_s4_hreadyout or slave_s4_hresp or
          slave_def_data or slave_def_hreadyout or slave_def_hresp) begin
     case(addr_phase_hsel_mux)
         `MUX_SEL_S0: begin
@@ -123,6 +127,11 @@ always @(addr_phase_hsel_mux or
             HREADY <= slave_s3_hreadyout;
             HRESP  <= slave_s3_hresp ;
             HRDATA <= slave_s3_data ;
+         end
+        `MUX_SEL_S4: begin
+            HREADY <= slave_s4_hreadyout;
+            HRESP  <= slave_s4_hresp ;
+            HRDATA <= slave_s4_data ;
          end
         default: begin
             HREADY <= slave_def_hreadyout;

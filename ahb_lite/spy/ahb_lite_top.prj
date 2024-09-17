@@ -31,7 +31,7 @@ set_option designread_enable_synthesis no
 set_option designread_disable_flatten no
 set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
 set_option enableV05 yes
-set_option incdir { ./src }
+set_option incdir { ./src ./src/ahb_eg_slave }
 set_option enableSV yes
 set_option disablev2k yes
 set_option sort yes
@@ -56,6 +56,9 @@ read_file -type verilog src/ahb_lite_rom.v
 read_file -type verilog src/ahb_lite_ram.v
 read_file -type verilog src/ahb_lite_multiplexor.v
 read_file -type verilog src/ahb_lite_top.v
+read_file -type verilog src/ahb_eg_slave/ahb_eg_intf.v
+read_file -type verilog src/ahb_eg_slave/ahb_eg_reg.v
+read_file -type verilog src/ahb_eg_slave/ahb_eg_slave.v
 
 #===============================================================================
 # Lib Files

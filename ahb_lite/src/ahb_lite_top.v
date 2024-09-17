@@ -72,6 +72,7 @@ wire        dcdr_hsel_s0;
 wire        dcdr_hsel_s1;
 wire        dcdr_hsel_s2;
 wire        dcdr_hsel_s3;
+wire        dcdr_hsel_s4;
 wire [3:0]  dcdr_hsel_mux_multi;
 
 /* default slave */
@@ -99,6 +100,11 @@ wire [31:0] s3_rdata_multi;
 wire        s3_hreadyout_multi;
 wire        s3_hresp_multi;
 
+/* slave43 */
+wire [31:0] s4_rdata_multi;
+wire        s4_hreadyout_multi;
+wire        s4_hresp_multi;
+
 //--------------------------------------------------------------------------
 // Design: instance ahb lite decoder
 //--------------------------------------------------------------------------
@@ -115,6 +121,7 @@ ahb_lite_decoder ahb_lite_decoder_u
         .HSEL_S1                (dcdr_hsel_s1                   ), //output
         .HSEL_S2                (dcdr_hsel_s2                   ), //output
         .HSEL_S3                (dcdr_hsel_s3                   ), //output
+        .HSEL_S4                (dcdr_hsel_s4                   ), //output
         .HSEL_DEF               (dcdr_hsel_def_slave            ), //output
         // outputs to multiplexor
         .HSEL_MUX               (dcdr_hsel_mux_multi            )  //output
@@ -139,18 +146,21 @@ ahb_lite_multiplexor ahb_lite_multiplexor_u
         .slave_s1_data          (s1_rdata_multi                 ), //input
         .slave_s2_data          (s2_rdata_multi                 ), //input
         .slave_s3_data          (s3_rdata_multi                 ), //input
+        .slave_s4_data          (s4_rdata_multi                 ), //input
         .slave_def_data         (defs_rdata_multi               ), //input
         // slave inputs hreadyout
         .slave_s0_hreadyout     (s0_hreadyout_multi             ), //input
         .slave_s1_hreadyout     (s1_hreadyout_multi             ), //input
         .slave_s2_hreadyout     (s2_hreadyout_multi             ), //input
         .slave_s3_hreadyout     (s3_hreadyout_multi             ), //input
+        .slave_s4_hreadyout     (s4_hreadyout_multi             ), //input
         .slave_def_hreadyout    (defs_hreadyout_multi           ), //input
         // slave inputs hresp
         .slave_s0_hresp         (s0_hresp_multi                 ), //input
         .slave_s1_hresp         (s1_hresp_multi                 ), //input
         .slave_s2_hresp         (s2_hresp_multi                 ), //input
         .slave_s3_hresp         (s3_hresp_multi                 ), //input
+        .slave_s4_hresp         (s4_hresp_multi                 ), //input
         .slave_def_hresp        (defs_hresp_multi               ), //input
         // outputs to master
         .HREADY                 (m0_hready                      ), //output
@@ -322,5 +332,37 @@ ahb_lite_ram_u3
         .HRESP                  (s3_hresp_multi                 )  //output
     );
 
+//--------------------------------------------------------------------------
+// Design: instance ahb lite example slave
+//--------------------------------------------------------------------------
+ahb_eg_slave # (
+    /*autoinst*/
+    /*autoinstparam*/
+    /*autoinstparam_value*/
+    )
+ahb_eg_slave_u0
+(
+        //--------------------------------------------------------------------------
+        // Ports
+        //--------------------------------------------------------------------------
+        // global inputs
+        .HCLK                   (HCLK                           ), //input
+        .HRESETn                (HRESETn                        ), //input
+        .HSEL                   (dcdr_hsel_s4                   ), //input
+        .HADDR                  (m0_haddr                       ), //input
+        .HWRITE                 (m0_hwrite                      ), //input
+        .HSIZE                  (m0_hsize                       ), //input
+        .HBURST                 (m0_hburst                      ), //input
+        .HPROT                  (m0_hport                       ), //input
+        .HTRANS                 (m0_htrans                      ), //input
+        .HMASTLOCK              (m0_hmastlock                   ), //input
+        .HREADY                 (m0_hready                      ), //input
+        .HWDATA                 (m0_hwdata                      ), //input
+        // outputs
+        .HRDATA                 (s4_rdata_multi                 ), //output
+        .HREADYOUT              (s4_hreadyout_multi             ), //output
+        .HRESP                  (s4_hresp_multi                 )  //output
+    );
 endmodule
+
 //--------------------------------------------------------------------------
