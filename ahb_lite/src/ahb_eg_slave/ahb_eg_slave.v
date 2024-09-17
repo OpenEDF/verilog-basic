@@ -95,7 +95,7 @@ ahb_eg_intf # (
     /*autoinst*/
         // global inputs
         .hclk                   (HCLK                           ), //input
-        .hresetn                (HRESETN                        ), //input
+        .hresetn                (HRESETn                        ), //input
         .hsel                   (HSEL                           ), //input
         .haddr                  (HADDR                          ), //input
         .hwrite                 (HWRITE                         ), //input
@@ -134,7 +134,7 @@ ahb_eg_reg_u (
         //--------------------------------------------------------------------------
         // global inputs
         .hclk                   (HCLK                           ), //input
-        .hresetn                (HRESETN                        ), //input
+        .hresetn                (HRESETn                        ), //input
         // input signals
         .addr                   (reg_addr                       ), //input
         .read_en                (reg_read_en                    ), //input
