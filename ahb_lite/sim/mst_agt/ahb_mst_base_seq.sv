@@ -96,6 +96,9 @@ task ahb_mst_base_seq::body();
     wdata = wdata + 4;
     ahb_write(rwaddr, wdata);
     ahb_read(rwaddr, rdata);
+    rwaddr = rwaddr + 8;
+    wdata = 32'h0000_00F0;
+    ahb_write(rwaddr, wdata);
 
     /* enable response handler */
     use_response_handler(1);

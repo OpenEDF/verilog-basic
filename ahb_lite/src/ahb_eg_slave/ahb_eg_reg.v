@@ -73,6 +73,7 @@ module ahb_eg_reg
     // output the interrupt signals
 
     // output signals
+    output wire                 eg_int,
     output reg [DATA_WIDTH-1:0] rdata
 );
 
@@ -84,6 +85,8 @@ wire [DATA_WIDTH-1:0] ver_rdata;
 wire [DATA_WIDTH-1:0] test_1_rdata;
 wire [DATA_WIDTH-1:0] test_2_rdata;
 wire [DATA_WIDTH-1:0] test_3_rdata;
+wire [DATA_WIDTH-1:0] glbl_int;
+reg  [31:0]           count;
 
 //--------------------------------------------------------------------------
 // Design: module version control reg
@@ -157,6 +160,45 @@ end
 assign test_3_rdata = test3;
 
 //--------------------------------------------------------------------------
+// Design: module interrupt clean and status
+//--------------------------------------------------------------------------
+reg [3:0] int_sts;
+reg [3:0] int_mask;
+always @(posedge hclk or negedge hresetn) begin
+    if (!hresetn) begin
+        {int_mask, int_sts} <= {8{1'b0}};
+    end else begin
+        if ((csr_offset == `EG_INT) && write_en) begin
+            int_mask <= wdata[7:4];
+            /* RW1C */
+            if (wdata[0])
+                int_sts[0] <= 1'b0;
+            if (wdata[1])
+                int_sts[1] <= 1'b0;
+            if (wdata[2])
+                int_sts[2] <= 1'b0;
+            if (wdata[3])
+                int_sts[3] <= 1'b0;
+        end else begin
+            if (count == 32'h0000_000F)
+                int_sts[0] <= 1'b1;
+            if (count == 32'h0000_00FF)
+                int_sts[1] <= 1'b1;
+            if (count == 32'h0000_0FFF)
+                int_sts[2] <= 1'b1;
+            if (count == 32'h0000_FFFF)
+                int_sts[3] <= 1'b1;
+        end
+    end
+end
+
+assign glbl_int = {{24{1'b0}}, int_mask, int_sts};
+assign eg_int = ( (int_sts[0] & int_mask[0])
+                | (int_sts[1] & int_mask[1])
+                | (int_sts[2] & int_mask[2])
+                | (int_sts[3] & int_mask[3]));
+
+//--------------------------------------------------------------------------
 // Design: module read data
 //--------------------------------------------------------------------------
 always @(*) begin
@@ -167,8 +209,20 @@ always @(*) begin
             `TEST_1:  rdata = test_1_rdata;
             `TEST_2:  rdata = test_2_rdata;
             `TEST_3:  rdata = test_3_rdata;
+            `EG_INT:  rdata = glbl_int;
             default:  rdata = {DATA_WIDTH{1'bx}};
         endcase
+    end
+end
+
+//--------------------------------------------------------------------------
+// Design: interrupt test logic
+//--------------------------------------------------------------------------
+always @(posedge hclk or negedge hresetn) begin
+    if (!hresetn) begin
+        count <= {32{1'b0}};
+    end else begin
+        count = count + 1;
     end
 end
 

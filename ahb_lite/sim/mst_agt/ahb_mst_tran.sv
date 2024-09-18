@@ -57,6 +57,7 @@ rand bit [3:0]    HPORT;
          hready_e HREADY;   /* no rand */
          hresp_e  HRESP;
     bit  [31:0]   HRDATA;
+    bit           eg_int;
 
 //--------------------------------------------------------------------------
 // Design: utility and field macros
@@ -82,7 +83,7 @@ rand bit [3:0]    HPORT;
 constraint ahb_lite_addr {
     HADDR inside {[32'h4_0000:32'h4_0FFF], [32'h4_1000:32'h4_1FFF],
                   [32'h4_2000:32'h4_23FF], [32'h4_3000:32'h4_33FF],
-                  [32'h4_4000:32'h4_400C]};
+                  [32'h4_4000:32'h4_4014]};
     HADDR[1:0] == 0;
 }
 

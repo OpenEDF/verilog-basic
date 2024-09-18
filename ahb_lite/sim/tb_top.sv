@@ -84,7 +84,8 @@ ahb_lite_top ahb_lite_top_u0
     //custom master outputs
     .m0_hready       (ahb_vif.HREADY          ), // output
     .m0_hresp        (ahb_vif.HRESP           ), // output
-    .m0_rdata        (ahb_vif.HRDATA          )  // output
+    .m0_rdata        (ahb_vif.HRDATA          ), // output
+    .eg_int          (ahb_vif.eg_int          )  //output
 );
 
 //--------------------------------------------------------------------------

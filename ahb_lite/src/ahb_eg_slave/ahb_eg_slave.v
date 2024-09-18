@@ -69,7 +69,10 @@ module ahb_eg_slave
     // outputs
     output wire [DATA_WIDTH-1:0] HRDATA,
     output wire                  HREADYOUT,
-    output wire                  HRESP
+    output wire                  HRESP,
+
+    // interrupt
+    output wire                  eg_int
 );
 
 //--------------------------------------------------------------------------
@@ -142,6 +145,7 @@ ahb_eg_reg_u (
         .byte_strobe            (reg_byte_strobe                ), //input
         .wdata                  (reg_wdata                      ), //input
         // output signals
+        .eg_int                 (eg_int                         ), //output
         .rdata                  (reg_rdata                      )  //output
     );
 

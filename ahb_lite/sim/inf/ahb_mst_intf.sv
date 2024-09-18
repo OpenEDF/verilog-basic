@@ -67,6 +67,7 @@ logic         HMASTLOCK;
 logic         HREADY;
 logic         HRESP;
 logic  [31:0] HRDATA;
+logic         eg_int;
 
 //--------------------------------------------------------------------------
 // Design: master clocking block 
@@ -76,6 +77,7 @@ clocking mst_drv_cb @(posedge HCLK);
     input  HRESP;
     inout  HREADY;
     input  HRDATA;
+    input  eg_int;
     output HADDR;
     output HWDATA;
     output HWRITE;
@@ -102,6 +104,7 @@ clocking mst_mon_cb @(posedge HCLK);
     input  HRESP;
     inout  HREADY;
     input  HRDATA;
+    input  eg_int;
 endclocking
 
 //--------------------------------------------------------------------------

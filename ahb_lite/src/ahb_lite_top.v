@@ -60,7 +60,10 @@ module ahb_lite_top
     //custom master outputs
     output wire        m0_hready,
     output wire        m0_hresp,
-    output wire [31:0] m0_rdata
+    output wire [31:0] m0_rdata,
+
+    //interrupt
+    output wire        eg_int
 );
 
 //--------------------------------------------------------------------------
@@ -361,7 +364,9 @@ ahb_eg_slave_u0
         // outputs
         .HRDATA                 (s4_rdata_multi                 ), //output
         .HREADYOUT              (s4_hreadyout_multi             ), //output
-        .HRESP                  (s4_hresp_multi                 )  //output
+        .HRESP                  (s4_hresp_multi                 ), //output
+        // interrupt
+        .eg_int                 (eg_int                         )  //output
     );
 endmodule
 
