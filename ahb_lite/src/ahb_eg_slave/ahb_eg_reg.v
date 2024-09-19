@@ -164,12 +164,14 @@ assign test_3_rdata = test3;
 //--------------------------------------------------------------------------
 reg [3:0] int_sts;
 reg [3:0] int_mask;
+reg       en_count;
 always @(posedge hclk or negedge hresetn) begin
     if (!hresetn) begin
-        {int_mask, int_sts} <= {8{1'b0}};
+        {en_count, int_mask, int_sts} <= {9{1'b0}};
     end else begin
         if ((csr_offset == `EG_INT) && write_en) begin
             int_mask <= wdata[7:4];
+            en_count <= wdata[8];
             /* RW1C */
             if (wdata[0])
                 int_sts[0] <= 1'b0;
@@ -192,7 +194,7 @@ always @(posedge hclk or negedge hresetn) begin
     end
 end
 
-assign glbl_int = {{24{1'b0}}, int_mask, int_sts};
+assign glbl_int = {{23{1'b0}}, en_count, int_mask, int_sts};
 assign eg_int = ( (int_sts[0] & int_mask[0])
                 | (int_sts[1] & int_mask[1])
                 | (int_sts[2] & int_mask[2])
@@ -222,7 +224,8 @@ always @(posedge hclk or negedge hresetn) begin
     if (!hresetn) begin
         count <= {32{1'b0}};
     end else begin
-        count = count + 1;
+        if (en_count)
+            count = count + 32'h1;
     end
 end
 

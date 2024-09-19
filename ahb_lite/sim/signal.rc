@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 1278 520 138 113
+viewPort 0 27 1278 555 138 113
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 41551.400000
-cursor 2580.000000
+zoom 268.503276 566.003276
+cursor 330.000000
 marker 0.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 31
+top 15
 ; marker line index
-markerPos 61
+markerPos 62
 
 ; event list
 ; addEvent event_name event_expression
@@ -108,6 +108,7 @@ addSignal -h 15 -holdScope HRDATA[31:0]
 addSignal -h 15 -holdScope HREADYOUT
 addSignal -h 15 -holdScope HRESP
 addSignal -h 15 /tb_top/ahb_lite_top_u0/ahb_eg_slave_u0/ahb_eg_reg_u/eg_int
+addSignal -h 15 -holdScope count[31:0]
 addGroup "G5"
 addGroup "G6"
 
