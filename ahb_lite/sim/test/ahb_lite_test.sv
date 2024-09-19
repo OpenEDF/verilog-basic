@@ -47,6 +47,7 @@ class ahb_lite_test extends uvm_test;
 //--------------------------------------------------------------------------
 ahb_lite_env      ahb_env;
 ahb_mst_base_seq  mst_seq;
+ahb_mst_int_seq   int_seq;
 ahb_lite_system_config sys_cfg;
 `uvm_component_utils(ahb_lite_test)
 
@@ -92,6 +93,7 @@ function void ahb_lite_test::build_phase(uvm_phase phase);
     super.build_phase(phase);
     ahb_env = ahb_lite_env::type_id::create("ahb_env", this);
     mst_seq = ahb_mst_base_seq::type_id::create("mst_seq");
+    int_seq = ahb_mst_int_seq::type_id::create("int_seq");
     sys_cfg = ahb_lite_system_config::type_id::create("sys_cfg");
     sys_cfg.test_var = 10;
     sys_cfg.has_scoreboard = 1;
@@ -199,10 +201,12 @@ task ahb_lite_test::run_phase(uvm_phase phase);
 
     fork
         /* Executes this sequence, returning when the sequence has completed  */
-        /* isr sequence */
-
         /* main sequence */
         mst_seq.start(ahb_env.mst_agt.mst_seqr);
+
+        /* isr sequence */
+        sys_cfg.wait_for_irq();
+        int_seq.start(ahb_env.mst_agt.mst_seqr);
     join
 
     /* The drop is expected to be matched with an earlier raise */

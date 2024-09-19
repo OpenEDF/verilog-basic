@@ -47,6 +47,7 @@ import uvm_pkg::*;
 `include "ahb_mst_seqr.sv"
 `include "ahb_mst_agt.sv"
 `include "ahb_mst_base_seq.sv"
+`include "ahb_mst_int_seq.sv"
 `include "env/ahb_lite_coverage.sv"
 `include "env/ahb_lite_scoreboard.sv"
 `include "env/ahb_lite_env.sv"

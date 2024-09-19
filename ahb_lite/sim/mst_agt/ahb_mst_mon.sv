@@ -123,6 +123,11 @@ task ahb_mst_mon::do_monitor();
         if (!$cast(mon_tran.HRESP, ahb_vif.mst_mon_cb.HRESP))
             `uvm_fatal(get_type_name(), "mon tran HRESP get failed")
 
+        /* trigger irq */
+        if (ahb_vif.mst_mon_cb.eg_int == 1) begin
+            sys_cfg.trigger_irq();
+        end
+
         /* send specified value to all connected interface */
         `uvm_info(get_type_name(), "completed monitor transaction...", UVM_HIGH);
 

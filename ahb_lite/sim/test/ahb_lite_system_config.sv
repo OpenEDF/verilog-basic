@@ -50,6 +50,7 @@ uvm_active_passive_enum active = UVM_ACTIVE;
 bit has_functional_coverage = 0;
 bit has_scoreboard = 0;
 int test_var = 0;
+uvm_event irq_event;
 
 //--------------------------------------------------------------------------
 // Design: declare and register
@@ -68,6 +69,8 @@ extern function new(string name = "ahb_lite_system_config");
 extern function void set_vif(virtual ahb_mst_intf vif);
 extern task wait_for_clock(int count = 1);
 extern task wait_for_reset();
+extern task wait_for_irq();
+extern task trigger_irq();
 
 endclass: ahb_lite_system_config
 
@@ -76,6 +79,7 @@ endclass: ahb_lite_system_config
 //--------------------------------------------------------------------------
 function ahb_lite_system_config::new(string name = "ahb_lite_system_config");
     super.new(name);
+    irq_event = new();
 endfunction
 
 //--------------------------------------------------------------------------
@@ -100,5 +104,20 @@ endtask: wait_for_clock
 task ahb_lite_system_config::wait_for_reset();
     @(posedge ahb_lite_vif.HRESETn);
 endtask: wait_for_reset
+
+//--------------------------------------------------------------------------
+// Design: wait system irq 
+//--------------------------------------------------------------------------
+task ahb_lite_system_config::wait_for_irq();
+    irq_event.wait_trigger;
+endtask: wait_for_irq
+
+//--------------------------------------------------------------------------
+// Design: trigger irq event 
+//--------------------------------------------------------------------------
+task ahb_lite_system_config::trigger_irq();
+    irq_event.trigger;
+endtask: trigger_irq
+
 `endif /* _AHB_LITE_SYSTEM_CONFIG_SV_ */
 //--------------------------------------------------------------------------
