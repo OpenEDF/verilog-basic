@@ -29,8 +29,8 @@
 // Brief: uvm sequence
 // Change Log:
 //--------------------------------------------------------------------------
-`ifndef _AHB_MST_INT_SEQ_SV_
-`define _AHB_MST_INT_SEQ_SV_
+`ifndef _AHB_MST_INIT_SEQ_SV_
+`define _AHB_MST_INIT_SEQ_SV_
 
 //--------------------------------------------------------------------------
 // Include File
@@ -39,21 +39,21 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class ahb_mst_int_seq extends ahb_base_seq;
+class ahb_mst_init_seq extends ahb_base_seq;
 
 //--------------------------------------------------------------------------
 // Design: declear and register
 //--------------------------------------------------------------------------
-`uvm_object_utils(ahb_mst_int_seq);
+`uvm_object_utils(ahb_mst_init_seq);
 
-extern function new(string name = "ahb_mst_int_seq");
+extern function new(string name = "ahb_mst_init_seq");
 extern task body();
-endclass: ahb_mst_int_seq
+endclass: ahb_mst_init_seq
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function ahb_mst_int_seq::new(string name = "ahb_mst_int_seq");
+function ahb_mst_init_seq::new(string name = "ahb_mst_init_seq");
     super.new(name);
 endfunction
 
@@ -65,48 +65,41 @@ endfunction
 //        item.randaomize();
 //        finish_item(item);
 //--------------------------------------------------------------------------
-task ahb_mst_int_seq::body();
-    logic [31:0] addr;
-    logic [31:0] wdata;
+task ahb_mst_init_seq::body();
     logic [31:0] rdata;
-    `uvm_info(get_type_name(), "interrupt handler seq: inside body", UVM_HIGH);
+    logic [31:0] wdata;
+    logic [31:0] addr;
+    `uvm_info(get_type_name(), "base init seq: inside body", UVM_HIGH);
 
-    /* clear int */
-    grab();
-
-    addr = 32'h0004_4014;
+    /* --------------- AHB PERIPHERIAL READ & WRITE TEST ------------------- */
+    wdata  = 32'h1234abcd;
+    addr   = 32'h0004_4004;
+    ahb_write(addr, wdata);
     ahb_read(addr, rdata);
-    `uvm_info(get_type_name(), $sformatf("interrupt status register: 32'h%h", rdata), UVM_LOW);
 
-    if (rdata[0]) begin
-        `uvm_info(get_type_name(), "IRQ[0] detected", UVM_LOW);
-        wdata = rdata;
-        wdata[0] = 1;
+    addr   = 32'h0004_4008;
+    wdata = wdata + 4;
+    ahb_write(addr, wdata);
+    ahb_read(addr, rdata);
+
+    addr   = 32'h0004_400C;
+    wdata = wdata + 4;
+    ahb_write(addr, wdata);
+    ahb_read(addr, rdata);
+
+    addr  = 32'h0004_4014;
+    wdata = 32'h0000_01F0;
+    ahb_write(addr, wdata);
+
+    addr  = 32'h0004_4010;
+    wdata = 32'hFFFF_0000;
+    repeat(50) begin
+        wdata = wdata + 1;
         ahb_write(addr, wdata);
     end
 
-    if (rdata[1]) begin
-        `uvm_info(get_type_name(), "IRQ[0] detected", UVM_LOW);
-        wdata = rdata;
-        wdata[1] = 1;
-        ahb_write(addr, wdata);
-    end
-
-    if (rdata[2]) begin
-        `uvm_info(get_type_name(), "IRQ[0] detected", UVM_LOW);
-        wdata = rdata;
-        wdata[2] = 1;
-        ahb_write(addr, wdata);
-    end
-
-    if (rdata[3]) begin
-        `uvm_info(get_type_name(), "IRQ[0] detected", UVM_LOW);
-        wdata = rdata;
-        wdata[3] = 1;
-        ahb_write(addr, wdata);
-    end
-    ungrab();
+    /* enable response handler */
 endtask
 
-`endif /* _AHB_MST_INT_SEQ_SV_ */
+`endif /* _AHB_MST_INIT_SEQ_SV_ */
 //--------------------------------------------------------------------------

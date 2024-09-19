@@ -169,8 +169,10 @@ task ahb_mst_drv::do_pipeline_tran();
 			end
 		end
 
+        `uvm_info(get_type_name(), $sformatf("data: %h", item_req.HRDATA), UVM_HIGH);
         item_req.HRESP  <= ahb_vif.mst_drv_cb.HRESP;
         item_req.HREADY <= ahb_vif.mst_drv_cb.HREADY;
+        item_req.eg_int <= ahb_vif.mst_drv_cb.eg_int;
         `uvm_info(get_type_name(), "data phase ready...", UVM_HIGH);
 
 		/* return the request as response */

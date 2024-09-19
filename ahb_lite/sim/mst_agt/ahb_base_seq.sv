@@ -29,8 +29,8 @@
 // Brief: uvm sequence
 // Change Log:
 //--------------------------------------------------------------------------
-`ifndef _AHB_MST_INT_SEQ_SV_
-`define _AHB_MST_INT_SEQ_SV_
+`ifndef _AHB_BASE_SEQ_SV_
+`define _AHB_BASE_SEQ_SV_
 
 //--------------------------------------------------------------------------
 // Include File
@@ -39,74 +39,64 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class ahb_mst_int_seq extends ahb_base_seq;
+class ahb_base_seq extends uvm_sequence#(ahb_mst_tran);
 
 //--------------------------------------------------------------------------
 // Design: declear and register
 //--------------------------------------------------------------------------
-`uvm_object_utils(ahb_mst_int_seq);
+`uvm_object_utils(ahb_base_seq);
 
-extern function new(string name = "ahb_mst_int_seq");
-extern task body();
-endclass: ahb_mst_int_seq
+extern function new(string name = "ahb_base_seq");
+extern task ahb_read(input logic[31:0] addr, output logic[31:0] data);
+extern task ahb_write(input logic[31:0] addr, input logic[31:0] data);
+endclass: ahb_base_seq
 
 //--------------------------------------------------------------------------
 // Design: new
 //--------------------------------------------------------------------------
-function ahb_mst_int_seq::new(string name = "ahb_mst_int_seq");
+function ahb_base_seq::new(string name = "ahb_base_seq");
     super.new(name);
 endfunction
 
 //--------------------------------------------------------------------------
-// Design: sequence, your stimulus code, this is the user-defined task
-//         whers the main sequence code resides.
-// uvm_do:
-//        start_item(item);
-//        item.randaomize();
-//        finish_item(item);
+// Design: ahb nonseq read
 //--------------------------------------------------------------------------
-task ahb_mst_int_seq::body();
-    logic [31:0] addr;
-    logic [31:0] wdata;
-    logic [31:0] rdata;
-    `uvm_info(get_type_name(), "interrupt handler seq: inside body", UVM_HIGH);
-
-    /* clear int */
-    grab();
-
-    addr = 32'h0004_4014;
-    ahb_read(addr, rdata);
-    `uvm_info(get_type_name(), $sformatf("interrupt status register: 32'h%h", rdata), UVM_LOW);
-
-    if (rdata[0]) begin
-        `uvm_info(get_type_name(), "IRQ[0] detected", UVM_LOW);
-        wdata = rdata;
-        wdata[0] = 1;
-        ahb_write(addr, wdata);
+task ahb_base_seq::ahb_read(input logic[31:0] addr, output logic[31:0] data);
+    REQ req_item;
+    RSP rsp_item;
+    `uvm_info(get_type_name(), "ahb read data.", UVM_HIGH);
+    req_item = ahb_mst_tran::type_id::create("req_item");
+    rsp_item = ahb_mst_tran::type_id::create("req_item");
+    start_item(req_item);
+    if (!req_item.randomize() with {HTRANS == NONSEQ; HWRITE == READ; HADDR == addr;}) begin
+        `uvm_fatal("body:", "req randomization failure")
     end
+    req_item.HRESETn = 1;
+    finish_item(req_item);
+    req_item.end_event.wait_on();
+    get_response(rsp_item);
+    data = rsp_item.HRDATA;
+    `uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_HIGH);
+endtask: ahb_read
 
-    if (rdata[1]) begin
-        `uvm_info(get_type_name(), "IRQ[0] detected", UVM_LOW);
-        wdata = rdata;
-        wdata[1] = 1;
-        ahb_write(addr, wdata);
+//--------------------------------------------------------------------------
+// Design: ahb nonseq write
+//--------------------------------------------------------------------------
+task ahb_base_seq::ahb_write(input logic[31:0] addr, input logic[31:0] data);
+    REQ req_item;
+    RSP rsp_item;
+    `uvm_info(get_type_name(), "ahb read data.", UVM_HIGH);
+    req_item = ahb_mst_tran::type_id::create("req_item");
+    start_item(req_item);
+    if (!req_item.randomize() with {HTRANS == NONSEQ; HWRITE == WRITE; HADDR == addr; HWDATA == data;}) begin
+        `uvm_fatal("body:", "req randomization failure")
     end
+    req_item.HRESETn = 1;
+    finish_item(req_item);
+    req_item.end_event.wait_on();
+    get_response(rsp_item);
+    `uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_HIGH);
+endtask: ahb_write
 
-    if (rdata[2]) begin
-        `uvm_info(get_type_name(), "IRQ[0] detected", UVM_LOW);
-        wdata = rdata;
-        wdata[2] = 1;
-        ahb_write(addr, wdata);
-    end
-
-    if (rdata[3]) begin
-        `uvm_info(get_type_name(), "IRQ[0] detected", UVM_LOW);
-        wdata = rdata;
-        wdata[3] = 1;
-        ahb_write(addr, wdata);
-    end
-    ungrab();
-endtask
-
-`endif /* _AHB_MST_INT_SEQ_SV_ */
+`endif /* _AHB_BASE_SEQ_SV_ */
 //--------------------------------------------------------------------------

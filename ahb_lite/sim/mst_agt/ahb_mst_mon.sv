@@ -124,7 +124,8 @@ task ahb_mst_mon::do_monitor();
             `uvm_fatal(get_type_name(), "mon tran HRESP get failed")
 
         /* trigger irq */
-        if (ahb_vif.mst_mon_cb.eg_int == 1) begin
+        if (ahb_vif.mst_mon_cb.eg_int) begin
+            `uvm_info(get_type_name(), "ahb monitor trigger the irq event", UVM_HIGH);
             sys_cfg.trigger_irq();
         end
 
