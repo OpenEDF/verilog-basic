@@ -184,11 +184,11 @@ always @(posedge hclk or negedge hresetn) begin
         end else begin
             if (count == 32'h0000_000F)
                 int_sts[0] <= 1'b1;
-            if (count == 32'h0000_00FF)
+            if (count == 32'h0000_003F)
                 int_sts[1] <= 1'b1;
-            if (count == 32'h0000_0FFF)
+            if (count == 32'h0000_005F)
                 int_sts[2] <= 1'b1;
-            if (count == 32'h0000_FFFF)
+            if (count == 32'h0000_007F)
                 int_sts[3] <= 1'b1;
         end
     end
