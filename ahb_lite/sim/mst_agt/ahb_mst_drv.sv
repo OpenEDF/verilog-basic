@@ -131,10 +131,8 @@ task ahb_mst_drv::do_pipeline_tran();
 		/* request bus, wait for grant, etc. */
 		begin_tr(item_req, "pipeline_tran");
 
-        if (item_req.HTRANS == SEQ) begin
-            if (pipeline_ev.is_off) begin
+        if ((item_req.HTRANS == SEQ) && (pipeline_ev.is_off)) begin
                 pipeline_ev.trigger;
-            end
         end
 
         ahb_vif.mst_drv_cb.HADDR  <= item_req.HADDR;
@@ -169,7 +167,8 @@ task ahb_mst_drv::do_pipeline_tran();
 			end
 		end
 
-        `uvm_info(get_type_name(), $sformatf("data: %h", item_req.HRDATA), UVM_HIGH);
+	    @(ahb_vif.mst_drv_cb);
+        `uvm_info(get_type_name(), $sformatf("ahb read data: 32'h%h", item_req.HRDATA), UVM_HIGH);
         item_req.HRESP  <= ahb_vif.mst_drv_cb.HRESP;
         item_req.HREADY <= ahb_vif.mst_drv_cb.HREADY;
         item_req.eg_int <= ahb_vif.mst_drv_cb.eg_int;
