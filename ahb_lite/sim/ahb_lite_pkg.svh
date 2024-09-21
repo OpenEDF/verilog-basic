@@ -53,7 +53,8 @@ import uvm_pkg::*;
 `include "env/ahb_lite_coverage.sv"
 `include "env/ahb_lite_scoreboard.sv"
 `include "env/ahb_lite_env.sv"
-`include "test/ahb_lite_test.sv"
+`include "test/ahb_lite_pipeline_test.sv"
+`include "test/ahb_lite_irq_test.sv"
 
 endpackage: ahb_lite_pkg 
 

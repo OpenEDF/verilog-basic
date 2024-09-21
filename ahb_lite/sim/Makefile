@@ -11,7 +11,7 @@ UVM_VERBOSITY =	UVM_LOW
 
 # UVM simv Test options
 UVM_VER = uvm-1.2
-TEST_CASE = ahb_lite_test
+TEST_CASE ?= ahb_lite_pipeline_test
 TB_TOP = tb_top
 DEFINES = UVM_NO_RELNOTES
 UVM_DEFINES = UVM_NO_DEPRECATED+UVM_OBJECT_MUST_HAVE_CONSTRUCTOR
