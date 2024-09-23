@@ -184,7 +184,7 @@ always @(posedge hclk or negedge hresetn) begin
         end else begin
             if (count == 32'h0000_000F)
                 int_sts[0] <= 1'b1;
-            if (count == 32'h0000_003F)
+            if (count == 32'h0000_002F)
                 int_sts[1] <= 1'b1;
             if (count == 32'h0000_005F)
                 int_sts[2] <= 1'b1;
@@ -222,7 +222,7 @@ end
 //--------------------------------------------------------------------------
 always @(posedge hclk or negedge hresetn) begin
     if (!hresetn) begin
-        count <= {32{1'b0}};
+        count = {32{1'b0}};
     end else begin
         if (en_count)
             count = count + 32'h1;
