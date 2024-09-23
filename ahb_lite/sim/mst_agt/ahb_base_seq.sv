@@ -66,7 +66,6 @@ task ahb_base_seq::ahb_read(input logic[31:0] addr, output logic[31:0] data);
     RSP rsp_item;
     `uvm_info(get_type_name(), "ahb read data.", UVM_HIGH);
     req_item = ahb_mst_tran::type_id::create("req_item");
-    rsp_item = ahb_mst_tran::type_id::create("req_item");
     start_item(req_item);
     if (!req_item.randomize() with {HTRANS == NONSEQ; HWRITE == READ; HADDR == addr;}) begin
         `uvm_fatal("body:", "req randomization failure")

@@ -72,7 +72,7 @@ task ahb_mst_init_seq::body();
     `uvm_info(get_type_name(), "base init seq: inside body", UVM_HIGH);
 
     /* --------------- AHB PERIPHERIAL READ & WRITE TEST ------------------- */
-    wdata  = 32'h1234abcd;
+    wdata  = 32'h1234_abcd;
     addr   = 32'h0004_4004;
     ahb_write(addr, wdata);
     ahb_read(addr, rdata);
@@ -93,7 +93,7 @@ task ahb_mst_init_seq::body();
 
     addr  = 32'h0004_4010;
     wdata = 32'hFFFF_0000;
-    repeat(50) begin
+    repeat(80) begin
         wdata = wdata + 1;
         ahb_write(addr, wdata);
     end

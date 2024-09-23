@@ -86,21 +86,21 @@ task ahb_mst_int_seq::body();
     end
 
     if (rdata[1]) begin
-        `uvm_info(get_type_name(), "IRQ[0] detected", UVM_LOW);
+        `uvm_info(get_type_name(), "IRQ[1] detected", UVM_LOW);
         wdata = rdata;
         wdata[1] = 1;
         ahb_write(addr, wdata);
     end
 
     if (rdata[2]) begin
-        `uvm_info(get_type_name(), "IRQ[0] detected", UVM_LOW);
+        `uvm_info(get_type_name(), "IRQ[2] detected", UVM_LOW);
         wdata = rdata;
         wdata[2] = 1;
         ahb_write(addr, wdata);
     end
 
     if (rdata[3]) begin
-        `uvm_info(get_type_name(), "IRQ[0] detected", UVM_LOW);
+        `uvm_info(get_type_name(), "IRQ[3] detected", UVM_LOW);
         wdata = rdata;
         wdata[3] = 1;
         ahb_write(addr, wdata);

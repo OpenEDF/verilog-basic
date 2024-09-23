@@ -2,11 +2,11 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 1278 555 138 113
+viewPort 0 -1 1278 981 138 113
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
-openDirFile -d / "" "/home/macro/work/github/verilog-basic/ahb_lite/sim/tb_top.fsdb"
+openDirFile -d / -i 0 "" "/home/macro/work/github/verilog-basic/ahb_lite/sim/tb_top.fsdb"
 
 ; file time scale:
 ; fileTimeScale ### s|ms|us|ns|ps
@@ -16,14 +16,12 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 268.503276 566.003276
-cursor 330.000000
+zoom 0.000000 247.630952
+cursor 31.000000
 marker 0.000000
 
-; user define markers
-; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 15
+top 0
 ; marker line index
 markerPos 62
 

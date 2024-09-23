@@ -99,7 +99,11 @@ endfunction
 //--------------------------------------------------------------------------
 task ahb_mst_drv::run_phase(uvm_phase phase);
     sys_cfg.wait_for_reset();
-    @(ahb_vif.mst_drv_cb);
+
+    /* sync */
+    repeat(6) begin
+        @(ahb_vif.mst_drv_cb);
+    end
     fork
         do_pipeline_tran();
         begin
@@ -117,6 +121,9 @@ endtask
 task ahb_mst_drv::do_pipeline_tran();
     forever begin
 		ahb_mst_tran item_req;
+		ahb_mst_tran item_rsp;
+
+        item_rsp = ahb_mst_tran::type_id::create("item_rsp");
         /* wait reset is high */
         while(!ahb_vif.HRESETn) begin
             @(ahb_vif.mst_drv_cb);
@@ -158,7 +165,8 @@ task ahb_mst_drv::do_pipeline_tran();
             while(!ahb_vif.mst_drv_cb.HREADY) begin
 			    @(ahb_vif.mst_drv_cb);
 			end
-            item_req.HRDATA <= ahb_vif.mst_drv_cb.HRDATA;
+            item_req.HRDATA = ahb_vif.mst_drv_cb.HRDATA;  /* protocol analyzer debug */
+            item_rsp.HRDATA = ahb_vif.mst_drv_cb.HRDATA;
 		end else begin  /* write data */
             ahb_vif.mst_drv_cb.HWDATA <= item_req.HWDATA;
 			@(ahb_vif.mst_drv_cb);
@@ -167,15 +175,15 @@ task ahb_mst_drv::do_pipeline_tran();
 			end
 		end
 
-	    @(ahb_vif.mst_drv_cb);
-        `uvm_info(get_type_name(), $sformatf("ahb read data: 32'h%h", item_req.HRDATA), UVM_HIGH);
-        item_req.HRESP  <= ahb_vif.mst_drv_cb.HRESP;
-        item_req.HREADY <= ahb_vif.mst_drv_cb.HREADY;
-        item_req.eg_int <= ahb_vif.mst_drv_cb.eg_int;
+        `uvm_info(get_type_name(), $sformatf("ahb read data: 32'h%h", item_rsp.HRDATA), UVM_HIGH);
+        item_rsp.HRESP  = ahb_vif.mst_drv_cb.HRESP;
+        item_rsp.HREADY = ahb_vif.mst_drv_cb.HREADY;
+        item_rsp.eg_int = ahb_vif.mst_drv_cb.eg_int;
         `uvm_info(get_type_name(), "data phase ready...", UVM_HIGH);
 
 		/* return the request as response */
-        seq_item_port.put(item_req);
+        item_rsp.set_sequence_id(item_req.get_sequence_id());
+        seq_item_port.put(item_rsp);
 		end_tr(item_req);
     end
 endtask: do_pipeline_tran
@@ -206,5 +214,6 @@ task ahb_mst_drv::wait_for_reset();
     `uvm_info(get_type_name(), "wait controller reset...", UVM_HIGH);
     @(posedge ahb_vif.HRESETn);
 endtask
+
 `endif /* _AHB_MST_DRV_ */
 //--------------------------------------------------------------------------
