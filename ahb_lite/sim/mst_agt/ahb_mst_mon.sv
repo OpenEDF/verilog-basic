@@ -113,7 +113,7 @@ task ahb_mst_mon::do_monitor();
 
         /* monitor output signal */
         @(ahb_vif.mst_mon_cb);
-        mon_tran.HADDR <= ahb_vif.mst_mon_cb.HADDR;
+        mon_tran.HADDR = ahb_vif.mst_mon_cb.HADDR;
         if (!$cast(mon_tran.HWRITE, ahb_vif.mst_mon_cb.HWRITE))
             `uvm_fatal(get_type_name(), "mon tran WRITE get failed")
 

@@ -16,7 +16,7 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 247.630952
+zoom 0.000000 224.000096
 cursor 31.000000
 marker 0.000000
 

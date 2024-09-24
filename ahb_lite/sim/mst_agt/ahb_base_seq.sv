@@ -84,7 +84,7 @@ endtask: ahb_read
 task ahb_base_seq::ahb_write(input logic[31:0] addr, input logic[31:0] data);
     REQ req_item;
     RSP rsp_item;
-    `uvm_info(get_type_name(), "ahb read data.", UVM_HIGH);
+    `uvm_info(get_type_name(), "ahb write data.", UVM_HIGH);
     req_item = ahb_mst_tran::type_id::create("req_item");
     start_item(req_item);
     if (!req_item.randomize() with {HTRANS == NONSEQ; HWRITE == WRITE; HADDR == addr; HWDATA == data;}) begin
