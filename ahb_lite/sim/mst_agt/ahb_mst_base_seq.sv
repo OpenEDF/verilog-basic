@@ -110,13 +110,19 @@ task ahb_mst_base_seq::body();
         start_item(req_item);
 
         if (each_ctrl == 0) begin
-            if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == NONSEQ;
-                HADDR inside {[32'h4_1000:32'h4_13FF]}; }) begin
+            if (!req_item.randomize() with {
+                HWRITE == WRITE;
+                HTRANS == NONSEQ;
+                HADDR inside {[32'h4_1000:32'h4_13FF]};
+            }) begin
                 `uvm_fatal("body:", "req randomization failure")
             end
         end else begin
-            if (!req_item.randomize() with { HWRITE == WRITE; HTRANS == SEQ;
-                HADDR inside {[32'h4_1000:32'h4_13FF]}; }) begin
+            if (!req_item.randomize() with {
+                HWRITE == WRITE;
+                HTRANS == SEQ;
+                HADDR inside {[32'h4_1000:32'h4_13FF]};
+            }) begin
                 `uvm_fatal("body:", "req randomization failure")
             end
         end

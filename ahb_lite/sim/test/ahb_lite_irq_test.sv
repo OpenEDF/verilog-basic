@@ -196,7 +196,7 @@ endtask
 // Design: run phase: stmulate the DUT
 //--------------------------------------------------------------------------
 task ahb_lite_irq_test::run_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN run_phase...", UVM_HIGH);
+    `uvm_info(get_type_name(), "run phase Entered ...", UVM_HIGH);
     phase.raise_objection(this);
 
     fork
@@ -214,9 +214,10 @@ task ahb_lite_irq_test::run_phase(uvm_phase phase);
     join_any
     disable fork;
 
+    phase.phase_done.set_drain_time(this, 100);
     /* The drop is expected to be matched with an earlier raise */
     phase.drop_objection(this);
-    `uvm_info(get_type_name(), "end of testcase", UVM_HIGH);
+    `uvm_info(get_type_name(), "run phase Exited ...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
@@ -263,8 +264,19 @@ endfunction
 // Design: Tie up loose ends.
 //--------------------------------------------------------------------------
 function void ahb_lite_irq_test::final_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN final_phase...", UVM_HIGH);
-endfunction
+    uvm_report_server svr;
+    super.final_phase(phase);
+    `uvm_info("final_phase", "ahb_lite_irq_test FINAL-FLOW: Starting...",UVM_HIGH);
+
+    svr = uvm_report_server::get_server();
+    if (svr.get_severity_count(UVM_FATAL) + svr.get_severity_count(UVM_ERROR) +
+	    svr.get_severity_count(UVM_WARNING) > 0) begin
+        `uvm_info("final_phase", "\nSvtTestEpilog: Failed\n", UVM_LOW);
+    end else begin
+        `uvm_info("final_phase", "\nSvtTestEpilog: Passed\n", UVM_LOW);
+    end
+    `uvm_info("final_phase", "ahb_lite_irq_test FINAL-FLOW: Finishing...",UVM_HIGH);
+endfunction: final_phase
 
 `endif /*_AHB_LITE_IRQ_TEST_SV_ */
 //--------------------------------------------------------------------------
