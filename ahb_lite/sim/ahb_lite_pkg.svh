@@ -50,11 +50,13 @@ import uvm_pkg::*;
 `include "ahb_mst_base_seq.sv"
 `include "ahb_mst_int_seq.sv"
 `include "ahb_mst_init_seq.sv"
+`include "ahb_mst_new_seq.sv"
 `include "env/ahb_lite_coverage.sv"
 `include "env/ahb_lite_scoreboard.sv"
 `include "env/ahb_lite_env.sv"
 `include "test/ahb_lite_pipeline_test.sv"
 `include "test/ahb_lite_irq_test.sv"
+`include "test/ahb_lite_new_test.sv"
 
 endpackage: ahb_lite_pkg 
 

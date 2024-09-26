@@ -47,7 +47,7 @@ class ahb_mst_seqr extends uvm_sequencer#(ahb_mst_tran);
 //--------------------------------------------------------------------------
 `uvm_component_utils(ahb_mst_seqr)
 extern function new(string name = "ahb_mst_seqr", uvm_component parent = null);
-extern function void build_phase(uvm_phase phase);
+extern virtual function void build_phase(uvm_phase phase);
 
 endclass:ahb_mst_seqr
 //--------------------------------------------------------------------------
@@ -62,6 +62,8 @@ endfunction
 //--------------------------------------------------------------------------
 function void ahb_mst_seqr::build_phase(uvm_phase phase);
     super.build_phase(phase);
+    `uvm_info(get_type_name(), "build phase Entered ...", UVM_HIGH);
+    `uvm_info(get_type_name(), "build phase Exited ...", UVM_HIGH);
 endfunction
 
 `endif /* _AHB_MST_SEQR_SV_ */
