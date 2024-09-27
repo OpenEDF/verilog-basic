@@ -1,0 +1,12 @@
+# UVM project work file
+# Package
+#package.sv
+
+# interface
+#my_if.sv
+
+# DTU
+dut.sv
+
+# testbench_top
+top_tb.sv
