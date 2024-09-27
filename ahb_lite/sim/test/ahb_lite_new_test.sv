@@ -47,6 +47,9 @@ class ahb_lite_new_test extends uvm_test;
 //--------------------------------------------------------------------------
 ahb_lite_env      ahb_env;
 ahb_lite_system_config sys_cfg;
+int               db_test_val;
+int               db_test_val_1;
+int               db_test_val_2;
 `uvm_component_utils(ahb_lite_new_test)
 
 //--------------------------------------------------------------------------
@@ -94,6 +97,11 @@ function void ahb_lite_new_test::build_phase(uvm_phase phase);
                               "ahb_env.mst_agt.mst_seqr.main_phase",
                               "default_sequence",
                               ahb_mst_new_seq::type_id::get());
+
+    /* uvm config db test */
+    uvm_config_db#(int)::set(this, "*", "db_test_val", 32'h12345678);
+    uvm_config_db#(int)::set(null, "", "db_test_val_1", 32'h5678abcd);
+    uvm_config_db#(int)::set(null, "uvm_test_top", "db_test_val_2", 32'habcd1234);
 
     `uvm_info(get_type_name(), "build_phase Exited ...", UVM_HIGH);
 endfunction

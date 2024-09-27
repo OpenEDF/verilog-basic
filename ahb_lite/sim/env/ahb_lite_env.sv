@@ -50,6 +50,9 @@ ahb_mst_agt          mst_agt;
 ahb_lite_scoreboard  ahb_lite_sb;
 ahb_lite_coverage    ahb_lite_cov;
 ahb_lite_system_config sys_cfg;
+int                  get_db_test_val;
+int                  get_db_test_val_1;
+int                  get_db_test_val_2;
 virtual ahb_mst_intf   ahb_vif;
 
 //--------------------------------------------------------------------------
@@ -88,6 +91,25 @@ function void ahb_lite_env::build_phase(uvm_phase phase);
                 `uvm_fatal("FATAL MSG", "ahb lite interface set fail");
             end
         end
+    end
+
+    /* uvm config db test */
+    if (!uvm_config_db#(int)::get(this, "*", "db_test_val", get_db_test_val)) begin
+        `uvm_fatal("FATAL MSG", "db_test_val get fail");
+    end else begin
+        `uvm_info(get_type_name(), $sformatf("db_test_val:32'h%0h", get_db_test_val), UVM_HIGH);
+    end
+
+    if (!uvm_config_db#(int)::get(null, "", "db_test_val_1", get_db_test_val_1)) begin
+        `uvm_fatal("FATAL MSG", "db_test_val get fail");
+    end else begin
+        `uvm_info(get_type_name(), $sformatf("db_test_val_1:32'h%0h", get_db_test_val_1), UVM_HIGH);
+    end
+
+    if (!uvm_config_db#(int)::get(null, "uvm_test_top", "db_test_val_2", get_db_test_val_2)) begin
+        `uvm_fatal("FATAL MSG", "db_test_val get fail");
+    end else begin
+        `uvm_info(get_type_name(), $sformatf("db_test_val_2:32'h%0h", get_db_test_val_2), UVM_HIGH);
     end
 
 endfunction
