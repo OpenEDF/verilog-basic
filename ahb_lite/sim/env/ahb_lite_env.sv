@@ -74,8 +74,8 @@ endfunction
 function void ahb_lite_env::build_phase(uvm_phase phase);
     super.build_phase(phase);
     mst_agt = ahb_mst_agt::type_id::create("mst_agt", this);
-    ahb_lite_sb  = ahb_lite_scoreboard::type_id::create("ahb_lite_scoreboard", this);
-    ahb_lite_cov = ahb_lite_coverage::type_id::create("ahb_lite_coverage", this);
+    ahb_lite_sb  = ahb_lite_scoreboard::type_id::create("ahb_lite_sb", this);
+    ahb_lite_cov = ahb_lite_coverage::type_id::create("ahb_lite_cov", this);
     if (!uvm_config_db#(ahb_lite_system_config)::get(this, "", "ahb_lite_system_config", sys_cfg)) begin
         `uvm_fatal("FATAL MSG", "config object is not set properly");
     end else begin

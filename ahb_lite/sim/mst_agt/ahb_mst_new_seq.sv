@@ -45,6 +45,7 @@ class ahb_mst_new_seq extends uvm_sequence #(ahb_mst_tran);
 // Design: declear and register
 //--------------------------------------------------------------------------
 `uvm_object_utils(ahb_mst_new_seq);
+`uvm_declare_p_sequencer(ahb_mst_seqr);
 
 extern function new(string name = "ahb_mst_new_seq");
 extern virtual task pre_body();
@@ -96,12 +97,18 @@ endtask: post_body
 task ahb_mst_new_seq::body();
     REQ req_item;
     RSP rsp_item;
+    ahb_lite_system_config sys_cfg;
 
     logic [31:0] data;
     logic [31:0] addr;
     data  = 32'h1234_abcd;
     addr  = 32'h0004_4004;
     `uvm_info(get_type_name(), "ahb_mst_new_seq: Entered ...", UVM_HIGH);
+
+    p_sequencer.get_cfg(sys_cfg);
+    if (sys_cfg == null) begin
+        `uvm_fatal(get_type_name(), "get sys_cfg failure")
+    end
 
     repeat(10) begin
         req_item = ahb_mst_tran::type_id::create("req_item");
@@ -119,10 +126,11 @@ task ahb_mst_new_seq::body();
         req_item.end_event.wait_on();
 
         data += 32'h1;
-        get_response(rsp_item);
-        `uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_HIGH);
+        if (sys_cfg.enable_put_response == 1) begin
+            get_response(rsp_item);
+            `uvm_info(get_type_name(), {"get response after:\n", rsp_item.sprint()}, UVM_HIGH);
+        end
     end
-
     `uvm_info(get_type_name(), "ahb_mst_new_seq: Exited ...", UVM_HIGH);
 endtask
 

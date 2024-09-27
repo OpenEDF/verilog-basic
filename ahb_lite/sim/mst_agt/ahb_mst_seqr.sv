@@ -45,9 +45,11 @@ class ahb_mst_seqr extends uvm_sequencer#(ahb_mst_tran);
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
+ahb_lite_system_config sys_cfg;
 `uvm_component_utils(ahb_mst_seqr)
 extern function new(string name = "ahb_mst_seqr", uvm_component parent = null);
 extern virtual function void build_phase(uvm_phase phase);
+extern virtual function void get_cfg(output ahb_lite_system_config cfg);
 
 endclass:ahb_mst_seqr
 //--------------------------------------------------------------------------
@@ -63,8 +65,21 @@ endfunction
 function void ahb_mst_seqr::build_phase(uvm_phase phase);
     super.build_phase(phase);
     `uvm_info(get_type_name(), "build phase Entered ...", UVM_HIGH);
+
+    if (!uvm_config_db#(ahb_lite_system_config)::get(this, "", "ahb_lite_system_config", sys_cfg)) begin
+        `uvm_fatal("FATAL MSG", "config object is not set properly");
+    end
+
     `uvm_info(get_type_name(), "build phase Exited ...", UVM_HIGH);
 endfunction
 
+//--------------------------------------------------------------------------
+// Design: get the system config
+//--------------------------------------------------------------------------
+function void ahb_mst_seqr::get_cfg(output ahb_lite_system_config cfg);
+    if (sys_cfg != null) begin
+        cfg = sys_cfg;
+    end
+endfunction
 `endif /* _AHB_MST_SEQR_SV_ */
 //--------------------------------------------------------------------------

@@ -49,6 +49,7 @@ virtual ahb_mst_intf ahb_lite_vif;
 uvm_active_passive_enum active = UVM_ACTIVE;
 bit has_functional_coverage = 0;
 bit has_scoreboard = 0;
+bit enable_put_response = 0;
 int test_var = 0;
 uvm_event irq_event;
 
@@ -59,6 +60,7 @@ uvm_event irq_event;
     `uvm_field_enum(uvm_active_passive_enum, active, UVM_ALL_ON)
     `uvm_field_int(has_functional_coverage, UVM_ALL_ON)
     `uvm_field_int(has_scoreboard, UVM_ALL_ON)
+    `uvm_field_int(enable_put_response, UVM_ALL_ON)
     `uvm_field_int(test_var, UVM_ALL_ON | UVM_DEC)
 `uvm_object_utils_end
 

@@ -79,6 +79,7 @@ function void ahb_lite_new_test::build_phase(uvm_phase phase);
     sys_cfg.test_var = 10;
     sys_cfg.has_scoreboard = 1;
     sys_cfg.has_functional_coverage = 1;
+    sys_cfg.enable_put_response = 1;
     uvm_config_db#(ahb_lite_system_config)::set(this, "*", "ahb_lite_system_config", sys_cfg);
 
     /*
