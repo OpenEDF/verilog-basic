@@ -1,0 +1,11 @@
+# UVM project work file
+# Package
+#package.sv
+
+# interface
+#my_if.sv
+
+# DTU
+
+# testbench_top
+set_type_override_by_type.sv
