@@ -26,40 +26,64 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: package
+// Brief: uvm sequence
 // Change Log:
 //--------------------------------------------------------------------------
-`ifndef _AHB_LITE_PKG_SVH_
-`define _AHB_LITE_PKG_SVH_
-//--------------------------------------------------------------------------
-// Package
-//--------------------------------------------------------------------------
-package ahb_lite_pkg;
-import uvm_pkg::*;
+`ifndef _PROGRAM_CTRL_REG_SEQ_SV_
+`define _PROGRAM_CTRL_REG_SEQ_SV_ 
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`include "test/ahb_lite_system_config.sv"
-`include "ahb_mst_tran.sv"
-`include "ahb_mst_drv.sv"
-`include "ahb_mst_mon.sv"
-`include "ahb_mst_seqr.sv"
-`include "ahb_mst_agt.sv"
-`include "ahb_base_seq.sv"
-`include "sequences/ahb_mst_base_seq.sv"
-`include "sequences/ahb_mst_int_seq.sv"
-`include "sequences/ahb_mst_init_seq.sv"
-`include "sequences/ahb_mst_new_seq.sv"
-`include "sequences/program_ctrl_reg_seq.sv"
-`include "env/ahb_lite_coverage.sv"
-`include "env/ahb_lite_scoreboard.sv"
-`include "env/ahb_lite_env.sv"
-`include "test/ahb_lite_pipeline_test.sv"
-`include "test/ahb_lite_irq_test.sv"
-`include "test/ahb_lite_new_test.sv"
 
-endpackage: ahb_lite_pkg 
+//--------------------------------------------------------------------------
+// Class
+//--------------------------------------------------------------------------
+class program_ctrl_reg_seq extends ahb_base_seq;
 
-`endif  /* _AHB_LITE_PKG_SVH_ */
+//--------------------------------------------------------------------------
+// Design: declear and register
+//--------------------------------------------------------------------------
+`uvm_object_utils(program_ctrl_reg_seq);
+
+extern function new(string name = "program_ctrl_reg_seq");
+extern task body();
+endclass: program_ctrl_reg_seq
+
+//--------------------------------------------------------------------------
+// Design: new
+//--------------------------------------------------------------------------
+function program_ctrl_reg_seq::new(string name = "program_ctrl_reg_seq");
+    super.new(name);
+endfunction
+
+//--------------------------------------------------------------------------
+// Design: sequence, your stimulus code, this is the user-defined task
+//         whers the main sequence code resides.
+// uvm_do:
+//        start_item(item);
+//        item.randaomize();
+//        finish_item(item);
+//--------------------------------------------------------------------------
+task program_ctrl_reg_seq::body();
+    logic [31:0] rdata;
+    logic [31:0] wdata;
+    logic [31:0] addr;
+    `uvm_info(get_type_name(), "body Entered", UVM_HIGH);
+
+    /* --------------- AHB PERIPHERIAL READ & WRITE TEST ------------------- */
+    wdata  = 32'h1;
+    addr   = 32'h0004_4004;
+    ahb_write(addr, wdata);
+    ahb_read(addr, rdata);
+
+    addr   = 32'h0004_4008;
+    wdata = wdata + 1;
+    ahb_write(addr, wdata);
+    ahb_read(addr, rdata);
+
+    `uvm_info(get_type_name(), "body Entered", UVM_HIGH);
+endtask
+
+`endif /* _PROGRAM_CTRL_REG_SEQ_SV_ */
 //--------------------------------------------------------------------------

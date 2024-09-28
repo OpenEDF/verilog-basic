@@ -51,6 +51,7 @@ bit has_functional_coverage = 0;
 bit has_scoreboard = 0;
 bit enable_put_response = 0;
 int test_var = 0;
+int test_config_db = 0;
 uvm_event irq_event;
 
 //--------------------------------------------------------------------------
@@ -62,6 +63,7 @@ uvm_event irq_event;
     `uvm_field_int(has_scoreboard, UVM_ALL_ON)
     `uvm_field_int(enable_put_response, UVM_ALL_ON)
     `uvm_field_int(test_var, UVM_ALL_ON | UVM_DEC)
+    `uvm_field_int(test_config_db, UVM_ALL_ON | UVM_DEC)
 `uvm_object_utils_end
 
 //--------------------------------------------------------------------------

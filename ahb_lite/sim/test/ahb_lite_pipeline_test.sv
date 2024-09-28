@@ -47,6 +47,7 @@ class ahb_lite_pipeline_test extends uvm_test;
 //--------------------------------------------------------------------------
 ahb_lite_env      ahb_env;
 ahb_mst_base_seq  mst_seq;
+program_ctrl_reg_seq config_seq;
 ahb_lite_system_config sys_cfg;
 `uvm_component_utils(ahb_lite_pipeline_test)
 
@@ -68,7 +69,6 @@ extern task post_main_phase(uvm_phase phase);
 extern task pre_shutdown_phase(uvm_phase phase);
 extern task shutdown_phase(uvm_phase phase);
 extern task post_shutdown_phase(uvm_phase phase);
-extern task run_phase(uvm_phase phase);
 extern function void end_of_elaboration_phase(uvm_phase phase);
 extern function void start_of_simulation_phase(uvm_phase phase);
 extern function void extract_phase(uvm_phase phase);
@@ -92,10 +92,12 @@ function void ahb_lite_pipeline_test::build_phase(uvm_phase phase);
     super.build_phase(phase);
     ahb_env = ahb_lite_env::type_id::create("ahb_env", this);
     mst_seq = ahb_mst_base_seq::type_id::create("mst_seq");
+    config_seq = program_ctrl_reg_seq::type_id::create("config_seq");
     sys_cfg = ahb_lite_system_config::type_id::create("sys_cfg");
     sys_cfg.test_var = 10;
     sys_cfg.has_scoreboard = 1;
     sys_cfg.has_functional_coverage = 1;
+    sys_cfg.test_config_db = 0;
     uvm_config_db #(ahb_lite_system_config)::set(this, "*", "ahb_lite_system_config", sys_cfg);
 endfunction
 
@@ -117,7 +119,9 @@ endtask
 // Design: Reset DUT/De-assert control signals
 //--------------------------------------------------------------------------
 task ahb_lite_pipeline_test::reset_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN reset_phase...", UVM_HIGH);
+    `uvm_info(get_type_name(), "reset_phase Entered ...", UVM_HIGH);
+
+    `uvm_info(get_type_name(), "reset_phase Exited ...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
@@ -138,7 +142,13 @@ endtask
 // Design: Configure the DUT
 //--------------------------------------------------------------------------
 task ahb_lite_pipeline_test::configure_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN configure_phase...", UVM_HIGH);
+    `uvm_info(get_type_name(), " configure_phase Entered...", UVM_HIGH);
+
+    phase.raise_objection(this);
+    config_seq.start(ahb_env.mst_agt.mst_seqr);
+    phase.drop_objection(this);
+
+    `uvm_info(get_type_name(), "configure_phase Exited...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
@@ -153,13 +163,6 @@ endtask
 //--------------------------------------------------------------------------
 task ahb_lite_pipeline_test::pre_mian_phase(uvm_phase phase);
     `uvm_info(get_type_name(), "IN pre_configure_phase...", UVM_HIGH);
-endtask
-
-//--------------------------------------------------------------------------
-// Design: Test DUT
-//--------------------------------------------------------------------------
-task ahb_lite_pipeline_test::main_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN main_phase...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
@@ -180,7 +183,9 @@ endtask
 // Design: Wait for data in DUT to be drained
 //--------------------------------------------------------------------------
 task ahb_lite_pipeline_test::shutdown_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN main_phase...", UVM_HIGH);
+    `uvm_info(get_type_name(), "shutdown_phase Entered...", UVM_HIGH);
+
+    `uvm_info(get_type_name(), "shutdown_phase Exited...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
@@ -191,10 +196,10 @@ task ahb_lite_pipeline_test::post_shutdown_phase(uvm_phase phase);
 endtask
 
 //--------------------------------------------------------------------------
-// Design: run phase: stmulate the DUT
+// Design: main phase: stmulate the DUT
 //--------------------------------------------------------------------------
-task ahb_lite_pipeline_test::run_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN run_phase...", UVM_HIGH);
+task ahb_lite_pipeline_test::main_phase(uvm_phase phase);
+    `uvm_info(get_type_name(), "main_phase Entered...", UVM_HIGH);
     phase.raise_objection(this);
 
     /* Executes this sequence, returning when the sequence has completed  */
@@ -203,7 +208,7 @@ task ahb_lite_pipeline_test::run_phase(uvm_phase phase);
 
     /* The drop is expected to be matched with an earlier raise */
     phase.drop_objection(this);
-    `uvm_info(get_type_name(), "end of testcase", UVM_HIGH);
+    `uvm_info(get_type_name(), "main_phase Exited...", UVM_HIGH);
 endtask
 
 //--------------------------------------------------------------------------
