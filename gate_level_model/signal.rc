@@ -1,0 +1,101 @@
+Magic 271485
+Revision Verdi_O-2018.09-SP2
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 27 1278 621 141 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/macro/work/github/verilog-basic/gate_level_model/testbench.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 0.000000 267425.657298
+cursor 100000.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 24
+; marker line index
+markerPos 44
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/macro/work/github/verilog-basic/gate_level_model/testbench.fsdb"
+addSignal -h 15 /testbench/andi1
+addSignal -h 15 -holdScope andi2
+addSignal -h 15 -holdScope ando
+addGroup "G2"
+addSignal -h 15 /testbench/ori1
+addSignal -h 15 -holdScope ori2
+addSignal -h 15 -holdScope oro
+addGroup "G3"
+addSignal -h 15 /testbench/xori1
+addSignal -h 15 -holdScope xori2
+addSignal -h 15 -holdScope xori3
+addSignal -h 15 -holdScope xoro
+addGroup "G4"
+addSignal -h 15 /testbench/nandi1
+addSignal -h 15 -holdScope nandi2
+addSignal -h 15 -holdScope nando
+addGroup "G5"
+addSignal -h 15 /testbench/nori1
+addSignal -h 15 -holdScope nori2
+addSignal -h 15 -holdScope noro
+addGroup "G6"
+addSignal -h 15 /testbench/xnori1
+addSignal -h 15 -holdScope xnori2
+addSignal -h 15 -holdScope xnori3
+addSignal -h 15 -holdScope xnoro
+addGroup "G7"
+addSignal -h 15 /testbench/bufi
+addSignal -h 15 -holdScope bufo
+addGroup "G8"
+addSignal -h 15 /testbench/noti
+addSignal -h 15 -holdScope noto
+addGroup "G9"
+addSignal -h 15 /testbench/bufif1_ctrl
+addSignal -h 15 -holdScope bufif1i
+addSignal -h 15 -holdScope bufif1o
+addGroup "G10"
+addSignal -h 15 /testbench/notif0_ctrl
+addSignal -h 15 -holdScope notif0i
+addSignal -h 15 -holdScope notif0o
+addGroup "G11"
+addSignal -h 15 /testbench/notif1_ctrl
+addSignal -h 15 -holdScope notif1i
+addSignal -h 15 -holdScope notif1o
+addGroup "G12"
+addSignal -h 15 /testbench/bufif0_ctrl
+addSignal -h 15 -holdScope bufif0i
+addSignal -h 15 -holdScope bufif0o
+addGroup "G13"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+
