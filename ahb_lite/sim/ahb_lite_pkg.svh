@@ -52,12 +52,14 @@ import uvm_pkg::*;
 `include "sequences/ahb_mst_init_seq.sv"
 `include "sequences/ahb_mst_new_seq.sv"
 `include "sequences/program_ctrl_reg_seq.sv"
+`include "sequences/auto_object_seq.sv"
 `include "env/ahb_lite_coverage.sv"
 `include "env/ahb_lite_scoreboard.sv"
 `include "env/ahb_lite_env.sv"
 `include "test/ahb_lite_pipeline_test.sv"
 `include "test/ahb_lite_irq_test.sv"
 `include "test/ahb_lite_new_test.sv"
+`include "test/ahb_lite_auto_obj_test.sv"
 
 endpackage: ahb_lite_pkg 
 
