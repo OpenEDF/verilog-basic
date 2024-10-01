@@ -40,17 +40,13 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
-class ahb_lite_auto_obj_test extends uvm_test;
+class ahb_lite_auto_obj_test extends ahb_lite_base_test;
 
 //--------------------------------------------------------------------------
 // Design: declare and register
 //--------------------------------------------------------------------------
-ahb_lite_env      ahb_env;
+bit status;
 auto_object_seq   auto_seq;
-ahb_lite_system_config sys_cfg;
-int               db_test_val;
-int               db_test_val_1;
-int               db_test_val_2;
 `uvm_component_utils(ahb_lite_auto_obj_test)
 
 //--------------------------------------------------------------------------
@@ -59,9 +55,6 @@ int               db_test_val_2;
 extern function new(string name = "ahb_lite_auto_obj_test", uvm_component parent = null);
 extern virtual function void build_phase(uvm_phase phase);
 extern virtual task main_phase(uvm_phase phase);
-extern virtual function void end_of_elaboration_phase(uvm_phase phase);
-extern virtual function void start_of_simulation_phase(uvm_phase phase);
-extern virtual function void final_phase(uvm_phase phase);
 
 endclass: ahb_lite_auto_obj_test
 //--------------------------------------------------------------------------
@@ -77,16 +70,7 @@ endfunction
 function void ahb_lite_auto_obj_test::build_phase(uvm_phase phase);
     super.build_phase(phase);
     `uvm_info(get_type_name(), "build_phase Entered ...", UVM_HIGH);
-    ahb_env = ahb_lite_env::type_id::create("ahb_env", this);
-    sys_cfg = ahb_lite_system_config::type_id::create("sys_cfg");
     auto_seq = auto_object_seq::type_id::create("auto_seq");
-
-    sys_cfg.test_var = 10;
-    sys_cfg.has_scoreboard = 1;
-    sys_cfg.has_functional_coverage = 1;
-    sys_cfg.enable_put_response = 1;
-    sys_cfg.test_config_db = 0;
-    uvm_config_db#(ahb_lite_system_config)::set(this, "*", "ahb_lite_system_config", sys_cfg);
 
     `uvm_info(get_type_name(), "build_phase Exited ...", UVM_HIGH);
 endfunction
@@ -99,49 +83,14 @@ task ahb_lite_auto_obj_test::main_phase(uvm_phase phase);
 
     auto_seq.set_starting_phase(phase);
     auto_seq.set_automatic_phase_objection(1);
+    status = auto_seq.get_automatic_phase_objection();
+    `uvm_info(get_name(), $sformatf("during seq is running, get_automatic_phase_objection: %b", status), UVM_LOW)
     auto_seq.start(ahb_env.mst_agt.mst_seqr);
 
     phase.phase_done.set_drain_time(this, 100);
     /* The drop is expected to be matched with an earlier raise */
     `uvm_info(get_type_name(), "run phase Exited ...", UVM_HIGH);
 endtask
-
-//--------------------------------------------------------------------------
-// Design: end of elaboration phase
-//--------------------------------------------------------------------------
-function void ahb_lite_auto_obj_test::end_of_elaboration_phase(uvm_phase phase);
-    /* show uvm class arch */
-    `uvm_info(get_type_name(), "IN end_of_elaboration_phase...", UVM_HIGH);
-    uvm_config_db#(int)::dump();
-    uvm_factory::get().print();
-endfunction
-
-//--------------------------------------------------------------------------
-// Design: Get ready for DUT to be simulated
-//--------------------------------------------------------------------------
-function void ahb_lite_auto_obj_test::start_of_simulation_phase(uvm_phase phase);
-    `uvm_info(get_type_name(), "IN start_of_simulation_phase..", UVM_HIGH);
-    /* display environment topology */
-    uvm_root::get().print_topology(uvm_default_table_printer);
-endfunction
-
-//--------------------------------------------------------------------------
-// Design: Tie up loose ends.
-//--------------------------------------------------------------------------
-function void ahb_lite_auto_obj_test::final_phase(uvm_phase phase);
-    uvm_report_server svr;
-    super.final_phase(phase);
-    `uvm_info("final_phase", "ahb_lite_auto_obj_test FINAL-FLOW: Starting...",UVM_HIGH);
-
-    svr = uvm_report_server::get_server();
-    if (svr.get_severity_count(UVM_FATAL) + svr.get_severity_count(UVM_ERROR) +
-	    svr.get_severity_count(UVM_WARNING) > 0) begin
-        `uvm_info("final_phase", "\nSvtTestEpilog: Failed\n", UVM_LOW);
-    end else begin
-        `uvm_info("final_phase", "\nSvtTestEpilog: Passed\n", UVM_LOW);
-    end
-    `uvm_info("final_phase", "ahb_lite_auto_obj_test FINAL-FLOW: Finishing...",UVM_HIGH);
-endfunction: final_phase
 
 `endif /* _AHB_LITE_AUTO_OBJ_TEST_SV_ */
 //--------------------------------------------------------------------------

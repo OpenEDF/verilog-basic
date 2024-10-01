@@ -98,19 +98,19 @@ function void ahb_lite_env::build_phase(uvm_phase phase);
         if (!uvm_config_db#(int)::get(this, "*", "db_test_val", get_db_test_val)) begin
             `uvm_fatal("FATAL MSG", "db_test_val get fail");
         end else begin
-            `uvm_info(get_type_name(), $sformatf("db_test_val:32'h%0h", get_db_test_val), UVM_HIGH);
+            `uvm_info(get_type_name(), $sformatf("db_test_val:32'h%0h", get_db_test_val), UVM_LOW);
         end
 
         if (!uvm_config_db#(int)::get(null, "", "db_test_val_1", get_db_test_val_1)) begin
             `uvm_fatal("FATAL MSG", "db_test_val get fail");
         end else begin
-            `uvm_info(get_type_name(), $sformatf("db_test_val_1:32'h%0h", get_db_test_val_1), UVM_HIGH);
+            `uvm_info(get_type_name(), $sformatf("db_test_val_1:32'h%0h", get_db_test_val_1), UVM_LOW);
         end
 
         if (!uvm_config_db#(int)::get(null, "uvm_test_top", "db_test_val_2", get_db_test_val_2)) begin
             `uvm_fatal("FATAL MSG", "db_test_val get fail");
         end else begin
-            `uvm_info(get_type_name(), $sformatf("db_test_val_2:32'h%0h", get_db_test_val_2), UVM_HIGH);
+            `uvm_info(get_type_name(), $sformatf("db_test_val_2:32'h%0h", get_db_test_val_2), UVM_LOW);
         end
     end
 

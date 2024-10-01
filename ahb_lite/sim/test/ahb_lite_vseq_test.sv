@@ -40,6 +40,7 @@
 //--------------------------------------------------------------------------
 // Class
 //--------------------------------------------------------------------------
+bit status;
 class ahb_lite_vseq_test extends ahb_lite_base_test;
 
 //--------------------------------------------------------------------------
@@ -72,6 +73,9 @@ task ahb_lite_vseq_test::run_phase(uvm_phase phase);
 
     vseq.set_starting_phase(phase);
     vseq.set_automatic_phase_objection(1);
+
+    status = vseq.get_automatic_phase_objection();
+    `uvm_info(get_name(), $sformatf("during seq is running, get_automatic_phase_objection: %b", status), UVM_LOW)
 
     init_seq(vseq);
     vseq.start(null);

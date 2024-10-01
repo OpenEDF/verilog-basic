@@ -28,6 +28,13 @@ SIM_FLAGS = +fsdb+force
 ENABLE_UCLI =
 FSDB_FILE = $(TB_TOP)
 
+# all test case
+CASES := ahb_lite_pipeline_test \
+	     ahb_lite_irq_test \
+		 ahb_lite_new_test \
+		 ahb_lite_auto_obj_test \
+		 ahb_lite_vseq_test
+
 # run
 all: com sim
 # compiler
@@ -74,6 +81,27 @@ wave:
 cov:
 	verdi -cov -covdir $(TEST_CASE).vdb &
 
+# all test case run
+all_case: com $(CASES)
+	@echo "run all test cases"
+
+define run_all_test
+TEST_CASE = $(1)
+$(1):
+	./simv +UVM_TESTNAME=$(TEST_CASE)  \
+		+UVM_VERBOSITY=$(UVM_VERBOSITY)  \
+		$(UVM_VERDI_OPTS) \
+		+UVM_VERDI_TRACE=$(TRACE) \
+		$(ENABLE_CULI)            \
+		$(CM) $(CM_NAME) $(CM_DIR) \
+		$(SIM_FLAGS)    \
+		+$(DEFINES)     \
+		-l ssim_$(TEST_CASE).log
+endef
+
+#generate
+$(foreach cases, $(CASES), $(eval $(call run_all_test, $(cases))))
+
 # help
 help:
 	@echo ===================================================================
@@ -85,6 +113,7 @@ help:
 	@echo "debug    => Run the simulation with verdi gui uvm debug"
 	@echo "wave     => Display the fsdb waveform by verdi"
 	@echo "cov      => Display the coverage info by verdi"
+	@echo "all_test => Run all tescase"
 	@echo ===================================================================
 
 # clean
