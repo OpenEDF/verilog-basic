@@ -26,45 +26,53 @@
 
 //--------------------------------------------------------------------------
 // Designer: macro
-// Brief: package
+// Brief: uvm sequence
 // Change Log:
 //--------------------------------------------------------------------------
-`ifndef _AHB_LITE_PKG_SVH_
-`define _AHB_LITE_PKG_SVH_
-//--------------------------------------------------------------------------
-// Package
-//--------------------------------------------------------------------------
-package ahb_lite_pkg;
-import uvm_pkg::*;
+`ifndef _AHB_MST_VSEQ_SV_
+`define _AHB_MST_VSEQ_SV_
 
 //--------------------------------------------------------------------------
 // Include File
 //--------------------------------------------------------------------------
-`include "test/ahb_lite_system_config.sv"
-`include "ahb_mst_tran.sv"
-`include "ahb_mst_drv.sv"
-`include "ahb_mst_mon.sv"
-`include "ahb_mst_seqr.sv"
-`include "ahb_mst_agt.sv"
-`include "sequences/ahb_base_seq.sv"
-`include "sequences/ahb_mst_base_seq.sv"
-`include "sequences/ahb_mst_int_seq.sv"
-`include "sequences/ahb_mst_init_seq.sv"
-`include "sequences/ahb_mst_new_seq.sv"
-`include "sequences/program_ctrl_reg_seq.sv"
-`include "sequences/auto_object_seq.sv"
-`include "sequences/ahb_mst_vseq.sv"
-`include "env/ahb_lite_coverage.sv"
-`include "env/ahb_lite_scoreboard.sv"
-`include "env/ahb_lite_env.sv"
-`include "test/ahb_lite_base_test.sv"
-`include "test/ahb_lite_pipeline_test.sv"
-`include "test/ahb_lite_irq_test.sv"
-`include "test/ahb_lite_new_test.sv"
-`include "test/ahb_lite_auto_obj_test.sv"
-`include "test/ahb_lite_vseq_test.sv"
 
-endpackage: ahb_lite_pkg 
+//--------------------------------------------------------------------------
+// Class
+//--------------------------------------------------------------------------
+class ahb_mst_vseq extends uvm_sequence #(ahb_mst_tran);
 
-`endif  /* _AHB_LITE_PKG_SVH_ */
+//--------------------------------------------------------------------------
+// Design: declear and register
+//--------------------------------------------------------------------------
+ahb_mst_seqr SQR;
+`uvm_object_utils(ahb_mst_vseq);
+
+extern function new(string name = "ahb_mst_vseq");
+extern virtual task body();
+endclass: ahb_mst_vseq
+
+//--------------------------------------------------------------------------
+// Design: new
+//--------------------------------------------------------------------------
+function ahb_mst_vseq::new(string name = "ahb_mst_vseq");
+    super.new(name);
+endfunction
+
+//--------------------------------------------------------------------------
+// Design: sequence, your stimulus code, this is the user-defined task
+//         whers the main sequence code resides.
+// uvm_do:
+//        start_item(item);
+//        item.randaomize();
+//        finish_item(item);
+//--------------------------------------------------------------------------
+task ahb_mst_vseq::body();
+    auto_object_seq n_seq = auto_object_seq::type_id::create("n_seq");
+
+    `uvm_info(get_type_name(), "ahb_mst_vseq: Entered ...", UVM_HIGH);
+    n_seq.start(SQR);
+    `uvm_info(get_type_name(), "ahb_mst_vseq: Exited ...", UVM_HIGH);
+endtask
+
+`endif /* _AHB_MST_VSEQ_SV_ */
 //--------------------------------------------------------------------------
