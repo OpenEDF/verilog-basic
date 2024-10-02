@@ -72,6 +72,7 @@ task system_seq::body();
     super.body();
     `uvm_info(get_type_name(), "body Entered", UVM_HIGH);
 
+    /* system thread sequence run */
     fork
         mst_seq.start(mst_sqr);
         slv_seq.start(slv_sqr);

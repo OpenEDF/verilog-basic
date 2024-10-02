@@ -45,7 +45,12 @@ class base_vseq extends uvm_sequence;
 // Design: declear and register
 //--------------------------------------------------------------------------
 `uvm_object_utils(base_vseq)
-`uvm_declare_p_sequencer(virtual_sequencer)
+
+`ifdef SQR_MANUAL_POINTER
+    virtual_sequencer v_sqr;
+`else
+    `uvm_declare_p_sequencer(virtual_sequencer)
+`endif
 
 master_sequencer mst_sqr;
 slave_sequencer  slv_sqr;
@@ -72,8 +77,16 @@ endfunction
 task base_vseq::body();
     `uvm_info(get_type_name(), "body Entered", UVM_HIGH);
 
+`ifdef SQR_MANUAL_POINTER
+    if (!$cast(v_sqr, m_sequencer)) begin
+        `uvm_fatal(get_full_name(), "virtual seqr pointer cast failed")
+    end
+    mst_sqr = v_sqr.master_seqr;
+    slv_sqr = v_sqr.slave_seqr;
+`else
     mst_sqr = p_sequencer.master_seqr;
     slv_sqr = p_sequencer.slave_seqr;
+`endif
 
     `uvm_info(get_type_name(), "body Entered", UVM_HIGH);
 endtask

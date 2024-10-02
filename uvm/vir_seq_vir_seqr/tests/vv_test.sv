@@ -81,6 +81,7 @@ task vv_test::run_phase(uvm_phase phase);
 
     phase.raise_objection(this);
 
+    /* start virtual sequence and sequnencer */
     sys_seq.start(sys_env.v_sqr);
 
     phase.drop_objection(this);
