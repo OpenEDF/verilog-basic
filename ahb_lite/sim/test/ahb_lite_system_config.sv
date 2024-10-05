@@ -52,7 +52,9 @@ bit has_scoreboard = 0;
 bit enable_put_response = 0;
 int test_var = 0;
 int test_config_db = 0;
+bit enbale_heartbeat = 0;
 uvm_event irq_event;
+uvm_objection hb_obje;
 
 //--------------------------------------------------------------------------
 // Design: declare and register
@@ -64,6 +66,7 @@ uvm_event irq_event;
     `uvm_field_int(enable_put_response, UVM_ALL_ON)
     `uvm_field_int(test_var, UVM_ALL_ON | UVM_DEC)
     `uvm_field_int(test_config_db, UVM_ALL_ON | UVM_DEC)
+    `uvm_field_int(enbale_heartbeat, UVM_ALL_ON | UVM_DEC)
 `uvm_object_utils_end
 
 //--------------------------------------------------------------------------

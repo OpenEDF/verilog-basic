@@ -53,14 +53,18 @@ ahb_lite_system_config sys_cfg;
 int                  get_db_test_val;
 int                  get_db_test_val_1;
 int                  get_db_test_val_2;
+uvm_heartbeat        heart_beat;
+uvm_event            hb_event;
 virtual ahb_mst_intf   ahb_vif;
+localparam HB_TIMEOUT = 100;
 
 //--------------------------------------------------------------------------
-// Design: declare method 
+// Design: declare method
 //--------------------------------------------------------------------------
 extern function new(string name = "ahb_lite_env", uvm_component parent = null);
-extern function void build_phase(uvm_phase phase);
-extern function void connect_phase(uvm_phase phase);
+extern virtual function void build_phase(uvm_phase phase);
+extern virtual function void connect_phase(uvm_phase phase);
+extern virtual task run_phase(uvm_phase phase);
 
 endclass: ahb_lite_env
 
@@ -114,12 +118,29 @@ function void ahb_lite_env::build_phase(uvm_phase phase);
         end
     end
 
+    /* heart_beat */
+    if (sys_cfg.enbale_heartbeat == 1) begin
+        heart_beat = new("heart_beat", this, sys_cfg.hb_obje);
+        hb_event   = new("hb_event");
+    end
+
 endfunction
 
 //--------------------------------------------------------------------------
 // Design: connect phase: establish cross-componement connections
 //--------------------------------------------------------------------------
 function void ahb_lite_env::connect_phase(uvm_phase phase);
+    /* heartbeat */
+    if (sys_cfg.enbale_heartbeat == 1) begin
+        uvm_component hb[$];
+        heart_beat.set_mode(UVM_ALL_ACTIVE);
+        heart_beat.set_heartbeat(hb_event, hb);
+
+        heart_beat.add(mst_agt.mst_drv);
+        heart_beat.add(mst_agt.mst_mon);
+        heart_beat.add(ahb_lite_sb);
+    end
+
     /* monitor ---> scoreboard */
     if (sys_cfg.has_scoreboard) begin
         mst_agt.mst_mon.item_collect_port.connect(ahb_lite_sb.item_collect_export);
@@ -131,6 +152,27 @@ function void ahb_lite_env::connect_phase(uvm_phase phase);
         mst_agt.mst_mon.item_collect_port.connect(ahb_lite_cov.analysis_export);
     end
 endfunction
+
+//--------------------------------------------------------------------------
+// Design: run phase: uvm heartbeat monitor
+//--------------------------------------------------------------------------
+task ahb_lite_env::run_phase(uvm_phase phase);
+    `uvm_info(get_type_name(), "run_phase Entered ...", UVM_HIGH);
+
+    /* heartbeat */
+    if (sys_cfg.enbale_heartbeat == 1) begin
+        heart_beat.start(hb_event);
+    end
+
+    if (sys_cfg.enbale_heartbeat == 1) begin
+        forever begin
+            #HB_TIMEOUT;
+            hb_event.trigger();
+            `uvm_info(get_type_name(), $sformatf("Triggering hb_event"), UVM_LOW)
+        end
+    end
+    `uvm_info(get_type_name(), "run_phase Exited ...", UVM_HIGH);
+endtask
 
 `endif /* _AHB_LITE_ENV_ */
 //--------------------------------------------------------------------------

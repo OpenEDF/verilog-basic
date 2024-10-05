@@ -71,6 +71,7 @@ function void ahb_lite_auto_obj_test::build_phase(uvm_phase phase);
     super.build_phase(phase);
     `uvm_info(get_type_name(), "build_phase Entered ...", UVM_HIGH);
     auto_seq = auto_object_seq::type_id::create("auto_seq");
+    sys_cfg.enbale_heartbeat = 1;
 
     `uvm_info(get_type_name(), "build_phase Exited ...", UVM_HIGH);
 endfunction

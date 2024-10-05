@@ -81,6 +81,7 @@ function void ahb_lite_base_test::build_phase(uvm_phase phase);
     sys_cfg.has_functional_coverage = 1;
     sys_cfg.enable_put_response = 1;
     sys_cfg.test_config_db = 0;
+    sys_cfg.hb_obje = new("hb_obje");
     uvm_config_db#(ahb_lite_system_config)::set(this, "*", "ahb_lite_system_config", sys_cfg);
 
     `uvm_info(get_type_name(), "build_phase Exited ...", UVM_HIGH);
