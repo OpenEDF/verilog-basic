@@ -67,7 +67,7 @@ initial begin
     rst_n = 1'b1;
 
     $timeformat(-9, 2, "ns");
-    while (test_count < 100) begin
+    while (test_count < 10000) begin
         fork
             begin
             /* check hclk */

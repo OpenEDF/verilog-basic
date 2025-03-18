@@ -51,17 +51,19 @@ module clock_div #(
 
     // outputs
     output wire        hclk,
-    output wire        pclk,
-    output wire        pclk_en
+    output reg         pclk,
+    output reg         pclk_en
 
 );
+
+`define zero8  8'b0
+`define zero16 16'b0
+`define zero32 32'b0
 
 //--------------------------------------------------------------------------
 // Design: module internel signal
 //--------------------------------------------------------------------------
 reg [0:7] count;
-reg       pclk_r;
-reg       pclk_en_r;
 
 //--------------------------------------------------------------------------
 // Design: hclk == sys_clk
@@ -76,7 +78,8 @@ always @(posedge sys_clk or negedge rst_n) begin
         count <= {8{1'b0}};
     end else begin
         if (count == (DIVISION + 1)) begin
-            count <= {8{1'b0}};
+            //count <= {8{1'b0}};
+            count <= `zero8;
         end else begin
             count <= count + 8'b1;
         end
@@ -88,12 +91,12 @@ end
 //--------------------------------------------------------------------------
 always @(posedge sys_clk or negedge rst_n) begin
     if (!rst_n) begin
-        pclk_r <= 1'b0;
+        pclk <= 1'b0;
     end else begin
         if (count < ((DIVISION / 2) + 1)) begin
-            pclk_r <= 1'b1;
+            pclk <= 1'b1;
         end else begin
-            pclk_r <= 1'b0;
+            pclk <= 1'b0;
         end
     end
 end
@@ -103,21 +106,15 @@ end
 //--------------------------------------------------------------------------
 always @(posedge sys_clk or negedge rst_n) begin
     if (!rst_n) begin
-        pclk_en_r <= 1'b0;
+        pclk_en <= 1'b0;
     end else begin
-        if (count == 8'b0) begin
-            pclk_en_r <= 1'b1;
+        if (count == `zero8) begin
+            pclk_en <= 1'b1;
         end else begin
-            pclk_en_r <= 1'b0;
+            pclk_en <= 1'b0;
         end
     end
 end
-
-//--------------------------------------------------------------------------
-// Design: assignment the output signal
-//--------------------------------------------------------------------------
-assign pclk_en = pclk_en_r;
-assign pclk    = pclk_r;
 
 endmodule
 //--------------------------------------------------------------------------
