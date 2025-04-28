@@ -1,0 +1,181 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : sequ_div
+Version: O-2018.06-SP1
+Date   : Sat Jul 27 12:45:52 2024
+****************************************
+
+Operating Conditions: slow   Library: slow
+Wire Load Model Mode: enclosed
+
+  Startpoint: remainder_quotient_reg_31_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: remainder_quotient_reg_41_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             2.00       2.00
+  remainder_quotient_reg_31_/CK (SDFFRXL)                 0.00       2.00 r
+  remainder_quotient_reg_31_/Q (SDFFRXL)                  0.32       2.32 f
+  sub_x_2/p_A[0] (sequ_div_DW01_sub_0)                    0.00       2.32 f
+  sub_x_2/U74/Y (NAND2BXL)                                0.15       2.47 f
+  sub_x_2/U72/CO (ADDFXL)                                 0.18       2.65 f
+  sub_x_2/U31/CO (ADDFX1)                                 0.18       2.83 f
+  sub_x_2/U71/CO (ADDFX1)                                 0.18       3.01 f
+  sub_x_2/U29/CO (ADDFX1)                                 0.18       3.19 f
+  sub_x_2/U28/CO (ADDFX1)                                 0.18       3.37 f
+  sub_x_2/U27/CO (ADDFX1)                                 0.18       3.55 f
+  sub_x_2/U26/CO (ADDFX1)                                 0.18       3.73 f
+  sub_x_2/U25/CO (ADDFX1)                                 0.18       3.91 f
+  sub_x_2/U24/CO (ADDFX1)                                 0.18       4.09 f
+  sub_x_2/U23/CO (ADDFX1)                                 0.18       4.27 f
+  sub_x_2/U22/CO (ADDFX1)                                 0.18       4.45 f
+  sub_x_2/U21/CO (ADDFX1)                                 0.18       4.63 f
+  sub_x_2/U20/CO (ADDFX1)                                 0.18       4.80 f
+  sub_x_2/U19/CO (ADDFX1)                                 0.18       4.98 f
+  sub_x_2/U18/CO (ADDFX1)                                 0.18       5.16 f
+  sub_x_2/U17/CO (ADDFX1)                                 0.18       5.34 f
+  sub_x_2/U16/CO (ADDFX1)                                 0.18       5.52 f
+  sub_x_2/U70/CO (ADDFXL)                                 0.18       5.70 f
+  sub_x_2/U14/CO (ADDFX1)                                 0.18       5.88 f
+  sub_x_2/U13/CO (ADDFX1)                                 0.18       6.06 f
+  sub_x_2/U12/CO (ADDFX1)                                 0.18       6.24 f
+  sub_x_2/U11/CO (ADDFX1)                                 0.18       6.42 f
+  sub_x_2/U10/CO (ADDFX1)                                 0.18       6.60 f
+  sub_x_2/U9/CO (ADDFX1)                                  0.18       6.78 f
+  sub_x_2/U8/CO (ADDFX1)                                  0.18       6.96 f
+  sub_x_2/U7/CO (ADDFX1)                                  0.18       7.13 f
+  sub_x_2/U6/CO (ADDFX1)                                  0.18       7.31 f
+  sub_x_2/U5/CO (ADDFX1)                                  0.18       7.49 f
+  sub_x_2/U4/CO (ADDFX1)                                  0.18       7.67 f
+  sub_x_2/U3/CO (ADDFX1)                                  0.18       7.85 f
+  sub_x_2/U2/CO (ADDFX1)                                  0.17       8.02 f
+  sub_x_2/U73/Y (XNOR2XL)                                 0.08       8.10 f
+  sub_x_2/p_DIFF[32] (sequ_div_DW01_sub_0)                0.00       8.10 f
+  I_7/Y (INVXL)                                           0.05       8.15 r
+  U339/Y (NOR2BX1)                                        0.52       8.67 r
+  U286/Y (AOI222XL)                                       0.21       8.87 f
+  U545/Y (INVXL)                                          0.07       8.94 r
+  U422/Y (MX2XL)                                          0.10       9.04 r
+  remainder_quotient_reg_41_/D (SDFFRXL)                  0.00       9.04 r
+  data arrival time                                                  9.04
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (ideal)                             2.00      12.00
+  clock uncertainty                                      -0.50      11.50
+  remainder_quotient_reg_41_/CK (SDFFRXL)                 0.00      11.50 r
+  library setup time                                     -0.13      11.37
+  data required time                                                11.37
+  --------------------------------------------------------------------------
+  data required time                                                11.37
+  data arrival time                                                 -9.04
+  --------------------------------------------------------------------------
+  slack (MET)                                                        2.33
+
+
+  Startpoint: divider[1] (input port clocked by clk)
+  Endpoint: remainder_quotient_reg_41_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: INPUTS
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             2.00       2.00
+  input external delay                                    1.00       3.00 r
+  divider[1] (in)                                         0.02       3.02 r
+  sub_x_2/p_B[1] (sequ_div_DW01_sub_0)                    0.00       3.02 r
+  sub_x_2/U76/Y (CLKINVX1)                                0.05       3.07 f
+  sub_x_2/U72/CO (ADDFXL)                                 0.23       3.30 f
+  sub_x_2/U31/CO (ADDFX1)                                 0.18       3.48 f
+  sub_x_2/U71/CO (ADDFX1)                                 0.18       3.66 f
+  sub_x_2/U29/CO (ADDFX1)                                 0.18       3.84 f
+  sub_x_2/U28/CO (ADDFX1)                                 0.18       4.02 f
+  sub_x_2/U27/CO (ADDFX1)                                 0.18       4.20 f
+  sub_x_2/U26/CO (ADDFX1)                                 0.18       4.38 f
+  sub_x_2/U25/CO (ADDFX1)                                 0.18       4.55 f
+  sub_x_2/U24/CO (ADDFX1)                                 0.18       4.73 f
+  sub_x_2/U23/CO (ADDFX1)                                 0.18       4.91 f
+  sub_x_2/U22/CO (ADDFX1)                                 0.18       5.09 f
+  sub_x_2/U21/CO (ADDFX1)                                 0.18       5.27 f
+  sub_x_2/U20/CO (ADDFX1)                                 0.18       5.45 f
+  sub_x_2/U19/CO (ADDFX1)                                 0.18       5.63 f
+  sub_x_2/U18/CO (ADDFX1)                                 0.18       5.81 f
+  sub_x_2/U17/CO (ADDFX1)                                 0.18       5.99 f
+  sub_x_2/U16/CO (ADDFX1)                                 0.18       6.17 f
+  sub_x_2/U70/CO (ADDFXL)                                 0.18       6.35 f
+  sub_x_2/U14/CO (ADDFX1)                                 0.18       6.53 f
+  sub_x_2/U13/CO (ADDFX1)                                 0.18       6.71 f
+  sub_x_2/U12/CO (ADDFX1)                                 0.18       6.88 f
+  sub_x_2/U11/CO (ADDFX1)                                 0.18       7.06 f
+  sub_x_2/U10/CO (ADDFX1)                                 0.18       7.24 f
+  sub_x_2/U9/CO (ADDFX1)                                  0.18       7.42 f
+  sub_x_2/U8/CO (ADDFX1)                                  0.18       7.60 f
+  sub_x_2/U7/CO (ADDFX1)                                  0.18       7.78 f
+  sub_x_2/U6/CO (ADDFX1)                                  0.18       7.96 f
+  sub_x_2/U5/CO (ADDFX1)                                  0.18       8.14 f
+  sub_x_2/U4/CO (ADDFX1)                                  0.18       8.32 f
+  sub_x_2/U3/CO (ADDFX1)                                  0.18       8.50 f
+  sub_x_2/U2/CO (ADDFX1)                                  0.17       8.67 f
+  sub_x_2/U73/Y (XNOR2XL)                                 0.08       8.74 f
+  sub_x_2/p_DIFF[32] (sequ_div_DW01_sub_0)                0.00       8.74 f
+  I_7/Y (INVXL)                                           0.05       8.80 r
+  U339/Y (NOR2BX1)                                        0.52       9.31 r
+  U286/Y (AOI222XL)                                       0.21       9.52 f
+  U545/Y (INVXL)                                          0.07       9.58 r
+  U422/Y (MX2XL)                                          0.10       9.68 r
+  remainder_quotient_reg_41_/D (SDFFRXL)                  0.00       9.68 r
+  data arrival time                                                  9.68
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (ideal)                             2.00      12.00
+  clock uncertainty                                      -0.50      11.50
+  remainder_quotient_reg_41_/CK (SDFFRXL)                 0.00      11.50 r
+  library setup time                                     -0.13      11.37
+  data required time                                                11.37
+  --------------------------------------------------------------------------
+  data required time                                                11.37
+  data arrival time                                                 -9.68
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.68
+
+
+  Startpoint: illegal_divider_zero_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: illegal_divider_zero
+            (output port clocked by clk)
+  Path Group: OUTPUTS
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             2.00       2.00
+  illegal_divider_zero_reg/CK (SDFFRQXL)                  0.00       2.00 r
+  illegal_divider_zero_reg/Q (SDFFRQXL)                   0.27       2.27 f
+  U653/Y (CLKBUFX1)                                       0.06       2.33 f
+  illegal_divider_zero (out)                              0.00       2.33 f
+  data arrival time                                                  2.33
+
+  clock clk (rise edge)                                  10.00      10.00
+  clock network delay (ideal)                             2.00      12.00
+  clock uncertainty                                      -0.50      11.50
+  output external delay                                  -1.00      10.50
+  data required time                                                10.50
+  --------------------------------------------------------------------------
+  data required time                                                10.50
+  data arrival time                                                 -2.33
+  --------------------------------------------------------------------------
+  slack (MET)                                                        8.17
+
+
+1

@@ -1,0 +1,696 @@
+#!/bin/sh
+# \
+exec wish "$0" "$@"
+#
+# Or change to this: #!/usr/local/bin/wish8.0
+#
+#
+# view.tk
+# Written by Amin.Shehata@synopsys.com
+#
+# Look for the latest version of this tool at:
+# https://solvnet.synopsys.com/retrieve/014947.html
+#
+#
+# Copyright © 2013 Synopsys, Inc.  All rights reserved.
+#
+# This script is proprietary and confidential information of
+# Synopsys, Inc. and may be used and disclosed only as authorized
+# per your agreement with Synopsys, Inc. controlling such use and
+# disclosure
+#
+#
+# 
+#
+#
+# CHANGE HISTORY
+#
+# 2016.06.16 amins
+# Another change to the font selection scheme. I now try to find several fonts, before giving up and 
+# relying on a default. Should reduce the number of problems with using bad looking fonts
+# If you still have problems with fonts, please notify me, otherwise I cannot fix anything.
+#
+# 2016.05.09 amins
+# update the window title after the file name was changed using save_as
+#
+# 2016.02.05 amins
+# When using save_as, the filename is now remembered, so a second save_as doesn't have to ask again.
+#
+# 2013.02.04 amins
+# Changed font scheme. Fonts were being displayed differently across different linux installations.
+# This is hopefully fixed now. If the fonts are displayed badly on your installation, please let me know. Thanks.
+#
+# 2012.11.16 amins
+# Bug fix release:
+#  Some of the changes introduced last time caused a hang.
+#
+# 2012.10.15 amins
+# Bug fix release:
+#  If a line had the same search text n times, you would have to keep pressing next for all found items on that
+#   line before moving to the next line. Now all search entries on the same line will be regarded as one, so you
+#   can move to the next line quicker, but the count will show the total count.
+#  In some cases search text was not highlighted on longer lines.
+#  "jump-to-next" didn't position the current view correctly on very long lines when text wrap was on.
+#
+# 2012.05.31 amins
+# Merge in Lynx support.
+#   if view.tk is configured as the "Viewer Tool" from Lynx (Project->Configure rtm_shell->External Tools),
+#   view.tk will recognize fail files automatically, and will highlight RTM errors and file names. If you hover
+#   over a SCRIPT_START filename, you can click on the file, and it will open a new view.tk with that file (or an editor
+#   that you can configure using the variable ::lynx_editor - see below).
+#   If you click on the "L" in the button row, the Lynx highlighting will also run.
+#   By default, Lynx support is enabled with the variable ::lynx_enabled - if you set this to false, fail-file recognition
+#   will not work. Disable lynx support if you know you will not use it in Lynx, as this will speed up processing a little bit.
+# If "save-as" finds that view.tk was called with a filename, it will suggest that file as the save-to file.
+#
+# 2012.02.06 amins
+# Added search history. Using F10 and Shift-F10 you can now go back and forth in your
+#   search history.
+# Fixed positioning of "highlighted search" after window resizing.
+# Added option to highlight the current search at the top, the middle or the bottom of
+#   the window (press ctrl-l to rotate through options).
+# Fixed regexp search. This never worked quite right, but now it's all there.
+#
+#
+# 2011.08.25 amins
+# Updated help text
+#
+# 2011.06.29 amins
+# Changed positioning algorithm of found item: view is now always adjusted, and found item is
+# positioned five lines from the bottom. This is especially helpful when viewing timing reports.
+#
+# 2011.06.20 amins
+# Added an additional highlight to the current search result.
+#
+# 2011.06.10 amins
+# Added the shortcut "ctrl-shift-v" to search for the word "VIOLATED" in the current text.
+# This special search word is always highlighted in red. Practical when viewing timing reports.
+#
+# 2011.05.23 amins
+# Changed highlight colors. Some were very hard to see on white background.
+# Fix palette rotation (foreground/background colors)
+#
+# 2011.02.03 amins
+# Added horizontal scroll bar
+#
+# 2011.01.21 amins
+# Added switch to select between RegExp and normal search
+#   Changed button names accordingly
+# Changed next/prev arrows to bitmaps
+# The search tagging now rotates through several colors
+# Fix: Count index now shown correctly
+#
+# 2010.10.19 amins
+# When the find panel is open, ctrl-f now refocuses the text search entry.
+# Added shortcuts ctrl-del to clear the search field, ctrl-q to quit
+#
+# 2010.09.16 amins
+# view.tk now accepts data via a stdin pipe, so you can do: cat xyz | view.tk
+#   this is the main interface to the view procedure via dc_shell. This avoids
+#   the use of temporary files and speeds up the display, especially when working
+#   on nfs.
+#
+# 2010.03.11 amins
+# Added a simple help window (control-h) that shows available key-bindings.
+# Fix: Save As was not saving current content, but original document instead.
+#
+# 2010.02.17 amins
+# Added search counters
+# Changed default text wrap mode to none - lines will be truncated. To toggle, press Control-w
+# view.tk doesn't delete the file it's showing unless true is passed as a 3rd argument
+# Changed layout of buttons slightly
+# More shortcuts
+#   control-w     toggle text wrap mode
+#   control-m     tag selection
+#   F3            jump to next occurrence
+#   Shift-F3      jump to previous occurrence
+#   Enter         in search box tags text
+#
+#
+# 2010.02.15 amins
+# Search window now integrated in main window, and replaces standard buttons
+# Added "Next/Prev Tag" functionality
+# Added following keyboard shortcuts:
+#   control-f     display search dialog
+#   esc           close search dialog
+#   control-n     jump to next occurrence
+#   control-p     jump to previous occurrence
+#   control-s     save content
+#   control-x     exit (close main window)
+#
+#
+# 2007.10.11 amins
+# Added tagging/search functionality
+# The search dialog uses regular expressions as input
+# You can also select text, then tag all text that matches the selection
+#
+# 2003.10.20 amins
+# Added save_as functionality
+# Font selection made more general
+# Better handling of temporary files
+
+
+# User-configurable options
+
+# Lynx-related variables
+# Enable or disable Lynx support in view.tk. The default (true) will also work with non-Lynx environments. The only addition
+# is that you will now have an extra button "L", which runs Lynx fail-file highlighting
+set ::lynx_enabled true
+# Configure the path for view.tk, or any other editor you want to use when clicking on a Lynx-script
+set ::lynx_editor "/remote/us01home21/amins/tools/view.tk"
+
+# Configure fonts
+# The following is used to display the actual content. It should be non-proportional. 
+# lucidatypewriter is supported on most Linux installations. 
+# If it's not found, we try to find some other fonts that also look OK.
+if {[regexp -nocase {lucidatypewriter} [font families]]} {
+	font create MyFixedFont -family LucidaTypewriter -size 9 -weight normal
+} elseif {[regexp -nocase {liberation mono} [font families]]} {
+	font create MyFixedFont -family "liberation mono" -size 9 -weight normal
+} elseif {[regexp -nocase {fixed} [font families]]} {
+	font create MyFixedFont -family "fixed" -size 10 -weight normal
+} else {
+	# no reasonable font found...
+	font create MyFixedFont -size 10 -weight normal
+}
+
+# The following are used to render all buttons used in the interface
+font create MyButtonFont   -family Helvetica -size 9 -weight bold
+font create MyButtonFontn  -family Helvetica -size 9 -weight normal
+font create MyButtonFontbi -family Helvetica -size 9 -weight bold   -slant italic
+font create MyButtonFonti  -family Helvetica -size 9 -weight normal -slant italic
+
+
+set ::text_window_width 130
+set ::text_window_height 60
+set ::fixed_font_height 14
+# tag_location:  top=0, mid=1, bottom=2
+set ::tag_location 2
+
+# Very basic argument handling: If the first argument is a file, use that as input
+# We ignore all other arguments
+set filename ""
+set current_palette 1
+#        0	black on gray
+#        1	black on white
+#        2	white on black
+
+set window_title ""
+if {$argc > 0} {
+	set arg [lindex $argv 0]
+	if {[file exists $arg]} {
+		set filename $arg
+	}
+	set window_title $arg
+}
+
+set search(num) 0
+set search(current_line) 0
+set search(current_pos) 0.0
+set search(index) 0
+set search(text) ""
+set search(re) 0
+set search(history,text) {}
+set search(history,num) {}
+set search(history,index) -1
+set search(history,size) 0
+
+
+image create bitmap ::bit::up -data {
+    #define up_width 15
+    #define up_height 15
+    static char up_bits = {
+    0x00, 0x00, 0x80, 0x00, 0xc0, 0x01, 0xe0, 0x03, 0xf0, 0x07, 0xf8, 0x0f, 0xfc, 0x1f, 0xfe, 0x3f, 0xff, 0x7f, 0xe0, 0x03, 0xe0, 0x03, 0xe0, 0x03, 0xe0, 0x03, 0x00, 0x00, 0x00, 0x00
+    }
+}
+image create bitmap ::bit::down -data {
+    #define down_width 15
+    #define down_height 15
+    static char down_bits = {
+    0x00, 0x00, 0x00, 0x00, 0xe0, 0x03, 0xe0, 0x03, 0xe0, 0x03, 0xe0, 0x03, 0xff, 0x7f, 0xfe, 0x3f, 0xfc, 0x1f, 0xf8, 0x0f, 0xf0, 0x07, 0xe0, 0x03, 0xc0, 0x01, 0x80, 0x00, 0x00, 0x00
+    }
+}
+
+set ::button_up "-bd 1 -height 23 -width 23 -image ::bit::up"
+set ::button_down "-bd 1 -height 23 -width 23 -image ::bit::down"
+
+set ::all_hilite_colors {LightSeaGreen Yellow LightBlue LightGreen SteelBlue LightSalmon PaleVioletRed}
+set ::hilite_color [lindex $::all_hilite_colors 0]
+set ::bold "-background #43ce80 -relief raised -borderwidth 1"
+set ::normal "-background {} -relief flat"
+
+set ::is_lynx_log false
+
+
+proc get_next_bg_color {} {
+	set ::hilite_color [lindex $::all_hilite_colors [expr (1 + [lsearch -exact $::all_hilite_colors $::hilite_color]) % [llength $::all_hilite_colors]] ]
+	return $::hilite_color
+}
+
+# Procedure to save the displayed content:
+proc save_as {content} {
+
+	# If we have a filename, use it to save by default:
+	if {$::filename != ""} {
+		set file [tk_getSaveFile -parent . -initialdir "[file dirname $::filename]" -initialfile "[file tail $::filename]"]
+	} else {
+	
+		#   Type names			Extension(s)
+		#
+		#---------------------------------------------------------
+		set types {
+			{"Text files"		{.txt .doc}	}
+			{"All files"		*}
+		}
+		set file [tk_getSaveFile -filetypes $types -parent . -initialfile Untitled]
+	}
+	
+	if {$file != ""} {
+		# Save contents to a file:
+		set FILE [open $file w]
+		puts $FILE $content
+		close $FILE;
+		# Remember the name of the file, in case the user decides to save again
+		set ::filename $file
+		# Update the window title
+		wm title . "$file"
+	}
+}
+
+proc TagSelection {} {
+	set a ""
+	catch {set a [selection get]}
+	if {$a != ""} { TagAll $a }
+}
+
+proc TagAll {searchtext {color ""} {silent 0} {re 0}} {
+	global search
+	
+	if {$searchtext == ""} { return }
+	set search(text) $searchtext
+	set sre ""
+	if {$search(re) || $re} {
+		set sre "-regexp"
+	}
+	set found 0
+	scan [.text index end] %d num_lines
+	
+	# Search the text line by line
+	for {set i 1} {$i < $num_lines} {incr i} {
+		set pos $i.0
+		set lastpos [.text index $i.end]
+		# Scan the entire line
+		while {[.text compare $pos < $lastpos]} {
+			set pos [eval .text search -forwards -count match_len $sre -- {$searchtext} $pos $lastpos]
+			if {$pos != ""} {
+				if {$found == 0} {
+					set found 1
+					if {$color == ""} { set color [get_next_bg_color] }
+				}
+				scan $pos "%d.%d" line char
+				set endpos $i.[expr $char + $match_len]
+				.text tag add $searchtext $pos $endpos
+				.text tag configure $searchtext -background $color
+				set pos $endpos
+			} else {
+				break
+			}
+		}
+	}
+	
+	if {$found == 0 && $silent==0} {
+		tk_messageBox -parent . -type ok -message "The pattern \"$searchtext\" was not found."
+	} else {
+		set search(num) [expr [llength [.text tag ranges $search(text)]] / 2]
+		lappend search(history,text) $search(text)
+		lappend search(history,num) $search(num)
+		incr search(history,size)
+		set search(history,index) [expr $search(history,size) - 1]
+		set search(index) 0
+		set search(current_pos) 0.0
+		set search(current_line) 0
+		find_tag
+	}
+}
+
+proc hilite_current {pos} {
+	scan $pos "%d.%d" line char
+	
+	if {$::tag_location == 0} {
+		set offset -5
+	} elseif {$::tag_location == 1} {
+		set offset [expr -1 * [winfo height .text] / $::fixed_font_height / 2]
+	} else {
+		# Show the found text 5 lines from the bottom of the text view
+		set offset [expr -1 * ([winfo height .text] / $::fixed_font_height) + 5]
+	}
+	
+	if {$::wrap_mode == "none"} {
+		.text yview [expr $line + $offset].$char
+	} else {
+		.text yview $pos
+	}
+	.text tag delete highlight
+	.text tag add highlight $line.0 $line.end+1c
+	.text tag configure highlight -borderwidth 1 -relief groove
+}
+
+proc find_tag {{direction 1}} {
+	# direction = 1 for FindNext, = -1 for FindPrev
+	
+	global search
+	
+	if {$search(index) == 0} {
+		set offset "0chars"
+	} else {
+		set offset "1chars"
+	}
+	set pos $search(current_pos)
+	set oldpos $pos
+	set line $search(current_line)
+	set count 0
+	
+	if {$direction == 1} {
+		while 1 {
+			set pos [lindex [.text tag nextrange $search(text) "$pos + $offset"] 0]
+			if {$pos != ""} {
+				set search(current_pos) $pos
+				set line [lindex [split $pos "."] 0]
+				incr count
+			}
+			
+			if {$pos == "" || $line != $search(current_line)} break
+		}
+
+	} else {
+		while 1 {
+			set pos [lindex [.text tag prevrange $search(text) "$pos"] 0]
+			if {$pos != ""} {
+				set search(current_pos) $pos
+				set line [lindex [split $pos "."] 0]
+				incr count -1
+			}
+			
+			if {$pos == "" || $line != $search(current_line)} break
+		}
+	}
+
+	set search(index) [expr $search(index) + $count]
+	if {$pos != ""} {
+		# If we don't find anything on a new line, then don't increment counter
+		if {$line != $search(current_line)}  { 
+			.bottomline.snum configure -text "$search(index) / $search(num)"
+			hilite_current $pos
+		}
+		set search(current_pos) $pos
+		set line [lindex [split $pos "."] 0]
+		set search(current_line) $line
+	}
+}
+
+proc hist {{direction "back"}} {
+	global search
+	
+	if {$direction == "back"} {
+		if {$search(history,index) > 0} {
+			incr search(history,index) -1
+		} else {
+			return
+		}
+	} else {
+		if {$search(history,index) < $search(history,size) - 1} {
+			incr search(history,index)
+		} else {
+			return
+		}
+	}
+	
+	set i $search(history,index)
+	set search(num) [lindex $search(history,num) $i]
+	set search(text) [lindex $search(history,text) $i]
+	set search(current_line) 0
+	set search(current_pos) 0.0
+	set search(index) 0
+	
+	find_tag
+}
+
+proc DelAllTags {} {
+	global search
+	set search(text) ""
+	set search(num) 0
+	set search(current_line) 0
+	set search(index) 0
+	
+	foreach tag [.text tag names] {
+		.text tag remove $tag 1.0 end
+	}
+	
+}
+
+
+proc create_normal_buttons {{p ""}} {
+	global search
+	
+	if {! [catch {pack info $p.tagsel}]} { return }
+	set ::list_normal_buttons {dismiss lynx search tagsel prevtag snum nexttag deltags saveas}
+	
+	destroy_search_buttons $p
+	
+	button $p.dismiss -fg red -font MyButtonFont -relief groove -text "  Exit  " -command "exit" -bd 1
+	if {$::lynx_enabled} {
+		button $p.lynx -fg darkgreen -text "L" -command "highlight_lynx" -font MyButtonFont -relief groove -bd 1
+	} else {
+		label $p.lynx
+	}
+	button $p.search -fg blue -font MyButtonFont -relief groove -text "Search..." -command "create_search_buttons $p" -bd 1
+	button $p.tagsel -fg blue -font MyButtonFont -relief groove -text "Tag Selection" -command "TagSelection" -bd 1
+	eval button $p.prevtag $::button_up -command {{find_tag -1}}
+	label $p.snum -font MyButtonFontn -text "$search(index) / $search(num)"
+	eval button $p.nexttag $::button_down -command "find_tag"
+	button $p.deltags -fg blue -font MyButtonFont -relief groove -text "Remove Tags" -command "DelAllTags" -bd 1
+	button $p.saveas -font MyButtonFont -relief groove -text "Save As..." -command {save_as [.text get 1.0 end]} -bd 1
+	pack $p.search $p.tagsel $p.prevtag $p.snum $p.nexttag \
+		$p.deltags $p.saveas $p.lynx $p.dismiss -fill x -side left -expand yes -padx 3
+	bind . "<Control-f>" "create_search_buttons $p"
+}
+proc destroy_normal_buttons {{p ""}} {
+	catch {
+		foreach b $::list_normal_buttons {
+			destroy $p.$b
+		}
+	}
+}
+
+proc create_search_buttons {{p ""}} {
+	global search
+	
+	if {! [catch {pack info $p.tagall}]} { return }
+	set ::list_search_buttons {label entry re tagall prevtag snum nexttag deltags dismiss}
+	
+	destroy_normal_buttons $p
+	
+	label $p.label -font MyButtonFont -fg blue -text "Search: "
+	entry $p.entry -width 19 -bd 1 -textvariable searchtext
+	checkbutton $p.re -text "RegExp" -font MyButtonFontn -variable search(re)
+	button $p.tagall -text "Tag" -fg blue -command {TagAll $searchtext} -font MyButtonFont -relief groove -bd 1
+	eval button $p.prevtag $::button_up -command {{find_tag -1}}
+	label $p.snum -font MyButtonFontn -text "$search(index) / $search(num)"
+	eval button $p.nexttag $::button_down -command "find_tag"
+	button $p.deltags -font MyButtonFont -fg blue -relief groove -text "Remove Tags" -command "DelAllTags" -bd 1
+	button $p.dismiss -fg red -text "Dismiss Search" -command "create_normal_buttons $p" -font MyButtonFont -relief groove -bd 1
+		
+	pack $p.label $p.entry $p.re $p.tagall $p.prevtag $p.snum $p.nexttag \
+		$p.deltags $p.dismiss -fill x -side left -expand yes -padx 3
+	
+	$p.entry delete 0 end
+	focus $p.entry
+	bind $p.entry "<Key-Return>" {TagAll $searchtext}
+	bind . "<Control-f>" "$p.entry delete 0 end; focus $p.entry"
+	bind $p.entry "<Control-Delete>" "$p.entry delete 0 end"
+}
+proc destroy_search_buttons {{p ""}} {
+	catch {
+		foreach b $::list_search_buttons {
+			destroy $p.$b
+		}
+	}
+}
+
+proc toggle_wrap {} {
+	if {$::wrap_mode == "none"} {
+		set ::wrap_mode "char"
+	} else {
+		set ::wrap_mode "none"
+	}
+	.text configure -wrap $::wrap_mode
+}
+
+proc rotate_palette {} {
+	set ::current_palette [expr ($::current_palette + 1) % 3]
+	switch $::current_palette {
+		0 {
+			.text configure -bg grey80 -fg black
+		}
+		1 {
+                	.text configure -bg white -fg black
+		}
+		default {
+                	.text configure -bg black -fg white
+		}
+	}
+}
+
+proc change_hilite_location {} {
+	set ::tag_location [expr ($::tag_location + 1) % 3]
+	hilite_current $::search(current_pos)
+}
+
+proc highlight_lynx {} {
+	TagAll "SNPS_INFO" "LightGreen" 1
+	TagAll "SNPS_ISSUE" "LightSalmon" 1
+	TagAll "SNPS_WARNING" "Yellow" 1
+	TagAll "SNPS_ERROR" "PaleVioletRed1" 1
+	TagAll {RTM-\d+} "Red" 1 1
+	
+	for {set i 0} {$i < $::lynx_count} {incr i} {
+		set tag lynx_file_$i
+		.text tag bind $tag <Any-Enter> ".text tag configure $tag $::bold"
+		.text tag bind $tag <Any-Leave> ".text tag configure $tag $::normal"
+		set fullfile $::lynx_file(lynx_file_$i)
+		.text tag bind $tag <1> "exec $::lynx_editor $fullfile &"
+	}
+}
+
+proc show_help {} {
+	
+	toplevel .help
+	wm title .help "Help"
+	
+	set helptext "
+  Control-Shift-v         Highlight the string 'VIOLATED'
+  Control-f               Display search dialog
+  Control-Del             Delete text in search field
+  Enter                   Tags text when entered from search dialog
+  Esc                     Close search dialog
+  Control-n, F3           Jump to next occurrence
+  Control-p, Shift-F3     Jump to previous occurrence
+  Shift-F10               Select previous search string (history back)
+  F10                     Select next search string (history forward)
+  Control-l               Change where search text is displayed (top, middle, bottom)
+
+  Control-s               Save content
+  Control-x, -q           Exit (close main window)
+  Control-w               Toggle text wrap mode
+  Control-c               Cycle through background colors
+  Control-m               Tag selection (highlighted with mouse)
+  Control-h               Show this help window
+
+
+esc to close window.
+"
+	text .help.text -font MyFixedFont -relief sunken -bd 1 -bg white -width 88 -height 22
+	.help.text insert end $helptext
+	pack .help.text
+	focus .help
+	bind .help "<Key-Escape>" "destroy .help"
+}
+
+
+####################################################################################
+# MAIN
+#
+# Build the interface
+wm title . "$window_title"
+tk_setPalette grey85
+
+set p ".bottomline"
+frame $p
+pack $p -side bottom -pady 1m
+create_normal_buttons $p
+
+scrollbar .scrollx -orient horizontal -command ".text xview" -bd 1
+pack .scrollx -side bottom -pady 1m -fill x
+
+set ::wrap_mode "none"
+switch $::current_palette {
+	0	{ set tbg grey80; set tfg black }
+	1	{ set tbg white; set tfg black }
+	default { set tbg black; set tfg white }
+}
+text .text -font MyFixedFont -relief sunken -bd 1 -bg $tbg -fg $tfg -yscrollcommand ".scrolly set" -xscrollcommand ".scrollx set" \
+	-setgrid 1 -width $::text_window_width -height $::text_window_height -wrap $::wrap_mode
+scrollbar .scrolly -command ".text yview" -bd 1
+pack .scrolly -side right -fill y
+pack .text -expand yes -fill both -padx 3
+
+
+###########################################################
+# Read content to display from stdin
+if {$filename != ""} {
+	set f [open "$filename" r]
+} else {
+	set f stdin
+}
+
+set lynx_count 0
+fconfigure $f -blocking 0
+fileevent $f readable "readMe $f"
+proc readMe chan {
+	if {[gets $chan line] < 0} {
+		if {[catch {gets $chan line} len] || [eof $chan]} {
+			close $chan
+			return
+		}
+	# Could not read a complete line this time; Tcl's
+	# internal buffering will hold the partial line for us
+	# until some more data is available over the socket.
+	} else {
+		if {$::lynx_enabled} {
+			if {! $::is_lynx_log} {
+				if { [regexp {\#\#\s+rtm_check} $line] } { set ::is_lynx_log true }
+			} elseif { $::is_lynx_log && [regexp {\#\#\s+E N D  O F  F I L E} $line] } {
+				set ::tag_location 0
+				highlight_lynx
+			}
+			#special handling for lynx - tag all SCRIPT_STARTs/ENDs, so file names become clickable
+			if { [regexp {(.+SCRIPT_START\s*:\s*)(\/.+)$} $line match preamble filename] } {
+				.text insert end $preamble
+				.text insert end "$filename\n" lynx_file_$::lynx_count
+				set ::lynx_file(lynx_file_$::lynx_count) $filename
+				incr ::lynx_count
+			} else {
+				.text insert end $line\n
+			}
+		} else {
+			.text insert end $line\n
+		}
+	}
+}
+
+option add *Dialog.msg.font {Helvetica 12}
+
+###########################################################
+# Key bindings
+
+bind . "<Control-f>" "create_search_buttons $p"
+bind . "<Control-m>" TagSelection
+bind . "<Control-n>" find_tag
+bind . "<Key-F3>" find_tag
+bind . "<Control-p>" "find_tag -1"
+bind . "<Shift-F3>" "find_tag -1"
+bind . "<Control-w>" toggle_wrap
+bind . "<Key-Escape>" "create_normal_buttons $p"
+bind . "<Control-s>" {save_as [.text get 1.0 end]}
+bind . "<Control-x>" {exit}
+bind . "<Control-q>" {exit}
+bind . "<Control-h>" {show_help}
+bind . "<Control-c>" {rotate_palette}
+bind . "<Control-V>" {TagAll "VIOLATED" Red}
+bind . "<Control-l>" {change_hilite_location}
+
+bind . "<Shift-F10>" {hist back}
+bind . "<Key-F10>"   {hist forward}
+
+
+# END

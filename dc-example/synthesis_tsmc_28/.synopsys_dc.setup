@@ -1,0 +1,54 @@
+# -----------------------------------------------------------------------------
+#  Source user-defined TCL procedures, like "view"
+# -----------------------------------------------------------------------------
+source -echo -verbose ./script/procs.tcl
+puts "RM-Info: Running script [info script]\n"
+
+# -----------------------------------------------------------------------------
+#  History
+# -----------------------------------------------------------------------------
+history keep 200
+
+# -----------------------------------------------------------------------------
+#  Aliases
+# -----------------------------------------------------------------------------
+alias h history
+alias rc "report_constraint -all_violators"
+alias rt report_timing
+alias ra report_area
+alias rq report_qor
+alias page_on {set sh_enable_page_mode true}
+alias page_off {set sh_enable_page_mode false}
+alias fr "remove_design -designs"
+
+# -----------------------------------------------------------------------------
+#  Other lab specific settings
+# -----------------------------------------------------------------------------
+
+set_app_var alib_library_analysis_path . ; # Common ALIB library location
+define_design_lib WORK -path ./work	  ; # Location of "analyze"d files
+suppress_message "LINT-99 DCT-035 CMD-041 TFCHK-014 TFCHK-049 TFCHK-050 TFCHK-055 TFCHK-084 MWLIBP-300 MWLIBP-301 MWLIBP-324"  ; # Messages irrelevant to lab
+suppress_message {LINT-1 LINT-28 LINT-32 LINT-33 DCT-228}
+
+# -----------------------------------------------------------------------------
+#  Additional Setup Files
+# -----------------------------------------------------------------------------
+source common_setup.tcl
+source dc_setup.tcl
+
+# -----------------------------------------------------------------------------
+#  Verify Settings
+# -----------------------------------------------------------------------------
+echo "\n=================================================================="
+echo "\nLibrary Settings:"
+echo "search_path:             $search_path"
+echo "link_library:            $link_library"
+echo "target_library:          $target_library"
+echo "symbol_library:          $symbol_library"
+#echo "mw_reference_library:    $mw_reference_library"
+#echo "mw_design_library:       $mw_design_library"
+echo "\n=================================================================="
+
+echo "\nI am ready...\n"
+puts "RM-Info: Completed script [info script]\n"
+# -----------------------------------------------------------------------------

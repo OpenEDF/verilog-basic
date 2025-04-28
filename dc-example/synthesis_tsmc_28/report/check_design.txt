@@ -1,0 +1,39 @@
+ 
+****************************************
+check_design summary:
+Version:     O-2018.06-SP1
+Date:        Sat Jul 27 12:45:52 2024
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                      7
+    Unconnected ports (LINT-28)                                     7
+
+Cells                                                               7
+    Connected to power or ground (LINT-32)                          5
+    Nets connected to multiple pins on same cell (LINT-33)          2
+--------------------------------------------------------------------------------
+
+Warning: In design 'sequ_div_DW_cmp_0', port 'TC' is not connected to any nets. (LINT-28)
+Warning: In design 'sequ_div_DW_cmp_0', port 'GE_LT' is not connected to any nets. (LINT-28)
+Warning: In design 'sequ_div_DW_cmp_0', port 'GE_GT_EQ' is not connected to any nets. (LINT-28)
+Warning: In design 'sequ_div_DW_cmp_0', port 'EQ_NE' is not connected to any nets. (LINT-28)
+Warning: In design 'sequ_div_DW01_sub_0', port 'p_B[32]' is not connected to any nets. (LINT-28)
+Warning: In design 'sequ_div_DW01_sub_0', port 'CI' is not connected to any nets. (LINT-28)
+Warning: In design 'sequ_div_DW01_sub_0', port 'CO' is not connected to any nets. (LINT-28)
+Warning: In design 'sequ_div', a pin on submodule 'gt_x_24' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'TC' is connected to logic 0. 
+Warning: In design 'sequ_div', a pin on submodule 'gt_x_24' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'GE_LT' is connected to logic 0. 
+Warning: In design 'sequ_div', a pin on submodule 'gt_x_24' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'GE_GT_EQ' is connected to logic 1. 
+Warning: In design 'sequ_div', a pin on submodule 'sub_x_2' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'p_B[32]' is connected to logic 0. 
+Warning: In design 'sequ_div', a pin on submodule 'sub_x_2' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'CI' is connected to logic 0. 
+Warning: In design 'sequ_div', the same net is connected to more than one pin on submodule 'gt_x_24'. (LINT-33)
+   Net 'n373' is connected to pins 'TC', 'GE_LT''.
+Warning: In design 'sequ_div', the same net is connected to more than one pin on submodule 'sub_x_2'. (LINT-33)
+   Net 'n373' is connected to pins 'p_B[32]', 'CI''.
+1
