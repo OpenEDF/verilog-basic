@@ -1,0 +1,7 @@
+# Version:1.0 MMMC View Definition File
+# Do Not Remove Above Line
+create_library_set -name gscl45nm_ls -timing {gscl45nm.tlf}
+create_constraint_mode -name test_cm -sdc_files {test.sdc}
+create_delay_corner -name gscl45nm_dc -library_set {gscl45nm_ls}
+create_analysis_view -name test_av -constraint_mode {test_cm} -delay_corner {gscl45nm_dc}
+set_analysis_view -setup {test_av} -hold {test_av}
