@@ -54,19 +54,19 @@ set_drive  0              [get_ports $RST_NAME]
 #====================================================================
 # 3. set input delay
 #====================================================================
-set DRIVE_CELL INVX1
-set DRIVE_PIN  Y
+set DRIVE_CELL GINVD1BWP7T30P140
+set DRIVE_PIN  ZN
 set ALL_IN_EXCEPT_CLK [remove_from_collection [all_inputs] [get_clocks $CLK_NAME]]
 set INPUT_DELAY [expr $CLK_PERIOD*0.1]
 set_input_delay $INPUT_DELAY  -clock $CLK_NAME $ALL_IN_EXCEPT_CLK
-set_driving_cell -lib_cell ${DRIVE_CELL} -pin ${DRIVE_PIN} $ALL_IN_EXCEPT_CLK
+set_driving_cell -lib_cell ${DRIVE_CELL} -pin ${DRIVE_PIN} -no_design_rule $ALL_IN_EXCEPT_CLK
 
 #====================================================================
 # 3. set output delay
 #====================================================================
 set OUTPUT_DELAY  [expr $CLK_PERIOD*0.1]
-set LIB_NAME      slow.lib
-set MAX_LOAD      [expr [load_of $LIB_NAME/INVX8/A] * 10]
+set LIB_NAME      tcbn28hpcplusbwp7t40p140tt0p9v25c
+set MAX_LOAD      [expr [load_of $LIB_NAME/GINVD8BWP7T30P140/ZN] * 10]
 set_output_delay  $OUTPUT_DELAY -clock $CLK_NAME  [all_outputs]
 set_load          [expr $MAX_LOAD*3]              [all_outputs]
 set_isolate_ports -type buffer                    [all_outputs]
@@ -74,12 +74,13 @@ set_isolate_ports -type buffer                    [all_outputs]
 #====================================================================
 # 4. set opearting conditions
 #====================================================================
-set WIRE_LOAD_MODEL       smic090_wl10
-set OPERA_CONDITION       slow 
+set WIRE_LOAD_MODEL       ZeroWireload 
+set OPERA_CONDITION       tt0p9v25c
 set_operating_conditions  -max $OPERA_CONDITION \
                           -max_library $LIB_NAME
 set auto_wire_load_selection false
-set_wire_load_mode enclosed
+#set_wire_load_mode enclosed
+set_wire_load_mode segmented
 set_wire_load_model -name  $WIRE_LOAD_MODEL \
                     -library $LIB_NAME
 
