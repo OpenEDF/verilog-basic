@@ -1,2 +1,3 @@
 # source file list
+top_io_pad.v
 testbench.v

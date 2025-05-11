@@ -38,41 +38,28 @@
 //--------------------------------------------------------------------------
 // Module
 //--------------------------------------------------------------------------
-module testbench();
+module top_io_pad(
+    input  I,
+    output C,
+    inout  PAD
+);
 //--------------------------------------------------------------------------
 // Ports
 //--------------------------------------------------------------------------
-reg ir;
-wire padr, cr;
+wire oenr, renr;
+assign oenr = 1'b1;
+assign renr = 1'b1;
 
 //--------------------------------------------------------------------------
 // Design: timeformat system function
 //--------------------------------------------------------------------------
-top_io_pad u0(
-    /*autoinst*/
-        .I                      (I                              ), //input
-        .C                      (C                              ), //output
-        .PAD                    (PAD                            )  //inout
-    );
-
-assign padr = 1'b1;
-initial begin
-    $timeformat(-9, 2, "ns");
-    #10;
-    ir   = 1'b1;
-    $display("[T=%0t] PAD = %0b, C = %0b", $realtime, padr, cr);    
-    
-    #10;
-    ir   = 1'b0;
-    $display("[T=%0t] PAD = %0b, C = %0b", $realtime, padr, cr);    
-
-    #10;
-    ir   = 1'b1;
-    $display("[T=%0t] PAD = %0b, C = %0b", $realtime, padr, cr);    
-
-    #10;
-    $finish();
-end
+PDDW04DGZ_H_G u0(
+    .I(I),
+    .OEN(oenr),
+    .REN(renr),
+    .PAD(PAD),
+    .C(C)
+);
 
 endmodule
 //--------------------------------------------------------------------------
