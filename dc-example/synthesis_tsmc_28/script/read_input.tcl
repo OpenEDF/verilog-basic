@@ -21,9 +21,9 @@ set REPORT_PATH         $SYN_WORK_PATH/report
 #=====================================================================
 # step 1: sead & elaborate the RTL file list & check
 #=====================================================================
-set_svf         sequ_div.svf
-set TOP_MODULE  sequ_div
-analyze -format verilog [list sequ_div.v]
+set_svf         chip_top.svf
+set TOP_MODULE  chip_top
+analyze -format verilog [list sequ_div.v iopads.v chip_top.v]
 elaborate       $TOP_MODULE -architecture verilog
 current_design  $TOP_MODULE
 
@@ -36,7 +36,7 @@ if {[check_design] == 0} {
     echo "Check desing with error!";
     exit;
 }
-
+set_dont_touch true iopads
 #=====================================================================
 # step 2: reset the designi first
 #=====================================================================

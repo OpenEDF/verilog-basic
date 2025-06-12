@@ -8,8 +8,7 @@
 #   1. 2022-08-08  Initial version
 #
 #====================================================================
-set lib_name fast
-current_design sequ_div
+current_design chip_top
 
 # reset all constraints 
 reset_design
@@ -18,7 +17,7 @@ reset_design
 # 1. define clock
 #====================================================================
 # define the system clock period
-set CLK_NAME          clk
+set CLK_NAME          clkI
 set CLK_PERIOD        10
 set CLK_SKEW          [expr $CLK_PERIOD*0.05]
 set CLK_TRAN          [expr $CLK_PERIOD*0.01]
@@ -46,7 +45,7 @@ if {[sizeof_collection [get_ports $CLK_NAME]] == 0} {
 #====================================================================
 # 2. define reset
 #====================================================================
-set RST_NAME              rst_n
+set RST_NAME              rst_nI
 set_ideal_network         [get_ports $RST_NAME]
 set_dont_touch_network    [get_ports $RST_NAME]
 set_drive  0              [get_ports $RST_NAME]

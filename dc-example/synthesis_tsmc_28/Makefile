@@ -1,5 +1,5 @@
 #-----------------------------------------------------------------------------
-# 						    - Design Compiler - 
+# 						    - Design Compiler -
 # Date: 2023/08/08
 # Author: Macro
 # Brief: Design Compiler automated management by script.
@@ -21,11 +21,11 @@ dcto:
 clean_all:
 	rm -rf *.txt *.log default.svf alib-52 *.syn *.pvl *.mr ../*.mr \
 	       ../*-verilog.pvl ../*-verilog.syn mapped/*.ddc mapped/*.sdc \
-	       mapped/*.sdf unmapped/*.ddc netlist/*.v log/*.log \
-		   /home/macro/synopsys_cache_L-2018.06-SP1
+	       mapped/*.sdf unmapped/*.ddc netlist/*.v log/*.log *.svf \
+		   /home/macro/synopsys_cache_O-2018.06-SP1 work/*
 
 clean:
 	rm -rf *.txt *.log default.svf alib-52 *.syn *.pvl *.mr ../*.mr \
-	       ../*-verilog.pvl ../*-verilog.syn log/*.log 
+	       ../*-verilog.pvl ../*-verilog.syn log/*.log *.svf work/*
 
 #-----------------------------------------------------------------------------

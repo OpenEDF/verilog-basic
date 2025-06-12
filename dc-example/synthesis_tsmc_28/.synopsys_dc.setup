@@ -29,6 +29,10 @@ set_app_var alib_library_analysis_path . ; # Common ALIB library location
 define_design_lib WORK -path ./work	  ; # Location of "analyze"d files
 suppress_message "LINT-99 DCT-035 CMD-041 TFCHK-014 TFCHK-049 TFCHK-050 TFCHK-055 TFCHK-084 MWLIBP-300 MWLIBP-301 MWLIBP-324"  ; # Messages irrelevant to lab
 suppress_message {LINT-1 LINT-28 LINT-32 LINT-33 DCT-228}
+set_app_var compile_seqmap_propagate_constants "false"
+set_app_var compile_seqmap_propagate_constants_size_only "false"
+set_app_var compile_delete_unloaded_sequential_cells "false"
+
 
 # -----------------------------------------------------------------------------
 #  Additional Setup Files
